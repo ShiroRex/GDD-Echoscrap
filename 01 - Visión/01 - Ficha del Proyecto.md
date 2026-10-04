@@ -11,12 +11,12 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 | :--------------------------- | :---------------------------------------- |
 | **Nombre del proyecto**      | EchoScrap                                 |
 | **Nombre clave**             | EchoScrap                                 |
-| **Versión del GDD**          | 0.1.1                                     |
+| **Versión del GDD**          | 0.2.0                                     |
 | **Estado del proyecto**      | Preproducción / Inicio de Producción      |
 | **Equipo**                   | -Angel Mora (Lider)<br>-insertar personas |
 | **Responsable del proyecto** | Angel Mora                                |
 | **Fecha de inicio**          | 25 de septiembre de 2026                  |
-| **Última actualización**     | 25 de septiembre de 2026                  |
+| **Última actualización**     | 4 de octubre de 2026                      |
 | **Repositorio**              | [Enlace al repositorio de GitHub]         |
 
 ---
@@ -62,9 +62,9 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 ## Estado actual
 
 - [x] Concepto definido
-- [ ] Alcance inicial definido
-- [ ] Mecánica principal definida
-- [ ] Prototipo funcional *(En desarrollo - Semana 1)*
+- [x] Alcance inicial definido
+- [x] Mecánica principal definida
+- [x] Prototipo funcional *(Operativo en escena de pruebas)*
 - [ ] Vertical slice
 - [ ] Producción
 - [ ] Pruebas

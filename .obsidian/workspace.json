@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Visión/04 - Pilares de Diseño.md",
+                "file": "02 - Diseño/03 - Sistemas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04 - Pilares de Diseño"
+              "title": "03 - Sistemas"
             }
           }
         ]
@@ -190,10 +190,11 @@
   },
   "active": "99d356eaa24a389e",
   "lastOpenFiles": [
-    "01 - Visión/03 - Público y Plataforma.md",
-    "01 - Visión/04 - Pilares de Diseño.md",
+    "02 - Diseño/02 - Mecánicas.md",
     "01 - Visión/02 - Visión del Juego.md",
     "01 - Visión/01 - Ficha del Proyecto.md",
+    "01 - Visión/04 - Pilares de Diseño.md",
+    "01 - Visión/03 - Público y Plataforma.md",
     "02 - Diseño/04 - Controles.md",
     "05 - Arte y Audio/01 - Dirección de Arte.md",
     "03 - Historia y Mundo/03 - Personajes.md",
@@ -205,7 +206,6 @@
     "02 - Diseño/06 - Economía y Recursos.md",
     "02 - Diseño/05 - Progresión.md",
     "02 - Diseño/03 - Sistemas.md",
-    "02 - Diseño/02 - Mecánicas.md",
     "02 - Diseño/01 - Jugabilidad.md",
     "00 - Índice.md",
     "00 - Acerca de esta guía.md"

@@ -2,55 +2,66 @@
 
 ## Descripción de la sección
 
-Documenta las entidades controladas por el juego y su comportamiento.
+Documenta las entidades no jugables controladas por la inteligencia artificial del juego, sus atributos cuantitativos, roles de combate y comportamiento dentro del enjambre.
 
-## Plantilla de enemigo
+---
 
-### Nombre
+## Catálogo de Enemigos Implementados
 
-**Rol de combate:**
+### 1. Enemigo Básico Residual (`EnemyBasic`)
 
-**Comportamiento:**
+**Rol de combate:**  
+Horda / Carne de cañón (*Swarm Fodder*). Su propósito es ejercer presión numérica constante, rodear al jugador aprovechando la superioridad de masa y obligar al uso continuo de la linterna y el dash para abrir brechas.
 
-**Vida:**
+**Comportamiento de IA:**  
+* **Persecución activa:** Persigue continuamente la coordenada del jugador en el plano XZ.
+* **Separación de vecinos (*Zero GC Flocking*):** Utiliza un búfer preasignado (`neighborBuffer[16]`) para calcular fuerzas de repulsión mutua (radio 1.4m, fuerza 5.5), evitando solapamiento antiestético.
+* **Flanqueo inteligente:** Al toparse de frente con otros enemigos que bloquean su avance directo, aplica una fuerza lateral tangencial (fuerza 4.0, radio 1.2m) para envolver al jugador por los costados.
+* **Micro-ondulación orgánica:** Introduce una semilla sinusoidal (`wanderIntensity = 0.35`) que rompe patrones rígidos o líneas rectas.
 
-**Daño:**
+**Atributos numéricos:**
+* **Vida máxima:** `15.0` puntos de salud.
+* **Daño por contacto:** `10.0` puntos de daño al colisionar con el jugador.
+* **Intervalo de daño (*Damage Cooldown*):** `0.50` segundos por enemigo.
+* **Velocidad de avance:** `3.5 m/s` base con variación aleatoria individual de `±15%` (rango entre 2.97 y 4.02 m/s).
+* **Física de Retroceso (*Knockback*):** Al ser impactado por la linterna, recibe un impulso de `5.0 m/s` en dirección opuesta al jugador, desacelerando rápidamente con una fricción de `18.0 m/s²`.
 
-**Defensas:**
-
-**Velocidad:**
-
-**Rango de detección:**
-
-**Ataques:**
+**Ataques y detección:**
+* **Ataque:** Colisión física directa por contacto con el collider del jugador.
+* **Rango de detección:** Global en la arena activa (orientación continua hacia el objetivo).
 
 **Debilidades:**
+* Alta susceptibilidad al empuje del cono de luz.
+* Baja reserva de salud (cae tras 3 impactos base del cono de luz, o 2 impactos con la primera mejora de daño).
 
-**Recompensa:**
+**Recompensa al morir:**
+* Instancia inmediatamente en su posición final de muerte `1` Gema de Chatarra / XP (`Gem_XP.prefab`), equivalente a **10 XP**.
 
-**Estados de IA:**
+**Diagrama de Estados de IA:**
 
-```text
-Patrullar → Detectar → Perseguir → Atacar
-                  ↓
-                Perder objetivo → Buscar
+```mermaid
+graph TD
+    Spawn[Spawn en la periferia de 14m] --> Enjambre[Persecución con Separación y Flanqueo]
+    Enjambre --> Contacto{¿Alcanzó al Coleccionista?}
+    Contacto -- Sí --> Daño[Infligir 10 de Daño cada 0.5s]
+    Contacto -- No --> Enjambre
+    Enjambre --> Impacto{¿Alcanzado por Cono?}
+    Impacto -- Sí --> Retroceso[Knockback Físico + Flash Blanco/Rojo]
+    Retroceso --> CheckVida{¿Vida <= 0?}
+    CheckVida -- No --> Enjambre
+    CheckVida -- Sí --> Muerte[Soltar Gema de XP y Destruirse]
 ```
 
-## Plantilla de NPC
+---
 
-**Nombre:**
+## Catálogo de NPC (Proyectados para el Almacén)
 
-**Función:**
+### 1. El Custodio de las Reliquias (NPC del Almacén)
 
-**Ubicación:**
+* **Función:** Administrador de la vitrina de entidades capturadas y comerciante de mejoras permanentes.
+* **Ubicación:** Refugio / Almacén del Coleccionista (fuera de la arena).
+* **Interacción:** Permite invertir los Ecos consolidados tras cada partida para desbloquear y equipar entidades.
 
-**Interacción:**
-
-**Diálogos:**
-
-**Condiciones:**
-
-**Recompensas / información:**
-
+---
 
 > **Navegación:** [[00 - Índice]] · ← [[02 - Niveles]] · [[04 - Objetos y Coleccionables]] →
