@@ -54,6 +54,28 @@ graph TD
 
 ---
 
+### 2. El Coloso (`EnemyColossus`)
+
+**Rol de combate:**  
+Rompe-líneas / Tanque (*Line Breaker / Heavy Tank*). Diseñado para ignorar por completo el retroceso de la linterna y avanzar de forma implacable, forzando al jugador a romper su posición de kiting o utilizar el Ghosting del Dash para atravesarlo.
+
+**Comportamiento de IA:**  
+* **Avance implacable:** Persecución directa hacia el jugador en el plano XZ sin atenuación frontal ni frenado por congestión.
+* **Inmunidad al empuje de horda:** Sobrescribe `GetSeparationAndPush` ignorando la repulsión de vecinos y el "soft push" del jugador.
+* **Cuerpo físico sólido:** Su collider no es trigger (`isTrigger = false`), bloqueando físicamente el paso del jugador a pie; solo es atravesable durante el Dash gracias al descarte de colisión entre capas.
+
+**Atributos numéricos:**
+* **Vida máxima:** `80.0` puntos de salud.
+* **Daño por contacto:** `25.0` puntos de daño al colisionar con el jugador.
+* **Intervalo de daño (*Damage Cooldown*):** `0.50` segundos.
+* **Velocidad de avance:** `1.8 m/s` (pesado y constante con variación de `±5%`).
+* **Física de Retroceso (*Knockback*):** Inmune al 100% (`knockbackImpulse = 0`).
+
+**Recompensa al morir:**
+* Instancia `1` Gema de Chatarra / XP de alta densidad equivalente a **50 XP**.
+
+---
+
 ## Catálogo de NPC (Proyectados para el Almacén)
 
 ### 1. El Custodio de las Reliquias (NPC del Almacén)
