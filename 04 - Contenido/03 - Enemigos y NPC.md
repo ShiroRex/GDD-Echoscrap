@@ -54,7 +54,30 @@ graph TD
 
 ---
 
-### 2. El Coloso (`EnemyColossus`)
+### 2. El Interceptor (`EnemyInterceptor`)
+
+**Rol de combate:**  
+Corta-caminos / Rusher (*Path Interceptor / Rusher*). Diseñado para anticipar el vector de desplazamiento del jugador y cerrarle el paso frontalmente, castigando las tácticas de kiting en círculos continuos.
+
+**Comportamiento de IA:**  
+* **Predicción de Trayectoria (*Lead Target*):** En lugar de perseguir la posición actual del jugador, proyecta su posición futura en función de la velocidad y dirección del jugador con un tiempo de anticipación de `leadTime = 0.4s`.
+* **Convergencia a corta distancia:** Al acercarse a menos de 1.2 metros, conmuta a persecución directa para evitar orbitar en torno al jugador.
+* **Counterplay con Dash:** La velocidad de predicción está acotada al `MoveSpeed` base del jugador (8 m/s). Si el jugador ejecuta un Dash (22 m/s), la velocidad real supera el umbral previsto por el Interceptor, engañándolo exitosamente y abriendo una ventana táctica de escape.
+* **Vulnerabilidad al retroceso:** Por su complexión ágil y ligera, posee una resistencia negativa al knockback (-20%), saliendo despedido a gran distancia con un solo impacto directo del haz de luz.
+
+**Atributos numéricos:**
+* **Vida máxima:** `7.0` - `9.0` puntos de salud.
+* **Daño por contacto:** `8.0` puntos de daño al colisionar con el jugador.
+* **Intervalo de daño (*Damage Cooldown*):** `0.50` segundos.
+* **Velocidad de avance:** `6.2 m/s` con variación individual de `±10%`.
+* **Física de Retroceso (*Knockback*):** Resistencia -20% (`knockbackImpulse = 8.5 m/s`, fricción atenuada `12.0 m/s²`).
+
+**Recompensa al morir:**
+* Instancia `1` Gema de Chatarra / XP equivalente a **10 XP**.
+
+---
+
+### 3. El Coloso (`EnemyColossus`)
 
 **Rol de combate:**  
 Rompe-líneas / Tanque (*Line Breaker / Heavy Tank*). Diseñado para ignorar por completo el retroceso de la linterna y avanzar de forma implacable, forzando al jugador a romper su posición de kiting o utilizar el Ghosting del Dash para atravesarlo.
@@ -76,7 +99,7 @@ Rompe-líneas / Tanque (*Line Breaker / Heavy Tank*). Diseñado para ignorar por
 
 ---
 
-### 3. El Mortero (`EnemyMortar`)
+### 4. El Mortero (`EnemyMortar`)
 
 **Rol de combate:**  
 Zoner / Control de arena (*Area Denial / Artillery*). Su objetivo es mantenerse a distancia media y escupir charcos corrosivos en el suelo para ensuciar la arena y cortar rutas de escape seguras.
@@ -100,7 +123,7 @@ Zoner / Control de arena (*Area Denial / Artillery*). Su objetivo es mantenerse 
 
 ---
 
-### 4. La Polilla (`EnemyMoth`)
+### 5. La Polilla (`EnemyMoth`)
 
 **Rol de combate:**  
 Kamikaze / Bomba táctica (*Suicide Bomber / Tactical Disruptor*). Enemigo ágil y ligero con tendencia autodestructiva que genera momentos de alta tensión y recompensa el posicionamiento rápido del jugador.
