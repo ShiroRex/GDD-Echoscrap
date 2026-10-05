@@ -76,6 +76,30 @@ Rompe-líneas / Tanque (*Line Breaker / Heavy Tank*). Diseñado para ignorar por
 
 ---
 
+### 3. El Mortero (`EnemyMortar`)
+
+**Rol de combate:**  
+Zoner / Control de arena (*Area Denial / Artillery*). Su objetivo es mantenerse a distancia media y escupir charcos corrosivos en el suelo para ensuciar la arena y cortar rutas de escape seguras.
+
+**Comportamiento de IA:**  
+* **Posicionamiento táctico:** Se aproxima al jugador hasta alcanzar una distancia de seguridad de ~7 metros.
+* **Control de zona muerta y retroceso suave:** Entre 6.5m y 7.5m frena su avance frontal por completo. Si el jugador intenta acortar distancia (< 6.5m), retrocede suavemente para restablecer la distancia óptima de disparo.
+* **Ataque de Mortero:** Escupe periódicamente un proyectil balístico en arco parabólico (`MortarProjectile`) que detona al tocar tierra instanciando un charco (`MortarPuddle`).
+* **Charco Corrosivo:** Permanece activo exactamente 4 segundos en el suelo, infligiendo 5 de daño cada 0.5 segundos al jugador si pisa el área.
+
+**Atributos numéricos:**
+* **Vida máxima:** `25.0` puntos de salud.
+* **Daño por contacto:** `5.0` puntos de daño al colisionar con el jugador.
+* **Intervalo de daño (*Damage Cooldown*):** `0.50` segundos.
+* **Velocidad de avance:** `2.2 m/s` con variación individual de `±10%`.
+* **Física de Retroceso (*Knockback*):** 20% de resistencia (`knockbackImpulse = 4.0 m/s`, fricción `18.0 m/s²`).
+* **Cadencia de disparo:** `3.5` segundos por proyectil.
+
+**Recompensa al morir:**
+* Instancia `1` Gema de Chatarra / XP equivalente a **25 XP**.
+
+---
+
 ## Catálogo de NPC (Proyectados para el Almacén)
 
 ### 1. El Custodio de las Reliquias (NPC del Almacén)
