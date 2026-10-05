@@ -100,6 +100,30 @@ Zoner / Control de arena (*Area Denial / Artillery*). Su objetivo es mantenerse 
 
 ---
 
+### 4. La Polilla (`EnemyMoth`)
+
+**Rol de combate:**  
+Kamikaze / Bomba táctica (*Suicide Bomber / Tactical Disruptor*). Enemigo ágil y ligero con tendencia autodestructiva que genera momentos de alta tensión y recompensa el posicionamiento rápido del jugador.
+
+**Comportamiento de IA:**  
+* **Abalanzamiento kamikaze:** Se desplaza velozmente (4.8 m/s) en dirección directa al jugador.
+* **Cebado y cuenta atrás de 0.5s:** Al recibir daño letal o al aproximarse a menos de 2.0 metros del jugador, frena su avance motriz y entra en fase de sobrecarga, parpadeando a alta frecuencia en ámbar reactivo.
+* **Counterplay con la Linterna:** Durante los 0.5s de cebado, la Polilla mantiene su física de knockback activa. Si el jugador la empuja con el haz de luz hacia el enjambre antes de que detone, la explosión resultante destruye y dispersa a la propia horda (*friendly fire* táctico).
+* **Detonación radial:** Al concluir el tiempo de cebado, estalla en un radio de 3.0 metros, infligiendo 35 de daño tanto al jugador (si permanece dentro del radio) como a todos los enemigos circundantes.
+
+**Atributos numéricos:**
+* **Vida máxima:** `12.0` puntos de salud.
+* **Daño por contacto / explosión:** `35.0` puntos de daño.
+* **Velocidad de avance:** `4.8 m/s` con variación individual de `±10%`.
+* **Física de Retroceso (*Knockback*):** 0% de resistencia (`knockbackImpulse = 5.0 m/s`, fricción `18.0 m/s²`).
+* **Radio de detonación:** `3.0` metros.
+* **Tiempo de fusible (*Primed duration*):** `0.50` segundos.
+
+**Recompensa al morir:**
+* Instancia `1` Gema de Chatarra / XP equivalente a **15 XP**.
+
+---
+
 ## Catálogo de NPC (Proyectados para el Almacén)
 
 ### 1. El Custodio de las Reliquias (NPC del Almacén)
