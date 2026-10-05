@@ -81,6 +81,11 @@ Regular la tensión de la partida ajustando dinámicamente el volumen y frecuenc
 **Mecanismo de Seguridad:**  
 Monitorea continuamente la cantidad de enemigos activos (`ActiveEnemies.Count`). Si alcanza el tope de seguridad de **150 enemigos**, el spawner detiene la invocación hasta que el jugador despeje la arena, protegiendo la tasa de refresco a 60 FPS.
 
+**Controles de Prueba y Filtros de Spawn (Inspector Debug):**  
+Para facilitar el testeo y calibración en aislamiento de cada arquetipo por el equipo de diseño:
+* **Modo Exclusivo de Pruebas (`SpawnModeOverride`):** Menú desplegable en el Inspector que permite forzar al 100% la aparición de un único arquetipo (`SoloBasicos`, `SoloInterceptores`, `SoloColosos`, `SoloMorteros`, `SoloPolillas`) para probar su comportamiento en cualquier momento sin esperar a fases avanzadas.
+* **Filtros Individuales:** Banderas booleanas (`permitirBasicos`, `permitirInterceptores`, `permitirColosos`, `permitirMorteros`, `permitirPolillas`) que permiten prohibir o habilitar arquetipos específicos en tiempo real desde el editor de Unity.
+
 ---
 
 ## Relaciones entre sistemas
