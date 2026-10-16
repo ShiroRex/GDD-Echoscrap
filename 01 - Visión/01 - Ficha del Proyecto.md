@@ -1,53 +1,52 @@
 # 01 - Ficha del Proyecto
 
 ## Descripción de la sección
-Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien que nunca haya visto el videojuego entienda qué proyecto es y cuál es su estado actual.
+Esta sección permite conocer e identificar el proyecto de forma rápida. Debe permitir que alguien que nunca haya visto el videojuego entienda qué proyecto es y cuál es el estado actual.
 
 ---
 
 ## Información general
 
-| Campo                        | Información                               |
-| :--------------------------- | :---------------------------------------- |
-| **Nombre del proyecto**      | EchoScrap                                 |
-| **Nombre clave**             | EchoScrap                                 |
-| **Versión del GDD**          | 0.2.0                                     |
-| **Estado del proyecto**      | Preproducción / Inicio de Producción      |
-| **Equipo**                   | -Angel Mora (Lider)<br>-insertar personas |
-| **Responsable del proyecto** | Angel Mora                                |
-| **Fecha de inicio**          | 25 de septiembre de 2026                  |
-| **Última actualización**     | 4 de octubre de 2026                      |
-| **Repositorio**              | [Enlace al repositorio de GitHub]         |
+| Campo                        | Información                                                                                                                                                                                                                                              |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre del proyecto**      | EchoScrap                                                                                                                                                                                                                                                |
+| **Versión del GDD**          | 0.3.0                                                                                                                                                                                                                                                    |
+| **Estado del proyecto**      | Preproducción (Fase de Diseño y Aprobación de GDD)                                                                                                                                                                                                       |
+| **Equipo**                   | - Mora Alejandro Angel Gabriel (Líder)<br>- Sierra Sosa David Alejandro (Desarrollo y Diseño de Juego)<br>- Cupul Dzul Mirian Leticia (Artista 1 — Personajes y Animación)<br>- Obispo Navarro Samuel Alejandro (Artista 2 — Entornos e Interfaz)<br>- Nuñez Chan Luis Fernando (Audio, Narrativa, UX y Calidad) |
+| **Responsable del proyecto** | Mora Alejandro Angel Gabriel                                                                                                                                                                                                                             |
+| **Fecha de inicio**          | 25 de septiembre de 2026                                                                                                                                                                                                                                 |
+| **Última actualización**     | 16 de octubre de 2026                                                                                                                                                                                                                                    |
+| **Repositorio**              | https://github.com/ShiroRex/GDD-Echoscrap                                                                                                                                                                                                                |
 
 ---
 
 ## Identidad del videojuego
 
 * **Género principal:**  
-  **Action Roguelite** (Roguelite de Acción).
+  **Action Roguelite**.
 
 * **Subgéneros:**  
-  **Bullet Heaven** / **Horde Survival** (supervivencia contra hordas masivas por tiempo con arma principal direccional y armas secundarias de activación automática).
+  **Acción** / **Horde Survival**.
 
-* **Plataforma objetivo:**  
-  **PC (Windows)** (distribución vía ejecutable local / itch.io para demostración académica).
+* **Plataforma:**  
+  **PC (Windows)**.
 
 * **Modo de juego:**  
-  **Un jugador (Single Player)** / Local.
+  **Un jugador Local.**
 
 * **Perspectiva y Cámara:**  
-  **2.5D Isométrica**. Cámara cenital inclinada en perspectiva fija (~50° en el eje X) con seguimiento suave del jugador (*Cinemachine*).
+  El juego se ve en **2.5D con cámara cenital a una inclinación fija de 60°** desde arriba, siguiendo al personaje de forma fluida mientras se mueve por el mapa.
 
 * **Clasificaciones y etiquetas adicionales:**  
-  *Scrap-punk*, Fantasía Oscura Residual, Pixel Art 2D, Low-Poly 3D, Progresión Permanente (Meta-progression), Control con Teclado.
+  *Scrap-punk*, Fantasía Oscura, Pixel Art 2D, Low-Poly 3D, Progresión Permanente y Control con Teclado / Mando.
 
 * **Tecnología principal:**  
-  * **Motor:** Unity Engine (Universal Render Pipeline - URP).
+  * **Motor:** Unity Engine.
   * **Lenguaje:** C# (.NET).
-  * **Arte 2D:** Aseprite (Sprites del protagonista, enemigos e iconos de interfaz).
-  * **Arte 3D:** Blender (Geometría modular del escenario y props de chatarra).
+  * **Arte 2D:** Aseprite (Sprites del protagonista, antagonista, enemigos, entidades coleccionables e iconos de interfaz).
+  * **Arte 3D:** Blender.
   * **Interfaz y Mockups:** Figma.
-  * **Audio:** n/a
+  * **Audio:** Reaper.
   * **Control de versiones:** Git con Git LFS vía GitHub.
 
 ---
@@ -55,32 +54,26 @@ Esta ficha identifica el proyecto de forma rápida. Debe permitir que alguien qu
 ## Elevator Pitch
 
 **¿Qué es?**  
-*EchoScrap* es un *horde survival* en 2.5D donde encarnas al *Coleccionista*, el último superviviente de una orden de captores interdimensionales, que viaja al Vertedero de Ecos para sobrevivir oleadas de criaturas residuales. Con una linterna direccional como arma principal y armas secundarias automáticas desbloqueables, el jugador captura entidades de mundos extintos y acumula artefactos permanentes en su Almacén antes de que *Gólgora*, un coloso titánico, despierte para purificarlo por sus crímenes.
+*EchoScrap* es un *horde survival* en 2.5D donde tomas el rol de *El Coleccionista*, un humano cuya obsesión por poseer lo inalcanzable lo llevó a aceptar el trato engañoso de una entidad misteriosa, despertando sin recuerdos atrapado en el Vertedero de Ecos: una fosa y prisión dimensional donde caen los restos de realidades destruidas. Con una linterna de autoapuntado como arma principal, habilidades secundarias automáticas desbloqueables en partida y un dash evasivo, el jugador sobrevive durante 8 minutos a oleadas de criaturas residuales y captura **Entidades** de mundos extintos (pudiendo equipar hasta 3 en su Almacén) al derrotar a *Gólgora* (*El Guardián*), un coloso titánico encargado de impedir que cualquier recluso escape de la arena.
 
 ---
 
 ## Estado actual
 
-- [x] Concepto definido
-- [x] Alcance inicial definido
-- [x] Mecánica principal definida
-- [x] Prototipo funcional *(Operativo en escena de pruebas)*
-- [ ] Vertical slice
-- [ ] Producción
-- [ ] Pruebas
-- [ ] Versión final
+- **Concepto, alcance inicial y mecánicas principales:** Definidos y documentados en este GDD para revisión y aprobación docente.
+- **Siguientes etapas tras aprobación del GDD:** Construcción del prototipo funcional, producción de recursos definitivos, pruebas integrales y cierre de versión final.
 
 ---
 
-## Criterio de éxito del proyecto
+## Criterios de éxito del proyecto
 
-Para considerar que el videojuego cumplió su propósito en la titulación universitaria, debe alcanzarse lo siguiente:
+Para considerar que el videojuego cumplió su propósito, debe alcanzarse lo siguiente:
 
-1. **Estabilidad Técnica:** La build de PC corre a 60 FPS estables sin caídas graves de rendimiento con al menos 250 enemigos simultáneos en pantalla (*Object Pooling* implementado).
-2. **Bucle Completo sin Fricción:** El jugador puede iniciar en el Almacén, jugar una partida de supervivencia de 8 a 10 minutos, enfrentar al jefe *Gólgora*, girar la ruleta de extracción post-partida y ver reflejada su mejora permanente en el Almacén.
-3. **Persistencia Funcional:** El progreso (artefactos y chatarra) se guarda y carga correctamente en disco local sin pérdida de datos.
-4. **Cohesión Estética:** Integración limpia de sprites *Pixel Art* en el escenario 3D sin errores de orden de dibujado (*Z-fighting* ni parpadeos), acompañada de efectos sonoros y música en todas las transiciones.
-5. **Cero Bugs Bloqueantes:** Ningún fallo crítico que interrumpa la ejecución durante la defensa en vivo ante el comité sinodal.
+1. **Estabilidad Técnica:** La build de PC deberá correr a 60 FPS estables sin caídas graves de rendimiento con al menos 150 enemigos simultáneos (soportando picos de hasta 250 en máximo estrés).
+2. **Bucle Completo sin Fricción:** El jugador podrá iniciar en el Almacén (equipando hasta 3 entidades), jugar una partida de supervivencia de 8 a 10 minutos, enfrentar al jefe (*Gólgora / El Guardián*) y, al derrotarlo, girar la Ruleta de Extracción para obtener una entidad aleatoria (o sumarle +1 nivel si es duplicada) y verla reflejada en el Almacén.
+3. **Persistencia Funcional:** La obtención de **Entidades coleccionables**, sus niveles y su equipamiento en el Almacén se guardará y cargará localmente en formato JSON estructurado sin pérdida de datos.
+4. **Cohesión Estética:** Integración de sprites *Pixel Art* en el escenario 3D bajo la paleta de colores Apollo sin errores visuales, acompañado de efectos sonoros y música dinámica.
+5. **Cero Bugs Críticos:** Ningún fallo bloqueante que perjudique la versión final del videojuego.
 
 ---
 

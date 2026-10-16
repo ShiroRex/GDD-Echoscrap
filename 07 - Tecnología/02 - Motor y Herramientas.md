@@ -53,7 +53,7 @@ Para aislar el contenido propio del proyecto de paquetes externos o plugins de l
 * `_Project/Art/`: Texturas, sprites, iconos y materiales.
 * `_Project/Audio/`: Efectos de sonido (SFX) y música instrumental.
 * `_Project/Prefabs/`: Prefabs preconfigurados del jugador, enemigos (`Enemy_Basic.prefab`) y gemas (`Gem_XP.prefab`).
-* `_Project/Scenes/`: Escenas de arena y pruebas (`Test_PlayerGameplay.unity`).
+* `_Project/Scenes/`: Escenas de juego (Almacén Hub, Arena Principal) y escenas de pruebas técnicas.
 * `_Project/Scripts/`: Código fuente modular organizado por subdominios:
   * `Camera/`
   * `Enemies/`

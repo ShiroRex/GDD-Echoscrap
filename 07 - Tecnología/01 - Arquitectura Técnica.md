@@ -1,81 +1,67 @@
 # Arquitectura Técnica
 
-## Descripción de la sección
+## Propósito y estado
 
-Explica cómo está construido técnicamente el videojuego en Unity 6, cómo se comunican sus componentes de software y los patrones de diseño aplicados para garantizar rendimiento óptimo a 60 FPS.
+Esta sección presenta la **arquitectura propuesta para desarrollar EchoScrap en Unity**, una vez aprobado el GDD. Se encuentra en fase de diseño; no constituye un reporte de componentes implementados ni de rendimiento verificado.
 
----
+El inventario funcional se documenta en [[03 - Sistemas]]. Aquí se propone cómo separar sus responsabilidades y datos. Los nombres finales de clases, métodos, archivos y soluciones concretas requieren definición técnica.
 
-## Diagrama de arquitectura por capas
+## Capas propuestas
 
-```mermaid
-graph TD
-    Hardware[Entradas de Hardware: Teclado / Gamepad] --> InputLayer[InputReader: Unity New Input System]
-    
-    subgraph Capa de Control y Locomoción
-        InputLayer --> PlayerMove[PlayerMovement]
-        InputLayer --> PlayerDashComp[PlayerDash]
-        PlayerMove --> Controller[PlayerController25D]
-    end
-    
-    subgraph Capa de Atributos y Estado
-        StatsSystem[PlayerStats: CharacterStat / Modifiers] -. Modifica .-> PlayerMove
-        StatsSystem -. Modifica .-> PlayerDashComp
-        StatsSystem -. Modifica .-> HealthComp[PlayerHealth]
-    end
-    
-    subgraph Capa de Combate y Horda
-        PlayerMove --> Flashlight[PlayerFlashlightWeapon: Cono URP + Mesh]
-        Flashlight -- Overlap / Knockback --> EnemyAI[EnemyBasic: Zero GC Flocking]
-        EnemySpawner[SpawnerSimple: 4 Fases Temporales] --> EnemyAI
-        EnemyAI -- Daño por contacto --> HealthComp
-        EnemyAI -- Muerte --> DropGem[ExperienceGem]
-    end
-    
-    subgraph Capa de Progresión y UI
-        DropGem -- Magnetismo / XP --> ExpComp[PlayerExperience]
-        ExpComp -- OnLevelUpEvent --> LevelUI[LevelUpUI: Modal Draft]
-        LevelUI -- Time.timeScale = 0 / Modificadores --> Flashlight
-        LevelUI -- Ampliación de Radio --> ExpComp
-        HealthComp --> HUD[PlayerHUD: TextMeshPro UGUI]
-        ExpComp --> HUD
-    end
-```
-
----
-
-## Componentes principales y responsabilidades
-
-| Componente | Responsabilidad Técnica | Dependencias Principales |
+| Capa | Responsabilidad prevista | Datos o relaciones |
 |---|---|---|
-| `InputReader` | Escucha acciones del New Input System, normaliza vectores y gestiona serialización de remapeos en `PlayerPrefs`. | `InputActionAsset`, `UnityEngine.InputSystem` |
-| `PlayerMovement` | Gestiona aceleración (80), desaceleración (70) y rotación suave (720°/s) en plano XZ. | `Rigidbody`, `InputReader`, `PlayerStats` |
-| `PlayerDash` | Aplica traslación por impulso (22 m/s, 0.15s), gestiona *i-frames* (`IsInvulnerable`) y controla el enfriamiento (1.0s). | `Rigidbody`, `InputReader`, `PlayerMovement` |
-| `PlayerFlashlightWeapon` | Detección geométrica cónica (60°, 6m), aplicación de daño periódico (0.20s tick) y renderizado de malla procedural plana. | `MeshFilter`, `LineRenderer`, `Light`, `EnemyBasic` |
-| `PlayerStats` | Almacena y calcula estadísticas acumulativas con modificadores `Flat`, `PercentAdd` y `PercentMult`. | `CharacterStat`, `StatModifier` |
-| `PlayerHealth` | Controla la vida actual, invulnerabilidad de 0.4s tras recibir impacto y parpadeo visual mediante `MaterialPropertyBlock`. | `PlayerStats`, `PlayerHUD`, `Renderer` |
-| `EnemyBasic` | Navegación de horda con separación no-alocativa (`neighborBuffer[16]`), flanqueo perimetral y desaceleración de knockback. | `Rigidbody`, `PlayerHealth`, `ExperienceGem` |
-| `SpawnerSimple` | Modula la curva de dificultad en 4 fases temporales, controlando intervalos de tiempo, racimos y tope máximo de 150 enemigos. | `EnemyBasic`, `Transform` |
-| `ExperienceGem` | Renderizado de diamante 2.5D, cálculo de proximidad magnética cuadrática y desplazamiento rápido hacia el jugador. | `PlayerExperience`, `Transform` |
-| `PlayerExperience` | Acumulación de XP, escalado exponencial de umbral (x1.5) y emisión del evento global `OnLevelUpEvent`. | `LevelUpUI`, `PlayerHUD` |
-| `LevelUpUI` | Modal de pausa táctica (`Time.timeScale = 0`), selección entre 3 mejoras y gestión de cola de subidas acumuladas. | `PlayerFlashlightWeapon`, `PlayerExperience` |
-| `PlayerHUD` | Presentación gráfica de vida y XP en tiempo real construida con TextMeshPro y sprites estándar. | `TextMeshProUGUI`, `Image`, Canvas |
-| `CameraFollow25D` | Seguimiento suave e interpolado de cámara manteniendo ángulo cenital/isométrico constante. | `Transform` |
+| **Entradas** | Traducir teclado y mando a acciones del jugador. | Entregar acciones a movimiento, dash y navegación de interfaces. |
+| **Control de la partida** | Coordinar tiempo de juego, pausa, jefe y resultados. | Aplicar las transiciones descritas en Reglas y Estados. |
+| **Datos de diseño** | Mantener definiciones de personajes, enemigos, ataques, cartas y parámetros. | Proporcionar las reglas y valores del catálogo. |
+| **Estado de la run** | Mantener vida actual, XP, mejoras temporales, efectos y estado de enemigos. | Cambiar durante la expedición y restablecer lo que corresponda al comenzar otra. |
+| **Simulación** | Resolver movimiento, autoapuntado, ataques, defensas, IA, aparición y recolección. | Usar datos de diseño y estado; comunicar los cambios relevantes. |
+| **Progresión permanente** | Gestionar colección y equipamiento. | Conceder captura sólo tras victoria y preparar los efectos de la siguiente run. |
+| **Presentación** | Mostrar interfaces, cámara y respuestas visuales y sonoras. | Representar el estado y los eventos de juego para el jugador. |
+| **Persistencia** | Conservar los datos permanentes y la configuración definida. | Guardar y recuperar según Guardado y Configuración. |
 
----
+Esta separación es una propuesta técnica para revisar dentro del GDD. No impone nombres de scripts ni un número definitivo de componentes.
 
-## Principios y patrones de comunicación técnica
+## Relaciones previstas
 
-1. **Desacoplamiento Mediante Eventos Fuertemente Tipados:**  
-   La comunicación crítica entre sistemas (como la subida de nivel hacia la interfaz) se realiza mediante `System.Action<int> OnLevelUpEvent`. Esto permite que la lógica de experiencia no tenga dependencias directas sobre la interfaz de usuario.
-2. **Protección Contra Memory Leaks en Editor (Domain Reload):**  
-   Los eventos y cachés estáticas implementan métodos decorados con `[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]` para limpiar referencias estáticas al reiniciar Play Mode en Unity, evitando pérdidas de memoria.
-3. **Optimización de Materiales sin Duplicación de Instancias:**  
-   Para efectos visuales de parpadeo por daño (*hit flashes*) en jugador y enemigos, se utiliza `MaterialPropertyBlock` con `Shader.PropertyToID("_BaseColor")` en lugar de instanciar materiales nuevos con `renderer.material`, protegiendo la memoria gráfica y evitando romper el batching de renderizado.
-4. **Cálculos Matemáticos Libres de Basura (*Zero Garbage Collection*):**  
-   * Ningún sistema crea arrays temporales en Update o FixedUpdate.
-   * Las distancias de activación (como en el imán de gemas) se evalúan comparando distancias al cuadrado (`distSqr <= radius * radius`) para evitar la costosa operación de raíz cuadrada (`Vector3.Distance`).
+- Las entradas comunican acciones a control y simulación.
+- La simulación consulta definiciones y actualiza el estado de la run.
+- Los cambios de vida, XP y resultados se comunican a presentación.
+- La colección y el equipamiento preparan los efectos del Coleccionista antes de la run.
+- Una victoria habilita la captura y actualización de la colección.
+- Persistencia conserva los datos que determine el diseño de guardado.
 
----
+Las interfaces deben mostrar el resultado de las reglas de juego. Los cálculos de daño, experiencia o recompensa no deben depender de la existencia de una pantalla concreta.
+
+## Datos y estado
+
+Se propone separar tres grupos:
+
+1. **Definiciones:** balance base y catálogo de cartas, ataques, enemigos y personajes.
+2. **Estado temporal:** vida, XP, efectos y mejoras de la run en curso.
+3. **Datos permanentes:** personajes adquiridos, equipamiento y configuración que deban conservarse.
+
+Las instancias deben mantener su estado particular; modificar una instancia no debe alterar de forma involuntaria el catálogo compartido o a otro enemigo. El formato, los límites y las reglas de persistencia se definirán en [[04 - Datos y Persistencia]].
+
+## Criterios técnicos propuestos
+
+- Separar reglas, estado y presentación para facilitar revisión y mantenimiento.
+- Centralizar el balance para evitar valores distintos en dos sistemas.
+- Coordinar cambios de estado sin que las pantallas tengan que calcular las reglas.
+- Diseñar la simulación de hordas y efectos con un presupuesto de rendimiento medible.
+- Evaluar reutilización de objetos y buffers donde corresponda al desarrollar, en lugar de presentar una técnica como ya implementada.
+- Validar pausa, reinicio y persistencia como parte del plan de pruebas.
+
+El objetivo de rendimiento y sus condiciones de medición se especificarán en [[03 - Requisitos Técnicos]] y [[02 - Pruebas]]. No se declara una garantía de 60 FPS ni cero asignaciones antes de desarrollar y verificar esas condiciones.
+
+## Definiciones pendientes
+
+- Responsabilidades exactas de los componentes y su comunicación.
+- Formato de definiciones, estado temporal y guardado.
+- Orden de resolución de daño y resultados simultáneos.
+- Presupuesto de simulación, renderizado, memoria y efectos.
+- Técnicas concretas de reutilización y optimización.
+- Procedimientos de prueba y criterios de cumplimiento.
+
+Estas decisiones deben mantenerse coherentes con el diseño funcional y se concretarán en el trabajo técnico del equipo.
 
 > **Navegación:** [[00 - Índice]] · ← [[04 - Guardado y Configuración]] · [[02 - Motor y Herramientas]] →

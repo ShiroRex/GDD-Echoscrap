@@ -9,46 +9,48 @@ Define las reglas globales de funcionamiento del juego y la máquina de estados 
 ## Estados principales del juego
 
 * **1. Menú Principal (Meta / Almacén):** Estado fuera de partida donde el jugador gestiona sus entidades, revisa estadísticas y prepara la siguiente expedición.
-* **2. Jugando (In-Game / Arena Activa):** Simulación en tiempo real (`Time.timeScale = 1.0f`). El jugador se desplaza, la linterna emite pulsos de daño, el spawner invoca oleadas y los enemigos persiguen y flanquean. El cursor está bloqueado y oculto.
-* **3. Subida de Nivel / Pausa Táctica (`LevelUpModal`):** El tiempo del juego se detiene por completo (`Time.timeScale = 0.0f`). El cursor se libera y se muestra el modal con las 3 cartas de mejora disponibles.
-* **4. Derrota (Game Over):** La salud del jugador desciende a 0. Se detiene el combate, se presenta el resumen de tiempo y chatarra recolectada y se permite reiniciar la escena o regresar al menú.
-* **5. Victoria (Extracción Exitosa):** El jugador sobrevive al tiempo total de la run (8 a 10 minutos) y derrota al jefe final *Gólgora*, permitiendo conservar los Ecos más valiosos.
+* **2. Jugando (In-Game / Arena Activa):** Simulación en tiempo real. El jugador se desplaza, la linterna emite pulsos de daño, el spawner invoca oleadas y los enemigos persiguen y flanquean. El cursor está bloqueado y oculto.
+* **3. Subida de Nivel / Pausa Táctica:** Se detiene el tiempo de juego y se muestran hasta tres cartas elegibles. Con menos candidatas se muestran menos; con ninguna, se informa y se permite continuar según [[05 - Progresión]].
+* **4. Derrota (Game Over):** La salud del jugador desciende a 0. Se detiene el combate, se presenta el resumen de tiempo y chatarra recolectada y se permite reiniciar la partida o regresar al menú.
+* **5. Victoria (Extracción Exitosa):** El jugador sobrevive a los 8 minutos de combate y derrota al jefe final *Gólgora*, activando la Ruleta de Extracción para capturar una entidad permanente.
 
 ---
 
 ## Matriz de transiciones de estados
 
-| Estado Origen | Evento Desencadenante | Estado Destino | Condición Técnica |
+| Estado Origen | Evento Desencadenante | Estado Destino | Condición de Diseño |
 |---|---|---|---|
-| **Menú Principal** | Pulsar "Comenzar Partida" | **Jugando** | Carga de la escena de arena (`Test_PlayerGameplay.unity`). |
-| **Jugando** | XP alcanza el umbral de nivel | **Subida de Nivel** | `currentXP >= xpToNextLevel` dispara `OnLevelUpEvent`. `Time.timeScale = 0f`. |
-| **Subida de Nivel** | El jugador selecciona 1 mejora | **Jugando** (o siguiente nivel) | Se procesa `SelectOption()`. Si `pendingLevelUps == 0`, `Time.timeScale = 1f`. |
-| **Jugando** | Salud del jugador llega a cero | **Derrota** | `playerHealth.CurrentHealth <= 0`. Se congela la partida o se recarga escena. |
-| **Jugando** | Cronómetro alcanza meta y cae Gólgora | **Victoria** | Tiempo transcurrido >= duración de partida y jefe final derrotado. |
+| **Menú Principal** | Pulsar "Comenzar Partida" | **Jugando** | Carga de la escena de la arena de combate. |
+| **Jugando** | XP alcanza el umbral de nivel | **Subida de Nivel** | La experiencia acumulada alcanza el umbral requerido. Se pausa la simulación táctica. |
+| **Subida de Nivel** | Elegir una carta o continuar una oferta vacía | **Jugando** (o siguiente elección) | Resolver la elección, actualizar configuración y preparar otra si queda pendiente; reanudar sólo al terminar todas. |
+| **Jugando** | Salud del jugador llega a cero | **Derrota** | La vida del jugador llega a 0. Se detiene el combate y se pasa a la pantalla de fin de partida. |
+| **Jugando** | Salud de Gólgora llega a cero | **Victoria** | Gólgora es derrotado mientras el jugador conserva vida (> 0 HP). Se activa la Ruleta de Extracción. |
+| **Jugando** | Presionar Escape / Botón Menú | **Menú de Pausa** | Se detiene la simulación temporalmente para consultar opciones o reanudar. |
+| **Menú de Pausa** | Reanudar partida | **Jugando** | Se restaura la simulación en tiempo real. |
 
 ---
 
-## Reglas globales de implementación
+## Reglas globales de diseño técnico
 
 1. **Restricción Cinemática 2.5D:**  
-   Todos los cálculos físicos de movimiento, colisiones, empuje y distancia se calculan estrictamente sobre el plano **XZ**. La componente **Y** se mantiene constante o se resetea a nivel del piso en el Rigidbody (`Vector3(v.x, 0, v.z)`) para evitar que enemigos o jugadores salgan despedidos hacia arriba tras impactos repetidos.
-2. **Filosofía de Memoria Zero GC en Combate:**  
-   Queda terminantemente prohibido utilizar llamadas que generen alocaciones dinámicas temporales en el *Heap* durante los bucles de `Update` o `FixedUpdate`:
-   * Se prohíbe `Physics.OverlapSphere` estándar; se exige el uso obligatorio de variantes con búfer preasignado (`Physics.OverlapSphereNonAlloc` con arrays estáticos compartidos).
-   * Se prohíbe el uso de cadenas de texto dinámicas con concatenación (`+`) en bucles rápidos; se utiliza `TMP_Text.SetText()` con sobrecargas numéricas directas para evitar recolección de basura.
-3. **Tope de Seguridad de Horda (FPS Safeguard):**  
-   El spawner respeta un límite estricto de **150 enemigos simultáneos activos**. Si se alcanza este tope, el generador suspende nuevos nacimientos hasta que la población baje, asegurando 60 FPS estables sin caídas de framerate en equipos de especificación media.
+   Todos los cálculos físicos de movimiento, colisiones, empuje y distancia se calculan estrictamente sobre el plano **XZ**. La componente **Y** se mantiene constante o nivelada al piso para evitar que enemigos o jugadores salgan despedidos hacia arriba tras impactos repetidos.
+2. **Optimización de Memoria en Combate:**  
+   Se diseñará para evitar alocaciones dinámicas continuas en memoria durante el combate activo, reutilizando estructuras y búferes preasignados para consultas de área y detección de amenazas.
+3. **Población de Horda y Rendimiento:**  
+   El spawner mantiene una densidad de combate continua de hasta **150 enemigos simultáneos activos**, con margen para escalar hasta **250 enemigos en momentos de máximo estrés u oleadas pico** (estándar del género *Horde Survival* / *Bullet Heaven*), recurriendo a reutilización de entidades (*pooling*) para garantizar una tasa fluida de 60 FPS.
 4. **Prioridad Absoluta de I-Frames:**  
-   Cuando la bandera `IsInvulnerable` del jugador está activa (por activación del Dash o por periodo de gracia post-daño de 0.40s), cualquier colisión con enemigos o proyectiles es ignorada a nivel de daño.
+   Cuando la condición de invulnerabilidad del jugador está activa (por activación del Dash o por periodo de gracia post-daño), cualquier colisión con enemigos o proyectiles es ignorada a nivel de daño.
 
 ---
 
 ## Casos especiales
 
+* **Resolución de Muerte Simultánea (Coleccionista vs Gólgora):**  
+  Si la salud del Coleccionista y la salud de Gólgora descienden a 0 en el mismo instante o fotograma, la prioridad de resolución se otorga estrictamente a la **Derrota**. La justificación de diseño es que un recolector caído en combate no puede activar la Ruleta ni realizar la extracción de entidades al Almacén.
 * **Acumulación de Múltiples Subidas de Nivel:**  
-  Si el jugador absorbe un cúmulo denso de gemas que le otorga suficiente XP para subir 2 o más niveles de golpe, el sistema almacena las subidas pendientes en un contador entero (`pendingLevelUps`). El modal no reanuda el juego al elegir la primera mejora; en su lugar, descuenta 1 punto al contador y refresca inmediatamente las opciones para el siguiente nivel, reanudando la partida (`Time.timeScale = 1.0f`) únicamente cuando la cola de niveles pendientes llega a cero.
+  Si se ganan varias elecciones de subida de nivel simultáneas, se resuelven una por una sin reanudar la acción entre ellas. Después de cada elección se recalcula la elegibilidad; si no quedan opciones disponibles, se informa y se permite continuar la partida.
 * **Daño durante el estado de pausa:**  
-  Dado que `Time.timeScale` se sitúa en 0.0f y los enemigos operan en base a `Time.deltaTime` o físicas continuas, ningún enemigo puede desplazarse, colisionar ni infligir daño mientras el modal de mejoras esté en pantalla.
+  Durante la pausa táctica (subida de nivel o menú de pausa), la simulación se congela por completo; ningún enemigo puede desplazarse, atacar ni causar daño mientras el modal esté activo.
 
 ---
 

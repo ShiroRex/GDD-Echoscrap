@@ -2,103 +2,142 @@
 
 ## Descripción de la sección
 
-La jugabilidad explica **qué hace el jugador, qué recibe a cambio y cómo evoluciona la experiencia** durante una partida de *EchoScrap*.
+La jugabilidad de *EchoScrap* combina **supervivencia y construcción de una configuración de combate durante cada run** con **recolección y equipamiento permanente de personajes entre runs**. La colección es una parte central del juego: cada expedición ganada permite capturar un personaje para el Almacén del Coleccionista.
 
----
+## Bucle completo del juego
 
-## Bucle principal de juego (Core Gameplay Loop)
+El flujo se separa en dos diagramas: **qué ocurre durante la partida** y **qué ocurre después de su resultado**.
 
-El núcleo jugable de *EchoScrap* es un ciclo continuo de supervivencia activa, control de masas frontal y progreso táctico:
+### Durante la partida
 
 ```mermaid
-graph TD
-    A[Supervivencia y Locomoción 2.5D] --> B[Encarar la Horda con la Linterna Frontal]
-    B --> C[Eliminación de Enemigos y Control de Masas]
-    C --> D[Atracción Magnética de Chatarra / Gemas XP]
-    D --> E[Subida de Nivel y Selección de Mejoras Draft]
-    E --> F[Aumento de Presión Temporal del Spawner]
-    F --> A
+flowchart TD
+    A["Preparar la expedición"] --> B["Combatir hordas y elegir mejoras"]
+    B -->|"Tiempo de juego: 8 minutos"| C["Combatir contra Gólgora"]
+    B -->|"Vida del jugador = 0"| D["Derrota"]
+    C -->|"Vida del jugador = 0"| D
+    C -->|"Gólgora derrotado y jugador vivo"| E["Victoria"]
 ```
 
-1. **Posicionamiento y Avance:** El jugador maniobra en una arena abierta 2.5D esquivando y canalizando los flancos del enjambre.
-2. **Combate Direccional Frontal:** Al desplazarse hacia el enemigo, el foco cónico de la linterna daña y empuja a la vanguardia de la horda.
-3. **Evasión Táctica (Dash):** Cuando la horda amenaza con cerrarse, el jugador usa el Dash para atravesar líneas con invulnerabilidad temporal (*i-frames*).
-4. **Cosecha de Recursos:** Los enemigos destruidos dejan caer Chatarra (Gemas de XP) que son atraídas magnéticamente al aproximarse.
-5. **Mejora In-Run (Level Up):** La acumulación de Chatarra dispara la pausa táctica con selección entre 3 mejoras de atributos o habilidades.
-6. **Escalada Temporal:** La partida aumenta dinámicamente de dificultad cada minuto mediante nuevas fases de generación en racimos.
+Durante las hordas se repite el ciclo de moverse, combatir, recoger XP y elegir mejoras. Al minuto 8 aparece Gólgora; su combate continúa hasta victoria o derrota.
 
----
+### Después de la partida
+
+```mermaid
+flowchart TD
+    V["Victoria"] --> RV["Resultados de victoria"]
+    RV --> C["Capturar un personaje"]
+    C --> G["Guardar en la colección"]
+    D["Derrota"] --> RD["Resultados de derrota"]
+    G --> A["Volver al Almacén"]
+    RD --> A
+    A --> P["Siguiente partida"]
+```
+
+- **Victoria:** resultados → captura de un personaje → colección → Almacén.
+- **Derrota:** resultados → Almacén. No concede un personaje.
+- **En el Almacén:** revisar los personajes que ya se poseen, elegir el equipamiento y comenzar la siguiente expedición.
+
+El ciclo tiene dos escalas:
+
+1. **Durante la run:** maniobrar entre enemigos, combatir automáticamente, recoger experiencia, elegir mejoras y resistir una presión creciente hasta enfrentar a Gólgora.
+2. **Entre runs:** tras una victoria, obtener un personaje capturado; tras cualquier resultado, revisar la colección del Almacén, equipar personajes que aporten habilidades o estadísticas y preparar la siguiente expedición.
+
+Los personajes equipados modifican las posibilidades del Coleccionista. Las mejoras elegidas durante una run permiten desarrollar la configuración de esa partida; la colección se conserva para las siguientes expediciones.
+
+## Recolección de personajes: núcleo del juego
+
+Al finalizar **una run en victoria**, el jugador obtiene **un personaje que el Coleccionista secuestra del Vertedero de Ecos**. Capturar personajes recompensa haber derrotado a Gólgora y alimenta la progresión permanente. **Una derrota no concede un personaje:** el jugador conserva su colección previa y puede preparar otro intento.
+
+Estos personajes son **los últimos supervivientes de sus respectivas dimensiones destruidas**. Su procedencia permite que tengan distintos estilos de dibujo, siluetas e identidades visuales, conservando el pixel art como lenguaje común. La colección reúne personajes de mundos diferentes, con identidad propia.
+
+El Almacén permite revisar la colección y **equipar hasta 3 entidades por partida** para que otorguen habilidades pasivas o bonificaciones de estadísticas al Coleccionista. El jugador prepara así nuevas combinaciones antes de cada expedición y prueba su utilidad durante el combate.
+
+La adquisición se resuelve al confirmar la victoria mediante la **Ruleta de Extracción**, que selecciona aleatoriamente una entidad según su rareza. **Si en la ruleta sale una entidad que el jugador ya poseía, el duplicado suma +1 nivel a esa entidad**, incrementando la potencia de su efecto pasivo. El listado detallado de entidades y sus efectos específicos se termina de definir en equipo dentro de [[04 - Objetos y Coleccionables]].
+
+## Bucle durante la run
+
+1. **Posicionamiento:** moverse por la arena, leer las amenazas y conservar rutas de escape.
+2. **Combate automático:** la linterna autoapunta hacia el enemigo vivo más cercano dentro de su alcance, de forma independiente de la dirección de movimiento.
+3. **Evasión:** usar el dash para reposicionarse y atravesar situaciones peligrosas durante su ventana de invulnerabilidad.
+4. **Recolección:** acercarse a las gemas de XP y botiquines para aprovechar su atracción magnética.
+5. **Mejora de la partida:** al subir de nivel, se pausa y se ofrecen hasta tres cartas elegibles; el jugador elige una.
+6. **Escalada:** enfrentar combinaciones y cantidades de enemigos progresivamente más exigentes.
+7. **Clímax:** desde el minuto 8, combatir contra Gólgora y los esbirros que invoca hasta derrotarlo o perder toda la vida.
+8. **Resultado:** si se gana, girar la Ruleta de Extracción para capturar una entidad (o subirla de nivel si es duplicada) e incorporarla al Almacén; si se pierde, mostrar la pantalla de derrota. En ambos casos, regresar al Almacén para preparar otra expedición.
 
 ## Acciones principales del jugador
 
-| Acción | Entrada | Propósito | Resultado Inmediato |
+| Acción | Entrada | Propósito | Resultado |
 |---|---|---|---|
-| **Locomoción 2.5D** | WASD / Stick Izquierdo | Posicionarse en la arena y orientar el ataque frontal. | Desplazamiento fluido en plano XZ a 8.0 m/s con rotación suave hacia la dirección de avance. |
-| **Ataque Frontal Continuo** | Automático (hacia el avance) | Dañar y contener el avance de la vanguardia enemiga. | Cono de luz de 60° y 6m que emite pulsos de daño (5 pts / 0.2s) y empuja físicamente hacia atrás (*knockback*). |
-| **Dash Evasivo** | Espacio / Botón Sur (Gamepad) | Escapar de cercos y reposicionarse agresivamente. | Impulso súbito a 22 m/s durante 0.15s con invulnerabilidad total (*i-frames*) frente a daño por contacto. |
-| **Recolección Magnética** | Proximidad (Pasiva) | Recoger Chatarra y Ecos para acumular experiencia. | Las gemas a menos de 2.5m vuelan a 12 m/s hacia el jugador y se suman a la barra de XP. |
-| **Selección de Mejoras** | Clic / Botón en UI | Personalizar la build de combate durante la partida. | Pausa total (`Time.timeScale = 0`), selección entre 3 opciones de stats/habilidades y reanudación inmediata. |
+| **Moverse** | WASD, flechas o stick izquierdo | Posicionarse y esquivar amenazas. | Desplazamiento sobre el plano de la arena; el cuerpo acompaña la dirección de movimiento. |
+| **Atacar con la linterna** | Automático | Dañar y contener enemigos cercanos. | El haz autoapunta, aplica cuatro pulsos por ráfaga y produce retroceso en el último pulso a los enemigos que lo admiten. |
+| **Usar el dash** | Espacio o botón sur del mando | Escapar de cercos y reposicionarse. | Desplazamiento rápido con invulnerabilidad durante el dash. |
+| **Recoger recursos** | Proximidad | Obtener XP y recuperar vida. | Las gemas y los botiquines se atraen hacia el jugador al entrar en su radio magnético. |
+| **Elegir una mejora** | Teclado, mando o clic en la interfaz | Desarrollar la configuración de la run. | Se elige entre hasta tres cartas elegibles y se resuelven las elecciones pendientes; si no quedan opciones, se informa y se permite continuar. |
+| **Revisar y equipar entidades** | Navegación en el Almacén | Preparar la siguiente expedición. | Las 3 entidades equipadas otorgan habilidades pasivas o modifican estadísticas del Coleccionista. |
 
----
+Los valores de velocidad, alcance, apertura, daño, cadencia y cooldown se documentan en [[02 - Mecánicas]] y [[05 - Progresión]], para mantener una referencia de balance común.
 
 ## Experiencia segundo a segundo
 
-* **Lectura de distancias y flancos:** El jugador evalúa continuamente la distancia respecto a los enemigos más cercanos. La velocidad de los enemigos (3.5 m/s ±15%) y su tendencia a flanquear exige correcciones de trayectoria continuas.
-* **Control de masas con el foco:** Al encarar a los enemigos, el cono de luz los ilumina, frena y empuja, abriendo pasillos seguros en la masa.
-* **Respuesta refleja:** Si un enemigo consigue cerrar el paso o acorralar al jugador, este activa el Dash para atravesarlo de forma segura gracias a los *i-frames*, girando inmediatamente para volver a iluminarlo.
-
----
+- **Lectura del peligro:** reconocer enemigos cercanos, proyectiles, ataques telegrafiados y áreas dañinas.
+- **Gestión de distancias:** acercarse a los recursos y elegir rutas que permitan seguir atacando sin quedar rodeado contra los muros perimetrales.
+- **Combate desacoplado:** el jugador puede avanzar, desplazarse lateralmente o retroceder mientras la linterna enfoca un objetivo. No necesita caminar hacia el enemigo para causarle daño.
+- **Uso del dash:** reservarlo para escapar de una amenaza, atravesar una zona peligrosa o alcanzar recursos.
+- **Decisiones de configuración:** aprovechar la pausa de subida de nivel para valorar cada mejora según los efectos actuales, las entidades equipadas y la situación.
 
 ## Experiencia minuto a minuto
 
-La presión de la horda está regulada por una curva temporal estructurada en 4 fases:
+La dificultad aumenta continuamente durante los ocho minutos previos al jefe. Los primeros tres minutos introducen las mecánicas principales; desde el minuto 3:00 hasta el 8:00 la presión crece de forma gradual minuto a minuto hasta el clímax. Los intervalos y la composición se especifican en [[02 - Niveles]] y [[05 - Progresión]].
 
-* **Minuto 0:00 a 1:00 (Fase 1 - Calentamiento):** Enemigos individuales aparecen cada 1.2s. El jugador se familiariza con el movimiento, prueba el empuje de la linterna y consigue sus primeros 1-2 niveles.
-* **Minuto 1:00 a 2:00 (Fase 2 - Presión Media):** El intervalo se reduce a 0.8s y los enemigos nacen en parejas (racimos de 2). Ya no es posible eliminar a todos antes del siguiente spawn; el jugador debe aprender a circular y agrupar.
-* **Minuto 2:00 a 3:00 (Fase 3 - Cerco en Racimo):** Los spawns ocurren cada 0.6s en racimos de 3. La horda empieza a rodear al jugador; el uso rítmico del Dash se vuelve obligatorio para no ser atrapado en las esquinas de la pantalla.
-* **Minuto 3:00 en adelante (Fase 4 - Muro Extremo):** Spawns cada 0.4s en racimos de 4 enemigos simultáneos, acelerando hasta el tope de seguridad de 150 enemigos activos. Solo una build con buen daño y cobertura puede sostener el cerco.
+| Tiempo de juego | Etapa | Experiencia buscada |
+|---|---|---|
+| **0:00–1:00** | Calentamiento | Comprender movimiento, autoapuntado, recolección y primeras mejoras. |
+| **1:00–2:00** | Presión media | Afrontar amenazas más rápidas y elegir rutas de recolección. |
+| **2:00–3:00** | Cerco | Usar dash y retroceso para conservar espacio frente a grupos. |
+| **3:00–4:00** | Presión combinada | Resolver grupos con funciones distintas y seguir recogiendo recursos mientras aumenta el ritmo de aparición. |
+| **4:00–5:00** | Rutas comprometidas | Afrontar más presencia de enemigos resistentes y ataques que dificultan conservar una ruta segura. |
+| **5:00–6:00** | Control de zona | Combinar evasión de proyectiles y áreas dañinas con la presión del combate cercano. |
+| **6:00–7:00** | Amenazas simultáneas | Gestionar combinaciones más frecuentes de artillería, tanques y enemigos explosivos. |
+| **7:00–8:00** | Máxima presión de horda | Resistir la mayor frecuencia de refuerzo y las combinaciones más exigentes antes del jefe. |
+| **Desde 8:00** | Juicio de Gólgora | Esquivar los ataques del jefe y derrotarlo mientras invoca esbirros en la arena. |
 
----
+**Escalada continua de 3:00 a 8:00:** el intervalo de aparición disminuye gradualmente y la composición se orienta hacia combinaciones más peligrosas. Alcanzar el límite de población no cancela la escalada: los nuevos grupos que sustituyan bajas siguen la composición y cadencia del momento, sin exceder el máximo de enemigos.
 
-## Experiencia a largo plazo
+El minuto 8 marca **la aparición del jefe**, no la victoria ni el fin automático de la run. La duración total comprende los ocho minutos iniciales y el tiempo necesario para resolver el combate con Gólgora.
 
-* **Construcción de Sinergias (Build Crafting):** Probar distintas combinaciones entre daño directo de la linterna, apertura angular del cono, radio de recolección y estadísticas de velocidad y salud.
-* **Tensión hacia el Clímax:** Resistir las oleadas finales hasta el minuto 8-10, donde el coloso *Gólgora* desciende a la arena para el enfrentamiento definitivo.
-* **Meta-progresión del Almacén:** Regresar tras cada partida para exhibir y potenciar las Entidades capturadas, desbloqueando nuevos modificadores iniciales.
-
----
+Las pausas y la selección de mejoras detienen el tiempo de juego; no adelantan las fases ni la aparición del jefe.
 
 ## Condición de victoria
 
-* **Objetivo de la Partida:** Sobrevivir a la totalidad del temporizador del vertedero (8 a 10 minutos) y derrotar a la entidad titánica de juicio (*Gólgora*).
-* **Resultado:** Extracción exitosa de los Ecos acumulados y regreso triunfal al Almacén del Coleccionista.
+La run termina en victoria cuando **Gólgora es derrotado y el Coleccionista conserva vida**.
 
----
+Se detiene la actividad de combate, se muestra el resultado de la expedición y se activa la Ruleta de Extracción para capturar una entidad (o subirla de nivel si ya se poseía). Después, el jugador vuelve al Almacén para revisar su colección y preparar otra run.
 
 ## Condición de derrota
 
-* **Causa:** Reducción de la salud del jugador a cero (`currentHealth <= 0`) como consecuencia del daño por contacto reiterado de la horda.
-* **Resultado:** Muerte del Coleccionista, pérdida de la chatarra no consolidada y reinicio de la arena.
+La run termina en derrota cuando **la vida del Coleccionista llega a cero**, cualquiera que sea la fuente de daño que haya superado sus defensas e invulnerabilidad: contacto de enemigos, proyectiles, explosiones o áreas dañinas.
 
----
+Al resolverse la derrota, se detiene el combate y se presenta el resultado. El jugador regresa al Almacén **sin girar la ruleta ni capturar una entidad**; la colección que tenía antes de la run permanece intacta para el siguiente intento.
 
-## Ritmo
+**Resolución de muerte simultánea:** Si la salud del Coleccionista y la de Gólgora llegan a cero en el mismo instante, la partida se resuelve estrictamente como **Derrota**, dado que el Coleccionista debe sobrevivir al encuentro para realizar la extracción ([[07 - Reglas y Estados del Juego]]).
 
-El ritmo alterna ráfagas de alta adrenalina y momentos de reflexión táctica:
+## Experiencia a largo plazo
 
-* **Acción Continua:** El enjambre no da tregua; el movimiento constante es necesario para evitar ser envuelto.
-* **Pausas Tácticas de Alivio (Draft UI):** Cada subida de nivel detiene el tiempo por completo. El jugador respira, evalúa el estado de su build y elige su siguiente mejora sin presión temporal.
-* **Sensación de Bola de Nieve (Snowball Effect):** Al inicio el jugador huye y recorta enemigos en los bordes; a medida que acumula niveles y amplía su cono de luz, pasa a barrer cuadrantes enteros del mapa.
+- **Ampliar la colección:** reunir supervivientes de distintas dimensiones y conocer su identidad.
+- **Preparar combinaciones:** equipar personajes cuyos efectos se complementen y probarlos en las siguientes expediciones.
+- **Dominar la supervivencia:** aprender el comportamiento de cada enemigo y mejorar las decisiones de movimiento y recolección.
+- **Superar a Gólgora:** convertir la configuración preparada y las mejoras de la run en una respuesta eficaz al combate final.
 
----
+Cada victoria amplía o actualiza la colección mediante una adquisición permanente. Una derrota permite revisar qué falló y probar otra configuración con los personajes que ya se poseen.
 
-## Principios de interacción
+## Ritmo y retroalimentación
 
-1. **Claridad HD-2D Absoluta:** La malla procedural del cono proyectada en el suelo coincide de forma exacta con los límites matemáticos de detección de daño. Lo que está iluminado recibe daño; lo que está en sombra no.
-2. **Agresividad Recompensada:** El daño solo se produce hacia el frente del avance. El juego premia encarar la amenaza y castiga la huida pasiva.
-3. **Invulnerabilidad Confiable:** Durante el Dash (0.15s) y tras recibir daño (0.40s de gracia), los *i-frames* son absolutos contra impactos de enemigos, representados con parpadeo visual del material (`MaterialPropertyBlock`).
-4. **Físicas y Knockback Coherentes:** Los impactos no detienen bruscamente al enemigo; aplican una fuerza impulsiva con fricción desaceleradora continua para una respuesta kinestésica satisfactoria.
+La partida alterna acción continua y pausas breves de decisión al subir de nivel. El combate final concentra la tensión en los ataques de Gólgora. La victoria conduce a resultados y captura; la derrota conduce a resultados sin captura. Después, el jugador vuelve al Almacén y prepara otra expedición.
 
----
+El jugador debe poder reconocer qué lo dañó, cuándo está protegido, qué zonas son peligrosas, cuándo recibe una mejora y qué personaje obtuvo. La iluminación de la linterna orienta el ataque; **el daño se aplica durante sus pulsos**, de acuerdo con las reglas del arma.
+
+Los detalles de presentación se coordinan con [[04 - Interfaz Visual]], [[05 - Audio y Música]] y [[01 - UX y Flujo del Jugador]].
 
 > **Navegación:** [[00 - Índice]] · ← [[04 - Pilares de Diseño]] · [[02 - Mecánicas]] →
