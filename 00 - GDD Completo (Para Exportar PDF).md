@@ -1260,4 +1260,3 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 > `1.2.3` → versión mayor 1, versión menor 2, corrección 3.
 
 ---
-
