@@ -1,51 +1,13 @@
-# Requisitos Técnicos
+# Requisitos técnicos
 
-## Descripción de la sección
+La plataforma utilizada por el proyecto es Windows PC. La escena y sus variantes se ejecutan en Unity 6000.6.3f1 con URP, Input System y Cinemachine. La población normal del director está limitada a 150 enemigos vivos; el valor de 250 pertenece al modo separado de estrés.
 
-En este apartado se especifican las características de hardware y software previstas para ejecutar y probar *EchoScrap*. Como se trata de un proyecto académico desarrollado para PC, nuestro objetivo es que el juego funcione de manera fluida y accesible en equipos de cómputo estándar (tanto de los evaluadores como de los propios estudiantes), estableciendo metas de rendimiento claras para cuando comience la etapa de producción.
+## Alcance de los registros
 
----
+Las capturas nuevas del GDD se generaron a 960 × 540 en una copia externa del proyecto, con render Direct3D11 y una cámara de detalle. Las secuencias de mejoras conservan recortes de capturas de 1280 × 720. Los ajustes del ensayo permiten observar efectos sin convertirlos en una medición de rendimiento del juego completo.
 
-## Requisitos del Sistema
+El archivo de desarrollo contiene mediciones de builds anteriores y perfiles del Editor con distintas poblaciones y efectos. Cada resultado corresponde a su fecha, hardware y configuración. Esta edición no presenta una tasa mínima de FPS ni una especificación mínima de hardware como si estuvieran certificadas para cualquier equipo.
 
-### Requisitos mínimos (Orientados a 720p / 1080p con 30-60 FPS)
+El uso normal de teclado o mando, los límites de la arena, las pausas, el reinicio y los ajustes visuales están descritos en sus secciones funcionales. La documentación del comportamiento y la medición del rendimiento se mantienen como comprobaciones diferentes.
 
-* **Sistema operativo:** Windows 10 de 64 bits.
-* **Procesador (CPU):** Intel Core i3 de 8.ª generación / AMD Ryzen 3 1200 (o equivalente de 4 núcleos a 3.0 GHz).
-* **Tarjeta gráfica (GPU):** Gráficos integrados Intel UHD Graphics 630 o tarjeta dedicada básica Nvidia GeForce GT 1030 / AMD Radeon RX 550 (con compatibilidad para DirectX 11).
-* **Memoria RAM:** 8 GB.
-* **Almacenamiento:** 1 GB de espacio disponible en disco duro.
-* **Resolución mínima:** 1280 × 720 píxeles.
-* **Conexión a internet:** No se requiere conexión; el juego se diseñará como una experiencia local para un solo jugador.
-
-### Requisitos recomendados (Orientados a 1080p a 60 FPS estables)
-
-* **Sistema operativo:** Windows 10 o Windows 11 de 64 bits.
-* **Procesador (CPU):** Intel Core i5 de 10.ª generación / AMD Ryzen 5 3600 (o superior).
-* **Tarjeta gráfica (GPU):** Nvidia GeForce GTX 1050 Ti / GTX 1650 o AMD Radeon RX 570.
-* **Memoria RAM:** 16 GB.
-* **Almacenamiento:** 1 GB en unidad de estado sólido (SSD) para agilizar tiempos de carga.
-* **Resolución recomendada:** 1920 × 1080 píxeles.
-
----
-
-## Objetivos de Rendimiento Técnico
-
-Al iniciar la programación, el equipo trabajará para cumplir con las siguientes metas técnicas:
-
-* **Tasa de cuadros por segundo (FPS):** Mantener **60 FPS estables** a resolución nativa de 1080p. El diseño contempla que el rendimiento no caiga por debajo de 50 FPS durante los momentos de mayor saturación de la horda en el minuto 7 u 8.
-* **Tiempos de carga:** Se proyecta que la transición entre el menú principal/Almacén y la arena de combate tome **menos de 3 segundos**, y que el cambio entre pantallas de resultados sea prácticamente instantáneo.
-* **Consumo de memoria RAM:** El juego no debería superar los **2 GB de memoria RAM en ejecución**, permitiendo que funcione sin problemas en computadoras con múltiples aplicaciones abiertas.
-
----
-
-## Restricciones y Límites de Diseño Técnico
-
-Para garantizar la estabilidad del proyecto y evitar retrasos en el desarrollo, se fijan las siguientes restricciones:
-
-1. **Plataforma única:** La entrega se concentrará exclusivamente en computadoras con sistema operativo Windows. No se contemplan adaptaciones para Mac, Linux, consolas ni dispositivos móviles en esta fase.
-2. **Tope de enemigos en pantalla:** La densidad de combate se limitará a un máximo de **150 enemigos activos simultáneos**. Si el generador alcanza este número, pausará nuevas apariciones hasta que el jugador elimine unidades, evitando caídas bruscas de cuadros por exceso de colisiones.
-3. **Optimización visual:** Al emplear una estética en pixel art sobre un plano horizontal, se buscará empaquetar los sprites en atlas de texturas para mantener bajo el número de llamadas de dibujado (*draw calls*).
-4. **Independencia de red:** Al no haber componentes multijugador ni marcadores en línea, no existirán riesgos asociados a latencia, caídas de servidor o consumo de ancho de banda.
-
-> **Navegación:** [[00 - Índice]] · ← [[02 - Motor y Herramientas]] · [[04 - Datos y Persistencia]] →
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
