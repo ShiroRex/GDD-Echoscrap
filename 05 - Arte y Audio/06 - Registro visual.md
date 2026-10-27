@@ -2,11 +2,13 @@
 
 Las imágenes de esta página proceden de Unity o de los atlas activos del proyecto. Los GIFs de enemigos y cartas se registraron el 27 de octubre de 2026 sobre CombatArena. Se utilizó una cámara de detalle, el jugador protegido y las oleadas detenidas para poder observar cada patrón. Los PNG se unieron a 12 fotogramas por segundo.
 
+Los cuatro GIFs del Coleccionista se capturaron también en CombatArena el 27 de octubre, a 24 fotogramas por segundo, con una cámara de detalle que sigue al jugador. El reposo, la marcha en cuatro direcciones, los dos dashes y la muerte se reproducen con los componentes del juego. Las secuencias se recortaron alrededor del personaje para facilitar su lectura.
+
 Los GIFs de VFX proceden de la revisión visual del 26 de octubre: recortes de capturas de cámara de 1280 × 720 en escenas controladas de mejoras. Sus sistemas de rayos, partículas y materiales coinciden con los del montaje actual. Estas demostraciones muestran el efecto en funcionamiento; no son mediciones de FPS ni reproducciones de una partida completa.
 
 ## Enemigos
 
-Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. La tabla de clips y el atlas del Coleccionista están en [[02 - Personajes y Animación]].
+Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. [[02 - Personajes y Animación]] reúne también esos seis GIFs junto a los atlas, la tabla de clips y las cuatro animaciones del Coleccionista dentro de la arena.
 
 ## Prisma voltaico
 

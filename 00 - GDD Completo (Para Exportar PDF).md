@@ -38,7 +38,7 @@ EchoScrap cuenta con una partida de supervivencia completa: el Coleccionista se 
 - [[03 - Enemigos y NPC]] reúne los seis enemigos, sus reglas, sus representaciones actuales y GIFs capturados en la arena.
 - [[05 - Progresión]] contiene el catálogo de las 35 mejoras y sus requisitos.
 - [[04 - Objetos y Coleccionables]] describe los objetos, la colección y las recetas de fusión que se pueden utilizar.
-- [[02 - Personajes y Animación]] incluye las hojas de sprites activas y las fuentes editables.
+- [[02 - Personajes y Animación]] incluye las hojas de sprites activas, las fuentes editables y GIFs del Coleccionista y los enemigos dentro de la arena.
 - [[06 - Registro visual]] reúne las capturas y los GIFs de interfaz, enemigos y VFX.
 
 Los GIFs de enemigos se registraron en Play Mode el 27 de octubre sobre la arena real, con cámara de detalle, oleadas detenidas y el jugador protegido para observar cada ataque. Los enemigos conservan sus valores y sus animaciones. Los GIFs de mejoras son recortes de capturas de Unity de la revisión visual del 26 de octubre; los componentes y recursos que dibujan esos efectos coinciden con los del avance actual. Los atlas son los PNG utilizados por el juego. Las condiciones de las capturas se explican en [[06 - Registro visual]].
@@ -634,13 +634,63 @@ La paleta de referencia es Apollo. El volumen, las siluetas y los cambios de pos
 
 Su sprite se apoya en el terreno y recibe iluminación del mundo. El farol acompaña al personaje y la presentación del haz sigue el apuntado del arma. El daño se expresa mediante flashes sin convertir cada impacto en una interrupción del movimiento.
 
-## El Mortero y la Polilla
+### Animaciones dentro de la arena
+
+Estas secuencias muestran al Coleccionista en CombatArena, con una cámara de detalle que permite observar el sprite sobre el terreno y su iluminación real.
+
+**Reposo.** El personaje conserva su postura y el movimiento del ciclo de espera.
+
+![Coleccionista en reposo dentro de la arena](Media/Avance_2026-10-27/Jugador/Reposo.gif)
+
+**Marcha en cuatro direcciones.** El cambio de vista y el ciclo de pasos acompañan el desplazamiento por el escenario.
+
+![Coleccionista caminando en cuatro direcciones dentro de la arena](Media/Avance_2026-10-27/Jugador/Caminar.gif)
+
+**Dash.** La secuencia incluye dos desplazamientos y las imágenes residuales que deja el personaje.
+
+![Dash del Coleccionista dentro de la arena](Media/Avance_2026-10-27/Jugador/Dash.gif)
+
+**Muerte.** El impacto da paso a la caída y a la desaparición del sprite y su sombra.
+
+![Animación de muerte del Coleccionista dentro de la arena](Media/Avance_2026-10-27/Jugador/Muerte.gif)
+
+## El Mortero Campana
 
 ![Atlas activo del Mortero](Media/Avance_2026-10-27/Spritesheets/Mortero.png)
 
+El Mortero encadena flotación, preparación, disparo y recuperación con su ataque de ácido. El GIF muestra cómo se integra el sprite con el aviso del ataque y el proyectil dentro del escenario.
+
+![Mortero animado y ataque de ácido dentro de la arena](Media/Avance_2026-10-27/Enemigos/Mortero.gif)
+
+## La Polilla Reactor
+
 ![Atlas activo de la Polilla](Media/Avance_2026-10-27/Spritesheets/PolillaReactor.png)
 
-El Mortero encadena preparación, disparo y recuperación con su ataque de ácido. La Polilla distingue vuelo, cebado y explosión. Las secuencias que muestran ambos recursos dentro del escenario están en [[03 - Enemigos y NPC]].
+La Polilla distingue vuelo, cebado y explosión. La secuencia permite ver la transición de aproximación a detonación junto al jugador.
+
+![Vuelo, cebado y explosión de la Polilla dentro de la arena](Media/Avance_2026-10-27/Enemigos/Polilla.gif)
+
+## Enemigos con representación 3D
+
+El Residual, el Interceptor y el Coloso utilizan geometría 3D. Sus movimientos y deformaciones se registran directamente en la arena; no disponen de una hoja de sprites de personaje.
+
+**Residual.** Aproximación y movimiento de su cuerpo durante la persecución.
+
+![Residual en movimiento dentro de la arena](Media/Avance_2026-10-27/Enemigos/Residual.gif)
+
+**Interceptor.** Desplazamiento y orientación del cuerpo al perseguir al Coleccionista.
+
+![Interceptor en movimiento dentro de la arena](Media/Avance_2026-10-27/Enemigos/Interceptor.gif)
+
+**Coloso.** Preparación, embestida y recuperación del ataque.
+
+![Embestida del Coloso dentro de la arena](Media/Avance_2026-10-27/Enemigos/Coloso.gif)
+
+**Gólgora / MataColeccionista.** El modelo animado acompaña su marcha pesada y sus ataques en la arena.
+
+![Gólgora animado y atacando dentro de la arena](Media/Avance_2026-10-27/Enemigos/Golgora.gif)
+
+Las reglas de cada enemigo se describen en [[03 - Enemigos y NPC]].
 
 Las normales, sombras, flashes, tintes de frío y partículas complementan los fotogramas originales. La elección de una cámara o una condición visual distinta no cambia las reglas de los ataques.
 
@@ -688,11 +738,13 @@ La autoría del área de audio corresponde al reparto del equipo descrito en [[0
 
 Las imágenes de esta página proceden de Unity o de los atlas activos del proyecto. Los GIFs de enemigos y cartas se registraron el 27 de octubre de 2026 sobre CombatArena. Se utilizó una cámara de detalle, el jugador protegido y las oleadas detenidas para poder observar cada patrón. Los PNG se unieron a 12 fotogramas por segundo.
 
+Los cuatro GIFs del Coleccionista se capturaron también en CombatArena el 27 de octubre, a 24 fotogramas por segundo, con una cámara de detalle que sigue al jugador. El reposo, la marcha en cuatro direcciones, los dos dashes y la muerte se reproducen con los componentes del juego. Las secuencias se recortaron alrededor del personaje para facilitar su lectura.
+
 Los GIFs de VFX proceden de la revisión visual del 26 de octubre: recortes de capturas de cámara de 1280 × 720 en escenas controladas de mejoras. Sus sistemas de rayos, partículas y materiales coinciden con los del montaje actual. Estas demostraciones muestran el efecto en funcionamiento; no son mediciones de FPS ni reproducciones de una partida completa.
 
 ## Enemigos
 
-Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. La tabla de clips y el atlas del Coleccionista están en [[02 - Personajes y Animación]].
+Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. [[02 - Personajes y Animación]] reúne también esos seis GIFs junto a los atlas, la tabla de clips y las cuatro animaciones del Coleccionista dentro de la arena.
 
 ## Prisma voltaico
 

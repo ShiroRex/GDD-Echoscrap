@@ -26,7 +26,7 @@ EchoScrap cuenta con una partida de supervivencia completa: el Coleccionista se 
 - [[03 - Enemigos y NPC]] reúne los seis enemigos, sus reglas, sus representaciones actuales y GIFs capturados en la arena.
 - [[05 - Progresión]] contiene el catálogo de las 35 mejoras y sus requisitos.
 - [[04 - Objetos y Coleccionables]] describe los objetos, la colección y las recetas de fusión que se pueden utilizar.
-- [[02 - Personajes y Animación]] incluye las hojas de sprites activas y las fuentes editables.
+- [[02 - Personajes y Animación]] incluye las hojas de sprites activas, las fuentes editables y GIFs del Coleccionista y los enemigos dentro de la arena.
 - [[06 - Registro visual]] reúne las capturas y los GIFs de interfaz, enemigos y VFX.
 
 Los GIFs de enemigos se registraron en Play Mode el 27 de octubre sobre la arena real, con cámara de detalle, oleadas detenidas y el jugador protegido para observar cada ataque. Los enemigos conservan sus valores y sus animaciones. Los GIFs de mejoras son recortes de capturas de Unity de la revisión visual del 26 de octubre; los componentes y recursos que dibujan esos efectos coinciden con los del avance actual. Los atlas son los PNG utilizados por el juego. Las condiciones de las capturas se explican en [[06 - Registro visual]].
