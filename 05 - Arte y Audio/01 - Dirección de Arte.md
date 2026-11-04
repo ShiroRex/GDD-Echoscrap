@@ -1,20 +1,22 @@
 # Dirección de arte
 
-El montaje actual combina un escenario 3D de formas angulares con sprites de pixel art, modelos animados y efectos de partículas. El vertedero utiliza metal, roca, madera y chatarra en tonos oscuros; la luz y los avisos separan los elementos activos del fondo.
+El juego combina un escenario 3D de formas angulares con sprites de pixel art, un jefe con modelo animado y efectos de luz y partículas. Metal, roca, madera y chatarra ocupan el fondo oscuro; las siluetas, los avisos y las fuentes luminosas separan lo que requiere atención.
 
-La cámara de combate está inclinada a 50°. Los sprites mantienen su lectura dentro de ese mundo mediante planos iluminados, sombras de contacto y orientación por direcciones. El Coleccionista, el Mortero y la Polilla usan hojas con celdas de 64 × 64 píxeles.
+El perfil exterior coloca la cámara a 35,5° con campo de visión de 34°. La bóveda usa una perspectiva propia y el encuentro de Gólgora adapta la distancia para encuadrar a ambos combatientes. El Coleccionista se representa en un plano vertical con proporciones fijas dentro del mundo.
 
-## Color y lectura
-
-| Uso | Colores presentes |
+| Uso | Tratamiento presente |
 | --- | --- |
-| Fondo y estructuras | Azules, grises fríos y violetas oscuros. |
-| Chatarra y armaduras | Cobre, marrón, óxido y acero apagado. |
-| Luz y energía | Cian, oro cálido, violeta y tonos claros. |
-| Ácido | Verdes luminosos sobre suelo oscuro. |
-| Peligro anunciado | Ámbar y naranja, acompañado por contornos y progreso del área. |
+| Exterior | Azules y violetas oscuros, niebla, haces y polvo ambiental. |
+| Materiales | Acero apagado, cobre, óxido, piedra y madera. |
+| Jugador | Capucha clara, farol y haz automático; brillo pasivo en la bóveda. |
+| Ácido | Verde sobre el terreno oscuro. |
+| Peligro anunciado | Ámbar y naranja, contornos y progreso visible. |
 | Hielo | Tinte celeste, cristales y niebla fría. |
+| Jefe | Armadura oscura, núcleo y efectos de magma. |
+| Colección | Retratos enmarcados, rótulos y colores por rareza. |
 
-La paleta de referencia es Apollo. El volumen, las siluetas y los cambios de pose acompañan al color: el Coloso se prepara antes de cargar, el Mortero abre su emisor y la Polilla cambia de ritmo al cebarse. Los efectos reducidos conservan la información necesaria para leer esos ataques.
+Apollo permanece como referencia de paleta. Los sprites activos del Coleccionista, Mortero y Polilla usan celdas de 64 × 64; Esqueleto, Interceptor y Wendigo usan 96 × 96. Sus atlas y animaciones están en [[02 - Personajes y Animación]].
+
+Los efectos reducidos retiran decoración y movimiento accesorio, conservando los avisos necesarios para jugar.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

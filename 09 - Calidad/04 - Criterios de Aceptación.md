@@ -1,18 +1,22 @@
-# Criterios de aceptación del avance
+# Criterios de aceptación
 
-| Parte | Comportamiento definido por la versión actual |
+| Parte | Comportamiento esperado |
 | --- | --- |
-| Movimiento | Teclado y mando mueven al Coleccionista; la diagonal está limitada y el apoyo sigue el escenario. |
-| Dash | Recorre el espacio libre, atraviesa enemigos durante su protección y se detiene ante paredes. |
-| Linterna | Adquiere objetivos, emite cuatro pulsos y aplica el empuje final según el enemigo. |
-| Enemigos | Cada arquetipo usa sus valores, navegación y ataque especial; el jefe alterna sus patrones. |
-| XP y cartas | La XP produce elecciones y el draft muestra opciones válidas con sus niveles y valores. |
-| Resultado | Muerte del jugador: derrota; muerte del jefe con jugador vivo: victoria; empate: derrota. |
-| Reinicio | Se limpian actores, peligros y efectos de la partida y se restauran sus estadísticas. |
-| Almacén | El viaje conserva al jugador y suspende el combate hasta regresar. |
-| Fusión | Tres ingredientes producen un sorteo único; el resultado se colecciona o libera y el proceso se guarda localmente. |
-| Registro visual | Los atlas coinciden con los recursos activos y los GIFs se obtienen del render del juego. |
+| Inicio | Menú independiente, continuación de colección o creación con confirmación cuando corresponde. |
+| Preparación | Revisar y seleccionar hasta tres entidades antes de elegir ronda, con opción de puestos vacíos. La guía que haga visible este paso sigue pendiente. |
+| Equipo | Solo copias disponibles, puesto correcto, poderes iniciales y protección frente a consumo o liberación. |
+| Rondas | Selección demo o completa; jefe a 180 o 480 s y vida de 3600 o 9000 HP. |
+| Movimiento | Entradas correctas, diagonal limitada, apoyo sobre el escenario y dash detenido por obstáculos. |
+| Linterna y cartas | Autoapuntado, cuatro pulsos y ofertas válidas entre 35 mejoras. |
+| Enemigos | Cinco arquetipos de horda y dos élites con sus ataques, resistencias y avisos. |
+| Jefe | Traslado protegido, perímetro cerrado, seis patrones, segunda fase y refuerzos dentro del límite efectivo de ocho. |
+| Entidades de mapa | Apariciones temporales, recogida manual única y copia guardada. |
+| Fusión | Cuatro copias consumidas una vez, resultado único, estado listo y apertura por interacción. |
+| Resultado | Derrota al morir el jugador; victoria al morir el jefe con jugador vivo; prioridad de derrota en empate. |
+| Retorno | Limpieza de la expedición y vuelta a bóveda con colección, equipo y fusión conservados. |
+| Persistencia | Guardado de producción de formato 4, validación de datos y volumen general conservado. |
+| Medios | Atlas verificados contra recursos activos y GIFs identificados como previsualización o captura de Unity. |
 
-Los apartados de diseño explican los valores y las condiciones de estas reglas. [[02 - Pruebas]] identifica qué se comprobó al preparar los registros de esta edición.
+Esta tabla define qué revisar. No atribuye a toda la suite el resultado de una captura ni marca como terminada la guía de preparación pendiente.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

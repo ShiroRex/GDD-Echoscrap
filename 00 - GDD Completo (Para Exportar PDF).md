@@ -1,66 +1,67 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.4.0 · 27 de octubre de 2026**
+**GDD 0.5.0 · 4 de noviembre de 2026**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-La edición describe el proyecto jugable actual. Los GIFs se reproducen en lectores de Markdown compatibles; al exportar a PDF se presentan como imágenes estáticas.
+Esta edición describe el montaje jugable consultado y distingue la selección de equipo disponible de su guía visual pendiente. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 ---
 
 # EchoScrap: avance jugable
 
-**Versión del GDD: 0.4.0 · Actualización: 27 de octubre de 2026.**
+**GDD 0.5.0 · 4 de noviembre de 2026.**
 
-EchoScrap cuenta con una partida de supervivencia completa: el Coleccionista se desplaza por el Vertedero, combate con una linterna automática, recoge experiencia, elige mejoras y se enfrenta a Gólgora. La victoria y la derrota cierran la sesión con un resumen y permiten reiniciar. Esta edición describe el comportamiento que existe en el proyecto Unity actual.
+El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 
-![Arena y HUD actuales](Media/Avance_2026-10-27/Interfaz/Arena_HUD.png)
+## Recorrido de una sesión
 
-## Qué se puede jugar
+Menú inicial → continuar o crear colección → bóveda → revisar y seleccionar entidades equipadas → elegir ronda demo o completa → expedición → regreso a la bóveda.
 
-| Área | Contenido actual |
+La elección de entidades forma parte de la preparación. Se pueden ocupar hasta tres puestos con copias del inventario o salir con puestos vacíos. El sistema ya funciona al acercarse a cada puesto y pulsar E, pero el recorrido actual no explica este paso con suficiente claridad. La señalización de esa preparación queda pendiente; se detalla en [[03 - Bugs y Seguimiento]].
+
+![Bóveda y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
+
+| Área | Contenido de esta versión |
 | --- | --- |
-| Control | Movimiento con teclado o mando, dash direccional con invulnerabilidad, apoyo sobre relieve y escaleras. |
-| Arma | Linterna de cuatro pulsos con autoapuntado; alcance, cadencia, cobertura y daño modificables durante la partida. |
-| Enemigos | Residual, Interceptor, Coloso, Mortero, Polilla y el jefe Gólgora, representado por el MataColeccionista. |
-| Progresión | Experiencia, subida de nivel y selección de tres opciones entre 35 mejoras implementadas. |
-| Escenario | Arena de 200 × 200 m, desniveles, obstáculos, lava, acceso subterráneo y portal al almacén. |
-| Variantes | Entrada del jefe a los tres o a los ocho minutos, según la escena cargada. El combate del jefe continúa hasta resolver la partida. |
-| Colección | Cinco personajes en el sistema de fusión por rareza, ocho espacios de exposición y guardado local del inventario y la fusión. |
-| Interfaz | Vida, experiencia, nivel, tiempo, bajas, dash, mejoras, pausa, resultados y estadísticas del jugador. |
-| Presentación | Sprites animados, modelos 3D, avisos de ataques, números de daño, partículas, cadenas eléctricas, hielo, dispositivos y efectos de recogida. |
+| Partida | Menú inicial, colección nueva o existente, preparación en bóveda, selección de ronda y resultados con retorno a la bóveda. |
+| Control | Movimiento con teclado o mando, dash con invulnerabilidad, relieve y colisiones. La interacción de colección, equipo y fusión usa E. |
+| Combate | Linterna de cuatro pulsos con autoapuntado y 35 mejoras en cuatro rarezas. |
+| Enemigos | Cinco arquetipos de horda, dos élites y Gólgora. |
+| Rondas | Demo: jefe a los 3:00 y 3600 HP. Completa: jefe a los 8:00 y 9000 HP. La victoria exige derrotarlo. |
+| Mundo | Arena de 200 × 200 m, acceso norte, bóveda modular y caldera central del jefe. Las zonas de lava fija del mapa están desactivadas. |
+| Colección | Quince entidades, seis rarezas, recogida manual en arena, tres puestos de equipo y siete de exposición. |
+| Fusión | Cuatro copias disponibles, consumo al comenzar, probabilidades por calidad y resultado que se colecciona o libera. |
+| Presentación | Sprites animados, modelo del jefe, minimapa con exploración, retratos, VFX y audio contextual. |
 
-## Recorrer el avance
+## Dónde consultar cada parte
 
-- [[01 - Jugabilidad]] explica el recorrido de una partida.
-- [[03 - Enemigos y NPC]] reúne los seis enemigos, sus reglas, sus representaciones actuales y GIFs capturados en la arena.
-- [[05 - Progresión]] contiene el catálogo de las 35 mejoras y sus requisitos.
-- [[04 - Objetos y Coleccionables]] describe los objetos, la colección y las recetas de fusión que se pueden utilizar.
-- [[02 - Personajes y Animación]] incluye las hojas de sprites activas, las fuentes editables y GIFs del Coleccionista y los enemigos dentro de la arena.
-- [[06 - Registro visual]] reúne las capturas y los GIFs de interfaz, enemigos y VFX.
+- [[01 - Jugabilidad]] y [[01 - UX y Flujo del Jugador]] describen la preparación y la expedición.
+- [[04 - Objetos y Coleccionables]] reúne las quince entidades, sus poderes y las reglas de fusión.
+- [[03 - Enemigos y NPC]] contiene los valores, ataques, spritesheets y GIFs de los enemigos.
+- [[02 - Personajes y Animación]] muestra los atlas y las animaciones por acción y dirección.
+- [[06 - Registro visual]] reúne los GIFs de VFX y las condiciones de las capturas.
 
-Los GIFs de enemigos se registraron en Play Mode el 27 de octubre sobre la arena real, con cámara de detalle, oleadas detenidas y el jugador protegido para observar cada ataque. Los enemigos conservan sus valores y sus animaciones. Los GIFs de mejoras son recortes de capturas de Unity de la revisión visual del 26 de octubre; los componentes y recursos que dibujan esos efectos coinciden con los del avance actual. Los atlas son los PNG utilizados por el juego. Las condiciones de las capturas se explican en [[06 - Registro visual]].
+Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del proyecto; las capturas de Unity se identifican aparte. Las imágenes de preparación utilizan un inventario de muestra para enseñar las opciones. Una colección nueva empieza vacía.
 
 ---
-
-# 01 - Visión
 
 # Ficha del proyecto
 
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.4.0 |
-| Estado | Versión jugable en iteración, con combate, progresión, jefe, almacén y fusión. |
-| Actualización | 27 de octubre de 2026 |
+| Versión del GDD | 0.5.0 |
+| Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
+| Actualización | 4 de noviembre de 2026 |
 | Plataforma | PC, Windows, un jugador local. |
-| Motor | Unity 6000.6.3f1, Universal Render Pipeline. |
-| Lenguaje | C#; shaders en HLSL. |
-| Perspectiva | Entorno 3D con personajes y efectos 2D; cámara de combate inclinada a 50°. |
+| Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
+| Lenguaje | C# y shaders en HLSL. |
+| Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión del juego documentada | [0fca1ec](https://github.com/ShiroRex/EchoScrap/commit/0fca1ec7fd55aefc700b8d4c9b7698d36157b88d) |
+| Revisión consultada | 30b88c6, junto con el montaje local de CombatArena presente el 4 de noviembre. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
@@ -73,33 +74,35 @@ Los GIFs de enemigos se registraron en Play Mode el 27 de octubre sobre la arena
 
 ## El juego en una frase
 
-El Coleccionista recorre un vertedero dimensional mientras su linterna abre huecos en una horda creciente. La experiencia recogida permite combinar mejoras durante la partida y preparar el enfrentamiento contra el MataColeccionista.
+El Coleccionista reúne entidades en un vertedero dimensional, prepara sus poderes en la bóveda y combina mejoras durante cada expedición para enfrentarse al MataColeccionista.
 
-La versión documentada incluye una arena de 200 × 200 m, cinco enemigos de horda, un jefe y 35 mejoras. La estación de fusión conecta la exploración de la arena con una colección local de cinco personajes expuestos en el almacén.
+El contenido actual incluye una arena de 200 × 200 m, cinco enemigos de horda, dos élites, un jefe, 35 mejoras y una colección de quince entidades. La selección de equipo existe, aunque falta guiar mejor al jugador hacia sus tres puestos antes de salir.
 
 ---
 
 # Visión del juego
 
-EchoScrap combina supervivencia frente a hordas y construcción de una configuración de combate durante cada partida. El jugador controla el movimiento y el dash del Coleccionista; la linterna adquiere automáticamente al enemigo más cercano dentro de su alcance. Esto permite concentrarse en las rutas de escape, las zonas peligrosas y la recogida de experiencia.
+EchoScrap combina supervivencia frente a hordas con la preparación de una colección. En la bóveda, el jugador puede elegir hasta tres entidades del inventario. Cada una aporta un poder de combate que estará disponible al comenzar la expedición. Después decide entre la ronda demo y la completa.
 
-Cada subida de nivel detiene el combate y ofrece hasta tres cartas. Las decisiones cambian la forma de sobrevivir: ampliar la luz, aumentar su cadencia, congelar enemigos, colocar minas, rodearse de sierras o sostenerse mediante curación y armadura.
+En la arena controla el movimiento y el dash del Coleccionista. La linterna apunta automáticamente al enemigo más cercano dentro de su alcance, lo que permite atender a las rutas de escape, los ataques anunciados y la recogida. La XP abre elecciones entre hasta tres cartas; las 35 mejoras permiten construir una configuración distinta durante cada intento.
 
-La presión culmina con Gólgora, representado por el MataColeccionista. El jefe combina avance, ataques anunciados en el suelo y bombardeos. La partida termina cuando cae el jugador o el jefe; el tiempo de aparición no concede por sí mismo una victoria.
+También aparecen entidades que se recogen con E. Esas copias pasan a la colección guardada y sirven para equipar poderes o alimentar una fusión de cuatro ingredientes. La bóveda conecta esa actividad entre expediciones mediante sus puestos de equipo, la exposición y la máquina.
 
-El mundo jugable también permite visitar una bóveda conectada por un portal. Allí se exponen los personajes de la colección de fusión. El inventario y los procesos de esa estación se conservan localmente entre aperturas de la aplicación.
+Gólgora cierra la expedición en una caldera central. Sus ataques cubren distancias y formas diferentes, y su segunda fase acelera el encuentro. La muerte del jugador produce derrota; la del jefe con el jugador vivo produce victoria. El resultado permite volver a preparar el siguiente intento.
 
-Las decisiones de movimiento, recogida y selección de cartas sostienen el ritmo de cada expedición.
+La preparación necesita una explicación más visible en el juego. Esta edición incorpora la selección de entidades al flujo y registra como pendiente la guía que permita descubrirla.
 
 ---
 
 # Público y plataforma
 
-EchoScrap es una experiencia de acción y supervivencia para PC con Windows y un solo jugador. El combate usa teclado y ratón o mando. El movimiento y la esquiva son acciones directas; el arma principal funciona con autoapuntado.
+EchoScrap es una experiencia de acción y supervivencia para Windows y un solo jugador. El combate acepta teclado y ratón o mando: el desplazamiento y el dash son directos y la linterna funciona con autoapuntado.
 
-La elección de mejoras introduce pausas de decisión entre los momentos de movimiento continuo. Las escenas de tres y ocho minutos determinan cuándo aparece el jefe, de modo que permiten observar el mismo núcleo de combate con dos tiempos de entrada distintos. La duración total también depende del enfrentamiento final y del tiempo dedicado a los menús.
+Las cartas introducen pausas de decisión. Antes de salir, la bóveda permite revisar la colección y escoger hasta tres entidades equipadas. En el montaje actual, recoger entidades y abrir los puestos de equipo o la fusión requiere la tecla E; esa parte del recorrido todavía necesita una guía más clara y no tiene una interacción equivalente de mando documentada en el código.
 
-La lectura del peligro se apoya en áreas y trayectorias visibles, animaciones de anticipación, barras y texto. El menú de pausa permite reducir decoración y sacudidas y elegir cuánto detalle muestran las estadísticas.
+La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos tiempos corresponden al reloj de combate, que se detiene con las pausas y elecciones. La duración total incluye la preparación, los menús y el enfrentamiento final.
+
+Los ataques se comunican con avisos de suelo, animaciones y texto. Las opciones permiten reducir efectos y sacudidas y elegir el detalle del panel de estadísticas.
 
 ---
 
@@ -107,48 +110,59 @@ La lectura del peligro se apoya en áreas y trayectorias visibles, animaciones d
 
 ## Movimiento que abre oportunidades
 
-El desplazamiento a 8 m/s, el dash y el empuje del cuarto pulso permiten atravesar huecos y modificar la posición de la horda. El arma apunta por su cuenta, por lo que moverse y atacar pueden ocurrir en direcciones diferentes.
+El desplazamiento a 8 m/s, el dash y el empuje del cuarto pulso ayudan a atravesar huecos y cambiar la posición de la horda. La linterna apunta por su cuenta, por lo que el Coleccionista puede retirarse mientras ataca en otra dirección.
 
-## Configuraciones que cambian durante la partida
+## Preparar una colección y construir una configuración
 
-Las 35 mejoras combinan estadísticas, ataques automáticos, dispositivos, control de masas y supervivencia. Los requisitos de algunas cartas relacionan las decisiones: Cero absoluto parte de Freón, mientras que las mejoras de explosión requieren una fuente de explosiones.
+Las entidades equipadas aportan poderes iniciales. Las 35 mejoras de la expedición amplían las herramientas disponibles mediante estadísticas, dispositivos, ataques automáticos y control de masas. Los requisitos relacionan las decisiones: Cero absoluto parte de Freón residual y las mejoras de explosión necesitan una fuente compatible.
 
 ## Ataques que se pueden leer
 
-La embestida del Coloso, el ácido del Mortero, la mecha de la Polilla y las áreas de Gólgora muestran sus avisos antes de resolver el daño. Las señales esenciales se conservan con efectos reducidos.
+La carga del Coloso, el ácido del Mortero, la mecha de la Polilla, los ataques élite y los patrones de Gólgora muestran señales antes de resolver el daño. Los efectos reducidos conservan los avisos esenciales.
 
-## Un mundo que conecta combate y colección
+## Una bóveda que da continuidad a las expediciones
 
-El vertedero contiene obstáculos, lava y un acceso al almacén. La fusión combina rarezas y produce personajes para las vitrinas; el inventario se guarda localmente. El recorrido por el portal conserva al mismo jugador y pausa el combate mientras visita la bóveda.
+Las entidades recogidas pasan al inventario local. En la bóveda se pueden equipar hasta tres copias, observar la colección y consumir cuatro ingredientes en una fusión. El resultado de una expedición devuelve al jugador a esa preparación. Falta hacer más visible el paso de elegir equipo dentro del recorrido inicial.
 
 ---
 
-# 02 - Diseño
-
 # Jugabilidad
 
-La partida empieza con el Coleccionista en la arena. El jugador mueve al personaje, usa el dash para salir de zonas comprometidas y se aproxima a las gemas y botiquines que dejan los enemigos. La linterna busca al enemigo vivo más cercano dentro de su alcance, aunque el personaje se desplace en otra dirección.
+## Preparación y salida
+
+Menú inicial → continuar o crear colección → bóveda → revisar y seleccionar entidades equipadas → elegir ronda demo o completa → expedición → regreso a la bóveda.
+
+Continuar recupera la colección guardada. Nueva colección reinicia el inventario, el equipo y la fusión en curso, con confirmación cuando ya existe una colección.
+
+En la bóveda se revisan los tres puestos de entidades equipadas. Al acercarse a un puesto y pulsar E se abre su selector. Solo se pueden usar copias que pertenecen al inventario y es posible dejar puestos vacíos. En una colección nueva no hay entidades disponibles todavía: la primera expedición permite reunirlas.
+
+La preparación forma parte del flujo, pero el juego permite iniciar una expedición sin pasar por sus puestos y no explica suficientemente su función. Queda pendiente la señalización que acompañe este paso, descrita en [[03 - Bugs y Seguimiento]].
+
+El portal o el botón Iniciar expedición abre la elección de ronda. La demo lleva a Gólgora a los 3:00; la completa, a los 8:00. Tras la selección se presenta la entrada del Coleccionista en la arena.
 
 ## Bucle de combate
 
-1. Moverse para mantener una ruta de escape y acercarse a las recompensas.
-2. Dañar a la horda con la linterna y las habilidades obtenidas.
-3. Recoger experiencia y elegir una mejora cuando sube el nivel.
-4. Responder a nuevas composiciones de enemigos y a sus ataques especiales.
-5. Enfrentarse a Gólgora cuando se alcanza el tiempo configurado.
-6. Consultar el resultado y reiniciar una nueva partida.
+1. Mantener una ruta de escape con movimiento y dash.
+2. Dañar a la horda con la linterna y los poderes de la configuración.
+3. Recoger XP y elegir una mejora al subir de nivel.
+4. Acercarse a las entidades que aparecen y recogerlas con E antes de que desaparezcan.
+5. Responder a las composiciones de horda y a los ataques de los dos élites.
+6. Combatir contra Gólgora en la caldera central.
+7. Consultar el resultado y volver a la bóveda para revisar equipo y colección.
 
-La selección de cartas pausa el combate. Si una recogida produce varias subidas de nivel, las elecciones se resuelven una tras otra antes de continuar.
+Las cartas pausan el combate. Si una recogida produce varias subidas de nivel, las elecciones se resuelven una tras otra.
 
-## Cierre
+## Cierre y continuidad
 
-La vida del jugador a cero produce derrota. La muerte de Gólgora con el jugador vivo produce victoria. Si ambos mueren en el mismo paso de simulación, prevalece la derrota. Los resultados muestran tiempo, nivel, bajas y experiencia obtenida.
+La vida del jugador a cero produce derrota. La muerte de Gólgora con el jugador vivo produce victoria. Si ambos mueren en el mismo paso de simulación, prevalece la derrota. El resumen muestra tiempo, nivel, bajas y XP, y ofrece Volver a la bóveda.
 
-## Exploración y fusión
+Las cartas, el nivel y la salud de la expedición se restablecen. Las copias ya recogidas, las entidades equipadas y el progreso de fusión pertenecen a la colección y se conservan. Abandonar desde pausa también vuelve a la bóveda tras una confirmación.
 
-La estación de fusión se encuentra en la arena, junto al acceso a la bóveda. Se abre con E a corta distancia. El jugador elige tres ingredientes, inicia el proceso y puede seguir jugando mientras avanza el temporizador. Al terminar decide entre coleccionar o liberar el resultado.
+## Bóveda y fusión
 
-El portal lleva al almacén sin cambiar de escena. Se conserva la salud y la configuración de la partida y se detienen oleadas, jefe y peligros del combate durante la visita. El regreso recupera esa misma sesión.
+La máquina está dentro de la bóveda. Se abre con E a corta distancia y necesita cuatro copias disponibles. Las consume al comenzar y el proceso sigue durante el tiempo de juego activo, incluida la estancia en la bóveda. Al terminar espera la interacción del jugador para abrirse; después permite coleccionar o liberar el resultado.
+
+Durante una expedición sigue siendo posible visitar la bóveda por el acceso norte. Esa visita conserva la sesión en memoria y suspende su combate; al regresar se retoma. Volver desde un resultado inicia la preparación de una nueva expedición.
 
 ---
 
@@ -182,32 +196,41 @@ Los números muestran la salud realmente perdida. Los impactos normales de una r
 
 ## Recogida
 
-El imán base alcanza 2,5 m y atrae los objetos a 12 m/s. Las gemas conceden experiencia; el botiquín base recupera 15 HP. El contacto con lava, ácido y áreas de ataque utiliza las mismas reglas de salud e invulnerabilidad que el resto del combate.
+El imán base alcanza 2,5 m y atrae los objetos a 12 m/s. Las gemas conceden experiencia; el botiquín base recupera 15 HP. El ácido y las áreas de ataque utilizan las mismas reglas de salud e invulnerabilidad que el resto del combate. Las zonas de lava fija del mapa están desactivadas; el magma de Gólgora sigue formando parte del encuentro.
 
 Las mejoras modifican estos parámetros o añaden acciones automáticas. Sus niveles y efectos se describen en [[05 - Progresión]].
+
+## Entidades y poderes de inicio
+
+Hasta tres copias equipadas aportan niveles iniciales de sus mejoras asociadas. Varias copias con el mismo poder aumentan ese nivel hasta el máximo de la mejora. Al combinar equipo y cartas, el valor efectivo es el mayor de ambos niveles; no se suman entre sí. El detalle de cada entidad está en [[04 - Objetos y Coleccionables]].
+
+Los coleccionables que aparecen en arena requieren E dentro de unos 2,5 m y una línea de interacción despejada. No se recogen con el imán de las gemas y botiquines.
 
 ---
 
 # Sistemas
 
-| Sistema | Funcionamiento en la versión jugable |
+| Sistema | Funcionamiento actual |
 | --- | --- |
-| Entradas y locomoción | Lectura de teclado y mando, movimiento respecto a cámara, dash, colisiones y apoyo sobre el terreno. |
-| Sesión | Reloj de juego, razones de pausa, entrada del jefe, resultados y reinicio. |
+| Flujo general | Menú inicial, colección, preparación en bóveda, selección de ronda, expedición y retorno desde resultados. |
+| Entradas y locomoción | Teclado y mando para movimiento y dash; colisiones, relieve e interacción E para colección, equipo y fusión. |
+| Sesión | Reloj, razones de pausa, entrada del jefe, resolución de resultados y limpieza entre expediciones. |
 | Salud y daño | HP, armadura, críticos, protección temporal, curación y muerte. |
-| Linterna | Autoapuntado, cuatro pulsos, empuje final y cambios por mejoras. |
-| Enemigos | Cinco arquetipos de horda y Gólgora; navegación, ataques, estados y reutilización de instancias. |
-| Oleadas | Apariciones fuera de cámara, grupos por fase, límites de población y transición al jefe. |
-| Progresión | XP acumulada, subida de nivel y cola de elecciones. |
-| Mejoras | Catálogo de 35 cartas, ofertas sin duplicados, requisitos, límites de nivel y reintentos. |
-| Habilidades y VFX | Proyectiles, sierras, minas, torreta, explosiones, frío, curación, rayos y recogida. |
-| Almacén | Viaje por portal al espacio de exposición, conservación del jugador y suspensión temporal del combate. |
-| Fusión | Recetas de tres ingredientes, tiempos, sorteo por rareza, elección del resultado e inventario guardado. |
-| Interfaz | HUD, pausa, estadísticas, cartas y resultados. |
+| Linterna | Autoapuntado, cuatro pulsos, empuje final y modificaciones por mejoras. |
+| Enemigos | Cinco arquetipos de horda, dos élites y Gólgora con navegación, ataques y estados propios. |
+| Oleadas | Grupos por fase, apariciones fuera de cámara, límites de población y aparición alterna de élites. |
+| Encuentro del jefe | Traslado seguro, caldera cerrada, cámara compartida, refuerzos anunciados y dos fases. |
+| Progresión | XP, subidas de nivel y cola de elecciones entre 35 mejoras. |
+| Entidades | Apariciones temporales en arena, recogida manual y almacenamiento de copias. |
+| Equipo | Tres puestos; las entidades elegidas aportan poderes iniciales y reservan sus copias. |
+| Fusión | Consumo de cuatro copias, probabilidades por calidad, temporizador, apertura manual y decisión sobre el resultado. |
+| Bóveda | Tres puestos de equipo, siete de exposición, máquina de fusión y portal. |
+| Interfaz | Menús, HUD, minimapa con exploración, cartas, estadísticas, retratos y resultados. |
+| Audio | Música de arena, jefe y bóveda; sonidos de linterna, recogida, entrada, fusión y ataques del jefe. |
 
-El reloj de la sesión permite detener las reglas de combate sin detener las animaciones de interfaz que acompañan una elección. La pausa manual, la pérdida de foco y las cartas mantienen sus propias razones de pausa; resolver una de ellas no reanuda una partida que continúa detenida por otra.
+El reloj distingue pausa manual, pérdida de foco, cartas, fusión, equipo y menús generales. Resolver una de esas razones no reanuda una sesión que sigue detenida por otra. La interfaz puede animarse mientras el combate está pausado.
 
-La simulación comunica daño, muerte, dash, experiencia y resultados a la presentación. El aspecto de un efecto no determina su daño: el aviso y la resolución de un ataque comparten sus medidas y su calendario.
+La simulación resuelve daño y resultados. La presentación representa esos eventos con animación, sonido y VFX. Las reservas de actores y efectos se reutilizan entre expediciones.
 
 ---
 
@@ -218,17 +241,22 @@ La simulación comunica daño, muerte, dash, experiencia y resultados a la prese
 | Moverse | WASD o flechas | Stick izquierdo o cruceta |
 | Dash | Espacio | Botón sur: A / Cruz |
 | Pausar | Esc | Start |
-| Elegir directamente una carta | 1, 2 o 3; clic en su botón | Navegación y confirmación |
-| Cambiar la carta enfocada | A/D, izquierda/derecha o puntero | Stick o cruceta |
+| Elegir una carta | 1, 2 o 3; clic | Navegación y confirmación |
+| Cambiar carta enfocada | A/D, izquierda/derecha o puntero | Stick o cruceta |
 | Confirmar carta | Enter o clic | Botón sur: A / Cruz |
-| Reintentar la oferta con Sintonizador | R o botón de la interfaz | Botón norte |
-| Abrir la estación de fusión | E, dentro de su distancia de interacción | — |
+| Reintentar con Sintonizador | R o botón de interfaz | Botón norte |
+| Recoger una entidad cercana en arena | E | Sin asignación de interacción equivalente en el sistema actual |
+| Abrir el puesto de equipo cercano en bóveda | E | Sin asignación de interacción equivalente en el sistema actual |
+| Abrir la máquina de fusión | E | Sin asignación de interacción equivalente en el sistema actual |
+| Cerrar equipo | E o Esc; botón Cerrar | — |
+| Cerrar selector de fusión | E o su botón Cerrar | — |
+| Cancelar selección de ronda o confirmación general | Esc o botón de interfaz | Botón este: B / Círculo |
 
-El ataque de la linterna es automático. El jugador controla el desplazamiento para acercar enemigos a su alcance y abrir rutas de escape.
+La linterna ataca automáticamente. Los portales se activan por contacto; el de la bóveda abre la selección de ronda durante la preparación.
 
-Espacio se reserva al dash y no confirma cartas. Al abrir una elección se exige soltar la confirmación anterior para evitar elecciones accidentales. El botón usado al recuperar el foco de la aplicación también debe soltarse antes de confirmar.
+Espacio se reserva al dash y no confirma cartas. Las elecciones exigen soltar la confirmación anterior y la entrada que devuelve el foco para evitar acciones accidentales.
 
-El laboratorio añade controles de ensayo: Tab muestra su panel, R reinicia el laboratorio y los botones permiten generar, inspeccionar, congelar o retirar enemigos. Estos controles pertenecen a esa escena de pruebas.
+El laboratorio usa Tab para mostrar el panel y R para reiniciar. Sus botones permiten generar e inspeccionar los ocho arquetipos, congelar actores y avanzar la simulación.
 
 ---
 
@@ -303,57 +331,70 @@ Prisma voltaico se activa desde el cuarto pulso de luz y su daño derivado no in
 | 3:00–5:00 | 4 | 0,4 a 0,32 s |
 | 5:00–8:00 | 4 | 0,32 a 0,2 s |
 
-Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. Las escenas con jefe a los tres minutos recorren los primeros tramos; la de ocho minutos utiliza la escalada completa.
+Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. La ronda demo recorre los tramos anteriores a los tres minutos; la completa utiliza la escalada de ocho minutos. Desde los 90 s pueden aparecer Caballero Fantasma y Centinela de Cobre, alternándose cada 25 s cuando hay espacio y con un límite conjunto de dos élites vivos.
 
 Las mejoras de estadísticas y probabilidades se representan en las cartas y el HUD. Los efectos visuales observables se reúnen con sus GIFs en [[06 - Registro visual]].
+
+## Preparación con entidades
+
+Antes de elegir ronda se pueden ocupar tres puestos de equipo en la bóveda. Cada entidad aporta un nivel de su poder asociado. Las copias con el mismo poder acumulan niveles dentro del equipo hasta el máximo de esa mejora. Las cartas obtenidas durante la expedición conservan su progresión independiente; el nivel efectivo usa el mayor entre equipo y cartas.
+
+Los puestos pueden quedar vacíos y una colección nueva comienza sin copias. Las entidades se obtienen en arena y mediante fusión; el catálogo completo y sus poderes están en [[04 - Objetos y Coleccionables]]. Esta preparación necesita señalización más clara en el recorrido del jugador.
 
 ---
 
 # Economía y recursos
 
-## Recursos durante el combate
+## Recursos de la expedición
 
-La experiencia pertenece a la partida en curso. Los enemigos normales dejan gemas con 10, 15, 25 o 50 XP según su arquetipo. Al recogerlas se aplica el multiplicador de Chatarrero y se comprueba si alcanza para subir de nivel. Las elecciones se consumen mediante el menú de mejoras.
+La XP y las cartas pertenecen al intento actual. Las gemas de los cinco enemigos de horda conceden 10, 15, 25 o 50 XP según el arquetipo; los élites entregan 65 y 80 XP. Chatarrero multiplica la experiencia recogida. Gólgora añade 500 XP al resumen de victoria sin abrir nuevas elecciones.
 
-Los botiquines recuperan 15 HP de base. Su probabilidad inicial es del 3% en enemigos normales y del 8% en los de recompensa fuerte, como Coloso y Mortero. Hay un intervalo mínimo de seis segundos entre apariciones, un máximo de cinco botiquines en el suelo y una duración de 22 s antes de caducar. Botiquín mejor eleva curación y probabilidades según su nivel.
+El botiquín base recupera 15 HP. La probabilidad parte del 3% en enemigos normales y del 8% en los de recompensa fuerte. Hay seis segundos como mínimo entre apariciones, hasta cinco botiquines en el suelo y 22 s de duración. Botiquín mejor modifica la curación y esas probabilidades.
 
-## Inventario de fusión
+## Copias de entidades
 
-La colección mantiene cantidades de Lobito, Mago, Demonio, Shireen y Yanikua. En el montaje actual los cuatro personajes base están disponibles como ingredientes ilimitados. El proceso no descuenta copias de ese suministro; el resultado coleccionado sí aumenta la cantidad guardada.
+La colección guarda cantidades de quince entidades. Empieza vacía y recibe las copias recogidas en arena o los resultados de fusión que se coleccionan. Las recogidas se guardan al obtenerlas; no dependen de derrotar a Gólgora.
 
-Las ocho plazas de exposición muestran personajes de la colección. Un duplicado aumenta su cantidad, y los resultados sin una plaza libre permanecen en el inventario. La elección Liberar descarta únicamente el resultado de esa fusión.
+Una copia equipada queda reservada para su puesto. Las demás están disponibles como ingredientes o para liberarse desde el inventario. Cada fusión consume exactamente cuatro copias al comenzar. Liberar una unidad del inventario pide confirmación; liberar el resultado de la máquina descarta ese resultado.
 
-Las probabilidades y los tiempos de las recetas están en [[04 - Objetos y Coleccionables]]. Las mejoras de combate se restablecen al reiniciar; el inventario de la estación conserva su guardado local.
+Tres puestos muestran las entidades equipadas y otros siete exponen copias disponibles, ordenadas por rareza. La capacidad del inventario no está limitada por esos siete puestos: las copias sobrantes siguen guardadas y se consultan en los selectores paginados.
+
+Las probabilidades, tiempos y fuentes de cada entidad están en [[04 - Objetos y Coleccionables]].
 
 ---
 
 # Reglas y estados del juego
 
-## Estados de la sesión
-
-| Estado | Qué ocurre |
+| Momento | Regla |
 | --- | --- |
-| Combate | Avanzan el reloj, enemigos, oleadas, ataques y recogida. |
-| Elección de mejora | La simulación de combate está detenida; las cartas y su confirmación siguen presentándose. |
-| Pausa | Se bloquean acciones de combate y se muestra el menú. |
-| Visita al almacén | El jugador puede recorrer la bóveda; el combate y sus peligros están suspendidos. |
-| Entrada de Gólgora | Se retira la horda y se prepara la aparición del jefe en una posición segura. |
-| Victoria | El jefe ha muerto y el jugador sigue vivo; se presenta el cierre y el resumen. |
-| Derrota | El jugador ha perdido toda su vida; se detienen la sesión y los controles. |
+| Menú inicial | Continuar, Nueva colección, Configuración y Salir. El mundo se carga después de elegir colección. |
+| Preparación en bóveda | Movimiento, revisión de inventario, equipo de hasta tres entidades y fusión. El reloj de expedición no avanza. |
+| Selección de entidades | Al acercarse a cada puesto y pulsar E se pausa la interacción del mundo y se escoge una copia disponible. Puede dejarse vacío. |
+| Selección de ronda | Se elige demo o completa antes de entrar. |
+| Combate | Avanzan reloj, oleadas, ataques, recogida y temporizadores activos. |
+| Cartas o pausa | El combate se detiene; la interfaz mantiene sus animaciones y confirmaciones. |
+| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver. |
+| Entrada de Gólgora | Se retira la horda, se limpian amenazas y se traslada al jugador a la caldera con protección. |
+| Transición del jefe | Al llegar al 50% de vida, Gólgora entra en su segunda fase con una presentación protegida. |
+| Victoria o derrota | Se muestra el resultado y se puede volver a la bóveda. |
 
-## Entrada y cierre del jefe
+## Encuentro con Gólgora
 
-La entrada ocurre a los 180 o 480 s, según la escena. La horda ordinaria se retira sin recompensas y se limpian amenazas pendientes. Gólgora necesita espacio libre para activar su colisión: durante su entrada no es un objetivo válido de la linterna.
+La demo activa la entrada a los 180 s y usa 3600 HP; la completa, a los 480 s y con 9000 HP. El tiempo inicia el encuentro. No concede una victoria por sí mismo.
 
-Mientras está activo recibe apoyo en grupos de hasta cuatro enemigos cada cuatro segundos, con límite de 24 secuaces. La composición sigue el orden Residual, Residual, Mortero y Polilla.
+La caldera central tiene 22 m de radio y cierra su perímetro. La entrada reposiciona al jugador sin daño y la cámara encuadra a ambos combatientes. Durante la presentación inicial el jefe no es un objetivo válido.
 
-La victoria exige derrotar al jefe. Si el jugador muere en el mismo paso en que cae Gólgora, el resultado es derrota. La presentación de victoria incluye la explosión final, la absorción de una gema y 500 XP de cierre para el resumen; esa cifra no abre nuevas elecciones de cartas.
+Los refuerzos se solicitan cada cuatro segundos, en grupos de hasta cuatro y con el orden Residual, Residual, Mortero y Polilla. En la caldera el límite efectivo es de ocho secuaces, incluyendo las apariciones pendientes. Cada entrada se anuncia durante 0,9 s. El cerco de magma y la transición de fase suspenden los refuerzos y retiran los que quedaban activos.
 
-Reiniciar limpia los enemigos, peligros, objetos y efectos de la sesión, restablece al jugador y vuelve al inicio del combate. Las preferencias visuales de la sesión se conservan y la colección guardada pertenece a la estación de fusión.
+Los ataques, inmunidades y tiempos de las dos fases están en [[03 - Enemigos y NPC]].
+
+## Cierre y nueva preparación
+
+La muerte del jugador tiene prioridad si coincide con la del jefe en el mismo paso. La victoria incluye la presentación final, absorción de gema y 500 XP para el resumen, sin nuevas cartas.
+
+Volver a la bóveda limpia actores, peligros y efectos, restablece la configuración de combate y vuelve a aplicar los poderes del equipo guardado. La colección y la fusión siguen conservadas. Abandonar una expedición requiere confirmación; Nueva colección también confirma antes de borrar la colección existente.
 
 ---
-
-# 03 - Historia y Mundo
 
 # Premisa y trama
 
@@ -369,20 +410,21 @@ La premisa acompaña la experiencia mediante el personaje, el entorno, la colecc
 
 # Mundo
 
-El Vertedero de Ecos es un espacio atemporal donde se mezclan restos de épocas y realidades distintas. La chatarra, las ruinas y la energía residual le dan unidad a esa mezcla: todo aparece desgastado, desplazado de su origen y sometido a una misma amenaza.
+El Vertedero de Ecos es un espacio atemporal donde se mezclan restos de épocas y realidades distintas. La chatarra, las ruinas y la energía residual dan continuidad a esa mezcla. La bóveda funciona como refugio y lugar de preparación entre expediciones.
 
-## Lugares presentes
-
-| Lugar | Forma en la versión jugable | Relación con la experiencia |
+| Lugar | Presencia actual | Función |
 | --- | --- | --- |
-| Arena del Vertedero | Espacio de 200 × 200 m con relieve, obstáculos y lava. | Movimiento, horda, recogida de experiencia y encuentro con Gólgora. |
-| Acceso subterráneo | Escalera, muros, rellano y portal. | Une el espacio de combate con la bóveda. |
-| Almacén | Sala 3D con pasillo, ocho espacios de exposición y portal de regreso. | Muestra los personajes de la colección durante una visita segura. |
-| Estación de fusión | Máquina con cámara interior y persiana, situada en la arena. | Combina tres ingredientes y presenta un personaje como resultado. |
+| Vertedero | Arena de 200 × 200 m con relieve, obstáculos y restos industriales. | Horda, XP y recogida de entidades. |
+| Caldera central | Área circular de 22 m de radio con cierre durante el encuentro. | Combate contra Gólgora y sus refuerzos. |
+| Acceso norte | Descenso, muros, rellano y portal. | Conexión física con la bóveda. |
+| Bóveda | Sala modular con tres puestos de equipo y siete de exposición. | Preparar poderes y observar la colección. |
+| Máquina de fusión | Cámara con persiana dentro de la bóveda. | Consumir cuatro copias y presentar una nueva entidad. |
 
-Los Ecos se expresan como gemas de experiencia que dejan los enemigos. La colección reúne cinco personajes de procedencias visuales diferentes: Lobito, Mago, Demonio, Shireen y Yanikua. La fusión y la exposición los conectan con la actividad del Coleccionista dentro del mundo.
+Las gemas de XP ayudan a crecer durante un intento. Las entidades pasan a una colección que continúa entre expediciones. El catálogo tiene quince entradas con fuentes de obtención distintas, descritas en [[04 - Objetos y Coleccionables]].
 
-La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el adversario presente en el combate final. La distinción mantiene separadas la causa del encierro y la amenaza que el jugador enfrenta en la arena.
+Las tres zonas de lava fija del mapa están desactivadas en este montaje. El magma se mantiene como parte de Gólgora y sus ataques.
+
+La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el guardián presente en el combate final. La narrativa de origen se conserva en [[01 - Premisa y Trama]].
 
 ---
 
@@ -390,55 +432,59 @@ La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el advers
 
 ## El Coleccionista
 
-Es el personaje que controla el jugador. Su silueta reúne capucha clara, máscara con pico, ropa oscura y un farol. La luz se orienta de forma independiente del desplazamiento y sirve como arma principal. El juego utiliza sprites de reposo, marcha, dash y muerte en cuatro direcciones.
+Es el personaje que controla el jugador. Lleva capucha clara, máscara con pico, ropa oscura y farol. Su luz apunta de forma independiente del movimiento. Tiene sprites de reposo, marcha, dash y muerte en cuatro direcciones.
 
 ## Gólgora: el MataColeccionista
 
-Es el jefe del combate. Su presencia combina un cuerpo 3D, un arma pesada y zonas de magma luminoso. La marcha y los ataques del modelo acompañan los avisos de suelo y el bombardeo que definen su encuentro.
+Es el jefe de la expedición. Su modelo 3D combina cuerpo pesado, arma y magma. Combate dentro de la caldera, alterna seis patrones y cambia sus tiempos y velocidad durante la segunda fase.
 
-## Personajes de la colección de fusión
+## La horda y los élites
 
-| Personaje | Rareza en el sistema actual | Aparición en el juego |
-| --- | --- | --- |
-| Lobito | Común | Ingrediente base y personaje expuesto en la bóveda. |
-| Mago | Raro | Ingrediente base y personaje expuesto en la bóveda. |
-| Demonio | Épico | Ingrediente base y personaje expuesto en la bóveda. |
-| Shireen | Épico | Ingrediente base y personaje expuesto en la bóveda. |
-| Yanikua | Legendario | Resultado de la receta especial de fusión. |
+Residual, Interceptor y Coloso usan los sprites de Esqueleto, galgo de chatarra y Wendigo. Mortero Campana y Polilla Reactor completan la horda. Caballero Fantasma y Centinela de Cobre añaden resistencias y ataques propios como élites.
 
-Los archivos Demonio y Demonio2 corresponden a dos vistas del mismo personaje. El catálogo de la estación los registra como una sola entrada.
+Los valores están en [[03 - Enemigos y NPC]] y sus hojas y GIFs en [[02 - Personajes y Animación]].
 
-Las reglas de obtención, duplicados y exposición se describen en [[04 - Objetos y Coleccionables]]. Las hojas de sprites de combate están en [[02 - Personajes y Animación]].
+## Entidades de la colección
+
+La colección reúne Lobito, Mago, Demonio, Shireen, Yanikua, Basket, Hada, Lisa, Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena, Soldier y Joel. Son quince entradas del inventario; Demonio y Demonio2 siguen siendo vistas de una misma entrada.
+
+Cada entidad puede aportar un poder al ocupar uno de los tres puestos de equipo. Su rareza y fuente de obtención pertenecen a las reglas del catálogo, recogidas en [[04 - Objetos y Coleccionables]]. Esta edición no añade historias de origen para personajes que todavía no las tienen documentadas.
 
 ---
 
 # Diálogos y narrativa
 
-La información que acompaña al jugador se presenta mediante los nombres, los entornos y los mensajes de interfaz. Los enemigos se reconocen por sus siluetas y sus patrones; el encuentro con Gólgora se anuncia mediante su presentación y su barra de vida.
+El juego comunica su situación mediante nombres, entorno, presentaciones y mensajes de interfaz. El menú ofrece Continuar o Nueva colección y la bóveda invita a revisar la colección antes de salir. La selección de ronda muestra Ronda demo y Ronda completa.
 
-Las cartas explican el beneficio de cada elección y muestran sus valores. La estación informa de ingredientes, probabilidades, tiempo restante y resultado. Los mensajes «VICTORIA» y «DERROTA» cierran la expedición junto a sus estadísticas.
+La preparación también incluye elegir entidades equipadas. Al acercarse a un puesto aparece la interacción local para equiparlo, pero falta una indicación general que explique ese paso y lleve al jugador hasta los tres puestos. Esa necesidad sigue pendiente; no se presenta aquí como una guía ya integrada.
 
-Estas señales forman la comunicación visible de la versión jugable. El mundo y la premisa se recogen en [[01 - Premisa y Trama]] y [[02 - Mundo]].
+La entrada a la arena tiene una presentación del Coleccionista y del objetivo. Las apariciones anuncian «¡NUEVOS COLECCIONABLES!». Los selectores muestran nombres, rarezas y copias, y la máquina informa de ingredientes, probabilidades, tiempo restante y resultado.
+
+Gólgora se anuncia con título y rugido. Su barra y los avisos del suelo acompañan los cambios del encuentro. «VICTORIA» o «DERROTA» cierran el intento y «VOLVER A LA BÓVEDA» conduce a la siguiente preparación.
+
+La premisa del pacto se conserva en [[01 - Premisa y Trama]]. Estos mensajes describen la comunicación presente en el juego y sus necesidades de claridad.
 
 ---
 
-# 04 - Contenido
-
 # Estructura del contenido
 
-| Contenido jugable | Cantidad y funcionamiento actual |
+| Contenido | Cantidad y uso actual |
 | --- | --- |
 | Protagonista | El Coleccionista. |
-| Escenario | Vertedero de 200 × 200 m, con relieve, obstáculos, lava y acceso subterráneo. |
-| Almacén | Bóveda accesible por portal, con ocho espacios de exposición. |
-| Enemigos de horda | Cinco: Residual, Interceptor, Coloso, Mortero y Polilla. |
-| Jefe | Gólgora, representado por el MataColeccionista. |
-| Mejoras | 35 cartas en cuatro rarezas, con niveles, requisitos y efectos activos. |
+| Escenario de expedición | Vertedero de 200 × 200 m con relieve, obstáculos y acceso norte. |
+| Caldera | Encuentro cerrado de 22 m de radio para Gólgora. |
+| Bóveda | Tres puestos de equipo, siete de exposición, máquina de fusión y portal. |
+| Horda | Residual, Interceptor, Coloso, Mortero y Polilla. |
+| Élites | Caballero Fantasma y Centinela de Cobre. |
+| Jefe | Gólgora / MataColeccionista, con seis ataques y dos fases. |
+| Mejoras | 35 cartas, cuatro rarezas, niveles y requisitos. |
 | Objetos de combate | Gemas de experiencia y botiquines. |
-| Colección de fusión | Cinco personajes; cantidades, espacios de exposición y proceso guardados. |
-| Escenas de prueba | Laboratorio de enemigos, sandbox de locomoción y sandbox de combate. |
+| Entidades | Quince: nueve se obtienen en mapa y seis como resultados de fusión. |
+| Equipo | Hasta tres copias con poderes iniciales; puede quedar incompleto. |
+| Rondas | Demo y completa, seleccionables desde la bóveda. |
+| Pruebas | Laboratorio de ocho arquetipos y sandboxes de movimiento y combate. |
 
-El contenido principal se monta en CombatArena. CombatArena_3Min y CombatArena_8Min conservan el mismo mundo y utilizan ajustes independientes para el tiempo de entrada del jefe. El laboratorio permite observar enemigos de forma aislada y ajustar situaciones sin activar una partida de supervivencia.
+La compilación principal habilita MainMenu y CombatArena. Las escenas CombatArena_3Min y CombatArena_8Min permanecen en el proyecto como variantes de desarrollo y están deshabilitadas en la lista principal de compilación. La selección del jugador utiliza los assets de oleadas dentro de CombatArena.
 
 ---
 
@@ -446,100 +492,199 @@ El contenido principal se monta en CombatArena. CombatArena_3Min y CombatArena_8
 
 ## El Vertedero
 
-La arena principal mide 200 × 200 m. El suelo tiene relieve y los grupos de chatarra, rocas, árboles secos y otros obstáculos forman corredores y zonas de paso. Los límites físicos mantienen al jugador dentro del escenario. El centro conserva espacio para la entrada del jefe.
+La arena mide 200 × 200 m. El suelo tiene relieve y los grupos de chatarra, rocas, árboles y restos industriales forman rutas y obstáculos. Los límites físicos contienen al jugador.
 
-La lava es una superficie peligrosa con material animado y luz propia. La iluminación del escenario es tenue y violeta; la linterna, los avisos y las habilidades aportan puntos de contraste.
+El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra el perímetro, se traslada al jugador con protección y la cámara adopta un encuadre que contiene a ambos combatientes. Los refuerzos se anuncian junto al borde interior.
 
-![Arena actual](Media/Avance_2026-10-27/Interfaz/Arena_HUD.png)
+Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
-## Acceso y bóveda
+## Acceso norte y bóveda
 
-En el sector sureste, una escalera desciende hacia el portal. El acceso profundo ocupa unos 23 m, baja 8 m y permite volver a subir. El portal conecta con el almacén, situado en otra zona de la misma escena. El viaje conserva al jugador y suspende la simulación de combate mientras permanece dentro.
+El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
 
-La bóveda contiene ocho espacios de exposición a ambos lados de un pasillo y un portal de retorno. La estación de fusión se encuentra fuera, en la arena, cerca de la entrada al acceso.
+La sala modular tiene diez puestos: los tres primeros corresponden al equipo y otros siete a la exposición de copias disponibles. La máquina de fusión está dentro. Su cámara utiliza una inclinación de 32° y campo de visión de 65°, con límites de seguimiento para mantener la sala encuadrada.
 
-![Almacén dentro de Unity](Media/Avance_2026-10-27/Entorno/Almacen.png)
+![Bóveda actual](Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
-## Escenas disponibles
+Al preparar una expedición, el portal abre la selección de ronda. Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
-| Escena | Uso | Entrada del jefe |
-| --- | --- | ---: |
-| CombatArena | Arena original del montaje actual | 3:00 |
-| CombatArena_3Min | Variante de entrada rápida | 3:00 |
-| CombatArena_8Min | Variante de supervivencia larga | 8:00 |
-| EnemyLaboratory | Generación e inspección manual de enemigos | Manual |
-| LocomotionSandbox / CombatSandbox | Comprobaciones aisladas de movimiento y combate | Sin el flujo completo de supervivencia |
+## Escenas y rondas
 
-El tiempo indica la aparición del jefe, no la duración total de la sesión. Las cartas, la pausa y la visita al almacén detienen el reloj de combate.
+| Elemento | Uso | Entrada del jefe |
+| --- | --- | --- |
+| MainMenu | Menú inicial independiente del mundo de combate. | No aplica |
+| CombatArena · Ronda demo | Mundo principal con ajustes rápidos seleccionados en la bóveda. | 3:00; 3600 HP |
+| CombatArena · Ronda completa | Mismo mundo con escalada de ocho minutos. | 8:00; 9000 HP |
+| CombatArena_3Min / CombatArena_8Min | Variantes guardadas para desarrollo; fuera de la lista principal de compilación. | Según su asset |
+| EnemyLaboratory | Generación e inspección manual de ocho arquetipos. | Manual |
+| LocomotionSandbox / CombatSandbox | Comprobaciones aisladas. | Sin flujo completo |
+
+El tiempo indica cuándo empieza la entrada del jefe. Las cartas, pausas y visitas a la bóveda detienen el reloj de combate.
 
 ---
 
 # Enemigos y NPC
 
-La horda reúne cinco arquetipos y el cierre de partida utiliza un jefe. Cada uno se diferencia por su velocidad, su forma de acercarse y el espacio que obliga a defender. Los valores siguientes corresponden a los ajustes actuales de la arena.
+El combate tiene cinco arquetipos de horda, dos élites y Gólgora. Las cifras de esta página corresponden a sus assets actuales. Las hojas de personaje son copias de los atlas usados por el juego; sus GIFs de acciones respetan los tiempos del JSON exportado y muestran las cuatro vistas cuando existen.
 
-| Enemigo | Vida | Velocidad | Daño principal | XP al morir | Representación actual |
-| --- | ---: | ---: | --- | ---: | --- |
-| Residual | 15 HP | 3,5 m/s ±15% | Contacto: 10 cada 0,5 s | 10 | Geometría 3D y animación de presentación. |
-| Interceptor | 9 HP | 6,2 m/s ±10% | Contacto: 8 cada 0,5 s | 10 | Geometría 3D de perfil bajo y estela. |
-| Coloso | 80 HP | 1,8 m/s | Contacto o carga: 25 | 50 | Geometría 3D pesada con preparación y embestida. |
-| Mortero | 25 HP | 2,2 m/s ±10% | Contacto: 5; ácido: 5 cada 0,5 s | 25 | Sprite animado Campana, de cuatro direcciones. |
-| Polilla | 12 HP | 4,8 m/s ±10% | Explosión: 35 | 15 | Sprite animado Reactor, de cuatro direcciones. |
-| Gólgora / MataColeccionista | 1500 HP | 1,6 m/s | Contacto 30; pisotón 40; impacto de bombardeo 25 | 500 de cierre en el resumen | Modelo 3D animado y VFX de magma. |
+| Enemigo | Vida | Velocidad base | Daño principal | XP |
+| --- | ---: | ---: | --- | ---: |
+| Residual / Esqueleto | 15 HP | 3,5 m/s ±15% | Contacto: 10; recarga de contacto 0,5 s. | 10 |
+| Interceptor | 9 HP | 6,2 m/s ±10% | Contacto: 8; recarga de contacto 0,5 s. | 10 |
+| Coloso / Wendigo | 80 HP | 1,8 m/s | Contacto o carga: 25. | 50 |
+| Mortero Campana | 25 HP | 2,2 m/s ±10% | Contacto: 5; ácido: 5 cada 0,5 s. | 25 |
+| Polilla Reactor | 12 HP | 4,8 m/s ±10% | Explosión: 35. | 15 |
+| Caballero Fantasma | 110 HP | 2,8 m/s | Barrido sobrenatural: 22. | 65 |
+| Centinela de Cobre | 160 HP | 1,7 m/s | Abanico de tres proyectiles físicos: 16 por impacto. | 80 |
+| Gólgora / MataColeccionista | 3600 HP demo; 9000 completa | 1,6 m/s en primera fase | Contacto: 30; seis patrones descritos más abajo. | 500 de cierre |
 
-## Residual
+## Residual: Esqueleto
 
-Persigue al jugador, se separa de los demás enemigos y busca paso alrededor de obstáculos. Su función es formar la masa de la horda y dejar gemas accesibles. Una ráfaga base de cuatro pulsos suma sus 15 HP cuando todos los impactos alcanzan al objetivo. El cuarto pulso puede desplazarlo.
+Forma la masa básica de la horda. Persigue al jugador, se separa de otros cuerpos y busca paso entre obstáculos. Los cuatro pulsos base suman sus 15 HP cuando todos aciertan. Acepta empuje y su ataque de contacto se acompaña de la animación de golpe.
 
-![Residual en la arena](Media/Avance_2026-10-27/Enemigos/Residual.gif)
+Su atlas tiene 144 fotogramas de 96 × 96: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
 
-## Interceptor
+![Spritesheet activo del Residual / Esqueleto](Media/Avance_2026-11-04/Spritesheets/Esqueleto.png)
 
-Anticipa hasta 0,4 s del desplazamiento del jugador, limitado a una velocidad de referencia de 8 m/s. A corta distancia pasa a perseguir su posición actual. Su frenado tras el empuje es menor que el del Residual, por lo que puede deslizarse más lejos.
+[Fuente editable](Media/Avance_2026-11-04/Spritesheets/Esqueleto.aseprite).
 
-![Interceptor en la arena](Media/Avance_2026-10-27/Enemigos/Interceptor.gif)
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Esqueleto: Reposo](Media/Avance_2026-11-04/Animaciones/Esqueleto/Idle.gif) |
+| Marcha | ![Esqueleto: Marcha](Media/Avance_2026-11-04/Animaciones/Esqueleto/Walk.gif) |
+| Ataque | ![Esqueleto: Ataque](Media/Avance_2026-11-04/Animaciones/Esqueleto/Attack.gif) |
+| Impacto recibido | ![Esqueleto: Impacto recibido](Media/Avance_2026-11-04/Animaciones/Esqueleto/Hit.gif) |
+| Muerte | ![Esqueleto: Muerte](Media/Avance_2026-11-04/Animaciones/Esqueleto/Death.gif) |
 
-## Coloso
+## Interceptor: galgo de chatarra
 
-Es un cuerpo sólido y pesado, inmune al empuje. Cuando tiene la carga disponible y el jugador está a 8 m o menos, se detiene, fija la dirección y muestra un corredor de aviso durante 0,8 s. Embiste a 12 m/s durante 0,35 s, hasta 4,2 m si el camino está libre. Las paredes detienen el recorrido y la dirección no sigue corrigiéndose tras el aviso.
+Anticipa hasta 0,4 s del movimiento del jugador, con una velocidad de referencia limitada a 8 m/s. A corta distancia pasa a perseguir la posición actual. Su menor frenado tras el empuje le permite deslizarse más lejos que el Residual.
 
-Después se recupera durante 0,6 s. La preparación y la recuperación no infligen contacto; el dash permite atravesar su cuerpo durante la ventana de invulnerabilidad. El intervalo entre cargas parte de un sorteo de 5–7 s.
+El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección. El sprite de galgo sustituye su representación geométrica anterior.
 
-![Preparación, carga y recuperación del Coloso](Media/Avance_2026-10-27/Enemigos/Coloso.gif)
+![Spritesheet activo del Interceptor](Media/Avance_2026-11-04/Spritesheets/Interceptor.png)
+
+[Fuente editable](Media/Avance_2026-11-04/Spritesheets/Interceptor.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Interceptor: Reposo](Media/Avance_2026-11-04/Animaciones/Interceptor/Idle.gif) |
+| Marcha | ![Interceptor: Marcha](Media/Avance_2026-11-04/Animaciones/Interceptor/Walk.gif) |
+| Ataque | ![Interceptor: Ataque](Media/Avance_2026-11-04/Animaciones/Interceptor/Attack.gif) |
+| Impacto recibido | ![Interceptor: Impacto recibido](Media/Avance_2026-11-04/Animaciones/Interceptor/Hit.gif) |
+| Muerte | ![Interceptor: Muerte](Media/Avance_2026-11-04/Animaciones/Interceptor/Death.gif) |
+
+## Coloso: Wendigo
+
+Es pesado, sólido e inmune al empuje. Cuando dispone de carga y el jugador está a 8 m o menos, fija la dirección y muestra un corredor durante 0,8 s. Embiste a 12 m/s durante 0,35 s, unos 4,2 m libres, y se recupera durante 0,6 s. Las paredes detienen el recorrido; la dirección queda comprometida tras el aviso. El intervalo entre cargas se sortea entre cinco y siete segundos.
+
+Preparación y recuperación no infligen contacto. El dash permite atravesar su cuerpo durante la protección.
+
+El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
+
+![Spritesheet activo del Coloso / Wendigo](Media/Avance_2026-11-04/Spritesheets/Wendigo.png)
+
+[Fuente editable](Media/Avance_2026-11-04/Spritesheets/Wendigo.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Wendigo: Reposo](Media/Avance_2026-11-04/Animaciones/Wendigo/Idle.gif) |
+| Marcha | ![Wendigo: Marcha](Media/Avance_2026-11-04/Animaciones/Wendigo/Walk.gif) |
+| Preparación de carga | ![Wendigo: Preparación de carga](Media/Avance_2026-11-04/Animaciones/Wendigo/Windup.gif) |
+| Embestida | ![Wendigo: Embestida](Media/Avance_2026-11-04/Animaciones/Wendigo/Charge.gif) |
+| Recuperación | ![Wendigo: Recuperación](Media/Avance_2026-11-04/Animaciones/Wendigo/Recovery.gif) |
+| Impacto recibido | ![Wendigo: Impacto recibido](Media/Avance_2026-11-04/Animaciones/Wendigo/Hit.gif) |
+| Muerte | ![Wendigo: Muerte](Media/Avance_2026-11-04/Animaciones/Wendigo/Death.gif) |
 
 ## Mortero: Campana
 
-Mantiene una banda de distancia entre 5,5 y 6,5 m y dispara hasta 12 m. El intervalo es de cinco segundos, con 0,45 s de aviso y 0,85 s de vuelo. El proyectil deja un charco de radio 1,2 m durante tres segundos; el ácido causa 5 de daño cada 0,5 s. La arena limita a seis los Morteros simultáneos.
+Mantiene una banda de distancia entre 5,5 y 6,5 m y ataca hasta 12 m. Tiene un intervalo de cinco segundos, aviso de 0,45 s y vuelo de 0,85 s. El proyectil deja un charco de radio 1,2 m durante tres segundos, con 5 de daño cada 0,5 s. El director limita los Morteros simultáneos a seis.
 
-Su hoja activa contiene 112 fotogramas de 64 × 64: flotación, carga, disparo, recuperación y muerte en cuatro direcciones.
+Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección.
 
-![Hoja de sprites activa del Mortero](Media/Avance_2026-10-27/Spritesheets/Mortero.png)
+![Spritesheet activo del Mortero Campana](Media/Avance_2026-11-04/Spritesheets/Mortero.png)
 
-[Fuente editable del Mortero](Media/Avance_2026-10-27/Spritesheets/Mortero.aseprite).
+[Fuente editable](Media/Avance_2026-11-04/Spritesheets/Mortero.aseprite).
 
-![Mortero, aviso y disparo dentro de Unity](Media/Avance_2026-10-27/Enemigos/Mortero.gif)
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Flotación | ![Mortero: Flotación](Media/Avance_2026-11-04/Animaciones/Mortero/Float.gif) |
+| Carga del emisor | ![Mortero: Carga del emisor](Media/Avance_2026-11-04/Animaciones/Mortero/Charge.gif) |
+| Disparo | ![Mortero: Disparo](Media/Avance_2026-11-04/Animaciones/Mortero/Fire.gif) |
+| Recuperación | ![Mortero: Recuperación](Media/Avance_2026-11-04/Animaciones/Mortero/Recover.gif) |
+| Muerte | ![Mortero: Muerte](Media/Avance_2026-11-04/Animaciones/Mortero/Death.gif) |
 
 ## Polilla: Reactor
 
-Se acerca hasta cebar su explosión. La mecha por proximidad dura 0,9 s; si el cebado procede de daño letal dura 1,2 s. El radio de explosión es de 3 m y afecta al jugador y a otros enemigos. Durante la mecha sigue aceptando empuje, lo que permite desplazarla hacia la horda.
+Se aproxima hasta cebar la explosión. La mecha por proximidad dura 0,9 s; si procede de daño letal, 1,2 s. Explota en un radio de 3 m y afecta al jugador y a otros enemigos. Durante la mecha acepta empuje, por lo que puede desplazarse hacia la horda.
 
-La hoja activa contiene 62 fotogramas de 64 × 64: vuelo y cebado en cuatro direcciones, más una secuencia de estallido de seis fotogramas.
+Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
-![Hoja de sprites activa de la Polilla](Media/Avance_2026-10-27/Spritesheets/PolillaReactor.png)
+![Spritesheet activo de la Polilla Reactor](Media/Avance_2026-11-04/Spritesheets/PolillaReactor.png)
 
-[Fuente editable de la Polilla](Media/Avance_2026-10-27/Spritesheets/PolillaReactor.aseprite).
+[Fuente editable](Media/Avance_2026-11-04/Spritesheets/PolillaReactor.aseprite).
 
-![Vuelo, cebado y detonación de la Polilla dentro de Unity](Media/Avance_2026-10-27/Enemigos/Polilla.gif)
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Vuelo | ![PolillaReactor: Vuelo](Media/Avance_2026-11-04/Animaciones/PolillaReactor/Fly.gif) |
+| Cebado | ![PolillaReactor: Cebado](Media/Avance_2026-11-04/Animaciones/PolillaReactor/Prime.gif) |
+| Estallido compartido | ![PolillaReactor: Estallido compartido](Media/Avance_2026-11-04/Animaciones/PolillaReactor/Burst.gif) |
+
+## Caballero Fantasma
+
+Es uno de los dos élites. Recibe el 25% del daño físico y el daño sobrenatural completo. Su barrido tiene 3,6 m de alcance, arco de 120°, daño sobrenatural de 22, preparación de 0,8 s, recuperación de 0,8 s y recarga de 3,5 s. No causa daño por contacto normal.
+
+Su cuerpo actual usa geometría de presentación y el barrido emplea un efecto animado. No tiene un spritesheet de personaje equivalente a los cinco de horda.
+
+![Caballero Fantasma: captura controlada de Unity](Media/Avance_2026-11-04/Enemigos/CaballeroFantasma.gif)
+
+## Centinela de Cobre
+
+Recibe el 25% del daño sobrenatural salvo durante la recuperación, cuando se abre su ventana de vulnerabilidad y recibe el daño completo. El daño físico se mantiene completo. Prepara un abanico de tres proyectiles durante un segundo, se recupera dos y recarga en 3,5 s. El alcance es de 11 m y cada impacto causa 16 de daño físico. Es pesado, inmune al empuje y no causa contacto normal.
+
+La presentación anuncia los rayos del abanico y muestra «Vulnerable» en su recuperación. Los misiles tienen animación, iluminación y un límite de luces simultáneas. Su cuerpo actual no tiene spritesheet de personaje.
+
+![Centinela de Cobre: aviso, disparo y recuperación en Unity](Media/Avance_2026-11-04/Enemigos/CentinelaCobre.gif)
+
+Los élites empiezan a aparecer desde los 90 s y se alternan cada 25 s cuando hay capacidad, con un límite conjunto de dos vivos. Sus efectos de barrido y proyectiles están en [[06 - Registro visual]].
 
 ## Gólgora: MataColeccionista
 
-Es inmune al empuje y alterna ataques sin solaparlos. A corta distancia prepara un pisotón de radio 5 m durante 1,2 s. El pisotón causa 40 de daño al jugador y puede alcanzar a los secuaces. Su bombardeo prepara el lanzamiento durante 0,4 s, fija tres posiciones y envía proyectiles con 0,65 s de vuelo. El impacto causa 25 de daño en 2,5 m de radio y deja zonas de cuatro segundos que causan 5 cada 0,5 s. Tras el ataque se recupera durante 0,8 s. Los enfriamientos del pisotón y del bombardeo son de seis y ocho segundos desde sus respectivas preparaciones. Al bajar de la mitad de vida cambia la presentación del núcleo, conservando las estadísticas del encuentro.
+La ronda demo usa 3600 HP y la completa 9000 HP. La entrada ocurre a los tres u ocho minutos y retira la horda ordinaria sin recompensas. El jugador se traslada con protección a una caldera de 22 m de radio cuyo perímetro se cierra. Una presentación con título y rugido precede al combate; la cámara encuadra al jugador y al jefe.
 
-El modelo reproduce surgimiento, marcha pesada, martillazo o barrido y lanzamiento de proyectiles. Su muerte desencadena la presentación final y la resolución de victoria cuando el jugador sigue vivo.
+Gólgora usa un modelo 3D animado. Sus efectos de magma tienen recursos propios, pero no existe un spritesheet de personaje del modelo. Los siguientes GIFs proceden de Unity con los patrones invocados de forma aislada, jugador protegido y oleadas detenidas.
 
-![Animación y ataque de Gólgora dentro de Unity](Media/Avance_2026-10-27/Enemigos/Golgora.gif)
+| Patrón | Regla de primera fase, salvo donde se indica |
+| --- | --- |
+| Martillazo | Círculo de 3 m, situado 3 m por delante; 40 de daño, preparación de 1,2 s, recuperación de 1 s y recarga de 6 s. Puede dañar y empujar secuaces. |
+| Barrido | Radio de 6 m y arco de 180°; 30 de daño, preparación y recuperación de 1 s, recarga de 7 s. |
+| Bombardeo | Tres posiciones previstas; 25 de daño en radio 2,5 m, preparación de 0,7 s, vuelo base de 0,8 s y recarga de 8 s. Deja magma durante 4 s. |
+| Cerco de magma | Salto al centro, impacto de llegada y ondas expansivas con un hueco de 60°. Las ondas avanzan a 6 m/s y causan 30 de daño. Una onda en primera fase y tres en segunda, separadas 1,3 s y con el hueco rotado 45°. |
+| Fisura de magma | Cinco puntos a lo largo de una línea hacia el jugador, hasta 22 m; 24 de daño en radio 1,4 m. Preparación de 1,1 s, recuperación de 0,8 s, recarga de 10 s y zonas de 3 s. |
+| Lluvia de escoria | Segunda fase: cinco impactos alrededor de la posición prevista, 26 de daño en radio 1,8 m. Preparación base de 1,35 s, vuelo base de 0,9 s, recuperación de 1 s y recarga de 14 s antes de los modificadores de fase. Zonas de 3,5 s. |
 
-Las hojas de sprites corresponden al Mortero y a la Polilla. Los otros tres enemigos de horda usan la geometría que se ve en los GIFs; Gólgora utiliza un modelo animado. Todas las secuencias de esta página proceden de la arena ejecutándose en Unity, con cámara de detalle y jugador protegido para observar los patrones.
+Las zonas de magma de estos proyectiles causan 5 de daño cada 0,5 s. El cerco empieza a estar disponible a los doce segundos de combate del jefe y después se programa con una recarga base de 18 s al completar la secuencia.
+
+| Ataque en Unity | Registro |
+| --- | --- |
+| Martillazo | ![Gólgora: martillazo](Media/Avance_2026-11-04/Enemigos/Golgora_Martillo.gif) |
+| Barrido | ![Gólgora: barrido](Media/Avance_2026-11-04/Enemigos/Golgora_Barrido.gif) |
+| Bombardeo | ![Gólgora: bombardeo](Media/Avance_2026-11-04/Enemigos/Golgora_Bombardeo.gif) |
+| Cerco y salto central | ![Gólgora: salto y cerco de magma](Media/Avance_2026-11-04/Enemigos/Golgora_Cerco.gif) |
+| Fisura | ![Gólgora: fisura de magma](Media/Avance_2026-11-04/Enemigos/Golgora_Fisura.gif) |
+| Lluvia de segunda fase | ![Gólgora: lluvia de escoria en segunda fase](Media/Avance_2026-11-04/Enemigos/Golgora_Lluvia.gif) |
+
+### Segunda fase y resistencia al control
+
+Al llegar al 50% de vida se inicia una transición protegida con rugido. La velocidad pasa a ×1,3; las preparaciones de los ataques que usan ese modificador, a ×0,85; las recuperaciones y recargas, a ×0,75. El cerco emite tres ondas y se incorpora la lluvia de escoria.
+
+Gólgora es inmune al empuje. La ralentización tiene un máximo del 25%. Congelaciones y aturdimientos se reducen al 35% de su duración, con un máximo de 0,6 s y una ventana de inmunidad posterior de 1,5 s. Durante introducción, transición y salto no admite el control normal y no recibe daño. El estado activo del cerco aplica su reducción de daño configurada del 35%.
+
+### Refuerzos y cierre
+
+El director solicita grupos de hasta cuatro cada cuatro segundos. La caldera limita el conjunto a ocho secuaces y apariciones pendientes, con 0,9 s de aviso. La composición rota entre Residual, Residual, Mortero y Polilla. Cerco y transición de fase suspenden esos refuerzos y retiran los presentes.
+
+La muerte de Gólgora cierra el encuentro si el jugador vive. La presentación final incluye la absorción de una gema y 500 XP de resumen, sin nuevas cartas. Si el jugador muere en el mismo paso, prevalece la derrota.
 
 ---
 
@@ -547,346 +692,452 @@ Las hojas de sprites corresponden al Mortero y a la Polilla. Los otros tres enem
 
 ## Gemas y botiquines
 
-Las gemas permanecen en la arena hasta su recogida y conceden la XP del enemigo que las dejó. Los botiquines recuperan 15 HP de base y caducan tras 22 s. Ambos responden al imán del jugador y al Pulso colector. El objeto se consume al llegar al personaje, conservando su valor durante el desplazamiento.
+Las gemas conceden la XP del enemigo que las dejó y permanecen hasta recogerse. Los botiquines curan 15 HP de base y caducan tras 22 s. Ambos responden al imán y al Pulso colector; se consumen al llegar al personaje y conservan su valor durante el vuelo.
 
-## Colección de la estación
+## Entidades de la colección
 
-| Personaje | Rareza | Disponibilidad actual |
-| --- | --- | --- |
-| Lobito | Común | Ingrediente base ilimitado. |
-| Mago | Raro | Ingrediente base ilimitado. |
-| Demonio | Épico | Ingrediente base ilimitado. |
-| Shireen | Épico | Ingrediente base ilimitado. |
-| Yanikua | Legendario | Resultado de la receta especial; protegido como ingrediente. |
+Las entidades son copias de un inventario persistente. La colección empieza vacía. Nueve personajes aparecen en la arena y seis son resultados de fusión. Las probabilidades de la tabla corresponden a cada aparición de mapa; suman el 100% entre sus nueve entradas.
 
-Demonio y Demonio2 son vistas del mismo personaje. La colección guarda cantidades por personaje y ocho plazas de exposición. Los duplicados aumentan la cantidad del inventario. Si las plazas están llenas, una especie nueva puede sustituir una exposición repetida; la copia sustituida sigue en el inventario.
+| Entidad | Rareza | Fuente | Poder al equiparla |
+| --- | --- | --- | --- |
+| Lobito | Común | Arena · 25% | Dash ágil |
+| Mago | Raro | Arena · 10% | Freón residual |
+| Demonio | Raro | Arena · 10% | Reacción en cadena |
+| Shireen | Especial | Arena · 5% | Sifón |
+| Yanikua | Mítico | Fusión | Rayo solar |
+| Basket | Común | Arena · 25% | Pulso rápido |
+| Hada | Épico | Arena · 7% | Nanobots |
+| Lisa | Legendario | Arena · 3% | Ventisca |
+| Reaper | Común | Fusión | Óptica precisa |
+| Chico Emo | Raro | Fusión | Onda sísmica |
+| Conde Alucard | Especial | Fusión | Sifón |
+| Murciélago Cristal | Épico | Fusión | Prisma voltaico |
+| Sirena | Legendario | Fusión | Cero absoluto |
+| Soldier | Especial | Arena · 5% | Reacción en cadena |
+| Joel | Raro | Arena · 10% | Óptica precisa |
 
-## Recetas de tres ingredientes
+Las seis rarezas de entidades son Común, Raro, Especial, Épico, Legendario y Mítico. El catálogo de cartas de combate mantiene sus cuatro rarezas propias.
 
-| Composición | Tiempo de proceso | Común | Raro | Épico | Yanikua |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Tres comunes | 60 s | 70% | 25% | 5% | 0% |
-| Algún raro, sin épicos | 120 s | 20% | 60% | 20% | 0% |
-| Algún épico, sin cumplir la receta especial | 180 s | 0% | 20% | 80% | 0% |
-| Dos épicos y un raro o épico | 180 s | 0% | 0% | 99% | 1% |
+Cada 30 s de combate activo se intenta generar entre una y tres entidades en posiciones válidas del mapa. Hay un máximo de doce presentes y cada aparición dura diez segundos. El jugador debe acercarse y pulsar E a menos de unos 2,5 m, con la interacción despejada. La recogida incorpora una copia y la guarda en ese momento. Yanikua solo puede obtenerse mediante fusión.
 
-Los resultados épicos se reparten entre Demonio y Shireen. El sorteo se resuelve una sola vez al iniciar y se guarda para conservarlo al volver a abrir la aplicación.
+## Selección de entidades equipadas
 
-![Estación de fusión integrada en la arena](Media/Avance_2026-10-27/Entorno/Fusion.png)
+La bóveda tiene tres puestos de equipo. Se abre el selector con E junto al puesto que se quiere cambiar. El inventario muestra cada copia, sus retratos y su disponibilidad, con paginación cuando hace falta. Se puede cambiar la entidad o dejar el puesto vacío.
 
-La elección de ingredientes pausa el combate. Al iniciar se cierra el menú y el proceso avanza durante el juego activo, también al visitar la bóveda. La pausa detiene ese progreso y el tiempo fuera de la aplicación no lo adelanta. Al finalizar se abre la persiana; el resultado espera la elección Coleccionar o Liberar antes de permitir otra fusión.
+Cada copia aporta un nivel de su poder. Varias entidades con el mismo poder acumulan niveles hasta el máximo de la mejora. Las cartas de la expedición se calculan por separado: el nivel efectivo usa el mayor entre cartas y equipo. Una copia equipada no está disponible para consumirse en la máquina o liberarse del inventario.
+
+![Selector de entidades del puesto](Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
+
+Elegir equipo debe formar parte de la preparación antes de escoger ronda. El sistema está implementado, pero falta señalizarlo de forma que el jugador comprenda sus tres puestos y sus poderes sin tener que encontrarlos por su cuenta.
+
+## Fusión de cuatro copias
+
+La máquina está dentro de la bóveda y se abre con E. Se eligen cuatro copias disponibles; al comenzar se consumen y se sortea una sola vez el resultado. Las equipadas y Yanikua están protegidas como ingredientes.
+
+El sorteo usa la calidad media de los ingredientes. Cada banda ofrece resultados de su rareza y la siguiente, y las mezclas interpolan entre bandas. Los seis resultados posibles son Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena y Yanikua.
+
+| Cuatro ingredientes de la misma rareza | Tiempo | Resultados |
+| --- | ---: | --- |
+| Comunes | 60 s | Reaper 60%; Chico Emo 40%. |
+| Raros | 120 s | Chico Emo 60%; Conde Alucard 40%. |
+| Especiales | 180 s | Conde Alucard 60%; Murciélago Cristal 40%. |
+| Épicos | 180 s | Murciélago Cristal 59,4%; Sirena 39,6%; Yanikua 1%. |
+| Legendarios | 180 s | Sirena 70%; Yanikua 30%. |
+
+En mezclas, Yanikua tiene 30% con cuatro legendarios, 15% con tres y 5% con dos. Con un legendario o algún épico su probabilidad es del 1%; sin épicos ni legendarios es cero. Esa cuota se reserva antes de repartir el resto de resultados. El tiempo es 60 s cuando todos son comunes, 120 s si la calidad media está por debajo de Especial y 180 s desde esa calidad.
+
+![Máquina con cuatro espacios de ingredientes](Media/Avance_2026-11-04/Interfaz/FusionCuatro.png)
+
+La selección pausa el mundo. Al iniciar se cierra el menú y el proceso avanza durante el juego activo, también en la bóveda. Las pausas y el tiempo fuera de la aplicación no lo adelantan. Al llegar a cero queda listo: hay que volver a interactuar para abrir la persiana. El resultado espera Coleccionar o Liberar antes de comenzar otra fusión.
+
+## Exposición y duplicados
+
+Los siete puestos de exposición muestran copias disponibles ordenadas por rareza. Las cantidades del inventario pueden superar esos puestos. Los duplicados siguen siendo copias utilizables; la selección de equipo y las recetas respetan cuántas quedan libres.
+
+Liberar una copia del inventario muestra una confirmación con su nombre. Coleccionar el resultado de fusión suma una copia; Liberar descarta ese resultado.
 
 ---
 
 # Misiones y desafíos
 
-La expedición propone una condición principal: sobrevivir a la horda y derrotar a Gólgora con el Coleccionista vivo. El jefe aparece en el tiempo fijado por la escena, tres u ocho minutos, y el enfrentamiento continúa hasta resolver el resultado.
+La expedición tiene una condición principal: sobrevivir a la horda y derrotar a Gólgora con el Coleccionista vivo. La ronda demo activa su entrada a los tres minutos y la completa a los ocho; el combate continúa hasta resolver el resultado.
 
-Los desafíos surgen de la combinación de enemigos y del escenario: atravesar huecos con el dash, recoger XP sin entrar en ácido o lava, desplazar a una Polilla cebada, esquivar la embestida del Coloso y mantener una ruta segura durante el bombardeo del jefe.
+Antes de salir, la preparación incluye revisar y seleccionar hasta tres entidades equipadas. Se puede comenzar sin equipo si aún no hay copias o se dejan puestos vacíos. La guía hacia esta preparación sigue siendo una necesidad de UX.
 
-La selección de cartas cambia las herramientas disponibles para resolver esas situaciones. El resumen final recoge tiempo, nivel, bajas y XP; Reiniciar permite volver a intentarlo desde el inicio.
+Los desafíos del combate surgen de mantener rutas entre enemigos y obstáculos, recoger XP, aprovechar las Polillas cebadas, esquivar cargas y responder a resistencias de los élites. Las entidades que aparecen durante diez segundos añaden una decisión de recorrido: acercarse a recogerlas con E mientras continúa la presión.
 
-La estación de fusión añade una actividad paralela: preparar una receta, continuar jugando mientras transcurre y decidir qué hacer con el resultado. Su colección se conserva mediante guardado local.
+El cierre cambia el espacio de juego a la caldera. Gólgora alterna distancias, áreas, cercos y proyectiles, y acelera sus patrones en la segunda fase. Las cartas y los poderes iniciales ofrecen herramientas distintas para cada intento.
+
+El resumen muestra tiempo, nivel, bajas y XP. Volver a la bóveda permite revisar las copias reunidas, cambiar el equipo o preparar una fusión. Las recogidas ya guardadas se conservan tanto tras victoria como tras derrota.
 
 ---
 
-# 05 - Arte y Audio
-
 # Dirección de arte
 
-El montaje actual combina un escenario 3D de formas angulares con sprites de pixel art, modelos animados y efectos de partículas. El vertedero utiliza metal, roca, madera y chatarra en tonos oscuros; la luz y los avisos separan los elementos activos del fondo.
+El juego combina un escenario 3D de formas angulares con sprites de pixel art, un jefe con modelo animado y efectos de luz y partículas. Metal, roca, madera y chatarra ocupan el fondo oscuro; las siluetas, los avisos y las fuentes luminosas separan lo que requiere atención.
 
-La cámara de combate está inclinada a 50°. Los sprites mantienen su lectura dentro de ese mundo mediante planos iluminados, sombras de contacto y orientación por direcciones. El Coleccionista, el Mortero y la Polilla usan hojas con celdas de 64 × 64 píxeles.
+El perfil exterior coloca la cámara a 35,5° con campo de visión de 34°. La bóveda usa una perspectiva propia y el encuentro de Gólgora adapta la distancia para encuadrar a ambos combatientes. El Coleccionista se representa en un plano vertical con proporciones fijas dentro del mundo.
 
-## Color y lectura
-
-| Uso | Colores presentes |
+| Uso | Tratamiento presente |
 | --- | --- |
-| Fondo y estructuras | Azules, grises fríos y violetas oscuros. |
-| Chatarra y armaduras | Cobre, marrón, óxido y acero apagado. |
-| Luz y energía | Cian, oro cálido, violeta y tonos claros. |
-| Ácido | Verdes luminosos sobre suelo oscuro. |
-| Peligro anunciado | Ámbar y naranja, acompañado por contornos y progreso del área. |
+| Exterior | Azules y violetas oscuros, niebla, haces y polvo ambiental. |
+| Materiales | Acero apagado, cobre, óxido, piedra y madera. |
+| Jugador | Capucha clara, farol y haz automático; brillo pasivo en la bóveda. |
+| Ácido | Verde sobre el terreno oscuro. |
+| Peligro anunciado | Ámbar y naranja, contornos y progreso visible. |
 | Hielo | Tinte celeste, cristales y niebla fría. |
+| Jefe | Armadura oscura, núcleo y efectos de magma. |
+| Colección | Retratos enmarcados, rótulos y colores por rareza. |
 
-La paleta de referencia es Apollo. El volumen, las siluetas y los cambios de pose acompañan al color: el Coloso se prepara antes de cargar, el Mortero abre su emisor y la Polilla cambia de ritmo al cebarse. Los efectos reducidos conservan la información necesaria para leer esos ataques.
+Apollo permanece como referencia de paleta. Los sprites activos del Coleccionista, Mortero y Polilla usan celdas de 64 × 64; Esqueleto, Interceptor y Wendigo usan 96 × 96. Sus atlas y animaciones están en [[02 - Personajes y Animación]].
+
+Los efectos reducidos retiran decoración y movimiento accesorio, conservando los avisos necesarios para jugar.
 
 ---
 
 # Personajes y animación
 
-## Recursos de la versión actual
+## Recursos actuales
 
-| Personaje | Recurso | Animaciones presentes |
+| Personaje o arquetipo | Atlas | Animaciones por dirección |
 | --- | --- | --- |
-| Coleccionista | Atlas de 108 fotogramas, celdas de 64 × 64, cuatro direcciones. | Reposo: 8; marcha: 8; dash: 3; muerte: 8 por dirección. |
-| Mortero Campana | Atlas de 112 fotogramas, celdas de 64 × 64, cuatro direcciones. | Flotación: 6; carga: 6; disparo: 4; recuperación: 4; muerte: 8 por dirección. |
-| Polilla Reactor | Atlas de 62 fotogramas, celdas de 64 × 64. | Vuelo: 8 y cebado: 6 por dirección; estallido compartido: 6. |
-| Residual e Interceptor | Geometría y materiales 3D. | Orientación, inclinación de locomoción, reacción al daño y muerte. |
-| Coloso | Geometría y materiales 3D. | Marcha, compresión de preparación, embestida y recuperación. |
-| Gólgora / MataColeccionista | Modelo 3D con animaciones. | Entrada, marcha pesada, golpes y lanzamiento; cierre con efectos de muerte. |
+| Coleccionista | 108 fotogramas de 64 × 64. | Reposo 8, marcha 8, dash 3 y muerte 8. |
+| Residual / Esqueleto | 144 fotogramas de 96 × 96. | Reposo 8, marcha 8, ataque 8, impacto 4 y muerte 8. |
+| Interceptor | 152 fotogramas de 96 × 96. | Reposo 6, marcha 12, ataque 6, impacto 4 y muerte 10. |
+| Coloso / Wendigo | 200 fotogramas de 96 × 96. | Reposo 8, marcha 8, preparación 8, carga 6, recuperación 6, impacto 4 y muerte 10. |
+| Mortero Campana | 112 fotogramas de 64 × 64. | Flotación 6, carga 6, disparo 4, recuperación 4 y muerte 8. |
+| Polilla Reactor | 62 fotogramas de 64 × 64. | Vuelo 8 y cebado 6; estallido común de 6. |
+| Caballero Fantasma y Centinela | Geometría de presentación; efectos animados en una biblioteca propia. | Estados de preparación, resolución y recuperación. No tienen atlas de personaje. |
+| Gólgora | Modelo 3D animado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
+
+Las cinco hojas de enemigos y los GIFs de todas sus acciones se encuentran junto a sus reglas en [[03 - Enemigos y NPC]]. Esa página también incorpora las capturas actuales de los dos élites y de los seis patrones del jefe.
 
 ## El Coleccionista
 
-![Atlas activo del Coleccionista](Media/Avance_2026-10-27/Spritesheets/Coleccionista.png)
+El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno. La iluminación, sombras y reacciones al daño se añaden durante la ejecución.
 
-[Abrir fuente editable del Coleccionista](Media/Avance_2026-10-27/Spritesheets/Coleccionista.aseprite).
+![Atlas activo del Coleccionista](Media/Avance_2026-11-04/Spritesheets/Coleccionista.png)
 
-Su sprite se apoya en el terreno y recibe iluminación del mundo. El farol acompaña al personaje y la presentación del haz sigue el apuntado del arma. El daño se expresa mediante flashes sin convertir cada impacto en una interrupción del movimiento.
+[Fuente editable del Coleccionista](Media/Avance_2026-11-04/Spritesheets/Coleccionista.aseprite).
 
-### Animaciones dentro de la arena
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Coleccionista: Reposo](Media/Avance_2026-11-04/Animaciones/Coleccionista/Idle.gif) |
+| Marcha | ![Coleccionista: Marcha](Media/Avance_2026-11-04/Animaciones/Coleccionista/Walk.gif) |
+| Dash | ![Coleccionista: Dash](Media/Avance_2026-11-04/Animaciones/Coleccionista/Dash.gif) |
+| Muerte | ![Coleccionista: Muerte](Media/Avance_2026-11-04/Animaciones/Coleccionista/Death.gif) |
 
-Estas secuencias muestran al Coleccionista en CombatArena, con una cámara de detalle que permite observar el sprite sobre el terreno y su iluminación real.
+## Cómo leer las previsualizaciones
 
-**Reposo.** El personaje conserva su postura y el movimiento del ciclo de espera.
+Cada GIF de atlas coloca juntas las cuatro vistas y usa sus fotogramas y tiempos exportados. La escala es el doble del píxel original, sin interpolación. El bucle facilita revisar una acción; los golpes y las muertes no se repiten indefinidamente durante el juego.
 
-![Coleccionista en reposo dentro de la arena](Media/Avance_2026-10-27/Jugador/Reposo.gif)
-
-**Marcha en cuatro direcciones.** El cambio de vista y el ciclo de pasos acompañan el desplazamiento por el escenario.
-
-![Coleccionista caminando en cuatro direcciones dentro de la arena](Media/Avance_2026-10-27/Jugador/Caminar.gif)
-
-**Dash.** La secuencia incluye dos desplazamientos y las imágenes residuales que deja el personaje.
-
-![Dash del Coleccionista dentro de la arena](Media/Avance_2026-10-27/Jugador/Dash.gif)
-
-**Muerte.** El impacto da paso a la caída y a la desaparición del sprite y su sombra.
-
-![Animación de muerte del Coleccionista dentro de la arena](Media/Avance_2026-10-27/Jugador/Muerte.gif)
-
-## El Mortero Campana
-
-![Atlas activo del Mortero](Media/Avance_2026-10-27/Spritesheets/Mortero.png)
-
-El Mortero encadena flotación, preparación, disparo y recuperación con su ataque de ácido. El GIF muestra cómo se integra el sprite con el aviso del ataque y el proyectil dentro del escenario.
-
-![Mortero animado y ataque de ácido dentro de la arena](Media/Avance_2026-10-27/Enemigos/Mortero.gif)
-
-## La Polilla Reactor
-
-![Atlas activo de la Polilla](Media/Avance_2026-10-27/Spritesheets/PolillaReactor.png)
-
-La Polilla distingue vuelo, cebado y explosión. La secuencia permite ver la transición de aproximación a detonación junto al jugador.
-
-![Vuelo, cebado y explosión de la Polilla dentro de la arena](Media/Avance_2026-10-27/Enemigos/Polilla.gif)
-
-## Enemigos con representación 3D
-
-El Residual, el Interceptor y el Coloso utilizan geometría 3D. Sus movimientos y deformaciones se registran directamente en la arena; no disponen de una hoja de sprites de personaje.
-
-**Residual.** Aproximación y movimiento de su cuerpo durante la persecución.
-
-![Residual en movimiento dentro de la arena](Media/Avance_2026-10-27/Enemigos/Residual.gif)
-
-**Interceptor.** Desplazamiento y orientación del cuerpo al perseguir al Coleccionista.
-
-![Interceptor en movimiento dentro de la arena](Media/Avance_2026-10-27/Enemigos/Interceptor.gif)
-
-**Coloso.** Preparación, embestida y recuperación del ataque.
-
-![Embestida del Coloso dentro de la arena](Media/Avance_2026-10-27/Enemigos/Coloso.gif)
-
-**Gólgora / MataColeccionista.** El modelo animado acompaña su marcha pesada y sus ataques en la arena.
-
-![Gólgora animado y atacando dentro de la arena](Media/Avance_2026-10-27/Enemigos/Golgora.gif)
-
-Las reglas de cada enemigo se describen en [[03 - Enemigos y NPC]].
-
-Las normales, sombras, flashes, tintes de frío y partículas complementan los fotogramas originales. La elección de una cámara o una condición visual distinta no cambia las reglas de los ataques.
+Estas imágenes muestran el recurso de animación. Las luces, sombras, posición sobre el terreno, movimiento físico y VFX se revisan en las capturas de Unity. El registro visual diferencia ambas fuentes para que una previsualización de sprites no se confunda con una partida.
 
 ---
 
 # Entornos
 
-El Vertedero es una arena de 200 × 200 m con suelo de relieve, restos industriales, rocas, árboles secos y grupos de objetos que fragmentan las rutas. El centro y el perímetro conservan zonas de paso; los obstáculos tienen colisiones que participan en la navegación y el dash.
+El Vertedero ocupa 200 × 200 m de relieve, restos industriales, rocas y árboles. Las colisiones participan en las rutas del jugador y de los enemigos. El acceso a la bóveda se encuentra al norte y desciende hasta el portal.
 
-La lava utiliza un shader animado. Su brillo y las partes de magma del MataColeccionista mantienen puntos de lectura en las zonas oscuras. El acceso a la bóveda combina muros de piedra, escalera, rellano y un portal con horizonte animado y partículas en espiral.
+El centro contiene la caldera de Gólgora, con perímetro que se cierra durante el encuentro, avisos para refuerzos y materiales que responden a su activación. Los ataques aportan ondas, impactos, meteoros y zonas de magma. Las tres zonas de lava fija del mapa están desactivadas en esta versión.
 
-![Bóveda registrada desde el juego](Media/Avance_2026-10-27/Entorno/Almacen.png)
+La iluminación exterior utiliza un perfil compartido de luz, atmósfera y enfoque. La niebla y los haces acompañan los puntos luminosos sin sustituir los contornos que anuncian daño.
 
-El almacén se encuentra separado de la arena dentro de la misma escena. Sus ocho espacios de exposición forman un recorrido a ambos lados del pasillo. El portal de retorno devuelve al jugador al acceso del combate y reactiva la sesión que estaba suspendida.
+La bóveda modular ocupa otra zona de la misma escena. Su suelo continuo y sus muros enmarcan diez puestos: tres de equipo y siete de exposición. Dentro se encuentran la máquina de fusión y el portal. La cámara tiene un encuadre propio, seguimiento limitado por la sala e iluminación interior.
 
-La estación de fusión tiene una persiana móvil, espacio interior para el resultado, rótulo de estado y partículas violetas. La animación de apertura permite ver el personaje obtenido antes de coleccionarlo o liberarlo.
+![Interior y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
+
+La máquina combina cámara de resultado, persiana móvil y efectos de apertura. Cuando termina una fusión permanece cerrada en estado listo hasta que el jugador interactúa. El sonido y el humo acompañan la apertura.
 
 ---
 
 # Interfaz visual
 
-El HUD muestra vida, experiencia, nivel, tiempo, bajas, recarga de dash y mejoras adquiridas. La vida diferencia el valor inmediato del daño reciente; el borde de salud crítica se activa al 30%. La barra de XP usa su recurso de pixel art, anima el llenado y pulsa al subir de nivel.
+El menú inicial utiliza un portal animado, elementos de la colección en órbita y botones de Continuar, Nueva colección, Configuración y Salir. La transición al mundo tiene una pantalla de carga con animación del Coleccionista.
 
-![HUD y estadísticas completas](Media/Avance_2026-10-27/Interfaz/Estadisticas.png)
+![Menú inicial](Media/Avance_2026-11-04/Interfaz/MenuInicial.png)
 
-Las cartas comparten marcos por rareza, diez familias de iconos y botones de elección. El texto muestra nombre, tipo de daño, nivel y cambio de la propiedad principal. Las etiquetas NUEVA y la flecha de subida distinguen una primera adquisición de una mejora repetida. El enfoque se identifica mediante borde y texto.
+En la bóveda, el jugador puede preparar las tres entidades equipadas. El selector de cada puesto muestra retratos enmarcados, copias disponibles y su poder. Falta un indicador general que explique esta preparación antes de iniciar la expedición; los avisos locales de proximidad no resuelven por sí solos ese descubrimiento.
 
-![Entrada de las cartas en el juego](Media/Avance_2026-10-27/Interfaz/Cartas.gif)
+![Preparación de entidades](Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
 
-La presentación incluye entrada escalonada, confirmación y una inclinación suave al mover el puntero. Los efectos reducidos conservan la identificación estática y retiran el movimiento decorativo.
+La selección de ronda presenta Demo, Completa y Salir. Su confirmación se acompaña de una animación de salida y un rugido antes de la entrada a la arena.
 
-La pausa reúne preferencias visuales, modo de estadísticas, Reanudar y Reiniciar. Los resultados utilizan un resumen de tiempo, nivel, bajas y XP. La tipografía de HUD, cartas y daño es Chakra Petch.
+![Selección de ronda](Media/Avance_2026-11-04/Interfaz/SeleccionRonda.png)
+
+El HUD de combate muestra vida, XP, nivel, tiempo, bajas, dash, mejoras, retratos de las tres entidades equipadas y un minimapa circular. El mapa descubre terreno al recorrerlo, sitúa al jugador y los coleccionables, y muestra el portal cuando su zona ha sido explorada. Gólgora dispone de barra roja e indicador fuera de pantalla.
+
+Las cartas conservan marcos por rareza, nombre, nivel, tipo de daño y cambio de valores. La entrada, el enfoque y la confirmación tienen animación, reducida cuando se solicita. Chakra Petch sigue presente en HUD, cartas y números de daño; el menú inicial usa sus recursos tipográficos propios.
+
+![Cartas: captura de Unity del 27 de octubre](Media/Avance_2026-10-27/Interfaz/Cartas.gif)
+
+La pausa reúne Reanudar, Abandonar o Menú inicial según el contexto, volumen general, preferencias visuales y modo de estadísticas. Los resultados muestran tiempo, nivel, bajas y XP, con Volver a la bóveda. La máquina tiene cuatro espacios de ingredientes y un selector de copias paginado.
 
 ---
 
 # Audio y música
 
-Los registros de esta edición son imágenes y GIFs de la versión jugable. El formato GIF conserva la secuencia visual y sus tiempos, pero no contiene una pista de audio. Las demostraciones permiten revisar animación, anticipación e impacto visual de los ataques.
+El juego ya tiene música y efectos integrados. El área sonora acompaña el lugar, los ataques y las acciones del Coleccionista.
 
-La autoría del área de audio corresponde al reparto del equipo descrito en [[02 - Roles y Responsabilidades]]. Este registro de avance no atribuye una banda sonora o efectos sonoros a las capturas mostradas.
+| Contexto | Audio presente |
+| --- | --- |
+| Arena | Pista de combate en bucle. El recurso conserva el nombre de prueba Arena_combat_Test. |
+| Gólgora | Pista de jefe con transición desde la arena y reducción de mezcla durante el rugido. El recurso sigue identificado como prueba. |
+| Bóveda | Pista propia que se detiene al salir hacia combate o menú. |
+| Linterna | Inicio de ráfaga, tres variantes de pulso, cuarto pulso, descanso, impacto normal y crítico, activación y bucle solar. |
+| Experiencia | Sonido de recogida con variación de tono. |
+| Transiciones | Entrada del Coleccionista, llegada por portal y rugido al elegir ronda. |
+| Fusión | Sonido de apertura de la cámara al revelar el resultado. |
+| Jefe | Rugido, pasos, ataques e impactos mediante sus componentes de audio. |
 
----
+La música de arena y jefe continúa durante cartas y pausa manual. La pérdida de foco pausa su reproducción. La bóveda tiene su propia mezcla y las transiciones evitan que siga sonando fuera de su contexto.
 
-# Registro visual de la versión jugable
+El menú de pausa incorpora volumen general, guardado localmente bajo EchoScrap.Audio.MasterVolume. El control actúa sobre el volumen global de escucha.
 
-Las imágenes de esta página proceden de Unity o de los atlas activos del proyecto. Los GIFs de enemigos y cartas se registraron el 27 de octubre de 2026 sobre CombatArena. Se utilizó una cámara de detalle, el jugador protegido y las oleadas detenidas para poder observar cada patrón. Los PNG se unieron a 12 fotogramas por segundo.
+## Procedencia documentada
 
-Los cuatro GIFs del Coleccionista se capturaron también en CombatArena el 27 de octubre, a 24 fotogramas por segundo, con una cámara de detalle que sigue al jugador. El reposo, la marcha en cuatro direcciones, los dos dashes y la muerte se reproducen con los componentes del juego. Las secuencias se recortaron alrededor del personaje para facilitar su lectura.
+La mezcla de la linterna utiliza grabaciones de microondas de pinto0lucas y contador Geiger de cookies+policy. El archivo Sources.txt del proyecto registra sus enlaces, la licencia CC0 indicada para ambas y las transformaciones realizadas: conversión a mono, selección de clics, capas, envolventes y tonos sintetizados. Los WAV entregados son mono, 44,1 kHz y 16 bits.
 
-Los GIFs de VFX proceden de la revisión visual del 26 de octubre: recortes de capturas de cámara de 1280 × 720 en escenas controladas de mejoras. Sus sistemas de rayos, partículas y materiales coinciden con los del montaje actual. Estas demostraciones muestran el efecto en funcionamiento; no son mediciones de FPS ni reproducciones de una partida completa.
+La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
-## Enemigos
-
-Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. [[02 - Personajes y Animación]] reúne también esos seis GIFs junto a los atlas, la tabla de clips y las cuatro animaciones del Coleccionista dentro de la arena.
-
-## Prisma voltaico
-
-El cuarto pulso produce enlaces sucesivos entre objetivos. El núcleo luminoso y los saltos permiten seguir el recorrido de la cadena.
-
-![Prisma voltaico: captura real de Unity](Media/Avance_2026-10-27/VFX/Electricity.gif)
-
-## Ralentización y congelación
-
-El tinte celeste identifica la ralentización. Al congelarse, el enemigo recibe cristales, escarcha y niebla sin perder la textura de su cuerpo o sprite.
-
-![Frío aplicado a enemigos dentro de Unity](Media/Avance_2026-10-27/VFX/Ice.gif)
-
-## Minas y explosiones
-
-La detonación combina expansión, humo y fragmentos. El área de daño pertenece a la simulación y no al tamaño aparente del humo.
-
-![Explosión de mina dentro de Unity](Media/Avance_2026-10-27/VFX/Explosion.gif)
-
-## Nova de plasma
-
-La curación sobrante puede desencadenar una expansión de plasma alrededor del jugador. El registro muestra su aparición y su disipación.
-
-![Nova de plasma dentro de Unity](Media/Avance_2026-10-27/VFX/Plasma.gif)
-
-## Nanobots
-
-La superficie de energía rodea el cuerpo y responde a los impactos con ondas y motas. Su presencia visual acompaña las reglas de regeneración y protección de la mejora; no equivale a inmunidad permanente.
-
-![Presentación de Nanobots dentro de Unity](Media/Avance_2026-10-27/VFX/Shield.gif)
-
-## Sierras orbitales
-
-Las cuchillas giran alrededor del Coleccionista. El metal, las estelas de viento y las chispas permiten distinguir su giro y sus contactos.
-
-![Sierras orbitales dentro de Unity](Media/Avance_2026-10-27/VFX/Saws.gif)
-
-## Pulso colector
-
-Los objetos reales se desplazan hacia el jugador mediante trayectorias curvas. La XP o curación se recibe al llegar, y cada objeto conserva su valor durante el vuelo.
-
-![Recogida con Pulso colector dentro de Unity](Media/Avance_2026-10-27/VFX/Collection.gif)
-
-## Onda sísmica
-
-La expansión al terminar el dash marca la aplicación de daño y control a los enemigos cercanos.
-
-![Onda sísmica dentro de Unity](Media/Avance_2026-10-27/VFX/Shockwave.gif)
-
-## Números de daño
-
-Los números salen con impulso y caen en arco. El físico usa amarillo y naranja crítico; el sobrenatural, rosa violeta y morado crítico. Los críticos añaden un signo de exclamación.
-
-![Trayectorias de números de daño dentro de Unity](Media/Avance_2026-10-27/VFX/NumerosDeDano.gif)
-
-Las mejoras que cambian estadísticas, probabilidades u ofertas se describen en el catálogo. Una captura de partículas no demuestra por sí sola una variación de cadencia, una probabilidad de crítico o un cambio de rareza.
+Los GIFs de este GDD no contienen audio. Sirven para revisar animación y VFX; la escucha se comprueba en el juego.
 
 ---
 
-# 06 - Experiencia
+# Registro visual
+
+## Procedencia de los medios
+
+Esta edición reúne dos tipos de animación:
+
+- **Previsualizaciones de atlas, 4 de noviembre.** Copias de los PNG activos y GIFs compuestos con sus rectángulos, etiquetas y tiempos JSON. Las acciones de personaje muestran cuatro direcciones a escala 2×, sin interpolación. No incluyen la iluminación ni la simulación del juego.
+- **Capturas de Unity, 4 de noviembre.** CombatArena ejecutada desde una copia externa del proyecto, a 960 × 540 y doce imágenes por segundo. Se usaron cámara de detalle, jugador protegido y oleadas detenidas. Los patrones del jefe se invocaron individualmente con sus componentes y ajustes; para la lluvia se activó la segunda fase. Las pantallas de preparación utilizan un inventario de muestra, sin guardar esa colección.
+
+Las capturas corresponden al montaje local basado en 30b88c6. Los PNG mantienen 960 × 540 y los GIFs de Unity se exportan a 640 × 360. La vista de detalle permite leer las animaciones y los efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
+
+## Enemigos y personajes
+
+[[03 - Enemigos y NPC]] contiene los cinco spritesheets completos y los GIFs por acción de Residual, Interceptor, Coloso, Mortero y Polilla. También muestra el barrido del Caballero, el disparo y vulnerabilidad del Centinela y los seis patrones de Gólgora en Unity. [[02 - Personajes y Animación]] añade el atlas y los cuatro grupos de animaciones del Coleccionista.
+
+## Efectos de enemigos
+
+La biblioteca activa contiene quince clips y 120 fotogramas. La siguiente hoja pertenece a esos efectos, no a los cuerpos de los élites o del jefe.
+
+![Atlas activo de efectos de enemigos](Media/Avance_2026-11-04/VFX/EnemyEffects_Atlas.png)
+
+Los GIFs de esta tabla son previsualizaciones del atlas. La iluminación de los misiles, las trayectorias y los avisos de daño se observan en las capturas de los enemigos.
+
+| Efecto | Animación del recurso |
+| --- | --- |
+| Golpe del Residual | ![Golpe del Residual](Media/Avance_2026-11-04/VFX/Enemigos/ResidualSlash.gif) |
+| Fragmentos de hueso | ![Fragmentos de hueso](Media/Avance_2026-11-04/VFX/Enemigos/BoneChips.gif) |
+| Golpe del Interceptor | ![Golpe del Interceptor](Media/Avance_2026-11-04/VFX/Enemigos/InterceptorSlash.gif) |
+| Estela del Interceptor | ![Estela del Interceptor](Media/Avance_2026-11-04/VFX/Enemigos/InterceptorWake.gif) |
+| Polvo del Coloso | ![Polvo del Coloso](Media/Avance_2026-11-04/VFX/Enemigos/ColossusDust.gif) |
+| Impacto del Coloso | ![Impacto del Coloso](Media/Avance_2026-11-04/VFX/Enemigos/ColossusImpact.gif) |
+| Barrido espectral | ![Barrido espectral](Media/Avance_2026-11-04/VFX/Enemigos/SpectralSweep.gif) |
+| Misil de cobre | ![Misil de cobre](Media/Avance_2026-11-04/VFX/Enemigos/CopperMissile.gif) |
+| Salida del disparo de cobre | ![Salida del disparo de cobre](Media/Avance_2026-11-04/VFX/Enemigos/CopperMuzzle.gif) |
+| Impacto de cobre | ![Impacto de cobre](Media/Avance_2026-11-04/VFX/Enemigos/CopperImpact.gif) |
+| Humo de la Polilla | ![Humo de la Polilla](Media/Avance_2026-11-04/VFX/Enemigos/MothSmoke.gif) |
+| Meteoro de magma | ![Meteoro de magma](Media/Avance_2026-11-04/VFX/Enemigos/MagmaMeteor.gif) |
+| Impacto de magma | ![Impacto de magma](Media/Avance_2026-11-04/VFX/Enemigos/MagmaImpact.gif) |
+| Zona de magma | ![Zona de magma](Media/Avance_2026-11-04/VFX/Enemigos/MagmaPuddle.gif) |
+| Barrido de magma | ![Barrido de magma](Media/Avance_2026-11-04/VFX/Enemigos/MagmaSweep.gif) |
+
+## Torreta centinela
+
+La torreta actual usa trípode y cañón separados, orientación del cañón, boca de salida y retroceso. La secuencia de direcciones es una previsualización técnica del recurso preparada el 3 de noviembre; el disparo siguiente se capturó en Unity el 4.
+
+![Torreta: previsualización técnica de sus direcciones](Media/Avance_2026-11-04/VFX/Torreta_Direcciones.gif)
+
+![Torreta disparando en la arena de Unity](Media/Avance_2026-11-04/VFX/Torreta_Combate.gif)
+
+## Efectos de mejoras
+
+Los siguientes GIFs son capturas de Unity del 26 de octubre, conservadas para mostrar efectos de mejoras. Proceden de escenas controladas y recortes de cámara de 1280 × 720. Su fecha y encuadre se mantienen como contexto; no muestran la iluminación exterior renovada de noviembre.
+
+### Prisma voltaico
+
+Los enlaces siguen el cuarto pulso y recorren objetivos sucesivos.
+
+![Prisma voltaico: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Electricity.gif)
+
+### Frío y congelación
+
+El tinte, cristales y niebla acompañan ralentización y congelación.
+
+![Frío y congelación: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Ice.gif)
+
+### Minas y explosiones
+
+Expansión, humo y fragmentos acompañan la detonación; el daño lo resuelve la simulación.
+
+![Minas y explosiones: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Explosion.gif)
+
+### Nova de plasma
+
+La curación sobrante puede desencadenar la expansión alrededor del jugador.
+
+![Nova de plasma: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Plasma.gif)
+
+### Nanobots
+
+La superficie de energía y sus ondas acompañan las reglas de regeneración y protección.
+
+![Nanobots: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Shield.gif)
+
+### Sierras orbitales
+
+Las cuchillas, estelas y chispas permiten seguir el giro y sus contactos.
+
+![Sierras orbitales: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Saws.gif)
+
+### Pulso colector
+
+Los objetos conservan su valor durante el vuelo y conceden XP o curación al llegar.
+
+![Pulso colector: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Collection.gif)
+
+### Onda sísmica
+
+La expansión señala el efecto de daño y control al terminar el dash.
+
+![Onda sísmica: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Shockwave.gif)
+
+### Números de daño
+
+Los números siguen arcos; el físico usa amarillo y naranja crítico y el sobrenatural rosa violeta y morado crítico.
+
+![Números de daño: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/NumerosDeDano.gif)
+
+## Alcance de estas imágenes
+
+Los GIFs permiten revisar fotogramas, anticipación, trayectoria e impacto visual. Las cifras de daño, la cadencia, probabilidades y condiciones de activación se contrastan con las reglas del juego. Las animaciones no contienen audio y no certifican un mínimo de FPS.
+
+---
 
 # UX y flujo del jugador
 
-El jugador entra directamente en la arena preparada. La linterna responde automáticamente y el HUD presenta los recursos necesarios para moverse, recoger experiencia y reconocer la recarga del dash.
+Menú inicial → continuar o crear colección → bóveda → revisar y seleccionar entidades equipadas → elegir ronda demo o completa → expedición → regreso a la bóveda.
 
-Una subida de nivel detiene el combate y abre tres opciones. La selección confirma una mejora y devuelve el control, o presenta la siguiente elección si todavía hay niveles acumulados. La pulsación que confirma no se reutiliza para producir un dash accidental.
+## Preparar el equipo en la bóveda
 
-La estación de fusión abre un menú local con ingredientes, probabilidades y tiempo de proceso. El resultado se resuelve mediante Coleccionar o Liberar. El portal permite recorrer las vitrinas sin mantener la horda activa durante esa visita.
+Continuar recupera la colección guardada. Nueva colección empieza con el inventario vacío y restablece la fusión y el equipo, tras confirmar si ya existe progreso.
 
-Gólgora dispone de barra de vida y marcador cuando queda fuera de la pantalla. Al resolverse la sesión, el resumen comunica victoria o derrota y ofrece el reinicio. El cierre de victoria deja un breve tiempo para ver la presentación de la gema antes del resumen.
+La preparación incluye revisar los tres puestos de entidades equipadas antes de elegir ronda. Se interactúa con E junto a cada puesto y se escoge una copia del inventario. Cada entidad indica el poder que aporta. Se puede cambiar o quitar y los puestos pueden quedar vacíos; la primera expedición permite conseguir las primeras copias.
+
+**Situación actual:** el sistema funciona, pero el recorrido puede saltarse esta preparación porque no hay una señalización general clara que la presente. Los avisos de E aparecen al acercarse a un puesto, sin explicar antes por qué conviene visitarlo. Hace falta guiar al jugador hasta esos puestos y relacionar las entidades con sus poderes. Esta mejora sigue pendiente de implementación.
+
+![Selector de un puesto de equipo](Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
+
+El portal y el botón Iniciar expedición conducen a la selección de ronda. La confirmación se presenta antes de la transición y de la entrada del Coleccionista en la arena.
+
+## Durante la expedición
+
+La linterna ataca automáticamente y el HUD comunica salud, experiencia y dash. El minimapa descubre terreno al recorrerlo. Las entidades nuevas tienen un aviso breve y una interacción E al aproximarse; desaparecen a los diez segundos si no se recogen.
+
+Las subidas de nivel pausan el combate y presentan hasta tres cartas. La confirmación aplica la mejora y continúa, o abre otra elección si hay niveles pendientes. Se evita reutilizar esa pulsación para un dash accidental.
+
+Gólgora anuncia su entrada, se prepara el traslado a la caldera y la cámara mantiene a ambos combatientes encuadrados. El rugido y la transición distinguen su segunda fase.
+
+## Volver a preparar
+
+Victoria y derrota muestran un resumen con Volver a la bóveda. La colección obtenida se conserva y las cartas de combate se restablecen para el siguiente intento. Desde pausa, Abandonar pide confirmación antes de volver.
+
+La fusión es otra actividad de la bóveda: cuatro copias, probabilidades visibles, proceso activo y apertura manual al terminar. Una visita desde una expedición suspende el combate y permite retomar después la misma sesión.
 
 ---
 
 # UI y menús
 
-| Interfaz | Información y acciones disponibles |
+| Interfaz | Información y acciones |
 | --- | --- |
-| HUD | Vida, XP, nivel, cronómetro, bajas, dash y mejoras. |
-| Selección de mejora | Hasta tres cartas con rareza, nivel, beneficio y valores; reintento cuando Sintonizador lo permite. |
-| Pausa | Reanudar, Reiniciar, ajustes visuales y modo de estadísticas. |
-| Estadísticas | Completa: 20 valores efectivos; Reducida: seis valores principales; Sin: panel oculto. |
-| Fusión | Tres ingredientes, probabilidades, inicio del proceso y decisión sobre el resultado. |
-| Resultados | Victoria o derrota, tiempo, nivel, bajas, XP y reinicio. |
-| Laboratorio | Tipo y cantidad de enemigos, inspección, daño de prueba, congelación, pausa y avance de simulación. |
+| Menú inicial | Continuar, Nueva colección, Configuración y Salir; confirmación al sustituir una colección. |
+| Bóveda | Acceso al menú inicial, inicio de expedición y preparación en el mundo. |
+| Equipo de entidades | Selector del puesto cercano, copias paginadas, retrato, rareza y poder; equipar o quitar. |
+| Selección de ronda | Demo, Completa o cancelar la entrada. |
+| Carga y entrada | Animación del Coleccionista, transición y presentación del objetivo. |
+| HUD | Vida, XP, nivel, tiempo, bajas, dash, mejoras, tres retratos equipados y minimapa circular con exploración. |
+| Cartas | Hasta tres opciones; rareza, nivel, efecto, confirmación y reintento con Sintonizador. |
+| Pausa | Reanudar, Abandonar o Menú inicial, volumen general, sacudida, decoración, efectos reducidos y estadísticas. |
+| Estadísticas | Completa: veinte valores; Reducida: seis principales; Sin: panel oculto. |
+| Fusión | Cuatro ingredientes, copias disponibles, probabilidades, tiempo y decisión de resultado. |
+| Resultados | Victoria o derrota, tiempo, nivel, bajas, XP y Volver a la bóveda. |
+| Laboratorio | Ocho arquetipos, generación, inspección, daño de prueba, congelación, pausa y avance. |
 
-![Selección de cartas](Media/Avance_2026-10-27/Interfaz/Cartas.gif)
+La selección de entidades debe figurar como parte de la preparación anterior a la ronda. Su señalización general todavía está pendiente; actualmente se descubre por la proximidad a cada puesto.
 
-La navegación de cartas acepta ratón, teclado y mando. El puntero inmóvil no desplaza el enfoque realizado con otro dispositivo. Los paneles se adaptan a la resolución mediante escalado de interfaz y los modos de estadísticas reorganizan sus filas.
+Las cartas aceptan ratón, teclado y mando. El puntero inmóvil no desplaza el enfoque de otro dispositivo. Las interfaces de colección tienen botones y selectores propios; su interacción de acceso usa E.
+
+Las confirmaciones generales protegen Nueva colección y Abandonar. El inventario también confirma la liberación de una copia e indica su nombre.
 
 ---
 
 # Accesibilidad
 
-El menú de pausa permite ajustar la intensidad de la sacudida de cámara y la decoración, además de activar efectos reducidos. Esta condición elimina movimiento y partículas decorativas mientras conserva avisos de ataque, indicadores y señales esenciales.
+La configuración y la pausa permiten reducir decoración y sacudida de cámara o activar efectos reducidos. Los avisos esenciales de ataque y los indicadores se mantienen. Las cartas expresan enfoque y rareza mediante texto y borde; los críticos añaden un signo de exclamación al color.
 
-Las cartas comunican selección mediante borde y texto. La rareza tiene nombre escrito y los críticos utilizan un signo de exclamación además del color. Los ataques de área se reconocen por contorno, extensión y progreso de su aviso.
+El panel de estadísticas puede mostrarse completo, reducido u oculto. El volumen general se ajusta en pausa y se conserva al cerrar la aplicación. Las preferencias visuales se conservan entre reinicios y transiciones de la sesión.
 
-El modo de estadísticas se puede mostrar completo, reducido u oculto. Las preferencias visuales se mantienen al reiniciar la sesión. La pausa y la pérdida de foco bloquean el control de combate para evitar entradas retenidas al regresar.
+La pausa y la pérdida de foco bloquean el control de combate y exigen liberar las entradas que podrían provocar confirmaciones accidentales al regresar. Los menús principales y las cartas tienen navegación de mando.
+
+## Aspectos pendientes
+
+La preparación de entidades necesita señales claras que lleven al jugador a los tres puestos y expliquen sus poderes antes de salir. Los mensajes locales por proximidad no bastan para descubrir el sistema en el primer recorrido.
+
+La recogida de entidades y la apertura de equipo y fusión dependen actualmente de E. Hace falta revisar el acceso equivalente con mando antes de considerar completo ese recorrido para ambos dispositivos.
 
 ---
 
 # Guardado y configuración
 
-## Datos de la estación de fusión
+## Colección persistente
 
-La colección usa un guardado local bajo la clave `EchoScrap.FusionPrototype.v1` de PlayerPrefs. El contenido serializado incluye cantidades de los cinco personajes, las ocho plazas de exposición, fase del proceso, resultado sorteado y tiempo restante.
+La estación guarda JSON en PlayerPrefs bajo EchoScrap.Collection.Production.v1. El formato interno actual es la versión 4 e incluye las cantidades de quince entidades, los tres puestos equipados, los datos de exposición, la fase de fusión, el resultado sorteado y sus temporizadores.
 
-Se guarda al iniciar una fusión, cambiar de fase, resolver el resultado, durante el proceso y al cerrar. El resultado se sortea una vez al comienzo y se conserva durante una recarga. El tiempo fuera de la aplicación no hace avanzar la fusión.
+Se guarda al recoger una entidad, cambiar el equipo, liberar copias, iniciar o resolver una fusión, durante el proceso y al cerrar. El resultado se decide una vez al comenzar y las cuatro copias se consumen en ese momento.
 
-Al cargar se validan tamaños de inventario, identificadores y temporizadores. Si el contenido no puede leerse se recupera el estado inicial del sistema. Los cuatro ingredientes base conservan la disponibilidad ilimitada del montaje actual.
+El tiempo fuera de la aplicación no adelanta la fusión. Al terminar queda lista para una apertura manual. Si se cierra durante la apertura, la carga la devuelve al estado listo para volver a interactuar.
 
-## Estado de la partida
+La validación ajusta inventarios, identificadores, puestos y tiempos. Las colecciones de formato 4 que tenían trece entidades amplían su array a quince y conservan sus copias. Los formatos internos anteriores a 4 se restablecen. La antigua clave EchoScrap.FusionPrototype.v1 no se consulta desde el cargador de producción.
 
-La vida, XP, nivel y cartas elegidas pertenecen a la sesión. Reiniciar comienza una configuración de combate nueva. La visita al almacén conserva al mismo jugador y sus valores mientras suspende el combate.
+## Perfil y opciones
 
-Los ajustes de decoración, efectos reducidos, sacudida y presentación de estadísticas pertenecen a las opciones disponibles de la sesión y se conservan durante su reinicio. El guardado permanente documentado en esta página corresponde al inventario y al proceso de fusión.
+EchoScrap.CollectionStarted.v1 identifica que se ha iniciado una colección. Nueva colección confirma antes de restablecer inventario, equipo y fusión cuando existe progreso.
+
+El volumen general se guarda bajo EchoScrap.Audio.MasterVolume. Los ajustes de decoración, efectos reducidos, sacudida y modo de estadísticas se mantienen entre los reinicios y transiciones de la aplicación en curso; no tienen en este montaje un guardado permanente equivalente al del volumen.
+
+## Estado de la expedición
+
+La salud, XP, nivel y cartas pertenecen al intento activo. Volver desde resultados o abandonar limpia el combate y devuelve a la preparación en bóveda. Las entidades equipadas vuelven a aplicar sus poderes al empezar otro intento.
+
+La visita a la bóveda durante una expedición conserva esa sesión en memoria y suspende el combate. Cerrar la aplicación no guarda una partida de combate para retomarla en el mismo punto.
 
 ---
 
-# 07 - Tecnología
-
 # Arquitectura técnica
 
-El proyecto activo es `EchoScrap/`. La arena guarda los objetos, referencias y ajustes necesarios para iniciar la partida desde Unity. El arranque enlaza al jugador con los sistemas de combate y reutiliza la sesión al reiniciar.
+El proyecto activo es EchoScrap/. La compilación principal empieza en MainMenu y carga CombatArena después de elegir colección. El mundo conserva sus sistemas para preparar y reiniciar expediciones sin recargar a todos los actores.
 
 | Responsabilidad | Componentes actuales |
 | --- | --- |
-| Composición de la arena | CombatGameBootstrap |
+| Menú y escenas | MainMenuEntry, MainMenuController, GameMenuView, SceneTransitionState, LoadingScreen |
+| Preparación y expedición | GameFlowController, ExpeditionEntrySettings, ExpeditionIntro |
+| Composición del mundo | CombatGameBootstrap |
 | Tiempo, pausas y resultado | CombatSession, GameplayClock, CombatOutcomeResolver |
-| Entradas y movimiento | PlayerInputReader, PlayerMotor, TerrainPlayerCollision |
-| Salud y estadísticas | PlayerHealth, PlayerRuntimeStats, PlayerCombatSettings |
-| Arma | FlashlightWeapon y su presentación |
-| Enemigos | EnemyActor, EnemyPool, navegación y módulos de ataques |
-| Horda y jefe | CombatWaveDirector, CombatWaveSettings, BossEncounter, GolgoraActor |
-| Progresión y cartas | CombatProgression, UpgradeDraftController, UpgradeCatalog |
-| Habilidades y presentación | UpgradeCombatRuntime, UpgradeEffectPool, VoltaicChainRenderer |
-| Mundo y colección | WarehouseTravel, WarehouseCameraDirector, FusionStation, FusionProgress |
-| Interfaz | CombatHud, UpgradeDraftPresentation, PlayerStatsReadout, DamageNumberPresenter |
+| Movimiento y salud | PlayerInputReader, PlayerMotor, TerrainPlayerCollision, PlayerHealth, PlayerRuntimeStats |
+| Linterna | FlashlightWeapon, FlashlightPresentation, FlashlightAudio |
+| Horda y élites | EnemyActor, EnemyPool, EnemyObstacleNavigator, EliteEnemyController, EliteProjectilePool |
+| Jefe | CombatWaveDirector, BossEncounter, BossArena, GolgoraActor, GolgoraCombatSettings |
+| Progresión | CombatProgression, UpgradeDraftController, UpgradeCatalog, UpgradeCombatRuntime |
+| Bóveda y colección | WarehouseTravel, WarehouseCameraDirector, WarehouseCameraFraming, FusionStation, FusionProgress |
+| Equipo y obtención | CompanionSystem, CompanionView, CollectibleUnitGrid |
+| Arte y efectos | EnemySpriteView, MortarSpriteView, MothSpriteView, EnemyEffectPool, UpgradeEffectPool |
+| Interfaz y audio | CombatHud, CombatMinimap, PlayerStatsReadout, DamageNumberPresenter, CombatMusicPlayer |
+| Iluminación | ArenaLightingController, ArenaLightingProfile y renderer de atmósfera |
 
-El daño, las muertes, el dash y otros cambios se comunican mediante eventos de la sesión. La presentación reacciona a esos eventos sin resolver por su cuenta el resultado de los ataques. El cierre de victoria o derrota se decide después de los impactos del paso de simulación.
-
-Los enemigos, objetos y efectos utilizan reservas reutilizables. La semilla de combate y la de presentación están separadas para que los cambios decorativos no cambien los sorteos jugables.
+La simulación comunica daño, muerte y resultados mediante eventos. Las reservas reutilizan actores, objetos y efectos. Las reglas del combate y su presentación mantienen responsabilidades separadas; las capturas controladas no cambian los assets originales del proyecto.
 
 ---
 
@@ -910,43 +1161,49 @@ Los enemigos, objetos y efectos utilizan reservas reutilizables. La semilla de c
 
 El juego guarda código en `Assets/_Project/Scripts`, escenas en `Scenes`, ajustes en `Settings` y recursos visuales en `Art` y `Resources`. Las fuentes finales editables se conservan en `ArtSource`.
 
-El Editor mantiene herramientas para el laboratorio, el balance, el inspector de la linterna y la conexión del arte actual. Los generadores de montajes anteriores, los informes auxiliares y las galerías de revisión se archivaron fuera del proyecto del juego. Los medios seleccionados para este GDD se encuentran en su propia carpeta `Media/Avance_2026-10-27`.
+El Editor mantiene herramientas para el laboratorio, el balance, la iluminación y atmósfera, el inspector de la linterna y la conexión del arte actual. Los generadores de montajes anteriores, los informes auxiliares y las galerías de revisión se archivaron fuera del proyecto del juego. Los medios seleccionados para este GDD se encuentran en las carpetas `Media/Avance_2026-10-27` y `Media/Avance_2026-11-04` del documento.
 
 ---
 
 # Requisitos técnicos
 
-La plataforma utilizada por el proyecto es Windows PC. La escena y sus variantes se ejecutan en Unity 6000.6.3f1 con URP, Input System y Cinemachine. La población normal del director está limitada a 150 enemigos vivos; el valor de 250 pertenece al modo separado de estrés.
+La plataforma del proyecto es Windows PC. El montaje usa Unity 6000.6.3f1, URP 17.6.0, Input System 1.20.0 y Cinemachine 6.6.0. La compilación principal habilita MainMenu y CombatArena.
+
+El director limita normalmente la población a 150 enemigos; el modo de estrés usa 250. Los Morteros tienen un límite de seis, los élites uno conjunto de dos y los refuerzos de la caldera uno efectivo de ocho.
 
 ## Alcance de los registros
 
-Las capturas nuevas del GDD se generaron a 960 × 540 en una copia externa del proyecto, con render Direct3D11 y una cámara de detalle. Las secuencias de mejoras conservan recortes de capturas de 1280 × 720. Los ajustes del ensayo permiten observar efectos sin convertirlos en una medición de rendimiento del juego completo.
+Los GIFs nuevos de animación proceden de los atlas y tiempos exportados del proyecto. Las capturas de Unity se ejecutan sobre una copia externa, con cámara de detalle, jugador protegido y oleadas detenidas. Sus condiciones se describen en [[06 - Registro visual]].
 
-El archivo de desarrollo contiene mediciones de builds anteriores y perfiles del Editor con distintas poblaciones y efectos. Cada resultado corresponde a su fecha, hardware y configuración. Esta edición no presenta una tasa mínima de FPS ni una especificación mínima de hardware como si estuvieran certificadas para cualquier equipo.
+Las imágenes y GIFs comprueban recursos y presentación. No establecen una tasa mínima de FPS ni certifican requisitos mínimos de hardware. Las mediciones de builds anteriores deben conservar su fecha, equipo y configuración para poder compararse.
 
-El uso normal de teclado o mando, los límites de la arena, las pausas, el reinicio y los ajustes visuales están descritos en sus secciones funcionales. La documentación del comportamiento y la medición del rendimiento se mantienen como comprobaciones diferentes.
+El combate admite teclado y mando. Las interacciones de entidades, equipo y fusión usan E y necesitan una revisión adicional para completar su recorrido con mando.
 
 ---
 
 # Datos y persistencia
 
-Los valores del jugador y de los enemigos se configuran mediante assets. Las oleadas cuentan con ajustes independientes para las escenas normal y rápida. El catálogo de mejoras contiene 35 identificadores y una tabla de ajustes de sus efectos.
+Los valores del jugador, los arquetipos y las oleadas se configuran mediante assets. ExpeditionEntrySettings enlaza las rondas demo y completa; sus assets seleccionan el tiempo del jefe y las variantes de 3600 o 9000 HP. GolgoraCombatSettings reúne tiempos, daños, áreas y modificadores de fase.
 
-## Datos de la sesión
+El catálogo de combate tiene 35 identificadores. El catálogo de entidades tiene quince, seis rarezas y dos fuentes separadas: nueve entradas de mapa y seis resultados de fusión. CompanionSystem relaciona cada entidad con su poder inicial; PlayerRuntimeStats combina los niveles efectivos de equipo y cartas.
 
-El reloj, la semilla, vida, XP, nivel, cartas, enemigos, peligros y objetos pertenecen al combate activo. El reinicio restaura sus valores y limpia sus instancias y efectos. La visita al almacén conserva esa sesión en memoria.
+## Sesión en memoria
 
-## Datos que se conservan localmente
+El reloj, salud, XP, cartas, enemigos, peligros y objetos pertenecen a la expedición. Las transiciones entre preparación y combate restablecen ese estado. Una visita temporal a la bóveda conserva la sesión en memoria.
 
-`FusionProgress` serializa inventario, plazas, fase, resultado y temporizadores en JSON dentro de PlayerPrefs. La versión del formato es 1 y su clave es `EchoScrap.FusionPrototype.v1`. El sistema valida los datos al cargar y conserva el resultado de una fusión comenzada.
+## Datos locales
 
-Los atlas y las fuentes editables contienen los fotogramas y sus tiempos. Los materiales y recursos de efectos se referencian desde el proyecto para mantener disponibles sus texturas y shaders en la ejecución.
+FusionProgress serializa el inventario, equipo, exposición y proceso en JSON de formato 4. FusionStation lo guarda bajo EchoScrap.Collection.Production.v1. La validación amplía los inventarios de trece entradas del mismo formato, protege copias equipadas y restablece formatos anteriores a 4. La clave de prototipo no se carga desde este sistema.
+
+El perfil usa EchoScrap.CollectionStarted.v1 y el volumen EchoScrap.Audio.MasterVolume. Las preferencias visuales y el modo de estadísticas se pasan entre escenas durante la aplicación en curso.
+
+Los JSON de los atlas registran rectángulos, etiquetas y tiempos. Los GIFs documentales de animación se componen a partir de esos datos y las copias PNG se verifican contra los atlas activos.
 
 ---
 
 # Seguridad y riesgos técnicos
 
-El inventario de fusión se conserva de forma local. Al cargarlo se validan sus arrays, identificadores y temporizadores antes de continuar el proceso. La colección y el estado del combate se gestionan por separado.
+El inventario de entidades, los tres puestos de equipo y la fusión se conservan de forma local. Al cargarlo se validan sus arrays, identificadores y temporizadores antes de continuar el proceso. La colección y el estado del combate se gestionan por separado.
 
 ## Comportamientos que requieren atención al revisar cambios
 
@@ -959,19 +1216,23 @@ El inventario de fusión se conserva de forma local. Al cargarlo se validan sus 
 
 Los generadores históricos del escenario se conservan en el archivo externo. El montaje actual vive en sus escenas y assets, evitando que una herramienta de una fase anterior reemplace colocaciones posteriores.
 
----
+La fusión debe consumir cuatro copias disponibles una sola vez, conservar el resultado sorteado y respetar las copias equipadas. Cambiar la dimensión del catálogo debe conservar los guardados compatibles del formato 4. La configuración anterior de prototipo tiene una clave y un contrato distintos.
 
-# 08 - Producción
+El traslado a la caldera y las transiciones del jefe protegen al jugador y detienen sus entradas mientras corresponde. Los refuerzos deben respetar su aviso y el límite efectivo de la arena del jefe.
+
+---
 
 # Alcance de la versión jugable
 
-El avance contiene un escenario de supervivencia con un protagonista, cinco arquetipos de horda y un jefe. El jugador puede completar el combate, consultar el resultado y reiniciar. La escena de tres minutos y la de ocho minutos comparten mapa y sistemas, con distinto tiempo de aparición del jefe.
+El juego contiene un menú inicial independiente, preparación en bóveda y expediciones demo o completas. La preparación permite elegir hasta tres entidades del inventario y usar la máquina de fusión. Hace falta señalizar mejor el paso de equipar entidades; esta edición lo incluye en el flujo y lo mantiene como trabajo pendiente de UX.
 
-La progresión de combate reúne 35 mejoras funcionales, cuatro rarezas, niveles y requisitos. La presentación incluye sprites animados del Coleccionista, Mortero y Polilla, un modelo animado del MataColeccionista y efectos de luz, daño, frío, explosiones, dispositivos y recogida.
+El combate reúne cinco arquetipos de horda, dos élites, 35 mejoras y Gólgora. El jefe tiene dos variantes de vida, seis patrones, segunda fase y una caldera propia. Victoria, derrota y abandono conducen a la bóveda conservando la colección.
 
-El escenario incorpora relieve, colisiones, lava, acceso subterráneo y almacén visitable por portal. La estación de fusión permite combinar tres ingredientes, esperar el resultado y guardarlo en una colección de cinco personajes con ocho espacios de exposición. Los ingredientes base son ilimitados en este montaje.
+La arena de 200 × 200 m incorpora relieve, obstáculos y acceso norte. Las zonas de lava fija están desactivadas. La bóveda tiene tres puestos de equipo, siete de exposición y una máquina que consume cuatro copias por fusión.
 
-El laboratorio de enemigos y los sandboxes permiten observar reglas de forma aislada. Los registros incluidos en el GDD documentan esa versión y sus recursos actuales.
+La colección tiene quince entidades en seis rarezas. Nueve aparecen en arena y seis se obtienen mediante fusión. El inventario, el equipo y el proceso tienen guardado local.
+
+La presentación incluye sprites animados de los cinco enemigos de horda, modelo de Gólgora, efectos de enemigos y mejoras, minimapa, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
 
 ---
 
@@ -1099,26 +1360,35 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | 26 de octubre | Fusión por rareza, colección expuesta, barra de XP, magma, portal y renovación de VFX. |
 | 27 de octubre | Limpieza de material auxiliar del repositorio y actualización del GDD con registros del juego. |
 
-Las reglas y los recursos de estas entregas se desarrollan en las secciones de diseño, contenido y registro visual.
+## Incorporaciones posteriores al registro del 27 de octubre
+
+El estado del 4 de noviembre añade menú independiente y carga, preparación en bóveda, selección de ronda y retorno desde resultados; colección de quince entidades con equipo de tres puestos; fusión de cuatro copias; dos élites; sprites de Esqueleto, Interceptor y Wendigo; minimapa, audio contextual, iluminación y ampliación del encuentro de Gólgora.
+
+La siguiente necesidad identificada en esta revisión es guiar la selección de entidades antes de salir. Su implementación está pendiente. No se fija aquí una fecha que el equipo no haya acordado.
+
+Las reglas y los recursos se desarrollan en las secciones de diseño, contenido y registro visual.
 
 ---
 
-# Registro de entregas del proyecto
+# Entregas y trabajo pendiente
 
-| Entrega | Evidencia funcional en el avance |
+| Área | Estado al 4 de noviembre |
 | --- | --- |
-| Control del Coleccionista | Movimiento, dash, colisiones y cámara utilizables en la arena. |
-| Combate | Linterna automática, salud, críticos, daño y curación. |
-| Enemigos | Cinco arquetipos y Gólgora con sus ataques y presentaciones. |
-| Progresión | XP, subidas de nivel y 35 mejoras seleccionables. |
-| Flujo de partida | Oleadas, entrada del jefe, victoria, derrota y reinicio. |
-| Mundo | Arena de 200 m, relieve, obstáculos, lava, escalera, portal y almacén. |
-| Fusión | Recetas por rareza, temporizador, resultado, colección y guardado local. |
-| Presentación | Sprites, modelo del jefe, HUD, cartas, partículas y efectos de mejoras. |
-| Herramientas | Laboratorio, balance y conectores del arte actual. |
-| Documentación visual | Atlas activos, fuentes editables y GIFs de enemigos, cartas y VFX registrados en Unity. |
+| Flujo | Menú, colección, bóveda, elección de ronda, expedición y regreso desde resultados integrados. |
+| Equipo | Tres puestos funcionales con poderes iniciales y copias disponibles. |
+| Colección y fusión | Quince entidades, recogida manual, inventario por copias y fusión de cuatro ingredientes. |
+| Combate | Cinco arquetipos de horda, dos élites, linterna y 35 mejoras. |
+| Gólgora | Caldera, seis patrones, dos fases, dos valores de vida y refuerzos anunciados. |
+| Presentación | Sprites, VFX, minimapa, retratos, menús, audio e iluminación integrados. |
+| Documentación | Reglas actualizadas, spritesheets y GIFs diferenciados por su procedencia. |
 
-Los detalles jugables se mantienen en las secciones de diseño y contenido. Este registro agrupa las entregas existentes para su revisión conjunta.
+## Pendientes identificados
+
+1. **Guiar la preparación de entidades.** Hacer visibles los tres puestos y explicar su relación con los poderes antes de elegir ronda. El juego permite omitirlos y los avisos locales no presentan el sistema en el recorrido inicial.
+2. **Revisar las interacciones con mando.** Recoger entidades y abrir equipo o fusión usa E; falta resolver ese acceso dentro del recorrido completo con mando.
+3. **Cerrar el uso de las pistas de prueba.** La música de arena y jefe está integrada con nombres provisionales; su elección final corresponde al área de audio.
+
+Estos puntos son necesidades de revisión, no funcionalidades que esta actualización del GDD haya añadido al juego.
 
 ---
 
@@ -1143,106 +1413,130 @@ El diseño de un videojuego evoluciona durante la revisión del equipo y la retr
 | **15/10/2026** | Definición de **muros perimetrales físicos** de chatarra y cámara cenital unificada a **60°**. | Delimitar físicamente la arena de $120 \times 120\text{ m}$ y estandarizar la proyección de *sprites* 2D en el entorno 3D. | Ajuste en `02 - Mecánicas`, `04 - Niveles`, `05 - Entornos` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro / Obispo Navarro Samuel Alejandro | Histórico |
 | **16/10/2026** | Invocación periódica de esbirros por Gólgora cada $4.0\text{ s}$ en la Fase 5. | Mantener activas las mejoras de área, curación y recolección de XP durante el jefe final. | Actualización de `02 - Sistemas`, `04 - Niveles`, `04 - Enemigos y NPC` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro | Histórico |
 
+## Revisión del 4 de noviembre de 2026
 
+La edición 0.5.0 actualiza el estado documentado: preparación y selección de entidades, rondas desde la bóveda, quince entidades, cuatro ingredientes consumibles, dos élites, nuevos sprites, cámara exterior de 35,5°, minimapa, audio y ampliación de Gólgora. Los valores históricos de las filas anteriores se conservan como antecedentes y no describen el montaje vigente.
 
-
-## Montaje documentado el 27/10/2026
-
-El avance actual utiliza arena de 200 × 200 m y cámara de combate a 50°. Las reglas, recursos y registros de la edición 0.4.0 sustituyen las descripciones anteriores cuando difieren del juego. Se incorporan las variantes de tres y ocho minutos, el catálogo activo de 35 mejoras, las representaciones reales de los enemigos y el sistema de fusión con su colección de cinco personajes.
+La selección de equipo se incorpora al flujo de preparación. La falta de señalización que permita descubrirla se registra como pendiente de UX; no se ha implementado una guía durante esta tarea documental.
 
 ---
 
-# 09 - Calidad
-
 # Criterios de calidad
 
-El avance se revisa por su coherencia entre regla, control y representación. La respuesta al movimiento, la forma de los avisos, los valores de las cartas y la limpieza del reinicio se observan como partes de la misma experiencia.
+El diseño se revisa junto con el control y su presentación. Las opciones deben explicar qué cambia, los avisos deben preceder al daño y la colección debe conservar las copias que corresponden.
 
 | Aspecto | Comprobación |
 | --- | --- |
-| Control | El personaje responde a teclado y mando y el dash respeta paredes. |
-| Lectura | Los avisos preceden al daño y los efectos reducidos conservan sus señales esenciales. |
-| Progresión | Las ofertas respetan requisitos y niveles máximos; una adquisición aplica el cambio indicado. |
-| Sesión | La pausa, las elecciones, el almacén y el resultado mantienen coherente el reloj. |
-| Persistencia | El inventario y la fusión se recuperan con datos válidos al volver a abrir. |
-| Documentación | Las imágenes muestran recursos existentes y sus pies explican el contexto de captura. |
+| Preparación | El jugador puede encontrar los tres puestos y entender el poder de las entidades antes de elegir ronda. La señalización general sigue pendiente. |
+| Control | Movimiento y dash responden y respetan obstáculos; las interacciones de colección deben tener acceso claro. |
+| Lectura | Ataques anunciados, resistencias élite y cambios de fase legibles con efectos completos y reducidos. |
+| Progresión | Cartas válidas, niveles correctos y combinación coherente con los poderes equipados. |
+| Colección | Recogidas únicas, copias disponibles correctas, consumo de cuatro ingredientes y equipo protegido. |
+| Sesión | Pausa, visitas a bóveda, traslado, abandono y resultados mantienen el reloj y los estados coherentes. |
+| Persistencia | Inventario, equipo y fusión se recuperan sin volver a sortear ni devolver ingredientes consumidos. |
+| Documentación | Atlas correspondientes al juego y GIFs con procedencia y condiciones de registro claras. |
 
-Los valores y las representaciones se revisan juntos para mantener coherente la experiencia de juego.
+La presencia de un sistema funcional no demuestra que el jugador pueda descubrirlo. La selección de entidades debe evaluarse también durante un primer recorrido sin instrucciones externas.
 
 ---
 
 # Pruebas
 
-El proyecto dispone de pruebas de reglas e integración para movimiento, dash, daño, enemigos, oleadas, cartas, recogida, pausa, resultados, colisiones y fusión. El laboratorio permite generar los seis tipos de enemigo y observar sus estados de forma manual.
+El proyecto dispone de pruebas de locomoción, dash, daño, navegación, oleadas, élites, jefe, cartas, recogida, pausas, menús, bóveda, colección y fusión. El laboratorio permite generar ocho arquetipos y observar sus estados.
 
-## Registro visual de esta edición
+## Verificación de esta edición
 
-El 27 de octubre se ejecutó una captura automatizada en Play Mode sobre una copia externa del proyecto actual. Se registraron los seis enemigos, la entrada de cartas, el HUD, las estadísticas, la estación de fusión y el almacén. El proceso terminó correctamente y produjo imágenes mediante el render de Unity.
+La revisión documental contrasta los textos con los scripts, assets y montaje local de CombatArena. Se comprueban los 35 identificadores de mejora, las quince entidades, sus poderes y fuentes, las recetas de cuatro ingredientes y los parámetros vigentes del jefe y la cámara.
 
-Las secuencias usan una cámara de detalle y un jugador protegido para que cada ataque sea visible. Sus valores de enemigos permanecen intactos. Los GIFs de VFX incorporan registros de la revisión visual del 26 de octubre, con los mismos componentes de presentación del avance actual.
+Los spritesheets se copian de los PNG activos. Sus previsualizaciones usan los rectángulos y tiempos de los JSON exportados; cada acción muestra sus cuatro vistas cuando existen. Son previsualizaciones del recurso, no capturas de una partida.
 
-Las capturas y la verificación de documentos no sustituyen una ejecución de toda la suite ni una partida completa. Esta actualización no presenta el resultado de un subconjunto como si acreditara todas las pruebas del juego.
+Las secuencias nuevas de Unity se obtienen desde una copia externa del proyecto, con jugador protegido, oleadas detenidas y cámara de detalle. Los patrones del jefe se invocan de forma aislada con los componentes del juego. La lluvia se registra en segunda fase. Las pantallas de preparación tienen un inventario de muestra y la persistencia de colección está desactivada en esa captura.
+
+Los registros de VFX del 26 de octubre y cartas del 27 se mantienen identificados por su fecha. Las comprobaciones de medios y documentos no equivalen a una ejecución completa de todas las pruebas del juego ni a una certificación de rendimiento.
+
+Las veinte pruebas de FusionRulesTests pasaron en Edit Mode, al igual que la prueba de captura en Play Mode. La revisión documental verificó las 35 mejoras, las quince entidades y sus poderes, los atlas y los enlaces locales. Esos resultados corresponden a estas comprobaciones concretas.
+
+## Revisión de UX pendiente
+
+Hay que observar si una persona que abre el juego por primera vez entiende que puede equipar entidades antes de salir. En el estado actual esa información no queda presentada de forma suficiente. También queda por revisar el recorrido de colección, equipo y fusión con mando.
 
 ---
 
 # Bugs y seguimiento
 
-La revisión del avance se apoya en situaciones reproducibles y en el código y los recursos presentes. Una captura acredita el aspecto de ese momento; un comportamiento se contrasta además con su regla y su ejecución.
+## Preparación de entidades difícil de descubrir
 
-## Límites observados del montaje
+**Estado: pendiente de implementación.** El sistema de tres entidades equipadas existe, pero el recorrido desde el menú hasta la selección de ronda permite pasarlo por alto. La interacción local aparece al acercarse a un puesto y pulsar E; falta una indicación general que muestre dónde están esos puestos y qué aportan.
 
-La población de enemigos cuenta también a los que quedan lejos de cámara. Una retirada continua puede dejar a gran parte de la horda fuera de la zona visible y reducir la presión cercana cuando el límite de población ya está ocupado.
+El flujo documentado incluye revisar y seleccionar entidades después de entrar a la bóveda y antes de elegir ronda. Se puede salir con puestos vacíos, especialmente al comenzar una colección nueva. El problema consiste en que el jugador tome esa decisión conociendo el sistema.
 
-La escena rápida cambia el momento de entrada del jefe; conserva las fases de oleadas del montaje y no representa una compresión proporcional de todos los tiempos de la escena larga.
+La revisión debe comprobar que el recorrido presenta los tres puestos, explica que cada entidad aporta un poder e indica cómo abrir el selector. No hay una guía nueva implementada por esta actualización documental.
 
-Las pruebas de estos casos se describen mediante su escenario y su resultado, para poder repetir la misma situación al revisar un cambio.
+## Acceso con mando
+
+La recogida de entidades y la apertura de equipo y fusión usan E. Los controles de combate y menús principales aceptan mando, pero estas interacciones necesitan una revisión propia antes de considerar completo ese recorrido.
+
+## Límites de las oleadas
+
+La población cuenta a los enemigos que quedan fuera de cámara. Una retirada continua puede alejar gran parte de la horda y reducir la presión cercana cuando el límite ya está ocupado.
+
+La ronda demo utiliza los primeros tramos de la misma curva de oleadas. No comprime proporcionalmente todas las fases de ocho minutos.
+
+## Registros visuales
+
+Las capturas anteriores tienen fecha y condiciones propias. Los GIFs de atlas enseñan fotogramas y tiempos; los de Unity enseñan la presentación de una situación controlada. Ninguno sustituye por sí solo una partida completa o una medición de FPS.
 
 ---
 
-# Criterios de aceptación del avance
+# Criterios de aceptación
 
-| Parte | Comportamiento definido por la versión actual |
+| Parte | Comportamiento esperado |
 | --- | --- |
-| Movimiento | Teclado y mando mueven al Coleccionista; la diagonal está limitada y el apoyo sigue el escenario. |
-| Dash | Recorre el espacio libre, atraviesa enemigos durante su protección y se detiene ante paredes. |
-| Linterna | Adquiere objetivos, emite cuatro pulsos y aplica el empuje final según el enemigo. |
-| Enemigos | Cada arquetipo usa sus valores, navegación y ataque especial; el jefe alterna sus patrones. |
-| XP y cartas | La XP produce elecciones y el draft muestra opciones válidas con sus niveles y valores. |
-| Resultado | Muerte del jugador: derrota; muerte del jefe con jugador vivo: victoria; empate: derrota. |
-| Reinicio | Se limpian actores, peligros y efectos de la partida y se restauran sus estadísticas. |
-| Almacén | El viaje conserva al jugador y suspende el combate hasta regresar. |
-| Fusión | Tres ingredientes producen un sorteo único; el resultado se colecciona o libera y el proceso se guarda localmente. |
-| Registro visual | Los atlas coinciden con los recursos activos y los GIFs se obtienen del render del juego. |
+| Inicio | Menú independiente, continuación de colección o creación con confirmación cuando corresponde. |
+| Preparación | Revisar y seleccionar hasta tres entidades antes de elegir ronda, con opción de puestos vacíos. La guía que haga visible este paso sigue pendiente. |
+| Equipo | Solo copias disponibles, puesto correcto, poderes iniciales y protección frente a consumo o liberación. |
+| Rondas | Selección demo o completa; jefe a 180 o 480 s y vida de 3600 o 9000 HP. |
+| Movimiento | Entradas correctas, diagonal limitada, apoyo sobre el escenario y dash detenido por obstáculos. |
+| Linterna y cartas | Autoapuntado, cuatro pulsos y ofertas válidas entre 35 mejoras. |
+| Enemigos | Cinco arquetipos de horda y dos élites con sus ataques, resistencias y avisos. |
+| Jefe | Traslado protegido, perímetro cerrado, seis patrones, segunda fase y refuerzos dentro del límite efectivo de ocho. |
+| Entidades de mapa | Apariciones temporales, recogida manual única y copia guardada. |
+| Fusión | Cuatro copias consumidas una vez, resultado único, estado listo y apertura por interacción. |
+| Resultado | Derrota al morir el jugador; victoria al morir el jefe con jugador vivo; prioridad de derrota en empate. |
+| Retorno | Limpieza de la expedición y vuelta a bóveda con colección, equipo y fusión conservados. |
+| Persistencia | Guardado de producción de formato 4, validación de datos y volumen general conservado. |
+| Medios | Atlas verificados contra recursos activos y GIFs identificados como previsualización o captura de Unity. |
 
-Los apartados de diseño explican los valores y las condiciones de estas reglas. [[02 - Pruebas]] identifica qué se comprobó al preparar los registros de esta edición.
+Esta tabla define qué revisar. No atribuye a toda la suite el resultado de una captura ni marca como terminada la guía de preparación pendiente.
 
 ---
-
-# 10 - Referencia
 
 # Glosario
 
-| Término | Uso en la versión actual |
+| Término | Uso actual |
 | --- | --- |
-| Coleccionista | Personaje controlado por el jugador, equipado con linterna y dash. |
-| Vertedero de Ecos | Escenario de combate de 200 × 200 m. |
-| Almacén o bóveda | Espacio 3D de exposición conectado a la arena por un portal. |
-| Coleccionable | Personaje del inventario de fusión; el catálogo actual contiene cinco. |
-| Eco o gema de XP | Objeto que concede experiencia de la partida; los arquetipos normales entregan 10, 15, 25 o 50 XP. |
-| Linterna | Arma sobrenatural con autoapuntado, cuatro pulsos y empuje en el último. |
-| Rayo solar | Mejora legendaria FLASH_05: 14 m de alcance base, daño ×2,5 y ráfagas sin descanso. |
-| Dash | Desplazamiento evasivo de 0,15 s con invulnerabilidad y recorrido limitado por obstáculos. |
-| Gólgora / MataColeccionista | Jefe de 1500 HP con modelo 3D animado, pisotón y bombardeo. |
-| Draft o selección de mejoras | Elección pausada de hasta tres cartas válidas al subir de nivel. |
-| Reintento | Cambio de oferta consumible concedido por Sintonizador. |
-| Fusión | Proceso de tres ingredientes con tiempo y sorteo por rareza. |
-| I-frames | Periodo de protección temporal frente al daño. |
-| Atlas o spritesheet | Imagen que reúne los fotogramas usados por un personaje. |
-| VFX | Representación visual de ataques, estados y otras acciones mediante luz, partículas, materiales o geometría. |
-| Efectos reducidos | Condición de presentación que retira decoración y conserva las señales esenciales. |
-| Pool | Reserva de instancias que se reutilizan al crear y retirar actores, objetos o efectos. |
+| Coleccionista | Personaje del jugador, con linterna automática y dash. |
+| Vertedero | Arena de expedición de 200 × 200 m. |
+| Bóveda o almacén | Preparación, equipo, exposición y fusión, conectados por portal. |
+| Entidad o coleccionable | Una de las quince entradas del inventario persistente. |
+| Copia | Unidad disponible de una entidad; puede reservarse en un puesto o consumirse en fusión. |
+| Entidad equipada | Copia colocada en uno de los tres puestos que aporta un nivel de su poder asociado. |
+| Exposición | Siete puestos para copias disponibles, separados de los tres de equipo. |
+| Ronda demo / completa | Ajustes elegidos antes de salir: jefe a 3:00 con 3600 HP o a 8:00 con 9000 HP. |
+| Eco o gema de XP | Experiencia del intento actual, recogida con el imán. |
+| Draft | Elección pausada de hasta tres cartas válidas al subir de nivel. |
+| Linterna | Arma sobrenatural de cuatro pulsos, autoapuntado y empuje final. |
+| Dash | Esquiva de 0,15 s con invulnerabilidad, limitada por obstáculos. |
+| Élites | Caballero Fantasma y Centinela de Cobre, con resistencias y ataques propios. |
+| Gólgora / MataColeccionista | Jefe de la caldera, con seis patrones y dos fases. |
+| Cerco de magma | Salto central y ondas con un hueco de paso; una onda en primera fase y tres en segunda. |
+| Fusión | Consumo de cuatro copias, sorteo por calidad y proceso con apertura manual al terminar. |
+| Mítico | Rareza de Yanikua; forma parte de las seis rarezas de entidades. |
+| Atlas o spritesheet | PNG con los fotogramas exportados; sus tiempos y etiquetas se conservan en JSON. |
+| VFX | Presentación visual de ataques, estados y acciones mediante sprites, luz, materiales o partículas. |
+| Pool | Reserva de instancias reutilizables. |
 
-Las cifras y condiciones de cada término se desarrollan en las secciones de diseño, contenido y registro visual.
+Los valores completos se desarrollan en diseño, contenido y registro visual.
 
 ---
 
@@ -1257,32 +1551,37 @@ Registra los videojuegos y obras utilizadas como referencia de diseño, arte, na
 | Nombre | Aspecto de referencia | Qué nos interesa tomar | Qué NO buscamos copiar |
 |---|---|---|---|
 | **Vampire Survivors** | Bucle de supervivencia, escalado de hordas y selección pausada de mejoras al subir de nivel. | La claridad del bucle de absorción magnética de gemas de XP, la satisfacción de limpiar oleadas masivas y la pausa táctica de 3 opciones al subir de nivel. | La ausencia de esquive activo (*Dash*) y las partidas de 30 minutos; *EchoScrap* concentra la partida en 8–10 minutos con posicionamiento táctico. |
-| **Brotato / 20 Minutes Till Dawn** | Construcción de *builds* compactas y sinergias entre mejoras pasivas y activas en arenas cerradas. | La legibilidad de las estadísticas del personaje, los topes defensivos claros y la tensión dentro de un perímetro delimitado. | El sistema de tienda con moneda entre oleadas; en *EchoScrap* la progresión en partida ocurre por nivel de XP y la meta-progresión por captura de Entidades en victoria. |
+| **Brotato / 20 Minutes Till Dawn** | Construcción de *builds* compactas y sinergias entre mejoras pasivas y activas en arenas cerradas. | La legibilidad de las estadísticas del personaje, los topes defensivos claros y la tensión dentro de un perímetro delimitado. | El sistema de tienda con moneda entre oleadas; en *EchoScrap* la progresión en partida ocurre por nivel de XP y la colección mediante recogida de entidades y fusión. |
 | **Risk of Rain Returns / Hyper Light Drifter** | Dirección de arte *pixel art* de alto contraste, paleta cromática y atmósfera melancólica de mundos en ruinas. | El uso de sombras profundas (paleta Apollo) contrastadas con cianos y ámbares brillantes para mantener legibles los ataques y peligros. | La exploración de mapas laberínticos abiertos o plataformas de salto. |
 | **Enter the Gungeon** | Respuesta kinestésica del *Dash* con invulnerabilidad (*i-frames*) y telegrafiado visual de ataques enemigos. | La precisión del esquive para atravesar cercos o proyectiles y los indicadores claros antes de una explosión o pisotón. | El apuntado manual de doble *stick* con recarga de munición tradicional. |
-| **Resident Evil (Archivos y vitrinas)** | Narrativa indirecta mediante fichas de registro e inspección en calma. | El formato de textos breves (35–65 palabras) en las fichas de las Entidades del Almacén que revelan el trasfondo del pacto y de Gólgora sin cortar la acción con cinemáticas. | La gestión de inventario limitado por casillas de supervivencia clásica. |
+| **Resident Evil (Archivos y vitrinas)** | Narrativa indirecta mediante fichas de registro e inspección en calma. | La consulta de una colección en un espacio de preparación. Las fichas narrativas extensas son una referencia de diseño y no una función documentada como integrada en esta versión. | La gestión de inventario limitado por casillas de supervivencia clásica. |
 
 > [!warning] Propiedad intelectual
-> Todas las referencias sirven únicamente como guía de análisis mecánico, visual y de ritmo; todos los *sprites*, modelos 3D, textos y pistas de *EchoScrap* se diseñan de forma original para el proyecto.
+> Todas las referencias sirven únicamente como guía de análisis mecánico, visual y de ritmo; la procedencia de cada recurso de EchoScrap se debe conservar en su registro. La mezcla de linterna incorpora grabaciones externas identificadas en Sources.txt y las pistas de arena y jefe mantienen su carácter de prueba.
 
 ---
 
 # Registro de decisiones vigentes
 
-Las decisiones de esta edición se contrastan con el montaje jugable documentado el 27 de octubre de 2026.
+Esta edición describe el montaje local consultado el 4 de noviembre de 2026.
 
-| Área | Decisión reflejada en el juego | Consecuencia |
-| --- | --- | --- |
-| Control | Movimiento y apuntado de la linterna desacoplados. | El jugador puede retirarse mientras ataca a una amenaza en otra dirección. |
-| Dash | Protección temporal y paso entre enemigos, con límites sólidos del escenario. | La esquiva abre rutas sin atravesar muros. |
-| Mundo y cámara | Arena de 200 m y cámara de combate a 50°. | La documentación coincide con la escala y proyección actuales. |
-| Partida | Variantes con jefe a tres y ocho minutos; victoria por derrota del jefe. | El tiempo marca una transición y no una victoria automática. |
-| Mejoras | 35 cartas activas con cuatro rarezas, niveles y requisitos. | Las ofertas y la descripción del GDD utilizan el catálogo del juego. |
-| Enemigos | Atlas para Mortero y Polilla; geometría para Residual, Interceptor y Coloso; modelo animado para Gólgora. | Cada recurso se presenta con su representación real. |
-| Colección | Cinco personajes, fusión por rareza, ocho espacios e ingredientes base ilimitados. | Se documentan las reglas de obtención y guardado del sistema actual. |
-| Documentación visual | Capturas de Unity y atlas activos con contexto de registro. | Las ilustraciones permiten revisar lo que funciona dentro del juego. |
+| Área | Regla o decisión vigente |
+| --- | --- |
+| Flujo | Menú, colección, bóveda, selección de entidades, ronda, expedición y regreso a preparación. |
+| Guía de equipo | Los tres puestos funcionan; su señalización general sigue pendiente y el juego permite salir sin visitarlos. |
+| Control | Movimiento y apuntado desacoplados; dash protegido y limitado por obstáculos. |
+| Mundo y cámara | Arena de 200 m, acceso norte, bóveda modular y cámara exterior a 35,5°. |
+| Partida | Demo: 3:00 y 3600 HP; completa: 8:00 y 9000 HP. Victoria por derrota del jefe. |
+| Gólgora | Caldera cerrada, seis ataques, dos fases y hasta ocho refuerzos efectivos. |
+| Mejoras | 35 cartas y cuatro rarezas, con niveles y requisitos. |
+| Enemigos | Cinco de horda, dos élites y un jefe. Los cinco de horda tienen sprites animados. |
+| Colección | Quince entidades y seis rarezas; nueve entradas de mapa y seis de fusión. |
+| Equipo | Tres copias con poderes iniciales; siete puestos adicionales de exposición. |
+| Fusión | Cuatro copias consumibles, resultado único, estado listo y apertura por interacción. |
+| Guardado | Clave de producción y formato 4, con inventario, equipo y fusión. |
+| Medios | Atlas activos y GIFs de sus acciones; capturas de Unity identificadas por sus condiciones. |
 
-El historial de versiones conserva las fechas de evolución del documento. Las capturas y los textos de esta edición describen la versión jugable actual.
+Los registros del 27 de octubre y las decisiones históricas se conservan con su fecha. Los valores de esta edición sustituyen sus descripciones cuando difieren del montaje actual.
 
 ---
 
@@ -1301,6 +1600,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.2.0** | 04/10/2026 | Documentación de la **Sección 02 - Diseño** (Jugabilidad, Mecánicas, Sistemas, Controles, Progresión, Economía y Estados), los 5 arquetipos de enemigos de horda, Gólgora y la arquitectura técnica. | Sierra Sosa David Alejandro / Mora Alejandro Angel Gabriel |
 | **0.3.0** | 16/10/2026 | Consolidación del documento de diseño, narrativa, mecánicas, catálogo de mejoras y organización del equipo. | Equipo EchoScrap |
 | **0.4.0** | 27/10/2026 | Actualización al proyecto jugable EchoScrap: reglas y valores actuales, seis enemigos, 35 mejoras, mundo de 200 m, almacén y fusión; atlas activos y GIFs de enemigos, cartas y VFX capturados en Unity. | Sierra Sosa David Alejandro |
+| **0.5.0** | 04/11/2026 | Flujo de preparación con selección de entidades y guía pendiente; quince entidades, equipo de tres puestos y fusión de cuatro copias; élites, sprites y animaciones actuales, caldera y patrones de Gólgora, minimapa, cámara, audio y guardado de producción. | Sierra Sosa David Alejandro |
 
 ## Convención sugerida
 
@@ -1310,5 +1610,3 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 
 > [!example] Ejemplo
 > `1.2.3` → versión mayor 1, versión menor 2, corrección 3.
-
----

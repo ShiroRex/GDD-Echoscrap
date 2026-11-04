@@ -28,8 +28,14 @@ Los números muestran la salud realmente perdida. Los impactos normales de una r
 
 ## Recogida
 
-El imán base alcanza 2,5 m y atrae los objetos a 12 m/s. Las gemas conceden experiencia; el botiquín base recupera 15 HP. El contacto con lava, ácido y áreas de ataque utiliza las mismas reglas de salud e invulnerabilidad que el resto del combate.
+El imán base alcanza 2,5 m y atrae los objetos a 12 m/s. Las gemas conceden experiencia; el botiquín base recupera 15 HP. El ácido y las áreas de ataque utilizan las mismas reglas de salud e invulnerabilidad que el resto del combate. Las zonas de lava fija del mapa están desactivadas; el magma de Gólgora sigue formando parte del encuentro.
 
 Las mejoras modifican estos parámetros o añaden acciones automáticas. Sus niveles y efectos se describen en [[05 - Progresión]].
+
+## Entidades y poderes de inicio
+
+Hasta tres copias equipadas aportan niveles iniciales de sus mejoras asociadas. Varias copias con el mismo poder aumentan ese nivel hasta el máximo de la mejora. Al combinar equipo y cartas, el valor efectivo es el mayor de ambos niveles; no se suman entre sí. El detalle de cada entidad está en [[04 - Objetos y Coleccionables]].
+
+Los coleccionables que aparecen en arena requieren E dentro de unos 2,5 m y una línea de interacción despejada. No se recogen con el imán de las gemas y botiquines.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

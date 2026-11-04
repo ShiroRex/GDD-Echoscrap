@@ -1,15 +1,19 @@
 # Datos y persistencia
 
-Los valores del jugador y de los enemigos se configuran mediante assets. Las oleadas cuentan con ajustes independientes para las escenas normal y rápida. El catálogo de mejoras contiene 35 identificadores y una tabla de ajustes de sus efectos.
+Los valores del jugador, los arquetipos y las oleadas se configuran mediante assets. ExpeditionEntrySettings enlaza las rondas demo y completa; sus assets seleccionan el tiempo del jefe y las variantes de 3600 o 9000 HP. GolgoraCombatSettings reúne tiempos, daños, áreas y modificadores de fase.
 
-## Datos de la sesión
+El catálogo de combate tiene 35 identificadores. El catálogo de entidades tiene quince, seis rarezas y dos fuentes separadas: nueve entradas de mapa y seis resultados de fusión. CompanionSystem relaciona cada entidad con su poder inicial; PlayerRuntimeStats combina los niveles efectivos de equipo y cartas.
 
-El reloj, la semilla, vida, XP, nivel, cartas, enemigos, peligros y objetos pertenecen al combate activo. El reinicio restaura sus valores y limpia sus instancias y efectos. La visita al almacén conserva esa sesión en memoria.
+## Sesión en memoria
 
-## Datos que se conservan localmente
+El reloj, salud, XP, cartas, enemigos, peligros y objetos pertenecen a la expedición. Las transiciones entre preparación y combate restablecen ese estado. Una visita temporal a la bóveda conserva la sesión en memoria.
 
-`FusionProgress` serializa inventario, plazas, fase, resultado y temporizadores en JSON dentro de PlayerPrefs. La versión del formato es 1 y su clave es `EchoScrap.FusionPrototype.v1`. El sistema valida los datos al cargar y conserva el resultado de una fusión comenzada.
+## Datos locales
 
-Los atlas y las fuentes editables contienen los fotogramas y sus tiempos. Los materiales y recursos de efectos se referencian desde el proyecto para mantener disponibles sus texturas y shaders en la ejecución.
+FusionProgress serializa el inventario, equipo, exposición y proceso en JSON de formato 4. FusionStation lo guarda bajo EchoScrap.Collection.Production.v1. La validación amplía los inventarios de trece entradas del mismo formato, protege copias equipadas y restablece formatos anteriores a 4. La clave de prototipo no se carga desde este sistema.
+
+El perfil usa EchoScrap.CollectionStarted.v1 y el volumen EchoScrap.Audio.MasterVolume. Las preferencias visuales y el modo de estadísticas se pasan entre escenas durante la aplicación en curso.
+
+Los JSON de los atlas registran rectángulos, etiquetas y tiempos. Los GIFs documentales de animación se componen a partir de esos datos y las copias PNG se verifican contra los atlas activos.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

@@ -1,25 +1,28 @@
 # Glosario
 
-| Término | Uso en la versión actual |
+| Término | Uso actual |
 | --- | --- |
-| Coleccionista | Personaje controlado por el jugador, equipado con linterna y dash. |
-| Vertedero de Ecos | Escenario de combate de 200 × 200 m. |
-| Almacén o bóveda | Espacio 3D de exposición conectado a la arena por un portal. |
-| Coleccionable | Personaje del inventario de fusión; el catálogo actual contiene cinco. |
-| Eco o gema de XP | Objeto que concede experiencia de la partida; los arquetipos normales entregan 10, 15, 25 o 50 XP. |
-| Linterna | Arma sobrenatural con autoapuntado, cuatro pulsos y empuje en el último. |
-| Rayo solar | Mejora legendaria FLASH_05: 14 m de alcance base, daño ×2,5 y ráfagas sin descanso. |
-| Dash | Desplazamiento evasivo de 0,15 s con invulnerabilidad y recorrido limitado por obstáculos. |
-| Gólgora / MataColeccionista | Jefe de 1500 HP con modelo 3D animado, pisotón y bombardeo. |
-| Draft o selección de mejoras | Elección pausada de hasta tres cartas válidas al subir de nivel. |
-| Reintento | Cambio de oferta consumible concedido por Sintonizador. |
-| Fusión | Proceso de tres ingredientes con tiempo y sorteo por rareza. |
-| I-frames | Periodo de protección temporal frente al daño. |
-| Atlas o spritesheet | Imagen que reúne los fotogramas usados por un personaje. |
-| VFX | Representación visual de ataques, estados y otras acciones mediante luz, partículas, materiales o geometría. |
-| Efectos reducidos | Condición de presentación que retira decoración y conserva las señales esenciales. |
-| Pool | Reserva de instancias que se reutilizan al crear y retirar actores, objetos o efectos. |
+| Coleccionista | Personaje del jugador, con linterna automática y dash. |
+| Vertedero | Arena de expedición de 200 × 200 m. |
+| Bóveda o almacén | Preparación, equipo, exposición y fusión, conectados por portal. |
+| Entidad o coleccionable | Una de las quince entradas del inventario persistente. |
+| Copia | Unidad disponible de una entidad; puede reservarse en un puesto o consumirse en fusión. |
+| Entidad equipada | Copia colocada en uno de los tres puestos que aporta un nivel de su poder asociado. |
+| Exposición | Siete puestos para copias disponibles, separados de los tres de equipo. |
+| Ronda demo / completa | Ajustes elegidos antes de salir: jefe a 3:00 con 3600 HP o a 8:00 con 9000 HP. |
+| Eco o gema de XP | Experiencia del intento actual, recogida con el imán. |
+| Draft | Elección pausada de hasta tres cartas válidas al subir de nivel. |
+| Linterna | Arma sobrenatural de cuatro pulsos, autoapuntado y empuje final. |
+| Dash | Esquiva de 0,15 s con invulnerabilidad, limitada por obstáculos. |
+| Élites | Caballero Fantasma y Centinela de Cobre, con resistencias y ataques propios. |
+| Gólgora / MataColeccionista | Jefe de la caldera, con seis patrones y dos fases. |
+| Cerco de magma | Salto central y ondas con un hueco de paso; una onda en primera fase y tres en segunda. |
+| Fusión | Consumo de cuatro copias, sorteo por calidad y proceso con apertura manual al terminar. |
+| Mítico | Rareza de Yanikua; forma parte de las seis rarezas de entidades. |
+| Atlas o spritesheet | PNG con los fotogramas exportados; sus tiempos y etiquetas se conservan en JSON. |
+| VFX | Presentación visual de ataques, estados y acciones mediante sprites, luz, materiales o partículas. |
+| Pool | Reserva de instancias reutilizables. |
 
-Las cifras y condiciones de cada término se desarrollan en las secciones de diseño, contenido y registro visual.
+Los valores completos se desarrollan en diseño, contenido y registro visual.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

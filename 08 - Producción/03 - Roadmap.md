@@ -10,6 +10,12 @@
 | 26 de octubre | Fusión por rareza, colección expuesta, barra de XP, magma, portal y renovación de VFX. |
 | 27 de octubre | Limpieza de material auxiliar del repositorio y actualización del GDD con registros del juego. |
 
-Las reglas y los recursos de estas entregas se desarrollan en las secciones de diseño, contenido y registro visual.
+## Incorporaciones posteriores al registro del 27 de octubre
+
+El estado del 4 de noviembre añade menú independiente y carga, preparación en bóveda, selección de ronda y retorno desde resultados; colección de quince entidades con equipo de tres puestos; fusión de cuatro copias; dos élites; sprites de Esqueleto, Interceptor y Wendigo; minimapa, audio contextual, iluminación y ampliación del encuentro de Gólgora.
+
+La siguiente necesidad identificada en esta revisión es guiar la selección de entidades antes de salir. Su implementación está pendiente. No se fija aquí una fecha que el equipo no haya acordado.
+
+Las reglas y los recursos se desarrollan en las secciones de diseño, contenido y registro visual.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

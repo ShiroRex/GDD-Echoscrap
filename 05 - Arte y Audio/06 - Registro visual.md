@@ -1,69 +1,112 @@
-# Registro visual de la versión jugable
+# Registro visual
 
-Las imágenes de esta página proceden de Unity o de los atlas activos del proyecto. Los GIFs de enemigos y cartas se registraron el 27 de octubre de 2026 sobre CombatArena. Se utilizó una cámara de detalle, el jugador protegido y las oleadas detenidas para poder observar cada patrón. Los PNG se unieron a 12 fotogramas por segundo.
+## Procedencia de los medios
 
-Los cuatro GIFs del Coleccionista se capturaron también en CombatArena el 27 de octubre, a 24 fotogramas por segundo, con una cámara de detalle que sigue al jugador. El reposo, la marcha en cuatro direcciones, los dos dashes y la muerte se reproducen con los componentes del juego. Las secuencias se recortaron alrededor del personaje para facilitar su lectura.
+Esta edición reúne dos tipos de animación:
 
-Los GIFs de VFX proceden de la revisión visual del 26 de octubre: recortes de capturas de cámara de 1280 × 720 en escenas controladas de mejoras. Sus sistemas de rayos, partículas y materiales coinciden con los del montaje actual. Estas demostraciones muestran el efecto en funcionamiento; no son mediciones de FPS ni reproducciones de una partida completa.
+- **Previsualizaciones de atlas, 4 de noviembre.** Copias de los PNG activos y GIFs compuestos con sus rectángulos, etiquetas y tiempos JSON. Las acciones de personaje muestran cuatro direcciones a escala 2×, sin interpolación. No incluyen la iluminación ni la simulación del juego.
+- **Capturas de Unity, 4 de noviembre.** CombatArena ejecutada desde una copia externa del proyecto, a 960 × 540 y doce imágenes por segundo. Se usaron cámara de detalle, jugador protegido y oleadas detenidas. Los patrones del jefe se invocaron individualmente con sus componentes y ajustes; para la lluvia se activó la segunda fase. Las pantallas de preparación utilizan un inventario de muestra, sin guardar esa colección.
 
-## Enemigos
+Las capturas corresponden al montaje local basado en 30b88c6. Los PNG mantienen 960 × 540 y los GIFs de Unity se exportan a 640 × 360. La vista de detalle permite leer las animaciones y los efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
 
-Los seis registros y las hojas activas de Mortero y Polilla están incorporados en [[03 - Enemigos y NPC]]. [[02 - Personajes y Animación]] reúne también esos seis GIFs junto a los atlas, la tabla de clips y las cuatro animaciones del Coleccionista dentro de la arena.
+## Enemigos y personajes
 
-## Prisma voltaico
+[[03 - Enemigos y NPC]] contiene los cinco spritesheets completos y los GIFs por acción de Residual, Interceptor, Coloso, Mortero y Polilla. También muestra el barrido del Caballero, el disparo y vulnerabilidad del Centinela y los seis patrones de Gólgora en Unity. [[02 - Personajes y Animación]] añade el atlas y los cuatro grupos de animaciones del Coleccionista.
 
-El cuarto pulso produce enlaces sucesivos entre objetivos. El núcleo luminoso y los saltos permiten seguir el recorrido de la cadena.
+## Efectos de enemigos
 
-![Prisma voltaico: captura real de Unity](../Media/Avance_2026-10-27/VFX/Electricity.gif)
+La biblioteca activa contiene quince clips y 120 fotogramas. La siguiente hoja pertenece a esos efectos, no a los cuerpos de los élites o del jefe.
 
-## Ralentización y congelación
+![Atlas activo de efectos de enemigos](../Media/Avance_2026-11-04/VFX/EnemyEffects_Atlas.png)
 
-El tinte celeste identifica la ralentización. Al congelarse, el enemigo recibe cristales, escarcha y niebla sin perder la textura de su cuerpo o sprite.
+Los GIFs de esta tabla son previsualizaciones del atlas. La iluminación de los misiles, las trayectorias y los avisos de daño se observan en las capturas de los enemigos.
 
-![Frío aplicado a enemigos dentro de Unity](../Media/Avance_2026-10-27/VFX/Ice.gif)
+| Efecto | Animación del recurso |
+| --- | --- |
+| Golpe del Residual | ![Golpe del Residual](../Media/Avance_2026-11-04/VFX/Enemigos/ResidualSlash.gif) |
+| Fragmentos de hueso | ![Fragmentos de hueso](../Media/Avance_2026-11-04/VFX/Enemigos/BoneChips.gif) |
+| Golpe del Interceptor | ![Golpe del Interceptor](../Media/Avance_2026-11-04/VFX/Enemigos/InterceptorSlash.gif) |
+| Estela del Interceptor | ![Estela del Interceptor](../Media/Avance_2026-11-04/VFX/Enemigos/InterceptorWake.gif) |
+| Polvo del Coloso | ![Polvo del Coloso](../Media/Avance_2026-11-04/VFX/Enemigos/ColossusDust.gif) |
+| Impacto del Coloso | ![Impacto del Coloso](../Media/Avance_2026-11-04/VFX/Enemigos/ColossusImpact.gif) |
+| Barrido espectral | ![Barrido espectral](../Media/Avance_2026-11-04/VFX/Enemigos/SpectralSweep.gif) |
+| Misil de cobre | ![Misil de cobre](../Media/Avance_2026-11-04/VFX/Enemigos/CopperMissile.gif) |
+| Salida del disparo de cobre | ![Salida del disparo de cobre](../Media/Avance_2026-11-04/VFX/Enemigos/CopperMuzzle.gif) |
+| Impacto de cobre | ![Impacto de cobre](../Media/Avance_2026-11-04/VFX/Enemigos/CopperImpact.gif) |
+| Humo de la Polilla | ![Humo de la Polilla](../Media/Avance_2026-11-04/VFX/Enemigos/MothSmoke.gif) |
+| Meteoro de magma | ![Meteoro de magma](../Media/Avance_2026-11-04/VFX/Enemigos/MagmaMeteor.gif) |
+| Impacto de magma | ![Impacto de magma](../Media/Avance_2026-11-04/VFX/Enemigos/MagmaImpact.gif) |
+| Zona de magma | ![Zona de magma](../Media/Avance_2026-11-04/VFX/Enemigos/MagmaPuddle.gif) |
+| Barrido de magma | ![Barrido de magma](../Media/Avance_2026-11-04/VFX/Enemigos/MagmaSweep.gif) |
 
-## Minas y explosiones
+## Torreta centinela
 
-La detonación combina expansión, humo y fragmentos. El área de daño pertenece a la simulación y no al tamaño aparente del humo.
+La torreta actual usa trípode y cañón separados, orientación del cañón, boca de salida y retroceso. La secuencia de direcciones es una previsualización técnica del recurso preparada el 3 de noviembre; el disparo siguiente se capturó en Unity el 4.
 
-![Explosión de mina dentro de Unity](../Media/Avance_2026-10-27/VFX/Explosion.gif)
+![Torreta: previsualización técnica de sus direcciones](../Media/Avance_2026-11-04/VFX/Torreta_Direcciones.gif)
 
-## Nova de plasma
+![Torreta disparando en la arena de Unity](../Media/Avance_2026-11-04/VFX/Torreta_Combate.gif)
 
-La curación sobrante puede desencadenar una expansión de plasma alrededor del jugador. El registro muestra su aparición y su disipación.
+## Efectos de mejoras
 
-![Nova de plasma dentro de Unity](../Media/Avance_2026-10-27/VFX/Plasma.gif)
+Los siguientes GIFs son capturas de Unity del 26 de octubre, conservadas para mostrar efectos de mejoras. Proceden de escenas controladas y recortes de cámara de 1280 × 720. Su fecha y encuadre se mantienen como contexto; no muestran la iluminación exterior renovada de noviembre.
 
-## Nanobots
+### Prisma voltaico
 
-La superficie de energía rodea el cuerpo y responde a los impactos con ondas y motas. Su presencia visual acompaña las reglas de regeneración y protección de la mejora; no equivale a inmunidad permanente.
+Los enlaces siguen el cuarto pulso y recorren objetivos sucesivos.
 
-![Presentación de Nanobots dentro de Unity](../Media/Avance_2026-10-27/VFX/Shield.gif)
+![Prisma voltaico: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Electricity.gif)
 
-## Sierras orbitales
+### Frío y congelación
 
-Las cuchillas giran alrededor del Coleccionista. El metal, las estelas de viento y las chispas permiten distinguir su giro y sus contactos.
+El tinte, cristales y niebla acompañan ralentización y congelación.
 
-![Sierras orbitales dentro de Unity](../Media/Avance_2026-10-27/VFX/Saws.gif)
+![Frío y congelación: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Ice.gif)
 
-## Pulso colector
+### Minas y explosiones
 
-Los objetos reales se desplazan hacia el jugador mediante trayectorias curvas. La XP o curación se recibe al llegar, y cada objeto conserva su valor durante el vuelo.
+Expansión, humo y fragmentos acompañan la detonación; el daño lo resuelve la simulación.
 
-![Recogida con Pulso colector dentro de Unity](../Media/Avance_2026-10-27/VFX/Collection.gif)
+![Minas y explosiones: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Explosion.gif)
 
-## Onda sísmica
+### Nova de plasma
 
-La expansión al terminar el dash marca la aplicación de daño y control a los enemigos cercanos.
+La curación sobrante puede desencadenar la expansión alrededor del jugador.
 
-![Onda sísmica dentro de Unity](../Media/Avance_2026-10-27/VFX/Shockwave.gif)
+![Nova de plasma: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Plasma.gif)
 
-## Números de daño
+### Nanobots
 
-Los números salen con impulso y caen en arco. El físico usa amarillo y naranja crítico; el sobrenatural, rosa violeta y morado crítico. Los críticos añaden un signo de exclamación.
+La superficie de energía y sus ondas acompañan las reglas de regeneración y protección.
 
-![Trayectorias de números de daño dentro de Unity](../Media/Avance_2026-10-27/VFX/NumerosDeDano.gif)
+![Nanobots: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Shield.gif)
 
-Las mejoras que cambian estadísticas, probabilidades u ofertas se describen en el catálogo. Una captura de partículas no demuestra por sí sola una variación de cadencia, una probabilidad de crítico o un cambio de rareza.
+### Sierras orbitales
+
+Las cuchillas, estelas y chispas permiten seguir el giro y sus contactos.
+
+![Sierras orbitales: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Saws.gif)
+
+### Pulso colector
+
+Los objetos conservan su valor durante el vuelo y conceden XP o curación al llegar.
+
+![Pulso colector: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Collection.gif)
+
+### Onda sísmica
+
+La expansión señala el efecto de daño y control al terminar el dash.
+
+![Onda sísmica: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/Shockwave.gif)
+
+### Números de daño
+
+Los números siguen arcos; el físico usa amarillo y naranja crítico y el sobrenatural rosa violeta y morado crítico.
+
+![Números de daño: captura de Unity del 26 de octubre](../Media/Avance_2026-10-27/VFX/NumerosDeDano.gif)
+
+## Alcance de estas imágenes
+
+Los GIFs permiten revisar fotogramas, anticipación, trayectoria e impacto visual. Las cifras de daño, la cadencia, probabilidades y condiciones de activación se contrastan con las reglas del juego. Las animaciones no contienen audio y no certifican un mínimo de FPS.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

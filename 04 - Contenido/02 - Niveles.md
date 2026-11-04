@@ -2,30 +2,33 @@
 
 ## El Vertedero
 
-La arena principal mide 200 × 200 m. El suelo tiene relieve y los grupos de chatarra, rocas, árboles secos y otros obstáculos forman corredores y zonas de paso. Los límites físicos mantienen al jugador dentro del escenario. El centro conserva espacio para la entrada del jefe.
+La arena mide 200 × 200 m. El suelo tiene relieve y los grupos de chatarra, rocas, árboles y restos industriales forman rutas y obstáculos. Los límites físicos contienen al jugador.
 
-La lava es una superficie peligrosa con material animado y luz propia. La iluminación del escenario es tenue y violeta; la linterna, los avisos y las habilidades aportan puntos de contraste.
+El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra el perímetro, se traslada al jugador con protección y la cámara adopta un encuadre que contiene a ambos combatientes. Los refuerzos se anuncian junto al borde interior.
 
-![Arena actual](../Media/Avance_2026-10-27/Interfaz/Arena_HUD.png)
+Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
-## Acceso y bóveda
+## Acceso norte y bóveda
 
-En el sector sureste, una escalera desciende hacia el portal. El acceso profundo ocupa unos 23 m, baja 8 m y permite volver a subir. El portal conecta con el almacén, situado en otra zona de la misma escena. El viaje conserva al jugador y suspende la simulación de combate mientras permanece dentro.
+El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
 
-La bóveda contiene ocho espacios de exposición a ambos lados de un pasillo y un portal de retorno. La estación de fusión se encuentra fuera, en la arena, cerca de la entrada al acceso.
+La sala modular tiene diez puestos: los tres primeros corresponden al equipo y otros siete a la exposición de copias disponibles. La máquina de fusión está dentro. Su cámara utiliza una inclinación de 32° y campo de visión de 65°, con límites de seguimiento para mantener la sala encuadrada.
 
-![Almacén dentro de Unity](../Media/Avance_2026-10-27/Entorno/Almacen.png)
+![Bóveda actual](../Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
-## Escenas disponibles
+Al preparar una expedición, el portal abre la selección de ronda. Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
-| Escena | Uso | Entrada del jefe |
-| --- | --- | ---: |
-| CombatArena | Arena original del montaje actual | 3:00 |
-| CombatArena_3Min | Variante de entrada rápida | 3:00 |
-| CombatArena_8Min | Variante de supervivencia larga | 8:00 |
-| EnemyLaboratory | Generación e inspección manual de enemigos | Manual |
-| LocomotionSandbox / CombatSandbox | Comprobaciones aisladas de movimiento y combate | Sin el flujo completo de supervivencia |
+## Escenas y rondas
 
-El tiempo indica la aparición del jefe, no la duración total de la sesión. Las cartas, la pausa y la visita al almacén detienen el reloj de combate.
+| Elemento | Uso | Entrada del jefe |
+| --- | --- | --- |
+| MainMenu | Menú inicial independiente del mundo de combate. | No aplica |
+| CombatArena · Ronda demo | Mundo principal con ajustes rápidos seleccionados en la bóveda. | 3:00; 3600 HP |
+| CombatArena · Ronda completa | Mismo mundo con escalada de ocho minutos. | 8:00; 9000 HP |
+| CombatArena_3Min / CombatArena_8Min | Variantes guardadas para desarrollo; fuera de la lista principal de compilación. | Según su asset |
+| EnemyLaboratory | Generación e inspección manual de ocho arquetipos. | Manual |
+| LocomotionSandbox / CombatSandbox | Comprobaciones aisladas. | Sin flujo completo |
+
+El tiempo indica cuándo empieza la entrada del jefe. Las cartas, pausas y visitas a la bóveda detienen el reloj de combate.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

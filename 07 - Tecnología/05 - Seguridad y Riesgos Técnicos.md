@@ -1,6 +1,6 @@
 # Seguridad y riesgos técnicos
 
-El inventario de fusión se conserva de forma local. Al cargarlo se validan sus arrays, identificadores y temporizadores antes de continuar el proceso. La colección y el estado del combate se gestionan por separado.
+El inventario de entidades, los tres puestos de equipo y la fusión se conservan de forma local. Al cargarlo se validan sus arrays, identificadores y temporizadores antes de continuar el proceso. La colección y el estado del combate se gestionan por separado.
 
 ## Comportamientos que requieren atención al revisar cambios
 
@@ -12,5 +12,9 @@ El inventario de fusión se conserva de forma local. Al cargarlo se validan sus 
 - El guardado de una fusión debe conservar el resultado ya sorteado, incluidos los reinicios de la aplicación.
 
 Los generadores históricos del escenario se conservan en el archivo externo. El montaje actual vive en sus escenas y assets, evitando que una herramienta de una fase anterior reemplace colocaciones posteriores.
+
+La fusión debe consumir cuatro copias disponibles una sola vez, conservar el resultado sorteado y respetar las copias equipadas. Cambiar la dimensión del catálogo debe conservar los guardados compatibles del formato 4. La configuración anterior de prototipo tiene una clave y un contrato distintos.
+
+El traslado a la caldera y las transiciones del jefe protegen al jugador y detienen sus entradas mientras corresponde. Los refuerzos deben respetar su aviso y el límite efectivo de la arena del jefe.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

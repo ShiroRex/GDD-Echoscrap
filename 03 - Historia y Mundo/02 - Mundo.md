@@ -1,18 +1,19 @@
 # Mundo
 
-El Vertedero de Ecos es un espacio atemporal donde se mezclan restos de épocas y realidades distintas. La chatarra, las ruinas y la energía residual le dan unidad a esa mezcla: todo aparece desgastado, desplazado de su origen y sometido a una misma amenaza.
+El Vertedero de Ecos es un espacio atemporal donde se mezclan restos de épocas y realidades distintas. La chatarra, las ruinas y la energía residual dan continuidad a esa mezcla. La bóveda funciona como refugio y lugar de preparación entre expediciones.
 
-## Lugares presentes
-
-| Lugar | Forma en la versión jugable | Relación con la experiencia |
+| Lugar | Presencia actual | Función |
 | --- | --- | --- |
-| Arena del Vertedero | Espacio de 200 × 200 m con relieve, obstáculos y lava. | Movimiento, horda, recogida de experiencia y encuentro con Gólgora. |
-| Acceso subterráneo | Escalera, muros, rellano y portal. | Une el espacio de combate con la bóveda. |
-| Almacén | Sala 3D con pasillo, ocho espacios de exposición y portal de regreso. | Muestra los personajes de la colección durante una visita segura. |
-| Estación de fusión | Máquina con cámara interior y persiana, situada en la arena. | Combina tres ingredientes y presenta un personaje como resultado. |
+| Vertedero | Arena de 200 × 200 m con relieve, obstáculos y restos industriales. | Horda, XP y recogida de entidades. |
+| Caldera central | Área circular de 22 m de radio con cierre durante el encuentro. | Combate contra Gólgora y sus refuerzos. |
+| Acceso norte | Descenso, muros, rellano y portal. | Conexión física con la bóveda. |
+| Bóveda | Sala modular con tres puestos de equipo y siete de exposición. | Preparar poderes y observar la colección. |
+| Máquina de fusión | Cámara con persiana dentro de la bóveda. | Consumir cuatro copias y presentar una nueva entidad. |
 
-Los Ecos se expresan como gemas de experiencia que dejan los enemigos. La colección reúne cinco personajes de procedencias visuales diferentes: Lobito, Mago, Demonio, Shireen y Yanikua. La fusión y la exposición los conectan con la actividad del Coleccionista dentro del mundo.
+Las gemas de XP ayudan a crecer durante un intento. Las entidades pasan a una colección que continúa entre expediciones. El catálogo tiene quince entradas con fuentes de obtención distintas, descritas en [[04 - Objetos y Coleccionables]].
 
-La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el adversario presente en el combate final. La distinción mantiene separadas la causa del encierro y la amenaza que el jugador enfrenta en la arena.
+Las tres zonas de lava fija del mapa están desactivadas en este montaje. El magma se mantiene como parte de Gólgora y sus ataques.
+
+La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el guardián presente en el combate final. La narrativa de origen se conserva en [[01 - Premisa y Trama]].
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

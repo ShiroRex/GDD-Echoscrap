@@ -1,18 +1,23 @@
 # Registro de decisiones vigentes
 
-Las decisiones de esta edición se contrastan con el montaje jugable documentado el 27 de octubre de 2026.
+Esta edición describe el montaje local consultado el 4 de noviembre de 2026.
 
-| Área | Decisión reflejada en el juego | Consecuencia |
-| --- | --- | --- |
-| Control | Movimiento y apuntado de la linterna desacoplados. | El jugador puede retirarse mientras ataca a una amenaza en otra dirección. |
-| Dash | Protección temporal y paso entre enemigos, con límites sólidos del escenario. | La esquiva abre rutas sin atravesar muros. |
-| Mundo y cámara | Arena de 200 m y cámara de combate a 50°. | La documentación coincide con la escala y proyección actuales. |
-| Partida | Variantes con jefe a tres y ocho minutos; victoria por derrota del jefe. | El tiempo marca una transición y no una victoria automática. |
-| Mejoras | 35 cartas activas con cuatro rarezas, niveles y requisitos. | Las ofertas y la descripción del GDD utilizan el catálogo del juego. |
-| Enemigos | Atlas para Mortero y Polilla; geometría para Residual, Interceptor y Coloso; modelo animado para Gólgora. | Cada recurso se presenta con su representación real. |
-| Colección | Cinco personajes, fusión por rareza, ocho espacios e ingredientes base ilimitados. | Se documentan las reglas de obtención y guardado del sistema actual. |
-| Documentación visual | Capturas de Unity y atlas activos con contexto de registro. | Las ilustraciones permiten revisar lo que funciona dentro del juego. |
+| Área | Regla o decisión vigente |
+| --- | --- |
+| Flujo | Menú, colección, bóveda, selección de entidades, ronda, expedición y regreso a preparación. |
+| Guía de equipo | Los tres puestos funcionan; su señalización general sigue pendiente y el juego permite salir sin visitarlos. |
+| Control | Movimiento y apuntado desacoplados; dash protegido y limitado por obstáculos. |
+| Mundo y cámara | Arena de 200 m, acceso norte, bóveda modular y cámara exterior a 35,5°. |
+| Partida | Demo: 3:00 y 3600 HP; completa: 8:00 y 9000 HP. Victoria por derrota del jefe. |
+| Gólgora | Caldera cerrada, seis ataques, dos fases y hasta ocho refuerzos efectivos. |
+| Mejoras | 35 cartas y cuatro rarezas, con niveles y requisitos. |
+| Enemigos | Cinco de horda, dos élites y un jefe. Los cinco de horda tienen sprites animados. |
+| Colección | Quince entidades y seis rarezas; nueve entradas de mapa y seis de fusión. |
+| Equipo | Tres copias con poderes iniciales; siete puestos adicionales de exposición. |
+| Fusión | Cuatro copias consumibles, resultado único, estado listo y apertura por interacción. |
+| Guardado | Clave de producción y formato 4, con inventario, equipo y fusión. |
+| Medios | Atlas activos y GIFs de sus acciones; capturas de Unity identificadas por sus condiciones. |
 
-El historial de versiones conserva las fechas de evolución del documento. Las capturas y los textos de esta edición describen la versión jugable actual.
+Los registros del 27 de octubre y las decisiones históricas se conservan con su fecha. Los valores de esta edición sustituyen sus descripciones cuando difieren del montaje actual.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

@@ -1,82 +1,39 @@
 # Personajes y animación
 
-## Recursos de la versión actual
+## Recursos actuales
 
-| Personaje | Recurso | Animaciones presentes |
+| Personaje o arquetipo | Atlas | Animaciones por dirección |
 | --- | --- | --- |
-| Coleccionista | Atlas de 108 fotogramas, celdas de 64 × 64, cuatro direcciones. | Reposo: 8; marcha: 8; dash: 3; muerte: 8 por dirección. |
-| Mortero Campana | Atlas de 112 fotogramas, celdas de 64 × 64, cuatro direcciones. | Flotación: 6; carga: 6; disparo: 4; recuperación: 4; muerte: 8 por dirección. |
-| Polilla Reactor | Atlas de 62 fotogramas, celdas de 64 × 64. | Vuelo: 8 y cebado: 6 por dirección; estallido compartido: 6. |
-| Residual e Interceptor | Geometría y materiales 3D. | Orientación, inclinación de locomoción, reacción al daño y muerte. |
-| Coloso | Geometría y materiales 3D. | Marcha, compresión de preparación, embestida y recuperación. |
-| Gólgora / MataColeccionista | Modelo 3D con animaciones. | Entrada, marcha pesada, golpes y lanzamiento; cierre con efectos de muerte. |
+| Coleccionista | 108 fotogramas de 64 × 64. | Reposo 8, marcha 8, dash 3 y muerte 8. |
+| Residual / Esqueleto | 144 fotogramas de 96 × 96. | Reposo 8, marcha 8, ataque 8, impacto 4 y muerte 8. |
+| Interceptor | 152 fotogramas de 96 × 96. | Reposo 6, marcha 12, ataque 6, impacto 4 y muerte 10. |
+| Coloso / Wendigo | 200 fotogramas de 96 × 96. | Reposo 8, marcha 8, preparación 8, carga 6, recuperación 6, impacto 4 y muerte 10. |
+| Mortero Campana | 112 fotogramas de 64 × 64. | Flotación 6, carga 6, disparo 4, recuperación 4 y muerte 8. |
+| Polilla Reactor | 62 fotogramas de 64 × 64. | Vuelo 8 y cebado 6; estallido común de 6. |
+| Caballero Fantasma y Centinela | Geometría de presentación; efectos animados en una biblioteca propia. | Estados de preparación, resolución y recuperación. No tienen atlas de personaje. |
+| Gólgora | Modelo 3D animado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
+
+Las cinco hojas de enemigos y los GIFs de todas sus acciones se encuentran junto a sus reglas en [[03 - Enemigos y NPC]]. Esa página también incorpora las capturas actuales de los dos élites y de los seis patrones del jefe.
 
 ## El Coleccionista
 
-![Atlas activo del Coleccionista](../Media/Avance_2026-10-27/Spritesheets/Coleccionista.png)
+El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno. La iluminación, sombras y reacciones al daño se añaden durante la ejecución.
 
-[Abrir fuente editable del Coleccionista](../Media/Avance_2026-10-27/Spritesheets/Coleccionista.aseprite).
+![Atlas activo del Coleccionista](../Media/Avance_2026-11-04/Spritesheets/Coleccionista.png)
 
-Su sprite se apoya en el terreno y recibe iluminación del mundo. El farol acompaña al personaje y la presentación del haz sigue el apuntado del arma. El daño se expresa mediante flashes sin convertir cada impacto en una interrupción del movimiento.
+[Fuente editable del Coleccionista](../Media/Avance_2026-11-04/Spritesheets/Coleccionista.aseprite).
 
-### Animaciones dentro de la arena
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Coleccionista: Reposo](../Media/Avance_2026-11-04/Animaciones/Coleccionista/Idle.gif) |
+| Marcha | ![Coleccionista: Marcha](../Media/Avance_2026-11-04/Animaciones/Coleccionista/Walk.gif) |
+| Dash | ![Coleccionista: Dash](../Media/Avance_2026-11-04/Animaciones/Coleccionista/Dash.gif) |
+| Muerte | ![Coleccionista: Muerte](../Media/Avance_2026-11-04/Animaciones/Coleccionista/Death.gif) |
 
-Estas secuencias muestran al Coleccionista en CombatArena, con una cámara de detalle que permite observar el sprite sobre el terreno y su iluminación real.
+## Cómo leer las previsualizaciones
 
-**Reposo.** El personaje conserva su postura y el movimiento del ciclo de espera.
+Cada GIF de atlas coloca juntas las cuatro vistas y usa sus fotogramas y tiempos exportados. La escala es el doble del píxel original, sin interpolación. El bucle facilita revisar una acción; los golpes y las muertes no se repiten indefinidamente durante el juego.
 
-![Coleccionista en reposo dentro de la arena](../Media/Avance_2026-10-27/Jugador/Reposo.gif)
-
-**Marcha en cuatro direcciones.** El cambio de vista y el ciclo de pasos acompañan el desplazamiento por el escenario.
-
-![Coleccionista caminando en cuatro direcciones dentro de la arena](../Media/Avance_2026-10-27/Jugador/Caminar.gif)
-
-**Dash.** La secuencia incluye dos desplazamientos y las imágenes residuales que deja el personaje.
-
-![Dash del Coleccionista dentro de la arena](../Media/Avance_2026-10-27/Jugador/Dash.gif)
-
-**Muerte.** El impacto da paso a la caída y a la desaparición del sprite y su sombra.
-
-![Animación de muerte del Coleccionista dentro de la arena](../Media/Avance_2026-10-27/Jugador/Muerte.gif)
-
-## El Mortero Campana
-
-![Atlas activo del Mortero](../Media/Avance_2026-10-27/Spritesheets/Mortero.png)
-
-El Mortero encadena flotación, preparación, disparo y recuperación con su ataque de ácido. El GIF muestra cómo se integra el sprite con el aviso del ataque y el proyectil dentro del escenario.
-
-![Mortero animado y ataque de ácido dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Mortero.gif)
-
-## La Polilla Reactor
-
-![Atlas activo de la Polilla](../Media/Avance_2026-10-27/Spritesheets/PolillaReactor.png)
-
-La Polilla distingue vuelo, cebado y explosión. La secuencia permite ver la transición de aproximación a detonación junto al jugador.
-
-![Vuelo, cebado y explosión de la Polilla dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Polilla.gif)
-
-## Enemigos con representación 3D
-
-El Residual, el Interceptor y el Coloso utilizan geometría 3D. Sus movimientos y deformaciones se registran directamente en la arena; no disponen de una hoja de sprites de personaje.
-
-**Residual.** Aproximación y movimiento de su cuerpo durante la persecución.
-
-![Residual en movimiento dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Residual.gif)
-
-**Interceptor.** Desplazamiento y orientación del cuerpo al perseguir al Coleccionista.
-
-![Interceptor en movimiento dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Interceptor.gif)
-
-**Coloso.** Preparación, embestida y recuperación del ataque.
-
-![Embestida del Coloso dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Coloso.gif)
-
-**Gólgora / MataColeccionista.** El modelo animado acompaña su marcha pesada y sus ataques en la arena.
-
-![Gólgora animado y atacando dentro de la arena](../Media/Avance_2026-10-27/Enemigos/Golgora.gif)
-
-Las reglas de cada enemigo se describen en [[03 - Enemigos y NPC]].
-
-Las normales, sombras, flashes, tintes de frío y partículas complementan los fotogramas originales. La elección de una cámara o una condición visual distinta no cambia las reglas de los ataques.
+Estas imágenes muestran el recurso de animación. Las luces, sombras, posición sobre el terreno, movimiento físico y VFX se revisan en las capturas de Unity. El registro visual diferencia ambas fuentes para que una previsualización de sprites no se confunda con una partida.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

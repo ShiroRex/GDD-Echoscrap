@@ -1,11 +1,13 @@
 # Alcance de la versión jugable
 
-El avance contiene un escenario de supervivencia con un protagonista, cinco arquetipos de horda y un jefe. El jugador puede completar el combate, consultar el resultado y reiniciar. La escena de tres minutos y la de ocho minutos comparten mapa y sistemas, con distinto tiempo de aparición del jefe.
+El juego contiene un menú inicial independiente, preparación en bóveda y expediciones demo o completas. La preparación permite elegir hasta tres entidades del inventario y usar la máquina de fusión. Hace falta señalizar mejor el paso de equipar entidades; esta edición lo incluye en el flujo y lo mantiene como trabajo pendiente de UX.
 
-La progresión de combate reúne 35 mejoras funcionales, cuatro rarezas, niveles y requisitos. La presentación incluye sprites animados del Coleccionista, Mortero y Polilla, un modelo animado del MataColeccionista y efectos de luz, daño, frío, explosiones, dispositivos y recogida.
+El combate reúne cinco arquetipos de horda, dos élites, 35 mejoras y Gólgora. El jefe tiene dos variantes de vida, seis patrones, segunda fase y una caldera propia. Victoria, derrota y abandono conducen a la bóveda conservando la colección.
 
-El escenario incorpora relieve, colisiones, lava, acceso subterráneo y almacén visitable por portal. La estación de fusión permite combinar tres ingredientes, esperar el resultado y guardarlo en una colección de cinco personajes con ocho espacios de exposición. Los ingredientes base son ilimitados en este montaje.
+La arena de 200 × 200 m incorpora relieve, obstáculos y acceso norte. Las zonas de lava fija están desactivadas. La bóveda tiene tres puestos de equipo, siete de exposición y una máquina que consume cuatro copias por fusión.
 
-El laboratorio de enemigos y los sandboxes permiten observar reglas de forma aislada. Los registros incluidos en el GDD documentan esa versión y sus recursos actuales.
+La colección tiene quince entidades en seis rarezas. Nueve aparecen en arena y seis se obtienen mediante fusión. El inventario, el equipo y el proceso tienen guardado local.
+
+La presentación incluye sprites animados de los cinco enemigos de horda, modelo de Gólgora, efectos de enemigos y mejoras, minimapa, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

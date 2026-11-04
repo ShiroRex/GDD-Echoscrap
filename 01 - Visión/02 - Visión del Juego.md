@@ -1,13 +1,13 @@
 # Visión del juego
 
-EchoScrap combina supervivencia frente a hordas y construcción de una configuración de combate durante cada partida. El jugador controla el movimiento y el dash del Coleccionista; la linterna adquiere automáticamente al enemigo más cercano dentro de su alcance. Esto permite concentrarse en las rutas de escape, las zonas peligrosas y la recogida de experiencia.
+EchoScrap combina supervivencia frente a hordas con la preparación de una colección. En la bóveda, el jugador puede elegir hasta tres entidades del inventario. Cada una aporta un poder de combate que estará disponible al comenzar la expedición. Después decide entre la ronda demo y la completa.
 
-Cada subida de nivel detiene el combate y ofrece hasta tres cartas. Las decisiones cambian la forma de sobrevivir: ampliar la luz, aumentar su cadencia, congelar enemigos, colocar minas, rodearse de sierras o sostenerse mediante curación y armadura.
+En la arena controla el movimiento y el dash del Coleccionista. La linterna apunta automáticamente al enemigo más cercano dentro de su alcance, lo que permite atender a las rutas de escape, los ataques anunciados y la recogida. La XP abre elecciones entre hasta tres cartas; las 35 mejoras permiten construir una configuración distinta durante cada intento.
 
-La presión culmina con Gólgora, representado por el MataColeccionista. El jefe combina avance, ataques anunciados en el suelo y bombardeos. La partida termina cuando cae el jugador o el jefe; el tiempo de aparición no concede por sí mismo una victoria.
+También aparecen entidades que se recogen con E. Esas copias pasan a la colección guardada y sirven para equipar poderes o alimentar una fusión de cuatro ingredientes. La bóveda conecta esa actividad entre expediciones mediante sus puestos de equipo, la exposición y la máquina.
 
-El mundo jugable también permite visitar una bóveda conectada por un portal. Allí se exponen los personajes de la colección de fusión. El inventario y los procesos de esa estación se conservan localmente entre aperturas de la aplicación.
+Gólgora cierra la expedición en una caldera central. Sus ataques cubren distancias y formas diferentes, y su segunda fase acelera el encuentro. La muerte del jugador produce derrota; la del jefe con el jugador vivo produce victoria. El resultado permite volver a preparar el siguiente intento.
 
-Las decisiones de movimiento, recogida y selección de cartas sostienen el ritmo de cada expedición.
+La preparación necesita una explicación más visible en el juego. Esta edición incorpora la selección de entidades al flujo y registra como pendiente la guía que permita descubrirla.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

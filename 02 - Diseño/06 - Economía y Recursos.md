@@ -1,17 +1,19 @@
 # Economía y recursos
 
-## Recursos durante el combate
+## Recursos de la expedición
 
-La experiencia pertenece a la partida en curso. Los enemigos normales dejan gemas con 10, 15, 25 o 50 XP según su arquetipo. Al recogerlas se aplica el multiplicador de Chatarrero y se comprueba si alcanza para subir de nivel. Las elecciones se consumen mediante el menú de mejoras.
+La XP y las cartas pertenecen al intento actual. Las gemas de los cinco enemigos de horda conceden 10, 15, 25 o 50 XP según el arquetipo; los élites entregan 65 y 80 XP. Chatarrero multiplica la experiencia recogida. Gólgora añade 500 XP al resumen de victoria sin abrir nuevas elecciones.
 
-Los botiquines recuperan 15 HP de base. Su probabilidad inicial es del 3% en enemigos normales y del 8% en los de recompensa fuerte, como Coloso y Mortero. Hay un intervalo mínimo de seis segundos entre apariciones, un máximo de cinco botiquines en el suelo y una duración de 22 s antes de caducar. Botiquín mejor eleva curación y probabilidades según su nivel.
+El botiquín base recupera 15 HP. La probabilidad parte del 3% en enemigos normales y del 8% en los de recompensa fuerte. Hay seis segundos como mínimo entre apariciones, hasta cinco botiquines en el suelo y 22 s de duración. Botiquín mejor modifica la curación y esas probabilidades.
 
-## Inventario de fusión
+## Copias de entidades
 
-La colección mantiene cantidades de Lobito, Mago, Demonio, Shireen y Yanikua. En el montaje actual los cuatro personajes base están disponibles como ingredientes ilimitados. El proceso no descuenta copias de ese suministro; el resultado coleccionado sí aumenta la cantidad guardada.
+La colección guarda cantidades de quince entidades. Empieza vacía y recibe las copias recogidas en arena o los resultados de fusión que se coleccionan. Las recogidas se guardan al obtenerlas; no dependen de derrotar a Gólgora.
 
-Las ocho plazas de exposición muestran personajes de la colección. Un duplicado aumenta su cantidad, y los resultados sin una plaza libre permanecen en el inventario. La elección Liberar descarta únicamente el resultado de esa fusión.
+Una copia equipada queda reservada para su puesto. Las demás están disponibles como ingredientes o para liberarse desde el inventario. Cada fusión consume exactamente cuatro copias al comenzar. Liberar una unidad del inventario pide confirmación; liberar el resultado de la máquina descarta ese resultado.
 
-Las probabilidades y los tiempos de las recetas están en [[04 - Objetos y Coleccionables]]. Las mejoras de combate se restablecen al reiniciar; el inventario de la estación conserva su guardado local.
+Tres puestos muestran las entidades equipadas y otros siete exponen copias disponibles, ordenadas por rareza. La capacidad del inventario no está limitada por esos siete puestos: las copias sobrantes siguen guardadas y se consultan en los selectores paginados.
+
+Las probabilidades, tiempos y fuentes de cada entidad están en [[04 - Objetos y Coleccionables]].
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

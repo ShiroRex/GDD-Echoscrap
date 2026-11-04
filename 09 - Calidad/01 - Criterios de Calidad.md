@@ -1,16 +1,18 @@
 # Criterios de calidad
 
-El avance se revisa por su coherencia entre regla, control y representación. La respuesta al movimiento, la forma de los avisos, los valores de las cartas y la limpieza del reinicio se observan como partes de la misma experiencia.
+El diseño se revisa junto con el control y su presentación. Las opciones deben explicar qué cambia, los avisos deben preceder al daño y la colección debe conservar las copias que corresponden.
 
 | Aspecto | Comprobación |
 | --- | --- |
-| Control | El personaje responde a teclado y mando y el dash respeta paredes. |
-| Lectura | Los avisos preceden al daño y los efectos reducidos conservan sus señales esenciales. |
-| Progresión | Las ofertas respetan requisitos y niveles máximos; una adquisición aplica el cambio indicado. |
-| Sesión | La pausa, las elecciones, el almacén y el resultado mantienen coherente el reloj. |
-| Persistencia | El inventario y la fusión se recuperan con datos válidos al volver a abrir. |
-| Documentación | Las imágenes muestran recursos existentes y sus pies explican el contexto de captura. |
+| Preparación | El jugador puede encontrar los tres puestos y entender el poder de las entidades antes de elegir ronda. La señalización general sigue pendiente. |
+| Control | Movimiento y dash responden y respetan obstáculos; las interacciones de colección deben tener acceso claro. |
+| Lectura | Ataques anunciados, resistencias élite y cambios de fase legibles con efectos completos y reducidos. |
+| Progresión | Cartas válidas, niveles correctos y combinación coherente con los poderes equipados. |
+| Colección | Recogidas únicas, copias disponibles correctas, consumo de cuatro ingredientes y equipo protegido. |
+| Sesión | Pausa, visitas a bóveda, traslado, abandono y resultados mantienen el reloj y los estados coherentes. |
+| Persistencia | Inventario, equipo y fusión se recuperan sin volver a sortear ni devolver ingredientes consumidos. |
+| Documentación | Atlas correspondientes al juego y GIFs con procedencia y condiciones de registro claras. |
 
-Los valores y las representaciones se revisan juntos para mantener coherente la experiencia de juego.
+La presencia de un sistema funcional no demuestra que el jugador pueda descubrirlo. La selección de entidades debe evaluarse también durante un primer recorrido sin instrucciones externas.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

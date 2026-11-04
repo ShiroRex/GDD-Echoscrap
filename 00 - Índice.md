@@ -1,12 +1,12 @@
 # EchoScrap — Documento de diseño del juego
 
-**GDD 0.4.0 · 27 de octubre de 2026.**
+**GDD 0.5.0 · 4 de noviembre de 2026.**
 
-EchoScrap es un juego de supervivencia para Windows en el que el Coleccionista utiliza una linterna automática y un dash para abrirse paso por un vertedero dimensional. La experiencia de combate combina cinco enemigos de horda, un jefe y 35 mejoras seleccionables durante la partida.
+El Coleccionista prepara hasta tres entidades en la bóveda y sale al Vertedero para reunir copias, escoger mejoras y enfrentarse a Gólgora. El juego reúne cinco enemigos de horda, dos élites, un jefe, 35 mejoras y quince entidades.
 
-La edición actual recoge la versión jugable y sus recursos integrados. Las reglas, los atlas y las capturas se presentan junto a los sistemas a los que pertenecen.
+El flujo incluye revisar y seleccionar equipo antes de elegir ronda. La señalización que permita descubrir esa preparación queda pendiente en el juego.
 
-**Entrada recomendada:** [[00 - Avance jugable]] · [[06 - Registro visual]] · [[03 - Enemigos y NPC]] · [[05 - Progresión]].
+**Entrada recomendada:** [[00 - Avance jugable]] · [[03 - Enemigos y NPC]] · [[04 - Objetos y Coleccionables]] · [[06 - Registro visual]].
 
 ## 01 - Visión
 

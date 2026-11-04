@@ -1,9 +1,11 @@
 # Público y plataforma
 
-EchoScrap es una experiencia de acción y supervivencia para PC con Windows y un solo jugador. El combate usa teclado y ratón o mando. El movimiento y la esquiva son acciones directas; el arma principal funciona con autoapuntado.
+EchoScrap es una experiencia de acción y supervivencia para Windows y un solo jugador. El combate acepta teclado y ratón o mando: el desplazamiento y el dash son directos y la linterna funciona con autoapuntado.
 
-La elección de mejoras introduce pausas de decisión entre los momentos de movimiento continuo. Las escenas de tres y ocho minutos determinan cuándo aparece el jefe, de modo que permiten observar el mismo núcleo de combate con dos tiempos de entrada distintos. La duración total también depende del enfrentamiento final y del tiempo dedicado a los menús.
+Las cartas introducen pausas de decisión. Antes de salir, la bóveda permite revisar la colección y escoger hasta tres entidades equipadas. En el montaje actual, recoger entidades y abrir los puestos de equipo o la fusión requiere la tecla E; esa parte del recorrido todavía necesita una guía más clara y no tiene una interacción equivalente de mando documentada en el código.
 
-La lectura del peligro se apoya en áreas y trayectorias visibles, animaciones de anticipación, barras y texto. El menú de pausa permite reducir decoración y sacudidas y elegir cuánto detalle muestran las estadísticas.
+La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos tiempos corresponden al reloj de combate, que se detiene con las pausas y elecciones. La duración total incluye la preparación, los menús y el enfrentamiento final.
+
+Los ataques se comunican con avisos de suelo, animaciones y texto. Las opciones permiten reducir efectos y sacudidas y elegir el detalle del panel de estadísticas.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

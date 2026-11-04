@@ -19,9 +19,10 @@ El diseño de un videojuego evoluciona durante la revisión del equipo y la retr
 | **15/10/2026** | Definición de **muros perimetrales físicos** de chatarra y cámara cenital unificada a **60°**. | Delimitar físicamente la arena de $120 \times 120\text{ m}$ y estandarizar la proyección de *sprites* 2D en el entorno 3D. | Ajuste en `02 - Mecánicas`, `04 - Niveles`, `05 - Entornos` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro / Obispo Navarro Samuel Alejandro | Histórico |
 | **16/10/2026** | Invocación periódica de esbirros por Gólgora cada $4.0\text{ s}$ en la Fase 5. | Mantener activas las mejoras de área, curación y recolección de XP durante el jefe final. | Actualización de `02 - Sistemas`, `04 - Niveles`, `04 - Enemigos y NPC` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro | Histórico |
 
-> **Navegación:** [[00 - Índice]] · ← [[04 - Backlog del Proyecto]] · [[01 - Criterios de Calidad]] →
+## Revisión del 4 de noviembre de 2026
 
+La edición 0.5.0 actualiza el estado documentado: preparación y selección de entidades, rondas desde la bóveda, quince entidades, cuatro ingredientes consumibles, dos élites, nuevos sprites, cámara exterior de 35,5°, minimapa, audio y ampliación de Gólgora. Los valores históricos de las filas anteriores se conservan como antecedentes y no describen el montaje vigente.
 
-## Montaje documentado el 27/10/2026
+La selección de equipo se incorpora al flujo de preparación. La falta de señalización que permita descubrirla se registra como pendiente de UX; no se ha implementado una guía durante esta tarea documental.
 
-El avance actual utiliza arena de 200 × 200 m y cámara de combate a 50°. Las reglas, recursos y registros de la edición 0.4.0 sustituyen las descripciones anteriores cuando difieren del juego. Se incorporan las variantes de tres y ocho minutos, el catálogo activo de 35 mejoras, las representaciones reales de los enemigos y el sistema de fusión con su colección de cinco personajes.
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

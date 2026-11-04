@@ -69,8 +69,14 @@ Prisma voltaico se activa desde el cuarto pulso de luz y su daño derivado no in
 | 3:00–5:00 | 4 | 0,4 a 0,32 s |
 | 5:00–8:00 | 4 | 0,32 a 0,2 s |
 
-Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. Las escenas con jefe a los tres minutos recorren los primeros tramos; la de ocho minutos utiliza la escalada completa.
+Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. La ronda demo recorre los tramos anteriores a los tres minutos; la completa utiliza la escalada de ocho minutos. Desde los 90 s pueden aparecer Caballero Fantasma y Centinela de Cobre, alternándose cada 25 s cuando hay espacio y con un límite conjunto de dos élites vivos.
 
 Las mejoras de estadísticas y probabilidades se representan en las cartas y el HUD. Los efectos visuales observables se reúnen con sus GIFs en [[06 - Registro visual]].
+
+## Preparación con entidades
+
+Antes de elegir ronda se pueden ocupar tres puestos de equipo en la bóveda. Cada entidad aporta un nivel de su poder asociado. Las copias con el mismo poder acumulan niveles dentro del equipo hasta el máximo de esa mejora. Las cartas obtenidas durante la expedición conservan su progresión independiente; el nivel efectivo usa el mayor entre equipo y cartas.
+
+Los puestos pueden quedar vacíos y una colección nueva comienza sin copias. Las entidades se obtienen en arena y mediante fusión; el catálogo completo y sus poderes están en [[04 - Objetos y Coleccionables]]. Esta preparación necesita señalización más clara en el recorrido del jugador.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

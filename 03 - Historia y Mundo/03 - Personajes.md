@@ -2,24 +2,22 @@
 
 ## El Coleccionista
 
-Es el personaje que controla el jugador. Su silueta reúne capucha clara, máscara con pico, ropa oscura y un farol. La luz se orienta de forma independiente del desplazamiento y sirve como arma principal. El juego utiliza sprites de reposo, marcha, dash y muerte en cuatro direcciones.
+Es el personaje que controla el jugador. Lleva capucha clara, máscara con pico, ropa oscura y farol. Su luz apunta de forma independiente del movimiento. Tiene sprites de reposo, marcha, dash y muerte en cuatro direcciones.
 
 ## Gólgora: el MataColeccionista
 
-Es el jefe del combate. Su presencia combina un cuerpo 3D, un arma pesada y zonas de magma luminoso. La marcha y los ataques del modelo acompañan los avisos de suelo y el bombardeo que definen su encuentro.
+Es el jefe de la expedición. Su modelo 3D combina cuerpo pesado, arma y magma. Combate dentro de la caldera, alterna seis patrones y cambia sus tiempos y velocidad durante la segunda fase.
 
-## Personajes de la colección de fusión
+## La horda y los élites
 
-| Personaje | Rareza en el sistema actual | Aparición en el juego |
-| --- | --- | --- |
-| Lobito | Común | Ingrediente base y personaje expuesto en la bóveda. |
-| Mago | Raro | Ingrediente base y personaje expuesto en la bóveda. |
-| Demonio | Épico | Ingrediente base y personaje expuesto en la bóveda. |
-| Shireen | Épico | Ingrediente base y personaje expuesto en la bóveda. |
-| Yanikua | Legendario | Resultado de la receta especial de fusión. |
+Residual, Interceptor y Coloso usan los sprites de Esqueleto, galgo de chatarra y Wendigo. Mortero Campana y Polilla Reactor completan la horda. Caballero Fantasma y Centinela de Cobre añaden resistencias y ataques propios como élites.
 
-Los archivos Demonio y Demonio2 corresponden a dos vistas del mismo personaje. El catálogo de la estación los registra como una sola entrada.
+Los valores están en [[03 - Enemigos y NPC]] y sus hojas y GIFs en [[02 - Personajes y Animación]].
 
-Las reglas de obtención, duplicados y exposición se describen en [[04 - Objetos y Coleccionables]]. Las hojas de sprites de combate están en [[02 - Personajes y Animación]].
+## Entidades de la colección
+
+La colección reúne Lobito, Mago, Demonio, Shireen, Yanikua, Basket, Hada, Lisa, Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena, Soldier y Joel. Son quince entradas del inventario; Demonio y Demonio2 siguen siendo vistas de una misma entrada.
+
+Cada entidad puede aportar un poder al ocupar uno de los tres puestos de equipo. Su rareza y fuente de obtención pertenecen a las reglas del catálogo, recogidas en [[04 - Objetos y Coleccionables]]. Esta edición no añade historias de origen para personajes que todavía no las tienen documentadas.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

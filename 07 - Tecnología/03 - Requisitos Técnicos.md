@@ -1,13 +1,15 @@
 # Requisitos técnicos
 
-La plataforma utilizada por el proyecto es Windows PC. La escena y sus variantes se ejecutan en Unity 6000.6.3f1 con URP, Input System y Cinemachine. La población normal del director está limitada a 150 enemigos vivos; el valor de 250 pertenece al modo separado de estrés.
+La plataforma del proyecto es Windows PC. El montaje usa Unity 6000.6.3f1, URP 17.6.0, Input System 1.20.0 y Cinemachine 6.6.0. La compilación principal habilita MainMenu y CombatArena.
+
+El director limita normalmente la población a 150 enemigos; el modo de estrés usa 250. Los Morteros tienen un límite de seis, los élites uno conjunto de dos y los refuerzos de la caldera uno efectivo de ocho.
 
 ## Alcance de los registros
 
-Las capturas nuevas del GDD se generaron a 960 × 540 en una copia externa del proyecto, con render Direct3D11 y una cámara de detalle. Las secuencias de mejoras conservan recortes de capturas de 1280 × 720. Los ajustes del ensayo permiten observar efectos sin convertirlos en una medición de rendimiento del juego completo.
+Los GIFs nuevos de animación proceden de los atlas y tiempos exportados del proyecto. Las capturas de Unity se ejecutan sobre una copia externa, con cámara de detalle, jugador protegido y oleadas detenidas. Sus condiciones se describen en [[06 - Registro visual]].
 
-El archivo de desarrollo contiene mediciones de builds anteriores y perfiles del Editor con distintas poblaciones y efectos. Cada resultado corresponde a su fecha, hardware y configuración. Esta edición no presenta una tasa mínima de FPS ni una especificación mínima de hardware como si estuvieran certificadas para cualquier equipo.
+Las imágenes y GIFs comprueban recursos y presentación. No establecen una tasa mínima de FPS ni certifican requisitos mínimos de hardware. Las mediciones de builds anteriores deben conservar su fecha, equipo y configuración para poder compararse.
 
-El uso normal de teclado o mando, los límites de la arena, las pausas, el reinicio y los ajustes visuales están descritos en sus secciones funcionales. La documentación del comportamiento y la medición del rendimiento se mantienen como comprobaciones diferentes.
+El combate admite teclado y mando. Las interacciones de entidades, equipo y fusión usan E y necesitan una revisión adicional para completar su recorrido con mando.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

@@ -1,11 +1,13 @@
 # Misiones y desafíos
 
-La expedición propone una condición principal: sobrevivir a la horda y derrotar a Gólgora con el Coleccionista vivo. El jefe aparece en el tiempo fijado por la escena, tres u ocho minutos, y el enfrentamiento continúa hasta resolver el resultado.
+La expedición tiene una condición principal: sobrevivir a la horda y derrotar a Gólgora con el Coleccionista vivo. La ronda demo activa su entrada a los tres minutos y la completa a los ocho; el combate continúa hasta resolver el resultado.
 
-Los desafíos surgen de la combinación de enemigos y del escenario: atravesar huecos con el dash, recoger XP sin entrar en ácido o lava, desplazar a una Polilla cebada, esquivar la embestida del Coloso y mantener una ruta segura durante el bombardeo del jefe.
+Antes de salir, la preparación incluye revisar y seleccionar hasta tres entidades equipadas. Se puede comenzar sin equipo si aún no hay copias o se dejan puestos vacíos. La guía hacia esta preparación sigue siendo una necesidad de UX.
 
-La selección de cartas cambia las herramientas disponibles para resolver esas situaciones. El resumen final recoge tiempo, nivel, bajas y XP; Reiniciar permite volver a intentarlo desde el inicio.
+Los desafíos del combate surgen de mantener rutas entre enemigos y obstáculos, recoger XP, aprovechar las Polillas cebadas, esquivar cargas y responder a resistencias de los élites. Las entidades que aparecen durante diez segundos añaden una decisión de recorrido: acercarse a recogerlas con E mientras continúa la presión.
 
-La estación de fusión añade una actividad paralela: preparar una receta, continuar jugando mientras transcurre y decidir qué hacer con el resultado. Su colección se conserva mediante guardado local.
+El cierre cambia el espacio de juego a la caldera. Gólgora alterna distancias, áreas, cercos y proyectiles, y acelera sus patrones en la segunda fase. Las cartas y los poderes iniciales ofrecen herramientas distintas para cada intento.
+
+El resumen muestra tiempo, nivel, bajas y XP. Volver a la bóveda permite revisar las copias reunidas, cambiar el equipo o preparar una fusión. Las recogidas ya guardadas se conservan tanto tras victoria como tras derrota.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
