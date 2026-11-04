@@ -1,230 +1,164 @@
 # Enemigos y NPC
 
-## Descripción de la sección
+El combate tiene cinco arquetipos de horda, dos élites y Gólgora. Las cifras de esta página corresponden a sus assets actuales. Las hojas de personaje son copias de los atlas usados por el juego; sus GIFs de acciones respetan los tiempos del JSON exportado y muestran las cuatro vistas cuando existen.
 
-Documenta las entidades no jugables controladas por la inteligencia artificial del juego, sus atributos cuantitativos, roles de combate y comportamiento dentro del enjambre.
+| Enemigo | Vida | Velocidad base | Daño principal | XP |
+| --- | ---: | ---: | --- | ---: |
+| Residual / Esqueleto | 15 HP | 3,5 m/s ±15% | Contacto: 10; recarga de contacto 0,5 s. | 10 |
+| Interceptor | 9 HP | 6,2 m/s ±10% | Contacto: 8; recarga de contacto 0,5 s. | 10 |
+| Coloso / Wendigo | 80 HP | 1,8 m/s | Contacto o carga: 25. | 50 |
+| Mortero Campana | 25 HP | 2,2 m/s ±10% | Contacto: 5; ácido: 5 cada 0,5 s. | 25 |
+| Polilla Reactor | 12 HP | 4,8 m/s ±10% | Explosión: 35. | 15 |
+| Caballero Fantasma | 110 HP | 2,8 m/s | Barrido sobrenatural: 22. | 65 |
+| Centinela de Cobre | 160 HP | 1,7 m/s | Abanico de tres proyectiles físicos: 16 por impacto. | 80 |
+| Gólgora / MataColeccionista | 3600 HP demo; 9000 completa | 1,6 m/s en primera fase | Contacto: 30; seis patrones descritos más abajo. | 500 de cierre |
 
----
+## Residual: Esqueleto
 
-## Catálogo de enemigos previstos
+Forma la masa básica de la horda. Persigue al jugador, se separa de otros cuerpos y busca paso entre obstáculos. Los cuatro pulsos base suman sus 15 HP cuando todos aciertan. Acepta empuje y su ataque de contacto se acompaña de la animación de golpe.
 
-A continuación se especifican los arquetipos de enemigos diseñados para componer las oleadas del Vertedero de Ecos, detallando sus atributos de balance inicial, roles tácticos y comportamientos de inteligencia artificial.
+Su atlas tiene 144 fotogramas de 96 × 96: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
 
-### 1. Enemigo Básico Residual
+![Spritesheet activo del Residual / Esqueleto](../Media/Avance_2026-11-04/Spritesheets/Esqueleto.png)
 
-**Rol de combate:**  
-Horda / Carne de cañón (*Swarm Fodder*). Su propósito es ejercer presión numérica constante, rodear al jugador aprovechando la superioridad de masa y obligar al uso continuo de la linterna y el dash para abrir brechas.
+[Fuente editable](../Media/Avance_2026-11-04/Spritesheets/Esqueleto.aseprite).
 
-**Comportamiento de IA:**  
-* **Persecución activa:** Camina directamente hacia el jugador en todo momento.
-* **Separación física:** Mantiene un pequeño espacio personal con otros enemigos para no encimarse ni verse amontonados de forma irreal.
-* **Flanqueo (evitar fila india):** Si tiene a otro compañero delante bloqueándole el paso, se abre hacia la izquierda o derecha para rodear al jugador.
-* **Variación individual de velocidad:** Fluctuación aleatoria de $\pm15\%$ asignada al aparecer, rompiendo la sincronía de avance para generar un flujo de masa orgánico en el enjambre.
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Esqueleto: Reposo](../Media/Avance_2026-11-04/Animaciones/Esqueleto/Idle.gif) |
+| Marcha | ![Esqueleto: Marcha](../Media/Avance_2026-11-04/Animaciones/Esqueleto/Walk.gif) |
+| Ataque | ![Esqueleto: Ataque](../Media/Avance_2026-11-04/Animaciones/Esqueleto/Attack.gif) |
+| Impacto recibido | ![Esqueleto: Impacto recibido](../Media/Avance_2026-11-04/Animaciones/Esqueleto/Hit.gif) |
+| Muerte | ![Esqueleto: Muerte](../Media/Avance_2026-11-04/Animaciones/Esqueleto/Death.gif) |
 
-**Atributos numéricos:**
-* **Vida máxima:** `15.0` puntos de salud.
-* **Daño por contacto:** `10.0` puntos de daño al tocar al jugador.
-* **Tiempo entre golpes:** `0.50` segundos (medio segundo de respiro).
-* **Velocidad de avance:** `3.5 m/s` (con variación aleatoria de ±15% entre individuos).
-* **Física de Retroceso (*Knockback*):** Al recibir el pulso final (4º impacto) de la ráfaga de la linterna, es empujado físicamente hacia atrás.
+## Interceptor: galgo de chatarra
 
-**Ataques y detección:**
-* **Ataque:** Chocar físicamente contra el jugador.
-* **Rango de detección:** Global en la arena (siempre conoce la posición del Coleccionista).
+Anticipa hasta 0,4 s del movimiento del jugador, con una velocidad de referencia limitada a 8 m/s. A corta distancia pasa a perseguir la posición actual. Su menor frenado tras el empuje le permite deslizarse más lejos que el Residual.
 
-**Debilidades:**
-* Muy vulnerable a la luz: una ráfaga completa de la linterna (4 pulsos de 3.75 = 15 de daño) lo destruye de inmediato. Con una mejora de daño, cae incluso más rápido.
+El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección. El sprite de galgo sustituye su representación geométrica anterior.
 
-**Recompensa al morir:**
-* **Gema de Chatarra (XP):** Suelta `1` Gema de Chatarra / XP equivalente a **10 XP** (100% garantizada).
-* **Botiquín de Reparación:** **4%** de probabilidad de soltar un Botiquín de Chatarra Médica (+15 HP).
+![Spritesheet activo del Interceptor](../Media/Avance_2026-11-04/Spritesheets/Interceptor.png)
 
-**Diagrama de Estados de IA:**
+[Fuente editable](../Media/Avance_2026-11-04/Spritesheets/Interceptor.aseprite).
 
-```mermaid
-graph TD
-    Spawn["Spawn en la periferia de 14m"] --> Enjambre["Persecución con Separación y Flanqueo"]
-    Enjambre --> Contacto{"¿Alcanzó al Coleccionista?"}
-    Contacto -- Sí --> Daño["Infligir 10 de Daño cada 0.5s"]
-    Contacto -- No --> Enjambre
-    Enjambre --> Impacto{"¿Alcanzado por Cono?"}
-    Impacto -- Sí --> Retroceso["Knockback Físico + Flash Blanco/Rojo"]
-    Retroceso --> CheckVida{"¿Vida <= 0?"}
-    CheckVida -- No --> Enjambre
-    CheckVida -- Sí --> Muerte["Soltar Gema de XP y Destruirse"]
-```
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Interceptor: Reposo](../Media/Avance_2026-11-04/Animaciones/Interceptor/Idle.gif) |
+| Marcha | ![Interceptor: Marcha](../Media/Avance_2026-11-04/Animaciones/Interceptor/Walk.gif) |
+| Ataque | ![Interceptor: Ataque](../Media/Avance_2026-11-04/Animaciones/Interceptor/Attack.gif) |
+| Impacto recibido | ![Interceptor: Impacto recibido](../Media/Avance_2026-11-04/Animaciones/Interceptor/Hit.gif) |
+| Muerte | ![Interceptor: Muerte](../Media/Avance_2026-11-04/Animaciones/Interceptor/Death.gif) |
 
----
+## Coloso: Wendigo
 
-### 2. El Interceptor
+Es pesado, sólido e inmune al empuje. Cuando dispone de carga y el jugador está a 8 m o menos, fija la dirección y muestra un corredor durante 0,8 s. Embiste a 12 m/s durante 0,35 s, unos 4,2 m libres, y se recupera durante 0,6 s. Las paredes detienen el recorrido; la dirección queda comprometida tras el aviso. El intervalo entre cargas se sortea entre cinco y siete segundos.
 
-**Rol de combate:**  
-Corta-caminos / Rusher (*Path Interceptor / Rusher*). Diseñado para anticipar el vector de desplazamiento del jugador y cerrarle el paso frontalmente, castigando las tácticas de kiting en círculos continuos.
+Preparación y recuperación no infligen contacto. El dash permite atravesar su cuerpo durante la protección.
 
-**Comportamiento de IA:**  
-* **Predicción de Trayectoria (*Lead Target*):** En lugar de perseguir la posición actual del jugador, proyecta su posición futura en función de la velocidad y dirección del jugador con un tiempo de anticipación de `0.4s`.
-* **Convergencia a corta distancia:** Al acercarse a menos de 1.2 metros, conmuta a persecución directa para evitar orbitar en torno al jugador.
-* **Counterplay con Dash:** La velocidad de predicción está acotada a la velocidad base del jugador (8 m/s). Si el jugador ejecuta un Dash (22 m/s), la velocidad real supera el umbral previsto por el Interceptor, engañándolo exitosamente y abriendo una ventana táctica de escape.
-* **Vulnerabilidad al retroceso:** Por su complexión ágil y ligera, posee una resistencia negativa al knockback (-20%), saliendo despedido a gran distancia con el impacto final del haz de luz.
+El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
 
-**Atributos numéricos:**
-* **Vida máxima:** `7.0` - `9.0` puntos de salud.
-* **Daño por contacto:** `8.0` puntos de daño al colisionar con el jugador.
-* **Intervalo de daño:** `0.50` segundos.
-* **Velocidad de avance:** `6.2 m/s` con variación individual de `±10%`.
-* **Física de Retroceso (*Knockback*):** Resistencia -20% (impulso de retroceso de `8.5 m/s`, fricción atenuada de `12.0 m/s²`).
+![Spritesheet activo del Coloso / Wendigo](../Media/Avance_2026-11-04/Spritesheets/Wendigo.png)
 
-**Recompensa al morir:**
-* **Gema de Chatarra (XP):** Suelta `1` Gema de Chatarra / XP equivalente a **10 XP** (100% garantizada).
-* **Botiquín de Reparación:** **4%** de probabilidad de soltar un Botiquín de Chatarra Médica (+15 HP).
+[Fuente editable](../Media/Avance_2026-11-04/Spritesheets/Wendigo.aseprite).
 
----
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Wendigo: Reposo](../Media/Avance_2026-11-04/Animaciones/Wendigo/Idle.gif) |
+| Marcha | ![Wendigo: Marcha](../Media/Avance_2026-11-04/Animaciones/Wendigo/Walk.gif) |
+| Preparación de carga | ![Wendigo: Preparación de carga](../Media/Avance_2026-11-04/Animaciones/Wendigo/Windup.gif) |
+| Embestida | ![Wendigo: Embestida](../Media/Avance_2026-11-04/Animaciones/Wendigo/Charge.gif) |
+| Recuperación | ![Wendigo: Recuperación](../Media/Avance_2026-11-04/Animaciones/Wendigo/Recovery.gif) |
+| Impacto recibido | ![Wendigo: Impacto recibido](../Media/Avance_2026-11-04/Animaciones/Wendigo/Hit.gif) |
+| Muerte | ![Wendigo: Muerte](../Media/Avance_2026-11-04/Animaciones/Wendigo/Death.gif) |
 
-### 3. El Coloso
+## Mortero: Campana
 
-**Rol de combate:**  
-Rompe-líneas / Tanque (*Line Breaker / Heavy Tank*). Diseñado para ignorar por completo el retroceso de la linterna y avanzar de forma implacable, forzando al jugador a romper su posición de kiting o utilizar la fase intangible del Dash para atravesarlo.
+Mantiene una banda de distancia entre 5,5 y 6,5 m y ataca hasta 12 m. Tiene un intervalo de cinco segundos, aviso de 0,45 s y vuelo de 0,85 s. El proyectil deja un charco de radio 1,2 m durante tres segundos, con 5 de daño cada 0,5 s. El director limita los Morteros simultáneos a seis.
 
-**Comportamiento de IA:**  
-* **Avance implacable:** Camina directo hacia el jugador con paso pesado y constante.
-* **Inmunidad al empuje:** Avanza como una apisonadora; no se aparta por otros enemigos ni se frena por nada.
-* **Cuerpo físico sólido:** Es un muro viviente. Caminando a pie bloquea el paso por completo; la única forma de atravesarlo es usando el Dash gracias a su ventana de invulnerabilidad.
+Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección.
 
-**Atributos numéricos:**
-* **Vida máxima:** `80.0` puntos de salud.
-* **Daño por contacto:** `25.0` puntos de daño al tocar al jugador.
-* **Tiempo entre golpes:** `0.50` segundos.
-* **Velocidad de avance:** `1.8 m/s` (lento pero imparable).
-* **Física de Retroceso (*Knockback*):** Inmune al 100% (la luz de la linterna jamás lo hace retroceder).
+![Spritesheet activo del Mortero Campana](../Media/Avance_2026-11-04/Spritesheets/Mortero.png)
 
-**Recompensa al morir:**
-* **Gema de Chatarra (XP):** Suelta `1` Gema de Chatarra / XP de alta densidad equivalente a **50 XP** (100% garantizada).
-* **Botiquín de Reparación:** **25%** de probabilidad garantizada de soltar un Botiquín de Chatarra Médica (+15 HP), recompensando el alto esfuerzo necesario para derribar a un tanque pesado.
+[Fuente editable](../Media/Avance_2026-11-04/Spritesheets/Mortero.aseprite).
 
----
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Flotación | ![Mortero: Flotación](../Media/Avance_2026-11-04/Animaciones/Mortero/Float.gif) |
+| Carga del emisor | ![Mortero: Carga del emisor](../Media/Avance_2026-11-04/Animaciones/Mortero/Charge.gif) |
+| Disparo | ![Mortero: Disparo](../Media/Avance_2026-11-04/Animaciones/Mortero/Fire.gif) |
+| Recuperación | ![Mortero: Recuperación](../Media/Avance_2026-11-04/Animaciones/Mortero/Recover.gif) |
+| Muerte | ![Mortero: Muerte](../Media/Avance_2026-11-04/Animaciones/Mortero/Death.gif) |
 
-### 4. El Mortero
+## Polilla: Reactor
 
-**Rol de combate:**  
-Zoner / Control de arena (*Area Denial / Artillery*). Su objetivo es mantenerse a distancia media y escupir charcos corrosivos en el suelo para ensuciar la arena y cortar rutas de escape seguras.
+Se aproxima hasta cebar la explosión. La mecha por proximidad dura 0,9 s; si procede de daño letal, 1,2 s. Explota en un radio de 3 m y afecta al jugador y a otros enemigos. Durante la mecha acepta empuje, por lo que puede desplazarse hacia la horda.
 
-**Comportamiento de IA:**  
-* **Posicionamiento táctico:** Se aproxima al jugador hasta alcanzar una distancia de seguridad de ~7 metros.
-* **Control de zona muerta y retroceso suave:** Entre 6.5m y 7.5m frena su avance frontal por completo. Si el jugador intenta acortar distancia (< 6.5m), retrocede suavemente para restablecer la distancia óptima de disparo.
-* **Ataque de Mortero:** Escupe periódicamente un proyectil balístico en arco parabólico que detona al tocar tierra formando un charco corrosivo.
-* **Charco Corrosivo:** Permanece activo exactamente 4 segundos en el suelo, infligiendo 5 de daño cada 0.5 segundos al jugador si pisa el área.
+Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
-**Atributos numéricos:**
-* **Vida máxima:** `25.0` puntos de salud.
-* **Daño por contacto:** `5.0` puntos de daño al colisionar con el jugador.
-* **Intervalo de daño:** `0.50` segundos.
-* **Velocidad de avance:** `2.2 m/s` con variación individual de `±10%`.
-* **Física de Retroceso (*Knockback*):** 20% de resistencia (impulso de retroceso de `4.0 m/s`, fricción de `18.0 m/s²`).
-* **Cadencia de disparo:** `3.5` segundos por proyectil.
+![Spritesheet activo de la Polilla Reactor](../Media/Avance_2026-11-04/Spritesheets/PolillaReactor.png)
 
-**Recompensa al morir:**
-* **Gema de Chatarra (XP):** Suelta `1` Gema de Chatarra / XP equivalente a **25 XP** (100% garantizada).
-* **Botiquín de Reparación:** **25%** de probabilidad garantizada de soltar un Botiquín de Chatarra Médica (+15 HP), premiando al jugador por arriesgarse a neutralizar la artillería enemiga.
+[Fuente editable](../Media/Avance_2026-11-04/Spritesheets/PolillaReactor.aseprite).
 
----
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Vuelo | ![PolillaReactor: Vuelo](../Media/Avance_2026-11-04/Animaciones/PolillaReactor/Fly.gif) |
+| Cebado | ![PolillaReactor: Cebado](../Media/Avance_2026-11-04/Animaciones/PolillaReactor/Prime.gif) |
+| Estallido compartido | ![PolillaReactor: Estallido compartido](../Media/Avance_2026-11-04/Animaciones/PolillaReactor/Burst.gif) |
 
-### 5. La Polilla
+## Caballero Fantasma
 
-**Rol de combate:**  
-Kamikaze / Bomba táctica (*Suicide Bomber / Tactical Disruptor*). Enemigo ágil y ligero con tendencia autodestructiva que genera momentos de alta tensión y recompensa el posicionamiento rápido del jugador.
+Es uno de los dos élites. Recibe el 25% del daño físico y el daño sobrenatural completo. Su barrido tiene 3,6 m de alcance, arco de 120°, daño sobrenatural de 22, preparación de 0,8 s, recuperación de 0,8 s y recarga de 3,5 s. No causa daño por contacto normal.
 
-**Comportamiento de IA:**  
-* **Abalanzamiento kamikaze:** Se desplaza velozmente (4.8 m/s) en dirección directa al jugador.
-* **Cebado y cuenta atrás de 0.5s:** Al recibir daño letal o al aproximarse a menos de 2.0 metros del jugador, frena su avance motriz y entra en fase de sobrecarga, parpadeando a alta frecuencia en ámbar reactivo.
-* **Counterplay con la Linterna:** Durante los 0.5s de cebado, la Polilla mantiene su física de knockback activa. Si el jugador la empuja con el haz de luz hacia el enjambre antes de que detone, la explosión resultante destruye y dispersa a la propia horda (*friendly fire* táctico).
-* **Detonación radial:** Al concluir el tiempo de cebado, estalla en un radio de 3.0 metros, infligiendo 35 de daño tanto al jugador (si permanece dentro del radio) como a todos los enemigos circundantes.
+Su cuerpo actual usa geometría de presentación y el barrido emplea un efecto animado. No tiene un spritesheet de personaje equivalente a los cinco de horda.
 
-**Atributos numéricos:**
-* **Vida máxima:** `12.0` puntos de salud.
-* **Daño por contacto / explosión:** `35.0` puntos de daño.
-* **Velocidad de avance:** `4.8 m/s` con variación individual de `±10%`.
-* **Física de Retroceso (*Knockback*):** 0% de resistencia (impulso de retroceso de `5.0 m/s`, fricción de `18.0 m/s²`).
-* **Radio de detonación:** `3.0` metros.
-* **Tiempo de fusible (*Primed duration*):** `0.50` segundos.
+![Caballero Fantasma: captura controlada de Unity](../Media/Avance_2026-11-04/Enemigos/CaballeroFantasma.gif)
 
-**Recompensa al morir:**
-* **Gema de Chatarra (XP):** Suelta `1` Gema de Chatarra / XP equivalente a **15 XP** (100% garantizada).
-* **Botiquín de Reparación:** **4%** de probabilidad de soltar un Botiquín de Chatarra Médica (+15 HP).
+## Centinela de Cobre
 
----
+Recibe el 25% del daño sobrenatural salvo durante la recuperación, cuando se abre su ventana de vulnerabilidad y recibe el daño completo. El daño físico se mantiene completo. Prepara un abanico de tres proyectiles durante un segundo, se recupera dos y recarga en 3,5 s. El alcance es de 11 m y cada impacto causa 16 de daño físico. Es pesado, inmune al empuje y no causa contacto normal.
 
-### 6. Gólgora, el Juicio del Vertedero (Jefe Final)
+La presentación anuncia los rayos del abanico y muestra «Vulnerable» en su recuperación. Los misiles tienen animación, iluminación y un límite de luces simultáneas. Su cuerpo actual no tiene spritesheet de personaje.
 
-**Rol de combate:**  
-Jefe de Clímax y Prueba Final (*Endgame Boss / DPS & Positioning Gatekeeper*). Es la cúspide de la partida (Pilar 4: *"8 Minutes to Judgement"*). Aparece en el minuto 8:00 para juzgar al Coleccionista, obligándolo a demostrar que su *build* de mejoras posee suficiente potencia de fuego, movilidad con el *Dash* y gestión espacial para sobrevivir a un coloso titánico y sus ataques de área masivos.
+![Centinela de Cobre: aviso, disparo y recuperación en Unity](../Media/Avance_2026-11-04/Enemigos/CentinelaCobre.gif)
 
-**Lore y Contexto Temático:**  
-Gólgora no es un autómata ordinario: es una mole ancestral de chatarra fundida y magma sintético que duerme en el lecho del vertedero. Cuando el Coleccionista absorbe demasiados Ecos y altera el equilibrio de la arena, Gólgora despierta como manifestación destructiva del propio desguace para purificar a los intrusos.
+Los élites empiezan a aparecer desde los 90 s y se alternan cada 25 s cuando hay capacidad, con un límite conjunto de dos vivos. Sus efectos de barrido y proyectiles están en [[06 - Registro visual]].
 
-**Comportamiento de IA y Fases de Combate:**  
-* **Marcha Implacable:** Avanza a paso constante e inamovible (1.6 m/s) directamente hacia el jugador. Su cuerpo físico colosal es un obstáculo sólido infranqueable a pie; sólo puede ser atravesado mediante los *i-frames* del *Dash*.
-* **Inmunidad Total al Haz de Luz:** Posee un 100% de resistencia al retroceso (*Knockback*). A diferencia de los enemigos básicos o polillas, ningún disparo de la linterna lo detiene ni lo empuja hacia atrás.
-* **Ataque 1 — Pisotón de Magma (*Magma Stomp*):**
-  * Se activa cuando el jugador entra en su radio cercano de amenaza ($\le 6.5\text{ m}$).
-  * Gólgora planta sus extremidades y despliega un círculo de advertencia telegrafiado en el suelo de 5.0 metros de radio.
-  * El disco de advertencia se llena durante 1.2 segundos, pasando de ámbar a rojo intenso. Al completarse, impacta el suelo generando una explosión procedural de fuego y ondas de choque que inflige 40 puntos de daño directo al jugador si permanece en el área.
-  * Los esbirros menores atrapados en la onda expansiva reciben 50.0 puntos de daño colateral con retroceso físico.
-  * Tras el pisotón, entra en un periodo de recuperación de 0.8 segundos donde queda inmóvil, otorgando una ventana táctica de castigo libre al jugador.
-* **Ataque 2 — Bombardeo de Lava (*Lava Mortar Barrage*):**
-  * Se activa periódicamente cada 8 segundos.
-  * Gólgora canaliza energía térmica durante 0.4 segundos y escupe 3 proyectiles balísticos de magma en arco parabólico: uno dirigido a la posición proyectada del jugador y dos hacia sus flancos laterales.
-* **Corte de Oleadas Normales e Invocación de Esbirros:** Al detonar la Fase 5 (minuto 8:00), cesa la escalada de oleadas normales del nivel y la onda sísmica de emergencia de Gólgora pulveriza instantáneamente a la horda previa sin soltar gemas de XP (evitando regalar niveles gratuitos al iniciar el clímax). Durante todo el combate final, **Gólgora invoca periódicamente enemigos menores como esbirros cada 4.0 segundos**; esto mantiene la presión táctica y garantiza que el jugador cuente con objetivos secundarios para obtener botiquines de reparación (+15 HP), activar efectos por muerte y provocar explosiones tácticas con polillas para dañar al propio Gólgora.
+## Gólgora: MataColeccionista
 
-**Atributos numéricos:**
-* **Escala visual:** `3.5x` (calibrada para perspectiva cenital a `60°`, garantizando presencia titánica sin ocluir proyectiles, telégrafos ni el cono de luz).
-* **Vida máxima:** `1500.0` puntos de salud (requiere ráfagas concentradas y mejoras continuas de daño).
-* **Daño por contacto:** `30.0` puntos de daño al tocar al jugador.
-* **Daño del Pisotón (*Magma Stomp*):** `40.0` puntos de daño en un radio de `5.0` metros al jugador.
-* **Daño colateral del Pisotón a esbirros:** `50.0` puntos de daño con retroceso.
-* **Tiempo de advertencia del Pisotón:** `1.2` segundos (telegrafiado visible en suelo).
-* **Cadencia del Pisotón:** Cooldown de `6.0` segundos.
-* **Proyectiles del Bombardeo:** `3` orbes de lava con dispersión angular de $\pm60^\circ$.
-* **Cadencia del Bombardeo:** Cooldown de `8.0` segundos.
-* **Velocidad de avance:** `1.6 m/s` (paso pesado y regular).
-* **Física de Retroceso (*Knockback*):** Inmune al 100% (`0.0 m/s`).
-* **Ventana de vulnerabilidad post-ataque:** `0.80` segundos de inmovilidad tras el pisotón.
+La ronda demo usa 3600 HP y la completa 9000 HP. La entrada ocurre a los tres u ocho minutos y retira la horda ordinaria sin recompensas. El jugador se traslada con protección a una caldera de 22 m de radio cuyo perímetro se cierra. Una presentación con título y rugido precede al combate; la cámara encuadra al jugador y al jefe.
 
-**Condición de Victoria y Recompensa:**
-* Al reducir la salud de Gólgora a 0:
-  * Detona una explosión cinemática masiva de 8 metros.
-  * Instancia una **Gema de Chatarra Legendaria** equivalente a **500 XP**.
-  * Dispara el estado global de **Victoria**, activando la **Ruleta de Extracción** para secuestrar y reclamar una entidad dimensional permanente (o sumarle **+1 nivel** si ya se encontraba en el Almacén).
-  * Despliega la pantalla de victoria cinematográfica con cámara lenta, permitiendo al jugador volver al Almacén con su entidad capturada.
+Gólgora usa un modelo 3D animado. Sus efectos de magma tienen recursos propios, pero no existe un spritesheet de personaje del modelo. Los siguientes GIFs proceden de Unity con los patrones invocados de forma aislada, jugador protegido y oleadas detenidas.
 
-**Diagrama de Estados de IA de Gólgora:**
+| Patrón | Regla de primera fase, salvo donde se indica |
+| --- | --- |
+| Martillazo | Círculo de 3 m, situado 3 m por delante; 40 de daño, preparación de 1,2 s, recuperación de 1 s y recarga de 6 s. Puede dañar y empujar secuaces. |
+| Barrido | Radio de 6 m y arco de 180°; 30 de daño, preparación y recuperación de 1 s, recarga de 7 s. |
+| Bombardeo | Tres posiciones previstas; 25 de daño en radio 2,5 m, preparación de 0,7 s, vuelo base de 0,8 s y recarga de 8 s. Deja magma durante 4 s. |
+| Cerco de magma | Salto al centro, impacto de llegada y ondas expansivas con un hueco de 60°. Las ondas avanzan a 6 m/s y causan 30 de daño. Una onda en primera fase y tres en segunda, separadas 1,3 s y con el hueco rotado 45°. |
+| Fisura de magma | Cinco puntos a lo largo de una línea hacia el jugador, hasta 22 m; 24 de daño en radio 1,4 m. Preparación de 1,1 s, recuperación de 0,8 s, recarga de 10 s y zonas de 3 s. |
+| Lluvia de escoria | Segunda fase: cinco impactos alrededor de la posición prevista, 26 de daño en radio 1,8 m. Preparación base de 1,35 s, vuelo base de 0,9 s, recuperación de 1 s y recarga de 14 s antes de los modificadores de fase. Zonas de 3,5 s. |
 
-```mermaid
-graph TD
-    Spawn["Aparición en Minuto 8:00 / Fase 5"] --> Limpieza["Corte de Oleadas Normales e Invocación Periódica de Esbirros (cada 4s)"]
-    Limpieza --> Marcha["Marcha Implacable hacia el Jugador"]
-    Marcha --> DistanciaCheck{"¿Jugador a <= 6.5m y Cooldown Listo?"}
-    DistanciaCheck -- Sí --> CargaPisoton["Cargar Pisotón de Magma: Telégrafo de 1.2s"]
-    DistanciaCheck -- No --> MorteroCheck{"¿Cooldown de Bombardeo Listo?"}
-    CargaPisoton --> DetonacionPisoton["Detonar Pisotón: 40 Daño en Radio de 5m"]
-    DetonacionPisoton --> Recuperacion["Ventana de Recuperación de 0.8s"]
-    MorteroCheck -- Sí --> DisparoMorteros["Escupir 3 Orbes de Lava en Parábola"]
-    DisparoMorteros --> Recuperacion
-    MorteroCheck -- No --> ContactoCheck{"¿Contacto Físico?"}
-    ContactoCheck -- Sí --> DañoContacto["Infligir 30 de Daño cada 0.5s"]
-    ContactoCheck -- No --> Marcha
-    Recuperacion --> Marcha
-    Marcha --> ChequeoVida{"¿Vida <= 0?"}
-    CargaPisoton --> ChequeoVida
-    ChequeoVida -- Sí --> MuerteVictoria["Gran Explosión + Gema de 500 XP + Ruleta de Extracción"]
-```
+Las zonas de magma de estos proyectiles causan 5 de daño cada 0,5 s. El cerco empieza a estar disponible a los doce segundos de combate del jefe y después se programa con una recarga base de 18 s al completar la secuencia.
 
----
+| Ataque en Unity | Registro |
+| --- | --- |
+| Martillazo | ![Gólgora: martillazo](../Media/Avance_2026-11-04/Enemigos/Golgora_Martillo.gif) |
+| Barrido | ![Gólgora: barrido](../Media/Avance_2026-11-04/Enemigos/Golgora_Barrido.gif) |
+| Bombardeo | ![Gólgora: bombardeo](../Media/Avance_2026-11-04/Enemigos/Golgora_Bombardeo.gif) |
+| Cerco y salto central | ![Gólgora: salto y cerco de magma](../Media/Avance_2026-11-04/Enemigos/Golgora_Cerco.gif) |
+| Fisura | ![Gólgora: fisura de magma](../Media/Avance_2026-11-04/Enemigos/Golgora_Fisura.gif) |
+| Lluvia de segunda fase | ![Gólgora: lluvia de escoria en segunda fase](../Media/Avance_2026-11-04/Enemigos/Golgora_Lluvia.gif) |
 
-## Personajes No Jugables (NPC)
+### Segunda fase y resistencia al control
 
-* **Alcance del proyecto:** **No aplica.**
-* **Justificación de diseño:** *EchoScrap* es una experiencia de supervivencia en solitario. Dentro de la arena de combate no existen NPCs aliados ni neutrales, y la navegación y gestión en el Almacén se realiza directamente a través de menús de interfaz, por lo que no se contempla el desarrollo de personajes no jugables interactivos.
+Al llegar al 50% de vida se inicia una transición protegida con rugido. La velocidad pasa a ×1,3; las preparaciones de los ataques que usan ese modificador, a ×0,85; las recuperaciones y recargas, a ×0,75. El cerco emite tres ondas y se incorpora la lluvia de escoria.
 
----
+Gólgora es inmune al empuje. La ralentización tiene un máximo del 25%. Congelaciones y aturdimientos se reducen al 35% de su duración, con un máximo de 0,6 s y una ventana de inmunidad posterior de 1,5 s. Durante introducción, transición y salto no admite el control normal y no recibe daño. El estado activo del cerco aplica su reducción de daño configurada del 35%.
 
-> **Navegación:** [[00 - Índice]] · ← [[02 - Niveles]] · [[04 - Objetos y Coleccionables]] →
+### Refuerzos y cierre
+
+El director solicita grupos de hasta cuatro cada cuatro segundos. La caldera limita el conjunto a ocho secuaces y apariciones pendientes, con 0,9 s de aviso. La composición rota entre Residual, Residual, Mortero y Polilla. Cerco y transición de fase suspenden esos refuerzos y retiran los presentes.
+
+La muerte de Gólgora cierra el encuentro si el jugador vive. La presentación final incluye la absorción de una gema y 500 XP de resumen, sin nuevas cartas. Si el jugador muere en el mismo paso, prevalece la derrota.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

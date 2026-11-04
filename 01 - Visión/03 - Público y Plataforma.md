@@ -1,70 +1,11 @@
-# Público y Plataforma
+# Público y plataforma
 
-## Descripción de la sección
+EchoScrap es una experiencia de acción y supervivencia para Windows y un solo jugador. El combate acepta teclado y ratón o mando: el desplazamiento y el dash son directos y la linterna funciona con autoapuntado.
 
-Aquí se define para quién se diseña el videojuego y dónde se jugará. Las decisiones de diseño, interfaz, controles y rendimiento dependen de estas variables.
+Las cartas introducen pausas de decisión. Antes de salir, la bóveda permite revisar la colección y escoger hasta tres entidades equipadas. En el montaje actual, recoger entidades y abrir los puestos de equipo o la fusión requiere la tecla E; esa parte del recorrido todavía necesita una guía más clara y no tiene una interacción equivalente de mando documentada en el código.
 
----
+La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos tiempos corresponden al reloj de combate, que se detiene con las pausas y elecciones. La duración total incluye la preparación, los menús y el enfrentamiento final.
 
-## Público objetivo
+Los ataques se comunican con avisos de suelo, animaciones y texto. Las opciones permiten reducir efectos y sacudidas y elegir el detalle del panel de estadísticas.
 
-* **Edad aproximada:** +14 años (adolescentes y adultos jóvenes).
-* **Intereses relevantes:**
-  * Aficionados a los subgéneros *Horde Survival* y *Action Roguelite*.
-  * Jugadores atraídos por la estrategia mediante creación de *builds* y sinergias.
-  * Fanáticos de la estética retro y *pixel art* 2D integrado en entornos 3D.
-* **Conocimientos previos necesarios:**
-  * Comprensión del movimiento direccional (WASD / Flechas o Stick izquierdo).
-  * Concepto de evasión rápida (*Dash*) con ventana de invulnerabilidad.
-
----
-
-## Plataforma
-
-| Elemento                    | Decisión                                  | Justificación / Contexto                                                                                 |
-| :-------------------------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| **Plataforma principal**    | **PC (Windows)**                          | Entorno principal de desarrollo y evaluación.                                                            |
-| **Plataformas secundarias** | Steam Deck / Itch.io (Futuro)             | Portabilidad viable a futuro debido al reducido número de botones requeridos.                            |
-| **Método de entrada**       | Teclado y Mando (Gamepad)                 | Movimiento con WASD/Flechas o Stick, Dash con Espacio/Botón Sur, y navegación completa sin usar ratón.   |
-| **Resolución objetivo**     | **1920 × 1080 (Full HD)**                 | Estándar actual de monitores y laptops.                                                                  |
-| **Relación de aspecto**     | **16:9 panorámico**                       | Garantiza un campo visual amplio con cámara a 60° para anticipar hordas desde los laterales.             |
-| **Rendimiento objetivo**    | **60 FPS estables**                       | Requisito clave manteniendo al menos 150 enemigos simultáneos en pantalla (y hasta 250 en picos).       |
-| **Conexión requerida**      | **100% Offline / Local**                  | Garantía de funcionamiento autónomo sin depender de conexión a la red.                                   |
-
----
-
-## Restricciones de plataforma
-
-1. **Hardware:** El juego debe proyectarse para correr de manera fluida en laptops y equipos de gama media en adelante sin caídas severas de rendimiento.
-2. **Cero dependencia obligatoria de mouse:** Todo el flujo del juego (menús, Almacén, combate y selección de cartas con teclas `1, 2, 3` o cruceta) debe ser completamente navegable con teclado o control.
-3. **Almacenamiento:** Guardado local en disco en formato JSON estructurado (con copia de respaldo `.bak`) para evitar pérdidas de datos.
-
----
-
-## Sesión de juego
-
-* **Duración esperada de partidas:**  
-  Diseñado para sesiones rápidas e intensas con duración de 8 a 10 minutos, incluyendo el enfrentamiento contra el jefe final (*Gólgora / El Guardián*).
-* **Duración total estimada:**  
-  De 4 a 8 horas para un jugador promedio que busque desbloquear los 9 coleccionables del Almacén, subirlos de nivel mediante duplicados, armar combinaciones de hasta 3 entidades equipadas y descubrir la historia completa en sus registros.
-
----
-
-## Modelo de distribución
-
-* **Categoría:** **Prototipo / Demo académica.**
-* **Distribución:** Ejecutable independiente para Windows mediante archivo `.zip` y publicación en *Itch.io* para pruebas y retroalimentación.
-
----
-
-## Consideraciones de Diseño
-
-- **Controles adaptados a la plataforma:** Esquema minimalista de movimiento, esquiva y selección rápida.
-- **Interfaz legible:** Tipografía de alto contraste visible con claridad durante el combate.
-- **Rendimiento:** Desempeño fluido a 60 FPS mediante sprites 2D integrados sobre un escenario 3D optimizado.
-- **Adaptación de pantalla:** Escalado nativo a 1080p con soporte automático para 720p y 1440p (16:9).
-- **Guardado:** Sistema de persistencia local que registre las entidades obtenidas, sus niveles y las 3 ranuras equipadas.
-
----
-
-**Navegación:** `[[00 - Índice]]` • ⬅️ `[[02 - Visión del Juego]]` • `[[04 - Pilares de Diseño]]` ➡️
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

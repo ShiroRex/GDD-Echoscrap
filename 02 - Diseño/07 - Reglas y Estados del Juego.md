@@ -1,57 +1,32 @@
-# Reglas y Estados del Juego
+# Reglas y estados del juego
 
-## Descripción de la sección
+| Momento | Regla |
+| --- | --- |
+| Menú inicial | Continuar, Nueva colección, Configuración y Salir. El mundo se carga después de elegir colección. |
+| Preparación en bóveda | Movimiento, revisión de inventario, equipo de hasta tres entidades y fusión. El reloj de expedición no avanza. |
+| Selección de entidades | Al acercarse a cada puesto y pulsar E se pausa la interacción del mundo y se escoge una copia disponible. Puede dejarse vacío. |
+| Selección de ronda | Se elige demo o completa antes de entrar. |
+| Combate | Avanzan reloj, oleadas, ataques, recogida y temporizadores activos. |
+| Cartas o pausa | El combate se detiene; la interfaz mantiene sus animaciones y confirmaciones. |
+| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver. |
+| Entrada de Gólgora | Se retira la horda, se limpian amenazas y se traslada al jugador a la caldera con protección. |
+| Transición del jefe | Al llegar al 50% de vida, Gólgora entra en su segunda fase con una presentación protegida. |
+| Victoria o derrota | Se muestra el resultado y se puede volver a la bóveda. |
 
-Define las reglas globales de funcionamiento del juego y la máquina de estados por la que transita el ciclo de ejecución en Unity.
+## Encuentro con Gólgora
 
----
+La demo activa la entrada a los 180 s y usa 3600 HP; la completa, a los 480 s y con 9000 HP. El tiempo inicia el encuentro. No concede una victoria por sí mismo.
 
-## Estados principales del juego
+La caldera central tiene 22 m de radio y cierra su perímetro. La entrada reposiciona al jugador sin daño y la cámara encuadra a ambos combatientes. Durante la presentación inicial el jefe no es un objetivo válido.
 
-* **1. Menú Principal (Meta / Almacén):** Estado fuera de partida donde el jugador gestiona sus entidades, revisa estadísticas y prepara la siguiente expedición.
-* **2. Jugando (In-Game / Arena Activa):** Simulación en tiempo real. El jugador se desplaza, la linterna emite pulsos de daño, el spawner invoca oleadas y los enemigos persiguen y flanquean. El cursor está bloqueado y oculto.
-* **3. Subida de Nivel / Pausa Táctica:** Se detiene el tiempo de juego y se muestran hasta tres cartas elegibles. Con menos candidatas se muestran menos; con ninguna, se informa y se permite continuar según [[05 - Progresión]].
-* **4. Derrota (Game Over):** La salud del jugador desciende a 0. Se detiene el combate, se presenta el resumen de tiempo y chatarra recolectada y se permite reiniciar la partida o regresar al menú.
-* **5. Victoria (Extracción Exitosa):** El jugador sobrevive a los 8 minutos de combate y derrota al jefe final *Gólgora*, activando la Ruleta de Extracción para capturar una entidad permanente.
+Los refuerzos se solicitan cada cuatro segundos, en grupos de hasta cuatro y con el orden Residual, Residual, Mortero y Polilla. En la caldera el límite efectivo es de ocho secuaces, incluyendo las apariciones pendientes. Cada entrada se anuncia durante 0,9 s. El cerco de magma y la transición de fase suspenden los refuerzos y retiran los que quedaban activos.
 
----
+Los ataques, inmunidades y tiempos de las dos fases están en [[03 - Enemigos y NPC]].
 
-## Matriz de transiciones de estados
+## Cierre y nueva preparación
 
-| Estado Origen | Evento Desencadenante | Estado Destino | Condición de Diseño |
-|---|---|---|---|
-| **Menú Principal** | Pulsar "Comenzar Partida" | **Jugando** | Carga de la escena de la arena de combate. |
-| **Jugando** | XP alcanza el umbral de nivel | **Subida de Nivel** | La experiencia acumulada alcanza el umbral requerido. Se pausa la simulación táctica. |
-| **Subida de Nivel** | Elegir una carta o continuar una oferta vacía | **Jugando** (o siguiente elección) | Resolver la elección, actualizar configuración y preparar otra si queda pendiente; reanudar sólo al terminar todas. |
-| **Jugando** | Salud del jugador llega a cero | **Derrota** | La vida del jugador llega a 0. Se detiene el combate y se pasa a la pantalla de fin de partida. |
-| **Jugando** | Salud de Gólgora llega a cero | **Victoria** | Gólgora es derrotado mientras el jugador conserva vida (> 0 HP). Se activa la Ruleta de Extracción. |
-| **Jugando** | Presionar Escape / Botón Menú | **Menú de Pausa** | Se detiene la simulación temporalmente para consultar opciones o reanudar. |
-| **Menú de Pausa** | Reanudar partida | **Jugando** | Se restaura la simulación en tiempo real. |
+La muerte del jugador tiene prioridad si coincide con la del jefe en el mismo paso. La victoria incluye la presentación final, absorción de gema y 500 XP para el resumen, sin nuevas cartas.
 
----
+Volver a la bóveda limpia actores, peligros y efectos, restablece la configuración de combate y vuelve a aplicar los poderes del equipo guardado. La colección y la fusión siguen conservadas. Abandonar una expedición requiere confirmación; Nueva colección también confirma antes de borrar la colección existente.
 
-## Reglas globales de diseño técnico
-
-1. **Restricción Cinemática 2.5D:**  
-   Todos los cálculos físicos de movimiento, colisiones, empuje y distancia se calculan estrictamente sobre el plano **XZ**. La componente **Y** se mantiene constante o nivelada al piso para evitar que enemigos o jugadores salgan despedidos hacia arriba tras impactos repetidos.
-2. **Optimización de Memoria en Combate:**  
-   Se diseñará para evitar alocaciones dinámicas continuas en memoria durante el combate activo, reutilizando estructuras y búferes preasignados para consultas de área y detección de amenazas.
-3. **Población de Horda y Rendimiento:**  
-   El spawner mantiene una densidad de combate continua de hasta **150 enemigos simultáneos activos**, con margen para escalar hasta **250 enemigos en momentos de máximo estrés u oleadas pico** (estándar del género *Horde Survival* / *Bullet Heaven*), recurriendo a reutilización de entidades (*pooling*) para garantizar una tasa fluida de 60 FPS.
-4. **Prioridad Absoluta de I-Frames:**  
-   Cuando la condición de invulnerabilidad del jugador está activa (por activación del Dash o por periodo de gracia post-daño), cualquier colisión con enemigos o proyectiles es ignorada a nivel de daño.
-
----
-
-## Casos especiales
-
-* **Resolución de Muerte Simultánea (Coleccionista vs Gólgora):**  
-  Si la salud del Coleccionista y la salud de Gólgora descienden a 0 en el mismo instante o fotograma, la prioridad de resolución se otorga estrictamente a la **Derrota**. La justificación de diseño es que un recolector caído en combate no puede activar la Ruleta ni realizar la extracción de entidades al Almacén.
-* **Acumulación de Múltiples Subidas de Nivel:**  
-  Si se ganan varias elecciones de subida de nivel simultáneas, se resuelven una por una sin reanudar la acción entre ellas. Después de cada elección se recalcula la elegibilidad; si no quedan opciones disponibles, se informa y se permite continuar la partida.
-* **Daño durante el estado de pausa:**  
-  Durante la pausa táctica (subida de nivel o menú de pausa), la simulación se congela por completo; ningún enemigo puede desplazarse, atacar ni causar daño mientras el modal esté activo.
-
----
-
-> **Navegación:** [[00 - Índice]] · ← [[06 - Economía y Recursos]] · [[01 - Premisa y Trama]] →
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

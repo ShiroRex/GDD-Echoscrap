@@ -1,32 +1,25 @@
-# Bugs y Seguimiento
+# Bugs y seguimiento
 
-## Descripción de la sección
+## Preparación de entidades difícil de descubrir
 
-Establece la clasificación de severidad y el formato que utilizará el equipo de *EchoScrap* para registrar, priorizar y dar seguimiento a los errores detectados durante las fases de prototipo y pruebas.
+**Estado: pendiente de implementación.** El sistema de tres entidades equipadas existe, pero el recorrido desde el menú hasta la selección de ronda permite pasarlo por alto. La interacción local aparece al acercarse a un puesto y pulsar E; falta una indicación general que muestre dónde están esos puestos y qué aportan.
 
-## Clasificación de severidad
+El flujo documentado incluye revisar y seleccionar entidades después de entrar a la bóveda y antes de elegir ronda. Se puede salir con puestos vacíos, especialmente al comenzar una colección nueva. El problema consiste en que el jugador tome esa decisión conociendo el sistema.
 
-| Severidad | Definición en *EchoScrap* | Tiempo de atención |
-|---|---|---|
-| **Crítica (Bloqueante)** | Cierre inesperado del juego (*crash*), corrupción del archivo de guardado JSON, imposibilidad de avanzar tras subir de nivel o fallo que impida activar la Victoria al derrotar a Gólgora. | Inmediata (bloquea cualquier entrega). |
-| **Alta** | Desviación en las reglas de combate o meta-progresión (por ejemplo, que un enemigo atraviese los muros perimetrales, que la Ruleta de Extracción no sume $+1$ nivel en duplicados o caídas por debajo de $45\text{ FPS}$). | Prioritaria dentro de la misma iteración. |
-| **Media** | Errores visuales o sonoros que no detienen la partida (desfase en una animación de *sprite*, icono de carta desalineado o sonido secundario que no se atenúa en pausa). | Antes del cierre de versión. |
-| **Baja** | Detalles estéticos menores o ajustes de texto en las fichas del Almacén. | Durante la etapa de pulido final. |
+La revisión debe comprobar que el recorrido presenta los tres puestos, explica que cada entidad aporta un poder e indica cómo abrir el selector. No hay una guía nueva implementada por esta actualización documental.
 
-## Plantilla de reporte de incidencia
+## Acceso con mando
 
-- **ID y Título:** Identificador único y resumen breve del fallo.
-- **Versión y Escena:** Versión de la build y lugar donde ocurre (Almacén, Arena Fase 1–4, Fase 5 Gólgora o Ruleta de Extracción).
-- **Pasos para reproducir:** Secuencia numerada de acciones para replicar el comportamiento.
-- **Resultado esperado vs. Resultado actual:** Comparación directa contra la regla documentada en el GDD.
-- **Estado:** *Abierto* $\rightarrow$ *En progreso* $\rightarrow$ *En verificación QA* $\rightarrow$ *Cerrado*.
+La recogida de entidades y la apertura de equipo y fusión usan E. Los controles de combate y menús principales aceptan mando, pero estas interacciones necesitan una revisión propia antes de considerar completo ese recorrido.
 
-## Estado actual del registro
+## Límites de las oleadas
 
-Actualmente el proyecto se encuentra en **fase de revisión y aprobación del GDD** previa al inicio de la construcción oficial; esta tabla se poblará a partir del Hito 2 (*Núcleo Jugable*).
+La población cuenta a los enemigos que quedan fuera de cámara. Una retirada continua puede alejar gran parte de la horda y reducir la presión cercana cuando el límite ya está ocupado.
 
-| ID | Incidencia | Severidad | Responsable | Estado |
-|---|---|---|---|---|
-| — | *Sin incidencias activas (fase documental de GDD).* | — | Equipo EchoScrap | Al día |
+La ronda demo utiliza los primeros tramos de la misma curva de oleadas. No comprime proporcionalmente todas las fases de ocho minutos.
 
-> **Navegación:** [[00 - Índice]] · ← [[02 - Pruebas]] · [[04 - Criterios de Aceptación]] →
+## Registros visuales
+
+Las capturas anteriores tienen fecha y condiciones propias. Los GIFs de atlas enseñan fotogramas y tiempos; los de Unity enseñan la presentación de una situación controlada. Ninguno sustituye por sí solo una partida completa o una medición de FPS.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

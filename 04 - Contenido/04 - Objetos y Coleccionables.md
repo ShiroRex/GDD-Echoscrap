@@ -1,79 +1,69 @@
-# Objetos y Coleccionables
+# Objetos y coleccionables
 
-## Descripción de la sección
+## Gemas y botiquines
 
-Documenta todos los elementos interactivos que el Coleccionista puede recoger en la arena durante la partida (recolectables en tiempo real) y los recursos extraídos para la meta-progresión en el Almacén.
+Las gemas conceden la XP del enemigo que las dejó y permanecen hasta recogerse. Los botiquines curan 15 HP de base y caducan tras 22 s. Ambos responden al imán y al Pulso colector; se consumen al llegar al personaje y conservan su valor durante el vuelo.
 
----
+## Entidades de la colección
 
-## 1. Recolectables en Tiempo Real (En Combate)
+Las entidades son copias de un inventario persistente. La colección empieza vacía. Nueve personajes aparecen en la arena y seis son resultados de fusión. Las probabilidades de la tabla corresponden a cada aparición de mapa; suman el 100% entre sus nueve entradas.
 
-Los objetos en combate son expulsados por los enemigos al ser destruidos. Permanecen sobre el plano de la arena hasta ser atraídos por el campo magnético del personaje o recogidos por contacto directo.
+| Entidad | Rareza | Fuente | Poder al equiparla |
+| --- | --- | --- | --- |
+| Lobito | Común | Arena · 25% | Dash ágil |
+| Mago | Raro | Arena · 10% | Freón residual |
+| Demonio | Raro | Arena · 10% | Reacción en cadena |
+| Shireen | Especial | Arena · 5% | Sifón |
+| Yanikua | Mítico | Fusión | Rayo solar |
+| Basket | Común | Arena · 25% | Pulso rápido |
+| Hada | Épico | Arena · 7% | Nanobots |
+| Lisa | Legendario | Arena · 3% | Ventisca |
+| Reaper | Común | Fusión | Óptica precisa |
+| Chico Emo | Raro | Fusión | Onda sísmica |
+| Conde Alucard | Especial | Fusión | Sifón |
+| Murciélago Cristal | Épico | Fusión | Prisma voltaico |
+| Sirena | Legendario | Fusión | Cero absoluto |
+| Soldier | Especial | Arena · 5% | Reacción en cadena |
+| Joel | Raro | Arena · 10% | Óptica precisa |
 
-### 1.1 Gemas de Chatarra y Núcleos de Eco (Experiencia / XP)
+Las seis rarezas de entidades son Común, Raro, Especial, Épico, Legendario y Mítico. El catálogo de cartas de combate mantiene sus cuatro rarezas propias.
 
-**Tipo:** Recolectable pasivo de progresión durante la partida.  
-**Propósito:** Alimentar la barra de experiencia del Coleccionista para activar la selección de hasta tres cartas de mejora, según [[05 - Progresión]], y adaptar su configuración frente a la horda.
+Cada 30 s de combate activo se intenta generar entre una y tres entidades en posiciones válidas del mapa. Hay un máximo de doce presentes y cada aparición dura diez segundos. El jugador debe acercarse y pulsar E a menos de unos 2,5 m, con la interacción despejada. La recogida incorpora una copia y la guarda en ese momento. Yanikua solo puede obtenerse mediante fusión.
 
-* **Cómo se obtiene:**
-  * Cada enemigo eliminado suelta una gema de chatarra en el punto exacto de su destrucción (100% de probabilidad).
-* **Valores según el enemigo eliminado:**
-  * **Gema Residual Básica (Color Cian/Azul):** **10 XP** (Enemigo Básico Residual e Interceptor).
-  * **Gema Ámbar Volátil (Color Naranja):** **15 XP** (Polilla).
-  * **Gema de Alta Presión (Color Púrpura):** **25 XP** (Mortero).
-  * **Núcleo de Alta Densidad (Color Dorado brillante):** **50 XP** (Coloso).
-* **Comportamiento y Atracción Magnética:**
-  * **Radio de detección base:** **2.5 metros**. Mientras el jugador esté a mayor distancia, la gema permanece en el suelo.
-  * **Velocidad de atracción:** Al cruzar el umbral del imán, la gema se orienta y viaja a **12 m/s** directamente hacia el personaje.
-  * **Escalado:** Cartas como "Núcleo Supermagnético" (`GREED_01`) amplían este radio de atracción según el catálogo de [[05 - Progresión]].
-* **Efecto al consumir:** Suma su valor a la experiencia acumulada. Al alcanzar el umbral de nivel, pausa la partida y despliega la selección de cartas de draft.
+## Selección de entidades equipadas
 
----
+La bóveda tiene tres puestos de equipo. Se abre el selector con E junto al puesto que se quiere cambiar. El inventario muestra cada copia, sus retratos y su disponibilidad, con paginación cuando hace falta. Se puede cambiar la entidad o dejar el puesto vacío.
 
-### 1.2 Botiquín de Chatarra Médica
+Cada copia aporta un nivel de su poder. Varias entidades con el mismo poder acumulan niveles hasta el máximo de la mejora. Las cartas de la expedición se calculan por separado: el nivel efectivo usa el mayor entre cartas y equipo. Una copia equipada no está disponible para consumirse en la máquina o liberarse del inventario.
 
-**Tipo:** Recolectable reactivo de supervivencia y curación en combate.  
-**Propósito:** Garantizar la viabilidad de supervivencia durante los 8 a 10 minutos de partida, mitigando el desgaste por contacto con la horda y recompensando la eliminación agresiva de enemigos pesados.
+![Selector de entidades del puesto](../Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
 
-* **Función:** Restaura de forma inmediata **15 puntos de salud** al Coleccionista.
-* **Restricción de Salud Máxima y Sobrecuración:**
-  * Por regla general, la curación no sobrepasa el límite máximo del jugador (base de 100 HP) ni otorga escudos. Si el jugador ya se encuentra al 100% de vida, recoger el botiquín lo consume sin incrementar la salud.
-  * **Excepción de diseño:** Cuando el jugador tiene activa la carta de mejora `BIO_04` ([[05 - Progresión]]), el exceso de salud no se descarta; se acumula en un contador especial que desata una *Nova de Plasma* al reunir 15 HP de sobrecuración.
-* **Probabilidades de Caída (Drops calibrados):**
-  * **Enemigos Básicos y Ligeros (Básico, Polilla, Interceptor):** **4%** de probabilidad de soltar botiquín al morir.
-  * **Enemigos Pesados y Élite (Coloso, Mortero):** **25%** de probabilidad garantizada de soltar botiquín.
-* **Comportamiento Físico y Magnético:**
-  * Comparte el mismo radio magnético base de **2.5 metros** y velocidad de succión de **12 m/s** que las gemas de XP.
-* **Retroalimentación Audiovisual:** Emite un destello visual verde/cian de reparación y actualiza de inmediato el indicador de vida en la interfaz del jugador.
+Elegir equipo debe formar parte de la preparación antes de escoger ronda. El sistema está implementado, pero falta señalizarlo de forma que el jugador comprenda sus tres puestos y sus poderes sin tener que encontrarlos por su cuenta.
 
----
+## Fusión de cuatro copias
 
-## 2. Coleccionables Permanentes (Meta-Progresión en el Almacén)
+La máquina está dentro de la bóveda y se abre con E. Se eligen cuatro copias disponibles; al comenzar se consumen y se sortea una sola vez el resultado. Las equipadas y Yanikua están protegidas como ingredientes.
 
-### 2.1 Entidades Interdimensionales Capturadas (Bestiario del Almacén)
+El sorteo usa la calidad media de los ingredientes. Cada banda ofrece resultados de su rareza y la siguiente, y las mezclas interpolan entre bandas. Los seis resultados posibles son Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena y Yanikua.
 
-**Tipo:** Coleccionable principal, permanente y equipable de meta-progresión.  
-**Propósito:** Dar sentido al rol de *El Coleccionista*, permitiendo reunir supervivientes de otras dimensiones en el Almacén (Hub), conocer su trasfondo y personalizar las estadísticas o efectos iniciales antes de cada expedición.
+| Cuatro ingredientes de la misma rareza | Tiempo | Resultados |
+| --- | ---: | --- |
+| Comunes | 60 s | Reaper 60%; Chico Emo 40%. |
+| Raros | 120 s | Chico Emo 60%; Conde Alucard 40%. |
+| Especiales | 180 s | Conde Alucard 60%; Murciélago Cristal 40%. |
+| Épicos | 180 s | Murciélago Cristal 59,4%; Sirena 39,6%; Yanikua 1%. |
+| Legendarios | 180 s | Sirena 70%; Yanikua 30%. |
 
-* **Cómo se obtiene (Ruleta de Extracción):**
-  * Exclusivamente al lograr la **Victoria** en una expedición (sobrevivir los 8 minutos de asedio y abatir al jefe Gólgora). Al caer Gólgora, se activa la **Ruleta de Extracción**, que selecciona aleatoriamente 1 entidad dimensional para incorporarla de forma permanente a la vitrina del Almacén. En caso de derrota, no se realiza ninguna captura.
-* **Equipamiento en el Almacén (3 ranuras activas):**
-  * Desde el Almacén, el jugador puede inspeccionar las entidades capturadas y equipar hasta **3 entidades por partida**. Cada entidad equipada otorga un modificador pasivo o rasgo funcional al Coleccionista desde el segundo 0:00 de la incursión.
-* **Sistema de Duplicados (Subida de Nivel):**
-  * Si la Ruleta de Extracción otorga una entidad que el jugador ya poseía en su colección, el duplicado **suma +1 nivel a dicha entidad**, potenciando escalonadamente el beneficio pasivo que aporta al ser equipada.
-* **Estructura de Rarezas y Catálogo:**
-  * La colección se organiza en 5 niveles de rareza: **Común, Raro, Épico, Legendario y Mítico** (con una visión de 14 entidades y un alcance prioritario de entrega de 8 a 10 entidades). La lista definitiva de identidades, nombres y trasfondo de cada entidad se documenta en coordinación con el responsable de personajes en [[03 - Personajes]].
+En mezclas, Yanikua tiene 30% con cuatro legendarios, 15% con tres y 5% con dos. Con un legendario o algún épico su probabilidad es del 1%; sin épicos ni legendarios es cero. Esa cuota se reserva antes de repartir el resto de resultados. El tiempo es 60 s cuando todos son comunes, 120 s si la calidad media está por debajo de Especial y 180 s desde esa calidad.
 
----
+![Máquina con cuatro espacios de ingredientes](../Media/Avance_2026-11-04/Interfaz/FusionCuatro.png)
 
-## 3. Resumen Rápido de Objetos y Coleccionables
+La selección pausa el mundo. Al iniciar se cierra el menú y el proceso avanza durante el juego activo, también en la bóveda. Las pausas y el tiempo fuera de la aplicación no lo adelantan. Al llegar a cero queda listo: hay que volver a interactuar para abrir la persiana. El resultado espera Coleccionar o Liberar antes de comenzar otra fusión.
 
-| Objeto / Coleccionable | Tipo / Origen | Frecuencia de Obtención | Efecto Funcional | Persistencia |
-|---|---|---|---|---|
-| **Gema de Chatarra XP** | Botín de combate en suelo | 100% en todos los enemigos | +10 a +50 XP (según tipo de enemigo; 500 XP en Gólgora) | Volátil (*In-Run*; radio magnético 2.5 m, 12 m/s) |
-| **Botiquín de Reparación** | Botín de combate en suelo | 4% (Básicos) / 25% (Pesados) | +15 Salud inmediata (acumula sobrecuración con `BIO_04`) | Volátil (*In-Run*; radio magnético 2.5 m, 12 m/s) |
-| **Entidad Interdimensional** | Ruleta de Extracción tras vencer a Gólgora | 1 entidad por Victoria | Equipable en el Almacén (máx. 3 por partida); duplicados suman +1 nivel a la entidad | Permanente (Guardado en el Almacén) |
+## Exposición y duplicados
 
----
+Los siete puestos de exposición muestran copias disponibles ordenadas por rareza. Las cantidades del inventario pueden superar esos puestos. Los duplicados siguen siendo copias utilizables; la selección de equipo y las recetas respetan cuántas quedan libres.
 
-> **Navegación:** [[00 - Índice]] · ← [[03 - Enemigos y NPC]] · [[05 - Misiones y Desafíos]] →
+Liberar una copia del inventario muestra una confirmación con su nombre. Coleccionar el resultado de fusión suma una copia; Liberar descarta ese resultado.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

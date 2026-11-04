@@ -1,49 +1,17 @@
-## Autoría
+# EchoScrap — GDD 0.5.0
 
-**Ing. Luis Fernando Villafaña Rejón**
+Documento actualizado al **4 de noviembre de 2026**, a partir del proyecto jugable EchoScrap.
 
-Creación y desarrollo de esta guía integral de GDD en español para la documentación y desarrollo de proyectos de videojuegos.
+- [Índice](00%20-%20%C3%8Dndice.md).
+- [Avance y flujo de preparación](00%20-%20Avance%20jugable.md).
+- [GDD completo con imágenes y GIFs](00%20-%20GDD%20Completo%20%28Para%20Exportar%20PDF%29.md).
+- [Enemigos, spritesheets y animaciones](04%20-%20Contenido/03%20-%20Enemigos%20y%20NPC.md).
+- [Registro de VFX y capturas](05%20-%20Arte%20y%20Audio/06%20-%20Registro%20visual.md).
 
-# GDD de Videojuego — Plantilla Profesional para Obsidian
+La edición incluye el flujo de selección de entidades antes de elegir ronda, quince entidades, equipo de tres puestos, fusión de cuatro copias, dos élites y el encuentro actual de Gólgora. La guía visual para descubrir el equipo queda identificada como pendiente de implementación.
 
-Esta carpeta contiene una estructura de **Documento de Diseño de Videojuego (GDD)** completamente en español y preparada para trabajar en Obsidian.
+Los cinco enemigos de horda tienen su atlas y GIFs de todas sus acciones. Los élites y el jefe se muestran con capturas de Unity porque sus cuerpos actuales no tienen spritesheets. Las previsualizaciones y las capturas se identifican por separado, con sus condiciones y fechas.
 
-## Características
+Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.5.0.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
 
-- Estructura profesional y modular.
-- Cada apartado explica qué debe documentarse.
-- Enlaces internos mediante `[[Wikilinks]]` de Obsidian.
-- Navegación de ida y vuelta entre secciones.
-- Campos preparados para completar.
-- Tablas, diagramas y bloques de información.
-- Separación entre diseño, contenido, arte, audio, UX, tecnología, producción y calidad.
-- Biblioteca integrada de géneros, subgéneros, plataformas, consolas, perspectivas, cámaras, modos de juego y etiquetas.
-- Registro de decisiones y versiones.
-- Orientado a proyectos académicos de desarrollo de videojuegos.
-
-## Cómo usarlo
-
-1. Copia o mueve esta carpeta dentro de tu bóveda de Obsidian.
-2. Abre `00 - Índice.md`.
-3. Activa el panel de navegación de Obsidian si deseas explorar los enlaces visualmente.
-4. Completa primero la sección **01 — Visión**.
-5. Utiliza [[00 - Biblioteca de Clasificación]] cuando necesites decidir género, subgénero, plataforma, cámara o modo de juego.
-6. Continúa con diseño y sistemas.
-7. Documenta después contenido, experiencia y tecnología.
-8. Utiliza producción y calidad para controlar el desarrollo.
-
-## Importante
-
-No existe un único formato universal de GDD utilizado por todos los estudios. Esta plantilla utiliza una estructura amplia basada en las áreas que normalmente necesitan coordinarse durante el diseño y desarrollo de un videojuego.
-
-El objetivo no es producir documentación por cantidad, sino conseguir que **el equipo pueda entender, implementar, probar y mantener las decisiones del juego**.
-
-## Ajuste visual de casillas
-
-La carpeta `snippets/` incluye `GDD-checkbox-fix.css`.  
-Si el tema de Obsidian superpone las casillas con el texto en **modo lectura**, activa este snippet desde:
-
-**Ajustes → Apariencia → Fragmentos de CSS → GDD-checkbox-fix**
-
-Las casillas siguen utilizando la sintaxis nativa de tareas de Obsidian (`- [ ]` / `- [x]`).
-
+Plantilla original: Ing. Luis Fernando Villafaña Rejón. Proyecto y contenidos: equipo EchoScrap.
