@@ -1,6 +1,6 @@
 # EchoScrap: avance jugable
 
-**GDD 0.5.0 · 4 de noviembre de 2026.**
+**GDD 0.5.1 · 5 de noviembre de 2026.**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 
@@ -28,8 +28,9 @@ La elección de entidades forma parte de la preparación. Se pueden ocupar hasta
 
 - [[01 - Jugabilidad]] y [[01 - UX y Flujo del Jugador]] describen la preparación y la expedición.
 - [[04 - Objetos y Coleccionables]] reúne las quince entidades, sus poderes y las reglas de fusión.
-- [[03 - Enemigos y NPC]] contiene los valores, ataques, spritesheets y GIFs de los enemigos.
-- [[02 - Personajes y Animación]] muestra los atlas y las animaciones por acción y dirección.
+- [[03 - Personajes]] identifica individualmente a los enemigos y su papel.
+- [[03 - Enemigos y NPC]] contiene los valores y las reglas de los ataques.
+- [[02 - Personajes y Animación]] reúne las fichas visuales, fuentes editables, spritesheets y GIFs de personajes y enemigos; señala la integración pendiente del Caballero y el gólem.
 - [[06 - Registro visual]] reúne los GIFs de VFX y las condiciones de las capturas.
 
 Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del proyecto; las capturas de Unity se identifican aparte. Las imágenes de preparación utilizan un inventario de muestra para enseñar las opciones. Una colección nueva empieza vacía.
