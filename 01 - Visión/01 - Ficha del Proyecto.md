@@ -3,9 +3,9 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.5.0 |
+| Versión del GDD | 0.5.1 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
-| Actualización | 4 de noviembre de 2026 |
+| Actualización | 5 de noviembre de 2026 |
 | Plataforma | PC, Windows, un jugador local. |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
