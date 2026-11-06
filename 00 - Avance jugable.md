@@ -1,6 +1,6 @@
 # EchoScrap: avance jugable
 
-**GDD 0.5.1 · 5 de noviembre de 2026.**
+**GDD 0.5.2 · 5 de noviembre de 2026.**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 

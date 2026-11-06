@@ -1,6 +1,6 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.5.1 · 5 de noviembre de 2026**
+**GDD 0.5.2 · 5 de noviembre de 2026**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
@@ -8,12 +8,11 @@ Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
 Esta edición describe el montaje jugable consultado y distingue la selección de equipo disponible de su guía visual pendiente. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
-
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.5.1 · 5 de noviembre de 2026.**
+**GDD 0.5.2 · 5 de noviembre de 2026.**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 
@@ -55,7 +54,7 @@ Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del p
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.5.1 |
+| Versión del GDD | 0.5.2 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
 | Actualización | 5 de noviembre de 2026 |
 | Plataforma | PC, Windows, un jugador local. |
@@ -63,7 +62,7 @@ Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del p
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | 30b88c6, junto con el montaje local de CombatArena presente el 4 de noviembre. |
+| Revisión consultada | 30b88c6 y montaje local del 4 de noviembre para reglas y personajes; b9e3136 y montaje local del 5 de noviembre para las nuevas capturas de VFX. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
@@ -1013,12 +1012,14 @@ Los GIFs de este GDD no contienen audio. Sirven para revisar animación y VFX; l
 
 ## Procedencia de los medios
 
-Esta edición reúne dos tipos de animación:
+El registro reúne previsualizaciones de recursos y capturas de ejecución, con su procedencia y fecha:
 
 - **Previsualizaciones de atlas, 4 de noviembre.** Copias de los PNG activos y GIFs compuestos con sus rectángulos, etiquetas y tiempos JSON. Las acciones de personaje muestran cuatro direcciones a escala 2×, sin interpolación. No incluyen la iluminación ni la simulación del juego.
 - **Capturas de Unity, 4 de noviembre.** CombatArena ejecutada desde una copia externa del proyecto, a 960 × 540 y doce imágenes por segundo. Se usaron cámara de detalle, jugador protegido y oleadas detenidas. Los patrones del jefe se invocaron individualmente con sus componentes y ajustes; para la lluvia se activó la segunda fase. Las pantallas de preparación utilizan un inventario de muestra, sin guardar esa colección.
 
-Las capturas corresponden al montaje local basado en 30b88c6. Los PNG mantienen 960 × 540 y los GIFs de Unity se exportan a 640 × 360. La vista de detalle permite leer las animaciones y los efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
+- **Capturas de Unity, 5 de noviembre.** Veintiuna secuencias nuevas de linterna, mejoras, daño, fusión y portal del menú. Se ejecutaron desde una copia externa del montaje local basado en b9e3136, con cámara de detalle a 960 × 540 y doce imágenes por segundo, salvo el Micro-ensamblador, registrado a 24; los GIFs se exportan a 768 × 432. Las oleadas están detenidas, los objetivos tienen locomoción desactivada y se activan eventos y estados reales del código para aislar cada efecto. Algunos disparadores se repiten para facilitar su revisión. El jugador está protegido salvo el daño controlado de Nanobots; la fusión utiliza ingredientes de muestra y el guardado permanece desactivado.
+
+Los registros del 4 de noviembre corresponden al montaje local basado en 30b88c6 y conservan sus dimensiones: PNG de 960 × 540 y GIF de Unity de 640 × 360. La cámara de detalle permite leer animaciones y efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
 
 ## Enemigos y personajes
 
@@ -1058,67 +1059,165 @@ La torreta actual usa trípode y cañón separados, orientación del cañón, bo
 
 ![Torreta disparando en la arena de Unity](Media/Avance_2026-11-04/VFX/Torreta_Combate.gif)
 
+## Linterna
+
+Las dos capturas usan los mismos objetivos inmóviles y la misma cámara. La presentación cambia con las mejoras de la linterna: alcance y apertura, cadencia, intensidad y color. Estas variantes reutilizan el haz y los impactos del arma.
+
+### Linterna base
+
+La ráfaga muestra el haz, los pulsos y las reacciones de los enemigos alcanzados.
+
+![Linterna base: captura de Unity del 5 de noviembre](Media/Avance_2026-11-05/VFX/Linterna.gif)
+
+### Rayo solar
+
+La mejora legendaria cambia la luz a dorado y mantiene los pulsos sin el descanso normal de la ráfaga. La secuencia permite comparar su continuidad con la linterna base.
+
+![Rayo solar: captura de Unity del 5 de noviembre](Media/Avance_2026-11-05/VFX/RayoSolar.gif)
+
 ## Efectos de mejoras
 
-Los siguientes GIFs son capturas de Unity del 26 de octubre, conservadas para mostrar efectos de mejoras. Proceden de escenas controladas y recortes de cámara de 1280 × 720. Su fecha y encuadre se mantienen como contexto; no muestran la iluminación exterior renovada de noviembre.
+Estas capturas del 5 de noviembre sustituyen las muestras de mejoras del 26 de octubre. Cada secuencia identifica la acción que se está mostrando; los valores y condiciones de adquisición están en [[05 - Progresión]].
 
 ### Prisma voltaico
 
-Los enlaces siguen el cuarto pulso y recorren objetivos sucesivos.
+Tras un impacto del cuarto pulso, la descarga enlaza objetivos sucesivos y produce destellos eléctricos en los alcanzados. Los impactos iniciales se repiten durante la captura para mostrar la cadena.
 
-![Prisma voltaico: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Electricity.gif)
+![Prisma voltaico: descarga y enlaces entre objetivos](Media/Avance_2026-11-05/VFX/PrismaVoltaico.gif)
 
 ### Frío y congelación
 
-El tinte, cristales y niebla acompañan ralentización y congelación.
+El primer impacto aplica la ralentización. Los pulsos siguientes alcanzan el umbral de congelación y añaden escarcha, partículas y niebla fría al objetivo.
 
-![Frío y congelación: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Ice.gif)
+![Freón residual y Cero absoluto: ralentización y congelación](Media/Avance_2026-11-05/VFX/FrioCongelacion.gif)
 
-### Minas y explosiones
+### Ventisca
 
-Expansión, humo y fragmentos acompañan la detonación; el daño lo resuelve la simulación.
+La mejora emite una onda de frío desde el jugador y congela a los objetivos alcanzados. Para aislar la emisión se adelanta su temporizador mediante el código de ejecución; el GIF no representa el intervalo completo entre activaciones.
 
-![Minas y explosiones: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Explosion.gif)
+![Ventisca: onda de frío y objetivos congelados](Media/Avance_2026-11-05/VFX/Ventisca.gif)
+
+### Quiebre de hielo
+
+La muerte de un enemigo congelado libera seis esquirlas radiales. La captura activa el estado de congelación y resuelve el golpe letal para mostrar el disparador y la salida de los proyectiles.
+
+![Quiebre de hielo: esquirlas tras una muerte congelada](Media/Avance_2026-11-05/VFX/QuiebreHielo.gif)
+
+### Minas de chatarra
+
+La mina se coloca en el suelo y explota al detectar un enemigo cercano. La captura adelanta el temporizador de colocación; el radio visible pertenece a la explosión.
+
+![Minas de chatarra: colocación y explosión](Media/Avance_2026-11-05/VFX/Minas.gif)
+
+### Termobárica
+
+Después de la explosión inicial aparece una implosión que se contrae y atrae enemigos. La explosión de Cataclismo se utiliza como fuente para demostrar esta combinación.
+
+![Termobárica: explosión inicial e implosión secundaria](Media/Avance_2026-11-05/VFX/Termobarica.gif)
 
 ### Nova de plasma
 
-La curación sobrante puede desencadenar la expansión alrededor del jugador.
+La curación que excede la vida máxima acumula la condición de activación y emite una nova alrededor del jugador. La captura suministra curación sobrante para mostrar varias activaciones.
 
-![Nova de plasma: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Plasma.gif)
+![Nova de plasma: expansión por curación sobrante](Media/Avance_2026-11-05/VFX/NovaPlasma.gif)
 
-### Nanobots
+### Curación y reparación
 
-La superficie de energía y sus ondas acompañan las reglas de regeneración y protección.
+El efecto de reparación acompaña la recuperación efectiva de vida. Más vida, Sifón, Botiquín mejor y la regeneración de Nanobots comparten esta presentación cuando producen una curación.
 
-![Nanobots: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Shield.gif)
+![Curación: efecto compartido de reparación](Media/Avance_2026-11-05/VFX/Curacion.gif)
+
+### Nanobots: protección de emergencia
+
+Un daño controlado deja al jugador por debajo del umbral y activa el escudo temporal. La captura muestra su aparición y desaparición; la regeneración utiliza el efecto de curación anterior.
+
+![Nanobots: activación del escudo de emergencia](Media/Avance_2026-11-05/VFX/Nanobots.gif)
+
+### Micro-ensamblador
+
+La recogida del grupo de gemas requerido dispara un proyectil guiado hacia un enemigo. Se observan el vuelo, la estela y el impacto; las gemas se suministran en la situación de captura.
+
+![Micro-ensamblador: proyectil guiado, estela e impacto](Media/Avance_2026-11-05/VFX/MicroEnsamblador.gif)
 
 ### Sierras orbitales
 
-Las cuchillas, estelas y chispas permiten seguir el giro y sus contactos.
+Las sierras giran alrededor del Coleccionista. Sus arcos y chispas acompañan el contacto con los enemigos colocados cerca del recorrido.
 
-![Sierras orbitales: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Saws.gif)
+![Sierras orbitales: giro y efectos de contacto](Media/Avance_2026-11-05/VFX/Sierras.gif)
 
 ### Pulso colector
 
-Los objetos conservan su valor durante el vuelo y conceden XP o curación al llegar.
+El remolino de recogida acompaña el vuelo de gemas hacia el jugador. La animación mantiene el valor real de las recogidas y usa un conjunto de gemas de muestra.
 
-![Pulso colector: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Collection.gif)
+![Pulso colector: remolino y recogida de gemas](Media/Avance_2026-11-05/VFX/PulsoColector.gif)
 
 ### Onda sísmica
 
-La expansión señala el efecto de daño y control al terminar el dash.
+El evento de llegada del dash emite una expansión radial de daño y aturdimiento. La captura aísla la llegada y repite el disparador para revisar la onda.
 
-![Onda sísmica: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/Shockwave.gif)
+![Onda sísmica: expansión al terminar el dash](Media/Avance_2026-11-05/VFX/OndaSismica.gif)
 
-### Números de daño
+### Holo-señuelo
 
-Los números siguen arcos; el físico usa amarillo y naranja crítico y el sobrenatural rosa violeta y morado crítico.
+El inicio del dash deja una copia del Coleccionista. El jugador se aparta para hacerla visible y, al agotarse su duración, la copia desaparece con una implosión. Los enemigos de captura permanecen inmóviles; este registro muestra el efecto visual, no una prueba de su persecución.
 
-![Números de daño: captura de Unity del 26 de octubre](Media/Avance_2026-10-27/VFX/NumerosDeDano.gif)
+![Holo-señuelo: copia temporal e implosión](Media/Avance_2026-11-05/VFX/HoloSenuelo.gif)
+
+### Cataclismo
+
+La explosión nace en el punto de salida y la cuchilla se lanza desde la llegada. La posición del jugador se desplaza de forma controlada entre ambos eventos para mostrar los dos componentes.
+
+![Cataclismo: explosión de salida y cuchilla de llegada](Media/Avance_2026-11-05/VFX/Cataclismo.gif)
+
+## Números de daño
+
+Los valores siguen arcos y distinguen daño físico y sobrenatural, con variantes de impacto normal y crítico. La captura provoca impactos controlados para revisar los cuatro estilos.
+
+![Números de daño: canales físicos, sobrenaturales y críticos](Media/Avance_2026-11-05/VFX/NumerosDano.gif)
+
+## Fusión y portal
+
+### Aura de la máquina de fusión
+
+Las partículas ascienden por los costados de la máquina y dejan libre la puerta. La secuencia muestra el efecto ambiental en la bóveda.
+
+![Máquina de fusión: aura de partículas](Media/Avance_2026-11-05/VFX/FusionAura.gif)
+
+### Apertura y revelación de la fusión
+
+Al abrir una fusión lista se eleva la puerta, aparece humo y se muestra la entidad resultante. La captura utiliza cuatro copias de muestra y adelanta la espera de producción; la apertura y su humo se ejecutan con sus componentes del juego.
+
+![Fusión: apertura de la máquina y humo de revelación](Media/Avance_2026-11-05/VFX/FusionApertura.gif)
+
+### Portal del menú
+
+El vórtice animado y las entidades en órbita forman el fondo del menú inicial. Este GIF registra la interfaz real con su tiempo de presentación recorrido de forma controlada, para observar el ciclo del vórtice y las órbitas que una captura estática no muestra.
+
+![Menú inicial: portal animado y entidades en órbita](Media/Avance_2026-11-05/VFX/PortalMenu.gif)
+
+## Efectos compartidos y mejoras de estadísticas
+
+Las 35 mejoras no necesitan 35 animaciones distintas. El catálogo de [[05 - Progresión]] conserva sus reglas; esta tabla identifica la presentación compartida y evita confundir una mejora sin VFX exclusivo con una captura ausente.
+
+| Mejora o grupo | Presentación |
+| --- | --- |
+| Más alcance, Pulso rápido y Golpe potente | Reutilizan el haz, los impactos y la presentación de la linterna; cambian su apertura, alcance, cadencia, color o intensidad. |
+| Dash ágil | Reutiliza la animación y las imágenes residuales del dash; modifica velocidad y recarga. Sus animaciones están en [[02 - Personajes y Animación]]. |
+| Más vida, Sifón y Botiquín mejor | Reutilizan curación y reparación; el HUD expresa los cambios de vida. |
+| Imán | Reutiliza el vuelo de recogida de gemas y botiquines. |
+| Chatarrero | Cambia la XP recibida y su lectura en el HUD; no añade un efecto de combate propio. |
+| Sintonizador | Se representa mediante reintentos y ofertas en la interfaz de cartas. |
+| Óptica precisa y Calibración letal | Reutilizan los destellos y números críticos; cambian sus probabilidades o valores. |
+| Ejecución | Resuelve la muerte del enemigo al cumplir su condición y reutiliza la presentación de muerte. |
+| Ráfaga crítica y Ojo del verdugo | Reutilizan los avisos de onda, aturdimiento y daño crítico; no introducen una biblioteca de sprites separada. |
+| Pólvora volátil y Reacción en cadena | Reutilizan explosiones; cambian su radio, daño o condición de aparición. |
+| Blindaje | Se lee en las placas y valores del HUD; no añade una explosión o aura exclusiva. |
 
 ## Alcance de estas imágenes
 
-Los GIFs permiten revisar fotogramas, anticipación, trayectoria e impacto visual. Las cifras de daño, la cadencia, probabilidades y condiciones de activación se contrastan con las reglas del juego. Las animaciones no contienen audio y no certifican un mínimo de FPS.
+La galería reúne 21 capturas nuevas del 5 de noviembre, los quince clips de la biblioteca de efectos de enemigos y los registros de torreta del 3 y 4 de noviembre. Los patrones de Gólgora están en [[02 - Personajes y Animación]]. Las muestras anteriores de octubre permanecen en el historial del repositorio.
+
+Los GIFs permiten revisar aparición, trayectoria, impacto y desaparición visual. Las cifras de daño, probabilidades y condiciones de activación se contrastan con las reglas del juego. Las situaciones controladas y los temporizadores adelantados se identifican en cada caso. Las animaciones no contienen audio y no certifican un mínimo de FPS.
 
 ---
 
@@ -1707,6 +1806,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.4.0** | 27/10/2026 | Actualización al proyecto jugable EchoScrap: reglas y valores actuales, seis enemigos, 35 mejoras, mundo de 200 m, almacén y fusión; atlas activos y GIFs de enemigos, cartas y VFX capturados en Unity. | Sierra Sosa David Alejandro |
 | **0.5.0** | 04/11/2026 | Flujo de preparación con selección de entidades y guía pendiente; quince entidades, equipo de tres puestos y fusión de cuatro copias; élites, sprites y animaciones actuales, caldera y patrones de Gólgora, minimapa, cámara, audio y guardado de producción. | Sierra Sosa David Alejandro |
 | **0.5.1** | 05/11/2026 | Fichas individuales de enemigos en Personajes; spritesheets, fuentes editables y GIFs actuales reunidos en Personajes y Animación; integración de sprites de Caballero Fantasma y Centinela de Cobre (gólem) marcada como pendiente; navegación y documento completo sincronizados. | Equipo EchoScrap |
+| **0.5.2** | 05/11/2026 | Registro visual completado con 21 capturas actuales de VFX de linterna, mejoras, daño, fusión y portal; muestras de octubre sustituidas, procedencia y efectos compartidos documentados; documento completo sincronizado. | Equipo EchoScrap |
 
 ## Convención sugerida
 

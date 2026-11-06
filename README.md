@@ -1,6 +1,6 @@
-# EchoScrap — GDD 0.5.1
+# EchoScrap — GDD 0.5.2
 
-Documento actualizado al **5 de noviembre de 2026**. Esta revisión organiza las fichas y animaciones de enemigos a partir del montaje jugable y los medios documentados el 4 de noviembre.
+Documento actualizado al **5 de noviembre de 2026**. Esta revisión completa el registro de VFX con 21 capturas de Unity del 5 de noviembre y conserva las fichas y animaciones de enemigos documentadas el día 4.
 
 - [Índice](00%20-%20%C3%8Dndice.md).
 - [Avance y flujo de preparación](00%20-%20Avance%20jugable.md).
@@ -13,6 +13,8 @@ La edición incluye el flujo de selección de entidades antes de elegir ronda, q
 
 Personajes y Animación reúne las fichas individuales, el atlas y los GIFs de todas las acciones de los cinco enemigos de horda, además del Coleccionista y las capturas del modelo 3D de Gólgora. El arte de Caballero Fantasma y Centinela de Cobre (gólem) está preparado, con integración de sprite en Unity pendiente. Las previsualizaciones y las capturas conservan sus condiciones y fechas.
 
-Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.5.1.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
+El registro visual incorpora linterna, Rayo solar, Holo-señuelo, Cataclismo, Termobárica, Micro-ensamblador, frío, esquirlas, curación, daño, fusión y portal, junto a las muestras renovadas de mejoras. Las condiciones de captura y los efectos compartidos quedan identificados.
+
+Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.5.2.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón. Proyecto y contenidos: equipo EchoScrap.

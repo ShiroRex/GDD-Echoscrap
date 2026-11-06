@@ -15,6 +15,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.4.0** | 27/10/2026 | Actualización al proyecto jugable EchoScrap: reglas y valores actuales, seis enemigos, 35 mejoras, mundo de 200 m, almacén y fusión; atlas activos y GIFs de enemigos, cartas y VFX capturados en Unity. | Sierra Sosa David Alejandro |
 | **0.5.0** | 04/11/2026 | Flujo de preparación con selección de entidades y guía pendiente; quince entidades, equipo de tres puestos y fusión de cuatro copias; élites, sprites y animaciones actuales, caldera y patrones de Gólgora, minimapa, cámara, audio y guardado de producción. | Sierra Sosa David Alejandro |
 | **0.5.1** | 05/11/2026 | Fichas individuales de enemigos en Personajes; spritesheets, fuentes editables y GIFs actuales reunidos en Personajes y Animación; integración de sprites de Caballero Fantasma y Centinela de Cobre (gólem) marcada como pendiente; navegación y documento completo sincronizados. | Equipo EchoScrap |
+| **0.5.2** | 05/11/2026 | Registro visual completado con 21 capturas actuales de VFX de linterna, mejoras, daño, fusión y portal; muestras de octubre sustituidas, procedencia y efectos compartidos documentados; documento completo sincronizado. | Equipo EchoScrap |
 
 ## Convención sugerida
 
