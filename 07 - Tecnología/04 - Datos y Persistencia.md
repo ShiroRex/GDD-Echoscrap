@@ -2,7 +2,7 @@
 
 Los valores del jugador, los arquetipos y las oleadas se configuran mediante assets. ExpeditionEntrySettings enlaza las rondas demo y completa; sus assets seleccionan el tiempo del jefe y las variantes de 3600 o 9000 HP. GolgoraCombatSettings reúne tiempos, daños, áreas y modificadores de fase.
 
-El catálogo de combate tiene 35 identificadores. El catálogo de entidades tiene quince, seis rarezas y dos fuentes separadas: nueve entradas de mapa y seis resultados de fusión. CompanionSystem relaciona cada entidad con su poder inicial; PlayerRuntimeStats combina los niveles efectivos de equipo y cartas.
+El catálogo de combate tiene 35 identificadores. El catálogo de entidades tiene quince, seis rarezas y dos fuentes separadas: nueve entradas de mapa y seis resultados de fusión. CompanionSystem comunica el equipo a CompanionPowerRuntime, que activa poderes propios y mantiene sus recargas y salvación por expedición. PlayerRuntimeStats combina los bonos de entidades con estadísticas de cartas sin convertir el equipo en niveles de mejoras.
 
 ## Sesión en memoria
 

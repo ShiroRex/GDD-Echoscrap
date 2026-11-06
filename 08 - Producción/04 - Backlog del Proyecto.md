@@ -1,14 +1,23 @@
 # Entregas y trabajo pendiente
 
-| Área | Estado al 4 de noviembre |
+| Área | Estado al 5 de noviembre |
 | --- | --- |
 | Flujo | Menú, colección, bóveda, elección de ronda, expedición y regreso desde resultados integrados. |
-| Equipo | Tres puestos funcionales con poderes iniciales y copias disponibles. |
+| Equipo | Tres puestos con poderes propios, independientes de cartas y sin acumulación por identidad duplicada. |
 | Colección y fusión | Quince entidades, recogida manual, inventario por copias y fusión de cuatro ingredientes. |
 | Combate | Cinco arquetipos de horda, dos élites, linterna y 35 mejoras. |
 | Gólgora | Caldera, seis patrones, dos fases, dos valores de vida y refuerzos anunciados. |
-| Presentación | Sprites, VFX, minimapa, retratos, menús, audio e iluminación integrados. |
+| Presentación | Sprites de horda y ambos élites, VFX, minimapa, retratos, menús, audio e iluminación integrados. |
 | Documentación | Reglas actualizadas, spritesheets y GIFs diferenciados por su procedencia. |
+
+## Integraciones cerradas en esta revisión
+
+| ID | Tarea | Estado | Comprobación |
+| --- | --- | --- | --- |
+| ART-ELITE-01 | Conectar Caballero Fantasma: marcha, preparación, ataque, recuperación, impacto y muerte. | Integrado | Atlas de 224 fotogramas, animación ligada al barrido y muerte independiente del reciclado. |
+| ART-ELITE-02 | Conectar Centinela: apertura, preparación, disparo, vulnerabilidad y cierre. | Integrado | Atlas de 288 fotogramas, puertas abiertas antes del disparo y ventana de recuperación conservada. |
+| COMBAT-SOLAR-01 | Aplicar empuje en todos los pulsos de Rayo solar. | Integrado | Ocho pulsos continuos; el modo base conserva empuje solo en el cuarto. |
+| DOC-REG-01 | Asignar Registro visual a David Alejandro Sierra Sosa. | Documentado | Redactor y revisor asignados; total de 48 apartados. |
 
 ## Pendientes identificados
 

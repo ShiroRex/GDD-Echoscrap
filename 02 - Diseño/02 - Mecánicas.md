@@ -18,7 +18,7 @@ El dash avanza a 22 m/s durante 0,15 s, aproximadamente 3,3 m si el recorrido es
 | Descanso entre ráfagas | 0,4 s |
 | Impulso del cuarto pulso | 10 m/s, modulado por la susceptibilidad del enemigo |
 
-La ráfaga base emite en 0,2, 0,4, 0,6 y 0,8 s y vuelve a empezar tras el descanso. La linterna busca objetivos en 360° dentro de su alcance y aplica los impactos a su cono frontal. Sin objetivos, vuelve hacia la orientación de movimiento. Rayo solar elimina el descanso, aumenta el alcance base a 14 m y multiplica el daño por 2,5.
+La ráfaga base emite en 0,2, 0,4, 0,6 y 0,8 s y vuelve a empezar tras el descanso. La linterna busca objetivos en 360° dentro de su alcance y aplica los impactos a su cono frontal. Sin objetivos, vuelve hacia la orientación de movimiento. Rayo solar elimina el descanso, aumenta el alcance base a 14 m, multiplica el daño por 2,5 y aplica empuje en cada pulso del láser. Conserva la cadencia de pulsos y la susceptibilidad al empuje de cada enemigo; los cuerpos inmunes siguen sin desplazarse.
 
 ## Salud y daño
 
@@ -34,7 +34,7 @@ Las mejoras modifican estos parámetros o añaden acciones automáticas. Sus niv
 
 ## Entidades y poderes de inicio
 
-Hasta tres copias equipadas aportan niveles iniciales de sus mejoras asociadas. Varias copias con el mismo poder aumentan ese nivel hasta el máximo de la mejora. Al combinar equipo y cartas, el valor efectivo es el mayor de ambos niveles; no se suman entre sí. El detalle de cada entidad está en [[04 - Objetos y Coleccionables]].
+Hasta tres copias equipadas activan poderes propios, independientes de las 35 cartas: bonos de estadísticas, ataques, curación, protección o salvación. Repetir una entidad en varios puestos no acumula su efecto. Las cartas mantienen sus niveles y requisitos y no reciben niveles iniciales por equipo. El catálogo, las combinaciones y los temporizadores están en [[04 - Objetos y Coleccionables]].
 
 Los coleccionables que aparecen en arena requieren E dentro de unos 2,5 m y una línea de interacción despejada. No se recogen con el imán de las gemas y botiquines.
 

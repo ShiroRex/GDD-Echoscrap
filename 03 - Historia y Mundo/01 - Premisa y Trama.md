@@ -6,6 +6,8 @@ Al cruzar pierde sus recuerdos, pero conserva el impulso de recolectar. Entre me
 
 Gólgora, el MataColeccionista, representa al guardián de ese lugar. El enfrentamiento con él da forma al cierre de cada expedición. La derrota detiene el intento; la victoria resuelve el combate, pero el mundo continúa como escenario de nuevas partidas.
 
+El pacto, la pérdida de recuerdos y la entidad que lo engaña son trasfondo del diseño. No se exige presentarlos mediante una introducción narrativa en esta entrega. Se consideró un minicómic de pixel art de introducción, con referencia de ritmo a Pizza Tower, pero queda fuera del alcance actual por tiempo.
+
 La premisa acompaña la experiencia mediante el personaje, el entorno, la colección y el ciclo de supervivencia. El recorrido jugable de la versión actual está descrito en [[01 - Jugabilidad]], y los mensajes visibles durante el juego se recogen en [[04 - Diálogos y Narrativa]].
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

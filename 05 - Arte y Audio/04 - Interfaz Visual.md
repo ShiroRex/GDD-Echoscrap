@@ -6,7 +6,7 @@ El menú inicial utiliza un portal animado, elementos de la colección en órbit
 
 En la bóveda, el jugador puede preparar las tres entidades equipadas. El selector de cada puesto muestra retratos enmarcados, copias disponibles y su poder. Falta un indicador general que explique esta preparación antes de iniciar la expedición; los avisos locales de proximidad no resuelven por sí solos ese descubrimiento.
 
-![Preparación de entidades](../Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
+![Preparación de entidades](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
 
 La selección de ronda presenta Demo, Completa y Salir. Su confirmación se acompaña de una animación de salida y un rugido antes de la entrada a la arena.
 

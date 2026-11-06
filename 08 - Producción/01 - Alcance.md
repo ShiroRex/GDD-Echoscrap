@@ -8,6 +8,8 @@ La arena de 200 × 200 m incorpora relieve, obstáculos y acceso norte. Las zona
 
 La colección tiene quince entidades en seis rarezas. Nueve aparecen en arena y seis se obtienen mediante fusión. El inventario, el equipo y el proceso tienen guardado local.
 
-La presentación incluye sprites animados de los cinco enemigos de horda, modelo de Gólgora, efectos de enemigos y mejoras, minimapa, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
+La presentación incluye sprites animados de los cinco enemigos de horda y ambos élites, modelo de Gólgora, efectos de enemigos y mejoras, minimapa, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
+
+El origen del Coleccionista permanece como trasfondo. El minicómic introductorio de pixel art considerado queda fuera de esta entrega por tiempo y no es un requisito para cerrarla.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

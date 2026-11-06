@@ -1,6 +1,6 @@
 # Enemigos y NPC
 
-El combate tiene cinco arquetipos de horda, dos élites y Gólgora. Las cifras de esta página corresponden a sus assets actuales. Las fichas visuales, spritesheets, fuentes editables y GIFs por acción se reúnen en [[02 - Personajes y Animación]]. Caballero Fantasma y Centinela de Cobre (gólem) mantienen su representación geométrica mientras se integra su nuevo sprite.
+El combate tiene cinco arquetipos de horda, dos élites y Gólgora. Las cifras de esta página corresponden a sus assets actuales. Las fichas visuales, spritesheets, fuentes editables y GIFs por acción se reúnen en [[02 - Personajes y Animación]]. Caballero Fantasma y Centinela de Cobre (gólem) usan sus sprites animados integrados, con normales, emisión y secuencias ligadas a los estados de combate.
 
 | Enemigo | Vida | Velocidad base | Daño principal | XP |
 | --- | ---: | ---: | --- | ---: |
@@ -49,17 +49,17 @@ Se aproxima hasta cebar la explosión. La mecha por proximidad dura 0,9 s; si pr
 
 Es uno de los dos élites. Recibe el 25% del daño físico y el daño sobrenatural completo. Su barrido tiene 3,6 m de alcance, arco de 120°, daño sobrenatural de 22, preparación de 0,8 s, recuperación de 0,8 s y recarga de 3,5 s. No causa daño por contacto normal.
 
-Su cuerpo actual usa geometría de presentación y el barrido emplea un efecto animado. El arte de sprite está preparado, con su integración en Unity pendiente, según [[02 - Personajes y Animación]].
+El cuerpo usa su sprite de 224 fotogramas. La preparación ocupa 0,8 s; el ataque de seis fotogramas y la recuperación de seis comparten los 0,8 s posteriores al barrido real. La animación no añade impactos. Los ciclos y la captura actual están en [[02 - Personajes y Animación]].
 
-![Caballero Fantasma: montaje geométrico de Unity del 4 de noviembre, anterior a la integración del sprite](../Media/Avance_2026-11-04/Enemigos/CaballeroFantasma.gif)
+![Caballero Fantasma: sprite integrado en Unity, 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CaballeroFantasma_Integrado.gif)
 
 ## Centinela de Cobre
 
 Recibe el 25% del daño sobrenatural salvo durante la recuperación, cuando se abre su ventana de vulnerabilidad y recibe el daño completo. El daño físico se mantiene completo. Prepara un abanico de tres proyectiles durante un segundo, se recupera dos y recarga en 3,5 s. El alcance es de 11 m y cada impacto causa 16 de daño físico. Es pesado, inmune al empuje y no causa contacto normal.
 
-La presentación anuncia los rayos del abanico y muestra «Vulnerable» en su recuperación. Los misiles tienen animación, iluminación y un límite de luces simultáneas. El gólem mantiene su cuerpo geométrico mientras se integra el arte de sprite preparado, según [[02 - Personajes y Animación]].
+La presentación anuncia los rayos del abanico y muestra «Vulnerable» en su recuperación. Los misiles tienen animación, iluminación y un límite de luces simultáneas. El cuerpo usa su sprite de 288 fotogramas: abre las compuertas durante 0,3 s y prepara 0,7 s antes del disparo real; después reproduce disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s dentro de los 2 s de recuperación. Mantiene la vulnerabilidad de combate durante esa recuperación completa.
 
-![Centinela de Cobre: montaje geométrico de Unity del 4 de noviembre, anterior a la integración del sprite](../Media/Avance_2026-11-04/Enemigos/CentinelaCobre.gif)
+![Centinela de Cobre: sprite integrado en Unity, 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CentinelaCobre_Integrado.gif)
 
 Los élites empiezan a aparecer desde los 90 s y se alternan cada 25 s cuando hay capacidad, con un límite conjunto de dos vivos. Sus efectos de barrido y proyectiles están en [[06 - Registro visual]].
 

@@ -14,7 +14,7 @@ El proyecto activo es EchoScrap/. La compilación principal empieza en MainMenu 
 | Jefe | CombatWaveDirector, BossEncounter, BossArena, GolgoraActor, GolgoraCombatSettings |
 | Progresión | CombatProgression, UpgradeDraftController, UpgradeCatalog, UpgradeCombatRuntime |
 | Bóveda y colección | WarehouseTravel, WarehouseCameraDirector, WarehouseCameraFraming, FusionStation, FusionProgress |
-| Equipo y obtención | CompanionSystem, CompanionView, CollectibleUnitGrid |
+| Equipo y obtención | CompanionSystem, CompanionPowerRuntime, CompanionPixelEffects, CompanionView, CollectibleUnitGrid |
 | Arte y efectos | EnemySpriteView, MortarSpriteView, MothSpriteView, EnemyEffectPool, UpgradeEffectPool |
 | Interfaz y audio | CombatHud, CombatMinimap, PlayerStatsReadout, DamageNumberPresenter, CombatMusicPlayer |
 | Iluminación | ArenaLightingController, ArenaLightingProfile y renderer de atmósfera |

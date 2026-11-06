@@ -6,7 +6,7 @@ Menú inicial → continuar o crear colección → bóveda → revisar y selecci
 
 Continuar recupera la colección guardada. Nueva colección reinicia el inventario, el equipo y la fusión en curso, con confirmación cuando ya existe una colección.
 
-En la bóveda se revisan los tres puestos de entidades equipadas. Al acercarse a un puesto y pulsar E se abre su selector. Solo se pueden usar copias que pertenecen al inventario y es posible dejar puestos vacíos. En una colección nueva no hay entidades disponibles todavía: la primera expedición permite reunirlas.
+En la bóveda se revisan los tres puestos de entidades equipadas. Al acercarse a un puesto vacío y pulsar E se abre su selector. En un puesto ocupado, E ofrece liberar esa copia con confirmación y T la desequipa; después se puede elegir otra entidad en el puesto vacío. Solo se pueden usar copias que pertenecen al inventario y es posible dejar puestos vacíos. En una colección nueva no hay entidades disponibles todavía: la primera expedición permite reunirlas.
 
 La preparación forma parte del flujo, pero el juego permite iniciar una expedición sin pasar por sus puestos y no explica suficientemente su función. Queda pendiente la señalización que acompañe este paso, descrita en [[03 - Bugs y Seguimiento]].
 

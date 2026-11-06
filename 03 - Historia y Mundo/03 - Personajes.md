@@ -40,13 +40,13 @@ Enemigo explosivo que se aproxima y ceba una mecha antes de estallar. La explosi
 
 ## Caballero Fantasma
 
-Élite de ataque sobrenatural y resistencia al daño físico. Amenaza al Coleccionista con un barrido anunciado. El arte de su sprite está preparado, pero su integración en Unity queda pendiente; la representación jugable documentada mantiene un cuerpo geométrico.
+Élite de ataque sobrenatural y resistencia al daño físico. Amenaza al Coleccionista con un barrido anunciado. Su sprite de cuatro direcciones está integrado: reposo, marcha, preparación, ataque, recuperación, impacto y muerte.
 
 [Ver estado de integración visual](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#caballero-fantasma).
 
 ## Centinela de Cobre: gólem
 
-Élite pesado de proyectiles físicos y resistencia al daño sobrenatural. El gólem se denomina Centinela de Cobre en el juego y ofrece una ventana de vulnerabilidad tras disparar. El arte de su sprite está preparado, pero su integración en Unity queda pendiente; la representación jugable documentada mantiene un cuerpo geométrico.
+Élite pesado de proyectiles físicos y resistencia al daño sobrenatural. El gólem se denomina Centinela de Cobre en el juego y ofrece una ventana de vulnerabilidad tras disparar. Su sprite de cuatro direcciones está integrado: las compuertas se abren antes de preparar y disparar; después muestra vulnerabilidad y cierre.
 
 [Ver estado de integración visual](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#centinela-de-cobre-g%C3%B3lem).
 

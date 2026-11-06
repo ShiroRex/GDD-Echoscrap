@@ -4,10 +4,10 @@
 | --- | --- |
 | Inicio | Menú independiente, continuación de colección o creación con confirmación cuando corresponde. |
 | Preparación | Revisar y seleccionar hasta tres entidades antes de elegir ronda, con opción de puestos vacíos. La guía que haga visible este paso sigue pendiente. |
-| Equipo | Solo copias disponibles, puesto correcto, poderes iniciales y protección frente a consumo o liberación. |
+| Equipo | Solo copias disponibles, puesto correcto, poderes propios sin niveles de cartas ni acumulación por duplicados; protección frente a consumo o liberación. |
 | Rondas | Selección demo o completa; jefe a 180 o 480 s y vida de 3600 o 9000 HP. |
 | Movimiento | Entradas correctas, diagonal limitada, apoyo sobre el escenario y dash detenido por obstáculos. |
-| Linterna y cartas | Autoapuntado, cuatro pulsos y ofertas válidas entre 35 mejoras. |
+| Linterna y cartas | Autoapuntado, cuatro pulsos; Rayo solar empuja en cada pulso; Ojo triplica el daño ya crítico bajo su umbral; ofertas válidas entre 35 mejoras. |
 | Enemigos | Cinco arquetipos de horda y dos élites con sus ataques, resistencias y avisos. |
 | Jefe | Traslado protegido, perímetro cerrado, seis patrones, segunda fase y refuerzos dentro del límite efectivo de ocho. |
 | Entidades de mapa | Apariciones temporales, recogida manual única y copia guardada. |

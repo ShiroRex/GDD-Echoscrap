@@ -18,7 +18,7 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 | FLASH_02 | Pulso rápido | Común | 5 | +15% de velocidad de ataque por nivel; reduce el intervalo y el descanso. | Sobrenatural |
 | FLASH_03 | Prisma voltaico | Rara | 3 | El cuarto pulso enlaza 2/3/4 enemigos a 5 m, con 40/60/80% del daño del impacto inicial. | Sobrenatural |
 | FLASH_04 | Golpe potente | Épica | 3 | Daño ×1,5/1,8/2,2 y más empuje; reduce 20° la apertura al adquirirla. | Sobrenatural |
-| FLASH_05 | Rayo solar | Legendaria | 1 | Suprime el descanso, establece 14 m de alcance base y multiplica el daño de luz por 2,5. | Sobrenatural |
+| FLASH_05 | Rayo solar | Legendaria | 1 | Suprime el descanso, establece 14 m de alcance base, multiplica el daño de luz por 2,5 y empuja en todos los pulsos. | Sobrenatural |
 | DASH_01 | Dash ágil | Común | 5 | +8% de velocidad de dash y -10% de recarga por nivel. | Sin daño directo |
 | DASH_02 | Onda sísmica | Rara | 3 | Al terminar el dash: 25/45/70 de daño y aturdimiento de 0,6/0,9/1,2 s. | Físico |
 | DASH_03 | Holo-señuelo | Épica | 3 | Deja una copia que atrae enemigos durante 2/2,5/3 s; su implosión causa 50/85/120 de daño. | Sobrenatural |
@@ -36,7 +36,7 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 | CRIT_02 | Calibración letal | Común | 5 | +0,2 al multiplicador crítico por nivel, desde ×1,75. | Según ataque |
 | CRIT_03 | Ejecución | Rara | 3 | Remata tras un golpe a enemigos bajo 6/8/10% de vida; excluye a los jefes. | Según ataque |
 | CRIT_04 | Ráfaga crítica | Épica | 3 | Un crítico en el cuarto pulso garantiza 2/3/4 críticos al inicio de la siguiente ráfaga. | Según ataque |
-| CRIT_05 | Ojo del verdugo | Legendaria | 1 | +20 puntos de crítico; contra objetivos bajo 35% de vida, críticos ×3 y aturdimiento cercano. | Según ataque |
+| CRIT_05 | Ojo del verdugo | Legendaria | 1 | +20 puntos porcentuales de crítico; bajo 35% de vida antes del golpe, triplica el daño crítico ya calculado y emite aturdimiento de 1 s en 3 m. | Según ataque |
 | DEMO_01 | Pólvora volátil | Común | 5 | +12% de daño y +15% de radio de explosión por nivel. | Según explosión |
 | DEMO_02 | Reacción en cadena | Rara | 3 | 25/40/55% de provocar una explosión de 35/60/90 al morir un enemigo. | Físico |
 | DEMO_03 | Minas de chatarra | Épica | 3 | Coloca una mina cada 4/3,2/2,5 s; explosión de 70/110/160 en 4 m de radio. | Físico |
@@ -49,6 +49,20 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 | CRYO_02 | Cero absoluto | Rara | 3 | Congela tras 4/3/3 pulsos durante 1,2/1,8/2,4 s; el congelado recibe 30% más de daño. | Sobrenatural |
 | CRYO_03 | Ventisca | Épica | 3 | Cada 6/5/4 s: onda de 30/50/75 en 5,5 m que congela 1,5 s. | Sobrenatural |
 | CRYO_04 | Quiebre de hielo | Legendaria | 1 | Una muerte congelada emite seis esquirlas perforantes de 50 que congelan 1,5 s. | Sobrenatural |
+
+## Fórmula de Ojo del verdugo
+
+Ojo del verdugo añade 20 puntos porcentuales a la probabilidad crítica, limitada al 100%. Su multiplicador adicional solo se activa si el ataque resulta crítico y el objetivo está estrictamente por debajo del 35% de su vida máxima **antes** de recibir ese golpe. Un impacto que cruza desde 35% o más hasta ese umbral no recibe el bono todavía.
+
+Para un ataque del jugador, antes de la ejecución y del límite de salud realmente perdida:
+
+**Daño resuelto = daño de la fuente × multiplicador crítico × bono de daño de entidades × bono por congelación × multiplicador de Ojo × resistencia del objetivo.**
+
+El multiplicador crítico vale 1 en un impacto normal y parte de 1,75 en un crítico; Calibración letal añade 0,2 por nivel. El multiplicador de Ojo vale 3 cuando se cumplen sus condiciones y 1 en los demás casos. El bono por congelación es 1,30 mientras el objetivo esté congelado; los demás factores conservan sus reglas propias.
+
+Ejemplo sin otras bonificaciones ni resistencias: un ataque de 10 causa 17,5 con un crítico base; si Ojo está activo y el objetivo ya estaba bajo 35%, causa **10 × 1,75 × 3 = 52,5**. Ojo multiplica por tres el daño crítico y no sustituye su multiplicador por ×3.
+
+Un crítico que cumple la condición emite un área de aturdimiento de 3 m alrededor del impacto durante 1 s. Gólgora aplica sus límites de control: duración reducida al 35%, máximo de 0,6 s y ventana de inmunidad de 1,5 s. Ejecución se comprueba después del daño y sus resistencias; los números muestran la salud realmente perdida.
 
 ## Requisitos y combinaciones
 
@@ -75,7 +89,7 @@ Las mejoras de estadísticas y probabilidades se representan en las cartas y el 
 
 ## Preparación con entidades
 
-Antes de elegir ronda se pueden ocupar tres puestos de equipo en la bóveda. Cada entidad aporta un nivel de su poder asociado. Las copias con el mismo poder acumulan niveles dentro del equipo hasta el máximo de esa mejora. Las cartas obtenidas durante la expedición conservan su progresión independiente; el nivel efectivo usa el mayor entre equipo y cartas.
+Antes de elegir ronda se pueden ocupar tres puestos de equipo en la bóveda. Las entidades activan poderes propios y no conceden niveles de las cartas. Sus efectos se aplican una sola vez por identidad equipada; repetir una entidad ocupa y reserva otra copia, sin aumentar su poder. Las 35 cartas se ofrecen y progresan con sus propios niveles y requisitos, independientemente de ese equipo.
 
 Los puestos pueden quedar vacíos y una colección nueva comienza sin copias. Las entidades se obtienen en arena y mediante fusión; el catálogo completo y sus poderes están en [[04 - Objetos y Coleccionables]]. Esta preparación necesita señalización más clara en el recorrido del jugador.
 

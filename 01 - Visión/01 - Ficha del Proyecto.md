@@ -3,7 +3,7 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.5.2 |
+| Versión del GDD | 0.6.0 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
 | Actualización | 5 de noviembre de 2026 |
 | Plataforma | PC, Windows, un jugador local. |
@@ -11,7 +11,7 @@
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | 30b88c6 y montaje local del 4 de noviembre para reglas y personajes; b9e3136 y montaje local del 5 de noviembre para las nuevas capturas de VFX. |
+| Revisión consultada | develop 26ac928 e integración c5fa4f4; Rayo solar 0acfe51; pruebas y capturas del 5 de noviembre de 2026. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
