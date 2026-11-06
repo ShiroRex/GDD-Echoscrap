@@ -7,7 +7,7 @@ El registro reúne previsualizaciones de recursos y capturas de ejecución, con 
 - **Previsualizaciones de atlas, 4 de noviembre.** Copias de los PNG activos y GIFs compuestos con sus rectángulos, etiquetas y tiempos JSON. Las acciones de personaje muestran cuatro direcciones a escala 2×, sin interpolación. No incluyen la iluminación ni la simulación del juego.
 - **Capturas de Unity, 4 de noviembre.** CombatArena ejecutada desde una copia externa del proyecto, a 960 × 540 y doce imágenes por segundo. Se usaron cámara de detalle, jugador protegido y oleadas detenidas. Los patrones del jefe se invocaron individualmente con sus componentes y ajustes; para la lluvia se activó la segunda fase. Las pantallas de preparación utilizan un inventario de muestra, sin guardar esa colección.
 
-- **Capturas de Unity, 5 de noviembre.** Veintiuna secuencias nuevas de linterna, mejoras, daño, fusión y portal del menú. Se ejecutaron desde una copia externa del montaje local basado en b9e3136, con cámara de detalle a 960 × 540 y doce imágenes por segundo, salvo el Micro-ensamblador, registrado a 24; los GIFs se exportan a 768 × 432. Las oleadas están detenidas, los objetivos tienen locomoción desactivada y se activan eventos y estados reales del código para aislar cada efecto. Algunos disparadores se repiten para facilitar su revisión. El jugador está protegido salvo el daño controlado de Nanobots; la fusión utiliza ingredientes de muestra y el guardado permanece desactivado.
+- **Capturas de Unity, 5 de noviembre.** Veintiuna secuencias nuevas de linterna, mejoras, daño, fusión y portal del menú. Se ejecutaron desde una copia externa del montaje local basado en b9e3136, con cámara de detalle a 960 × 540 (1280 × 720 en números de daño) y doce imágenes por segundo, salvo el Micro-ensamblador y los números de daño, registrados a 24; los GIFs se exportan a 768 × 432. Las oleadas están detenidas, los objetivos tienen locomoción desactivada y se activan eventos y estados reales del código para aislar cada efecto. Algunos disparadores se repiten para facilitar su revisión. El jugador está protegido salvo el daño controlado de Nanobots; la fusión utiliza ingredientes de muestra y el guardado permanece desactivado.
 
 Los registros del 4 de noviembre corresponden al montaje local basado en 30b88c6 y conservan sus dimensiones: PNG de 960 × 540 y GIF de Unity de 640 × 360. La cámara de detalle permite leer animaciones y efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
 
@@ -161,9 +161,9 @@ La explosión nace en el punto de salida y la cuchilla se lanza desde la llegada
 
 ## Números de daño
 
-Los valores siguen arcos y distinguen daño físico y sobrenatural, con variantes de impacto normal y crítico. La captura provoca impactos controlados para revisar los cuatro estilos.
+Los valores siguen arcos y distinguen daño físico y sobrenatural, con variantes de impacto normal y crítico, además del indicador `Resistido` en resistencias física y sobrenatural y el rótulo `EJECUTADO` al cumplirse el umbral de ejecución. La captura provoca impactos controlados para revisar los siete casos en pantalla.
 
-![Números de daño: canales físicos, sobrenaturales y críticos](../Media/Avance_2026-11-05/VFX/NumerosDano.gif)
+![Números de daño: canales físicos y sobrenaturales, críticos, resistencias y ejecución](../Media/Avance_2026-11-05/VFX/NumerosDano.gif)
 
 ## Fusión y portal
 
@@ -198,7 +198,7 @@ Las 35 mejoras no necesitan 35 animaciones distintas. El catálogo de [[05 - Pro
 | Chatarrero | Cambia la XP recibida y su lectura en el HUD; no añade un efecto de combate propio. |
 | Sintonizador | Se representa mediante reintentos y ofertas en la interfaz de cartas. |
 | Óptica precisa y Calibración letal | Reutilizan los destellos y números críticos; cambian sus probabilidades o valores. |
-| Ejecución | Resuelve la muerte del enemigo al cumplir su condición y reutiliza la presentación de muerte. |
+| Ejecución | Muestra el rótulo `EJECUTADO` en los números de daño, resuelve la muerte del enemigo al cumplir su condición y reutiliza la presentación de muerte. |
 | Ráfaga crítica y Ojo del verdugo | Reutilizan los avisos de onda, aturdimiento y daño crítico; no introducen una biblioteca de sprites separada. |
 | Pólvora volátil y Reacción en cadena | Reutilizan explosiones; cambian su radio, daño o condición de aparición. |
 | Blindaje | Se lee en las placas y valores del HUD; no añade una explosión o aura exclusiva. |
