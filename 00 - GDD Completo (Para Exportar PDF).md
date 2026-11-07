@@ -641,6 +641,8 @@ El tiempo indica cuándo empieza la entrada del jefe. Las cartas, pausas y visit
 
 El combate tiene cinco arquetipos de horda, dos élites y Gólgora. Las cifras de esta página corresponden a sus assets actuales. Las fichas visuales, spritesheets, fuentes editables y GIFs por acción se reúnen en [[02 - Personajes y Animación]]. Caballero Fantasma y Centinela de Cobre (gólem) usan sus sprites animados integrados, con normales, emisión y secuencias ligadas a los estados de combate.
 
+La [[02 - Personajes y Animación#Proporciones en reposo|comparación a escala]] muestra a los ocho enemigos junto al Coleccionista.
+
 | Enemigo | Vida | Velocidad base | Daño principal | XP |
 | --- | ---: | ---: | --- | ---: |
 | Residual / Esqueleto | 15 HP | 3,5 m/s ±15% | Contacto: 10; recarga de contacto 0,5 s. | 10 |
@@ -864,6 +866,26 @@ Los efectos reducidos retiran decoración y movimiento accesorio, conservando lo
 Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
 
 Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
+
+## Proporciones en reposo
+
+![Comparación a escala del Coleccionista y los ocho enemigos](Media/Avance_2026-11-07/Enemigos/Proporciones.png)
+
+La lámina reúne capturas de Unity de la revisión `6f80564`, con cámara ortográfica inclinada a 35,5°, igual distancia y escala, y una línea común de suelo. El Coleccionista equivale a 1,00×. La tabla mide la altura visible de una pose de reposo o flotación, con el cuerpo de Gólgora aislado de su martillo. La pose y el ángulo pueden cambiar ligeramente la proporción que se ve en partida.
+
+| Personaje | Altura visible frente al Coleccionista |
+| --- | ---: |
+| Coleccionista | 1,00× |
+| Residual / Esqueleto | 1,02× |
+| Interceptor / Galgo | 0,61× |
+| Mortero Campana | 1,10× |
+| Polilla Reactor | 0,76× |
+| Coloso / Wendigo | 1,27× |
+| Caballero Fantasma | 1,31× |
+| Centinela de Cobre | 1,28× |
+| Gólgora | 1,68× |
+
+El Esqueleto toma al Coleccionista como referencia y los dos élites toman al Wendigo. El Galgo creció un 10% respecto a la escala que tenía en `develop`. Las proporciones de la lámina describen la presentación de los personajes.
 
 ## Recursos actuales y estado de integración
 
@@ -1385,7 +1407,7 @@ La fusión es otra actividad de la bóveda: cuatro copias, probabilidades visibl
 | HUD | Vida, XP, nivel, tiempo, bajas, dash, mejoras, tres retratos equipados y minimapa circular con exploración. |
 | Cartas | Hasta tres opciones; rareza, nivel, efecto, confirmación y reintento con Sintonizador. |
 | Pausa | Reanudar, Abandonar o Menú inicial, volumen general, sacudida, decoración, efectos reducidos y estadísticas. |
-| Estadísticas | Completa: veinte valores; Reducida: seis principales; Sin: panel oculto. |
+| Estadísticas | Completa muestra los valores que difieren de su base. Reducida aplica el mismo filtro a los seis valores principales. Sin oculta el panel. |
 | Fusión | Cuatro ingredientes, copias disponibles, probabilidades, tiempo y decisión de resultado. |
 | Resultados | Victoria o derrota, tiempo, nivel, bajas, XP y Volver a la bóveda. |
 | Laboratorio | Ocho arquetipos, generación, inspección, daño de prueba, congelación, pausa y avance. |
@@ -1393,6 +1415,8 @@ La fusión es otra actividad de la bóveda: cuatro copias, probabilidades visibl
 La selección de entidades debe figurar como parte de la preparación anterior a la ronda. Su señalización general todavía está pendiente; actualmente se descubre por la proximidad a cada puesto.
 
 Las cartas aceptan ratón, teclado y mando. El puntero inmóvil no desplaza el enfoque de otro dispositivo. Las interfaces de colección tienen botones y selectores propios; su interacción de acceso usa E.
+
+El panel se ajusta al número de filas visibles. Una carta o un poder de entidad que modifique una estadística muestra su valor efectivo, incluida una recarga más corta o un cambio de apertura. Cuando el valor vuelve a su base, su fila se oculta. El panel se oculta si el modo elegido queda sin filas. En Reducida se consultan daño por pulso, velocidad de ataque, alcance, probabilidad y multiplicador críticos, y movimiento.
 
 Las confirmaciones generales protegen Nueva colección y Abandonar. El inventario también confirma la liberación de una copia e indica su nombre.
 
@@ -1413,7 +1437,7 @@ La pausa y la pérdida de foco bloquean el control de combate y exigen liberar l
 | 1920 × 1080, 16:9 | Galería del runtime del 6 de noviembre, commit `75bb79c`. Incluye HUD de arena y jefe, cartas, configuración, avisos de interacción y pantallas de resultado. |
 | Escala de la interfaz | HUD y menús usan un lienzo de referencia de 1920 × 1080. Los números flotantes usan 1280 × 720 como referencia de escala. |
 | Señales redundantes | El daño crítico usa tamaño, color y signo de exclamación. Los avisos combinan texto con tecla gráfica. Las barras y etiquetas identifican vida, XP y fase del jefe. |
-| Detalle de estadísticas | El panel admite oculto, reducido y completo. El menú inicial invierte actualmente las etiquetas Completa y Reducida al seleccionarlas. |
+| Detalle de estadísticas | Completa y Reducida filtran los valores que cambiaron respecto a la base y compactan el espacio. Sin oculta el panel. |
 | Otros tamaños | 1280 × 720, 2560 × 1440 y formatos distintos de 16:9 quedan por comprobar con el HUD, cartas, bóveda y menú de pausa. |
 
 ![Pantalla de configuración a 1920 × 1080 en la revisión del 6 de noviembre](Media/Avance_2026-11-06/Accesibilidad/Configuracion.png)

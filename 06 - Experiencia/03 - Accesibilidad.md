@@ -13,7 +13,7 @@ La pausa y la pérdida de foco bloquean el control de combate y exigen liberar l
 | 1920 × 1080, 16:9 | Galería del runtime del 6 de noviembre, commit `75bb79c`. Incluye HUD de arena y jefe, cartas, configuración, avisos de interacción y pantallas de resultado. |
 | Escala de la interfaz | HUD y menús usan un lienzo de referencia de 1920 × 1080. Los números flotantes usan 1280 × 720 como referencia de escala. |
 | Señales redundantes | El daño crítico usa tamaño, color y signo de exclamación. Los avisos combinan texto con tecla gráfica. Las barras y etiquetas identifican vida, XP y fase del jefe. |
-| Detalle de estadísticas | El panel admite oculto, reducido y completo. El menú inicial invierte actualmente las etiquetas Completa y Reducida al seleccionarlas. |
+| Detalle de estadísticas | Completa y Reducida filtran los valores que cambiaron respecto a la base y compactan el espacio. Sin oculta el panel. |
 | Otros tamaños | 1280 × 720, 2560 × 1440 y formatos distintos de 16:9 quedan por comprobar con el HUD, cartas, bóveda y menú de pausa. |
 
 ![Pantalla de configuración a 1920 × 1080 en la revisión del 6 de noviembre](../Media/Avance_2026-11-06/Accesibilidad/Configuracion.png)

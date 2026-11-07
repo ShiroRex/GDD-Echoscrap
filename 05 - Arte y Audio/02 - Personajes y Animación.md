@@ -4,6 +4,26 @@ Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de
 
 Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
 
+## Proporciones en reposo
+
+![Comparación a escala del Coleccionista y los ocho enemigos](../Media/Avance_2026-11-07/Enemigos/Proporciones.png)
+
+La lámina reúne capturas de Unity de la revisión `6f80564`, con cámara ortográfica inclinada a 35,5°, igual distancia y escala, y una línea común de suelo. El Coleccionista equivale a 1,00×. La tabla mide la altura visible de una pose de reposo o flotación, con el cuerpo de Gólgora aislado de su martillo. La pose y el ángulo pueden cambiar ligeramente la proporción que se ve en partida.
+
+| Personaje | Altura visible frente al Coleccionista |
+| --- | ---: |
+| Coleccionista | 1,00× |
+| Residual / Esqueleto | 1,02× |
+| Interceptor / Galgo | 0,61× |
+| Mortero Campana | 1,10× |
+| Polilla Reactor | 0,76× |
+| Coloso / Wendigo | 1,27× |
+| Caballero Fantasma | 1,31× |
+| Centinela de Cobre | 1,28× |
+| Gólgora | 1,68× |
+
+El Esqueleto toma al Coleccionista como referencia y los dos élites toman al Wendigo. El Galgo creció un 10% respecto a la escala que tenía en `develop`. Las proporciones de la lámina describen la presentación de los personajes.
+
 ## Recursos actuales y estado de integración
 
 | Personaje o arquetipo | Recurso y estado | Animaciones por dirección |
