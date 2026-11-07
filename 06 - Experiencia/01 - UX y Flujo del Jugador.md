@@ -6,11 +6,11 @@ Menú inicial → continuar o crear colección → bóveda → revisar y selecci
 
 Continuar recupera la colección guardada. Nueva colección empieza con el inventario vacío y restablece la fusión y el equipo, tras confirmar si ya existe progreso.
 
-La preparación incluye revisar los tres puestos de entidades equipadas antes de elegir ronda. Se interactúa con E junto a cada puesto y se escoge una copia del inventario. Cada entidad indica el poder que aporta. Se puede cambiar o quitar y los puestos pueden quedar vacíos; la primera expedición permite conseguir las primeras copias.
+La preparación incluye revisar los tres puestos de entidades equipadas antes de elegir ronda. Se interactúa con E junto a un puesto vacío y se escoge una copia del inventario. En un puesto ocupado, T desequipa para cambiar la selección y E ofrece liberar la copia con confirmación. Cada entidad indica el poder que aporta. Se puede cambiar o quitar y los puestos pueden quedar vacíos; la primera expedición permite conseguir las primeras copias.
 
 **Situación actual:** el sistema funciona, pero el recorrido puede saltarse esta preparación porque no hay una señalización general clara que la presente. Los avisos de E aparecen al acercarse a un puesto, sin explicar antes por qué conviene visitarlo. Hace falta guiar al jugador hasta esos puestos y relacionar las entidades con sus poderes. Esta mejora sigue pendiente de implementación.
 
-![Selector de un puesto de equipo](../Media/Avance_2026-11-04/Interfaz/SeleccionEntidades.png)
+![Selector de un puesto de equipo](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
 
 El portal y el botón Iniciar expedición conducen a la selección de ronda. La confirmación se presenta antes de la transición y de la entrada del Coleccionista en la arena.
 

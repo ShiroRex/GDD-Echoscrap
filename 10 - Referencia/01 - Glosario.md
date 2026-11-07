@@ -7,7 +7,7 @@
 | Bóveda o almacén | Preparación, equipo, exposición y fusión, conectados por portal. |
 | Entidad o coleccionable | Una de las quince entradas del inventario persistente. |
 | Copia | Unidad disponible de una entidad; puede reservarse en un puesto o consumirse en fusión. |
-| Entidad equipada | Copia colocada en uno de los tres puestos que aporta un nivel de su poder asociado. |
+| Entidad equipada | Copia reservada en uno de tres puestos que activa un poder propio; no concede niveles de cartas ni acumula efecto por repetirse. |
 | Exposición | Siete puestos para copias disponibles, separados de los tres de equipo. |
 | Ronda demo / completa | Ajustes elegidos antes de salir: jefe a 3:00 con 3600 HP o a 8:00 con 9000 HP. |
 | Eco o gema de XP | Experiencia del intento actual, recogida con el imán. |

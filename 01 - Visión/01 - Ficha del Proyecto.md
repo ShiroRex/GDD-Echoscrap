@@ -3,15 +3,18 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.5.2 |
+| Versión del GDD | 0.6.1 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
-| Actualización | 5 de noviembre de 2026 |
+| Actualización | 7 de noviembre de 2026 |
+| Género | Acción. |
+| Subgénero | Supervivencia de hordas con progresión roguelite. |
+| Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
 | Plataforma | PC, Windows, un jugador local. |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | 30b88c6 y montaje local del 4 de noviembre para reglas y personajes; b9e3136 y montaje local del 5 de noviembre para las nuevas capturas de VFX. |
+| Revisión consultada | Código y escena de `75bb79c`. Se conservan los registros de pruebas y capturas de las revisiones del 5 y 6 de noviembre de 2026. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo

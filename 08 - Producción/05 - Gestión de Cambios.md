@@ -25,4 +25,10 @@ La edición 0.5.0 actualiza el estado documentado: preparación y selección de 
 
 La selección de equipo se incorpora al flujo de preparación. La falta de señalización que permita descubrirla se registra como pendiente de UX; no se ha implementado una guía durante esta tarea documental.
 
+## Revisión 0.6.0 del 5 de noviembre
+
+Se incorporan los poderes propios de entidades existentes en develop 26ac928, sustituyendo el vínculo provisional con niveles de cartas. Se integran los sprites de Caballero y Centinela y sus fases nativas; Rayo solar empuja en cada pulso. Ojo del verdugo queda especificado como daño ya crítico ×3, con umbral previo al golpe y control de masas descritos en Progresión.
+
+Por decisión de David, el origen permanece como trasfondo y el minicómic introductorio considerado queda fuera del alcance actual por tiempo. Registro visual se asigna a David como redactor y revisor; el reparto cubre 48 apartados.
+
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

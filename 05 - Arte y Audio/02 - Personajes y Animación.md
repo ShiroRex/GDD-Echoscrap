@@ -1,6 +1,6 @@
 # Personajes y animación
 
-Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos y capturas corresponden al 4 de noviembre de 2026; esta organización documental se revisó el 5 de noviembre.
+Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
 
 Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
 
@@ -14,8 +14,8 @@ Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La ident
 | Coloso / Wendigo | Sprite integrado; atlas de 200 fotogramas de 96 × 96. | Reposo 8, marcha 8, preparación 8, carga 6, recuperación 6, impacto 4 y muerte 10. |
 | Mortero Campana | Sprite integrado; atlas de 112 fotogramas de 64 × 64. | Flotación 6, carga 6, disparo 4, recuperación 4 y muerte 8. |
 | Polilla Reactor | Sprite integrado; atlas de 62 fotogramas de 64 × 64. | Vuelo 8 y cebado 6; estallido común de 6. |
-| Caballero Fantasma | Arte de sprite preparado; integración en Unity pendiente. La representación jugable documentada usa geometría y VFX. | Los ciclos del nuevo sprite quedan pendientes de comprobar dentro del juego. |
-| Centinela de Cobre / gólem | Arte de sprite preparado; integración en Unity pendiente. La representación jugable documentada usa geometría y VFX. | Los ciclos del nuevo sprite quedan pendientes de comprobar dentro del juego. |
+| Caballero Fantasma | Sprite integrado; atlas de 224 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, preparación 8, ataque 6, recuperación 6, impacto 4 y muerte 12. |
+| Centinela de Cobre / gólem | Sprite integrado; atlas de 288 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, apertura 6, preparación 8, disparo 8, vulnerabilidad 8, cierre 6, impacto 4 y muerte 12. |
 | Gólgora / MataColeccionista | Modelo 3D animado integrado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
 
 ## Cómo leer las previsualizaciones
@@ -131,19 +131,49 @@ Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dir
 
 ## Caballero Fantasma
 
-Élite de barrido sobrenatural y resistencia al daño físico. Su presentación jugable documentada todavía usa geometría de personaje y un efecto animado para el barrido.
+Sprite integrado en Unity, con cuatro direcciones, normal map y emisión. La preparación sigue los 0,8 s del barrido. Ataque y recuperación se enlazan durante los 0,8 s posteriores a su resolución. El sprite conserva la dirección comprometida y sus ciclos no generan daño adicional.
 
-**Pendiente: integrar el sprite en Unity.** El arte del personaje está preparado, pero falta conectar sus ciclos a la locomoción, preparación, ataque, recuperación, impacto y muerte del enemigo. Después de esa conexión se incorporarán aquí el atlas y los GIFs verificados dentro del juego.
+![Atlas de Caballero Fantasma](../Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.png)
 
-La captura del montaje geométrico conservada en [[03 - Enemigos y NPC]] corresponde al 4 de noviembre. Sirve como referencia de combate; no valida la integración del nuevo sprite.
+[Fuente editable](../Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Caballero Fantasma: Reposo](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Idle.gif) |
+| Marcha | ![Caballero Fantasma: Marcha](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Walk.gif) |
+| Preparación | ![Caballero Fantasma: Preparación](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Windup.gif) |
+| Ataque | ![Caballero Fantasma: Ataque](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Attack.gif) |
+| Recuperación | ![Caballero Fantasma: Recuperación](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Recovery.gif) |
+| Impacto | ![Caballero Fantasma: Impacto](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Hit.gif) |
+| Muerte | ![Caballero Fantasma: Muerte](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Death.gif) |
+
+![Ciclo de combate integrado, captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CaballeroFantasma_Integrado.gif)
+
+La captura usa la arena real, jugador protegido, oleadas detenidas y avance controlado de los estados del enemigo. Los GIFs por acción son previsualizaciones del atlas; el ciclo de combate muestra el sprite y sus efectos ejecutados en Unity.
 
 ## Centinela de Cobre: gólem
 
-Élite pesado de proyectiles físicos y resistencia al daño sobrenatural. El gólem se denomina Centinela de Cobre en los ajustes del juego. Su ataque abre una ventana de vulnerabilidad durante la recuperación.
+Sprite integrado en Unity, con cuatro direcciones, normal map y emisión. Apertura de 0,3 s y preparación de 0,7 s preceden al disparo. Disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s ocupan la recuperación de 2 s. Las bisagras conservan su anclaje exterior en las vistas de perfil.
 
-**Pendiente: integrar el sprite en Unity.** El arte está preparado, pero falta conectar los ciclos del cuerpo y la secuencia de apertura, preparación, disparo, vulnerabilidad y cierre con los estados del enemigo. Después de esa conexión se incorporarán aquí el atlas y los GIFs verificados dentro del juego.
+![Atlas de Centinela de Cobre: gólem](../Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.png)
 
-La captura del montaje geométrico conservada en [[03 - Enemigos y NPC]] corresponde al 4 de noviembre. El efecto animado de los misiles pertenece a los VFX y no confirma que el sprite del cuerpo esté integrado.
+[Fuente editable](../Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Centinela de Cobre: gólem: Reposo](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Idle.gif) |
+| Marcha | ![Centinela de Cobre: gólem: Marcha](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Walk.gif) |
+| Apertura | ![Centinela de Cobre: gólem: Apertura](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Open.gif) |
+| Preparación | ![Centinela de Cobre: gólem: Preparación](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Windup.gif) |
+| Disparo | ![Centinela de Cobre: gólem: Disparo](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Fire.gif) |
+| Vulnerabilidad | ![Centinela de Cobre: gólem: Vulnerabilidad](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Vulnerable.gif) |
+| Cierre | ![Centinela de Cobre: gólem: Cierre](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Close.gif) |
+| Impacto | ![Centinela de Cobre: gólem: Impacto](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Hit.gif) |
+| Muerte | ![Centinela de Cobre: gólem: Muerte](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Death.gif) |
+
+![Ciclo de combate integrado, captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CentinelaCobre_Integrado.gif)
+
+La captura usa la arena real, jugador protegido, oleadas detenidas y avance controlado de los estados del enemigo. Los GIFs por acción son previsualizaciones del atlas; el ciclo de combate muestra el sprite y sus efectos ejecutados en Unity.
 
 ## Gólgora: MataColeccionista
 

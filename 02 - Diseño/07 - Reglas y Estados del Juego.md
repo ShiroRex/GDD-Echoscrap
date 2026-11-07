@@ -4,7 +4,7 @@
 | --- | --- |
 | Menú inicial | Continuar, Nueva colección, Configuración y Salir. El mundo se carga después de elegir colección. |
 | Preparación en bóveda | Movimiento, revisión de inventario, equipo de hasta tres entidades y fusión. El reloj de expedición no avanza. |
-| Selección de entidades | Al acercarse a cada puesto y pulsar E se pausa la interacción del mundo y se escoge una copia disponible. Puede dejarse vacío. |
+| Selección de entidades | E junto a un puesto vacío abre y pausa su selector. T en uno ocupado desequipa; E en ese puesto ofrece liberación con confirmación. Puede dejarse vacío. |
 | Selección de ronda | Se elige demo o completa antes de entrar. |
 | Combate | Avanzan reloj, oleadas, ataques, recogida y temporizadores activos. |
 | Cartas o pausa | El combate se detiene; la interfaz mantiene sus animaciones y confirmaciones. |

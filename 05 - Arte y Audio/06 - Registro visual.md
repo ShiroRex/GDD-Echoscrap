@@ -11,9 +11,11 @@ El registro reúne previsualizaciones de recursos y capturas de ejecución, con 
 
 Los registros del 4 de noviembre corresponden al montaje local basado en 30b88c6 y conservan sus dimensiones: PNG de 960 × 540 y GIF de Unity de 640 × 360. La cámara de detalle permite leer animaciones y efectos; no representa el encuadre de toda una partida ni una medición de rendimiento.
 
+Los registros añadidos de Caballero y Centinela corresponden a sus sprites integrados el 5 de noviembre: 72 imágenes por enemigo a 12 por segundo, tomadas a 960 × 540 y exportadas a 768 × 432. La arena es CombatArena; el jugador está protegido, las oleadas detenidas y el controlador del élite avanza sus fases de forma controlada. El selector de equipo actualizado utiliza inventario de muestra y persistencia desactivada.
+
 ## Enemigos y personajes
 
-[[02 - Personajes y Animación]] reúne el atlas y los GIFs del Coleccionista, los cinco spritesheets completos de horda con todas sus acciones y las capturas de los seis patrones de Gólgora. Caballero Fantasma y Centinela de Cobre (gólem) tienen su integración de sprite pendiente. Las capturas geométricas de esos élites se conservan como referencia fechada en [[03 - Enemigos y NPC]], junto a sus reglas de combate.
+[[02 - Personajes y Animación]] reúne el atlas y los GIFs del Coleccionista, los cinco spritesheets completos de horda con todas sus acciones y las capturas de los seis patrones de Gólgora. Caballero Fantasma y Centinela de Cobre (gólem) tienen sprites integrados; sus atlas, ciclos por acción y capturas actuales de Unity del 5 de noviembre están en [[02 - Personajes y Animación]]. Las capturas geométricas del 4 de noviembre quedan como referencia histórica.
 
 ## Efectos de enemigos
 
@@ -61,7 +63,7 @@ La ráfaga muestra el haz, los pulsos y las reacciones de los enemigos alcanzado
 
 ### Rayo solar
 
-La mejora legendaria cambia la luz a dorado y mantiene los pulsos sin el descanso normal de la ráfaga. La secuencia permite comparar su continuidad con la linterna base.
+La mejora legendaria cambia la luz a dorado y mantiene los pulsos sin el descanso normal de la ráfaga. En la regla vigente aplica empuje en cada pulso; el GIF conservado se capturó antes de esa corrección y muestra la presentación luminosa, no certifica el empuje actual. La secuencia permite comparar su continuidad con la linterna base.
 
 ![Rayo solar: captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/VFX/RayoSolar.gif)
 

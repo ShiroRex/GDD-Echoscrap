@@ -8,6 +8,14 @@ El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra e
 
 Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
+### Plano a escala
+
+![Plano de la arena y la conexión con la bóveda](../Media/Planos/Vertedero.svg)
+
+La planta usa coordenadas X/Z de Unity y una cuadrícula de 20 m. La expedición y Gólgora empiezan en el centro de la arena, en momentos distintos. Al comenzar el encuentro, el jugador se coloca 12 m al sur del centro. La línea discontinua del acceso norte representa el traslado por portal a la sala de la bóveda, fuera de los límites de la arena.
+
+La horda busca una posición dinámica fuera de cámara alrededor del jugador y dentro del perímetro. El anillo central indica el recinto de refuerzos y combate del jefe. El plano esquematiza las conexiones y límites jugables. El relieve y los obstáculos individuales se consultan en la escena. Las reglas de aparición están en [[05 - Progresión]].
+
 ## Acceso norte y bóveda
 
 El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.

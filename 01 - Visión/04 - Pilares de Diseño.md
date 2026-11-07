@@ -6,7 +6,7 @@ El desplazamiento a 8 m/s, el dash y el empuje del cuarto pulso ayudan a atraves
 
 ## Preparar una colección y construir una configuración
 
-Las entidades equipadas aportan poderes iniciales. Las 35 mejoras de la expedición amplían las herramientas disponibles mediante estadísticas, dispositivos, ataques automáticos y control de masas. Los requisitos relacionan las decisiones: Cero absoluto parte de Freón residual y las mejoras de explosión necesitan una fuente compatible.
+Las entidades equipadas aportan poderes propios, independientes de los niveles de cartas. Las 35 mejoras de la expedición amplían las herramientas disponibles mediante estadísticas, dispositivos, ataques automáticos y control de masas. Los requisitos relacionan las decisiones: Cero absoluto parte de Freón residual y las mejoras de explosión necesitan una fuente compatible.
 
 ## Ataques que se pueden leer
 

@@ -10,7 +10,9 @@
 | Confirmar carta | Enter o clic | Botón sur: A / Cruz |
 | Reintentar con Sintonizador | R o botón de interfaz | Botón norte |
 | Recoger una entidad cercana en arena | E | Sin asignación de interacción equivalente en el sistema actual |
-| Abrir el puesto de equipo cercano en bóveda | E | Sin asignación de interacción equivalente en el sistema actual |
+| Abrir un puesto de equipo vacío en bóveda | E | Sin asignación de interacción equivalente en el sistema actual |
+| Desequipar la entidad del puesto ocupado cercano | T | Sin asignación equivalente |
+| Ofrecer liberación de la entidad de un puesto ocupado | E; requiere confirmación | Sin asignación equivalente |
 | Abrir la máquina de fusión | E | Sin asignación de interacción equivalente en el sistema actual |
 | Cerrar equipo | E o Esc; botón Cerrar | — |
 | Cerrar selector de fusión | E o su botón Cerrar | — |

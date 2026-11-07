@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 628" role="img" aria-labelledby="title desc">
+  <title id="title">Plano de El Vertedero y la bóveda</title>
+  <desc id="desc">Planta X/Z de la arena de 200 por 200 metros, con caldera central de 22 metros de radio, acceso norte, traslado de la bóveda y cuadrícula de 20 metros.</desc>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse" x="60" y="110">
+      <path d="M44 0H0V44" fill="none" stroke="#34354f" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto-start-reverse">
+      <path d="M0 0 7 3.5 0 7Z" fill="#7bdbd1"/>
+    </marker>
+  </defs>
+  <rect width="860" height="628" rx="14" fill="#121323"/>
+  <g font-family="system-ui, sans-serif" fill="#f1f0fc">
+    <text x="60" y="53" font-size="28" font-weight="700">EL VERTEDERO</text>
+    <text x="60" y="78" fill="#bdbdda" font-size="14">Planta X/Z · 200 × 200 m · cuadrícula de 20 m</text>
+    <rect x="60" y="110" width="440" height="440" fill="#24243b"/>
+    <rect x="60" y="110" width="440" height="440" fill="url(#grid)" stroke="#a4a2c9" stroke-width="1.5"/>
+    <path d="M280 110v440 M60 330h440" stroke="#555678" stroke-width="1"/>
+    <g fill="#c8c6e1" font-size="12" text-anchor="middle">
+      <text x="60" y="570">−100</text><text x="280" y="570">0</text><text x="500" y="570">+100 X</text>
+      <text x="36" y="114">+100</text><text x="40" y="334">0</text><text x="36" y="553">−100</text>
+    </g>
+    <circle cx="280" cy="330" r="48.4" fill="#743b3d" fill-opacity=".65" stroke="#ffae80" stroke-width="2"/>
+    <circle cx="280" cy="330" r="40.7" fill="none" stroke="#ffa37f" stroke-width="1.5" stroke-dasharray="4 5"/>
+    <circle cx="280" cy="330" r="4" fill="#fff4cc"/>
+    <path d="M280 350.4l-5 9h10Z" fill="#7bdbd1"/>
+    <path d="M329 330h42" stroke="#ffae80"/>
+    <text x="380" y="327" font-size="14" fill="#ffbd9e">Caldera</text>
+    <text x="380" y="347" font-size="12" fill="#ffbd9e">Radio 22 m</text>
+    <path d="M280 158.88V179" stroke="#7bdbd1" stroke-width="2"/>
+    <circle cx="280" cy="158.88" r="5" fill="#7bdbd1"/>
+    <text x="294" y="183" font-size="14">Escalera y portal norte</text>
+    <text x="294" y="201" font-size="12" fill="#bdbdda">X 0 · Z 77,8</text>
+    <path d="M288 158.88h242" stroke="#7bdbd1" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+    <path d="M473 149v-23" stroke="#7bdbd1" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="459" y="142" text-anchor="end" font-size="12" fill="#7bdbd1">N / +Z</text>
+    <rect x="539" y="110" width="277" height="143" rx="8" fill="#222439" stroke="#4a4d6b"/>
+    <text x="556" y="138" font-size="16" font-weight="700">Bóveda</text>
+    <g font-size="13" fill="#d7d6ed">
+      <text x="556" y="164">Llegada · X 180 / Z −13</text>
+      <text x="556" y="187">Portal de regreso · X 180 / Z −19,5</text>
+      <text x="556" y="210">Máquina de fusión · X 193 / Z −10</text>
+      <text x="556" y="233" fill="#a8abd0">Conexión esquemática fuera del plano</text>
+    </g>
+    <text x="545" y="301" font-size="16" font-weight="700">APARICIONES</text>
+    <g font-size="13" fill="#d7d6ed">
+      <circle cx="550" cy="327" r="4" fill="#fff4cc"/>
+      <text x="566" y="332">Inicio de expedición y aparición del jefe</text>
+      <path d="M550 352l-5 9h10Z" fill="#7bdbd1"/>
+      <text x="566" y="362">Traslado del jugador a la caldera</text>
+      <path d="M545 388h13" stroke="#ffa37f" stroke-width="2" stroke-dasharray="3 3"/>
+      <text x="566" y="393">Refuerzos cerca del borde interior</text>
+      <text x="545" y="431">Horda · puntos variables en suelo válido</text>
+      <text x="545" y="450">alrededor del jugador y fuera de cámara.</text>
+    </g>
+    <path d="M544 522v12m0-6h110m0-6v12" stroke="#f1f0fc" stroke-width="2"/>
+    <text x="599" y="552" text-anchor="middle" font-size="13">50 m</text>
+  </g>
+</svg>

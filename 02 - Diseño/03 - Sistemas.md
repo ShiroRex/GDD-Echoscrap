@@ -12,7 +12,7 @@
 | Encuentro del jefe | Traslado seguro, caldera cerrada, cámara compartida, refuerzos anunciados y dos fases. |
 | Progresión | XP, subidas de nivel y cola de elecciones entre 35 mejoras. |
 | Entidades | Apariciones temporales en arena, recogida manual y almacenamiento de copias. |
-| Equipo | Tres puestos; las entidades elegidas aportan poderes iniciales y reservan sus copias. |
+| Equipo | Tres puestos; activan poderes propios, reservan sus copias y no conceden niveles de cartas. |
 | Fusión | Consumo de cuatro copias, probabilidades por calidad, temporizador, apertura manual y decisión sobre el resultado. |
 | Bóveda | Tres puestos de equipo, siete de exposición, máquina de fusión y portal. |
 | Interfaz | Menús, HUD, minimapa con exploración, cartas, estadísticas, retratos y resultados. |
@@ -20,6 +20,6 @@
 
 El reloj distingue pausa manual, pérdida de foco, cartas, fusión, equipo y menús generales. Resolver una de esas razones no reanuda una sesión que sigue detenida por otra. La interfaz puede animarse mientras el combate está pausado.
 
-La simulación resuelve daño y resultados. La presentación representa esos eventos con animación, sonido y VFX. Las reservas de actores y efectos se reutilizan entre expediciones.
+La simulación resuelve daño y resultados. La presentación representa esos eventos con animación, sonido y VFX. Las reservas de actores y efectos se reutilizan entre expediciones. CompanionPowerRuntime mantiene los bonos, ataques, curaciones, protección y salvación de las entidades equipadas; sus recargas no se reinician al cambiar equipo durante una expedición.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

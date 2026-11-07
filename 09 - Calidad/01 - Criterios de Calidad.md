@@ -7,7 +7,7 @@ El diseño se revisa junto con el control y su presentación. Las opciones deben
 | Preparación | El jugador puede encontrar los tres puestos y entender el poder de las entidades antes de elegir ronda. La señalización general sigue pendiente. |
 | Control | Movimiento y dash responden y respetan obstáculos; las interacciones de colección deben tener acceso claro. |
 | Lectura | Ataques anunciados, resistencias élite y cambios de fase legibles con efectos completos y reducidos. |
-| Progresión | Cartas válidas, niveles correctos y combinación coherente con los poderes equipados. |
+| Progresión | Cartas válidas y niveles propios; poderes de entidades independientes, duplicados sin acumulación y recargas conservadas al cambiar equipo. |
 | Colección | Recogidas únicas, copias disponibles correctas, consumo de cuatro ingredientes y equipo protegido. |
 | Sesión | Pausa, visitas a bóveda, traslado, abandono y resultados mantienen el reloj y los estados coherentes. |
 | Persistencia | Inventario, equipo y fusión se recuperan sin volver a sortear ni devolver ingredientes consumidos. |
