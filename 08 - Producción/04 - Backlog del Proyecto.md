@@ -21,9 +21,13 @@
 
 ## Pendientes identificados
 
-1. **Guiar la preparación de entidades.** Hacer visibles los tres puestos y explicar su relación con los poderes antes de elegir ronda. El juego permite omitirlos y los avisos locales no presentan el sistema en el recorrido inicial.
-2. **Revisar las interacciones con mando.** Recoger entidades y abrir equipo o fusión usa E; falta resolver ese acceso dentro del recorrido completo con mando.
-3. **Cerrar el uso de las pistas de prueba.** La música de arena y jefe está integrada con nombres provisionales; su elección final corresponde al área de audio.
+| ID | Tarea | Prioridad propuesta | Responsable según el reparto | Dependencia | Criterio de aceptación |
+| --- | --- | --- | --- | --- | --- |
+| UX-01 | Guiar la preparación de entidades. | Alta | Luis Fernando Nuñez Chan, con apoyo de David Alejandro Sierra Sosa | Flujo de primera colección y selector de puestos. | Antes de elegir ronda, una persona nueva identifica los tres puestos, entiende los poderes y sabe que puede salir con puestos vacíos. |
+| INPUT-01 | Cerrar el alcance de mando en colección, equipo y fusión. | Media, según alcance | David Alejandro Sierra Sosa y coordinación de producción | Decisión de qué acciones cubre la entrega. | El GDD distingue las interacciones cubiertas. QA verifica abrir, seleccionar, cancelar y confirmar en el recorrido acordado. |
+| TECH-01 | Validar requisitos de la build Windows x64. | Alta | David Alejandro Sierra Sosa, con revisión de Luis Fernando Nuñez Chan | Build candidata identificada, licencia de editor y equipos de prueba. | Resolución, FPS, p95 de fotograma, memoria y tamaño instalado registrados por perfil, con el commit y los ajustes empleados. |
+
+**Cerrar el uso de las pistas de prueba.** La música de arena y jefe está integrada con nombres provisionales; su elección final corresponde al área de audio.
 
 Estos puntos son necesidades de revisión, no funcionalidades que esta actualización del GDD haya añadido al juego.
 

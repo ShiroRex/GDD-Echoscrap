@@ -14,7 +14,15 @@
 
 El estado del 4 de noviembre añade menú independiente y carga, preparación en bóveda, selección de ronda y retorno desde resultados; colección de quince entidades con equipo de tres puestos; fusión de cuatro copias; dos élites; sprites de Esqueleto, Interceptor y Wendigo; minimapa, audio contextual, iluminación y ampliación del encuentro de Gólgora.
 
-La siguiente necesidad identificada en esta revisión es guiar la selección de entidades antes de salir. Su implementación está pendiente. No se fija aquí una fecha que el equipo no haya acordado.
+## Hitos de cierre pendientes
+
+| Hito | Responsable según el reparto | Depende de | Condición de cierre |
+| --- | --- | --- | --- |
+| Preparación comprensible | Luis Fernando Nuñez Chan, con apoyo de David Alejandro Sierra Sosa | Puestos y selectores de bóveda | Una persona que empieza identifica los tres puestos, entiende qué aporta una entidad y puede continuar con puestos vacíos. |
+| Alcance de mando | David Alejandro Sierra Sosa y coordinación de producción | Acordar las interacciones cubiertas | El GDD refleja el alcance aprobado y QA verifica el recorrido cubierto. |
+| Validación técnica | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 candidata y equipos de prueba | Los requisitos publicados tienen evidencia de resolución, rendimiento y guardado en la revisión indicada. |
+
+Los hitos se ordenan por dependencia. Las fechas se fijan con coordinación de producción.
 
 Las reglas y los recursos se desarrollan en las secciones de diseño, contenido y registro visual.
 

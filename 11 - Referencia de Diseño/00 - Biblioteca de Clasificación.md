@@ -22,6 +22,6 @@ Esta sección funciona como una **biblioteca de consulta integrada al GDD**. El 
 
 ## Resultado
 
-Cuando termines, regresa a:
+La clasificación de EchoScrap se mantiene en [[01 - Ficha del Proyecto]]. Su género es acción y su subgénero es supervivencia de hordas con progresión roguelite. Se juega en Windows, en solitario local, en un mundo 3D con personajes 2D y cámara elevada.
 
-[[01 - Ficha del Proyecto]]
+[[03 - Público y Plataforma]] desarrolla el público objetivo y las condiciones de juego.

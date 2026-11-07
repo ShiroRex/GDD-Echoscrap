@@ -92,11 +92,7 @@ Un juego puede combinar varios géneros.
 
 ### Elección del proyecto
 
-**Subgénero principal:**  
-**¿Por qué?**
-
-**Combinaciones adicionales:**  
-**¿Qué aporta cada una?**
+La clasificación de EchoScrap está en [[01 - Ficha del Proyecto]]. La supervivencia de hordas estructura cada expedición. La progresión roguelite combina elecciones de cartas durante el intento con poderes coleccionables entre intentos.
 
 > [!warning] Evita acumular etiquetas
 > Si necesitas seis subgéneros para explicar el juego, probablemente todavía no has definido con claridad cuál es su experiencia principal.

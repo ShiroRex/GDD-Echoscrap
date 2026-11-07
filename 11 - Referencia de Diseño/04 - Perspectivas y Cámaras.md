@@ -60,8 +60,4 @@ La cámara cambia automáticamente según acciones, eventos o contexto.
 
 ## Decisión del proyecto
 
-**Perspectiva principal:**  
-**Tipo de cámara:**  
-**¿Puede cambiar durante el juego?:**  
-
-**Justificación de diseño:**
+La perspectiva de EchoScrap está en [[01 - Ficha del Proyecto]]. La cámara elevada sigue al personaje en un mundo 3D con personajes 2D y cambia de encuadre según arena, bóveda o jefe. Los valores se detallan en [[02 - Niveles]].

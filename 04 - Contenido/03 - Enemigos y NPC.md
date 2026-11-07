@@ -80,6 +80,17 @@ Gólgora usa un modelo 3D animado y efectos de magma propios. Las capturas de su
 
 Las zonas de magma de estos proyectiles causan 5 de daño cada 0,5 s. El cerco empieza a estar disponible a los doce segundos de combate del jefe y después se programa con una recarga base de 18 s al completar la secuencia.
 
+### Selección de ataques
+
+En persecución se evalúa la transición de fase y después el Cerco. Si ninguno se inicia, se intenta Lluvia, solo en segunda fase, y luego Fisura, a partir de 8 m. Ambas necesitan espacio en el pool de proyectiles. Fisura está disponible inicialmente a los 6 s del reloj del jefe y Lluvia a los 9 s de ese mismo reloj.
+
+A 6,5 m o menos se alterna la preferencia entre Martillazo y Barrido según el último ataque y sus recargas. Si la opción preferida no está lista, se puede usar la otra. A más de 6,5 m se intenta Bombardeo si ha recargado y hay espacio para el patrón. Los dos ataques cercanos se habilitan a los 2 s y Bombardeo a los 3,5 s. La transición a segunda fase termina iniciando un Cerco.
+
+| Canal de daño | Fuentes de Gólgora |
+| --- | --- |
+| Físico | Contacto, Martillazo, Barrido, impacto directo de Bombardeo, Fisura y Lluvia, y golpe central al aterrizar durante Cerco. |
+| Sobrenatural | Charcos de magma de los proyectiles y ondas expansivas del Cerco. |
+
 [Ver los seis patrones de Gólgora en GIFs capturados en Unity](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
 
 ### Segunda fase y resistencia al control

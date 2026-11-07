@@ -1,19 +1,19 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.0 · 5 de noviembre de 2026**
+**GDD 0.6.1 · 7 de noviembre de 2026**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición incorpora los poderes propios de las entidades, los sprites integrados de los dos élites, la regla solar y la fórmula de Ojo. El origen se conserva como trasfondo y la guía de equipo sigue pendiente. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición especifica balance, oleadas, ataques de Gólgora y guardado. Incluye un plano a escala, clasificación del juego, evidencia de lectura y objetivos de validación técnica. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.0 · 5 de noviembre de 2026.**
+**GDD 0.6.1 · 7 de noviembre de 2026.**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 
@@ -55,15 +55,18 @@ Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del p
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.0 |
+| Versión del GDD | 0.6.1 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
-| Actualización | 5 de noviembre de 2026 |
+| Actualización | 7 de noviembre de 2026 |
+| Género | Acción. |
+| Subgénero | Supervivencia de hordas con progresión roguelite. |
+| Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
 | Plataforma | PC, Windows, un jugador local. |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | develop 26ac928 e integración c5fa4f4; Rayo solar 0acfe51; pruebas y capturas del 5 de noviembre de 2026. |
+| Revisión consultada | Código y escena de `75bb79c`. Se conservan los registros de pruebas y capturas de las revisiones del 5 y 6 de noviembre de 2026. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
@@ -98,13 +101,17 @@ La preparación necesita una explicación más visible en el juego. Esta edició
 
 # Público y plataforma
 
-EchoScrap es una experiencia de acción y supervivencia para Windows y un solo jugador. El combate acepta teclado y ratón o mando: el desplazamiento y el dash son directos y la linterna funciona con autoapuntado.
+EchoScrap es un juego de acción y supervivencia de hordas con progresión roguelite para Windows y un solo jugador local. Está dirigido a quienes disfrutan esquivar grupos numerosos, aprender patrones de ataque y combinar mejoras en expediciones cortas. Las cartas se reinician en cada intento y la colección persistente permite preparar poderes distintos para el siguiente.
+
+El autoapuntado facilita la entrada a jugadores que quieren concentrarse en moverse y elegir mejoras. La ronda demo permite aprender el ciclo de expedición. La completa da más tiempo para construir una configuración y aumenta la vida de Gólgora. El combate admite teclado y ratón o mando, con movimiento y dash directos.
 
 Las cartas introducen pausas de decisión. Antes de salir, la bóveda permite revisar la colección y escoger hasta tres entidades equipadas. En el montaje actual, recoger entidades y abrir los puestos de equipo o la fusión requiere la tecla E; esa parte del recorrido todavía necesita una guía más clara y no tiene una interacción equivalente de mando documentada en el código.
 
 La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos tiempos corresponden al reloj de combate, que se detiene con las pausas y elecciones. La duración total incluye la preparación, los menús y el enfrentamiento final.
 
 Los ataques se comunican con avisos de suelo, animaciones y texto. Las opciones permiten reducir efectos y sacudidas y elegir el detalle del panel de estadísticas.
+
+La plataforma, perspectiva y modo se centralizan en [[01 - Ficha del Proyecto]]. Las comprobaciones de lectura y formato de pantalla se registran en [[03 - Accesibilidad]].
 
 ---
 
@@ -190,15 +197,30 @@ El dash avanza a 22 m/s durante 0,15 s, aproximadamente 3,3 m si el recorrido es
 
 La ráfaga base emite en 0,2, 0,4, 0,6 y 0,8 s y vuelve a empezar tras el descanso. La linterna busca objetivos en 360° dentro de su alcance y aplica los impactos a su cono frontal. Sin objetivos, vuelve hacia la orientación de movimiento. Rayo solar elimina el descanso, aumenta el alcance base a 14 m, multiplica el daño por 2,5 y aplica empuje en cada pulso del láser. Conserva la cadencia de pulsos y la susceptibilidad al empuje de cada enemigo; los cuerpos inmunes siguen sin desplazarse.
 
+El alcance y el ángulo se evalúan en el plano horizontal X/Z y tienen en cuenta el radio del objetivo. Tanto el autoapuntado como cada impacto trazan una línea 3D desde la luz hasta el centro del enemigo. Los obstáculos sólidos de la capa Default pueden bloquearla aunque el enemigo esté dentro del cono. El trazado ignora los triggers. Cada enemigo válido recibe como máximo un impacto por pulso.
+
+Al comenzar la ráfaga se fijan alcance, apertura, daño base por pulso, intervalo, descanso, empuje, probabilidad y multiplicador críticos y modo solar. Una mejora que cambie esos parámetros durante la secuencia se refleja al comenzar la siguiente. La dirección de apuntado y la visibilidad de cada objetivo se vuelven a evaluar durante la ráfaga.
+
 ## Salud y daño
 
 El Coleccionista empieza con 100 HP y 0,4 s de protección después de recibir daño. El daño puede ser físico o sobrenatural según su fuente; los números conservan esa categoría. La armadura reduce el daño recibido hasta un límite del 60%. La probabilidad crítica empieza en 0% y su multiplicador base es ×1,75.
+
+El daño entrante verifica invulnerabilidad y la protección de entidades. Después sortea evasión, aplica reducción de daño por entidades, sortea bloqueo y aplica armadura. Evasión y bloqueo parten de 0%, con topes técnicos de 35% y 50%. Un bloqueo reduce el daño un 50% antes de la armadura. Blindaje concede hasta 20 puntos porcentuales de armadura con cinco cartas, dentro del tope del sistema de 60%.
+
+| Estado del enemigo | Aplicación y expiración |
+| --- | --- |
+| Ralentización | Freón se aplica antes de contar el mismo pulso para Cero absoluto. Cada aplicación conserva la intensidad y el tiempo mayores. Al expirar se pierden los impactos de frío acumulados. |
+| Congelación | Cero absoluto solo cuenta si hay ralentización activa y el objetivo sigue vivo y sin congelar. Congelar reinicia ese contador y conserva la duración mayor. Ventisca y Quiebre de hielo pueden congelar directamente. El objetivo congelado recibe ×1,30 de daño de ataques del jugador. |
+| Aturdimiento | Conserva el tiempo restante mayor. Igual que la congelación, bloquea el control del enemigo mientras el temporizador esté activo. |
+| Empuje | Se resuelve según susceptibilidad y frenado de cada arquetipo. Las excepciones y ventanas de inmunidad de Gólgora se especifican en [[03 - Enemigos y NPC]]. |
 
 Los números muestran la salud realmente perdida. Los impactos normales de una ráfaga pueden agruparse, mientras que los críticos se distinguen con tamaño, color y un signo de exclamación. Los impactos mitigados por resistencia muestran «Resistido» bajo el valor y una ejecución causada por la mejora correspondiente muestra «EJECUTADO».
 
 ## Recogida
 
 El imán base alcanza 2,5 m y atrae los objetos a 12 m/s. Las gemas conceden experiencia; el botiquín base recupera 15 HP. El ácido y las áreas de ataque utilizan las mismas reglas de salud e invulnerabilidad que el resto del combate. Las zonas de lava fija del mapa están desactivadas; el magma de Gólgora sigue formando parte del encuentro.
+
+Una gema nueva puede sumarse a una gema activa a un máximo de 0,75 m de distancia horizontal. Se acumulan la XP y el número de gemas originales. Micro-ensamblador cuenta las gemas originales del objeto recogido. La XP otorgada es la parte entera de `XP acumulada del objeto × multiplicador de XP + resto anterior`. El resto se conserva para la próxima recogida de la expedición. Chatarrero añade 15% de XP por nivel.
 
 Las mejoras modifican estos parámetros o añaden acciones automáticas. Sus niveles y efectos se describen en [[05 - Progresión]].
 
@@ -332,24 +354,46 @@ Un crítico que cumple la condición emite un área de aturdimiento de 3 m alred
 
 ## Requisitos y combinaciones
 
-- **Pólvora volátil y Termobárica:** necesitan una fuente de explosiones en la configuración.
+- **Pólvora volátil y Termobárica:** requieren Onda sísmica, Holo-señuelo, Cataclismo, Reacción en cadena, Minas de chatarra o Nova de plasma.
 - **Cero absoluto:** requiere Freón residual.
 - **Quiebre de hielo:** necesita Cero absoluto o Ventisca.
 - **Ráfaga crítica:** requiere una probabilidad crítica mayor que cero.
 
 Prisma voltaico se activa desde el cuarto pulso de luz y su daño derivado no inicia otra cadena. La repetición de Termobárica tampoco vuelve a repetirse a sí misma. Estos límites permiten combinar efectos sin crear bucles de activación.
 
+## Parámetros complementarios de balance
+
+Valores base por nivel antes de otras mejoras o de las resistencias del objetivo. El daño, las duraciones y los niveles máximos se indican en el catálogo.
+
+| Mejora | Parámetros de aplicación |
+| --- | --- |
+| Prisma voltaico | Intervalo de 0,045 s entre saltos. |
+| Golpe potente | Añade 8/14/20 m/s al empuje base de 10 m/s, para un total de 18/24/30 m/s antes de la susceptibilidad. |
+| Onda sísmica | Radio de 3,5/4,5/5,5 m y empuje nominal de 8 m, sujeto al enemigo y al terreno. |
+| Holo-señuelo | Radio de atracción de 12 m y radio de implosión de 4 m. |
+| Cataclismo | Radio inicial de 4 m. La cuchilla viaja a 18 m/s, tiene radio de impacto de 0,45 m y dura 0,6 s. |
+| Botiquín mejor | Probabilidad base de aparición de 3% y de 4/5/6% con la carta. Para Coloso, Mortero y ambos élites, 8% base y 10/12/15% con la carta. |
+| Reacción en cadena | Radio base de 3 m. |
+| Minas de chatarra | Se activan con un objetivo a 1,25 m. Permanecen en el suelo hasta activarse o limpiarse la expedición. |
+| Termobárica | Impulso de atracción configurado de 12 m/s. |
+| Micro-ensamblador | El proyectil guiado viaja a 24 m/s y dura hasta 10 s. Cada umbral de 15 gemas consume ese contador aunque falte un objetivo válido. |
+| Sierras orbitales | Giran a 180°/s. El mismo enemigo solo puede recibir un impacto de las sierras cada 0,3 s, con un impulso base de 4 m/s. |
+| Torreta centinela | Con un blanco en alcance, inicia ráfagas cada 0,6 s y separa sus tres tiros por 0,08 s. |
+| Quiebre de hielo | Las seis esquirlas viajan a 14 m/s y duran hasta 1,2 s. |
+
 ## Oleadas
 
-| Tiempo de combate | Tamaño del grupo | Intervalo |
-| --- | ---: | --- |
-| 0:00–1:00 | 1 | 1,2 s |
-| 1:00–2:00 | 2 | 0,8 s |
-| 2:00–3:00 | 3 | 0,6 s |
-| 3:00–5:00 | 4 | 0,4 a 0,32 s |
-| 5:00–8:00 | 4 | 0,32 a 0,2 s |
+| Tiempo | Grupo | Intervalo | Residual | Interceptor | Coloso | Mortero | Polilla |
+| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 0:00–1:00 | 1 | 1,2 s | 100% | 0% | 0% | 0% | 0% |
+| 1:00–2:00 | 2 | 0,8 s | 50% | 25% | 0% | 15% | 10% |
+| 2:00–3:00 | 3 | 0,6 s | 20% | 35% | 5% | 20% | 20% |
+| 3:00–5:00 | 4 | 0,4 → 0,32 s | 20% | 35 → 30% | 5 → 10% | 20% | 20% |
+| 5:00–8:00 | 4 | 0,32 → 0,2 s | 20% | 30 → 25% | 10% | 20 → 25% | 20% |
 
-Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. La ronda demo recorre los tramos anteriores a los tres minutos; la completa utiliza la escalada de ocho minutos. Desde los 90 s pueden aparecer Caballero Fantasma y Centinela de Cobre, alternándose cada 25 s cuando hay espacio y con un límite conjunto de dos élites vivos.
+Los valores con flecha se interpolan linealmente durante el tramo. Cada puesto ordinario se sortea por separado. La ronda demo usa los tres primeros tramos. Cuando hay seis Morteros activos o reservados para el grupo, las tiradas adicionales de Mortero se convierten en Residual. Desde los 90 s, el primer puesto puede corresponder a un élite. Una aparición efectiva inicia 25 s de espera y alterna Caballero Fantasma y Centinela de Cobre, con dos élites vivos como máximo.
+
+El director recorta el tamaño a las plazas disponibles de su límite normal de 150 enemigos vivos. Prueba hasta 16 anclajes alrededor del jugador, a una distancia inicial de 14–16 m que se amplía para situar al grupo fuera de cámara. Los grupos de dos forman una pareja, los de tres un triángulo y los de cuatro un cuadrado. Todos sus miembros necesitan suelo válido, espacio entre cuerpos y separación de obstáculos y del borde. Si no hay sitio se descarta el grupo en ese intervalo. Si falla la activación de un miembro, el sistema devuelve al pool los ya activados. El siguiente intervalo vuelve a intentar una aparición.
 
 Las mejoras de estadísticas y probabilidades se representan en las cartas y el HUD. Los efectos visuales observables se reúnen con sus GIFs en [[06 - Registro visual]].
 
@@ -560,6 +604,14 @@ El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra e
 
 Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
+### Plano a escala
+
+![Plano de la arena y la conexión con la bóveda](Media/Planos/Vertedero.svg)
+
+La planta usa coordenadas X/Z de Unity y una cuadrícula de 20 m. La expedición y Gólgora empiezan en el centro de la arena, en momentos distintos. Al comenzar el encuentro, el jugador se coloca 12 m al sur del centro. La línea discontinua del acceso norte representa el traslado por portal a la sala de la bóveda, fuera de los límites de la arena.
+
+La horda busca una posición dinámica fuera de cámara alrededor del jugador y dentro del perímetro. El anillo central indica el recinto de refuerzos y combate del jefe. El plano esquematiza las conexiones y límites jugables. El relieve y los obstáculos individuales se consultan en la escena. Las reglas de aparición están en [[05 - Progresión]].
+
 ## Acceso norte y bóveda
 
 El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
@@ -666,6 +718,17 @@ Gólgora usa un modelo 3D animado y efectos de magma propios. Las capturas de su
 | Lluvia de escoria | Segunda fase: cinco impactos alrededor de la posición prevista, 26 de daño en radio 1,8 m. Preparación base de 1,35 s, vuelo base de 0,9 s, recuperación de 1 s y recarga de 14 s antes de los modificadores de fase. Zonas de 3,5 s. |
 
 Las zonas de magma de estos proyectiles causan 5 de daño cada 0,5 s. El cerco empieza a estar disponible a los doce segundos de combate del jefe y después se programa con una recarga base de 18 s al completar la secuencia.
+
+### Selección de ataques
+
+En persecución se evalúa la transición de fase y después el Cerco. Si ninguno se inicia, se intenta Lluvia, solo en segunda fase, y luego Fisura, a partir de 8 m. Ambas necesitan espacio en el pool de proyectiles. Fisura está disponible inicialmente a los 6 s del reloj del jefe y Lluvia a los 9 s de ese mismo reloj.
+
+A 6,5 m o menos se alterna la preferencia entre Martillazo y Barrido según el último ataque y sus recargas. Si la opción preferida no está lista, se puede usar la otra. A más de 6,5 m se intenta Bombardeo si ha recargado y hay espacio para el patrón. Los dos ataques cercanos se habilitan a los 2 s y Bombardeo a los 3,5 s. La transición a segunda fase termina iniciando un Cerco.
+
+| Canal de daño | Fuentes de Gólgora |
+| --- | --- |
+| Físico | Contacto, Martillazo, Barrido, impacto directo de Bombardeo, Fisura y Lluvia, y golpe central al aterrizar durante Cerco. |
+| Sobrenatural | Charcos de magma de los proyectiles y ondas expansivas del Cerco. |
 
 [Ver los seis patrones de Gólgora en GIFs capturados en Unity](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
 
@@ -1343,6 +1406,18 @@ El panel de estadísticas puede mostrarse completo, reducido u oculto. El volume
 
 La pausa y la pérdida de foco bloquean el control de combate y exigen liberar las entradas que podrían provocar confirmaciones accidentales al regresar. Los menús principales y las cartas tienen navegación de mando.
 
+## Lectura y formatos comprobados
+
+| Comprobación | Evidencia |
+| --- | --- |
+| 1920 × 1080, 16:9 | Galería del runtime del 6 de noviembre, commit `75bb79c`. Incluye HUD de arena y jefe, cartas, configuración, avisos de interacción y pantallas de resultado. |
+| Escala de la interfaz | HUD y menús usan un lienzo de referencia de 1920 × 1080. Los números flotantes usan 1280 × 720 como referencia de escala. |
+| Señales redundantes | El daño crítico usa tamaño, color y signo de exclamación. Los avisos combinan texto con tecla gráfica. Las barras y etiquetas identifican vida, XP y fase del jefe. |
+| Detalle de estadísticas | El panel admite oculto, reducido y completo. El menú inicial invierte actualmente las etiquetas Completa y Reducida al seleccionarlas. |
+| Otros tamaños | 1280 × 720, 2560 × 1440 y formatos distintos de 16:9 quedan por comprobar con el HUD, cartas, bóveda y menú de pausa. |
+
+![Pantalla de configuración a 1920 × 1080 en la revisión del 6 de noviembre](Media/Avance_2026-11-06/Accesibilidad/Configuracion.png)
+
 ## Aspectos pendientes
 
 La preparación de entidades necesita señales claras que lleven al jugador a los tres puestos y expliquen sus poderes antes de salir. Los mensajes locales por proximidad no bastan para descubrir el sistema en el primer recorrido.
@@ -1432,6 +1507,25 @@ La plataforma del proyecto es Windows PC. El montaje usa Unity 6000.6.3f1, URP 1
 
 El director limita normalmente la población a 150 enemigos; el modo de estrés usa 250. Los Morteros tienen un límite de seis, los élites uno conjunto de dos y los refuerzos de la caldera uno efectivo de ocho.
 
+## Objetivos para la build de entrega
+
+Estos perfiles fijan condiciones de prueba propuestas. La compatibilidad de cada perfil se publica después de medir la build candidata en el equipo correspondiente.
+
+| Parámetro | Perfil mínimo a validar | Perfil recomendado a validar |
+| --- | --- | --- |
+| Sistema | Windows 10 de 64 bits | Windows 11 de 64 bits |
+| CPU y GPU | Modelo mínimo por medir en un equipo de entrada | Equipo de referencia Ryzen 7 5700X y Radeon RX 6650 XT |
+| Memoria de prueba | 8 GB de RAM y 4 GB de VRAM | 16 GB de RAM y 8 GB de VRAM |
+| Resolución y objetivo | 1280 × 720, 16:9, 30 FPS | 1920 × 1080, 16:9, 60 FPS |
+| Presupuesto de fotograma | p95 de 33,3 ms o menos | p95 de 16,7 ms o menos |
+| Espacio libre previsto | 2 GB para instalación y margen | 2 GB para instalación y margen |
+
+La build Windows x64 de desarrollo del 5 de noviembre compiló con 0 errores y 34 advertencias. El informe de Unity indica 1 010 519 179 bytes, unos 0,94 GiB. Este dato sirve para estimar el espacio de instalación. La galería del 6 de noviembre cubre la lectura de la interfaz a 1080p. El registro del Profiler del 3 de noviembre contiene 2 000 fotogramas del Editor, con p95 de CPU de 6,61 ms y sin tiempos de GPU válidos. Cada registro tiene condiciones distintas de la build de entrega.
+
+La medición en Windows x64 debe registrar commit, sistema, CPU, GPU, RAM, VRAM, resolución y configuración. Medir tras el calentamiento en una oleada avanzada y en la caldera, registrando población, FPS medios, p95 de tiempo de fotograma, memoria máxima y tamaño instalado. Verificar también el flujo a la resolución del perfil y conservar los resultados por separado.
+
+El 7 de noviembre se intentó compilar `75bb79c` en una copia externa. Unity terminó con código 198 por falta de licencia válida para el editor en modo por lotes. Los FPS, los requisitos de hardware y la compatibilidad con Windows 10 quedan pendientes de validar en la build candidata.
+
 ## Alcance de los registros
 
 Los GIFs nuevos de animación proceden de los atlas y tiempos exportados del proyecto. Las capturas de Unity se ejecutan sobre una copia externa, con cámara de detalle, jugador protegido y oleadas detenidas. Sus condiciones se describen en [[06 - Registro visual]].
@@ -1455,6 +1549,21 @@ El reloj, salud, XP, cartas, enemigos, peligros y objetos pertenecen a la expedi
 ## Datos locales
 
 FusionProgress serializa el inventario, equipo, exposición y proceso en JSON de formato 4. FusionStation lo guarda bajo EchoScrap.Collection.Production.v1. La validación amplía los inventarios de trece entradas del mismo formato, protege copias equipadas y restablece formatos anteriores a 4. La clave de prototipo no se carga desde este sistema.
+
+| Campo del JSON | Contenido |
+| --- | --- |
+| `version` | Versión del esquema. El guardado actual escribe 4. |
+| `owned` | Cantidades por ID de entidad, de 0 a 14. Los valores negativos se ajustan a cero. |
+| `equipped` / `displays` | IDs de tres puestos de equipo y diez de exposición. El valor −1 indica un puesto vacío. Se retiran IDs inválidos y equipamientos que exceden las copias disponibles. |
+| `phase` / `result` | Estado de la fusión e ID del resultado ya sorteado. Una fase inválida o un resultado fuera de catálogo en una fusión activa cancela ese estado. |
+| `remaining` / `duration` / `opening` | Tiempo restante, duración y progreso de apertura. Una apertura interrumpida vuelve a estado listo para reabrirla. Una decisión de resultado válida permanece disponible. |
+
+### Carga, recuperación y reinicio
+
+- Si falta la clave, si la deserialización devuelve vacío o si el JSON lanza un error al cargar, se inicializa una colección vacía. Si el JSON se puede leer, la validación corrige campos fuera de rango. Un formato anterior a 4 o un inventario ausente restablece inventario, equipo y fusión. Un formato posterior pasa por el validador de versión 4 y se reescribe con ese número.
+- El guardado escribe al cambiar inventario o equipo, iniciar o resolver fusión y pasar de estado. Mientras hay una fusión activa se escribe cada cinco segundos sin escalar, además de guardar al salir o al entrar en pausa de aplicación. El tiempo con el juego cerrado no adelanta la fusión.
+- En la build Windows actual, PlayerPrefs usa el perfil del usuario. La clave del proyecto está bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap`. El mecanismo de recuperación disponible sanea campos o empieza una colección vacía según el fallo.
+- **Nueva colección** en el menú, con confirmación cuando hay perfil, reemplaza inventario, equipo, exposición y fusión por un estado vacío y conserva el volumen general. Es el recorrido de reinicio disponible para el jugador.
 
 El perfil usa EchoScrap.CollectionStarted.v1 y el volumen EchoScrap.Audio.MasterVolume. Las preferencias visuales y el modo de estadísticas se pasan entre escenas durante la aplicación en curso.
 
@@ -1496,6 +1605,12 @@ La colección tiene quince entidades en seis rarezas. Nueve aparecen en arena y 
 La presentación incluye sprites animados de los cinco enemigos de horda y ambos élites, modelo de Gólgora, efectos de enemigos y mejoras, minimapa, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
 
 El origen del Coleccionista permanece como trasfondo. El minicómic introductorio de pixel art considerado queda fuera de esta entrega por tiempo y no es un requisito para cerrarla.
+
+## Criterio de cierre
+
+La entrega comprende el flujo de Windows en solitario, desde una colección nueva hasta la preparación y una expedición, con regreso a la bóveda y colección persistente. El contenido jugable se contrasta con [[04 - Criterios de Aceptación]]. Los laboratorios y sandboxes quedan en desarrollo. La cobertura de mando en preparación y recogida sigue sujeta a la decisión anotada en [[04 - Backlog del Proyecto]].
+
+El cierre documental requiere que el alcance, las reglas y la evidencia refieran a una build identificada. La validación de la primera preparación y los objetivos de rendimiento permanecen abiertos en el backlog.
 
 ---
 
@@ -1632,7 +1747,15 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 
 El estado del 4 de noviembre añade menú independiente y carga, preparación en bóveda, selección de ronda y retorno desde resultados; colección de quince entidades con equipo de tres puestos; fusión de cuatro copias; dos élites; sprites de Esqueleto, Interceptor y Wendigo; minimapa, audio contextual, iluminación y ampliación del encuentro de Gólgora.
 
-La siguiente necesidad identificada en esta revisión es guiar la selección de entidades antes de salir. Su implementación está pendiente. No se fija aquí una fecha que el equipo no haya acordado.
+## Hitos de cierre pendientes
+
+| Hito | Responsable según el reparto | Depende de | Condición de cierre |
+| --- | --- | --- | --- |
+| Preparación comprensible | Luis Fernando Nuñez Chan, con apoyo de David Alejandro Sierra Sosa | Puestos y selectores de bóveda | Una persona que empieza identifica los tres puestos, entiende qué aporta una entidad y puede continuar con puestos vacíos. |
+| Alcance de mando | David Alejandro Sierra Sosa y coordinación de producción | Acordar las interacciones cubiertas | El GDD refleja el alcance aprobado y QA verifica el recorrido cubierto. |
+| Validación técnica | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 candidata y equipos de prueba | Los requisitos publicados tienen evidencia de resolución, rendimiento y guardado en la revisión indicada. |
+
+Los hitos se ordenan por dependencia. Las fechas se fijan con coordinación de producción.
 
 Las reglas y los recursos se desarrollan en las secciones de diseño, contenido y registro visual.
 
@@ -1661,9 +1784,13 @@ Las reglas y los recursos se desarrollan en las secciones de diseño, contenido 
 
 ## Pendientes identificados
 
-1. **Guiar la preparación de entidades.** Hacer visibles los tres puestos y explicar su relación con los poderes antes de elegir ronda. El juego permite omitirlos y los avisos locales no presentan el sistema en el recorrido inicial.
-2. **Revisar las interacciones con mando.** Recoger entidades y abrir equipo o fusión usa E; falta resolver ese acceso dentro del recorrido completo con mando.
-3. **Cerrar el uso de las pistas de prueba.** La música de arena y jefe está integrada con nombres provisionales; su elección final corresponde al área de audio.
+| ID | Tarea | Prioridad propuesta | Responsable según el reparto | Dependencia | Criterio de aceptación |
+| --- | --- | --- | --- | --- | --- |
+| UX-01 | Guiar la preparación de entidades. | Alta | Luis Fernando Nuñez Chan, con apoyo de David Alejandro Sierra Sosa | Flujo de primera colección y selector de puestos. | Antes de elegir ronda, una persona nueva identifica los tres puestos, entiende los poderes y sabe que puede salir con puestos vacíos. |
+| INPUT-01 | Cerrar el alcance de mando en colección, equipo y fusión. | Media, según alcance | David Alejandro Sierra Sosa y coordinación de producción | Decisión de qué acciones cubre la entrega. | El GDD distingue las interacciones cubiertas. QA verifica abrir, seleccionar, cancelar y confirmar en el recorrido acordado. |
+| TECH-01 | Validar requisitos de la build Windows x64. | Alta | David Alejandro Sierra Sosa, con revisión de Luis Fernando Nuñez Chan | Build candidata identificada, licencia de editor y equipos de prueba. | Resolución, FPS, p95 de fotograma, memoria y tamaño instalado registrados por perfil, con el commit y los ajustes empleados. |
+
+**Cerrar el uso de las pistas de prueba.** La música de arena y jefe está integrada con nombres provisionales; su elección final corresponde al área de audio.
 
 Estos puntos son necesidades de revisión, no funcionalidades que esta actualización del GDD haya añadido al juego.
 
@@ -1899,6 +2026,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.5.2** | 05/11/2026 | Registro visual completado con 21 capturas actuales de VFX de linterna, mejoras, daño, fusión y portal; muestras de octubre sustituidas, procedencia y efectos compartidos documentados; documento completo sincronizado. | Equipo EchoScrap |
 
 | **0.6.0** | 05/11/2026 | Poderes propios de las quince entidades traídos de develop y controles de puestos vacíos/ocupados actualizados; sprites integrados de Caballero y Centinela con ciclos de combate; Rayo solar con empuje en todos sus pulsos; fórmula y condiciones de Ojo; origen narrativo como trasfondo y minicómic fuera de alcance; Registro visual asignado a David y reparto de 48 apartados. | Sierra Sosa David Alejandro |
+| **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
 
 ## Convención sugerida
 

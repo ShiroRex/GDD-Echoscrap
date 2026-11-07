@@ -76,11 +76,7 @@ Videojuegos ejecutados mediante tecnologías web.
 
 ## Elección del proyecto
 
-**Plataforma principal:**  
-**¿Por qué?**
-
-**Plataformas secundarias:**  
-**¿Qué cambios requerirían?**
+La plataforma de EchoScrap está en [[01 - Ficha del Proyecto]]. La entrega se dirige a Windows PC. La build y las configuraciones que se comprobarán se registran en [[03 - Requisitos Técnicos]].
 
 > [!important] Para proyectos académicos
 > Si el equipo tiene tiempo limitado, comenzar con **una plataforma principal** suele reducir problemas de compatibilidad y alcance.

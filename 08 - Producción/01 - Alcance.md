@@ -12,4 +12,10 @@ La presentación incluye sprites animados de los cinco enemigos de horda y ambos
 
 El origen del Coleccionista permanece como trasfondo. El minicómic introductorio de pixel art considerado queda fuera de esta entrega por tiempo y no es un requisito para cerrarla.
 
+## Criterio de cierre
+
+La entrega comprende el flujo de Windows en solitario, desde una colección nueva hasta la preparación y una expedición, con regreso a la bóveda y colección persistente. El contenido jugable se contrasta con [[04 - Criterios de Aceptación]]. Los laboratorios y sandboxes quedan en desarrollo. La cobertura de mando en preparación y recogida sigue sujeta a la decisión anotada en [[04 - Backlog del Proyecto]].
+
+El cierre documental requiere que el alcance, las reglas y la evidencia refieran a una build identificada. La validación de la primera preparación y los objetivos de rendimiento permanecen abiertos en el backlog.
+
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

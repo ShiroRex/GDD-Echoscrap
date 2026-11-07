@@ -1,6 +1,6 @@
-# EchoScrap — GDD 0.6.0
+# EchoScrap — GDD 0.6.1
 
-Documento actualizado al **5 de noviembre de 2026**. Esta revisión incorpora los poderes propios de entidades de develop, documenta Ojo del verdugo y Rayo solar, e integra los sprites de ambos élites con sus ciclos y capturas actuales.
+Documento actualizado al **7 de noviembre de 2026**. Esta revisión especifica el balance, las oleadas, la elección de ataques de Gólgora y el guardado. Añade un plano a escala, la clasificación del juego y la evidencia de lectura del HUD.
 
 - [Índice](00%20-%20%C3%8Dndice.md).
 - [Avance y flujo de preparación](00%20-%20Avance%20jugable.md).
@@ -15,6 +15,6 @@ Personajes y Animación reúne las fichas individuales, el atlas y los GIFs de t
 
 El registro visual incorpora linterna, Rayo solar, Holo-señuelo, Cataclismo, Termobárica, Micro-ensamblador, frío, esquirlas, curación, daño, fusión y portal, junto a las muestras renovadas de mejoras. Las condiciones de captura y los efectos compartidos quedan identificados.
 
-Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.6.0.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
+Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.6.1.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón. Proyecto y contenidos: equipo EchoScrap.

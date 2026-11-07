@@ -66,24 +66,46 @@ Un crítico que cumple la condición emite un área de aturdimiento de 3 m alred
 
 ## Requisitos y combinaciones
 
-- **Pólvora volátil y Termobárica:** necesitan una fuente de explosiones en la configuración.
+- **Pólvora volátil y Termobárica:** requieren Onda sísmica, Holo-señuelo, Cataclismo, Reacción en cadena, Minas de chatarra o Nova de plasma.
 - **Cero absoluto:** requiere Freón residual.
 - **Quiebre de hielo:** necesita Cero absoluto o Ventisca.
 - **Ráfaga crítica:** requiere una probabilidad crítica mayor que cero.
 
 Prisma voltaico se activa desde el cuarto pulso de luz y su daño derivado no inicia otra cadena. La repetición de Termobárica tampoco vuelve a repetirse a sí misma. Estos límites permiten combinar efectos sin crear bucles de activación.
 
+## Parámetros complementarios de balance
+
+Valores base por nivel antes de otras mejoras o de las resistencias del objetivo. El daño, las duraciones y los niveles máximos se indican en el catálogo.
+
+| Mejora | Parámetros de aplicación |
+| --- | --- |
+| Prisma voltaico | Intervalo de 0,045 s entre saltos. |
+| Golpe potente | Añade 8/14/20 m/s al empuje base de 10 m/s, para un total de 18/24/30 m/s antes de la susceptibilidad. |
+| Onda sísmica | Radio de 3,5/4,5/5,5 m y empuje nominal de 8 m, sujeto al enemigo y al terreno. |
+| Holo-señuelo | Radio de atracción de 12 m y radio de implosión de 4 m. |
+| Cataclismo | Radio inicial de 4 m. La cuchilla viaja a 18 m/s, tiene radio de impacto de 0,45 m y dura 0,6 s. |
+| Botiquín mejor | Probabilidad base de aparición de 3% y de 4/5/6% con la carta. Para Coloso, Mortero y ambos élites, 8% base y 10/12/15% con la carta. |
+| Reacción en cadena | Radio base de 3 m. |
+| Minas de chatarra | Se activan con un objetivo a 1,25 m. Permanecen en el suelo hasta activarse o limpiarse la expedición. |
+| Termobárica | Impulso de atracción configurado de 12 m/s. |
+| Micro-ensamblador | El proyectil guiado viaja a 24 m/s y dura hasta 10 s. Cada umbral de 15 gemas consume ese contador aunque falte un objetivo válido. |
+| Sierras orbitales | Giran a 180°/s. El mismo enemigo solo puede recibir un impacto de las sierras cada 0,3 s, con un impulso base de 4 m/s. |
+| Torreta centinela | Con un blanco en alcance, inicia ráfagas cada 0,6 s y separa sus tres tiros por 0,08 s. |
+| Quiebre de hielo | Las seis esquirlas viajan a 14 m/s y duran hasta 1,2 s. |
+
 ## Oleadas
 
-| Tiempo de combate | Tamaño del grupo | Intervalo |
-| --- | ---: | --- |
-| 0:00–1:00 | 1 | 1,2 s |
-| 1:00–2:00 | 2 | 0,8 s |
-| 2:00–3:00 | 3 | 0,6 s |
-| 3:00–5:00 | 4 | 0,4 a 0,32 s |
-| 5:00–8:00 | 4 | 0,32 a 0,2 s |
+| Tiempo | Grupo | Intervalo | Residual | Interceptor | Coloso | Mortero | Polilla |
+| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 0:00–1:00 | 1 | 1,2 s | 100% | 0% | 0% | 0% | 0% |
+| 1:00–2:00 | 2 | 0,8 s | 50% | 25% | 0% | 15% | 10% |
+| 2:00–3:00 | 3 | 0,6 s | 20% | 35% | 5% | 20% | 20% |
+| 3:00–5:00 | 4 | 0,4 → 0,32 s | 20% | 35 → 30% | 5 → 10% | 20% | 20% |
+| 5:00–8:00 | 4 | 0,32 → 0,2 s | 20% | 30 → 25% | 10% | 20 → 25% | 20% |
 
-Los grupos cambian de composición y se colocan fuera de cámara, sobre suelo válido y sin solapar obstáculos ni actores. El límite normal es de 150 vivos. La ronda demo recorre los tramos anteriores a los tres minutos; la completa utiliza la escalada de ocho minutos. Desde los 90 s pueden aparecer Caballero Fantasma y Centinela de Cobre, alternándose cada 25 s cuando hay espacio y con un límite conjunto de dos élites vivos.
+Los valores con flecha se interpolan linealmente durante el tramo. Cada puesto ordinario se sortea por separado. La ronda demo usa los tres primeros tramos. Cuando hay seis Morteros activos o reservados para el grupo, las tiradas adicionales de Mortero se convierten en Residual. Desde los 90 s, el primer puesto puede corresponder a un élite. Una aparición efectiva inicia 25 s de espera y alterna Caballero Fantasma y Centinela de Cobre, con dos élites vivos como máximo.
+
+El director recorta el tamaño a las plazas disponibles de su límite normal de 150 enemigos vivos. Prueba hasta 16 anclajes alrededor del jugador, a una distancia inicial de 14–16 m que se amplía para situar al grupo fuera de cámara. Los grupos de dos forman una pareja, los de tres un triángulo y los de cuatro un cuadrado. Todos sus miembros necesitan suelo válido, espacio entre cuerpos y separación de obstáculos y del borde. Si no hay sitio se descarta el grupo en ese intervalo. Si falla la activación de un miembro, el sistema devuelve al pool los ya activados. El siguiente intervalo vuelve a intentar una aparición.
 
 Las mejoras de estadísticas y probabilidades se representan en las cartas y el HUD. Los efectos visuales observables se reúnen con sus GIFs en [[06 - Registro visual]].
 
