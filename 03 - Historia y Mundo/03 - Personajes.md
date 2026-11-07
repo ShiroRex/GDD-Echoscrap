@@ -2,6 +2,8 @@
 
 El reparto incluye al Coleccionista, cinco enemigos de horda, dos élites, Gólgora y las entidades de la colección. Cada enemigo tiene aquí una ficha de identidad y función. Sus recursos visuales se reúnen en [[02 - Personajes y Animación]] y sus reglas de combate en [[03 - Enemigos y NPC]].
 
+[Ver la lámina de proporciones del reparto](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#proporciones-en-reposo).
+
 ## El Coleccionista
 
 Es el personaje que controla el jugador. Lleva capucha clara, máscara con pico, ropa oscura y farol. Su luz apunta de forma independiente del movimiento. Tiene sprites de reposo, marcha, dash y muerte en cuatro direcciones.

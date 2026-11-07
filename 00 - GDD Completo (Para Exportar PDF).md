@@ -496,6 +496,8 @@ La entidad del pacto pertenece al trasfondo de la premisa. Gólgora es el guardi
 
 El reparto incluye al Coleccionista, cinco enemigos de horda, dos élites, Gólgora y las entidades de la colección. Cada enemigo tiene aquí una ficha de identidad y función. Sus recursos visuales se reúnen en [[02 - Personajes y Animación]] y sus reglas de combate en [[03 - Enemigos y NPC]].
 
+[Ver la lámina de proporciones del reparto](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#proporciones-en-reposo).
+
 ## El Coleccionista
 
 Es el personaje que controla el jugador. Lleva capucha clara, máscara con pico, ropa oscura y farol. Su luz apunta de forma independiente del movimiento. Tiene sprites de reposo, marcha, dash y muerte en cuatro direcciones.
@@ -871,7 +873,7 @@ Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La ident
 
 ![Comparación a escala del Coleccionista y los ocho enemigos](Media/Avance_2026-11-07/Enemigos/Proporciones.png)
 
-La lámina reúne capturas de Unity de la revisión `6f80564`, con cámara ortográfica inclinada a 35,5°, igual distancia y escala, y una línea común de suelo. El Coleccionista equivale a 1,00×. La tabla mide la altura visible de una pose de reposo o flotación, con el cuerpo de Gólgora aislado de su martillo. La pose y el ángulo pueden cambiar ligeramente la proporción que se ve en partida.
+La lámina reúne capturas de Unity de la revisión `0d016ad`, con cámara ortográfica inclinada a 35,5°, igual distancia y escala, y una línea común de suelo. El Coleccionista equivale a 1,00×. La tabla mide la altura visible de una pose de reposo o flotación, con el cuerpo de Gólgora aislado de su martillo. En esta toma, Gólgora mide 432 píxeles y el Coleccionista 173. La pose y el ángulo pueden cambiar ligeramente la proporción que se ve en partida.
 
 | Personaje | Altura visible frente al Coleccionista |
 | --- | ---: |
@@ -883,9 +885,9 @@ La lámina reúne capturas de Unity de la revisión `6f80564`, con cámara ortog
 | Coloso / Wendigo | 1,27× |
 | Caballero Fantasma | 1,31× |
 | Centinela de Cobre | 1,28× |
-| Gólgora | 1,68× |
+| Gólgora | 2,50× |
 
-El Esqueleto toma al Coleccionista como referencia y los dos élites toman al Wendigo. El Galgo creció un 10% respecto a la escala que tenía en `develop`. Las proporciones de la lámina describen la presentación de los personajes.
+El Esqueleto toma al Coleccionista como referencia y los dos élites toman al Wendigo. El Galgo creció un 10% respecto a la escala que tenía en `develop`. Gólgora tiene una altura visual objetivo de 2,50× en reposo. La cámara de la caldera reserva espacio para el cuerpo ampliado y el modelo conserva su escala al caer.
 
 ## Recursos actuales y estado de integración
 
@@ -1064,7 +1066,7 @@ Es el jefe de la expedición. Su cuerpo pesado, arma y magma se representan con 
 
 ### Ataques dentro de la arena
 
-Las siguientes capturas de Unity son del 4 de noviembre de 2026. Cada patrón se invocó de forma aislada, con jugador protegido, cámara de detalle y oleadas detenidas. La lluvia corresponde a la segunda fase. Permiten observar el modelo y sus efectos durante el ataque.
+Las siguientes capturas de Unity son del 4 de noviembre de 2026 y conservan las proporciones de esa versión. Cada patrón se invocó de forma aislada, con jugador protegido, cámara de detalle y oleadas detenidas. La lluvia corresponde a la segunda fase. La lámina de proporciones muestra la escala vigente de Gólgora.
 
 | Ataque en Unity | Registro |
 | --- | --- |
