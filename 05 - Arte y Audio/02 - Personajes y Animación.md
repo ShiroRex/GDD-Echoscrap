@@ -1,8 +1,8 @@
 # Personajes y animación
 
-Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
+Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites, Gólgora y las quince entidades de la colección. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
 
-Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
+Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]] y [[04 - Objetos y Coleccionables]]. La identidad, historia de origen y papel general de cada personaje se recogen en [[03 - Personajes]].
 
 ## Recursos actuales y estado de integración
 
@@ -17,6 +17,7 @@ Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La ident
 | Caballero Fantasma | Sprite integrado; atlas de 224 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, preparación 8, ataque 6, recuperación 6, impacto 4 y muerte 12. |
 | Centinela de Cobre / gólem | Sprite integrado; atlas de 288 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, apertura 6, preparación 8, disparo 8, vulnerabilidad 8, cierre 6, impacto 4 y muerte 12. |
 | Gólgora / MataColeccionista | Modelo 3D animado integrado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
+| Entidades de la colección (15) | Sprites 2D en pixel art integrados en arena, vitrinas y selectores. | Vistas estáticas o ciclos cortos de reposo según entidad. |
 
 ## Cómo leer las previsualizaciones
 
@@ -193,5 +194,27 @@ Las siguientes capturas de Unity son del 4 de noviembre de 2026. Cada patrón se
 | Lluvia de segunda fase | ![Gólgora: lluvia de escoria en segunda fase](../Media/Avance_2026-11-04/Enemigos/Golgora_Lluvia.gif) |
 
 Los daños, tiempos, fases, refuerzos y reglas de cierre están en [[03 - Enemigos y NPC]]. Los efectos de ataques y mejoras se reúnen en [[06 - Registro visual]].
+
+## Entidades de la colección
+
+Las quince entidades coleccionables se presentan en el mundo y en las vitrinas de la Bóveda mediante sprites 2D en pixel art exportados a doble escala sin interpolación. Sus historias de origen se documentan en [[03 - Personajes]] y sus rarezas, fuentes y poderes en [[04 - Objetos y Coleccionables]].
+
+| Entidad | Rareza | Previsualización del sprite | Fuente editable |
+| --- | --- | --- | --- |
+| Yanikua | Mítico | ![Sprite de Yanikua](../Media/Coleccionables/Yanikua.png) | [Yanikua.aseprite](../Sprites/Yanikua.aseprite) |
+| Lisa | Legendario | ![Sprite de Lisa](../Media/Coleccionables/Lisa.png) | [Lisa.aseprite](../Sprites/Lisa.aseprite) |
+| Sirena | Legendario | ![Sprite de Sirena](../Media/Coleccionables/Sirena_adelante_atras.png) | [Sirena_adelante_atras.aseprite](../Sprites/Sirena_adelante_atras.aseprite) |
+| Hada | Épico | ![Sprite de Hada](../Media/Coleccionables/Hada_atras_adelante.png) | [Hada_atras_adelante.aseprite](../Sprites/Hada_atras_adelante.aseprite) |
+| Murciélago Cristal | Épico | ![Sprite de Murciélago Cristal](../Media/Coleccionables/Murcielagocristal_atras_adelante.png) | [Murcielagocristal_atras_adelante.aseprite](../Sprites/Murcielagocristal_atras_adelante.aseprite) |
+| Shireen | Especial | ![Sprite de Shireen](../Media/Coleccionables/Shireen.png) | [Shireen.aseprite](../Sprites/Shireen.aseprite) |
+| Soldier | Especial | ![Sprite de Soldier](../Media/Coleccionables/Soldier_zombie-Sheet.png) | [Soldier_zombie-Sheet.aseprite](../Sprites/Soldier_zombie-Sheet.aseprite) |
+| Conde Alucard | Especial | ![Sprite de Conde Alucard](../Media/Coleccionables/Conde_Alucard.png) | [Conde_Alucard.aseprite](../Sprites/Conde_Alucard.aseprite) |
+| Mago | Raro | ![Sprite de Mago](../Media/Coleccionables/Mago.png) | [Mago.aseprite](../Sprites/Mago.aseprite) |
+| Demonio | Raro | ![Sprite de Demonio (frente)](../Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)](../Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](../Sprites/Demonio.aseprite) · [Demonio2.aseprite](../Sprites/Demonio2.aseprite) |
+| Joel | Raro | ![Sprite de Joel](../Media/Coleccionables/Jov4.png) | [Jov4.aseprite](../Sprites/Jov4.aseprite) |
+| Chico Emo | Raro | ![Sprite de Chico Emo](../Media/Coleccionables/Chico_Emo.png) | [Chico_Emo.aseprite](../Sprites/Chico_Emo.aseprite) |
+| Lobito | Común | ![Sprite de Lobito](../Media/Coleccionables/Lobito.png) | [Lobito.aseprite](../Sprites/Lobito.aseprite) |
+| Basket | Común | ![Sprite de Basket](../Media/Coleccionables/basket.png) | [basket.aseprite](../Sprites/basket.aseprite) |
+| Reaper | Común | ![Sprite de Reaper](../Media/Coleccionables/Reaper.png) | [Reaper.aseprite](../Sprites/Reaper.aseprite) |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

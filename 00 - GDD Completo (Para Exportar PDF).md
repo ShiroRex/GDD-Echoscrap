@@ -552,9 +552,67 @@ Jefe de la expedición. Su modelo 3D combina cuerpo pesado, arma y magma. Combat
 
 ## Entidades de la colección
 
-La colección reúne Lobito, Mago, Demonio, Shireen, Yanikua, Basket, Hada, Lisa, Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena, Soldier y Joel. Son quince entradas del inventario; Demonio y Demonio2 siguen siendo vistas de una misma entrada.
+La colección reúne quince entidades provenientes de distintos mundos y realidades que colapsaron hacia el Vertedero de Ecos. Nueve de ellas se encuentran directamente en la arena y seis se obtienen en la máquina de fusión. Sus rarezas, probabilidades y valores exactos de combate se consultan en [[04 - Objetos y Coleccionables]], y sus vistas y archivos editables en [Personajes y animación](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#entidades-de-la-colecci%C3%B3n).
 
-Cada entidad puede aportar un poder al ocupar uno de los tres puestos de equipo. Su rareza y fuente de obtención pertenecen a las reglas del catálogo, recogidas en [[04 - Objetos y Coleccionables]]. Esta edición no añade historias de origen para personajes que todavía no las tienen documentadas.
+### Yanikua
+
+Supervisora de mantenimiento en una planta de agua potable de su mundo de origen, reconocible por su uniforme operativo con cintas reflectantes, botas de seguridad y las rodillas manchadas de lodo por el trabajo de campo. Durante una guardia nocturna, una fractura dimensional comenzó a tragarse las instalaciones; en lugar de huir, permaneció en la sala de válvulas cerrando manualmente las compuertas principales para dar tiempo a que su cuadrilla evacuara, convirtiéndose en la última en caer al Vertedero. Su temple bajo presión y su resistencia física refuerzan al Coleccionista e incluso le permiten sobrevivir a un golpe letal por expedición.
+
+### Lisa
+
+Joven viajera proveniente de una ciudad invernal que quedó congelada en el tiempo antes de fracturarse. Viste un abrigo blanco de corte ligero y boina rosa sobre su cabellera celeste, manteniendo una expresión serena incluso en medio del caos de la fosa. Acostumbrada al frío extremo de su hogar, conserva un aura gélida capaz de congelar periódicamente a los enemigos cercanos y mantener un ritmo constante de ataque.
+
+### Sirena
+
+Habitante de un océano abisal cuyos mares se evaporaron cuando su mundo se resquebrajó. Su cola escamosa oscura con destellos dorados y las joyas que adornan su cabello reflejan su origen en las profundidades, donde utilizaba pulsos de presión y cantos resonantes para orientarse en la penumbra. En el Vertedero emplea esa misma onda expansiva para apartar a la horda y restaurar parte de la vitalidad del jugador.
+
+### Hada
+
+Pequeña artesana alada de tonos azules que lleva un delantal de trabajo, un carrete de hilo con alfileres sujeto al cabello y unas tijeras doradas de costura en la mano. En su reino original se encargaba de remendar tapices encantados; tras caer a la fosa, utiliza sus hilos invisibles para tejer una barrera protectora alrededor del Coleccionista que absorbe impactos directos antes de volver a hilvanarse.
+
+### Murciélago Cristal
+
+Criatura nocturna nacida en cavernas subterráneas de cuarzo, cuyas alas translúcidas, orejas minerales y gema caudal refractan cualquier destello de luz. Cuando las bóvedas de su mundo se desplomaron, quedó atrapado entre la chatarra del Vertedero, donde emite vibraciones acústicas a través de sus cristales para dañar y entorpecer el avance de las criaturas cercanas.
+
+### Shireen
+
+Danzante y curandera de un oasis desértico, ataviada con sedas color magenta y una diadema dorada con rubí en la frente. Cuando su santuario fue absorbido por la anomalía, conservó consigo las plegarias de su pueblo para aliviar el agotamiento de los viajeros perdidos, canalizando una recuperación constante de salud durante el combate.
+
+### Soldier
+
+Motociclista y combatiente urbano sobreviviente de una metrópoli arrasada por una infección zombi. Porta un casco rojo con visor oscuro, guantes tácticos y una chamarra mostaza marcada en el pecho por zarpazos que no lograron derribarlo cuando defendía el último puente de evacuación de su ciudad. Curtido en resistir emboscadas cuerpo a cuerpo, aporta mayor vitalidad y reduce el daño recibido.
+
+### Conde Alucard
+
+Un peculiar capibara vampiro de porte aristocrático que habitaba los humedales nocturnos de un mundo gótico. Ataviado con sombrero de copa, medallón dorado y una capa negra de cuello carmesí, solía pasear con calma junto a las lagunas antes de que su realidad desapareciera. Fiel a su naturaleza vampírica pero pacífica con su portador, drena pequeñas dosis de vitalidad de los enemigos derrotados para curar al Coleccionista.
+
+### Mago
+
+Hechicero veterano de barba rojiza, túnica azul y sombrero puntiagudo que cayó al Vertedero aferrado a su báculo de madera coronado por un cristal arcano. Aunque la destrucción de su torre le arrebató sus libros de conjuros complejos, todavía concentra esferas de energía pura en su mano libre para disparar proyectiles mágicos que atraviesan a las filas de la horda.
+
+### Demonio
+
+Pequeño diablillo carmesí de mirada traviesa cuyas orejas y punta de la cola arden con fuego vivo. Proveniente de un plano volcánico menor colapsado, disfruta del caos de la arena más que cualquier otro habitante del almacén, imbuyendo los ataques del Coleccionista con su temperamento agresivo para aumentar el daño e incendiar a los enemigos.
+
+### Joel
+
+Joven programador y estudiante de ingeniería que fue tragado por una grieta dimensional en plena madrugada mientras depuraba código. Llegó al Vertedero tal como estaba: con su laptop llena de calcomanías bajo un brazo y un vaso de café cargado en la otra mano. Su ritmo acelerado por la cafeína y su costumbre de trabajar contra reloj incrementan la velocidad de ataque del farol.
+
+### Chico Emo
+
+Joven reservado de lentes, chamarra oscura y playera con estampado de calavera que solía pasar las tardes aislado entre música y callejones de su ciudad antes del colapso. Acostumbrado a escabullirse sin llamar la atención y reaccionar por reflejo ante el peligro, le permite al Coleccionista duplicar su velocidad de carrera justo después de ejecutar un *dash*.
+
+### Lobito
+
+Lobo antropomórfico y disciplinado practicante de artes marciales que viste un *karategi* blanco con cinturón negro, guantes de combate y una bufanda roja al cuello. Entrenaba en un dojo de montaña cuando su mundo se fragmentó; pese a estar lejos de su hogar, mantiene su guardia firme y comparte su acondicionamiento físico para incrementar la salud máxima del jugador.
+
+### Basket
+
+Jugador de baloncesto callejero que porta el uniforme azul número 77, su balón bajo el brazo y una llamativa máscara de lucha libre para ocultar su identidad en las canchas de su barrio. La falla dimensional lo sorprendió en pleno partido, por lo que ahora utiliza su juego de pies y cambios de ritmo para otorgar mayor velocidad de movimiento entre los obstáculos de la arena.
+
+### Reaper
+
+Pequeño espectro encapuchado de cráneo pálido, ojos rojos encendidos y costillas expuestas que carga una guadaña casi tan grande como él. Era un guía menor de almas en un plano espiritual extinguido; al quedar sin difuntos que escoltar, acompaña al Coleccionista desde la Bóveda afilando la contundencia de cada ataque.
 
 ---
 
@@ -861,9 +919,9 @@ Los efectos reducidos retiran decoración y movimiento accesorio, conservando lo
 
 # Personajes y animación
 
-Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
+Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites, Gólgora y las quince entidades de la colección. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos de horda y jefe conservan sus registros del 4 de noviembre de 2026. Los élites incorporan los atlas y ciclos conectados al juego y las capturas de Unity del 5 de noviembre.
 
-Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
+Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]] y [[04 - Objetos y Coleccionables]]. La identidad, historia de origen y papel general de cada personaje se recogen en [[03 - Personajes]].
 
 ## Recursos actuales y estado de integración
 
@@ -878,6 +936,7 @@ Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La ident
 | Caballero Fantasma | Sprite integrado; atlas de 224 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, preparación 8, ataque 6, recuperación 6, impacto 4 y muerte 12. |
 | Centinela de Cobre / gólem | Sprite integrado; atlas de 288 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, apertura 6, preparación 8, disparo 8, vulnerabilidad 8, cierre 6, impacto 4 y muerte 12. |
 | Gólgora / MataColeccionista | Modelo 3D animado integrado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
+| Entidades de la colección (15) | Sprites 2D en pixel art integrados en arena, vitrinas y selectores. | Vistas estáticas o ciclos cortos de reposo según entidad. |
 
 ## Cómo leer las previsualizaciones
 
@@ -1054,6 +1113,28 @@ Las siguientes capturas de Unity son del 4 de noviembre de 2026. Cada patrón se
 | Lluvia de segunda fase | ![Gólgora: lluvia de escoria en segunda fase](Media/Avance_2026-11-04/Enemigos/Golgora_Lluvia.gif) |
 
 Los daños, tiempos, fases, refuerzos y reglas de cierre están en [[03 - Enemigos y NPC]]. Los efectos de ataques y mejoras se reúnen en [[06 - Registro visual]].
+
+## Entidades de la colección
+
+Las quince entidades coleccionables se presentan en el mundo y en las vitrinas de la Bóveda mediante sprites 2D en pixel art exportados a doble escala sin interpolación. Sus historias de origen se documentan en [[03 - Personajes]] y sus rarezas, fuentes y poderes en [[04 - Objetos y Coleccionables]].
+
+| Entidad | Rareza | Previsualización del sprite | Fuente editable |
+| --- | --- | --- | --- |
+| Yanikua | Mítico | ![Sprite de Yanikua](Media/Coleccionables/Yanikua.png) | [Yanikua.aseprite](Sprites/Yanikua.aseprite) |
+| Lisa | Legendario | ![Sprite de Lisa](Media/Coleccionables/Lisa.png) | [Lisa.aseprite](Sprites/Lisa.aseprite) |
+| Sirena | Legendario | ![Sprite de Sirena](Media/Coleccionables/Sirena_adelante_atras.png) | [Sirena_adelante_atras.aseprite](Sprites/Sirena_adelante_atras.aseprite) |
+| Hada | Épico | ![Sprite de Hada](Media/Coleccionables/Hada_atras_adelante.png) | [Hada_atras_adelante.aseprite](Sprites/Hada_atras_adelante.aseprite) |
+| Murciélago Cristal | Épico | ![Sprite de Murciélago Cristal](Media/Coleccionables/Murcielagocristal_atras_adelante.png) | [Murcielagocristal_atras_adelante.aseprite](Sprites/Murcielagocristal_atras_adelante.aseprite) |
+| Shireen | Especial | ![Sprite de Shireen](Media/Coleccionables/Shireen.png) | [Shireen.aseprite](Sprites/Shireen.aseprite) |
+| Soldier | Especial | ![Sprite de Soldier](Media/Coleccionables/Soldier_zombie-Sheet.png) | [Soldier_zombie-Sheet.aseprite](Sprites/Soldier_zombie-Sheet.aseprite) |
+| Conde Alucard | Especial | ![Sprite de Conde Alucard](Media/Coleccionables/Conde_Alucard.png) | [Conde_Alucard.aseprite](Sprites/Conde_Alucard.aseprite) |
+| Mago | Raro | ![Sprite de Mago](Media/Coleccionables/Mago.png) | [Mago.aseprite](Sprites/Mago.aseprite) |
+| Demonio | Raro | ![Sprite de Demonio (frente)](Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)](Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](Sprites/Demonio.aseprite) · [Demonio2.aseprite](Sprites/Demonio2.aseprite) |
+| Joel | Raro | ![Sprite de Joel](Media/Coleccionables/Jov4.png) | [Jov4.aseprite](Sprites/Jov4.aseprite) |
+| Chico Emo | Raro | ![Sprite de Chico Emo](Media/Coleccionables/Chico_Emo.png) | [Chico_Emo.aseprite](Sprites/Chico_Emo.aseprite) |
+| Lobito | Común | ![Sprite de Lobito](Media/Coleccionables/Lobito.png) | [Lobito.aseprite](Sprites/Lobito.aseprite) |
+| Basket | Común | ![Sprite de Basket](Media/Coleccionables/basket.png) | [basket.aseprite](Sprites/basket.aseprite) |
+| Reaper | Común | ![Sprite de Reaper](Media/Coleccionables/Reaper.png) | [Reaper.aseprite](Sprites/Reaper.aseprite) |
 
 ---
 

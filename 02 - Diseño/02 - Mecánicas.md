@@ -30,12 +30,12 @@ El Coleccionista empieza con 100 HP y 0,4 s de protección después de recibir d
 
 El daño entrante verifica invulnerabilidad y la protección de entidades. Después sortea evasión, aplica reducción de daño por entidades, sortea bloqueo y aplica armadura. Evasión y bloqueo parten de 0%, con topes técnicos de 35% y 50%. Un bloqueo reduce el daño un 50% antes de la armadura. Blindaje concede hasta 20 puntos porcentuales de armadura con cinco cartas, dentro del tope del sistema de 60%.
 
-| Estado del enemigo | Aplicación y expiración |
-| --- | --- |
-| Ralentización | Freón se aplica antes de contar el mismo pulso para Cero absoluto. Cada aplicación conserva la intensidad y el tiempo mayores. Al expirar se pierden los impactos de frío acumulados. |
-| Congelación | Cero absoluto solo cuenta si hay ralentización activa y el objetivo sigue vivo y sin congelar. Congelar reinicia ese contador y conserva la duración mayor. Ventisca y Quiebre de hielo pueden congelar directamente. El objetivo congelado recibe ×1,30 de daño de ataques del jugador. |
-| Aturdimiento | Conserva el tiempo restante mayor. Igual que la congelación, bloquea el control del enemigo mientras el temporizador esté activo. |
-| Empuje | Se resuelve según susceptibilidad y frenado de cada arquetipo. Las excepciones y ventanas de inmunidad de Gólgora se especifican en [[03 - Enemigos y NPC]]. |
+| Estado del enemigo | Aplicación y expiración                                                                                                                                                                                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ralentización      | Freón se aplica antes de contar el mismo pulso para Cero absoluto. Cada aplicación conserva la intensidad y el tiempo mayores. Al expirar se pierden los impactos de frío acumulados.                                                                                                    |
+| Congelación        | Cero absoluto solo cuenta si hay ralentización activa y el objetivo sigue vivo y sin congelar. Congelar reinicia ese contador y conserva la duración mayor. Ventisca y Quiebre de hielo pueden congelar directamente. El objetivo congelado recibe ×1,30 de daño de ataques del jugador. |
+| Aturdimiento       | Conserva el tiempo restante mayor. Igual que la congelación, bloquea el control del enemigo mientras el temporizador esté activo.                                                                                                                                                        |
+| Empuje             | Se resuelve según susceptibilidad y frenado de cada arquetipo. Las excepciones y ventanas de inmunidad de Gólgora se especifican en [[03 - Enemigos y NPC]].                                                                                                                             |
 
 Los números muestran la salud realmente perdida. Los impactos normales de una ráfaga pueden agruparse, mientras que los críticos se distinguen con tamaño, color y un signo de exclamación. Los impactos mitigados por resistencia muestran «Resistido» bajo el valor y una ejecución causada por la mejora correspondiente muestra «EJECUTADO».
 
