@@ -115,8 +115,4 @@ Si el juego no encaja claramente en las categorías anteriores, documenta aquí 
 
 ### Elección del proyecto
 
-**Género principal:**  
-**Justificación:**  
-
-**Géneros secundarios:**  
-**Justificación:**
+La clasificación de EchoScrap está en [[01 - Ficha del Proyecto]]. Acción describe el movimiento en tiempo real, el dash y la respuesta a los patrones de la horda y del jefe.

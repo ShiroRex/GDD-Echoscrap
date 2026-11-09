@@ -11,7 +11,7 @@ El equipo consta de cinco integrantes con roles definidos. Sierra Sosa David Ale
 | Integrante / Rol | Responsabilidad en el GDD | Apartados como redactor |
 |---|---|---:|
 | **Mora Alejandro Angel Gabriel** (Líder) | Visión, premisa, alcance, producción, acuerdos y cierre de entrega. | 12 |
-| **Sierra Sosa David Alejandro** (Desarrollo y diseño de juego) | Mecánicas, balance, contenido jugable, tecnología y guardado. | 18 |
+| **Sierra Sosa David Alejandro** (Desarrollo y diseño de juego) | Mecánicas, balance, contenido jugable, tecnología, guardado y registro visual. | 19 |
 | **Cupul Dzul Mirian Leticia** (Artista 1) | Dirección visual, fichas de personajes y animaciones. | 3 |
 | **Obispo Navarro Samuel Alejandro** (Artista 2 — apoya audio) | Mundo, entornos e interfaz visual; apoyo al responsable de audio. | 3 |
 | **Nuñez Chan Luis Fernando** (Audio, UX y apoyo general) | Narrativa presentada al jugador, sonido, UX, QA y referencias. | 11 |
@@ -58,6 +58,7 @@ Un apartado está listo cuando contiene decisiones propias de *EchoScrap*, sus l
 | 05 - Arte y Audio · 03 - Entornos | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1) |
 | 05 - Arte y Audio · 04 - Interfaz Visual | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1) |
 | 05 - Arte y Audio · 05 - Audio y Música | Nuñez Chan Luis Fernando | Obispo Navarro Samuel Alejandro (Artista 2) |
+| 05 - Arte y Audio · 06 - Registro visual | Sierra Sosa David Alejandro | Sierra Sosa David Alejandro |
 | 06 - Experiencia · 01 - UX y Flujo del Jugador | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
 | 06 - Experiencia · 02 - UI y Menús | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
 | 06 - Experiencia · 03 - Accesibilidad | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
@@ -81,6 +82,8 @@ Un apartado está listo cuando contiene decisiones propias de *EchoScrap*, sus l
 | 10 - Referencia · 03 - Registro de Decisiones | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
 | 10 - Referencia · 04 - Historial de Versiones | Mora Alejandro Angel Gabriel (Líder) | Nuñez Chan Luis Fernando |
 
+El reparto cubre los 48 apartados de contenido de las secciones 01 a 10. Por asignación expresa de David Alejandro Sierra Sosa, Registro visual queda a su cargo como redactor y revisor.
+
 Los apoyos y el entregable específico de cada archivo se detallan en la matriz de reparto. Cada área proporciona sus referencias al responsable que las consolida en `10 - Referencia/02 - Referencias e Inspiración.md`.
 
 ## Qué corresponde específicamente a David
@@ -91,6 +94,8 @@ Los apoyos y el entregable específico de cada archivo se detallan en la matriz 
 4. **07 — Tecnología: los cinco apartados.** Arquitectura, Motor y Herramientas, Requisitos, Datos y Persistencia, Seguridad y Riesgos Técnicos.
 
 En Niveles, David define dimensiones, límites, *spawn* y función jugable; Samuel (Artista 2) prepara el esquema y la ambientación. En Enemigos, David define comportamiento, estadísticas y ataques; Mirian (Artista 1) prepara aspecto y animaciones en sus apartados. En Objetos, David define efectos y condiciones; los artistas especifican iconos y representación visual.
+
+5. **05 — Arte y Audio: Registro visual.** Redacción, revisión y mantenimiento de capturas, atlas y condiciones de procedencia.
 
 Además revisa Visión y Producción, el flujo funcional de UX/UI, accesibilidad, glosario y criterios de prueba. Revisar estos archivos no lo convierte en su redactor.
 

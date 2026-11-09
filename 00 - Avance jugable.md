@@ -1,38 +1,37 @@
 # EchoScrap: avance jugable
 
-**GDD 0.5.2 · 5 de noviembre de 2026.**
+**GDD 0.6.2 · 8 de noviembre de 2026 (`develop` @ `9eed59f`).**
 
-El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
+El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
 ## Recorrido de una sesión
 
-Menú inicial → continuar o crear colección → bóveda → revisar y seleccionar entidades equipadas → elegir ronda demo o completa → expedición → regreso a la bóveda.
+Menú inicial (con registro de nombre para el ranking de evento) → continuar o crear colección → bóveda → consultar el Índice (`[I]`), fusionar copias (`E`) y seleccionar entidades equipadas en el balcón → elegir ronda demo o completa → expedición → regreso a la bóveda.
 
-La elección de entidades forma parte de la preparación. Se pueden ocupar hasta tres puestos con copias del inventario o salir con puestos vacíos. El sistema ya funciona al acercarse a cada puesto y pulsar E, pero el recorrido actual no explica este paso con suficiente claridad. La señalización de esa preparación queda pendiente; se detalla en [[03 - Bugs y Seguimiento]].
+La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedestales superiores (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), dos indicadores direccionales en la parte superior de la pantalla (`VaultDirections`) que apuntan hacia la máquina de fusión y el balcón de equipo, y un panel inferior izquierdo de consejos (`VaultTips`) que rota cada `8 s`. En los puestos 1 a 3 del balcón, pulsar `E` (`E · EQUIPAR` / `E · EDITAR`) abre el selector de acompañantes (con botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`), mientras que `T` retira directamente la entidad equipada al mundo; en los puestos 4 a 10 de la planta baja, pulsar `E` (`E · LIBERAR`) abre el diálogo de confirmación para liberar una copia de la colección.
 
 ![Bóveda y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
+*Nota sobre la captura histórica: la vista muestra la geometría general de la bóveda en una iteración previa a la incorporación de los indicadores direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel de consejos (`VaultTips`) presentes en `9eed59f`.*
 
 | Área | Contenido de esta versión |
 | --- | --- |
-| Partida | Menú inicial, colección nueva o existente, preparación en bóveda, selección de ronda y resultados con retorno a la bóveda. |
-| Control | Movimiento con teclado o mando, dash con invulnerabilidad, relieve y colisiones. La interacción de colección, equipo y fusión usa E. |
+| Partida | Menú inicial con nombre de jugador para el ranking en vivo (`EventLeaderboardSync`), colección nueva o existente, preparación guiada en bóveda, selección de ronda y resultados con retorno a la bóveda. |
+| Control | Movimiento con teclado o mando, dash con invulnerabilidad, relieve y colisiones. Interacción con `E`, desequipado rápido en balcón con `T`, Índice de Colección con `I` y consulta rápida de detalles del HUD en combate manteniendo `Q` o `Select`. |
 | Combate | Linterna de cuatro pulsos con autoapuntado y 35 mejoras en cuatro rarezas. |
 | Enemigos | Cinco arquetipos de horda, dos élites y Gólgora. |
-| Rondas | Demo: jefe a los 3:00 y 3600 HP. Completa: jefe a los 8:00 y 9000 HP. La victoria exige derrotarlo. |
-| Mundo | Arena de 200 × 200 m, acceso norte, bóveda modular y caldera central del jefe. Las zonas de lava fija del mapa están desactivadas. |
-| Colección | Quince entidades, seis rarezas, recogida manual en arena, tres puestos de equipo y siete de exposición. |
-| Fusión | Cuatro copias disponibles, consumo al comenzar, probabilidades por calidad y resultado que se colecciona o libera. |
-| Presentación | Sprites animados, modelo del jefe, minimapa con exploración, retratos, VFX y audio contextual. |
+| Rondas | Demo: jefe a los 3:00 y 3600 HP. Completa: jefe a los 8:00 y 9000 HP (15 000 HP base en código). La victoria exige derrotarlo. |
+| Mundo | Arena de 200 × 200 m, acceso norte, bóveda modular en dos niveles y caldera central del jefe. Las zonas de lava fija del mapa están desactivadas. |
+| Colección | Quince entidades en seis rarezas y capacidad máxima estricta de **10 unidades** en posesión (`3` puestos de equipo en el balcón + `7` puestos de exposición en la planta baja), más el **Índice de Colección (`[I]`)** con pestañas `POR RAREZAS` y `EN TU BÓVEDA`. |
+| Fusión | Cuatro copias de la misma rareza (incluidas copias equipadas en los puestos 1–3), duración fija de **30 segundos (`00:30`)** en todas las recetas y botón único `COLECCIONAR` al reclamar el resultado (requiere espacio libre en las 10 unidades). |
+| Presentación | Tipografía unificada `Pixelify Sans`, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), sprites animados, modelo 3D del jefe, minimapa con exploración, retratos, VFX y audio contextual. |
 
 ## Dónde consultar cada parte
 
-- [[01 - Jugabilidad]] y [[01 - UX y Flujo del Jugador]] describen la preparación y la expedición.
-- [[04 - Objetos y Coleccionables]] reúne las quince entidades, sus poderes y las reglas de fusión.
+- [[01 - Jugabilidad]] y [[01 - UX y Flujo del Jugador]] describen la preparación en la bóveda y la expedición.
+- [[04 - Objetos y Coleccionables]] reúne las quince entidades, sus poderes, el Índice de Colección (`[I]`), la capacidad de 10 unidades y las reglas de fusión.
 - [[03 - Personajes]] identifica individualmente a los enemigos y su papel.
-- [[03 - Enemigos y NPC]] contiene los valores y las reglas de los ataques.
-- [[02 - Personajes y Animación]] reúne las fichas visuales, fuentes editables, spritesheets y GIFs de personajes y enemigos; señala la integración pendiente del Caballero y el gólem.
+- [[03 - Enemigos y NPC]] contiene los valores, la respuesta al empuje y las reglas de los ataques.
+- [[02 - Personajes y Animación]] reúne las fichas visuales, fuentes editables, spritesheets y GIFs de personajes y enemigos.
 - [[06 - Registro visual]] reúne los GIFs de VFX y las condiciones de las capturas.
-
-Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del proyecto; las capturas de Unity se identifican aparte. Las imágenes de preparación utilizan un inventario de muestra para enseñar las opciones. Una colección nueva empieza vacía.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

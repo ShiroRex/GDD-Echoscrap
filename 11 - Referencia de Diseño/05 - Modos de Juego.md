@@ -42,7 +42,4 @@ El juego puede incluir ambos tipos de interacción en diferentes modos.
 
 ### Elección del proyecto
 
-**Modo principal:**  
-**Jugadores simultáneos:**  
-**Local / En línea:**  
-**Justificación:**
+El modo de EchoScrap está en [[01 - Ficha del Proyecto]]. Una persona juega localmente y elige una ronda demo o completa. Ambas variantes comparten el ciclo de expedición y el guardado de colección.

@@ -2,27 +2,26 @@
 
 ## Descripción de la sección
 
-El diseño de un videojuego evoluciona durante la revisión del equipo y la retroalimentación del profesor. Esta sección establece el protocolo para evaluar y registrar modificaciones sin romper la coherencia entre apartados.
+El diseño del videojuego evoluciona con cada integración en `develop`. Esta sección establece el protocolo para evaluar y registrar modificaciones manteniendo la coherencia total entre los apartados del GDD.
 
 ## Flujo para aprobar un cambio
 
-1. **Propuesta:** Cualquier integrante identifica una necesidad de ajuste (de balance, alcance, arte o interfaz) y describe el motivo y los archivos afectados.
-2. **Validación técnica y de reglas:** Sierra Sosa David Alejandro verifica cómo impacta el cambio en las estadísticas, las 35 mejoras, el rendimiento o la persistencia.
-3. **Coordinación y cierre:** Mora Alejandro Angel Gabriel (Líder) confirma que el cambio respeta el alcance de entrega y coordina la actualización simultánea en todos los documentos relacionados antes de subirlo al repositorio.
+1. **Propuesta:** cualquier integrante identifica una necesidad de ajuste (de balance, alcance, arte o interfaz) y describe el motivo y los archivos afectados.
+2. **Validación técnica y de reglas:** Sierra Sosa David Alejandro verifica cómo impacta el cambio en las estadísticas, las 35 mejoras, la colección, el rendimiento o la persistencia.
+3. **Coordinación y cierre:** Mora Alejandro Angel Gabriel (Líder) confirma que el cambio respeta el alcance de entrega y coordina la actualización simultánea en todos los documentos relacionados.
 
 ## Registro de cambios aplicados al diseño
 
 | Fecha | Cambio | Motivo | Impacto en otros sistemas | Responsable | Estado |
 |---|---|---|---|---|---|
-| **15/10/2026** | Unificación de historia de origen del Coleccionista (humano atrapado por un pacto engañoso). | Alinear `01 - Visión` y `03 - Historia y Mundo` bajo una sola premisa narrativa. | Actualización de fichas de lore y descripción general del protagonista. | Mora Alejandro Angel Gabriel / Nuñez Chan Luis Fernando | Histórico |
-| **15/10/2026** | Eliminación de divisas residuales y fijación de **hasta 3 Entidades equipables** con **+1 nivel por duplicado**. | Simplificar la meta-progresión y hacer que cada victoria contra Gólgora sea significativa. | Sincronización de `02 - Diseño`, `04 - Contenido`, `05 - Interfaz Visual`, `06 - Experiencia` y `07 - Datos y Persistencia`. | Sierra Sosa David Alejandro / Mora Alejandro Angel Gabriel | Histórico |
-| **15/10/2026** | Definición de **muros perimetrales físicos** de chatarra y cámara cenital unificada a **60°**. | Delimitar físicamente la arena de $120 \times 120\text{ m}$ y estandarizar la proyección de *sprites* 2D en el entorno 3D. | Ajuste en `02 - Mecánicas`, `04 - Niveles`, `05 - Entornos` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro / Obispo Navarro Samuel Alejandro | Histórico |
-| **16/10/2026** | Invocación periódica de esbirros por Gólgora cada $4.0\text{ s}$ en la Fase 5. | Mantener activas las mejoras de área, curación y recolección de XP durante el jefe final. | Actualización de `02 - Sistemas`, `04 - Niveles`, `04 - Enemigos y NPC` y `05 - Personajes y Animación`. | Sierra Sosa David Alejandro | Histórico |
+| **15/10/2026** | Unificación de historia de origen del Coleccionista (humano atrapado por un pacto engañoso). | Alinear `01 - Visión` y `03 - Historia y Mundo` bajo una sola premisa narrativa. | Fichas de lore y descripción general del protagonista. | Mora Alejandro Angel Gabriel / Nuñez Chan Luis Fernando | Histórico |
+| **15/10/2026** | Eliminación de divisas residuales y fijación de hasta 3 entidades equipables. | Simplificar la meta-progresión entre incursiones. | `02 - Diseño`, `04 - Contenido`, `05 - Interfaz Visual`, `06 - Experiencia` y `07 - Datos y Persistencia`. | Sierra Sosa David Alejandro / Mora Alejandro Angel Gabriel | Histórico |
+| **16/10/2026** | Invocación periódica de esbirros por Gólgora cada `4,0 s`. | Mantener activas las mejoras de área, curación y recolección de XP durante el jefe final. | `02 - Sistemas`, `04 - Niveles` y `04 - Enemigos y NPC`. | Sierra Sosa David Alejandro | Histórico |
+| **04–05/11/2026** | Catálogo de 15 entidades con poderes propios (`CompanionPowerRuntime`), fusión de 4 copias, élites con sprites integrados y cámara exterior a `35,5°`. | Consolidar el bucle de colección y combate de la versión `0.6.0`. | Todas las secciones de diseño, contenido, arte y tecnología. | Sierra Sosa David Alejandro / Equipo EchoScrap | Integrado |
+| **08/11/2026** | Señalización completa de bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), Índice de Colección (`[I]`), capacidad máxima de `10` unidades (`3` equipo + `7` exposición), liberación en pedestales (`E · LIBERAR`), fusión fija de `30 s` con copias equipadas y botón único `COLECCIONAR`, pausa en 3 pestañas, consulta rápida `Q`/`Select`, tipografía `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). | Sincronizar el GDD `0.6.2` con el código fuente verificado de `develop` (`9eed59f`). | Sincronización transversal de las secciones `00` a `10`. | Equipo EchoScrap | Vigente (`0.6.2`) |
 
-## Revisión del 4 de noviembre de 2026
+## Revisión 0.6.2 del 8 de noviembre (`develop` @ `9eed59f`)
 
-La edición 0.5.0 actualiza el estado documentado: preparación y selección de entidades, rondas desde la bóveda, quince entidades, cuatro ingredientes consumibles, dos élites, nuevos sprites, cámara exterior de 35,5°, minimapa, audio y ampliación de Gólgora. Los valores históricos de las filas anteriores se conservan como antecedentes y no describen el montaje vigente.
-
-La selección de equipo se incorpora al flujo de preparación. La falta de señalización que permita descubrirla se registra como pendiente de UX; no se ha implementado una guía durante esta tarea documental.
+La versión `0.6.2` cierra la brecha de señalización en la bóveda (`UX-01`) documentando los sistemas ya implementados en código: rótulos 3D `EQUIPO 1..3`, tarjetas direccionales superiores (`VaultDirections`), consejos rotatorios cada `8 s` (`VaultTips`) e **Índice de Colección (`[I]`)**. Asimismo, actualiza las reglas exactas de capacidad (`10` unidades totales correspondientes a `displays[10]`), la duración fija de `30 s` en todas las recetas de la máquina de fusión, el uso de copias equipadas como ingredientes (`EN EQUIPO 1/2/3`), el menú de pausa en tres pestañas (`General`, `Interfaz`, `Sonido`), la consulta rápida del HUD con `Q` / `Select`, la tipografía unificada `Pixelify Sans`, la sincronización del ranking con Firebase (`EventLeaderboardSync`) y las interacciones de combate (`FLASH_05`, `DASH_04`, `DEMO_03/04`, `SCRAP_03/04`, orden de mitigación en `PlayerHealth`, Polilla Reactor y Gólgora).
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

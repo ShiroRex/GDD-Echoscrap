@@ -1,6 +1,6 @@
-# EchoScrap — GDD 0.5.2
+# EchoScrap — GDD 0.6.2
 
-Documento actualizado al **5 de noviembre de 2026**. Esta revisión completa el registro de VFX con 21 capturas de Unity del 5 de noviembre y conserva las fichas y animaciones de enemigos documentadas el día 4.
+Documento actualizado al **8 de noviembre de 2026** (rama `develop`, commit `9eed59f`). Esta revisión sincroniza el documento con el estado real del código fuente: capacidad máxima de la colección (**10 unidades** distribuidas en 3 puestos de equipo en el balcón y 7 puestos de exposición en la planta baja), señalización e indicadores direccionales implementados en la bóveda (`EQUIPO 1..3`, `VaultDirections` y `VaultTips`), **Índice de Colección (`[I]`)**, máquina de fusión de **30 segundos (`00:30`)** fijos para todas las rarezas, menú de pausa en tres pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida de detalles del HUD en combate con **`Q` / `Select`**, sincronización de ranking en vivo con Firebase (`EventLeaderboardSync`) y reglas exactas de combate, mejoras y jefe.
 
 - [Índice](00%20-%20%C3%8Dndice.md).
 - [Avance y flujo de preparación](00%20-%20Avance%20jugable.md).
@@ -9,12 +9,12 @@ Documento actualizado al **5 de noviembre de 2026**. Esta revisión completa el 
 - [Valores y reglas de combate de los enemigos](04%20-%20Contenido/03%20-%20Enemigos%20y%20NPC.md).
 - [Registro de VFX y capturas](05%20-%20Arte%20y%20Audio/06%20-%20Registro%20visual.md).
 
-La edición incluye el flujo de selección de entidades antes de elegir ronda, quince entidades, equipo de tres puestos, fusión de cuatro copias, dos élites y el encuentro actual de Gólgora. La guía visual para descubrir el equipo queda identificada como pendiente de implementación.
+La edición documenta el flujo completo de preparación antes de elegir ronda: quince entidades, colección de hasta diez unidades simultáneas, equipo activo de tres puestos con rótulos 3D (`EQUIPO 1..3`), indicadores direccionales y consejos contextuales en la bóveda, Índice de Colección (`[I]`), fusión de cuatro copias de la misma rareza (`30 s`), cinco enemigos de horda, dos élites y el encuentro completo contra Gólgora.
 
-Personajes y Animación reúne las fichas individuales, el atlas y los GIFs de todas las acciones de los cinco enemigos de horda, además del Coleccionista y las capturas del modelo 3D de Gólgora. El arte de Caballero Fantasma y Centinela de Cobre (gólem) está preparado, con integración de sprite en Unity pendiente. Las previsualizaciones y las capturas conservan sus condiciones y fechas.
+Personajes y Animación reúne las fichas individuales, el atlas y los GIFs de todas las acciones de los cinco enemigos de horda, además del Coleccionista y las capturas del modelo 3D de Gólgora. Caballero Fantasma y Centinela de Cobre (gólem) usan sus sprites integrados, con ciclos de ataque, apertura y recuperación conectados al combate.
 
-El registro visual incorpora linterna, Rayo solar, Holo-señuelo, Cataclismo, Termobárica, Micro-ensamblador, frío, esquirlas, curación, daño, fusión y portal, junto a las muestras renovadas de mejoras. Las condiciones de captura y los efectos compartidos quedan identificados.
+El registro visual incorpora linterna, Rayo solar, Holo-señuelo, Cataclismo, Termobárica, Micro-ensamblador, frío, esquirlas, curación, daño, fusión y portal, junto a las muestras renovadas de mejoras.
 
-Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.5.2.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
+Puede abrirse como bóveda de Obsidian o con un lector compatible con Markdown y GIFs. **La referencia vigente es el Markdown 0.6.2.** Las exportaciones PDF muestran fotogramas estáticos y no conservan las animaciones.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón. Proyecto y contenidos: equipo EchoScrap.

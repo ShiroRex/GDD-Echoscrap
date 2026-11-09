@@ -1,8 +1,28 @@
 # Personajes y animación
 
-Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda tiene su spritesheet, la fuente editable y los GIFs de todas sus acciones. Los recursos y capturas corresponden al 4 de noviembre de 2026; esta organización documental se revisó el 5 de noviembre.
+Esta página reúne las fichas visuales del Coleccionista, los cinco enemigos de horda, los dos élites y Gólgora. Cada enemigo de horda incluye su spritesheet, la fuente editable y los GIFs de todas sus acciones.
 
 Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La identidad y el papel general de cada personaje se recogen en [[03 - Personajes]].
+
+## Proporciones en reposo
+
+![Comparación a escala del Coleccionista y los ocho enemigos](../Media/Avance_2026-11-07/Enemigos/Proporciones.png)
+
+La lámina reúne capturas de Unity con cámara ortográfica inclinada a `35,5°`, igual distancia y escala, y una línea común de suelo. El Coleccionista equivale a `1,00×`. La tabla mide la altura visible de una pose de reposo o flotación, con el cuerpo de Gólgora aislado de su martillo (`432` píxeles frente a `173` del Coleccionista).
+
+| Personaje | Altura visible frente al Coleccionista |
+| --- | ---: |
+| Coleccionista | 1,00× |
+| Residual / Esqueleto | 1,02× |
+| Interceptor / Galgo | 0,61× |
+| Mortero Campana | 1,10× |
+| Polilla Reactor | 0,76× |
+| Coloso / Wendigo | 1,27× |
+| Caballero Fantasma | 1,31× |
+| Centinela de Cobre | 1,28× |
+| Gólgora | 2,50× |
+
+El Esqueleto toma al Coleccionista como referencia y los dos élites toman al Wendigo. El Galgo creció un `10%` respecto a su escala inicial. Gólgora tiene una altura visual objetivo de `2,50×` en reposo; la cámara de la caldera reserva espacio para el cuerpo ampliado y el modelo conserva su escala al caer.
 
 ## Recursos actuales y estado de integración
 
@@ -14,19 +34,17 @@ Las reglas y cifras de combate se consultan en [[03 - Enemigos y NPC]]. La ident
 | Coloso / Wendigo | Sprite integrado; atlas de 200 fotogramas de 96 × 96. | Reposo 8, marcha 8, preparación 8, carga 6, recuperación 6, impacto 4 y muerte 10. |
 | Mortero Campana | Sprite integrado; atlas de 112 fotogramas de 64 × 64. | Flotación 6, carga 6, disparo 4, recuperación 4 y muerte 8. |
 | Polilla Reactor | Sprite integrado; atlas de 62 fotogramas de 64 × 64. | Vuelo 8 y cebado 6; estallido común de 6. |
-| Caballero Fantasma | Arte de sprite preparado; integración en Unity pendiente. La representación jugable documentada usa geometría y VFX. | Los ciclos del nuevo sprite quedan pendientes de comprobar dentro del juego. |
-| Centinela de Cobre / gólem | Arte de sprite preparado; integración en Unity pendiente. La representación jugable documentada usa geometría y VFX. | Los ciclos del nuevo sprite quedan pendientes de comprobar dentro del juego. |
+| Caballero Fantasma | Sprite integrado; atlas de 224 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, preparación 8, ataque 6, recuperación 6, impacto 4 y muerte 12. |
+| Centinela de Cobre / gólem | Sprite integrado; atlas de 288 fotogramas de 96 × 96, con normales y emisión. | Reposo 8, marcha 12, apertura 6, preparación 8, disparo 8, vulnerabilidad 8, cierre 6, impacto 4 y muerte 12. |
 | Gólgora / MataColeccionista | Modelo 3D animado integrado y VFX de magma. | Entrada, locomoción, martillazo, barrido, lanzamiento, salto y presentación final. |
 
 ## Cómo leer las previsualizaciones
 
-Los GIFs de atlas colocan juntas las cuatro vistas y usan sus fotogramas y tiempos exportados. La escala es el doble del píxel original, sin interpolación. El estallido de la Polilla es una acción compartida. El bucle facilita revisar una acción; los golpes y las muertes se reproducen según su estado durante el juego.
-
-Estas previsualizaciones muestran el recurso de animación. Las luces, sombras, movimiento físico y VFX se observan en las capturas de Unity, identificadas con su fecha y condiciones. Los registros anteriores de octubre que muestran cuerpos geométricos de Residual, Interceptor y Coloso no representan sus sprites actuales.
+Los GIFs de atlas colocan juntas las cuatro vistas cardinales y usan sus fotogramas y tiempos exportados a escala `2×` sin interpolación. Las condiciones técnicas de las capturas en motor se detallan en [[06 - Registro visual]].
 
 ## El Coleccionista
 
-El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno. La iluminación, sombras y reacciones al daño se añaden durante la ejecución.
+El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno.
 
 ![Atlas activo del Coleccionista](../Media/Avance_2026-11-04/Spritesheets/Coleccionista.png)
 
@@ -41,9 +59,7 @@ El farol sigue al personaje y el haz acompaña al apuntado automático. El sprit
 
 ## Residual: Esqueleto
 
-Es la masa básica de la horda. Su representación actual es un esqueleto animado en cuatro direcciones. La marcha acompaña la persecución y el ataque acompaña el contacto; impacto y muerte permiten reconocer la respuesta al daño.
-
-Su atlas tiene 144 fotogramas de 96 × 96: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
+Es la masa básica de la horda. Su representación es un esqueleto animado en cuatro direcciones con atlas de 144 fotogramas de `96 × 96`: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
 
 ![Spritesheet activo del Residual / Esqueleto](../Media/Avance_2026-11-04/Spritesheets/Esqueleto.png)
 
@@ -59,9 +75,7 @@ Su atlas tiene 144 fotogramas de 96 × 96: reposo, marcha y ataque de ocho, impa
 
 ## Interceptor: galgo de chatarra
 
-Es el perseguidor rápido de la horda. El galgo de chatarra sustituye su antigua representación geométrica. Su silueta baja y la marcha rápida distinguen la persecución del Residual.
-
-El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección. El sprite de galgo sustituye su representación geométrica anterior.
+Perseguidor rápido de la horda. Su silueta baja y la marcha veloz distinguen su persecución. El atlas tiene 152 fotogramas de `96 × 96`: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección.
 
 ![Spritesheet activo del Interceptor](../Media/Avance_2026-11-04/Spritesheets/Interceptor.png)
 
@@ -77,9 +91,7 @@ El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataqu
 
 ## Coloso: Wendigo
 
-Es el enemigo pesado que abre corredores con su embestida. El sprite de Wendigo acompaña la marcha, la preparación, la carga y la recuperación; cada estado tiene su propio ciclo para que se lea la secuencia del ataque.
-
-El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
+Enemigo pesado que abre corredores con su embestida. El atlas de Wendigo tiene 200 fotogramas de `96 × 96`: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
 
 ![Spritesheet activo del Coloso / Wendigo](../Media/Avance_2026-11-04/Spritesheets/Wendigo.png)
 
@@ -97,9 +109,7 @@ El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparaci
 
 ## Mortero: Campana
 
-Es la artillería de la horda. Su cuerpo de campana flotante encadena flotación, carga del emisor, disparo y recuperación. El proyectil y el charco de ácido se añaden durante la ejecución en Unity.
-
-Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección.
+Artillería de la horda. Su cuerpo de campana flotante encadena flotación, carga del emisor, disparo y recuperación en un atlas de 112 fotogramas de `64 × 64` (flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección).
 
 ![Spritesheet activo del Mortero Campana](../Media/Avance_2026-11-04/Spritesheets/Mortero.png)
 
@@ -115,9 +125,7 @@ Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, dispar
 
 ## Polilla: Reactor
 
-Es el enemigo explosivo de la horda. Su presentación distingue el vuelo de aproximación, el cebado de la mecha y el estallido. Vuelo y cebado tienen cuatro vistas; el estallido es compartido.
-
-Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
+Enemigo explosivo de la horda que arma su espoleta a `1,6 m` del jugador. Su atlas tiene 62 fotogramas de `64 × 64`: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
 ![Spritesheet activo de la Polilla Reactor](../Media/Avance_2026-11-04/Spritesheets/PolillaReactor.png)
 
@@ -131,27 +139,51 @@ Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dir
 
 ## Caballero Fantasma
 
-Élite de barrido sobrenatural y resistencia al daño físico. Su presentación jugable documentada todavía usa geometría de personaje y un efecto animado para el barrido.
+Sprite integrado en cuatro direcciones con normal map y emisión (224 fotogramas de `96 × 96`). La preparación sigue los `0,8 s` del barrido, y el ataque junto con la recuperación se enlazan durante los `0,8 s` posteriores.
 
-**Pendiente: integrar el sprite en Unity.** El arte del personaje está preparado, pero falta conectar sus ciclos a la locomoción, preparación, ataque, recuperación, impacto y muerte del enemigo. Después de esa conexión se incorporarán aquí el atlas y los GIFs verificados dentro del juego.
+![Atlas de Caballero Fantasma](../Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.png)
 
-La captura del montaje geométrico conservada en [[03 - Enemigos y NPC]] corresponde al 4 de noviembre. Sirve como referencia de combate; no valida la integración del nuevo sprite.
+[Fuente editable](../Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Caballero Fantasma: Reposo](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Idle.gif) |
+| Marcha | ![Caballero Fantasma: Marcha](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Walk.gif) |
+| Preparación | ![Caballero Fantasma: Preparación](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Windup.gif) |
+| Ataque | ![Caballero Fantasma: Ataque](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Attack.gif) |
+| Recuperación | ![Caballero Fantasma: Recuperación](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Recovery.gif) |
+| Impacto | ![Caballero Fantasma: Impacto](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Hit.gif) |
+| Muerte | ![Caballero Fantasma: Muerte](../Media/Avance_2026-11-05/Animaciones/CaballeroFantasma/Death.gif) |
+
+![Ciclo de combate integrado, captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CaballeroFantasma_Integrado.gif)
 
 ## Centinela de Cobre: gólem
 
-Élite pesado de proyectiles físicos y resistencia al daño sobrenatural. El gólem se denomina Centinela de Cobre en los ajustes del juego. Su ataque abre una ventana de vulnerabilidad durante la recuperación.
+Sprite integrado en cuatro direcciones con normal map y emisión (288 fotogramas de `96 × 96`). Apertura de `0,3 s` y preparación de `0,7 s` preceden al disparo; disparo de `0,4 s`, vulnerabilidad de `1,3 s` y cierre de `0,3 s` ocupan los `2,0 s` de recuperación.
 
-**Pendiente: integrar el sprite en Unity.** El arte está preparado, pero falta conectar los ciclos del cuerpo y la secuencia de apertura, preparación, disparo, vulnerabilidad y cierre con los estados del enemigo. Después de esa conexión se incorporarán aquí el atlas y los GIFs verificados dentro del juego.
+![Atlas de Centinela de Cobre: gólem](../Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.png)
 
-La captura del montaje geométrico conservada en [[03 - Enemigos y NPC]] corresponde al 4 de noviembre. El efecto animado de los misiles pertenece a los VFX y no confirma que el sprite del cuerpo esté integrado.
+[Fuente editable](../Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.aseprite).
+
+| Animación | Cuatro direcciones |
+| --- | --- |
+| Reposo | ![Centinela de Cobre: gólem: Reposo](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Idle.gif) |
+| Marcha | ![Centinela de Cobre: gólem: Marcha](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Walk.gif) |
+| Apertura | ![Centinela de Cobre: gólem: Apertura](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Open.gif) |
+| Preparación | ![Centinela de Cobre: gólem: Preparación](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Windup.gif) |
+| Disparo | ![Centinela de Cobre: gólem: Disparo](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Fire.gif) |
+| Vulnerabilidad | ![Centinela de Cobre: gólem: Vulnerabilidad](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Vulnerable.gif) |
+| Cierre | ![Centinela de Cobre: gólem: Cierre](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Close.gif) |
+| Impacto | ![Centinela de Cobre: gólem: Impacto](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Hit.gif) |
+| Muerte | ![Centinela de Cobre: gólem: Muerte](../Media/Avance_2026-11-05/Animaciones/CentinelaCobre/Death.gif) |
+
+![Ciclo de combate integrado, captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/Enemigos/CentinelaCobre_Integrado.gif)
 
 ## Gólgora: MataColeccionista
 
-Es el jefe de la expedición. Su cuerpo pesado, arma y magma se representan con un modelo 3D animado integrado. Sus recursos de magma son efectos propios; el personaje no utiliza un spritesheet 2D.
+Jefe final de la expedición, representado mediante un modelo 3D animado con efectos de magma propios.
 
 ### Ataques dentro de la arena
-
-Las siguientes capturas de Unity son del 4 de noviembre de 2026. Cada patrón se invocó de forma aislada, con jugador protegido, cámara de detalle y oleadas detenidas. La lluvia corresponde a la segunda fase. Permiten observar el modelo y sus efectos durante el ataque.
 
 | Ataque en Unity | Registro |
 | --- | --- |
