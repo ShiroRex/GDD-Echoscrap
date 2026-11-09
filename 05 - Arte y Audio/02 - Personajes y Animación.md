@@ -233,6 +233,8 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 
 | Entidad | Boceto a mano |
 | --- | --- |
+| Yanikua | ![Boceto de Yanikua\|140](../Media/ConceptArt/Yanikua.jpeg) |
+| Lisa | ![Boceto de Lisa\|140](../Media/ConceptArt/Lisa.jpeg) |
 | Hada | ![Boceto de Hada\|140](../Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](../Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](../Media/ConceptArt/Soldier.JPG) |

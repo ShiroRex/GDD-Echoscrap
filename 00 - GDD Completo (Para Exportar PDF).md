@@ -1255,6 +1255,8 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 
 | Entidad | Boceto a mano |
 | --- | --- |
+| Yanikua | ![Boceto de Yanikua\|140](Media/ConceptArt/Yanikua.jpeg) |
+| Lisa | ![Boceto de Lisa\|140](Media/ConceptArt/Lisa.jpeg) |
 | Hada | ![Boceto de Hada\|140](Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](Media/ConceptArt/Soldier.JPG) |
@@ -1355,26 +1357,85 @@ El juego ya tiene música y efectos integrados. El área sonora acompaña el lug
 
 | Contexto | Audio presente |
 | --- | --- |
-| Arena | Pista de combate en bucle. El recurso conserva el nombre de prueba Arena_combat_Test. |
-| Gólgora | Pista de jefe con transición desde la arena y reducción de mezcla durante el rugido. El recurso sigue identificado como prueba. |
-| Bóveda | Pista propia que se detiene al salir hacia combate o menú. |
+| Menú principal | Pista ambiental introductoria con sintetizadores y una dinámica moderada y constante ([Menu.mp3](Media/Audio/Menu.mp3)). |
+| Bóveda | Pista atmosférica propia, orientada a la calma con un matiz de suspenso previo a la incursión; se detiene al salir hacia el combate o al menú ([Boveda_Almacen.mp3](Media/Audio/Boveda_Almacen.mp3)). |
+| Arena | Pista de combate en bucle ([Partida.mp3](Media/Audio/Partida.mp3)). En el proyecto de Unity el recurso conserva el nombre de prueba `Arena_combat_Test`. |
+| Gólgora | Pista de jefe ([Jefe.mp3](Media/Audio/Jefe.mp3)) con transición desde la arena y reducción de mezcla (*ducking*) durante el rugido. El recurso sigue identificado como prueba en el motor. |
 | Linterna | Inicio de ráfaga, tres variantes de pulso, cuarto pulso, descanso, impacto normal y crítico, activación y bucle solar. |
 | Experiencia | Sonido de recogida con variación de tono. |
 | Transiciones | Entrada del Coleccionista, llegada por portal y rugido al elegir ronda. |
 | Fusión | Sonido de apertura de la cámara al revelar el resultado. |
 | Jefe | Rugido, pasos, ataques e impactos mediante sus componentes de audio. |
 
-La música de arena y jefe continúa durante cartas y pausa manual. La pérdida de foco pausa su reproducción. La bóveda tiene su propia mezcla y las transiciones evitan que siga sonando fuera de su contexto.
+La música de arena y jefe continúa durante la selección de cartas y la pausa manual. La pérdida de foco de la ventana pausa su reproducción. La bóveda tiene su propia mezcla y las transiciones evitan que siga sonando fuera de su contexto.
 
-El menú de pausa incorpora volumen general, guardado localmente bajo EchoScrap.Audio.MasterVolume. El control actúa sobre el volumen global de escucha.
+La pestaña **`Sonido`** del menú de pausa incorpora dos controles independientes persistidos en `PlayerPrefs`: **Volumen general** (`EchoScrap.Audio.MasterVolume`, `0.85` por defecto), que actúa sobre el volumen global de escucha, y **Música** (`EchoScrap.Audio.MusicVolume`, `0.85` por defecto), aplicado sobre las pistas musicales por `ArenaMusicController` y `CombatMusicPlayer`.
+
+## Música durante el juego
+
+### Menú principal
+
+- **Composición y timbre:** tema sintético con arreglos lentos en tonalidad menor y *pads* oscuros que aportan una atmósfera sombría, incorporando un sintetizador con sutil desafinación (*pitch drift*) para emular el comportamiento orgánico de instrumentos analógicos.
+- **Estructura y loop:** bucle continuo de baja actividad rítmica diseñado para evitar fatiga auditiva durante estancias prolongadas en los menús.
+- **Género, carácter y métrica:** electrónica de carácter melancólico a `75 BPM` en compás de `4/4`, manteniendo un pulso constante y moderado.
+- **Muestra de audio:** [Escuchar pista de Menú principal (Menu.mp3)](Media/Audio/Menu.mp3)
+
+![Pista de Menú principal](Media/Audio/Menu.mp3)
+
+### Bóveda (Almacén)
+
+- **Composición y timbre:** arreglos pausados en tonalidad menor con reverberación convolutiva amplia y fría que emula la acústica de un hangar o contenedor subterráneo, acompañados de ecos incidentales, *pads* oscuros, bombo, sintetizadores y violín para acentuar el misterio del recinto.
+- **Estructura y loop:** bucle continuo con base rítmica marcada que acompaña la preparación y anticipa la entrada hacia la arena.
+- **Género, carácter y métrica:** electrónica con sintetizador y cuerdas a `120 BPM` en compás de `4/4`, con un pulso constante que equilibra calma e intriga antes de la expedición.
+- **Muestra de audio:** [Escuchar pista de la Bóveda (Boveda_Almacen.mp3)](Media/Audio/Boveda_Almacen.mp3)
+
+![Pista de la Bóveda](Media/Audio/Boveda_Almacen.mp3)
+
+### Arena (Partida)
+
+- **Composición y timbre:** tema en tonalidad mayor que inicia con arreglos contenidos y gana densidad rítmica conforme avanza la incursión para sostener la adrenalina del combate, empleando sintetizadores, bombo para marcar el pulso, bajo, platillos, tarola y piano.
+- **Estructura y loop:** bucle continuo de alta actividad rítmica con pulso constante y enérgico.
+- **Género, carácter y métrica:** electrónica con sintetizador de carácter enérgico a `120 BPM` en compás de `4/4`.
+- **Muestra de audio:** [Escuchar pista de Arena (Partida.mp3)](Media/Audio/Partida.mp3)
+
+![Pista de Arena](Media/Audio/Partida.mp3)
+
+### Jefe final (Gólgora)
+
+- **Composición y timbre:** arreglos de alta intensidad desde el primer compás con un enfoque amenazador que sostiene la tensión durante todo el enfrentamiento en la caldera, utilizando dos capas de sintetizadores, tarola y bombo para marcar el pulso.
+- **Estructura y loop:** bucle continuo de alta actividad rítmica y carácter adrenalínico.
+- **Género, carácter y métrica:** electrónica pura con sintetizador de timbre brillante, digital y agresivo a `120 BPM` en compás de `4/4`.
+- **Muestra de audio:** [Escuchar pista del Jefe final (Jefe.mp3)](Media/Audio/Jefe.mp3)
+
+![Pista del Jefe final](Media/Audio/Jefe.mp3)
+
+## Elaboración e instrumentación digital
+
+Las pistas musicales fueron producidas en estación de trabajo de audio digital (DAW) combinando secuenciación MIDI, síntesis sustractiva/*hypersaw* e instrumentación orquestal virtual:
+
+![Sesión multipista de la banda sonora en el DAW|520](Media/Audio/Produccion_Multipista_Reaper.png)
+
+*Estructura multipista y mezcla de canales de la banda sonora.*
+
+![Edición MIDI e instrumentos digitales (JUNO-106)|520](Media/Audio/Edicion_MIDI_Juno106.png)
+
+*Secuenciación melódica en piano roll con sintetizador virtual `JUNO-106`.*
+
+![Configuración de sintetizador virtual UJAM Usynth DETUNICORN|520](Media/Audio/Sintetizador_UJAM_Detunicorn.png)
+
+*Diseño sonoro y ajuste de desafinación (`Detune`) y frecuencias con el sintetizador `UJAM Usynth DETUNICORN`.*
+
+![Instrumento virtual orquestal Spitfire Audio – BBC Symphony Orchestra|520](Media/Audio/Orquesta_Spitfire_BBC.png)
+
+*Instrumento virtual `Spitfire Audio – BBC Symphony Orchestra` utilizado para incorporar las cuerdas y violines en la ambientación de la Bóveda.*
 
 ## Procedencia documentada
 
-La mezcla de la linterna utiliza grabaciones de microondas de pinto0lucas y contador Geiger de cookies+policy. El archivo Sources.txt del proyecto registra sus enlaces, la licencia CC0 indicada para ambas y las transformaciones realizadas: conversión a mono, selección de clics, capas, envolventes y tonos sintetizados. Los WAV entregados son mono, 44,1 kHz y 16 bits.
+La mezcla de la linterna utiliza grabaciones de microondas de `pinto0lucas` y contador Geiger de `cookies+policy`. El archivo `Sources.txt` del proyecto registra sus enlaces, la licencia `CC0` indicada para ambas y las transformaciones realizadas: conversión a mono, selección de clics, capas, envolventes y tonos sintetizados. Los WAV entregados son mono, `44,1 kHz` y `16 bits`.
 
 La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
-Los GIFs de este GDD no contienen audio. Sirven para revisar animación y VFX; la escucha se comprueba en el juego.
+Los GIFs de este GDD no contienen audio y sirven para revisar animación y VFX. Como excepción documental, esta sección incluye las cuatro pistas musicales del juego (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`); los efectos de sonido (SFX) y su mezcla dinámica se comprueban directamente en el juego.
 
 ---
 
@@ -2256,7 +2317,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.0** | 05/11/2026 | Poderes propios de las quince entidades traídos de `develop` y controles de puestos actualizados; sprites integrados de Caballero y Centinela con ciclos de combate; *Rayo solar* con empuje en todos sus pulsos; fórmula y condiciones de *Ojo del verdugo*; Registro visual asignado a David y reparto de 48 apartados. | Sierra Sosa David Alejandro |
 | **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
 | **0.6.2** | 08/11/2026 | Sincronización íntegra con `develop` @ `9eed59f`: capacidad máxima estricta de **10 unidades** (`3` puestos de equipo en el balcón + `7` de exposición en planta baja, `displays[10]`), bloqueo por inventario lleno (`10/10`), interacción exacta de pedestales (`E · EQUIPAR`/`EDITAR`, `T` y `E · LIBERAR`), señalización e indicadores de bóveda implementados (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, fusión fija de **30 s (`00:30`)** con copias equipadas (`EN EQUIPO 1/2/3`), porcentajes redondeados a enteros (`60%`, `40%`, `1%`) y botón único `COLECCIONAR`, tipografía unificada **`Pixelify Sans`**, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida del HUD (`Q` / `Select`), ranking en vivo con Firebase (`EventLeaderboardSync`) y reglas exactas de combate (`FLASH_05`, `DASH_04`, `DEMO_03/04`, `SCRAP_03/04`, fórmulas y orden de mitigación en `PlayerHealth`, Polilla Reactor, Gólgora y tabla de empuje). | Sierra Sosa David Alejandro |
-| **0.6.3** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (`.png` a escala `2×` y fuentes `.aseprite`) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Centinela de Cobre y cinco entidades coleccionables) en `Media/ConceptArt/`, Niveles y Entornos; sincronización del GDD completo. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
+| **0.6.3** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (`.png` a escala `2×` y fuentes `.aseprite`) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Centinela de Cobre y siete entidades coleccionables) en `Media/ConceptArt/`, Niveles y Entornos; desglose de composición musical, capturas de producción en DAW y las cuatro pistas de la banda sonora (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`) en Audio y Música; sincronización del GDD completo. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 
 ## Convención sugerida
 
