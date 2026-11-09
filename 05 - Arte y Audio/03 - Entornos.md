@@ -6,7 +6,7 @@ El centro contiene la caldera de Gólgora, con perímetro que se cierra durante 
 
 La iluminación exterior utiliza un perfil compartido de luz, atmósfera y enfoque. La niebla y los haces acompañan los puntos luminosos sin sustituir los contornos que anuncian daño.
 
-![Arte conceptual a mano de El Vertedero](../Media/ConceptArt/Mapa_Arte.JPG)
+![Arte conceptual a mano de El Vertedero|520](../Media/ConceptArt/Mapa_Arte.JPG)
 
 *Boceto conceptual del exterior: el perímetro reúne fragmentos de distintos mundos colapsados (murallas de piedra, raíces gigantes, cúmulos de armas y escudos, grietas en el terreno y el vórtice del portal al norte).*
 
@@ -14,7 +14,7 @@ La iluminación exterior utiliza un perfil compartido de luz, atmósfera y enfoq
 
 La bóveda modular ocupa otra zona de la misma escena. Su suelo continuo y sus muros enmarcan diez puestos: tres de equipo y siete de exposición. Dentro se encuentran la máquina de fusión y el portal. La cámara tiene un encuadre propio, seguimiento limitado por la sala e iluminación interior.
 
-![Arte conceptual a mano de la Bóveda](../Media/ConceptArt/Almacen_Arte.jpeg)
+![Arte conceptual a mano de la Bóveda|420](../Media/ConceptArt/Almacen_Arte.jpeg)
 
 *Boceto conceptual del almacén: cápsulas cilíndricas de contención para las entidades, consola y cámara central de la máquina de fusión, escaleras de acceso y el portal circular en el suelo.*
 

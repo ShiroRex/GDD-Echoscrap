@@ -10,7 +10,7 @@ Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los 
 
 ### Plano a escala y arte conceptual
 
-![Boceto conceptual a mano del mapa de El Vertedero](../Media/ConceptArt/Mapa_Arte.JPG)
+![Boceto conceptual a mano del mapa de El Vertedero|520](../Media/ConceptArt/Mapa_Arte.JPG)
 
 ![Plano de la arena y la conexión con la bóveda|381](../Media/Planos/Vertedero.svg)
 
@@ -24,7 +24,7 @@ El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. L
 
 La sala modular tiene diez puestos: los tres primeros corresponden al equipo y otros siete a la exposición de copias disponibles. La máquina de fusión está dentro. Su cámara utiliza una inclinación de 32° y campo de visión de 65°, con límites de seguimiento para mantener la sala encuadrada.
 
-![Boceto conceptual a mano de la Bóveda](../Media/ConceptArt/Almacen_Arte.jpeg)
+![Boceto conceptual a mano de la Bóveda|420](../Media/ConceptArt/Almacen_Arte.jpeg)
 
 ![Bóveda actual](../Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
