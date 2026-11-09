@@ -3,9 +3,9 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.1 |
+| Versión del GDD | 0.6.2 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
-| Actualización | 7 de noviembre de 2026 |
+| Actualización | 9 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |

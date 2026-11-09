@@ -1,19 +1,19 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.1 · 7 de noviembre de 2026**
+**GDD 0.6.2 · 9 de noviembre de 2026**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición especifica balance, oleadas, ataques de Gólgora y guardado. Incluye un plano a escala, clasificación del juego, evidencia de lectura y objetivos de validación técnica. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición incorpora las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, y los bocetos de arte conceptual a mano de entornos, enemigos y coleccionables, manteniendo la especificación de balance, oleadas, ataques de Gólgora, plano a escala, clasificación del juego, evidencia de lectura y objetivos de validación técnica. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.1 · 7 de noviembre de 2026.**
+**GDD 0.6.2 · 9 de noviembre de 2026.**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede cambiar el equipo o usar la máquina de fusión.
 
@@ -55,9 +55,9 @@ Los GIFs de atlas se han compuesto con los fotogramas y tiempos exportados del p
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.1 |
+| Versión del GDD | 0.6.2 |
 | Estado | Versión jugable en iteración: preparación, expediciones, colección, fusión y encuentro final. |
-| Actualización | 7 de noviembre de 2026 |
+| Actualización | 9 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
@@ -2132,9 +2132,9 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.5.0** | 04/11/2026 | Flujo de preparación con selección de entidades y guía pendiente; quince entidades, equipo de tres puestos y fusión de cuatro copias; élites, sprites y animaciones actuales, caldera y patrones de Gólgora, minimapa, cámara, audio y guardado de producción. | Sierra Sosa David Alejandro |
 | **0.5.1** | 05/11/2026 | Fichas individuales de enemigos en Personajes; spritesheets, fuentes editables y GIFs actuales reunidos en Personajes y Animación; integración de sprites de Caballero Fantasma y Centinela de Cobre (gólem) marcada como pendiente; navegación y documento completo sincronizados. | Equipo EchoScrap |
 | **0.5.2** | 05/11/2026 | Registro visual completado con 21 capturas actuales de VFX de linterna, mejoras, daño, fusión y portal; muestras de octubre sustituidas, procedencia y efectos compartidos documentados; documento completo sincronizado. | Equipo EchoScrap |
-
 | **0.6.0** | 05/11/2026 | Poderes propios de las quince entidades traídos de develop y controles de puestos vacíos/ocupados actualizados; sprites integrados de Caballero y Centinela con ciclos de combate; Rayo solar con empuje en todos sus pulsos; fórmula y condiciones de Ojo; origen narrativo como trasfondo y minicómic fuera de alcance; Registro visual asignado a David y reparto de 48 apartados. | Sierra Sosa David Alejandro |
 | **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
+| **0.6.2** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (.png a escala 2× y fuentes .aseprite) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo y cuatro entidades) en Media/ConceptArt/, Niveles y Entornos; sincronización del GDD completo. | Equipo EchoScrap |
 
 ## Convención sugerida
 
