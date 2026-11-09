@@ -662,7 +662,9 @@ El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra e
 
 Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
-### Plano a escala
+### Plano a escala y arte conceptual
+
+![Boceto conceptual a mano del mapa de El Vertedero](Media/ConceptArt/Mapa_Arte.JPG)
 
 ![Plano de la arena y la conexión con la bóveda](Media/Planos/Vertedero.svg)
 
@@ -675,6 +677,8 @@ La horda busca una posición dinámica fuera de cámara alrededor del jugador y 
 El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
 
 La sala modular tiene diez puestos: los tres primeros corresponden al equipo y otros siete a la exposición de copias disponibles. La máquina de fusión está dentro. Su cámara utiliza una inclinación de 32° y campo de visión de 65°, con límites de seguimiento para mantener la sala encuadrada.
+
+![Boceto conceptual a mano de la Bóveda](Media/ConceptArt/Almacen_Arte.jpeg)
 
 ![Bóveda actual](Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
@@ -997,7 +1001,9 @@ El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataqu
 
 ## Coloso: Wendigo
 
-Es el enemigo pesado que abre corredores con su embestida. El sprite de Wendigo acompaña la marcha, la preparación, la carga y la recuperación; cada estado tiene su propio ciclo para que se lea la secuencia del ataque.
+Es el enemigo pesado que abre corredores con su embestida. Su diseño parte de un boceto conceptual a lápiz con cráneo astado de ciervo, costillar expuesto, manto de pelaje y garras largas. En el juego, el sprite de Wendigo acompaña la marcha, la preparación, la carga y la recuperación; cada estado tiene su propio ciclo para que se lea la secuencia del ataque.
+
+![Boceto a mano del Coloso / Wendigo](Media/ConceptArt/Wendigo.jpeg)
 
 El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
 
@@ -1136,6 +1142,17 @@ Las quince entidades coleccionables se presentan en el mundo y en las vitrinas d
 | Basket | Común | ![Sprite de Basket](Media/Coleccionables/basket.png) | [basket.aseprite](Sprites/basket.aseprite) |
 | Reaper | Común | ![Sprite de Reaper](Media/Coleccionables/Reaper.png) | [Reaper.aseprite](Sprites/Reaper.aseprite) |
 
+### Bocetos conceptuales a mano
+
+Dibujos a lápiz realizados durante el diseño visual de las entidades antes de su paso a pixel art, resguardados en `Media/ConceptArt/`.
+
+| Entidad | Boceto a mano |
+| --- | --- |
+| Hada | ![Boceto de Hada](Media/ConceptArt/Hada_Costura.jpeg) |
+| Shireen | ![Boceto de Shireen](Media/ConceptArt/Shireen.jpeg) |
+| Conde Alucard | ![Boceto de Conde Alucard](Media/ConceptArt/Conde_Alucard.jpeg) |
+| Lobito | ![Boceto de Lobito](Media/ConceptArt/Lobito.jpeg) |
+
 ---
 
 # Entornos
@@ -1146,9 +1163,19 @@ El centro contiene la caldera de Gólgora, con perímetro que se cierra durante 
 
 La iluminación exterior utiliza un perfil compartido de luz, atmósfera y enfoque. La niebla y los haces acompañan los puntos luminosos sin sustituir los contornos que anuncian daño.
 
+![Arte conceptual a mano de El Vertedero](Media/ConceptArt/Mapa_Arte.JPG)
+
+*Boceto conceptual del exterior: el perímetro reúne fragmentos de distintos mundos colapsados (murallas de piedra, raíces gigantes, cúmulos de armas y escudos, grietas en el terreno y el vórtice del portal al norte).*
+
+## La Bóveda (Almacén del Coleccionista)
+
 La bóveda modular ocupa otra zona de la misma escena. Su suelo continuo y sus muros enmarcan diez puestos: tres de equipo y siete de exposición. Dentro se encuentran la máquina de fusión y el portal. La cámara tiene un encuadre propio, seguimiento limitado por la sala e iluminación interior.
 
-![Interior y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
+![Arte conceptual a mano de la Bóveda](Media/ConceptArt/Almacen_Arte.jpeg)
+
+*Boceto conceptual del almacén: cápsulas cilíndricas de contención para las entidades, consola y cámara central de la máquina de fusión, escaleras de acceso y el portal circular en el suelo.*
+
+![Interior y preparación en Unity](Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
 La máquina combina cámara de resultado, persiana móvil y efectos de apertura. Cuando termina una fusión permanece cerrada en estado listo hasta que el jugador interactúa. El sonido y el humo acompañan la apertura.
 

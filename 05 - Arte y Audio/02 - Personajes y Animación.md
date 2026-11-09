@@ -78,7 +78,9 @@ El atlas tiene 152 fotogramas de 96 × 96: reposo de seis, marcha de doce, ataqu
 
 ## Coloso: Wendigo
 
-Es el enemigo pesado que abre corredores con su embestida. El sprite de Wendigo acompaña la marcha, la preparación, la carga y la recuperación; cada estado tiene su propio ciclo para que se lea la secuencia del ataque.
+Es el enemigo pesado que abre corredores con su embestida. Su diseño parte de un boceto conceptual a lápiz con cráneo astado de ciervo, costillar expuesto, manto de pelaje y garras largas. En el juego, el sprite de Wendigo acompaña la marcha, la preparación, la carga y la recuperación; cada estado tiene su propio ciclo para que se lea la secuencia del ataque.
+
+![Boceto a mano del Coloso / Wendigo](../Media/ConceptArt/Wendigo.jpeg)
 
 El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparación de ocho; embestida y recuperación de seis; impacto de cuatro y muerte de diez por dirección.
 
@@ -216,5 +218,16 @@ Las quince entidades coleccionables se presentan en el mundo y en las vitrinas d
 | Lobito | Común | ![Sprite de Lobito](../Media/Coleccionables/Lobito.png) | [Lobito.aseprite](../Sprites/Lobito.aseprite) |
 | Basket | Común | ![Sprite de Basket](../Media/Coleccionables/basket.png) | [basket.aseprite](../Sprites/basket.aseprite) |
 | Reaper | Común | ![Sprite de Reaper](../Media/Coleccionables/Reaper.png) | [Reaper.aseprite](../Sprites/Reaper.aseprite) |
+
+### Bocetos conceptuales a mano
+
+Dibujos a lápiz realizados durante el diseño visual de las entidades antes de su paso a pixel art, resguardados en `Media/ConceptArt/`.
+
+| Entidad | Boceto a mano |
+| --- | --- |
+| Hada | ![Boceto de Hada](../Media/ConceptArt/Hada_Costura.jpeg) |
+| Shireen | ![Boceto de Shireen](../Media/ConceptArt/Shireen.jpeg) |
+| Conde Alucard | ![Boceto de Conde Alucard](../Media/ConceptArt/Conde_Alucard.jpeg) |
+| Lobito | ![Boceto de Lobito](../Media/ConceptArt/Lobito.jpeg) |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

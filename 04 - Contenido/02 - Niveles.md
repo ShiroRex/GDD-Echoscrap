@@ -8,9 +8,11 @@ El centro alberga una caldera de 22 m de radio. Al aparecer Gólgora se cierra e
 
 Las tres zonas de lava fija están desactivadas en CombatArena. El magma de los ataques del jefe continúa activo. La iluminación exterior utiliza tonos violetas, niebla, haces y partículas ambientales; el perfil aplica una cámara a 35,5° con campo de visión de 34°.
 
-### Plano a escala
+### Plano a escala y arte conceptual
 
-![Plano de la arena y la conexión con la bóveda](../Media/Planos/Vertedero.svg)
+![Boceto conceptual a mano del mapa de El Vertedero](../Media/ConceptArt/Mapa_Arte.JPG)
+
+![Plano de la arena y la conexión con la bóveda|381](../Media/Planos/Vertedero.svg)
 
 La planta usa coordenadas X/Z de Unity y una cuadrícula de 20 m. La expedición y Gólgora empiezan en el centro de la arena, en momentos distintos. Al comenzar el encuentro, el jugador se coloca 12 m al sur del centro. La línea discontinua del acceso norte representa el traslado por portal a la sala de la bóveda, fuera de los límites de la arena.
 
@@ -21,6 +23,8 @@ La horda busca una posición dinámica fuera de cámara alrededor del jugador y 
 El acceso al almacén está al norte de la arena, alrededor de x = 0 y z = 78. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
 
 La sala modular tiene diez puestos: los tres primeros corresponden al equipo y otros siete a la exposición de copias disponibles. La máquina de fusión está dentro. Su cámara utiliza una inclinación de 32° y campo de visión de 65°, con límites de seguimiento para mantener la sala encuadrada.
+
+![Boceto conceptual a mano de la Bóveda](../Media/ConceptArt/Almacen_Arte.jpeg)
 
 ![Bóveda actual](../Media/Avance_2026-11-04/Interfaz/Boveda.png)
 
