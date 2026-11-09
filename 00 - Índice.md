@@ -1,10 +1,10 @@
 # EchoScrap — Documento de diseño del juego
 
-**GDD 0.6.1 · 7 de noviembre de 2026.**
+**GDD 0.6.2 · 8 de noviembre de 2026 (`develop` @ `9eed59f`).**
 
-El Coleccionista prepara hasta tres entidades en la bóveda y sale al Vertedero para reunir copias, escoger mejoras y enfrentarse a Gólgora. El juego reúne cinco enemigos de horda, dos élites, un jefe, 35 mejoras y quince entidades.
+El Coleccionista prepara hasta tres entidades en el balcón de la bóveda (dentro de una colección máxima de diez unidades simultáneas) y sale al Vertedero para reunir copias, escoger mejoras y enfrentarse a Gólgora. El juego reúne cinco enemigos de horda, dos élites, un jefe, 35 mejoras y quince entidades.
 
-El flujo incluye revisar y seleccionar equipo antes de elegir ronda. La señalización que permita descubrir esa preparación queda pendiente en el juego.
+El flujo de la bóveda cuenta con señalización completa en el mundo y en el HUD: rótulos 3D sobre los pedestales (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), indicadores direccionales dinámicos (`VaultDirections`), panel rotatorio de consejos (`VaultTips`) e **Índice de Colección (`[I]`)** para consultar las 15 entidades y las unidades almacenadas antes de elegir ronda.
 
 **Entrada recomendada:** [[00 - Avance jugable]] · [[02 - Personajes y Animación]] · [[03 - Enemigos y NPC]] · [[04 - Objetos y Coleccionables]] · [[06 - Registro visual]].
 

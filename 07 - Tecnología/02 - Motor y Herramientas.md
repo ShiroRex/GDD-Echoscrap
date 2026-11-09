@@ -1,23 +1,25 @@
 # Motor y herramientas
 
-| Tecnología | Uso en el proyecto actual |
+| Tecnología | Uso en el proyecto actual (`9eed59f`) |
 | --- | --- |
-| Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y ejecutable Windows. |
-| URP 17.6.0 | Iluminación, materiales, shaders y render de los registros visuales. |
-| Input System 1.20.0 | Teclado, ratón y mando. |
-| Cinemachine 6.6.0 | Seguimiento de cámara y ajustes del recorrido por el almacén. |
-| Unity Test Framework 1.8.0 | Pruebas de reglas, integración y capturas controladas. |
-| C# | Sistemas del juego y herramientas activas del Editor. |
-| HLSL | Luz, magma, portal, materiales de interfaz y efectos. |
+| Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y ejecutable Windows x64. |
+| URP 17.6.0 | Iluminación, materiales, shaders y renderizado. |
+| Input System 1.20.0 | Lectura de teclado, ratón y mando (`PlayerInputReader`, `CombatHud`, `VaultCollectionIndex`, `VaultReleaseInteraction`). |
+| Cinemachine 6.6.0 | Seguimiento de cámara en arena, caldera del jefe y bóveda. |
+| UnityWebRequest / JSON | Sincronización HTTPS `PATCH` del ranking de evento con Firebase Realtime Database (`EventLeaderboardSync`) y serialización `JsonUtility` (`SaveData` v4). |
+| Unity Test Framework 1.8.0 | Pruebas automatizadas de reglas e integración. |
+| C# | Sistemas de simulación, interfaz dinámica y herramientas del Editor. |
+| HLSL | Shaders de luz, magma, portal, materiales de interfaz y efectos. |
 | Aseprite | Fuentes editables, animaciones, atlas e interfaz de pixel art. |
-| Blender | Preparación y edición de modelos 3D. |
-| Obsidian / Markdown | Redacción del GDD y presentación de imágenes y GIFs. |
-| Git y GitHub | Versionado separado del juego y del documento. |
+| Blender | Preparación y edición del modelo 3D de Gólgora y piezas de escenario. |
+| Pixelify Sans (`Regular` / `SemiBold`) | Familia tipográfica unificada en `Typography.asset`, `UpgradeCardSkin.asset` y generadores de UI. |
+| Obsidian / Markdown | Redacción del GDD y presentación de imágenes, planos SVG y GIFs. |
+| Git y GitHub | Versionado separado del repositorio del juego y del documento. |
 
-## Organización
+## Organización del repositorio
 
-El juego guarda código en `Assets/_Project/Scripts`, escenas en `Scenes`, ajustes en `Settings` y recursos visuales en `Art` y `Resources`. Las fuentes finales editables se conservan en `ArtSource`.
+El juego organiza el código en `Assets/_Project/Scripts`, las escenas en `Scenes`, los perfiles en `Settings` y los recursos visuales y sonoros en `Art`, `Audio` y `Resources`. Las fuentes editables (`.aseprite`) se conservan en `ArtSource`.
 
-El Editor mantiene herramientas para el laboratorio, el balance, la iluminación y atmósfera, el inspector de la linterna y la conexión del arte actual. Los generadores de montajes anteriores, los informes auxiliares y las galerías de revisión se archivaron fuera del proyecto del juego. Los medios seleccionados para este GDD se encuentran en las carpetas `Media/Avance_2026-10-27`, `Media/Avance_2026-11-04` y `Media/Avance_2026-11-05` del documento.
+Los medios documentales enlazados en este GDD se ubican en las carpetas `Media/Planos`, `Media/Avance_2026-10-27`, `Media/Avance_2026-11-04`, `Media/Avance_2026-11-05`, `Media/Avance_2026-11-06` y `Media/Avance_2026-11-07`.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

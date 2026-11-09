@@ -1,34 +1,50 @@
 # Datos y persistencia
 
-Los valores del jugador, los arquetipos y las oleadas se configuran mediante assets. ExpeditionEntrySettings enlaza las rondas demo y completa; sus assets seleccionan el tiempo del jefe y las variantes de 3600 o 9000 HP. GolgoraCombatSettings reúne tiempos, daños, áreas y modificadores de fase.
+Los valores del jugador, los arquetipos enemigos y las oleadas se configuran mediante `ScriptableObjects`. `ExpeditionEntrySettings` enlaza las rondas demo (`3:00`, `3 600 HP`) y completa (`8:00`, `9 000 HP`), mientras que `GolgoraCombatSettings` define los parámetros base del jefe (`15 000 HP` base, tiempos, daños, áreas y multiplicadores de Fase 2).
 
-El catálogo de combate tiene 35 identificadores. El catálogo de entidades tiene quince, seis rarezas y dos fuentes separadas: nueve entradas de mapa y seis resultados de fusión. CompanionSystem comunica el equipo a CompanionPowerRuntime, que activa poderes propios y mantiene sus recargas y salvación por expedición. PlayerRuntimeStats combina los bonos de entidades con estadísticas de cartas sin convertir el equipo en niveles de mejoras.
+El catálogo de combate consta de `35` mejoras (`UpgradeId`). El catálogo de entidades consta de `15` identificadores (`0` a `14`), distribuidos en seis rarezas y dos fuentes de obtención (nueve en la arena y seis por fusión). `CompanionSystem` comunica los tres puestos de equipo a `CompanionPowerRuntime` y a `PlayerRuntimeStats`.
 
 ## Sesión en memoria
 
-El reloj, salud, XP, cartas, enemigos, peligros y objetos pertenecen a la expedición. Las transiciones entre preparación y combate restablecen ese estado. Una visita temporal a la bóveda conserva la sesión en memoria.
+El reloj de incursión, la salud actual, la XP, el nivel, las cartas adquiridas, los enemigos activos y los objetos del suelo pertenecen a la sesión en memoria. Al regresar a la bóveda tras una victoria, una derrota o desde el menú de pausa se limpia el estado de la arena y se reaplican los poderes de las entidades equipadas. Una visita temporal a la bóveda por el portal norte suspende el combate sin destruir la sesión activa.
 
-## Datos locales
+## Persistencia de la colección y fusión (`SaveData` v4)
 
-FusionProgress serializa el inventario, equipo, exposición y proceso en JSON de formato 4. FusionStation lo guarda bajo EchoScrap.Collection.Production.v1. La validación amplía los inventarios de trece entradas del mismo formato, protege copias equipadas y restablece formatos anteriores a 4. La clave de prototipo no se carga desde este sistema.
+`FusionProgress` serializa la colección, el equipo, la exposición y la máquina de fusión en un objeto JSON (`SaveData`, `version = 4`) almacenado en `PlayerPrefs` bajo la clave principal **`EchoScrap.Collection.Production.v1`** (con migración automática desde `EchoScrap.Collection.v1` y marca de inicialización en **`EchoScrap.CollectionStarted.v1`**).
 
-| Campo del JSON | Contenido |
-| --- | --- |
-| `version` | Versión del esquema. El guardado actual escribe 4. |
-| `owned` | Cantidades por ID de entidad, de 0 a 14. Los valores negativos se ajustan a cero. |
-| `equipped` / `displays` | IDs de tres puestos de equipo y diez de exposición. El valor −1 indica un puesto vacío. Se retiran IDs inválidos y equipamientos que exceden las copias disponibles. |
-| `phase` / `result` | Estado de la fusión e ID del resultado ya sorteado. Una fase inválida o un resultado fuera de catálogo en una fusión activa cancela ese estado. |
-| `remaining` / `duration` / `opening` | Tiempo restante, duración y progreso de apertura. Una apertura interrumpida vuelve a estado listo para reabrirla. Una decisión de resultado válida permanece disponible. |
+La capacidad máxima de la colección es de **10 unidades en total** (`FusionProgress.Capacity = 10`, `OwnedCount <= 10`), que se corresponden exactamente con los **10 pedestales físicos de la bóveda** (`SlotCount = 10`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **7 puestos de exposición/reserva** en la planta inferior (`slot 3..9`).
 
-### Carga, recuperación y reinicio
+| Campo del JSON (`SaveData`) | Tipo | Contenido y reglas de validación (`FusionProgress.cs`) |
+| --- | --- | --- |
+| `version` | `int` | Versión del esquema de guardado. El valor vigente es **`4`**. |
+| `hasEquippedCompanion` | `bool` | Registra si el jugador ya ha equipado al menos un acompañante alguna vez (`HasEquippedOnce`, usado por `VaultTips`). |
+| `equipped` | `int[3]` | IDs de las entidades asignadas a los **3 puestos de equipo activo** del balcón (puestos 1 a 3) o `-1` si el puesto está vacío. |
+| `owned` | `int[15]` | Copias en posesión de cada una de las 15 entidades (`ID 0..14`). Los valores negativos se ajustan a `0` y la **suma total está limitada a un máximo de `10` unidades** (`Capacity = 10`). |
+| `discovered` | `bool[15]` | Registro permanente de descubrimiento de las 15 entidades para el **Índice de Colección (`[I]`, `VaultCollectionIndex`)** y los selectores de puesto. Toda entidad con `owned[i] > 0` marca `discovered[i] = true`, y liberar una copia conserva `discovered[i] = true`. |
+| `displays` | `int[10]` | Array de longitud **`10`** (`SlotCount = 10`) que representa el total de los **10 puestos físicos de la bóveda**: los **3 puestos de equipo** (`displays[0..2]`, sincronizados con `equipped[0..2]`) más los **7 puestos de exposición/reserva** de la planta baja (`displays[3..9]`, ordenados por rareza descendente). `-1` indica pedestal vacío. |
+| `phase` | `int` | Estado de la máquina de fusión: `0 = Idle`, `1 = Running`, `2 = AwaitingDecision`. |
+| `result` | `int` | ID de la entidad resultante sorteada al iniciar la fusión (`-1` cuando está libre). |
+| `remaining` | `float` | Segundos restantes de la cuenta atrás de fusión (`Time.unscaledDeltaTime`). |
+| `duration` | `float` | Duración total de la fusión activa: **fija en `30 s` (`00:30`, `FusionRecipe.FusionSeconds = 30`)** para todas las rarezas. |
+| `opening` | `bool` | Indica si la animación de apertura de la persiana estaba en curso; si la aplicación se cierra durante la apertura, al recargar se restablece a `AwaitingDecision` (`opening = false`) para no perder el resultado. |
 
-- Si falta la clave, si la deserialización devuelve vacío o si el JSON lanza un error al cargar, se inicializa una colección vacía. Si el JSON se puede leer, la validación corrige campos fuera de rango. Un formato anterior a 4 o un inventario ausente restablece inventario, equipo y fusión. Un formato posterior pasa por el validador de versión 4 y se reescribe con ese número.
-- El guardado escribe al cambiar inventario o equipo, iniciar o resolver fusión y pasar de estado. Mientras hay una fusión activa se escribe cada cinco segundos sin escalar, además de guardar al salir o al entrar en pausa de aplicación. El tiempo con el juego cerrado no adelanta la fusión.
-- En la build Windows actual, PlayerPrefs usa el perfil del usuario. La clave del proyecto está bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap`. El mecanismo de recuperación disponible sanea campos o empieza una colección vacía según el fallo.
-- **Nueva colección** en el menú, con confirmación cuando hay perfil, reemplaza inventario, equipo, exposición y fusión por un estado vacío y conserva el volumen general. Es el recorrido de reinicio disponible para el jugador.
+### Reglas de carga, validación y escritura
+- **Validación al cargar (`Validate`):** Sanea IDs fuera de rango, migra arrays de 13 a 15 posiciones dentro de la versión 4, garantiza que `discovered[id]` sea `true` para toda entidad con copias en `owned`, recorta cualquier exceso para que el total de unidades no supere `10` (`Capacity = 10`) y reconstruye `displays[10]` sincronizando los puestos `0..2` con `equipped[3]` y los puestos `3..9` con las copias libres ordenadas por rareza descendente.
+- **Inicio y resolución de fusión (`FusionProgress.Begin`):** Al confirmar una fusión, si las 4 unidades seleccionadas incluyen copias equipadas (`EN EQUIPO 1/2/3`), el sistema las desequipa automáticamente de `equipped`, descuenta las 4 unidades de `owned`, sortea el resultado y fija `duration = 30` y `remaining = 30`. Durante la fase `Running`, el reloj avanza con `Time.unscaledDeltaTime` y persiste el progreso en `PlayerPrefs` cada `5 s`, además de hacerlo al pausar o cerrar la aplicación. Si al reclamar (`COLECCIONAR`) el jugador ya tiene `10/10` unidades, `FusionStation.Resolve` conserva el estado `AwaitingDecision` hasta que se libere una unidad en los pedestales de la bóveda.
 
-El perfil usa EchoScrap.CollectionStarted.v1 y el volumen EchoScrap.Audio.MasterVolume. Las preferencias visuales y el modo de estadísticas se pasan entre escenas durante la aplicación en curso.
+## Otras claves de `PlayerPrefs` y sincronización de Ranking (`EventLeaderboardSync`)
 
-Los JSON de los atlas registran rectángulos, etiquetas y tiempos. Los GIFs documentales de animación se componen a partir de esos datos y las copias PNG se verifican contra los atlas activos.
+| Clave o ruta | Tipo / Valor por defecto | Descripción |
+| --- | --- | --- |
+| `EchoScrap.Collection.Production.v1` | `string` (JSON) | Estado completo de la colección, pedestales y fusión (`SaveData` v4). |
+| `EchoScrap.CollectionStarted.v1` | `int` (`0` / `1`) | Indica si existe una colección iniciada para habilitar *Continuar* y pedir confirmación en *Nueva colección*. |
+| `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`AudioListener.volume`, deslizador en pestaña `Sonido`). |
+| `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`ArenaMusicController.SetUserVolume` / `CombatMusicPlayer.SetMusicVolume`, deslizador en pestaña `Sonido`). |
+| `EchoScrap.Event.PlayerName` | `string` (máx. 20 caract.) | Nombre del jugador para el ranking del evento (`GameMenuView`, `EventLeaderboardSync`). |
+| `EchoScrap.Event.SessionId` | `string` (GUID / 12 hex) | Identificador único de sesión generado para el jugador en el ranking de Firebase. |
+| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las estadísticas acumuladas de la sesión. |
+| `https://echoscrap-default-rtdb.firebaseio.com` | Nodos `event_leaderboard/current/players/{sessionId}` y `runs/{runId}` | Sincronización en la nube mediante peticiones HTTPS `PATCH` con nombre, bajas (`kills`), coleccionables (`collectibles`), descubiertos (`discoveredCount / 15`), mejor tiempo (`bestSurvivalSeconds`), victorias y puntuación (`kills * 10 + collectibles * 250 + discoveredCount * 500 + round(bestSurvivalSeconds * 2)`). |
+
+En Windows, `PlayerPrefs` almacena estas claves en el registro del usuario bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap`.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

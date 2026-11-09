@@ -1,27 +1,28 @@
 # Accesibilidad
 
-La configuración y la pausa permiten reducir decoración y sacudida de cámara o activar efectos reducidos. Los avisos esenciales de ataque y los indicadores se mantienen. Las cartas expresan enfoque y rareza mediante texto y borde; los críticos añaden un signo de exclamación al color.
+El menú de pausa (`Esc` / `Start`) organiza las opciones de confort visual, lectura y audio en tres pestañas dedicadas (`CombatHud.cs:631-756`):
 
-El panel de estadísticas puede mostrarse completo, reducido u oculto. El volumen general se ajusta en pausa y se conserva al cerrar la aplicación. Las preferencias visuales se conservan entre reinicios y transiciones de la sesión.
+- **Pestaña `General`:** deslizadores independientes para **`Movimiento de cámara`** (`0%` a `100%`, `ScreenShakeScale`) y **`Efectos decorativos`** (`0%` a `100%`, `VfxDensityScale`, que activa automáticamente el modo de efectos reducidos por debajo de `99,9%` conservando íntegros los avisos de ataque y peligro).
+- **Pestaña `Interfaz`:** selector **`Estadísticas generales`** (**`COMPLETAS`**, **`REDUCIDAS`**, **`OCULTAS`**) y selector **`Atributos de coleccionables`** (**`SÍ`** / **`NO`**, `ShowCompanionPowers`, para mostrar u ocultar las descripciones de los poderes bajo los 3 retratos del HUD). Además, mantener pulsado **`Q`** (teclado) o **`Select`** (mando) en combate despliega bajo demanda tanto las estadísticas completas como los atributos de coleccionables.
+- **Pestaña `Sonido`:** deslizadores independientes para **`Volumen general`** (`0%` a `100%`, `EchoScrap.Audio.MasterVolume`) y **`Música`** (`0%` a `100%`, `EchoScrap.Audio.MusicVolume`).
 
-La pausa y la pérdida de foco bloquean el control de combate y exigen liberar las entradas que podrían provocar confirmaciones accidentales al regresar. Los menús principales y las cartas tienen navegación de mando.
+La pausa y la pérdida de foco de ventana bloquean el control de combate y exigen soltar las entradas activas al regresar para impedir confirmaciones o dashes accidentales.
 
-## Lectura y formatos comprobados
+## Lectura, orientación espacial y formatos comprobados
 
 | Comprobación | Evidencia |
 | --- | --- |
-| 1920 × 1080, 16:9 | Galería del runtime del 6 de noviembre, commit `75bb79c`. Incluye HUD de arena y jefe, cartas, configuración, avisos de interacción y pantallas de resultado. |
-| Escala de la interfaz | HUD y menús usan un lienzo de referencia de 1920 × 1080. Los números flotantes usan 1280 × 720 como referencia de escala. |
-| Señales redundantes | El daño crítico usa tamaño, color y signo de exclamación. Los avisos combinan texto con tecla gráfica. Las barras y etiquetas identifican vida, XP y fase del jefe. |
-| Detalle de estadísticas | Completa y Reducida filtran los valores que cambiaron respecto a la base y compactan el espacio. Sin oculta el panel. |
-| Otros tamaños | 1280 × 720, 2560 × 1440 y formatos distintos de 16:9 quedan por comprobar con el HUD, cartas, bóveda y menú de pausa. |
+| `1920 × 1080`, `16:9` | Verificado en runtime con la tipografía unificada **`Pixelify Sans`**. Incluye HUD de arena y jefe, cartas, menú de pausa en 3 pestañas, señalización de bóveda, Índice de Colección (`[I]`) y pantallas de resultado. |
+| Escala de la interfaz | HUD y menús usan un lienzo de referencia de `1920 × 1080`. Los números flotantes de daño usan `1280 × 720` como referencia de escala. |
+| Señalización en la bóveda | Implementada mediante rótulos 3D (`EQUIPO 1..3`), tarjetas direccionales superiores con flechas en vivo (`VaultDirections`), panel inferior de consejos rotatorios cada `8 s` (`VaultTips`) y botón `ÍNDICE · [I]`. |
+| Señales redundantes | El daño crítico combina tamaño, color y signo de exclamación (`!`). Las resistencias muestran `Resistido` y las ejecuciones `EJECUTADO`. En el Índice de Colección (`[I]`), las entidades no descubiertas combinan silueta negra, nombre `???` y etiqueta `NO ENCONTRADO` / `SILUETA BLOQUEADA`. |
+| Otros tamaños | `1280 × 720`, `2560 × 1440` y relaciones de aspecto distintas de `16:9` se mantienen como comprobaciones adicionales de escalado. |
 
 ![Pantalla de configuración a 1920 × 1080 en la revisión del 6 de noviembre](../Media/Avance_2026-11-06/Accesibilidad/Configuracion.png)
+*Nota sobre la captura histórica: la imagen muestra el panel `CONFIGURACIÓN` de la escena independiente `MainMenu` (`MenuSettingsView.cs`, con botones `COMPLETA`, `REDUCIDA`, `SIN`); dentro de `CombatArena` y la bóveda, el menú de pausa (`Esc`) organiza estos controles en las tres pestañas `General`, `Interfaz` y `Sonido`.*
 
-## Aspectos pendientes
+## Aspectos pendientes de dispositivo de entrada
 
-La preparación de entidades necesita señales claras que lleven al jugador a los tres puestos y expliquen sus poderes antes de salir. Los mensajes locales por proximidad no bastan para descubrir el sistema en el primer recorrido.
-
-La recogida de entidades y la apertura de equipo y fusión dependen actualmente de E. Hace falta revisar el acceso equivalente con mando antes de considerar completo ese recorrido para ambos dispositivos.
+El combate, el menú de pausa, la selección de cartas y la consulta rápida del HUD (`Select`) cuentan con soporte completo de mando. En la versión actual (`9eed59f`), la recogida manual de fragmentos en la arena y las interacciones directas con los pedestales, la máquina de fusión (`E`, `T`) y el Índice de Colección (`I`) se operan mediante teclado y ratón.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

@@ -2,18 +2,18 @@
 
 ## Movimiento que abre oportunidades
 
-El desplazamiento a 8 m/s, el dash y el empuje del cuarto pulso ayudan a atravesar huecos y cambiar la posición de la horda. La linterna apunta por su cuenta, por lo que el Coleccionista puede retirarse mientras ataca en otra dirección.
+El desplazamiento ágil (`6 m/s` base en código, `8 m/s` en el ajuste de escena), el dash (`18 m/s`) y el empuje del cuarto pulso ayudan a atravesar huecos y cambiar la posición de la horda. La linterna apunta por su cuenta, por lo que el Coleccionista puede retirarse mientras ataca en otra dirección.
 
 ## Preparar una colección y construir una configuración
 
-Las entidades equipadas aportan poderes propios, independientes de los niveles de cartas. Las 35 mejoras de la expedición amplían las herramientas disponibles mediante estadísticas, dispositivos, ataques automáticos y control de masas. Los requisitos relacionan las decisiones: Cero absoluto parte de Freón residual y las mejoras de explosión necesitan una fuente compatible.
+Las entidades equipadas en los tres puestos del balcón aportan poderes propios, independientes de los niveles de cartas. Las 35 mejoras de la expedición amplían las herramientas disponibles mediante estadísticas, dispositivos, ataques automáticos y control de masas. Los requisitos relacionan las decisiones: *Cero absoluto* parte de *Freón residual*, *Rayo solar* convierte todos sus pulsos en cierres de ráfaga capaces de activar *Prisma voltaico*, *Sifón* y *Ráfaga crítica*, y las mejoras de explosión necesitan una fuente compatible.
 
 ## Ataques que se pueden leer
 
-La carga del Coloso, el ácido del Mortero, la mecha de la Polilla, los ataques élite y los patrones de Gólgora muestran señales antes de resolver el daño. Los efectos reducidos conservan los avisos esenciales.
+La carga del Coloso, el ácido del Mortero, la espoleta por proximidad de la Polilla Reactor (`1,6 m`), los ataques élite y los patrones de Gólgora muestran señales claras antes de resolver el daño. El ajuste de efectos decorativos en pausa conserva siempre los avisos esenciales de peligro.
 
 ## Una bóveda que da continuidad a las expediciones
 
-Las entidades recogidas pasan al inventario local. En la bóveda se pueden equipar hasta tres copias, observar la colección y consumir cuatro ingredientes en una fusión. El resultado de una expedición devuelve al jugador a esa preparación. Falta hacer más visible el paso de elegir equipo dentro del recorrido inicial.
+Las entidades recogidas pasan al inventario local hasta un máximo de **10 unidades simultáneas** (`3` puestos de equipo en el balcón + `7` puestos de exposición en la planta baja), mientras que su registro permanente queda guardado en el **Índice de Colección (`[I]`)** de 15 entidades. En la bóveda, señalizada mediante rótulos `EQUIPO 1..3`, indicadores direccionales (`VaultDirections`) y consejos (`VaultTips`), el jugador equipa hasta tres acompañantes, libera copias para gestionar el espacio o consume cuatro ingredientes de la misma rareza en una fusión de `30 s`.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
