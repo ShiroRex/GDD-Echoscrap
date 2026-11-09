@@ -100,7 +100,9 @@ El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparaci
 
 ## Mortero: Campana
 
-Es la artillería de la horda. Su cuerpo de campana flotante encadena flotación, carga del emisor, disparo y recuperación. El proyectil y el charco de ácido se añaden durante la ejecución en Unity.
+Es la artillería de la horda. Su diseño conceptual parte de una campana flotante con aletas emisoras de brillo verde en la corona, jaula interior y una manguera lateral por la que escurre el ácido. En el juego encadena flotación, carga del emisor, disparo y recuperación; el proyectil y el charco de ácido se añaden durante la ejecución en Unity.
+
+![Boceto a mano del Mortero Campana|280](../Media/ConceptArt/Campana_Mortero.JPG)
 
 Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección.
 
@@ -118,7 +120,9 @@ Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, dispar
 
 ## Polilla: Reactor
 
-Es el enemigo explosivo de la horda. Su presentación distingue el vuelo de aproximación, el cebado de la mecha y el estallido. Vuelo y cebado tienen cuatro vistas; el estallido es compartido.
+Es el enemigo explosivo de la horda. Su boceto conceptual combina un cuerpo esférico de horno o reactor con ranuras frontales, ojos compuestos y alas mecánicas. En el juego su presentación distingue el vuelo de aproximación, el cebado de la mecha y el estallido; vuelo y cebado tienen cuatro vistas y el estallido es compartido.
+
+![Boceto a mano de la Polilla Reactor|280](../Media/ConceptArt/Polilla.JPG)
 
 Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
@@ -156,7 +160,9 @@ La captura usa la arena real, jugador protegido, oleadas detenidas y avance cont
 
 ## Centinela de Cobre: gólem
 
-Sprite integrado en Unity, con cuatro direcciones, normal map y emisión. Apertura de 0,3 s y preparación de 0,7 s preceden al disparo. Disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s ocupan la recuperación de 2 s. Las bisagras conservan su anclaje exterior en las vistas de perfil.
+Su boceto conceptual define un autómata pesado con bobinas eléctricas en los hombros y compuertas pectorales que se abren para disparar. En Unity cuenta con sprite integrado en cuatro direcciones, normal map y emisión. Apertura de 0,3 s y preparación de 0,7 s preceden al disparo. Disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s ocupan la recuperación de 2 s. Las bisagras conservan su anclaje exterior en las vistas de perfil.
+
+![Boceto a mano del Centinela de Cobre|280](../Media/ConceptArt/Golem_Cobre.JPG)
 
 ![Atlas de Centinela de Cobre: gólem](../Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.png)
 
@@ -227,6 +233,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | --- | --- |
 | Hada | ![Boceto de Hada\|140](../Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](../Media/ConceptArt/Shireen.jpeg) |
+| Soldier | ![Boceto de Soldier\|140](../Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](../Media/ConceptArt/Conde_Alucard.jpeg) |
 | Lobito | ![Boceto de Lobito\|140](../Media/ConceptArt/Lobito.jpeg) |
 

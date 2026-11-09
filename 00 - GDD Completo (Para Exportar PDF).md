@@ -580,7 +580,7 @@ Danzante y curandera de un oasis desértico, ataviada con sedas color magenta y 
 
 ### Soldier
 
-Motociclista y combatiente urbano sobreviviente de una metrópoli arrasada por una infección zombi. Porta un casco rojo con visor oscuro, guantes tácticos y una chamarra mostaza marcada en el pecho por zarpazos que no lograron derribarlo cuando defendía el último puente de evacuación de su ciudad. Curtido en resistir emboscadas cuerpo a cuerpo, aporta mayor vitalidad y reduce el daño recibido.
+Motociclista y combatiente urbano sobreviviente de una metrópoli arrasada por una infección zombi. Porta un casco rojo con visor oscuro, rifle a la espalda, maletín de primeros auxilios en mano y una chamarra mostaza remendada y marcada en el pecho por zarpazos que no lograron derribarlo cuando defendía el último puente de evacuación de su ciudad. Curtido en resistir emboscadas cuerpo a cuerpo, aporta mayor vitalidad y reduce el daño recibido.
 
 ### Conde Alucard
 
@@ -1023,7 +1023,9 @@ El atlas de Wendigo tiene 200 fotogramas de 96 × 96: reposo, marcha y preparaci
 
 ## Mortero: Campana
 
-Es la artillería de la horda. Su cuerpo de campana flotante encadena flotación, carga del emisor, disparo y recuperación. El proyectil y el charco de ácido se añaden durante la ejecución en Unity.
+Es la artillería de la horda. Su diseño conceptual parte de una campana flotante con aletas emisoras de brillo verde en la corona, jaula interior y una manguera lateral por la que escurre el ácido. En el juego encadena flotación, carga del emisor, disparo y recuperación; el proyectil y el charco de ácido se añaden durante la ejecución en Unity.
+
+![Boceto a mano del Mortero Campana|280](Media/ConceptArt/Campana_Mortero.JPG)
 
 Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, disparo y recuperación de cuatro, y muerte de ocho por dirección.
 
@@ -1041,7 +1043,9 @@ Su atlas contiene 112 fotogramas de 64 × 64: flotación y carga de seis, dispar
 
 ## Polilla: Reactor
 
-Es el enemigo explosivo de la horda. Su presentación distingue el vuelo de aproximación, el cebado de la mecha y el estallido. Vuelo y cebado tienen cuatro vistas; el estallido es compartido.
+Es el enemigo explosivo de la horda. Su boceto conceptual combina un cuerpo esférico de horno o reactor con ranuras frontales, ojos compuestos y alas mecánicas. En el juego su presentación distingue el vuelo de aproximación, el cebado de la mecha y el estallido; vuelo y cebado tienen cuatro vistas y el estallido es compartido.
+
+![Boceto a mano de la Polilla Reactor|280](Media/ConceptArt/Polilla.JPG)
 
 Su atlas tiene 62 fotogramas de 64 × 64: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
@@ -1079,7 +1083,9 @@ La captura usa la arena real, jugador protegido, oleadas detenidas y avance cont
 
 ## Centinela de Cobre: gólem
 
-Sprite integrado en Unity, con cuatro direcciones, normal map y emisión. Apertura de 0,3 s y preparación de 0,7 s preceden al disparo. Disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s ocupan la recuperación de 2 s. Las bisagras conservan su anclaje exterior en las vistas de perfil.
+Su boceto conceptual define un autómata pesado con bobinas eléctricas en los hombros y compuertas pectorales que se abren para disparar. En Unity cuenta con sprite integrado en cuatro direcciones, normal map y emisión. Apertura de 0,3 s y preparación de 0,7 s preceden al disparo. Disparo de 0,4 s, vulnerabilidad de 1,3 s y cierre de 0,3 s ocupan la recuperación de 2 s. Las bisagras conservan su anclaje exterior en las vistas de perfil.
+
+![Boceto a mano del Centinela de Cobre|280](Media/ConceptArt/Golem_Cobre.JPG)
 
 ![Atlas de Centinela de Cobre: gólem](Media/Avance_2026-11-05/Spritesheets/CentinelaCobre.png)
 
@@ -1150,6 +1156,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | --- | --- |
 | Hada | ![Boceto de Hada\|140](Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](Media/ConceptArt/Shireen.jpeg) |
+| Soldier | ![Boceto de Soldier\|140](Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](Media/ConceptArt/Conde_Alucard.jpeg) |
 | Lobito | ![Boceto de Lobito\|140](Media/ConceptArt/Lobito.jpeg) |
 
@@ -2134,7 +2141,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.5.2** | 05/11/2026 | Registro visual completado con 21 capturas actuales de VFX de linterna, mejoras, daño, fusión y portal; muestras de octubre sustituidas, procedencia y efectos compartidos documentados; documento completo sincronizado. | Equipo EchoScrap |
 | **0.6.0** | 05/11/2026 | Poderes propios de las quince entidades traídos de develop y controles de puestos vacíos/ocupados actualizados; sprites integrados de Caballero y Centinela con ciclos de combate; Rayo solar con empuje en todos sus pulsos; fórmula y condiciones de Ojo; origen narrativo como trasfondo y minicómic fuera de alcance; Registro visual asignado a David y reparto de 48 apartados. | Sierra Sosa David Alejandro |
 | **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
-| **0.6.2** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (.png a escala 2× y fuentes .aseprite) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo y cuatro entidades) en Media/ConceptArt/, Niveles y Entornos; sincronización del GDD completo. | Equipo EchoScrap |
+| **0.6.2** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (.png a escala 2× y fuentes .aseprite) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Centinela de Cobre y cinco entidades coleccionables) en Media/ConceptArt/, Niveles y Entornos; sincronización del GDD completo. | Equipo EchoScrap |
 
 ## Convención sugerida
 

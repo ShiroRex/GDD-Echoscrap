@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00 - Avance jugable.md",
+                "file": "05 - Arte y Audio/02 - Personajes y Animación.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00 - Avance jugable"
+              "title": "02 - Personajes y Animación"
             }
           }
         ]
@@ -190,6 +190,16 @@
   },
   "active": "99d356eaa24a389e",
   "lastOpenFiles": [
+    "03 - Historia y Mundo/03 - Personajes.md",
+    "Media/ConceptArt/Soldier.JPG",
+    "Media/ConceptArt/Polilla.JPG",
+    "Media/ConceptArt/Golem_Cobre.JPG",
+    "Media/ConceptArt/Campana_Mortero.JPG",
+    "Golem_Cobre.JPG",
+    "Polilla.JPG",
+    "Soldier.JPG",
+    "Campana_Mortero.JPG",
+    "00 - Avance jugable.md",
     "01 - Visión/01 - Ficha del Proyecto.md",
     "10 - Referencia/04 - Historial de Versiones.md",
     "08 - Producción/03 - Roadmap.md",
@@ -202,18 +212,9 @@
     "00 - GDD Completo (Para Exportar PDF).md",
     "Media/ConceptArt/Almacen_Arte.jpeg",
     "Media/Planos/Vertedero.svg",
-    "Media/ConceptArt/Wendigo.jpeg",
-    "Media/ConceptArt/Shireen.jpeg",
-    "Media/ConceptArt/Mapa_Arte.JPG",
-    "Media/ConceptArt/Hada_Costura.jpeg",
-    "Media/ConceptArt/Conde_Alucard.jpeg",
-    "Media/ConceptArt/Lobito.jpeg",
-    "Media/Avance_2026-11-06/Accesibilidad/Configuracion.png",
     "03 - Historia y Mundo/02 - Mundo.md",
     "04 - Contenido/02 - Niveles.md",
-    "Media/Coleccionables/Demonio.png",
     "Media/ConceptArt",
-    "03 - Historia y Mundo/03 - Personajes.md",
     "04 - Contenido/04 - Objetos y Coleccionables.md",
     "04 - Contenido/01 - Estructura del Contenido.md",
     "05 - Arte y Audio/06 - Registro visual.md",
@@ -227,8 +228,6 @@
     "Sprites/Soldier_zombie-Sheet.aseprite",
     "Media/Coleccionables",
     "10 - Referencia/02 - Referencias e Inspiración.md",
-    "11 - Referencia de Diseño/05 - Modos de Juego.md",
-    "11 - Referencia de Diseño/03 - Plataformas y Consolas.md",
     "05 - Progresión.pdf",
     "04 - Controles.pdf",
     "01 - Jugabilidad.pdf",
