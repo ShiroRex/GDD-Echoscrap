@@ -1,22 +1,19 @@
 # Criterios de aceptación
 
-| Parte | Comportamiento esperado |
+| Parte | Comportamiento esperado (`develop` @ `9eed59f`) |
 | --- | --- |
-| Inicio | Menú independiente, continuación de colección o creación con confirmación cuando corresponde. |
-| Preparación | Revisar y seleccionar hasta tres entidades antes de elegir ronda, con opción de puestos vacíos. La guía que haga visible este paso sigue pendiente. |
-| Equipo | Solo copias disponibles, puesto correcto, poderes propios sin niveles de cartas ni acumulación por duplicados; protección frente a consumo o liberación. |
-| Rondas | Selección demo o completa; jefe a 180 o 480 s y vida de 3600 o 9000 HP. |
-| Movimiento | Entradas correctas, diagonal limitada, apoyo sobre el escenario y dash detenido por obstáculos. |
-| Linterna y cartas | Autoapuntado, cuatro pulsos; Rayo solar empuja en cada pulso; Ojo triplica el daño ya crítico bajo su umbral; ofertas válidas entre 35 mejoras. |
-| Enemigos | Cinco arquetipos de horda y dos élites con sus ataques, resistencias y avisos. |
-| Jefe | Traslado protegido, perímetro cerrado, seis patrones, segunda fase y refuerzos dentro del límite efectivo de ocho. |
-| Entidades de mapa | Apariciones temporales, recogida manual única y copia guardada. |
-| Fusión | Cuatro copias consumidas una vez, resultado único, estado listo y apertura por interacción. |
-| Resultado | Derrota al morir el jugador; victoria al morir el jefe con jugador vivo; prioridad de derrota en empate. |
-| Retorno | Limpieza de la expedición y vuelta a bóveda con colección, equipo y fusión conservados. |
-| Persistencia | Guardado de producción de formato 4, validación de datos y volumen general conservado. |
-| Medios | Atlas verificados contra recursos activos y GIFs identificados como previsualización o captura de Unity. |
-
-Esta tabla define qué revisar. No atribuye a toda la suite el resultado de una captura ni marca como terminada la guía de preparación pendiente.
+| Inicio y ranking | Menú con campo `NOMBRE DEL JUGADOR (RANKING)...` (máx. 20 caracteres), continuación de colección o creación de nueva colección con confirmación cuando existe progreso. |
+| Preparación y guía en bóveda | Rótulos 3D `EQUIPO 1..3` en el balcón, indicadores direccionales superiores (`VaultDirections`), panel inferior de consejos rotatorios cada `8 s` (`VaultTips`) e **Índice de Colección (`[I]`)** con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES` y pestañas `POR RAREZAS` (siluetas `???`) y `EN TU BÓVEDA`. |
+| Equipo y liberación | En los puestos 1 a 3 (balcón), `E` (`E · EQUIPAR` / `E · EDITAR`) abre el selector con botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`, y `T` en el mundo desequipa directamente. En los puestos 4 a 10 ocupados (planta baja), `E` (`E · LIBERAR`) abre el modal `LIBERAR UNIDAD` (`CANCELAR` / `LIBERAR`). Poderes propios sin acumularse por duplicados. |
+| Rondas | Selección de ronda demo (`180 s`, `3 600 HP`) o completa (`480 s`, `9 000 HP`; `15 000 HP` base en `GolgoraCombatSettings`). |
+| Movimiento y dash | Entradas correctas, diagonal normalizada, apoyo sobre relieve y dash detenido por obstáculos. `DASH_04` fija la recarga en `0,5 s` manteniendo el `+8%/nivel` de velocidad de `DASH_01`. |
+| Linterna y cartas | Autoapuntado y ráfaga de cuatro pulsos; con `FLASH_05` (*Rayo solar*) todos los pulsos cuentan como cuarto pulso (`finalPulse = true`), aplicando empuje y activando `FLASH_03`, `BIO_02` y `CRIT_04` en cada pulso; `CRIT_05` triplica el daño crítico bajo el `35%` de vida previa; ofertas válidas entre las 35 mejoras. |
+| Salud y mitigación | Salud máxima según fórmula de `PlayerRuntimeStats` y resolución del daño entrante en el orden exacto de 7 pasos de `PlayerHealth` (invulnerabilidad → Hada → evasión → Soldier → bloqueo → armadura → Yanikua / Nanobots). |
+| Enemigos | Cinco arquetipos de horda y dos élites con sus ataques, resistencias y tabla de susceptibilidad al empuje. Polilla Reactor arma su espoleta a `1,6 m` e inflige `35` al jugador y el `85%` (`29,75`) a otros enemigos normales. |
+| Jefe (Gólgora) | Traslado protegido a la caldera de `22 m`, seis patrones (*Bombardeo* con `0,6 s` de recuperación, *Cerco de magma* con `40` de daño físico de aterrizaje y `18 s` fijos de enfriamiento en ambas fases, *Fisura de magma* con `1,1 s` fijos de preparación en ambas fases), transición a Fase 2 al `50%` de vida y límite efectivo de 8 secuaces. |
+| Colección y capacidad (`10/10`) | Apariciones temporales en arena y recogida manual con `E` hasta el máximo estricto de **10 unidades** (`3` de equipo + `7` de exposición). Con `10/10` unidades, bloquea la recogida en arena (`INVENTARIO LLENO / LIBERA ESPACIO`) y el reclamo en fusión (`INVENTARIO LLENO · LIBERA ESPACIO`). |
+| Fusión (`30 s`) | Requiere 4 copias de la misma rareza (excluida Yanikua; permite copias equipadas `EN EQUIPO 1/2/3`, desequipándolas automáticamente al confirmar), dura **30 segundos (`00:30`)** fijos en todas las recetas, muestra probabilidades enteras en UI (`60%`, `40%`, `1%`) y ofrece un único botón `COLECCIONAR` al reclamar. |
+| Interfaz y pausa | Tipografía unificada **`Pixelify Sans`**, menú de pausa en 3 pestañas (`General`, `Interfaz` con `Atributos de coleccionables SÍ/NO`, `Sonido` con `Volumen general` y `Música`) y consulta rápida manteniendo `Q` o `Select` en combate. |
+| Resultado, retorno y persistencia | Prioridad de derrota en empate simultáneo, sincronización de sesión con Firebase (`EventLeaderboardSync`), retorno limpio a la bóveda y guardado `SaveData` v4 (`displays[10]`, `discovered[15]`, `hasEquippedCompanion`). |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
