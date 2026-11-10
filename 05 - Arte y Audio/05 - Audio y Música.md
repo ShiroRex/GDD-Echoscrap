@@ -76,9 +76,21 @@ Las pistas musicales fueron producidas en estación de trabajo de audio digital 
 
 *Instrumento virtual `Spitfire Audio – BBC Symphony Orchestra` utilizado para incorporar las cuerdas y violines en la ambientación de la Bóveda.*
 
-## Procedencia documentada
+## Procedencia y autoría de recursos sonoros
 
-La mezcla de la linterna utiliza grabaciones de microondas de `pinto0lucas` y contador Geiger de `cookies+policy`. El archivo `Sources.txt` del proyecto registra sus enlaces, la licencia `CC0` indicada para ambas y las transformaciones realizadas: conversión a mono, selección de clics, capas, envolventes y tonos sintetizados. Los WAV entregados son mono, `44,1 kHz` y `16 bits`.
+Para dar cumplimiento estricto al criterio de evaluación de audio y licencias, la siguiente tabla distingue los recursos producidos directamente por el equipo de aquellos obtenidos o derivados de bibliotecas externas:
+
+| Recurso / Contexto | Tipo | Origen y autoría | Licencia / Condiciones | Tratamiento técnico |
+| --- | --- | --- | --- | --- |
+| **Menú principal** (`Menu.mp3`) | Música | **Composición original del equipo EchoScrap** (secuenciado y mezclado en DAW). | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Sintetizadores virtuales y *pitch drift*. |
+| **Bóveda (Almacén)** (`Boveda_Almacen.mp3`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Instrumentos orquestales Spitfire BBC y sintetizadores. |
+| **Arena** (`Partida.mp3` / `Arena_combat_Test`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Bucle continuo de percusión y sintetizadores. |
+| **Gólgora** (`Jefe.mp3`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Síntesis pura y percusión de combate. |
+| **Linterna (base y ráfagas)** | SFX | Muestras externas de microondas (`pinto0lucas`) y contador Geiger (`cookies+policy`). | Licencia **CC0 (Dominio Público)** registrada en `Sources.txt`. | Conversión a mono, 44,1 kHz, 16 bits; selección de clics, capas, envolventes y tonos sintetizados. |
+| **Linterna (impactos y Rayo solar)** | SFX | Diseño sonoro propio del equipo mediante capas sintetizadas. | Obra propia. | Mono, 44,1 kHz, 16 bits. Modulación y envolventes reactivas al impacto. |
+| **Experiencia y gemas** | SFX | Síntesis procedural/frecuencial del equipo. | Obra propia. | Mono, modulación de tono progresiva según racha de recogida. |
+| **Fusión (apertura de cámara)** | SFX | Muestra derivada de mecanismos metálicos / neumáticos. | Licencia libre / CC0. | Procesamiento de graves, capas de despresurización y reverberación. |
+| **Gólgora y enemigos (rugido, pasos, impactos)** | SFX | Componentes de audio de Unity y capas de impacto procesadas. | Mezcla propia sobre librerías CC0 / Dominio público. | Atenuación espacial 3D, balance de volumen y mezcla dinámica (*ducking*). |
 
 La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
