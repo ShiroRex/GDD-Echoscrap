@@ -1168,7 +1168,9 @@ Enemigo explosivo de la horda que arma su espoleta a `1,6 m` del jugador. Su boc
 
 ## Caballero Fantasma
 
-Sprite integrado en cuatro direcciones con normal map y emisión (224 fotogramas de `96 × 96`). La preparación sigue los `0,8 s` del barrido, y el ataque junto con la recuperación se enlazan durante los `0,8 s` posteriores.
+Su boceto conceptual define una armadura pesada con hombreras de púas, cabeza espectral envuelta en llamas oscuras y espadón de barrido. En Unity cuenta con sprite integrado en cuatro direcciones con normal map y emisión (224 fotogramas de `96 × 96`). La preparación sigue los `0,8 s` del barrido, y el ataque junto con la recuperación se enlazan durante los `0,8 s` posteriores.
+
+![Boceto a mano del Caballero Fantasma|280](Media/ConceptArt/Caballero_Fantasma.JPG)
 
 ![Atlas de Caballero Fantasma](Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.png)
 
@@ -1257,11 +1259,17 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | --- | --- |
 | Yanikua | ![Boceto de Yanikua\|140](Media/ConceptArt/Yanikua.jpeg) |
 | Lisa | ![Boceto de Lisa\|140](Media/ConceptArt/Lisa.jpeg) |
+| Sirena | ![Boceto de Sirena\|140](Media/ConceptArt/Sirena.JPG) |
 | Hada | ![Boceto de Hada\|140](Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](Media/ConceptArt/Conde_Alucard.jpeg) |
+| Mago | ![Boceto de Mago\|140](Media/ConceptArt/Mago.JPG) |
+| Demonio | ![Boceto de Demonio\|140](Media/ConceptArt/Demonio.JPG) |
+| Chico Emo | ![Boceto de Chico Emo\|140](Media/ConceptArt/Chico_Emo.JPG) |
 | Lobito | ![Boceto de Lobito\|140](Media/ConceptArt/Lobito.jpeg) |
+| Basket | ![Boceto de Basket\|140](Media/ConceptArt/Basket.JPG) |
+| Reaper | ![Boceto de Reaper\|140](Media/ConceptArt/Reaper.JPG) |
 
 ---
 
@@ -1409,6 +1417,31 @@ La pestaña **`Sonido`** del menú de pausa incorpora dos controles independient
 
 ![Pista del Jefe final](Media/Audio/Jefe.mp3)
 
+## Efectos especiales y diseño sonoro (SFX)
+
+Los efectos de sonido puntuales refuerzan la lectura de ataques enemigos, acciones del Coleccionista, recolección de recursos y estados de interfaz. En `Media/Audio/SFX/` se incluyen las doce muestras exportadas del estudio (`WAV` estéreo, `24 bits`, `48 kHz`):
+
+| Efecto de sonido | Propósito en el videojuego | Descripción acústica | Muestra reproducible |
+| --- | --- | --- | --- |
+| **Dash del Coleccionista** | Se reproduce cuando el jugador activa el impulso evasivo (`Espacio` / `RT`) a `18 m/s`. | Barrido de aire corto y envolvente rápida (`0,51 s`) que transmite aceleración e invulnerabilidad momentánea. | [Dash.wav](Media/Audio/SFX/Dash.wav)<br>![SFX Dash](Media/Audio/SFX/Dash.wav) |
+| **Golpe recibido** | Se reproduce cuando un ataque enemigo impacta al Coleccionista y descuenta salud. | Transiente seco y contundente (`0,51 s`) con refuerzo en frecuencias medias-bajas para alertar de inmediato la pérdida de vida. | [Golpe_Recibido.wav](Media/Audio/SFX/Golpe_Recibido.wav)<br>![SFX Golpe recibido](Media/Audio/SFX/Golpe_Recibido.wav) |
+| **Recogida de coleccionable** | Se reproduce al capturar un fragmento de entidad coleccionable en la arena. | Timbre brillante y ascendente (`0,71 s`) que confirma la obtención de una nueva copia para la bóveda. | [Coleccionable.wav](Media/Audio/SFX/Coleccionable.wav)<br>![SFX Coleccionable](Media/Audio/SFX/Coleccionable.wav) |
+| **Curación con botiquín** | Se reproduce al recoger un botiquín soltado por los enemigos derrotados. | Pulso cálido y cristalino (`0,51 s`) que comunica restauración inmediata de vitalidad. | [Curacion_Botiquin.wav](Media/Audio/SFX/Curacion_Botiquin.wav)<br>![SFX Curación](Media/Audio/SFX/Curacion_Botiquin.wav) |
+| **Subida de nivel** | Se reproduce cuando la barra de experiencia se llena durante la expedición. | Acorde sintético llamativo y expansivo (`0,72 s`) que anuncia la apertura del selector de mejoras. | [Subida_Nivel.wav](Media/Audio/SFX/Subida_Nivel.wav)<br>![SFX Subida de nivel](Media/Audio/SFX/Subida_Nivel.wav) |
+| **Selección de carta** | Se reproduce al confirmar una carta de mejora en el selector (`UpgradeDraftController`). | Clic tonal breve y definido (`0,36 s`) que valida la elección del jugador antes de reanudar el combate. | [Seleccion_Carta.wav](Media/Audio/SFX/Seleccion_Carta.wav)<br>![SFX Selección de carta](Media/Audio/SFX/Seleccion_Carta.wav) |
+| **Interceptor (Galgo de chatarra)** | Se reproduce cuando el galgo interceptor ejecuta su mordisco o embestida rápida a corta distancia. | Gruñido metálico y corte agresivo (`0,51 s`) que advierte la cercanía del perseguidor veloz de la horda. | [Galgo.wav](Media/Audio/SFX/Galgo.wav)<br>![SFX Galgo](Media/Audio/SFX/Galgo.wav) |
+| **Mortero Campana** | Se reproduce cuando el Mortero Campana culmina su carga y dispara el proyectil parabólico de ácido. | Disparo neumático resonante (`0,86 s`) con timbre hueco de campana metálica que marca el lanzamiento a distancia. | [Mortero.wav](Media/Audio/SFX/Mortero.wav)<br>![SFX Mortero](Media/Audio/SFX/Mortero.wav) |
+| **Polilla Reactor (aviso y explosión)** | Se reproduce cuando la Polilla Reactor entra en el radio de `1,6 m`, arma su espoleta y detona tras `0,75 s`. | Secuencia en dos fases (`1,99 s`): pitido acelerado de cebado que da margen para esquivar con *dash*, seguido del estallido térmico. | [Polilla_Aviso_Explosion.wav](Media/Audio/SFX/Polilla_Aviso_Explosion.wav)<br>![SFX Polilla](Media/Audio/SFX/Polilla_Aviso_Explosion.wav) |
+| **Caballero Fantasma (barrido)** | Se reproduce cuando el élite Caballero Fantasma prepara (`0,8 s`) y descarga el barrido espectral de su espadón. | Carga espectral seguida de un corte amplio y pesado (`1,99 s`) que delimita la ventana de peligro del ataque cuerpo a cuerpo. | [Barrido_Caballero.wav](Media/Audio/SFX/Barrido_Caballero.wav)<br>![SFX Barrido Caballero](Media/Audio/SFX/Barrido_Caballero.wav) |
+| **Centinela de Cobre (apertura y disparo)** | Se reproduce cuando el gólem élite abre sus compuertas pectorales (`0,3 s`), prepara (`0,7 s`) y lanza su salva de misiles. | Mecanismo metálico de apertura articulado con la descarga de artillería (`1,51 s`), señalizando además el inicio de su ventana vulnerable. | [Centinela_Apertura_Disparo.wav](Media/Audio/SFX/Centinela_Apertura_Disparo.wav)<br>![SFX Centinela](Media/Audio/SFX/Centinela_Apertura_Disparo.wav) |
+| **Impacto de Gólgora** | Se reproduce cuando el jefe final Gólgora descarga sus golpes pesados contra el suelo de la caldera. | Impacto grave y contundente (`0,61 s`) con resonancia mineral que subraya la escala colosal del jefe. | [Impacto_Golgora.wav](Media/Audio/SFX/Impacto_Golgora.wav)<br>![SFX Impacto Gólgora](Media/Audio/SFX/Impacto_Golgora.wav) |
+
+Adicionalmente, el diseño sonoro de cierre de partida contempla tres avisos de estado para acompañar la pantalla de resultados antes del retorno a la bóveda:
+
+- **Aviso de derrota:** caída tonal descendente en modo menor que indica que la salud del Coleccionista llegó a cero y la incursión ha concluido.
+- **Aviso de victoria:** fanfarria breve y brillante en modo mayor al derrotar a Gólgora en la caldera central.
+- **Despliegue de resultados:** timbre de fondo que acompaña la aparición del recuento de bajas, tiempo sobrevivido, coleccionables y sincronización del ranking.
+
 ## Elaboración e instrumentación digital
 
 Las pistas musicales fueron producidas en estación de trabajo de audio digital (DAW) combinando secuenciación MIDI, síntesis sustractiva/*hypersaw* e instrumentación orquestal virtual:
@@ -1441,13 +1474,14 @@ Para dar cumplimiento estricto al criterio de evaluación de audio y licencias, 
 | **Gólgora** (`Jefe.mp3`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Síntesis pura y percusión de combate. |
 | **Linterna (base y ráfagas)** | SFX | Muestras externas de microondas (`pinto0lucas`) y contador Geiger (`cookies+policy`). | Licencia **CC0 (Dominio Público)** registrada en `Sources.txt`. | Conversión a mono, 44,1 kHz, 16 bits; selección de clics, capas, envolventes y tonos sintetizados. |
 | **Linterna (impactos y Rayo solar)** | SFX | Diseño sonoro propio del equipo mediante capas sintetizadas. | Obra propia. | Mono, 44,1 kHz, 16 bits. Modulación y envolventes reactivas al impacto. |
+| **Combate, enemigos e interfaz (`Media/Audio/SFX/*.wav`)** | SFX | **Diseño sonoro y procesamiento propio del equipo EchoScrap** (Dash, Golpe recibido, Coleccionable, Botiquín, Subida de nivel, Selección de carta, Galgo, Mortero, Polilla, Caballero Fantasma, Centinela de Cobre e Impacto de Gólgora). | Obra propia / procesamiento sobre muestras CC0. | WAV estéreo, 24 bits, 48 kHz. Síntesis, capas percusivas y envolventes dinámicas. |
 | **Experiencia y gemas** | SFX | Síntesis procedural/frecuencial del equipo. | Obra propia. | Mono, modulación de tono progresiva según racha de recogida. |
 | **Fusión (apertura de cámara)** | SFX | Muestra derivada de mecanismos metálicos / neumáticos. | Licencia libre / CC0. | Procesamiento de graves, capas de despresurización y reverberación. |
-| **Gólgora y enemigos (rugido, pasos, impactos)** | SFX | Componentes de audio de Unity y capas de impacto procesadas. | Mezcla propia sobre librerías CC0 / Dominio público. | Atenuación espacial 3D, balance de volumen y mezcla dinámica (*ducking*). |
+| **Gólgora y enemigos (rugido, pasos, impactos en motor)** | SFX | Componentes de audio de Unity y capas de impacto procesadas. | Mezcla propia sobre librerías CC0 / Dominio público. | Atenuación espacial 3D, balance de volumen y mezcla dinámica (*ducking*). |
 
 La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
-Los GIFs de este GDD no contienen audio y sirven para revisar animación y VFX. Como excepción documental, esta sección incluye las cuatro pistas musicales del juego (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`); los efectos de sonido (SFX) y su mezcla dinámica se comprueban directamente en el juego.
+Los GIFs de este GDD no contienen audio y sirven para revisar animación y VFX. Como excepción documental, esta sección incluye las cuatro pistas musicales del juego (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`) y las doce muestras de efectos de sonido (`Media/Audio/SFX/*.wav`); su mezcla dinámica y espacialización se comprueban directamente en el juego.
 
 ---
 
@@ -2329,7 +2363,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.0** | 05/11/2026 | Poderes propios de las quince entidades traídos de `develop` y controles de puestos actualizados; sprites integrados de Caballero y Centinela con ciclos de combate; *Rayo solar* con empuje en todos sus pulsos; fórmula y condiciones de *Ojo del verdugo*; Registro visual asignado a David y reparto de 48 apartados. | Sierra Sosa David Alejandro |
 | **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
 | **0.6.2** | 08/11/2026 | Sincronización íntegra con `develop` @ `9eed59f`: capacidad máxima estricta de **10 unidades** (`3` puestos de equipo en el balcón + `7` de exposición en planta baja, `displays[10]`), bloqueo por inventario lleno (`10/10`), interacción exacta de pedestales (`E · EQUIPAR`/`EDITAR`, `T` y `E · LIBERAR`), señalización e indicadores de bóveda implementados (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, fusión fija de **30 s (`00:30`)** con copias equipadas (`EN EQUIPO 1/2/3`), porcentajes redondeados a enteros (`60%`, `40%`, `1%`) y botón único `COLECCIONAR`, tipografía unificada **`Pixelify Sans`**, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida del HUD (`Q` / `Select`), ranking en vivo con Firebase (`EventLeaderboardSync`) y reglas exactas de combate (`FLASH_05`, `DASH_04`, `DEMO_03/04`, `SCRAP_03/04`, fórmulas y orden de mitigación en `PlayerHealth`, Polilla Reactor, Gólgora y tabla de empuje). | Sierra Sosa David Alejandro |
-| **0.6.3** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (`.png` a escala `2×` y fuentes `.aseprite`) en Personajes y Animación; integración de bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Centinela de Cobre y siete entidades coleccionables) en `Media/ConceptArt/`, Niveles y Entornos; desglose de composición musical, capturas de producción en DAW y las cuatro pistas de la banda sonora (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`) en Audio y Música; sincronización del GDD completo. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
+| **0.6.3** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (`.png` a escala `2×` y fuentes `.aseprite`) en Personajes y Animación; integración de 20 bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Caballero Fantasma, Centinela de Cobre y trece entidades coleccionables) en `Media/ConceptArt/`, Niveles y Entornos; desglose de composición musical, capturas de producción en DAW, las cuatro pistas de la banda sonora (`Media/Audio/*.mp3`), las doce muestras de efectos de sonido (`Media/Audio/SFX/*.wav`) y la tabla de procedencia/autoría sonora en Audio y Música; sincronización del GDD completo. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 
 ## Convención sugerida
 

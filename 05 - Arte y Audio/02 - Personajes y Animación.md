@@ -146,7 +146,9 @@ Enemigo explosivo de la horda que arma su espoleta a `1,6 m` del jugador. Su boc
 
 ## Caballero Fantasma
 
-Sprite integrado en cuatro direcciones con normal map y emisión (224 fotogramas de `96 × 96`). La preparación sigue los `0,8 s` del barrido, y el ataque junto con la recuperación se enlazan durante los `0,8 s` posteriores.
+Su boceto conceptual define una armadura pesada con hombreras de púas, cabeza espectral envuelta en llamas oscuras y espadón de barrido. En Unity cuenta con sprite integrado en cuatro direcciones con normal map y emisión (224 fotogramas de `96 × 96`). La preparación sigue los `0,8 s` del barrido, y el ataque junto con la recuperación se enlazan durante los `0,8 s` posteriores.
+
+![Boceto a mano del Caballero Fantasma|280](../Media/ConceptArt/Caballero_Fantasma.JPG)
 
 ![Atlas de Caballero Fantasma](../Media/Avance_2026-11-05/Spritesheets/CaballeroFantasma.png)
 
@@ -209,23 +211,23 @@ Los daños, tiempos, fases, refuerzos y reglas de cierre están en [[03 - Enemig
 
 Las quince entidades coleccionables se presentan en el mundo y en las vitrinas de la Bóveda mediante sprites 2D en pixel art exportados a doble escala sin interpolación. Sus historias de origen se documentan en [[03 - Personajes]] y sus rarezas, fuentes y poderes en [[04 - Objetos y Coleccionables]].
 
-| Entidad | Rareza | Previsualización del sprite | Fuente editable |
-| --- | --- | --- | --- |
-| Yanikua | Mítico | ![Sprite de Yanikua\|140](../Media/Coleccionables/Yanikua.png) | [Yanikua.aseprite](../Sprites/Yanikua.aseprite) |
-| Lisa | Legendario | ![Sprite de Lisa\|150](../Media/Coleccionables/Lisa.png) | [Lisa.aseprite](../Sprites/Lisa.aseprite) |
-| Sirena | Legendario | ![Sprite de Sirena](../Media/Coleccionables/Sirena_adelante_atras.png) | [Sirena_adelante_atras.aseprite](../Sprites/Sirena_adelante_atras.aseprite) |
-| Hada | Épico | ![Sprite de Hada](../Media/Coleccionables/Hada_atras_adelante.png) | [Hada_atras_adelante.aseprite](../Sprites/Hada_atras_adelante.aseprite) |
-| Murciélago Cristal | Épico | ![Sprite de Murciélago Cristal](../Media/Coleccionables/Murcielagocristal_atras_adelante.png) | [Murcielagocristal_atras_adelante.aseprite](../Sprites/Murcielagocristal_atras_adelante.aseprite) |
-| Shireen | Especial | ![Sprite de Shireen\|220](../Media/Coleccionables/Shireen.png) | [Shireen.aseprite](../Sprites/Shireen.aseprite) |
-| Soldier | Especial | ![Sprite de Soldier](../Media/Coleccionables/Soldier_zombie-Sheet.png) | [Soldier_zombie-Sheet.aseprite](../Sprites/Soldier_zombie-Sheet.aseprite) |
-| Conde Alucard | Especial | ![Sprite de Conde Alucard](../Media/Coleccionables/Conde_Alucard.png) | [Conde_Alucard.aseprite](../Sprites/Conde_Alucard.aseprite) |
-| Mago | Raro | ![Sprite de Mago](../Media/Coleccionables/Mago.png) | [Mago.aseprite](../Sprites/Mago.aseprite) |
-| Demonio | Raro | ![Sprite de Demonio (frente)\|240](../Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)\|240](../Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](../Sprites/Demonio.aseprite) · [Demonio2.aseprite](../Sprites/Demonio2.aseprite) |
-| Joel | Raro | ![Sprite de Joel](../Media/Coleccionables/Jov4.png) | [Jov4.aseprite](../Sprites/Jov4.aseprite) |
-| Chico Emo | Raro | ![Sprite de Chico Emo\|130](../Media/Coleccionables/Chico_Emo.png) | [Chico_Emo.aseprite](../Sprites/Chico_Emo.aseprite) |
-| Lobito | Común | ![Sprite de Lobito\|220](../Media/Coleccionables/Lobito.png) | [Lobito.aseprite](../Sprites/Lobito.aseprite) |
-| Basket | Común | ![Sprite de Basket](../Media/Coleccionables/basket.png) | [basket.aseprite](../Sprites/basket.aseprite) |
-| Reaper | Común | ![Sprite de Reaper](../Media/Coleccionables/Reaper.png) | [Reaper.aseprite](../Sprites/Reaper.aseprite) |
+| Entidad            | Rareza     | Previsualización del sprite                                                                                                                          | Fuente editable                                                                                     |
+| ------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Yanikua            | Mítico     | ![Sprite de Yanikua\|140](../Media/Coleccionables/Yanikua.png)                                                                                       | [Yanikua.aseprite](../Sprites/Yanikua.aseprite)                                                     |
+| Lisa               | Legendario | ![Sprite de Lisa\|150](../Media/Coleccionables/Lisa.png)                                                                                             | [Lisa.aseprite](../Sprites/Lisa.aseprite)                                                           |
+| Sirena             | Legendario | ![Sprite de Sirena](../Media/Coleccionables/Sirena_adelante_atras.png)                                                                               | [Sirena_adelante_atras.aseprite](../Sprites/Sirena_adelante_atras.aseprite)                         |
+| Hada               | Épico      | ![Sprite de Hada](../Media/Coleccionables/Hada_atras_adelante.png)                                                                                   | [Hada_atras_adelante.aseprite](../Sprites/Hada_atras_adelante.aseprite)                             |
+| Murciélago Cristal | Épico      | ![Sprite de Murciélago Cristal](../Media/Coleccionables/Murcielagocristal_atras_adelante.png)                                                        | [Murcielagocristal_atras_adelante.aseprite](../Sprites/Murcielagocristal_atras_adelante.aseprite)   |
+| Shireen            | Especial   | ![Sprite de Shireen\|220](../Media/Coleccionables/Shireen.png)                                                                                       | [Shireen.aseprite](../Sprites/Shireen.aseprite)                                                     |
+| Soldier            | Especial   | ![Sprite de Soldier](../Media/Coleccionables/Soldier_zombie-Sheet.png)                                                                               | [Soldier_zombie-Sheet.aseprite](../Sprites/Soldier_zombie-Sheet.aseprite)                           |
+| Conde Alucard      | Especial   | ![Sprite de Conde Alucard](../Media/Coleccionables/Conde_Alucard.png)                                                                                | [Conde_Alucard.aseprite](../Sprites/Conde_Alucard.aseprite)                                         |
+| Mago               | Raro       | ![Sprite de Mago](../Media/Coleccionables/Mago.png)                                                                                                  | [Mago.aseprite](../Sprites/Mago.aseprite)                                                           |
+| Demonio            | Raro       | ![Sprite de Demonio (frente)\|240](../Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)\|240](../Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](../Sprites/Demonio.aseprite) · [Demonio2.aseprite](../Sprites/Demonio2.aseprite) |
+| Joel               | Raro       | ![Sprite de Joel](../Media/Coleccionables/Jov4.png)                                                                                                  | [Jov4.aseprite](../Sprites/Jov4.aseprite)                                                           |
+| Chico Emo          | Raro       | ![Sprite de Chico Emo\|130](../Media/Coleccionables/Chico_Emo.png)                                                                                   | [Chico_Emo.aseprite](../Sprites/Chico_Emo.aseprite)                                                 |
+| Lobito             | Común      | ![Sprite de Lobito\|220](../Media/Coleccionables/Lobito.png)                                                                                         | [Lobito.aseprite](../Sprites/Lobito.aseprite)                                                       |
+| Basket             | Común      | ![Sprite de Basket](../Media/Coleccionables/basket.png)                                                                                              | [basket.aseprite](../Sprites/basket.aseprite)                                                       |
+| Reaper             | Común      | ![Sprite de Reaper](../Media/Coleccionables/Reaper.png)                                                                                              | [Reaper.aseprite](../Sprites/Reaper.aseprite)                                                       |
 
 ### Bocetos conceptuales a mano
 
@@ -235,10 +237,16 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | --- | --- |
 | Yanikua | ![Boceto de Yanikua\|140](../Media/ConceptArt/Yanikua.jpeg) |
 | Lisa | ![Boceto de Lisa\|140](../Media/ConceptArt/Lisa.jpeg) |
+| Sirena | ![Boceto de Sirena\|140](../Media/ConceptArt/Sirena.JPG) |
 | Hada | ![Boceto de Hada\|140](../Media/ConceptArt/Hada_Costura.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](../Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](../Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](../Media/ConceptArt/Conde_Alucard.jpeg) |
+| Mago | ![Boceto de Mago\|140](../Media/ConceptArt/Mago.JPG) |
+| Demonio | ![Boceto de Demonio\|140](../Media/ConceptArt/Demonio.JPG) |
+| Chico Emo | ![Boceto de Chico Emo\|140](../Media/ConceptArt/Chico_Emo.JPG) |
 | Lobito | ![Boceto de Lobito\|140](../Media/ConceptArt/Lobito.jpeg) |
+| Basket | ![Boceto de Basket\|140](../Media/ConceptArt/Basket.JPG) |
+| Reaper | ![Boceto de Reaper\|140](../Media/ConceptArt/Reaper.JPG) |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
