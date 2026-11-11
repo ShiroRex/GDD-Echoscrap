@@ -2,17 +2,17 @@
 
 | Momento | Regla |
 | --- | --- |
-| Menú inicial | Campo `NOMBRE DEL JUGADOR (RANKING)...`, Continuar, Nueva colección, Configuración y Salir. El mundo se carga después de elegir colección. |
-| Preparación en bóveda | Movimiento, guía activa (`EQUIPO 1..3`, `VaultDirections` y `VaultTips`), consulta del Índice de Colección (`[I]`), gestión de las 10 unidades (3 de equipo en el balcón + 7 de exposición en planta baja) y máquina de fusión (`30 s`). El reloj de expedición no avanza. |
+| Menú inicial | Continuar, Nueva colección (con campo `NOMBRE DEL JUGADOR (RANKING)...` validado mediante `GamertagRegistry` para habilitar una única oportunidad puntuable, o vacío para práctica), Configuración y Salir. El mundo se carga después de elegir colección. |
+| Preparación en bóveda | Movimiento, guía activa (`EQUIPO 1..3`, `VaultDirections` y `VaultTips`), consulta del Índice de Colección / Bestiario (`[I]`), gestión de las 10 unidades (3 de equipo en el balcón + 7 de exposición en planta baja) y máquina de fusión (`30 s`). El reloj de expedición no avanza. |
 | Selección y liberación de entidades | En los puestos 1 a 3 (balcón), `E` (`E · EQUIPAR` / `E · EDITAR`) abre y pausa el selector (`QUITAR DEL PUESTO`, `LIBERAR COPIA`, `CERRAR · E / ESC`), y `T` en el mundo desequipa directamente. En los puestos 4 a 10 ocupados (planta baja), `E` (`E · LIBERAR`) abre el modal de confirmación `LIBERAR UNIDAD`. |
-| Índice de Colección | `I` o clic en `ÍNDICE · [I]` pausa la simulación (`PauseReason.FusionMenu`) y muestra las pestañas `POR RAREZAS` (15 entidades) y `EN TU BÓVEDA` (hasta 10 unidades). |
-| Selección de ronda | Se elige ronda demo (`3:00`) o completa (`8:00`) antes de entrar, pudiendo actualizar el nombre de jugador para el ranking. |
+| Índice de Colección (Bestiario) | `I` o clic en `ÍNDICE · [I]` pausa la simulación (`PauseReason.FusionMenu`) y muestra las pestañas `POR RAREZAS` (15 entidades en 6 rarezas; siluetas negras `???` hasta recoger o reclamar por primera vez) y `EN TU BÓVEDA` (hasta 10 unidades). |
+| Selección de ronda | En `¿QUIERES ENTRAR A LA ARENA?` se elige `RONDA DEMO` (`3:00`) o `RONDA COMPLETA` (`8:00`), o `SALIR`. Si la colección tiene su oportunidad puntuable activa, entrar inicia el envío en vivo (`EN PARTIDA`) a `echoscrap.web.app`. |
 | Combate | Avanzan reloj, oleadas, ataques, recogida (bloqueada en `10/10` para entidades) y temporizadores activos. Mantener `Q` o `Select` despliega estadísticas completas y poderes de acompañantes en el HUD. |
-| Cartas o pausa | El combate se detiene; el menú de pausa (`Esc` / `Start`) ofrece las pestañas `General`, `Interfaz` y `Sonido`, además de `CONTINUAR` y salida a menú o bóveda. |
-| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver por el portal. |
+| Cartas o pausa | El combate se detiene; el menú de pausa (`Esc` / `Start`) ofrece las pestañas `General`, `Interfaz` y `Sonido`, además de `CONTINUAR` y salida a menú o bóveda (abandonar una expedición puntuable cancela el intento y conserva la oportunidad para el siguiente ingreso). |
+| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver por el portal; reclamar una fusión con `COLECCIONAR` durante la expedición puntuable suma como unidad obtenida (`+300` pts base). |
 | Entrada de Gólgora | Se retira la horda, se limpian amenazas y se traslada al jugador a la caldera con protección. |
 | Transición del jefe | Al llegar al `50%` de vida, Gólgora entra en su segunda fase con una transición invulnerable (`1,5 s` en código / `1,8 s` en asset) y un rugido que empuja en `12 m`. |
-| Victoria o derrota | Se muestra el resumen de resultados, se sincroniza la sesión con Firebase (`EventLeaderboardSync`) y se vuelve a la bóveda. |
+| Victoria o derrota | Se muestra el resumen de resultados, la primera victoria o derrota de una colección elegible bloquea la puntuación definitiva en Firebase (`EventLeaderboardSync`, visible en [`https://echoscrap.web.app`](https://echoscrap.web.app)) y se vuelve a la bóveda. |
 
 ## Encuentro con Gólgora
 

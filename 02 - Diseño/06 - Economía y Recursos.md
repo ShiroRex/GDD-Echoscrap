@@ -21,4 +21,52 @@ El límite de 10 unidades gobierna tanto la recogida en combate como el reclamo 
 
 Las probabilidades de aparición, las recetas de fusión y los poderes de cada entidad se detallan en [[04 - Objetos y Coleccionables]].
 
+## Cómo se puntúa una expedición y Ranking en vivo (`echoscrap.web.app`)
+
+El sistema de clasificación (`EventLeaderboardSync.cs`, `GamertagRegistry.cs` y el visor web en vivo [`https://echoscrap.web.app`](https://echoscrap.web.app)) evalúa el desempeño del jugador combinando combate, supervivencia y coleccionismo bajo la versión de reglas `rulesVersion = 2`.
+
+![Página web del Ranking en vivo de EchoScrap (`echoscrap.web.app`)](../Media/Interfaz/RankingWeb_EchoScrap.png)
+
+### 1. Una oportunidad por nueva colección y reserva única de Gamertag
+
+- Al elegir **Nueva colección** en el menú inicial, el cuadro `¿NUEVA COLECCIÓN?` solicita un `NOMBRE DEL JUGADOR (RANKING)...` (máximo `20` caracteres visibles).
+- Si el jugador introduce un nombre nuevo, `GamertagRegistry.Reserve` normaliza el alias (`CanonicalName`: minúsculas, sin acentos ni espacios múltiples) y reserva su hash SHA-256 en Firebase (`/gamertags/{sha256}`) con escritura condicional (`if-match: null_etag`), impidiendo nombres duplicados en cualquier instalación (*"Ese gamertag ya está en uso. Elige otro."*). Si deja el campo vacío o continúa una colección existente, juega en **modo práctica** sin enviar puntuaciones al ranking.
+- **Una nueva colección con nombre válido concede exactamente una oportunidad de clasificación (`eligible = true`).** Al entrar a la arena (`BeginRankedExpedition`), la partida pasa a estado **`EN PARTIDA`** y transmite su progreso en vivo cada `2 s` a `/players/{sessionId}`.
+- **La primera `VICTORIA` o `DERROTA` bloquea la puntuación definitiva** de esa colección. Las expediciones posteriores dentro de esa misma colección funcionan como práctica y no sobrescriben el registro del ranking.
+- **Abandono o cierre imprevisto (`CancelAttempt` / `QueueCancellation`):** si el jugador vuelve a la bóveda desde el menú de pausa o cierra el juego antes de terminar la expedición puntuable, el intento se cancela (`DELETE` en `/players/{sessionId}`) y la colección **conserva intacta su oportunidad** (`eligible = true`) para el siguiente ingreso a la arena.
+
+### 2. Puntos base de la expedición (`RawPoints`)
+
+Durante la expedición puntuable se suman cuatro fuentes continuas y una bonificación única por la mayor rareza obtenida en esa incursión:
+
+| Concepto en la expedición puntuable | Puntos base |
+| --- | ---: |
+| Baja de un enemigo (`kills`) | **`100`** |
+| Unidad recogida en la arena (`E`) o resultado de fusión conservado (`COLECCIONAR`) (`units`) | **`300`** |
+| Primer descubrimiento de esa entidad en la colección (`discoveries`) | **`150`** |
+| Segundo completo de combate activo (`seconds`, `CombatSession.GameplayTime`) | **`2`** |
+| **Mayor rareza obtenida en esa expedición (bonificación única):** | |
+| · Común | **`250`** |
+| · Rara *(Poco común)* | **`500`** |
+| · Especial *(Rara)* | **`750`** |
+| · Épica | **`1 000`** |
+| · Legendaria | **`1 250`** |
+| · Mítica | **`1 500`** |
+
+$$\text{Puntos base} = 100 \times \text{bajas} + 300 \times \text{unidades} + 150 \times \text{descubrimientos} + 250 \times (\text{rareza máx.} + 1) + 2 \times \text{segundos}$$
+
+*(Si no se obtiene ninguna unidad durante la expedición, la bonificación de rareza máxima es `0`. El reloj de combate activo se detiene en pausa y mientras el jugador está en la bóveda).*
+
+### 3. Comparación justa entre Ronda Demo (`3 min`) y Ronda Completa (`8 min`)
+
+Para que ambos modos compitan en la misma tabla de clasificación (`CalculateScore`):
+
+- **Ronda demo de `3` minutos (`mode = "3 MIN"`):** conserva el `100 %` de los puntos base (`score = rawScore`).
+- **Ronda completa de `8` minutos (`mode = "8 MIN"`):** divide el total de puntos base entre **`2`** y redondea hacia abajo (`score = rawScore / 2`).
+- **Ejemplo:** una expedición con `20` bajas (`2 000`), `2` unidades obtenidas (`600`), `1` descubrimiento nuevo (`150`), rareza máxima Rara (`500`) y `90 s` de combate activo (`180`) suma **`3 430` puntos base**: registra **`3 430` pts** en la ronda de `3` minutos y **`1 715` pts** en la ronda de `8` minutos.
+
+### 4. Qué aporta una fusión al ranking
+
+Si el jugador entra a la bóveda durante su expedición puntuable y reclama el resultado de una fusión con **`COLECCIONAR`** (`RecordFusionOutput`), ese resultado cuenta como **una unidad obtenida (`+300` puntos base)**, añade **`+150` puntos base** si es la primera vez que se descubre esa entidad en la colección y puede elevar la **bonificación única de rareza máxima** de la expedición. En cambio, las `4` copias consumidas como ingredientes, el hecho de iniciar la máquina o liberar unidades en los pedestales aportan **`0` puntos**, y las fusiones realizadas antes de iniciar o después de cerrar la expedición puntuable tampoco modifican el marcador.
+
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

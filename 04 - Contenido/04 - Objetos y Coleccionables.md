@@ -59,14 +59,26 @@ Las interacciones de cada nivel de la bóveda son:
 ![Selector de entidades del puesto](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
 *Nota sobre la captura histórica: la imagen muestra la cuadrícula del selector de puesto antes de añadir la barra inferior unificada con los botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` en `9eed59f`.*
 
-## Índice de Colección (`VaultCollectionIndex.cs`, tecla `[I]`)
+## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
-Dentro de la bóveda, pulsar la tecla **`I`** o hacer clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`) abre el **Índice de Colección**, que pausa la simulación (`PauseReason.FusionMenu`) y se cierra con `I`, `Esc` o el botón **`CERRAR · [I]`**.
+El **Índice de Colección** funciona como el **bestiario y libro de registro** donde el jugador consulta qué criaturas ha descubierto, cuáles le faltan para completar las **15 entidades** del catálogo y qué unidades conserva actualmente en su bóveda.
 
-- **Encabezado:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
-- **Pestaña 1 — `POR RAREZAS`:** muestra las **15 entidades** del juego y permite filtrar por **`TODAS`** o por cada una de las **6 rarezas** (*Comunes, Poco comunes, Raras, Épicas, Legendarias, Míticas*). Las entidades aún no descubiertas se representan como **siluetas negras** (`Color(0.03, 0.03, 0.04, 0.96)`), con nombre **`???`** y estado **`NO ENCONTRADO`** / **`SILUETA BLOQUEADA`** (*"Aún no has registrado esta entidad. Encuéntrala en la arena o mediante la máquina de fusión para revelar su retrato y su efecto de compañero."*).
+- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`** o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Esc`** o el botón **`CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratory`, no al bestiario)*.
+- **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
+- **Qué acción cuenta como descubrimiento (`FusionProgress.CollectFromArena` y `FusionProgress.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E`** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`ReleaseUnit`).
+- **Pestaña 1 — `POR RAREZAS` (15 entidades en 6 categorías):** permite ver toda la colección (`TODAS`) o filtrarla por cualquiera de las **6 categorías de rareza**:
+  - **Común (`3`):** *Lobito, Basket y Reaper*.
+  - **Raro / Poco común (`4`):** *Mago, Demonio, Chico Emo y Joel*.
+  - **Especial / Rara (`3`):** *Shireen, Conde Alucard y Soldier*.
+  - **Épico (`2`):** *Hada y Murciélago Cristal*.
+  - **Legendario (`2`):** *Lisa y Sirena*.
+  - **Mítico (`1`):** *Yanikua*.
+  Las criaturas que aún faltan por descubrir aparecen como **siluetas negras** (`Color(0.03, 0.03, 0.04, 0.96)`) con un signo de interrogación (**`???`**) y el aviso **`NO ENCONTRADO`** / **`SILUETA BLOQUEADA`** (*"Aún no has registrado esta entidad. Encuéntrala en la arena o mediante la máquina de fusión para revelar su retrato y su efecto de compañero."*).
 - **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 10 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`** (puestos 4–10).
-- **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato ampliado, fuente de obtención, copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
+- **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato a color ampliado, fuente de obtención (*Arena* o *Máquina de fusión*), copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
+
+![Índice de Colección (fase beta del bestiario)](../Media/Interfaz/IndiceColeccion_Beta.jpg)
+*Nota: la captura corresponde a una **fase beta del bestiario (`Índice de Colección`)**, donde ya se aprecian el contador `3 / 15 DESCUBIERTOS · 4 / 10 UNIDADES`, los apartados por rareza (`Común 1/3`, `Raro 1/4`, `Especial 0/3`, `Épico 1/2`, `Legendario 0/2`, `Mítico 0/1`), las siluetas bloqueadas (`???`) frente al retrato a color desbloqueado (`Basket`) y el panel lateral de registro.*
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 

@@ -3,18 +3,18 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.3 |
-| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final y ranking en vivo. |
-| Actualización | 9 de noviembre de 2026 |
+| Versión del GDD | 0.6.4 |
+| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final y ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app). |
+| Actualización | 10 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
-| Plataforma | PC, Windows, un jugador local (con sincronización opcional de ranking de evento en Firebase). |
+| Plataforma | PC, Windows, un jugador local (con sincronización de ranking en vivo en Firebase y visor web en [`https://echoscrap.web.app`](https://echoscrap.web.app)). |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | Código y escena de `develop` en `9eed59f` (integra `bugfix/pulido-pausa-y-liberacion` `687e909` y `origin/develop` `b4d5ada` sobre `75bb79c`). Se conservan los registros de pruebas y capturas históricas identificadas. |
+| Revisión consultada | Código y escena de `develop` en `a8a23c4` (integra `7ccc1e7`, `9eed59f`, `687e909` y `b4d5ada`). Se conservan los registros de pruebas y capturas históricas identificadas. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo

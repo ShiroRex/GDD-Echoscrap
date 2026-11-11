@@ -1,18 +1,18 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.3 · 9 de noviembre de 2026 (`develop` @ `9eed59f`)**
+**GDD 0.6.4 · 10 de noviembre de 2026 (`develop` @ `a8a23c4`)**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición incorpora las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, y los bocetos de arte conceptual a mano de entornos, enemigos y coleccionables, junto con la sincronización íntegra con `develop` @ `9eed59f` (capacidad máxima de 10 unidades, Índice de Colección `[I]`, fusión fija de 30 s, menú de pausa en 3 pestañas, ranking en vivo y reglas exactas de combate y jefe). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición incorpora las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, los **22 bocetos de arte conceptual a mano** de entornos, personajes, enemigos y coleccionables, las cuatro pistas musicales y quince efectos de sonido con su tabla de autoría, la documentación detallada del **Índice de Colección / Bestiario (`[I]`)** con captura de su fase beta, y la mecánica de **puntuación (`rulesVersion = 2`) y Ranking en vivo conectado a [`https://echoscrap.web.app`](https://echoscrap.web.app)** (`develop` @ `a8a23c4`). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.3 · 9 de noviembre de 2026 (`develop` @ `9eed59f`).**
+**GDD 0.6.4 · 10 de noviembre de 2026 (`develop` @ `a8a23c4`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -53,18 +53,18 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.3 |
-| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final y ranking en vivo. |
-| Actualización | 9 de noviembre de 2026 |
+| Versión del GDD | 0.6.4 |
+| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final y ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app). |
+| Actualización | 10 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
-| Plataforma | PC, Windows, un jugador local (con sincronización opcional de ranking de evento en Firebase). |
+| Plataforma | PC, Windows, un jugador local (con sincronización de ranking en vivo en Firebase y visor web en [`https://echoscrap.web.app`](https://echoscrap.web.app)). |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | Código y escena de `develop` en `9eed59f` (integra `bugfix/pulido-pausa-y-liberacion` `687e909` y `origin/develop` `b4d5ada` sobre `75bb79c`). Se conservan los registros de pruebas y capturas históricas identificadas. |
+| Revisión consultada | Código y escena de `develop` en `a8a23c4` (integra `7ccc1e7`, `9eed59f`, `687e909` y `b4d5ada`). Se conservan los registros de pruebas y capturas históricas identificadas. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
@@ -471,23 +471,71 @@ El límite de 10 unidades gobierna tanto la recogida en combate como el reclamo 
 
 Las probabilidades de aparición, las recetas de fusión y los poderes de cada entidad se detallan en [[04 - Objetos y Coleccionables]].
 
+## Cómo se puntúa una expedición y Ranking en vivo (`echoscrap.web.app`)
+
+El sistema de clasificación (`EventLeaderboardSync.cs`, `GamertagRegistry.cs` y el visor web en vivo [`https://echoscrap.web.app`](https://echoscrap.web.app)) evalúa el desempeño del jugador combinando combate, supervivencia y coleccionismo bajo la versión de reglas `rulesVersion = 2`.
+
+![Página web del Ranking en vivo de EchoScrap (`echoscrap.web.app`)](Media/Interfaz/RankingWeb_EchoScrap.png)
+
+### 1. Una oportunidad por nueva colección y reserva única de Gamertag
+
+- Al elegir **Nueva colección** en el menú inicial, el cuadro `¿NUEVA COLECCIÓN?` solicita un `NOMBRE DEL JUGADOR (RANKING)...` (máximo `20` caracteres visibles).
+- Si el jugador introduce un nombre nuevo, `GamertagRegistry.Reserve` normaliza el alias (`CanonicalName`: minúsculas, sin acentos ni espacios múltiples) y reserva su hash SHA-256 en Firebase (`/gamertags/{sha256}`) con escritura condicional (`if-match: null_etag`), impidiendo nombres duplicados en cualquier instalación (*"Ese gamertag ya está en uso. Elige otro."*). Si deja el campo vacío o continúa una colección existente, juega en **modo práctica** sin enviar puntuaciones al ranking.
+- **Una nueva colección con nombre válido concede exactamente una oportunidad de clasificación (`eligible = true`).** Al entrar a la arena (`BeginRankedExpedition`), la partida pasa a estado **`EN PARTIDA`** y transmite su progreso en vivo cada `2 s` a `/players/{sessionId}`.
+- **La primera `VICTORIA` o `DERROTA` bloquea la puntuación definitiva** de esa colección. Las expediciones posteriores dentro de esa misma colección funcionan como práctica y no sobrescriben el registro del ranking.
+- **Abandono o cierre imprevisto (`CancelAttempt` / `QueueCancellation`):** si el jugador vuelve a la bóveda desde el menú de pausa o cierra el juego antes de terminar la expedición puntuable, el intento se cancela (`DELETE` en `/players/{sessionId}`) y la colección **conserva intacta su oportunidad** (`eligible = true`) para el siguiente ingreso a la arena.
+
+### 2. Puntos base de la expedición (`RawPoints`)
+
+Durante la expedición puntuable se suman cuatro fuentes continuas y una bonificación única por la mayor rareza obtenida en esa incursión:
+
+| Concepto en la expedición puntuable | Puntos base |
+| --- | ---: |
+| Baja de un enemigo (`kills`) | **`100`** |
+| Unidad recogida en la arena (`E`) o resultado de fusión conservado (`COLECCIONAR`) (`units`) | **`300`** |
+| Primer descubrimiento de esa entidad en la colección (`discoveries`) | **`150`** |
+| Segundo completo de combate activo (`seconds`, `CombatSession.GameplayTime`) | **`2`** |
+| **Mayor rareza obtenida en esa expedición (bonificación única):** | |
+| · Común | **`250`** |
+| · Rara *(Poco común)* | **`500`** |
+| · Especial *(Rara)* | **`750`** |
+| · Épica | **`1 000`** |
+| · Legendaria | **`1 250`** |
+| · Mítica | **`1 500`** |
+
+$$\text{Puntos base} = 100 \times \text{bajas} + 300 \times \text{unidades} + 150 \times \text{descubrimientos} + 250 \times (\text{rareza máx.} + 1) + 2 \times \text{segundos}$$
+
+*(Si no se obtiene ninguna unidad durante la expedición, la bonificación de rareza máxima es `0`. El reloj de combate activo se detiene en pausa y mientras el jugador está en la bóveda).*
+
+### 3. Comparación justa entre Ronda Demo (`3 min`) y Ronda Completa (`8 min`)
+
+Para que ambos modos compitan en la misma tabla de clasificación (`CalculateScore`):
+
+- **Ronda demo de `3` minutos (`mode = "3 MIN"`):** conserva el `100 %` de los puntos base (`score = rawScore`).
+- **Ronda completa de `8` minutos (`mode = "8 MIN"`):** divide el total de puntos base entre **`2`** y redondea hacia abajo (`score = rawScore / 2`).
+- **Ejemplo:** una expedición con `20` bajas (`2 000`), `2` unidades obtenidas (`600`), `1` descubrimiento nuevo (`150`), rareza máxima Rara (`500`) y `90 s` de combate activo (`180`) suma **`3 430` puntos base**: registra **`3 430` pts** en la ronda de `3` minutos y **`1 715` pts** en la ronda de `8` minutos.
+
+### 4. Qué aporta una fusión al ranking
+
+Si el jugador entra a la bóveda durante su expedición puntuable y reclama el resultado de una fusión con **`COLECCIONAR`** (`RecordFusionOutput`), ese resultado cuenta como **una unidad obtenida (`+300` puntos base)**, añade **`+150` puntos base** si es la primera vez que se descubre esa entidad en la colección y puede elevar la **bonificación única de rareza máxima** de la expedición. En cambio, las `4` copias consumidas como ingredientes, el hecho de iniciar la máquina o liberar unidades en los pedestales aportan **`0` puntos**, y las fusiones realizadas antes de iniciar o después de cerrar la expedición puntuable tampoco modifican el marcador.
+
 ---
 
 # Reglas y estados del juego
 
 | Momento | Regla |
 | --- | --- |
-| Menú inicial | Campo `NOMBRE DEL JUGADOR (RANKING)...`, Continuar, Nueva colección, Configuración y Salir. El mundo se carga después de elegir colección. |
-| Preparación en bóveda | Movimiento, guía activa (`EQUIPO 1..3`, `VaultDirections` y `VaultTips`), consulta del Índice de Colección (`[I]`), gestión de las 10 unidades (3 de equipo en el balcón + 7 de exposición en planta baja) y máquina de fusión (`30 s`). El reloj de expedición no avanza. |
+| Menú inicial | Continuar, Nueva colección (con campo `NOMBRE DEL JUGADOR (RANKING)...` validado mediante `GamertagRegistry` para habilitar una única oportunidad puntuable, o vacío para práctica), Configuración y Salir. El mundo se carga después de elegir colección. |
+| Preparación en bóveda | Movimiento, guía activa (`EQUIPO 1..3`, `VaultDirections` y `VaultTips`), consulta del Índice de Colección / Bestiario (`[I]`), gestión de las 10 unidades (3 de equipo en el balcón + 7 de exposición en planta baja) y máquina de fusión (`30 s`). El reloj de expedición no avanza. |
 | Selección y liberación de entidades | En los puestos 1 a 3 (balcón), `E` (`E · EQUIPAR` / `E · EDITAR`) abre y pausa el selector (`QUITAR DEL PUESTO`, `LIBERAR COPIA`, `CERRAR · E / ESC`), y `T` en el mundo desequipa directamente. En los puestos 4 a 10 ocupados (planta baja), `E` (`E · LIBERAR`) abre el modal de confirmación `LIBERAR UNIDAD`. |
-| Índice de Colección | `I` o clic en `ÍNDICE · [I]` pausa la simulación (`PauseReason.FusionMenu`) y muestra las pestañas `POR RAREZAS` (15 entidades) y `EN TU BÓVEDA` (hasta 10 unidades). |
-| Selección de ronda | Se elige ronda demo (`3:00`) o completa (`8:00`) antes de entrar, pudiendo actualizar el nombre de jugador para el ranking. |
+| Índice de Colección (Bestiario) | `I` o clic en `ÍNDICE · [I]` pausa la simulación (`PauseReason.FusionMenu`) y muestra las pestañas `POR RAREZAS` (15 entidades en 6 rarezas; siluetas negras `???` hasta recoger o reclamar por primera vez) y `EN TU BÓVEDA` (hasta 10 unidades). |
+| Selección de ronda | En `¿QUIERES ENTRAR A LA ARENA?` se elige `RONDA DEMO` (`3:00`) o `RONDA COMPLETA` (`8:00`), o `SALIR`. Si la colección tiene su oportunidad puntuable activa, entrar inicia el envío en vivo (`EN PARTIDA`) a `echoscrap.web.app`. |
 | Combate | Avanzan reloj, oleadas, ataques, recogida (bloqueada en `10/10` para entidades) y temporizadores activos. Mantener `Q` o `Select` despliega estadísticas completas y poderes de acompañantes en el HUD. |
-| Cartas o pausa | El combate se detiene; el menú de pausa (`Esc` / `Start`) ofrece las pestañas `General`, `Interfaz` y `Sonido`, además de `CONTINUAR` y salida a menú o bóveda. |
-| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver por el portal. |
+| Cartas o pausa | El combate se detiene; el menú de pausa (`Esc` / `Start`) ofrece las pestañas `General`, `Interfaz` y `Sonido`, además de `CONTINUAR` y salida a menú o bóveda (abandonar una expedición puntuable cancela el intento y conserva la oportunidad para el siguiente ingreso). |
+| Visita a la bóveda | Se conserva la expedición en memoria y se suspenden enemigos y peligros hasta volver por el portal; reclamar una fusión con `COLECCIONAR` durante la expedición puntuable suma como unidad obtenida (`+300` pts base). |
 | Entrada de Gólgora | Se retira la horda, se limpian amenazas y se traslada al jugador a la caldera con protección. |
 | Transición del jefe | Al llegar al `50%` de vida, Gólgora entra en su segunda fase con una transición invulnerable (`1,5 s` en código / `1,8 s` en asset) y un rugido que empuja en `12 m`. |
-| Victoria o derrota | Se muestra el resumen de resultados, se sincroniza la sesión con Firebase (`EventLeaderboardSync`) y se vuelve a la bóveda. |
+| Victoria o derrota | Se muestra el resumen de resultados, la primera victoria o derrota de una colección elegible bloquea la puntuación definitiva en Firebase (`EventLeaderboardSync`, visible en [`https://echoscrap.web.app`](https://echoscrap.web.app)) y se vuelve a la bóveda. |
 
 ## Encuentro con Gólgora
 
@@ -944,14 +992,26 @@ Las interacciones de cada nivel de la bóveda son:
 ![Selector de entidades del puesto](Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
 *Nota sobre la captura histórica: la imagen muestra la cuadrícula del selector de puesto antes de añadir la barra inferior unificada con los botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` en `9eed59f`.*
 
-## Índice de Colección (`VaultCollectionIndex.cs`, tecla `[I]`)
+## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
-Dentro de la bóveda, pulsar la tecla **`I`** o hacer clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`) abre el **Índice de Colección**, que pausa la simulación (`PauseReason.FusionMenu`) y se cierra con `I`, `Esc` o el botón **`CERRAR · [I]`**.
+El **Índice de Colección** funciona como el **bestiario y libro de registro** donde el jugador consulta qué criaturas ha descubierto, cuáles le faltan para completar las **15 entidades** del catálogo y qué unidades conserva actualmente en su bóveda.
 
-- **Encabezado:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
-- **Pestaña 1 — `POR RAREZAS`:** muestra las **15 entidades** del juego y permite filtrar por **`TODAS`** o por cada una de las **6 rarezas** (*Comunes, Poco comunes, Raras, Épicas, Legendarias, Míticas*). Las entidades aún no descubiertas se representan como **siluetas negras** (`Color(0.03, 0.03, 0.04, 0.96)`), con nombre **`???`** y estado **`NO ENCONTRADO`** / **`SILUETA BLOQUEADA`** (*"Aún no has registrado esta entidad. Encuéntrala en la arena o mediante la máquina de fusión para revelar su retrato y su efecto de compañero."*).
+- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`** o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Esc`** o el botón **`CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratory`, no al bestiario)*.
+- **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
+- **Qué acción cuenta como descubrimiento (`FusionProgress.CollectFromArena` y `FusionProgress.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E`** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`ReleaseUnit`).
+- **Pestaña 1 — `POR RAREZAS` (15 entidades en 6 categorías):** permite ver toda la colección (`TODAS`) o filtrarla por cualquiera de las **6 categorías de rareza**:
+  - **Común (`3`):** *Lobito, Basket y Reaper*.
+  - **Raro / Poco común (`4`):** *Mago, Demonio, Chico Emo y Joel*.
+  - **Especial / Rara (`3`):** *Shireen, Conde Alucard y Soldier*.
+  - **Épico (`2`):** *Hada y Murciélago Cristal*.
+  - **Legendario (`2`):** *Lisa y Sirena*.
+  - **Mítico (`1`):** *Yanikua*.
+  Las criaturas que aún faltan por descubrir aparecen como **siluetas negras** (`Color(0.03, 0.03, 0.04, 0.96)`) con un signo de interrogación (**`???`**) y el aviso **`NO ENCONTRADO`** / **`SILUETA BLOQUEADA`** (*"Aún no has registrado esta entidad. Encuéntrala en la arena o mediante la máquina de fusión para revelar su retrato y su efecto de compañero."*).
 - **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 10 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`** (puestos 4–10).
-- **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato ampliado, fuente de obtención, copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
+- **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato a color ampliado, fuente de obtención (*Arena* o *Máquina de fusión*), copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
+
+![Índice de Colección (fase beta del bestiario)](Media/Interfaz/IndiceColeccion_Beta.jpg)
+*Nota: la captura corresponde a una **fase beta del bestiario (`Índice de Colección`)**, donde ya se aprecian el contador `3 / 15 DESCUBIERTOS · 4 / 10 UNIDADES`, los apartados por rareza (`Común 1/3`, `Raro 1/4`, `Especial 0/3`, `Épico 1/2`, `Legendario 0/2`, `Mítico 0/1`), las siluetas bloqueadas (`???`) frente al retrato a color desbloqueado (`Basket`) y el panel lateral de registro.*
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 
@@ -1067,7 +1127,9 @@ Los GIFs de atlas colocan juntas las cuatro vistas cardinales y usan sus fotogra
 
 ## El Coleccionista
 
-El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno.
+Su boceto conceptual a lápiz define la silueta de explorador con capucha y manto raído sujetos por un broche de cruz en el pecho, junto con una máscara de pico inspirada en los médicos de la peste. En el juego, el farol sigue al personaje y el haz acompaña al apuntado automático; el sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno.
+
+![Boceto a mano del Coleccionista|260](Media/ConceptArt/Coleccionista.jpeg)
 
 ![Atlas activo del Coleccionista](Media/Avance_2026-11-04/Spritesheets/Coleccionista.png)
 
@@ -1261,6 +1323,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | Lisa | ![Boceto de Lisa\|140](Media/ConceptArt/Lisa.jpeg) |
 | Sirena | ![Boceto de Sirena\|140](Media/ConceptArt/Sirena.JPG) |
 | Hada | ![Boceto de Hada\|140](Media/ConceptArt/Hada_Costura.jpeg) |
+| Murciélago Cristal | ![Boceto de Murciélago Cristal\|140](Media/ConceptArt/Murcielago_Cristal.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](Media/ConceptArt/Conde_Alucard.jpeg) |
@@ -1741,19 +1804,19 @@ En la máquina de fusión central (`E · FUSIONAR` / `E · VER FUSIÓN`), el jug
 
 # UI y menús
 
-| Interfaz | Información y acciones (`9eed59f`) |
+| Interfaz | Información y acciones (`a8a23c4`) |
 | --- | --- |
-| Menú inicial (`GameMenuView` / `MainMenu`) | Campo `NOMBRE DEL JUGADOR (RANKING)...` (máx. 20 caracteres), Continuar, Nueva colección, Configuración y Salir; confirmación al sustituir una colección existente. |
+| Menú inicial (`GameMenuView` / `MainMenu`) | Continuar, Nueva colección, Configuración y Salir; en `¿NUEVA COLECCIÓN?` incluye el campo `NOMBRE DEL JUGADOR (RANKING)...` (máx. 20 caracteres, validado contra Firebase mediante `GamertagRegistry.Reserve`, o vacío para práctica). |
 | HUD de bóveda (`VaultDirections`, `VaultTips`, `VaultIndexHint`) | Dos tarjetas direccionales superiores con flechas hacia Fusión y Balcón de Equipo, botón superior izquierdo `ÍNDICE · [I]` y tarjeta inferior izquierda `CONSEJO` que rota cada `8 s`. |
-| Índice de Colección (`VaultCollectionIndex`, tecla `I`) | Contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` (filtros por rareza y siluetas negras `???`) y `EN TU BÓVEDA` (`EN EQUIPO ACTIVO` / `EN BÓVEDA`), inspector derecho de poder y botón `CERRAR · [I]`. |
+| Índice de Colección / Bestiario (`VaultCollectionIndex`, tecla `I`) | Contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` (15 criaturas en 6 rarezas; siluetas negras `???` que pasan a retrato a color al recoger o reclamar por primera vez) y `EN TU BÓVEDA` (`EN EQUIPO ACTIVO` / `EN BÓVEDA`), inspector derecho de poder y botón `CERRAR · [I]`. |
 | Selector de puesto de equipo (`CompanionView`, puestos 1 a 3) | Se abre con `E` (`E · EQUIPAR` / `E · EDITAR`). Encabezado `PUESTO DE EQUIPO 1/2/3`, subtítulo `ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO` y botones inferiores `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`. (`T` en el mundo desequipa directamente). |
 | Modal de liberación (`VaultReleaseInteraction`, puestos 4 a 10 y selector) | Se abre con `E` (`E · LIBERAR`) en planta baja o con `LIBERAR COPIA` en el selector. Cuadro `LIBERAR UNIDAD` con botones `CANCELAR` (`Esc`) y `LIBERAR` (`E`, `Enter` o `Espacio`). |
 | Estación de fusión (`FusionStationUI`) | Ventana `Marco_Fusion` con 4 ranuras en cruz (`Cuadro_Fusion` + `Cruz`), botón `X`, probabilidades redondeadas a enteros (`60%`, `40%`, `1%`), botones `VACIAR` y `CONFIRMAR`, selector `MiGaraje` (`EN EQUIPO 1/2/3`, `QUITAR INGREDIENTE`, `VOLVER`), cuenta atrás fija `00:30` y pantalla de resultado con botón único `COLECCIONAR` (y aviso `INVENTARIO LLENO · LIBERA ESPACIO` si hay `10/10` unidades). |
-| Selección de ronda (`ELIGE LA RONDA`) | Campo de nombre de jugador para el ranking, Ronda demo (`3:00`), Ronda completa (`8:00`) o cancelar. |
+| Selección de ronda (`¿QUIERES ENTRAR A LA ARENA?`) | Opciones `RONDA DEMO` (`3:00`), `RONDA COMPLETA` (`8:00`) o `SALIR` (`Esc` / botón este). |
 | HUD de combate (`CombatHud`) | Salud, XP, nivel, tiempo, bajas, dash, mejoras, tres retratos equipados (con poderes activos visibles si `Atributos de coleccionables = SÍ`), minimapa circular con exploración y consulta rápida manteniendo `Q` o `Select`. |
 | Cartas (`UpgradeDraftController`) | Hasta tres opciones; rareza, nivel, efecto, confirmación y reintento con *Sintonizador* (`R` o botón norte). |
 | Menú de Pausa (`CombatHud`, `Esc` / `Start`) | Organizado en **3 pestañas** (`General`: `Movimiento de cámara` y `Efectos decorativos`; `Interfaz`: `Estadísticas generales` `COMPLETAS`/`REDUCIDAS`/`OCULTAS` y `Atributos de coleccionables` `SÍ`/`NO`; `Sonido`: `Volumen general` y `Música`) más los botones `CONTINUAR` y `VOLVER AL MENÚ` (en bóveda) o `VOLVER A LA BÓVEDA` (en arena). |
-| Resultados y ranking (`EventLeaderboardSync`) | Victoria o derrota, tiempo, nivel, bajas, XP, sincronización automática con Firebase Realtime Database y botón `VOLVER A LA BÓVEDA`. |
+| Resultados y ranking (`EventLeaderboardSync`) | Victoria o derrota, tiempo, nivel, bajas, XP, sincronización automática con Firebase Realtime Database (`rulesVersion = 2`, visible en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app)) y botón `VOLVER A LA BÓVEDA`. |
 | Laboratorio (`EnemyLaboratory`) | Ocho arquetipos, generación, inspección, daño de prueba, congelación, pausa y avance (`Tab` y `R`). |
 
 ## Detalle del panel de estadísticas y consulta rápida (`Q` / `Select`)
@@ -1765,6 +1828,14 @@ Toda la interfaz emplea la fuente **`Pixelify Sans`**. El panel de estadísticas
 - **`OCULTAS`:** oculta el panel durante el combate normal.
 
 En cualquier momento del combate, **mantener pulsada la tecla `Q` (teclado) o el botón `Select` (mando)** activa `CombatHud.IsHudDetailHeld`, desplegando temporalmente las **estadísticas completas** y las **descripciones de los poderes de los tres acompañantes equipados**, independientemente del modo configurado en la pestaña `Interfaz`.
+
+## Vistas del Índice de Colección (Bestiario) y Ranking Web
+
+![Índice de Colección (fase beta del bestiario)](Media/Interfaz/IndiceColeccion_Beta.jpg)
+*Captura de una **fase beta del bestiario (`Índice de Colección`, tecla `[I]`)** mostrando el filtro por rarezas, las siluetas bloqueadas (`???`) y el inspector de entidad.*
+
+![Página web del Ranking en vivo (`echoscrap.web.app`)](Media/Interfaz/RankingWeb_EchoScrap.png)
+*Visor web en vivo ([`https://echoscrap.web.app`](https://echoscrap.web.app)) conectado a Firebase Realtime Database con la clasificación general por puesto, jugador, bajas, tiempo y puntos.*
 
 ---
 
@@ -1813,7 +1884,7 @@ El sistema de colección y fusión (`FusionProgress.cs`, `FusionStation.cs`) ser
 
 El guardado se ejecuta al recoger un fragmento en la arena, equipar o desequipar en el balcón, liberar una copia, iniciar o reclamar una fusión, cada `5 s` en tiempo real mientras corre la cuenta atrás de `30 s` y al pausar o cerrar la aplicación. El tiempo con la aplicación cerrada no adelanta la cuenta atrás de la fusión. Si la aplicación se cierra mientras la puerta de la máquina se estaba abriendo, al cargar vuelve al estado `AwaitingDecision` para que el jugador pueda reclamar el resultado con **`COLECCIONAR`**.
 
-## Audio, preferencias y sincronización de Ranking (`EventLeaderboardSync`)
+## Audio, preferencias y sincronización de Ranking (`EventLeaderboardSync`, `GamertagRegistry`)
 
 Las claves adicionales persistidas en `PlayerPrefs` y disco son:
 
@@ -1821,11 +1892,17 @@ Las claves adicionales persistidas en `PlayerPrefs` y disco son:
 | --- | --- | --- |
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`0%`–`100%` en la pestaña `Sonido` de pausa). |
 | `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`0%`–`100%` en la pestaña `Sonido` de pausa, aplicado por `ArenaMusicController` / `CombatMusicPlayer`). |
-| `EchoScrap.Event.PlayerName` | `string` (máx. 20 caracteres) | Nombre introducido en `NOMBRE DEL JUGADOR (RANKING)...` en portada o selección de ronda. |
-| `EchoScrap.Event.SessionId` | `string` (GUID) | Identificador único de sesión para el ranking del evento. |
-| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las métricas de sesión escrito por `EventLeaderboardSync`. |
+| `EchoScrap.Rank.v2` | `string` (JSON `RankingLedger`) | Estado del ranking por colección: nombres usados (`usedNames`), resultado definitivo pendiente de confirmar (`pending`), cancelación pendiente (`cancelledSessionId`), nombre activo (`playerName`), `sessionId` y elegibilidad de única oportunidad (`eligible`). |
+| `EchoScrap.GamertagReceipts.v1` | `string` (JSON) | Recibos locales de reserva de gamertag en curso (`GamertagRegistry`). |
+| `EchoScrap.Event.PlayerName` | `string` (máx. 20 caracteres) | Nombre introducido en `NOMBRE DEL JUGADOR (RANKING)...` al crear una nueva colección. |
+| `EchoScrap.Event.SessionId` | `string` (12 hex) | Identificador único de la colección elegible para el ranking. |
+| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las métricas de la expedición puntuable escrito por `EventLeaderboardSync`. |
 
-Al finalizar una incursión (o al recoger fragmentos y descubrir entidades), **`EventLeaderboardSync`** guarda el respaldo JSON local y sincroniza mediante peticiones HTTPS `PATCH` con **Firebase Realtime Database** (`https://echoscrap-default-rtdb.firebaseio.com`, nodos `event_leaderboard/current/players/{sessionId}` y `runs/{runId}`) el nombre del jugador, bajas totales (`kills`), coleccionables obtenidos (`collectibles`), entidades descubiertas (`discoveredCount / 15`), mejor tiempo de supervivencia (`bestSurvivalSeconds`), rondas jugadas/victorias y la puntuación calculada (`kills * 10 + collectibles * 250 + discoveredCount * 500 + round(bestSurvivalSeconds * 2)`).
+Al iniciar una **Nueva colección** con un nombre nuevo, **`GamertagRegistry`** reserva de forma inmutable su hash SHA-256 en `/gamertags/{sha256}` (`if-match: null_etag`) y habilita **una única oportunidad puntuable** (`eligible = true`). Durante esa expedición (`EN PARTIDA`), **`EventLeaderboardSync`** autentica la sesión mediante Firebase Anonymous Auth y actualiza cada `2 s` el nodo `/players/{sessionId}` en **Firebase Realtime Database** (`https://echoscrap-default-rtdb.firebaseio.com`), alimentando en tiempo real la página web del ranking ([`https://echoscrap.web.app`](https://echoscrap.web.app), `Tools/WebRanking/index.html`).
+
+La puntuación se calcula con `rulesVersion = 2` (`RawPoints = 100 × kills + 300 × units + 150 × discoveries + 250 × (highest + 1) + 2 × seconds`, conservando el `100 %` en la ronda de `3 min` y dividiendo entre `2` hacia abajo en la ronda de `8 min`). La primera **`VICTORIA`** o **`DERROTA`** bloquea el resultado definitivo (persistido en `ledger.pending` hasta recibir confirmación HTTP de Firebase), mientras que abandonar o cerrar el juego antes de terminar envía `DELETE` a `/players/{sessionId}` y conserva la oportunidad para el siguiente intento.
+
+![Página web del Ranking en vivo (`echoscrap.web.app`)](Media/Interfaz/RankingWeb_EchoScrap.png)
 
 Los ajustes de la sesión en curso (`Movimiento de cámara`, `Efectos decorativos`, `Estadísticas generales` y `Atributos de coleccionables SÍ/NO`) se conservan entre transiciones de escena mientras la aplicación permanece abierta.
 
@@ -1837,7 +1914,7 @@ La salud, XP, nivel y cartas pertenecen al intento activo. Volver desde resultad
 
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `9eed59f`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `a8a23c4`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
@@ -1854,7 +1931,7 @@ El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `9eed59f`). La comp
 | Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleShard`, `CollectiblePickupFeedback` |
 | Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool` |
 | Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `ArenaMusicController` |
-| Ranking en vivo | `EventLeaderboardSync` (respaldo JSON local y sincronización HTTPS con Firebase Realtime Database) |
+| Ranking en vivo y visor web | `EventLeaderboardSync` (`rulesVersion = 2`, sincronización HTTPS con Firebase Realtime Database), `GamertagRegistry` (reserva única SHA-256) y visor web en vivo `Tools/WebRanking/index.html` ([`https://echoscrap.web.app`](https://echoscrap.web.app)) |
 | Iluminación | `ArenaLightingController`, `ArenaLightingProfile` y renderer de atmósfera |
 
 La simulación comunica daño, muerte, recogida y resultados mediante eventos C#. Las reservas (`Object Pool`) reutilizan enemigos, proyectiles, números flotantes y efectos visuales entre expediciones, manteniendo separadas las reglas de simulación y su presentación.
@@ -1947,7 +2024,7 @@ La capacidad máxima de la colección es de **10 unidades en total** (`FusionPro
 - **Validación al cargar (`Validate`):** Sanea IDs fuera de rango, migra arrays de 13 a 15 posiciones dentro de la versión 4, garantiza que `discovered[id]` sea `true` para toda entidad con copias en `owned`, recorta cualquier exceso para que el total de unidades no supere `10` (`Capacity = 10`) y reconstruye `displays[10]` sincronizando los puestos `0..2` con `equipped[3]` y los puestos `3..9` con las copias libres ordenadas por rareza descendente.
 - **Inicio y resolución de fusión (`FusionProgress.Begin`):** Al confirmar una fusión, si las 4 unidades seleccionadas incluyen copias equipadas (`EN EQUIPO 1/2/3`), el sistema las desequipa automáticamente de `equipped`, descuenta las 4 unidades de `owned`, sortea el resultado y fija `duration = 30` y `remaining = 30`. Durante la fase `Running`, el reloj avanza con `Time.unscaledDeltaTime` y persiste el progreso en `PlayerPrefs` cada `5 s`, además de hacerlo al pausar o cerrar la aplicación. Si al reclamar (`COLECCIONAR`) el jugador ya tiene `10/10` unidades, `FusionStation.Resolve` conserva el estado `AwaitingDecision` hasta que se libere una unidad en los pedestales de la bóveda.
 
-## Otras claves de `PlayerPrefs` y sincronización de Ranking (`EventLeaderboardSync`)
+## Otras claves de `PlayerPrefs` y sincronización de Ranking (`EventLeaderboardSync`, `GamertagRegistry`)
 
 | Clave o ruta | Tipo / Valor por defecto | Descripción |
 | --- | --- | --- |
@@ -1955,10 +2032,12 @@ La capacidad máxima de la colección es de **10 unidades en total** (`FusionPro
 | `EchoScrap.CollectionStarted.v1` | `int` (`0` / `1`) | Indica si existe una colección iniciada para habilitar *Continuar* y pedir confirmación en *Nueva colección*. |
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`AudioListener.volume`, deslizador en pestaña `Sonido`). |
 | `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`ArenaMusicController.SetUserVolume` / `CombatMusicPlayer.SetMusicVolume`, deslizador en pestaña `Sonido`). |
+| `EchoScrap.Rank.v2` | `string` (JSON `RankingLedger`) | Estado del ranking por colección (`usedNames`, `pending`, `cancelledSessionId`, `playerName`, `sessionId`, `eligible`). |
+| `EchoScrap.GamertagReceipts.v1` | `string` (JSON) | Recibos locales de reserva de nombre en curso (`GamertagRegistry`). |
 | `EchoScrap.Event.PlayerName` | `string` (máx. 20 caract.) | Nombre del jugador para el ranking del evento (`GameMenuView`, `EventLeaderboardSync`). |
-| `EchoScrap.Event.SessionId` | `string` (GUID / 12 hex) | Identificador único de sesión generado para el jugador en el ranking de Firebase. |
-| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las estadísticas acumuladas de la sesión. |
-| `https://echoscrap-default-rtdb.firebaseio.com` | Nodos `event_leaderboard/current/players/{sessionId}` y `runs/{runId}` | Sincronización en la nube mediante peticiones HTTPS `PATCH` con nombre, bajas (`kills`), coleccionables (`collectibles`), descubiertos (`discoveredCount / 15`), mejor tiempo (`bestSurvivalSeconds`), victorias y puntuación (`kills * 10 + collectibles * 250 + discoveredCount * 500 + round(bestSurvivalSeconds * 2)`). |
+| `EchoScrap.Event.SessionId` | `string` (12 hex) | Identificador único de la colección elegible para el ranking de Firebase. |
+| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las estadísticas de la expedición puntuable. |
+| `https://echoscrap-default-rtdb.firebaseio.com` y [`https://echoscrap.web.app`](https://echoscrap.web.app) | Nodos `/gamertags/{sha256}` y `/players/{sessionId}` (`Tools/WebRanking/index.html`) | Reserva atómica de gamertag (`if-match: null_etag`) y sincronización en vivo cada `2 s` (`EN PARTIDA` con `heartbeat`, bloqueo definitivo en primera `VICTORIA`/`DERROTA` y `DELETE` al cancelar). Puntuación `rulesVersion = 2`: `RawPoints = 100 × kills + 300 × units + 150 × discoveries + 250 × (highest + 1) + 2 × seconds` (`100 %` en modo `3 MIN`, `÷ 2` hacia abajo en modo `8 MIN`). |
 
 En Windows, `PlayerPrefs` almacena estas claves en el registro del usuario bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap`.
 
@@ -2190,7 +2269,8 @@ El diseño del videojuego evoluciona con cada integración en `develop`. Esta se
 | **15/10/2026** | Eliminación de divisas residuales y fijación de hasta 3 entidades equipables. | Simplificar la meta-progresión entre incursiones. | `02 - Diseño`, `04 - Contenido`, `05 - Interfaz Visual`, `06 - Experiencia` y `07 - Datos y Persistencia`. | Sierra Sosa David Alejandro / Mora Alejandro Angel Gabriel | Histórico |
 | **16/10/2026** | Invocación periódica de esbirros por Gólgora cada `4,0 s`. | Mantener activas las mejoras de área, curación y recolección de XP durante el jefe final. | `02 - Sistemas`, `04 - Niveles` y `04 - Enemigos y NPC`. | Sierra Sosa David Alejandro | Histórico |
 | **04–05/11/2026** | Catálogo de 15 entidades con poderes propios (`CompanionPowerRuntime`), fusión de 4 copias, élites con sprites integrados y cámara exterior a `35,5°`. | Consolidar el bucle de colección y combate de la versión `0.6.0`. | Todas las secciones de diseño, contenido, arte y tecnología. | Sierra Sosa David Alejandro / Equipo EchoScrap | Integrado |
-| **08/11/2026** | Señalización completa de bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), Índice de Colección (`[I]`), capacidad máxima de `10` unidades (`3` equipo + `7` exposición), liberación en pedestales (`E · LIBERAR`), fusión fija de `30 s` con copias equipadas y botón único `COLECCIONAR`, pausa en 3 pestañas, consulta rápida `Q`/`Select`, tipografía `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). | Sincronizar el GDD `0.6.2` con el código fuente verificado de `develop` (`9eed59f`). | Sincronización transversal de las secciones `00` a `10`. | Equipo EchoScrap | Vigente (`0.6.2`) |
+| **08/11/2026** | Señalización completa de bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), Índice de Colección (`[I]`), capacidad máxima de `10` unidades (`3` equipo + `7` exposición), liberación en pedestales (`E · LIBERAR`), fusión fija de `30 s` con copias equipadas y botón único `COLECCIONAR`, pausa en 3 pestañas, consulta rápida `Q`/`Select`, tipografía `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). | Sincronizar el GDD `0.6.2` con el código fuente verificado de `develop` (`9eed59f`). | Sincronización transversal de las secciones `00` a `10`. | Equipo EchoScrap | Integrado (`0.6.2`) |
+| **10/11/2026** | Reglas definitivas de puntuación del Ranking (`rulesVersion = 2`, una oportunidad por nueva colección, reserva de gamertag por SHA-256 en `GamertagRegistry`, comparación `3 min` vs `8 min ÷ 2`) y visor web en vivo [`https://echoscrap.web.app`](https://echoscrap.web.app); documentación del Bestiario (`Índice de Colección [I]`) con captura de su fase beta; e integración de los 22 bocetos a mano (`Media/ConceptArt/`), 4 pistas musicales y 15 efectos de sonido con tabla de autoría. | Sincronizar el GDD `0.6.4` con `develop` (`a8a23c4`) y completar todos los criterios de arte, audio y ranking de la entrega final. | `02 - Economía y Recursos`, `04 - Objetos y Coleccionables`, `05 - Personajes y Animación`, `05 - Audio y Música`, `06 - UI y Guardado` y `07 - Tecnología`. | Equipo EchoScrap | Vigente (`0.6.4`) |
 
 ## Revisión 0.6.2 del 8 de noviembre (`develop` @ `9eed59f`)
 
@@ -2373,6 +2453,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.1** | 07/11/2026 | Especificación de balance, composición de oleadas, prioridad y daño de Gólgora, plano del Vertedero, público y accesibilidad, guardado y objetivos de validación técnica. Backlog con responsables, dependencias y criterios. | Equipo EchoScrap |
 | **0.6.2** | 08/11/2026 | Sincronización íntegra con `develop` @ `9eed59f`: capacidad máxima estricta de **10 unidades** (`3` puestos de equipo en el balcón + `7` de exposición en planta baja, `displays[10]`), bloqueo por inventario lleno (`10/10`), interacción exacta de pedestales (`E · EQUIPAR`/`EDITAR`, `T` y `E · LIBERAR`), señalización e indicadores de bóveda implementados (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, fusión fija de **30 s (`00:30`)** con copias equipadas (`EN EQUIPO 1/2/3`), porcentajes redondeados a enteros (`60%`, `40%`, `1%`) y botón único `COLECCIONAR`, tipografía unificada **`Pixelify Sans`**, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida del HUD (`Q` / `Select`), ranking en vivo con Firebase (`EventLeaderboardSync`) y reglas exactas de combate (`FLASH_05`, `DASH_04`, `DEMO_03/04`, `SCRAP_03/04`, fórmulas y orden de mitigación en `PlayerHealth`, Polilla Reactor, Gólgora y tabla de empuje). | Sierra Sosa David Alejandro |
 | **0.6.3** | 09/11/2026 | Historias de origen de las quince entidades coleccionables en Personajes; tabla de sprites (`.png` a escala `2×` y fuentes `.aseprite`) en Personajes y Animación; integración de 20 bocetos y arte conceptual a mano (El Vertedero, la Bóveda, Coloso/Wendigo, Mortero Campana, Polilla Reactor, Caballero Fantasma, Centinela de Cobre y trece entidades coleccionables) en `Media/ConceptArt/`, Niveles y Entornos; desglose de composición musical, capturas de producción en DAW, instrumentación (chelo, bajo, campana, sintetizadores, batería, corno francés, violín y teclado MIDI), tonalidades armónicas (Cm, Gm, Dm, Am, F, Bb), cuatro pistas de banda sonora (`Media/Audio/*.mp3`), quince muestras de efectos de sonido y avisos (`Media/Audio/SFX/*.wav`) y tabla de procedencia/autoría sonora en Audio y Música; sincronización del GDD completo. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
+| **0.6.4** | 10/11/2026 | Integración de los bocetos a mano del **Coleccionista** y **Murciélago Cristal** (`22` bocetos en `Media/ConceptArt/`); documentación detallada del **Índice de Colección / Bestiario (`VaultCollectionIndex.cs`, tecla `[I]`)** con su acción exacta de desbloqueo (`CollectFromArena` / `Resolve`), distribución de las 15 criaturas en 6 rarezas y captura de su fase beta (`Media/Interfaz/IndiceColeccion_Beta.jpg`); y documentación íntegra de la **mecánica de Ranking en vivo (`EventLeaderboardSync.cs`, `GamertagRegistry.cs`, `rulesVersion = 2`)** y su página web en tiempo real ([`https://echoscrap.web.app`](https://echoscrap.web.app), `Media/Interfaz/RankingWeb_EchoScrap.png`) alineada con `develop` @ `a8a23c4`. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 
 ## Convención sugerida
 

@@ -45,7 +45,9 @@ Los GIFs de atlas colocan juntas las cuatro vistas cardinales y usan sus fotogra
 
 ## El Coleccionista
 
-El farol sigue al personaje y el haz acompaña al apuntado automático. El sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno.
+Su boceto conceptual a lápiz define la silueta de explorador con capucha y manto raído sujetos por un broche de cruz en el pecho, junto con una máscara de pico inspirada en los médicos de la peste. En el juego, el farol sigue al personaje y el haz acompaña al apuntado automático; el sprite mantiene un plano vertical con proporciones fijas en el mundo y se apoya sobre el terreno.
+
+![Boceto a mano del Coleccionista|260](../Media/ConceptArt/Coleccionista.jpeg)
 
 ![Atlas activo del Coleccionista](../Media/Avance_2026-11-04/Spritesheets/Coleccionista.png)
 
@@ -239,6 +241,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | Lisa | ![Boceto de Lisa\|140](../Media/ConceptArt/Lisa.jpeg) |
 | Sirena | ![Boceto de Sirena\|140](../Media/ConceptArt/Sirena.JPG) |
 | Hada | ![Boceto de Hada\|140](../Media/ConceptArt/Hada_Costura.jpeg) |
+| Murciélago Cristal | ![Boceto de Murciélago Cristal\|140](../Media/ConceptArt/Murcielago_Cristal.jpeg) |
 | Shireen | ![Boceto de Shireen\|140](../Media/ConceptArt/Shireen.jpeg) |
 | Soldier | ![Boceto de Soldier\|140](../Media/ConceptArt/Soldier.JPG) |
 | Conde Alucard | ![Boceto de Conde Alucard\|140](../Media/ConceptArt/Conde_Alucard.jpeg) |

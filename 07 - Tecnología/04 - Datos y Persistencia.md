@@ -32,7 +32,7 @@ La capacidad máxima de la colección es de **10 unidades en total** (`FusionPro
 - **Validación al cargar (`Validate`):** Sanea IDs fuera de rango, migra arrays de 13 a 15 posiciones dentro de la versión 4, garantiza que `discovered[id]` sea `true` para toda entidad con copias en `owned`, recorta cualquier exceso para que el total de unidades no supere `10` (`Capacity = 10`) y reconstruye `displays[10]` sincronizando los puestos `0..2` con `equipped[3]` y los puestos `3..9` con las copias libres ordenadas por rareza descendente.
 - **Inicio y resolución de fusión (`FusionProgress.Begin`):** Al confirmar una fusión, si las 4 unidades seleccionadas incluyen copias equipadas (`EN EQUIPO 1/2/3`), el sistema las desequipa automáticamente de `equipped`, descuenta las 4 unidades de `owned`, sortea el resultado y fija `duration = 30` y `remaining = 30`. Durante la fase `Running`, el reloj avanza con `Time.unscaledDeltaTime` y persiste el progreso en `PlayerPrefs` cada `5 s`, además de hacerlo al pausar o cerrar la aplicación. Si al reclamar (`COLECCIONAR`) el jugador ya tiene `10/10` unidades, `FusionStation.Resolve` conserva el estado `AwaitingDecision` hasta que se libere una unidad en los pedestales de la bóveda.
 
-## Otras claves de `PlayerPrefs` y sincronización de Ranking (`EventLeaderboardSync`)
+## Otras claves de `PlayerPrefs` y sincronización de Ranking (`EventLeaderboardSync`, `GamertagRegistry`)
 
 | Clave o ruta | Tipo / Valor por defecto | Descripción |
 | --- | --- | --- |
@@ -40,10 +40,12 @@ La capacidad máxima de la colección es de **10 unidades en total** (`FusionPro
 | `EchoScrap.CollectionStarted.v1` | `int` (`0` / `1`) | Indica si existe una colección iniciada para habilitar *Continuar* y pedir confirmación en *Nueva colección*. |
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`AudioListener.volume`, deslizador en pestaña `Sonido`). |
 | `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`ArenaMusicController.SetUserVolume` / `CombatMusicPlayer.SetMusicVolume`, deslizador en pestaña `Sonido`). |
+| `EchoScrap.Rank.v2` | `string` (JSON `RankingLedger`) | Estado del ranking por colección (`usedNames`, `pending`, `cancelledSessionId`, `playerName`, `sessionId`, `eligible`). |
+| `EchoScrap.GamertagReceipts.v1` | `string` (JSON) | Recibos locales de reserva de nombre en curso (`GamertagRegistry`). |
 | `EchoScrap.Event.PlayerName` | `string` (máx. 20 caract.) | Nombre del jugador para el ranking del evento (`GameMenuView`, `EventLeaderboardSync`). |
-| `EchoScrap.Event.SessionId` | `string` (GUID / 12 hex) | Identificador único de sesión generado para el jugador en el ranking de Firebase. |
-| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las estadísticas acumuladas de la sesión. |
-| `https://echoscrap-default-rtdb.firebaseio.com` | Nodos `event_leaderboard/current/players/{sessionId}` y `runs/{runId}` | Sincronización en la nube mediante peticiones HTTPS `PATCH` con nombre, bajas (`kills`), coleccionables (`collectibles`), descubiertos (`discoveredCount / 15`), mejor tiempo (`bestSurvivalSeconds`), victorias y puntuación (`kills * 10 + collectibles * 250 + discoveredCount * 500 + round(bestSurvivalSeconds * 2)`). |
+| `EchoScrap.Event.SessionId` | `string` (12 hex) | Identificador único de la colección elegible para el ranking de Firebase. |
+| `EchoScrap_EventRanking_LastSession.json` | Archivo JSON en `Application.persistentDataPath` | Respaldo local de las estadísticas de la expedición puntuable. |
+| `https://echoscrap-default-rtdb.firebaseio.com` y [`https://echoscrap.web.app`](https://echoscrap.web.app) | Nodos `/gamertags/{sha256}` y `/players/{sessionId}` (`Tools/WebRanking/index.html`) | Reserva atómica de gamertag (`if-match: null_etag`) y sincronización en vivo cada `2 s` (`EN PARTIDA` con `heartbeat`, bloqueo definitivo en primera `VICTORIA`/`DERROTA` y `DELETE` al cancelar). Puntuación `rulesVersion = 2`: `RawPoints = 100 × kills + 300 × units + 150 × discoveries + 250 × (highest + 1) + 2 × seconds` (`100 %` en modo `3 MIN`, `÷ 2` hacia abajo en modo `8 MIN`). |
 
 En Windows, `PlayerPrefs` almacena estas claves en el registro del usuario bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap`.
 
