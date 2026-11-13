@@ -1,6 +1,6 @@
 # EchoScrap: avance jugable
 
-**GDD 0.6.7 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
+**GDD 0.6.8 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -15,7 +15,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 
 | Área | Contenido de esta versión |
 | --- | --- |
-| Partida | Menú inicial con nombre de jugador para el ranking en vivo (`EventLeaderboardSync`), colección nueva o existente, preparación guiada en bóveda, selección de ronda (`ELIGE LA RONDA`), resultados con retorno a la bóveda y ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
+| Partida | Menú inicial con nombre de jugador para el ranking en vivo (`EventLeaderboardSync`), colección nueva o existente, preparación guiada en bóveda, selección de ronda (`ELIGE LA RONDA`), resultados con retorno a la bóveda, ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y [tráiler promocional final (`1080p`, `46 s`)](Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4). |
 | Control | Control oficial validado en **teclado y ratón** (`WASD`/flechas, dash con `Espacio` e invulnerabilidad de `0,22 s`, interacción con `E`, desequipado rápido en balcón con `T`, Índice de Colección con `I` y consulta rápida de detalles del HUD manteniendo `Q`; enlaces preliminares de mando quedan fuera de soporte oficial y planteados a futuro). |
 | Combate | Linterna de cuatro pulsos con autoapuntado y 35 mejoras en cuatro rarezas. |
 | Enemigos | Cinco arquetipos de horda, dos élites y Gólgora. |

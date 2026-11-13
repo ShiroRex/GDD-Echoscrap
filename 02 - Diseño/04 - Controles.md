@@ -1,5 +1,12 @@
 # Controles
 
+## Cómo se juega y cómo avanzar
+
+1. **Inicio y bóveda (preparación):** en el menú inicial elige **Continuar** o **Nueva colección** (opcionalmente registra tu alias para el ranking en línea). Ya dentro de la bóveda, usa los rótulos `EQUIPO 1..3`, el **Índice de Colección (`I`)** y la **Máquina de Fusión (`E`)** para equipar hasta **3 acompañantes** cuyos poderes pasivos se suman y acumulan por copia equipada, o combinar **4 copias** durante `30 s` para obtener entidades de mayor rareza (límite máximo de `10` unidades).
+2. **Entrada a la arena:** acércate al **portal norte** en la bóveda para abrir `ELIGE LA RONDA` y seleccionar **Ronda Demo** (`3:00` hasta el jefe) o **Ronda Completa** (`8:00` hasta el jefe).
+3. **Combate y progresión:** muévete (`WASD`/flechas) y esquiva con **Dash (`Espacio`)** mientras tu linterna ataca automáticamente al enemigo más cercano. Recoge **gemas de XP** para subir de nivel y elegir mejoras (`1/2/3` o clic), recoge **botiquines** para curarte y pulsa **`E`** cerca de los fragmentos caídos para capturar nuevas entidades coleccionables.
+4. **Objetivo y victoria:** sobrevive hasta el final del reloj para invocar al jefe final **Gólgora (MataColeccionista)** en la caldera central (`22 m`) y derrótalo para ganar la incursión, registrar tu puntaje y regresar a la bóveda con tus capturas.
+
 > [!NOTE]
 > **Esquema oficial de la versión actual (`1.0`):** *EchoScrap* utiliza **teclado y ratón** como único esquema de control oficial, completo y validado para esta entrega en PC. Aunque el código base (`Input System 1.20.0`) incluye enlaces preliminares y experimentales para gamepad (`Gamepad.current`), **no se utiliza ni se garantiza soporte oficial de mando en esta versión** (no cubre la navegación completa de todos los menús ni ha sido certificado sobre hardware); su integración formal queda planteada como objetivo a futuro.
 

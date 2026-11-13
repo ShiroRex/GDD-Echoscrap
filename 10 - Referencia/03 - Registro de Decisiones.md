@@ -1,6 +1,6 @@
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.7`**).
+Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.8`**).
 
 | Área | Regla o decisión vigente (`b381ef4`) |
 | --- | --- |

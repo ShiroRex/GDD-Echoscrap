@@ -113,4 +113,20 @@ El trabajo puede avanzar en paralelo en las partes que no dependan de una decisi
 
 El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. La sección 11 es biblioteca de consulta; se conserva como referencia y no se reparte como siete tareas nuevas de diseño del juego.
 
+## Créditos del proyecto y licencias de terceros
+
+### Equipo de desarrollo (*EchoScrap*)
+
+- **Mora Alejandro Angel Gabriel:** liderazgo, coordinación general del proyecto, producción, alcance, control de entrega y documentación.
+- **Sierra Sosa David Alejandro:** programación principal en Unity (C# / URP), arquitectura técnica, diseño de sistemas, mecánicas, balance, guardado, ranking y registro visual.
+- **Cupul Dzul Mirian Leticia:** dirección de arte, diseño conceptual, sprites y animaciones de personajes, enemigos y coleccionables.
+- **Obispo Navarro Samuel Alejandro:** diseño de entornos 3D, arte de escenarios, interfaz visual y apoyo en producción sonora.
+- **Nuñez Chan Luis Fernando:** composición musical y diseño de audio, narrativa integrada, experiencia de usuario (UX/UI) y aseguramiento de calidad (QA).
+
+### Motor, servicios y recursos con licencia externa
+
+- **Motor y paquetes:** Unity `6000.6.3f1`, Universal Render Pipeline (`URP 17.6.0`), `Input System 1.20.0`, `Cinemachine 6.6.0` y Firebase Realtime Database (ranking en vivo en `https://echoscrap.web.app`).
+- **Tipografías:** *Pixelify Sans* (Copyright 2021 The Pixelify Sans Project Authors) y *Chakra Petch*, bajo licencia abierta **SIL Open Font License v1.1** (`Assets/StreamingAssets/Licenses/`).
+- **Muestras de audio base (`CC0 1.0 Universal`):** grabaciones de microondas (`pinto0lucas`, Freesound `#422817`) y contador Geiger (`cookies+policy`, Freesound `#555923`) documentadas en `Assets/_Project/Resources/Audio/Flashlight/Sources.txt`, además de capas libres procesadas por el equipo según la tabla de [Audio y música](../05%20-%20Arte%20y%20Audio/05%20-%20Audio%20y%20M%C3%BAsica.md).
+
 > **Navegación:** [[00 - Índice]] · ← [[01 - Alcance]] · [[03 - Roadmap]] →
