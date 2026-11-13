@@ -10,14 +10,14 @@
 | Cambiar carta enfocada | `A` / `D`, izquierda / derecha o puntero | Stick izquierdo o cruceta |
 | Confirmar carta | `Enter` o clic | Botón sur (`A` / `Cruz`) |
 | Reintentar oferta con *Sintonizador* | `R` o botón de interfaz | Botón norte (`Y` / `Triángulo`) |
-| Recoger una entidad cercana en la arena | `E` (si hay hueco en `10/10`) | Sin asignación equivalente en el sistema actual |
-| Abrir / cerrar el Índice de Colección en la bóveda | `I` o clic en `ÍNDICE · [I]` (cierra también con `Esc`) | Sin asignación equivalente |
-| Equipar o editar un puesto de equipo (puestos 1 a 3, balcón) | `E` (`E · EQUIPAR` / `E · EDITAR`) | Sin asignación equivalente |
-| Desequipar directamente un puesto de equipo ocupado en el mundo (puestos 1 a 3) | `T` | Sin asignación equivalente |
-| Liberar una unidad expuesta (puestos 4 a 10, planta baja) | `E` (`E · LIBERAR`); confirmar en modal con `E`, `Enter` o `Espacio` (`Esc` cancela) | Sin asignación equivalente |
-| Abrir la máquina de fusión en la bóveda | `E` (`E · FUSIONAR` / `E · VER FUSIÓN`) | Sin asignación equivalente |
-| Cerrar selector de equipo (`CompanionView`) | `E`, `Esc` o botón `CERRAR · E / ESC` | — |
-| Cerrar ventana de fusión | `E`, `Esc` o botón `X` superior derecho | — |
+| Recoger una entidad cercana en la arena | `E` (si hay hueco en `10/10`) | Botón oeste (`X` / `Cuadrado`) |
+| Abrir / cerrar el Índice de Colección en la bóveda | `I` o clic en `ÍNDICE · [I]` (cierra también con `Esc`) | Botón `Select` (`VaultCollectionIndex`, cierra también con `B` / `Círculo`) |
+| Equipar o editar un puesto de equipo (puestos 1 a 3, balcón) | `E` (`E · EQUIPAR` / `E · EDITAR`) | Botón oeste (`X` / `Cuadrado`) |
+| Desequipar directamente un puesto de equipo ocupado en el mundo (puestos 1 a 3) | `T` | Botón norte (`Y` / `Triángulo`) |
+| Liberar una unidad expuesta (planta baja) | `E` (`E · LIBERAR`); confirmar en modal con `E`, `Enter` o `Espacio` (`Esc` cancela) | Botón oeste (`X` / `Cuadrado`); botón este (`B` / `Círculo`) cancela |
+| Abrir la máquina de fusión en la bóveda | `E` (`E · FUSIONAR` / `E · VER FUSIÓN`) | Botón oeste (`X` / `Cuadrado`) |
+| Cerrar selector de equipo (`CompanionView`) | `E`, `Esc` o botón `CERRAR · E / ESC` | Botón este (`B` / `Círculo`) |
+| Cerrar ventana de fusión (`FusionStation`) | `E`, `Esc` o botón `X` superior derecho | Botón este (`B` / `Círculo`) |
 | Navegar entre consejos de la bóveda (`VaultTips`) | Clic en `<` / `>` | — |
 | Cancelar selección de ronda o confirmación general | `Esc` o botón de interfaz | Botón este (`B` / `Círculo`) |
 

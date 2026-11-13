@@ -10,13 +10,14 @@
 | 26 de octubre | Fusión por rareza, colección expuesta, barra de XP, magma, portal y renovación de VFX. |
 | 27 de octubre | Limpieza de material auxiliar del repositorio y actualización del GDD con registros del juego. |
 | 4–5 de noviembre | Menú independiente y carga, quince entidades con poderes propios (`CompanionPowerRuntime`), equipo de tres puestos, fusión de cuatro copias, dos élites con sprites integrados, sprites de Esqueleto, Interceptor y Wendigo, minimapa y audio contextual. |
-| 6–8 de noviembre (`develop` @ `9eed59f`) | Señalización completa de la bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, capacidad máxima estricta de **10 unidades** con bloqueo y avisos de inventario lleno, liberación directa en pedestales (`E · LIBERAR`), fusión fija de **30 s (`00:30`)** con copias equipadas seleccionables (`EN EQUIPO 1/2/3`) y botón único `COLECCIONAR`, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida del HUD (`Q` / `Select`), tipografía unificada `Pixelify Sans` y sincronización de ranking en vivo con Firebase (`EventLeaderboardSync`). |
+| 6–8 de noviembre (`develop` @ `9eed59f`) | Señalización completa de la bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, capacidad máxima estricta de **10 unidades**, liberación directa en pedestales (`E · LIBERAR`), fusión fija de **30 s (`00:30`)**, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida `Q` / `Select`, tipografía unificada `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). |
+| 10–13 de noviembre (`main` @ `b381ef4` / `develop` @ `977bac5`) | Ranking `rulesVersion = 2` (`GamertagRegistry`, visor en vivo `echoscrap.web.app`, preservación de elegibilidad al continuar), poderes de acompañantes **acumulables por copia equipada (`Copies(id)`)**, fusión homogénea y de **rarezas mixtas**, panel unificado `MenuSettingsView` de 3 pestañas en menú inicial y pausa, soporte completo de mando en bóveda e Índice (`buttonWest`, `buttonNorth`, `selectButton`), calibración unificada de enemigos/Gólgora (`CombatSettings.asset`), audio integrado y publicación en **itch.io** (`https://naked-hiro.itch.io/echoscrap`). |
 
 ## Hitos de cierre pendientes
 
 | Hito | Responsable según el reparto | Depende de | Condición de cierre |
 | --- | --- | --- | --- |
-| Alcance de mando en interacciones de colección | David Alejandro Sierra Sosa y coordinación de producción | Acordar las interacciones cubiertas con mando para `E`, `T` e `I` | El GDD refleja el alcance aprobado y QA verifica el recorrido cubierto. |
-| Validación técnica en perfiles de hardware | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 candidata y equipos de prueba | Los requisitos publicados cuentan con medición de resolución, FPS y p95 en la build candidata. |
+| Tráiler promocional final (`TRAILER-01`) | Equipo EchoScrap / Arte y Edición | Capturas de gameplay final y montaje de video | Tráiler publicado y enlazado en ficha de proyecto y página de itch.io. |
+| Validación técnica en perfiles de hardware | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 final y equipos de prueba | Mediciones de resolución, FPS y `p95` completadas en equipos mínimo y recomendado. |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

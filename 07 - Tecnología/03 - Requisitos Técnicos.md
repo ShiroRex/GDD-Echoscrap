@@ -1,6 +1,6 @@
 # Requisitos técnicos
 
-La plataforma del proyecto es Windows PC (`x64`). El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre la rama `develop` (`9eed59f`, 8 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`.
+La plataforma del proyecto es Windows PC (`x64`). El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre `main` @ `b381ef4` / `develop` @ `977bac5` (13 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`.
 
 El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `10` pedestales físicos (`3` de equipo + `7` de exposición).
 
@@ -19,7 +19,7 @@ La build Windows x64 de desarrollo compiló con `0` errores y un tamaño de sali
 
 ## Conectividad y controles
 
-- **Sincronización de ranking (`EventLeaderboardSync`):** utiliza peticiones HTTPS asíncronas (`UnityWebRequest` `PATCH`) hacia Firebase Realtime Database (`https://echoscrap-default-rtdb.firebaseio.com`) con tiempo de espera acotado (`10 s`) y respaldo local en `Application.persistentDataPath/EchoScrap_EventRanking_LastSession.json`. Si el equipo no dispone de conexión a internet, la partida y el guardado local continúan sin interrupciones.
-- **Dispositivos de entrada:** el combate, el dash, la pausa, la selección de cartas y la consulta rápida de detalles del HUD (`Q` en teclado / `Select` en mando) funcionan con teclado/ratón y mando. Las interacciones contextuales de recogida de fragmentos (`E`), pedestales de bóveda (`E`, `T`), máquina de fusión (`E`) e Índice de Colección (`I`) emplean teclado y ratón.
+- **Sincronización de ranking (`EventLeaderboardSync`):** utiliza peticiones HTTPS asíncronas (`UnityWebRequest` `PUT` y `DELETE`) hacia Firebase Realtime Database (`https://echoscrap-default-rtdb.firebaseio.com`) con tiempo de espera acotado (`8 s` para envío de ranking y `5 s` para autenticación) y cola local en `PlayerPrefs` (`EchoScrap.Rank.v2`). Si el equipo no dispone de conexión a internet, la partida y el guardado local continúan sin interrupciones y el envío pendiente se reintenta al reconectar.
+- **Dispositivos de entrada:** soporte completo para teclado/ratón y mando en combate (movimiento y dash `Espacio` / `A` / `Cruz`), recogida de fragmentos e interacciones de bóveda (`E` / botón oeste `X` / `Cuadrado`), desequipar rápido en balcón (`T` / botón norte `Y` / `Triángulo`), Índice de Colección (`I` / `Select`), consulta rápida de detalles del HUD (`Q` / `Select`) y menús (`Esc` / `Start` / botón este `B` / `Círculo`).
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

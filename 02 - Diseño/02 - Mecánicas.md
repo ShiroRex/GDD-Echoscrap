@@ -2,13 +2,13 @@
 
 ## Movimiento y dash
 
-La velocidad de desplazamiento se calcula en `PlayerRuntimeStats` con la fórmula:
+La velocidad de desplazamiento se calcula multiplicando la velocidad base de locomoción (`8 m/s` en `PlayerLocomotion.asset`, con aceleración de `80 m/s²` y frenado de `70 m/s²`) por el multiplicador de `PlayerRuntimeStats`:
 
-**Velocidad de movimiento = `6 m/s × (1 + 0,04 × FLASH_02) × (1,15 si Orco está equipado) × (1,25 si Frenesí BIO_04 está activo)`**
+**Velocidad de movimiento = `8 m/s × (1 + 0,04 × FLASH_02) × (1 + 0,10 × [Lobito/Basket×N] + 0,15 × [Yanikua×N]) × (1 + [Chico Emo×N tras dash])`**
 
-*(En el ajuste de escena `PlayerCombatSettings.asset`, la velocidad base de locomoción se configura en `8 m/s`, con aceleración de `80 m/s²` y frenado de `70 m/s²`.)* La diagonal mantiene la misma velocidad máxima. La dirección de entrada se interpreta respecto a la cámara y el personaje se apoya sobre el relieve y las escaleras del escenario.
+*(Exactamente en `CompanionPowerRuntime.cs:91`: `(1 + 0,10 × Copies(Basket) + 0,15 × Copies(Yanikua)) × (1 + Copies(Chico Emo) si el impulso post-dash está activo)`.)* La diagonal mantiene la misma velocidad máxima. La dirección de entrada se interpreta respecto a la cámara y el personaje se apoya sobre el relieve y las escaleras del escenario.
 
-El dash parte de una velocidad base de `18 m/s` en `PlayerRuntimeStats` (`22 m/s` durante `0,15 s`, unos `3,3 m` en `PlayerCombatSettings`), concede invulnerabilidad activa (`0,22 s` en `PlayerHealth`) y atraviesa cuerpos enemigos. Los muros y obstáculos sólidos limitan el recorrido. La recarga base es de `1,0 s`. La mejora `DASH_01` (*Dash ágil*) añade `+8%` de velocidad de dash y `-10%` de recarga por nivel; al adquirir `DASH_04` (*Cataclismo*), la recarga del dash queda fijada en **`0,5 s`** (anulando la reducción porcentual de recarga de `DASH_01`), pero **se conserva íntegramente el bono de `+8%` por nivel a la velocidad del dash de `DASH_01`**.
+El dash impulsa a `22 m/s` durante `0,15 s` (unos `3,3 m`), concede `0,22 s` de invulnerabilidad activa (`dashInvulnerability = 0.22`) y atraviesa cuerpos enemigos. Se activa con `Espacio` en teclado o el botón sur (`A` / `Cruz`) en mando. Los muros y obstáculos sólidos limitan el recorrido. La recarga base es de `1,0 s`. La mejora `DASH_01` (*Dash ágil*) añade `+8%` de velocidad de dash y `-10%` de recarga por nivel; al adquirir `DASH_04` (*Cataclismo*), la recarga del dash queda fijada en **`0,5 s`** (anulando la reducción porcentual de recarga de `DASH_01`), pero **se conserva íntegramente el bono de `+8%` por nivel a la velocidad del dash de `DASH_01`**.
 
 ## Linterna
 
@@ -36,21 +36,21 @@ Al comenzar la ráfaga se fijan alcance, apertura, daño base por pulso, interva
 
 ## Salud y daño
 
-La **salud máxima** del Coleccionista se calcula mediante la fórmula:
+La **salud máxima** del Coleccionista se calcula en `PlayerRuntimeStats.cs` mediante la fórmula:
 
-**Salud máxima = `(100 + 20 × BIO_01 + 10 × SCRAP_01 + 10 × [Lobito] + 15 × [Soldier]) × (2 si Yanikua está equipada)`**
+**Salud máxima = `(100 + 20 × BIO_01 + 10 × SCRAP_01 + 10 × [Lobito×N] + 15 × [Soldier×N]) × (1 + [Yanikua×N])`**
 
 El daño puede ser físico o sobrenatural según su fuente; los números flotantes conservan esa categoría. La probabilidad crítica empieza en `0%` y su multiplicador base es `×1,75`.
 
-Cada vez que el jugador recibe un impacto, `PlayerHealth.TryApplyIncomingDamage` evalúa la mitigación en este **orden exacto de 7 pasos**:
+Cada vez que el jugador recibe un impacto, `PlayerHealth.ReceiveDamage` evalúa la mitigación en este **orden exacto**:
 
-1. **Invulnerabilidad activa:** comprueba si el jugador está en dash (`0,22 s`), en ventana de protección post-golpe (`0,75 s` en `PlayerHealth`; `0,40 s` en el ajuste de escena), bajo el escudo de *Nanobots* (`2 s`) o bajo la protección de *Yanikua* (`3 s`). Si cualquiera está activo, el golpe se ignora por completo.
-2. **Bloqueo periódico del acompañante Hada:** si está disponible su recarga, anula `1` golpe cada `20 s`.
-3. **Tirada de Evasión:** hasta un tope del `35%` (`8% × nivel` en `PlayerRuntimeStats`). Si la tirada tiene éxito, anula el daño sin activar los `0,75 s` de invulnerabilidad post-golpe.
-4. **Reducción del acompañante Soldier:** multiplica el daño entrante por `0,85` (`-15%` de daño recibido).
-5. **Tirada de Bloqueo:** `15%` con el acompañante **Caballero** (tope técnico del `50%`). Si bloquea, reduce el daño a la mitad (`× 0,5`).
-6. **Armadura:** suma `10% × SCRAP_01 + 10% [Golem] + 10% [Soldier]` en `PlayerRuntimeStats` (`+4 puntos porcentuales` por nivel de `SCRAP_01` en `UpgradeTuning`), hasta un tope máximo del **`60%`**, y multiplica el daño restante por `1 - armadura`.
-7. **Salvación ante daño letal o umbral crítico:** si el daño resultante sería letal, primero intenta activar la salvación única por expedición de **Yanikua** (restaura al `30%` de la salud máxima y otorga `3 s` de invulnerabilidad); si no está disponible, evalúa **Nanobots** (cuando el golpe deja la vida por debajo del `20%` o resulta letal y su enfriamiento de `60 s` está libre, frena la caída en el `20%` de la salud máxima y concede `2 s` de escudo).
+1. **Invulnerabilidad activa:** comprueba si el jugador está en dash (`0,22 s`), en ventana de protección post-golpe (`damageProtectionDuration = 0,40 s` en `PlayerCombat_Default.asset`), bajo el escudo de *Nanobots* (`2 s`) o bajo la protección de *Yanikua* (`3 s`). Si cualquiera está activo, el golpe se ignora por completo.
+2. **Bloqueo periódico del acompañante Hada:** si está disponible alguno de sus enfriamientos independientes (`20 s` por cada copia equipada en `CompanionPowerRuntime`), anula `1` golpe completo.
+3. **Tirada de Evasión:** hasta un tope del `35%` (`bonusEvasion`, actualmente `0%` base). Si la tirada tiene éxito, anula el daño sin activar la invulnerabilidad post-golpe.
+4. **Reducción del acompañante Soldier:** multiplica el daño entrante por `1 - 0,15 × Copies(13)` (`-15%` por copia equipada, acumulable).
+5. **Tirada de Bloqueo:** hasta un tope técnico del `50%` (`bonusBlockChance`, actualmente `0%` base). Si bloquea, reduce el daño a la mitad (`× 0,5`).
+6. **Armadura:** suma `10% × SCRAP_01 + 10% × Copies(13) [Soldier]` en `PlayerRuntimeStats`, hasta un tope máximo del **`60%`**, y multiplica el daño restante por `1 - armadura`.
+7. **Salvación ante daño letal o umbral crítico:** si el daño resultante sería letal (`HP <= 0`), primero intenta activar la salvación de **Yanikua** (`1` uso por copia equipada en cada expedición: restaura al `30%` de la salud máxima y otorga `3 s` de invulnerabilidad). Si el jugador sobrevive al golpe pero queda por debajo del `20%` de vida, el escuchador de **Nanobots** (`BIO_03`, `60 s` de enfriamiento) frena la caída curando hasta el `20%` de la salud máxima y concede `2 s` de escudo.
 
 | Estado del enemigo | Aplicación y expiración |
 | --- | --- |
@@ -61,13 +61,13 @@ Cada vez que el jugador recibe un impacto, `PlayerHealth.TryApplyIncomingDamage`
 
 ### Respuesta al empuje (*knockback*) por arquetipo
 
-| Arquetipo | Susceptibilidad al empuje | Desaceleración de frenado (`EnemyDefinition` / asset) |
+| Arquetipo | Susceptibilidad al empuje | Desaceleración de frenado (`EnemyDefinition` / `.asset`) |
 | --- | ---: | ---: |
-| Chatarra Residual | `1,0` | `28 m/s²` (`18 m/s²` en asset) |
-| Interceptor | `1,0` | `18 m/s²` (`12 m/s²` en asset) |
-| Mortero Campana | `0,7` (`0,8` en asset) | `24 m/s²` (`18 m/s²` en asset) |
-| Polilla Reactor | `1,0` | `22 m/s²` (`18 m/s²` en asset) |
-| Caballero Fantasma (élite) | `0,35` | `28 m/s²` (`24 m/s²` en asset) |
+| Chatarra Residual | `1,0` | `28 m/s²` |
+| Interceptor | `1,0` | `18 m/s²` |
+| Mortero Campana | `0,7` | `24 m/s²` |
+| Polilla Reactor | `1,0` | `22 m/s²` |
+| Caballero Fantasma (élite) | `0,35` | `28 m/s²` |
 | Coloso | `0` (inmune) | — |
 | Centinela de Cobre (élite) | `0` (inmune) | — |
 | Gólgora (jefe) | `0` (inmune) | — |
@@ -82,8 +82,8 @@ Una gema nueva puede sumarse a una gema activa a un máximo de `0,75 m` de dista
 
 ## Entidades y poderes de inicio
 
-Hasta tres copias equipadas en los puestos del balcón (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`) activan poderes propios, independientes de las 35 cartas: bonos de estadísticas, ataques automáticos, curación, protección o salvación. Repetir una misma entidad en varios puestos no acumula su efecto. Las cartas mantienen sus niveles y requisitos y no reciben niveles iniciales por equipo. El catálogo completo, las recetas de fusión de `30 s` y el Índice de Colección (`[I]`) están en [[04 - Objetos y Coleccionables]].
+Hasta tres copias equipadas en los puestos del balcón (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`) activan poderes propios, independientes de las 35 cartas: bonos de estadísticas, ataques automáticos, curación, protección o salvación. **Los poderes sí se acumulan por copia equipada (`Copies(id)`, hasta `×3`)**, de modo que equipar copias repetidas multiplica sus bonos o cargas independientes. Las cartas mantienen sus niveles y requisitos y no reciben niveles iniciales por equipo. El catálogo completo, las recetas de fusión de `30 s` y el Índice de Colección (`[I]`) están en [[04 - Objetos y Coleccionables]].
 
-Los coleccionables que aparecen en la arena requieren pulsar **`E`** dentro de unos `2,5 m` con línea de interacción despejada, y no se recogen con el imán de gemas y botiquines. Si el jugador ya ha alcanzado el límite máximo de **10 unidades** en su colección (`10/10`), el fragmento no puede recogerse y muestra en pantalla el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
+Los coleccionables que aparecen en la arena requieren pulsar **`E`** (o el botón oeste en mando) dentro de unos `2,5 m` con línea de interacción despejada, y no se recogen con el imán de gemas y botiquines. Si el jugador ya ha alcanzado el límite máximo de **10 unidades** en su colección (`10/10`), el fragmento no puede recogerse y muestra en pantalla el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

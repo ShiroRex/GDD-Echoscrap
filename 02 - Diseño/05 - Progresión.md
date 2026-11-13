@@ -90,11 +90,11 @@ Un crítico que cumple la condición emite un área de aturdimiento de `3 m` alr
 | Cataclismo (`DASH_04`) | Recarga fija de `0,5 s` (conservando `+8%/nivel` de velocidad de `DASH_01`). Radio inicial de explosión de `4 m`. La cuchilla viaja a `18 m/s`, tiene radio de impacto de `0,45 m` y dura `0,6 s`. |
 | Botiquín mejor (`GREED_03`) | Probabilidad base de aparición de `3%` y de `4 / 5 / 6%` con la carta. Para Coloso, Mortero y ambos élites, `8%` base y `10 / 12 / 15%` con la carta. |
 | Reacción en cadena (`DEMO_02`) | Radio base de `3 m`. |
-| Minas de chatarra (`DEMO_03`) | Retardo de armado de `0,25 s`, radio de activación de `1,25 m`, radio de explosión de `3 m` (`4 m` en catálogo), empuje de `5 m` y máximo de **5 minas simultáneas**. |
+| Minas de chatarra (`DEMO_03`) | Al iniciar dash coloca 1 mina: retardo de armado de `0,25 s`, activación a `1,25 m`, radio de explosión de `3 m` (`45 / 70 / 100` de daño), empuje de `5 m` y máximo de **5 minas simultáneas**. |
 | Termobárica (`DEMO_04`) | Repite el `75%` del daño a los `0,4 s` en el mismo radio y atrae una distancia base del **45% del radio de explosión** (impulso `12 m/s`, modulado por susceptibilidad). |
 | Micro-ensamblador (`SCRAP_02`) | El proyectil guiado viaja a `24 m/s` y dura hasta `10 s`. Cada umbral de `15` gemas consume ese contador aunque falte un objetivo válido. |
-| Sierras orbitales (`SCRAP_03`) | Giran a `180°/s` a `2,5 m` de radio (`0,65 m` de hoja), aplicando `18 / 28 / 40` de daño y `4 m/s` de empuje por paso de simulación en solape. |
-| Torreta centinela (`SCRAP_04`) | Hasta **2 torretas activas** (`12 s` de vida en runtime; `8 s` en catálogo). Con blanco en alcance (`12 m` / `8 m`), dispara cada `0,6 s` una ráfaga de **3 proyectiles** separados por `0,08 s` a `28 m/s` (`24 m/s` en catálogo). |
+| Sierras orbitales (`SCRAP_03`) | `1 / 2 / 3` hojas giran a `180°/s` a `2,5 m` de radio (`0,65 m` de hoja), aplicando `18 / 28 / 40` de daño y `4 m/s` de empuje por paso de simulación en solape. |
+| Torreta centinela (`SCRAP_04`) | Despliega 1 torreta cada `10 s` con `12 s` de vida (máx. **2 torretas activas**). Con blanco en alcance (`12 m`), dispara cada `0,6 s` una ráfaga de **3 proyectiles** (`10` de daño) separados por `0,08 s` a `28 m/s`. |
 | Quiebre de hielo (`CRYO_04`) | Las seis esquirlas viajan a `14 m/s` y duran hasta `1,2 s`. |
 
 ## Oleadas
@@ -113,6 +113,6 @@ El director recorta el tamaño a las plazas disponibles de su límite normal de 
 
 ## Preparación con entidades
 
-Antes de elegir ronda, el jugador puede ocupar hasta tres puestos de equipo en el balcón superior de la bóveda (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), guiado por las flechas direccionales superiores (`VaultDirections`), el panel de consejos (`VaultTips`) y el Índice de Colección (`[I]`). Las entidades activan poderes propios y no conceden niveles de las cartas. Sus efectos se aplican una sola vez por identidad equipada; repetir una entidad ocupa otra copia entre las 10 unidades de capacidad sin duplicar su poder. Las 35 cartas se ofrecen y progresan con sus propios niveles y requisitos, independientemente de ese equipo.
+Antes de elegir ronda, el jugador puede ocupar hasta tres puestos de equipo en el balcón superior de la bóveda (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), guiado por las flechas direccionales superiores (`VaultDirections`), el panel de consejos (`VaultTips`) y el Índice de Colección (`[I]`). Las entidades activan poderes propios y no conceden niveles de las cartas. **Sus efectos se acumulan por copia equipada (`Copies(id)`, hasta `×3`)**, de modo que equipar duplicados suma bonos o cargas independientes. Las 35 cartas se ofrecen y progresan con sus propios niveles y requisitos, independientemente de ese equipo.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

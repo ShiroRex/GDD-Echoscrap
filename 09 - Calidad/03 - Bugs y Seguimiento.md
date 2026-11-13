@@ -9,9 +9,9 @@
 3. **Panel rotatorio de consejos (`VaultTips` en `GameMenuView.cs`):** tarjeta inferior izquierda con etiqueta `CONSEJO` que rota cada `8 s` entre tres indicaciones sobre equipo, fusión y liberación (y prioriza *"Pulsa E frente a un puesto para equipar tu primer coleccionable"* cuando `OwnedCount > 0 && !HasEquippedOnce`).
 4. **Índice de Colección (`VaultCollectionIndex.cs`, tecla `[I]`):** accesible desde el botón superior izquierdo `ÍNDICE · [I]`, con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` y `EN TU BÓVEDA`, e inspector detallado de poderes.
 
-## Acceso con mando en interacciones de colección (`INPUT-01`)
+## Acceso con mando en interacciones de colección (`INPUT-01` — Resuelto en `b381ef4`)
 
-El combate, la pausa (`Start`), la consulta rápida de detalles del HUD (`Select`) y la elección de cartas admiten mando. La recogida manual de fragmentos en la arena (`E`) y las interacciones con los pedestales de la bóveda (`E`, `T`), la máquina de fusión (`E`) y el Índice de Colección (`I`) utilizan actualmente teclado y ratón, quedando registrado en [[04 - Backlog del Proyecto]] para el cierre de cobertura de mando.
+**Estado: resuelto e integrado (`main` @ `b381ef4` / `develop` @ `977bac5`).** Además del combate (`A` / `Cruz` para dash), pausa (`Start`), consulta rápida (`Select`) y elección de cartas, la recogida manual de fragmentos en la arena (`CollectibleShard`), la estación de fusión (`FusionStation`), los selectores de puesto (`CompanionSystem`) y la liberación (`VaultReleaseInteraction`) responden al botón oeste del mando (`X` / `Cuadrado`, equivalente a `E`), el desequipado rápido responde al botón norte (`Y` / `Triángulo`, equivalente a `T`), el cierre/cancelación usa el botón este (`B` / `Círculo`) y el Índice de Colección (`VaultCollectionIndex`) se alterna con `Select`.
 
 ## Comportamiento de límites de población y curva de oleadas
 

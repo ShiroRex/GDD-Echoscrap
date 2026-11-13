@@ -2,7 +2,7 @@
 
 ## Movimiento que abre oportunidades
 
-El desplazamiento ágil (`6 m/s` base en código, `8 m/s` en el ajuste de escena), el dash (`18 m/s`) y el empuje del cuarto pulso ayudan a atravesar huecos y cambiar la posición de la horda. La linterna apunta por su cuenta, por lo que el Coleccionista puede retirarse mientras ataca en otra dirección.
+El desplazamiento ágil (`8 m/s` base), el dash (`22 m/s`) y el empuje del cuarto pulso ayudan a atravesar huecos y cambiar la posición de la horda. La linterna apunta por su cuenta, por lo que el Coleccionista puede retirarse mientras ataca en otra dirección.
 
 ## Preparar una colección y construir una configuración
 
@@ -14,6 +14,6 @@ La carga del Coloso, el ácido del Mortero, la espoleta por proximidad de la Pol
 
 ## Una bóveda que da continuidad a las expediciones
 
-Las entidades recogidas pasan al inventario local hasta un máximo de **10 unidades simultáneas** (`3` puestos de equipo en el balcón + `7` puestos de exposición en la planta baja), mientras que su registro permanente queda guardado en el **Índice de Colección (`[I]`)** de 15 entidades. En la bóveda, señalizada mediante rótulos `EQUIPO 1..3`, indicadores direccionales (`VaultDirections`) y consejos (`VaultTips`), el jugador equipa hasta tres acompañantes, libera copias para gestionar el espacio o consume cuatro ingredientes de la misma rareza en una fusión de `30 s`.
+Las entidades recogidas pasan al inventario local hasta un máximo de **10 unidades simultáneas** (`DisplaySlots[10]`: `3` puestos de equipo en el balcón + `7` pedestales de exposición/reserva en planta baja), mientras que su registro permanente queda guardado en el **Índice de Colección (`[I]`)** de 15 entidades. En la bóveda, señalizada mediante rótulos `EQUIPO 1..3`, indicadores direccionales (`VaultDirections`) y consejos (`VaultTips`), el jugador equipa hasta tres acompañantes (cuyos poderes se acumulan por copia equipada), libera copias para gestionar el espacio o consume cuatro ingredientes (de la misma rareza o de rarezas mixtas) en una fusión de `30 s`.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

@@ -3,8 +3,8 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.5 |
-| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) y ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
+| Versión del GDD | 0.6.6 |
+| Estado | Versión jugable final integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades con poderes acumulables por copia equipada, fusión de 30 s (misma rareza o rarezas mixtas), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) y ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
 | Actualización | 13 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
@@ -15,7 +15,7 @@
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
 | Distribución ejecutable (itch.io) | https://naked-hiro.itch.io/echoscrap |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | Código y escena de `develop` en `a8a23c4` (integra `7ccc1e7`, `9eed59f`, `687e909` y `b4d5ada`). Se conservan los registros de pruebas y capturas históricas identificadas. |
+| Revisión consultada | Código y escena de `main` @ `b381ef4` / `develop` @ `977bac5` (integra `a8a23c4`, `7ebe712`, `4b396f1`, `ca22b7a`, `adacb3d`, `9a89d8a`, `974c2d9`, `5926e63` y `2c9d8c2`). Se conservan los registros de pruebas y capturas históricas identificadas. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo

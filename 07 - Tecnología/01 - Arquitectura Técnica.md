@@ -1,14 +1,14 @@
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `a8a23c4`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`main` @ `b381ef4` / `develop` @ `977bac5`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
-| Menú, señalización de bóveda y escenas | `MainMenuEntry`, `MainMenuController`, `MenuSettingsView`, `GameMenuView` (incluye `VaultDirections`, `VaultTips` y `VaultIndexHint`), `SceneTransitionState`, `LoadingScreen` |
+| Menú, ajustes unificados y señalización | `MainMenuEntry`, `MainMenuController`, `MenuSettingsView` (3 pestañas compartidas entre `MainMenu` y `PAUSA`), `GameMenuView` (`VaultDirections`, `VaultTips`, `VaultIndexHint`), `SceneTransitionState`, `LoadingScreen` |
 | Preparación y expedición | `GameFlowController`, `ExpeditionEntrySettings`, `ExpeditionIntro` |
 | Composición del mundo | `CombatGameBootstrap` |
 | Tiempo, pausas y resultado | `CombatSession`, `GameplayClock`, `CombatOutcomeResolver` |
-| Movimiento, salud y estadísticas | `PlayerInputReader`, `PlayerMotor`, `TerrainPlayerCollision`, `PlayerHealth` (mitigación en 7 pasos), `PlayerRuntimeStats` |
+| Movimiento, salud y estadísticas | `PlayerInputReader`, `PlayerMotor`, `TerrainPlayerCollision`, `PlayerHealth` (mitigación en `ReceiveDamage`), `PlayerRuntimeStats` |
 | Linterna | `FlashlightWeapon`, `FlashlightPresentation`, `FlashlightAudio` |
 | Horda y élites | `EnemyActor`, `EnemyPool`, `EnemyObstacleNavigator`, `EliteEnemyController`, `EliteProjectilePool`, `MothExplosionPool` |
 | Jefe | `CombatWaveDirector`, `BossEncounter`, `BossArena`, `GolgoraActor`, `GolgoraCombatSettings` |
