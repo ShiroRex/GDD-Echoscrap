@@ -1,6 +1,6 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.10 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`)**
+**GDD 0.6.11 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`)**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
@@ -12,7 +12,7 @@ Esta edición incorpora el enlace oficial de la versión ejecutable en **itch.io
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.10 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
+**GDD 0.6.11 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -53,7 +53,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.10 |
+| Versión del GDD | 0.6.11 |
 | Estado | Versión jugable final integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades con poderes acumulables por copia equipada, fusión de 30 s (misma rareza o rarezas mixtas), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app), ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional final (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`) aprobado en QA. |
 | Actualización | 13 de noviembre de 2026 |
 | Género | Acción. |
@@ -1305,7 +1305,9 @@ Su boceto conceptual define un autómata pesado con bobinas eléctricas en los h
 
 ## Gólgora: MataColeccionista
 
-Jefe final de la expedición, representado mediante un modelo 3D animado con efectos de magma propios.
+Jefe final de la expedición. Su diseño parte de un boceto conceptual a lápiz con cráneo cornudo, corona en llamas, hombreras y antebrazos flameantes y cadenas alrededor del torso y el faldón, trasladado al juego mediante un modelo 3D animado (`MataColeccionista.fbx`, `Martillo.fbx`, texturas `0_base.png` y `0_emission.png`) con efectos de magma propios.
+
+![Boceto conceptual a mano de Gólgora / MataColeccionista|280](Media/ConceptArt/Golgora_guardian.jpeg)
 
 ### Ataques dentro de la arena
 
@@ -2363,7 +2365,8 @@ El diseño del videojuego evoluciona con cada integración en `develop`. Esta se
 | **10/11/2026** | Reglas definitivas de puntuación del Ranking (`rulesVersion = 2`, una oportunidad por nueva colección, reserva de gamertag por SHA-256 en `GamertagRegistry`, comparación `3 min` vs `8 min ÷ 2`) y visor web en vivo [`https://echoscrap.web.app`](https://echoscrap.web.app); documentación del Bestiario (`Índice de Colección [I]`) con captura de su fase beta; e integración de los 22 bocetos a mano (`Media/ConceptArt/`), 4 pistas musicales y 15 efectos de sonido con tabla de autoría. | Sincronizar el GDD `0.6.4` con `develop` (`a8a23c4`) y completar todos los criterios de arte, audio y ranking de la entrega final. | `02 - Economía y Recursos`, `04 - Objetos y Coleccionables`, `05 - Personajes y Animación`, `05 - Audio y Música`, `06 - UI y Guardado` y `07 - Tecnología`. | Equipo EchoScrap | Integrado (`0.6.4`) |
 | **13/11/2026** | Publicación de la build en **itch.io** (`https://naked-hiro.itch.io/echoscrap`); sustitución de capturas por las definitivas de Unity (`Media/Interfaz/`); incorporación de bocetos de Esqueleto, Galgo y Joel más galería de elementos (`Media/ConceptArt/Elementos/`); y actualización de paridad final con `main` @ `b381ef4` / `develop` @ `977bac5`: poderes de acompañantes acumulables por copia equipada (`Copies(id)`), fusión de 4 copias de la misma rareza o de rarezas mixtas, panel unificado de ajustes en 3 pestañas (`MenuSettingsView.cs`) compartido entre menú principal y pausa, controles completos de mando en bóveda/Índice (`buttonWest`, `buttonNorth`, `selectButton`), persistencia en `EchoScrap.Rank.v2` (`PUT`/`DELETE`, `8 s`, ID de 32 hex, preservación de oportunidad puntuable al continuar hasta la primera ronda finalizada, gamertag en mayúsculas conservando tildes), calibración unificada de enemigos/Gólgora y `0,22 s` de invulnerabilidad de dash. | Culminar la documentación final, auditoría de paridad y criterios de entrega. | Transversal a todas las secciones (`00` a `10`) y documento compilado para PDF. | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Integrado (`0.6.6`) |
 | **13/11/2026** | Integración y aprobación QA del tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1920 × 1080`, `46,2 s`); ampliación de procedencia sonora con todos los clips de `Resources/Audio/` y `MataColeccionista/Audio/`; resumen rápido de juego y avance en Controles; registro de créditos de desarrollo y licencias de terceros (`Pixelify Sans` OFL, `Chakra Petch` OFL, `Flashlight/Sources.txt` CC0); y restablecimiento transversal del soporte completo de **teclado/ratón y mando**. | Cerrar el hito `MEDIA-TRAILER-01`, dejar listos los apartados de entrega y confirmar compatibilidad total con teclado/ratón y mando. | `01 - Ficha`, `02 - Controles`, `05 - Audio`, `08 - Producción`, `09 - Pruebas` y `10 - Referencia` (transversal). | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Integrado (`0.6.9`) |
-| **13/11/2026** | Integración de identidad visual (`Media/Identidad/`: logo SVG, título SVG/`.aseprite`, portada y tarjeta) en Dirección de Arte; respaldo íntegro de los clips de audio del motor (`Media/Audio/Unity/Flashlight/`, `MataColeccionista/` y `Sistema/` + `Sources.txt` CC0); y **cierre técnico `TECH-01`** (`Windows.asset` Release, build `~0,94 GiB` con `0` errores, `p95` de CPU `6,61 ms`, optimizaciones de memoria/tirones en Windows y registro transparente de limitaciones conocidas para gama mínima y boceto 3D directo de Gólgora). | Completar los entregables de arte digital, audio y control de calidad y cerrar todos los hitos técnicos de entrega. | `05 - Arte`, `07 - Tecnología`, `08 - Producción`, `09 - Calidad` y `10 - Referencia`. | Mora Alejandro Angel Gabriel / Sierra Sosa David Alejandro / Nuñez Chan Luis Fernando | Vigente (`0.6.10`) |
+| **13/11/2026** | Integración de identidad visual (`Media/Identidad/`: logo SVG, título SVG/`.aseprite`, portada y tarjeta) en Dirección de Arte; respaldo íntegro de los clips de audio del motor (`Media/Audio/Unity/Flashlight/`, `MataColeccionista/` y `Sistema/` + `Sources.txt` CC0); y **cierre técnico `TECH-01`** (`Windows.asset` Release, build `~0,94 GiB` con `0` errores, `p95` de CPU `6,61 ms`, optimizaciones de memoria/tirones en Windows y registro transparente de limitaciones conocidas para gama mínima y boceto 3D directo de Gólgora). | Completar los entregables de arte digital, audio y control de calidad y cerrar todos los hitos técnicos de entrega. | `05 - Arte`, `07 - Tecnología`, `08 - Producción`, `09 - Calidad` y `10 - Referencia`. | Mora Alejandro Angel Gabriel / Sierra Sosa David Alejandro / Nuñez Chan Luis Fernando | Integrado (`0.6.10`) |
+| **13/11/2026** | Integración del boceto conceptual a mano del jefe final **Gólgora** ([`Media/ConceptArt/Golgora_guardian.jpeg`](Media/ConceptArt/Golgora_guardian.jpeg)) en Personajes y Animación junto con la referencia de sus archivos 3D (`MataColeccionista.fbx`, `Martillo.fbx`, texturas), completando el 100% de bocetos de personajes, enemigos y jefe. | Cubrir por completo el criterio de bosquejos y diseño conceptual de la entrega final. | `05 - Arte y Audio` y `09 - Bugs y Seguimiento`. | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Vigente (`0.6.11`) |
 
 ## Revisión 0.6.2 del 8 de noviembre (`develop` @ `9eed59f`)
 
@@ -2435,7 +2438,6 @@ En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación
 - **Población fuera de cámara:** el límite de `150` enemigos ordinarios contabiliza también a los activos fuera del encuadre; una retirada sostenida en línea recta puede concentrar parte de la población detrás del jugador hasta que se reciclen o sean eliminados.
 - **Recorte de la ronda demo:** la ronda demo (`3:00`) emplea los tres primeros tramos de la tabla de oleadas (`0:00–3:00`) antes de invocar a Gólgora (`3 600 HP`), mientras que la ronda completa (`8:00`) recorre los cinco tramos completos hasta el encuentro de `9 000 HP` (`15 000 HP` base en código).
 - **Cierre de validación técnica y limitación en hardware mínimo (`TECH-01`):** la compilación Windows x64 (`Windows.asset` Release, `0` errores, `~0,94 GiB`), las optimizaciones integradas de memoria/horda (`feature/perfil-memoria-baja` y `bugfix/tirones-horda-windows`) y el perfilado de `2 000` fotogramas (`p95` de CPU = `6,61 ms`) cumplen el presupuesto de `60 FPS` en equipo de desarrollo/referencia. Queda acotada como limitación conocida la ausencia de telemetría instrumentada en un equipo físico de gama mínima (`8 GB RAM` / `4 GB VRAM`), mitigada en el juego mediante los deslizadores de `Efectos decorativos` y `Efectos reducidos` en `MenuSettingsView`.
-- **Arte conceptual de Gólgora:** el diseño del jefe final se concretó directamente mediante modelado 3D y capturas de animación en Unity ([`02 - Personajes y Animación`](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista)), sin hoja de boceto conceptual a lápiz previa.
 
 ---
 
@@ -2509,7 +2511,7 @@ Registra los videojuegos y obras utilizadas como referencia de diseño, arte, na
 
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.10`**).
+Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.11`**).
 
 | Área | Regla o decisión vigente (`b381ef4`) |
 | --- | --- |
@@ -2556,6 +2558,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.8** | 13/11/2026 | Integración y aprobación QA del tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46,2 s`); ampliación de la tabla de procedencia sonora con todos los efectos reales en Unity (`Flashlight/`, `MataColeccionista/Audio/`, portales y XP); resumen de juego y avance en Controles; y apartado de créditos y licencias de terceros en Roles y Responsabilidades. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 | **0.6.9** | 13/11/2026 | Restablecimiento transversal del soporte completo y oficial de **mando** junto con teclado y ratón en todos los apartados del GDD (arena, bóveda, Índice de Colección, fusión, selección de cartas y menús). | Equipo EchoScrap |
 | **0.6.10** | 13/11/2026 | Integración de identidad visual (`Media/Identidad/`: logo SVG, título SVG/`.aseprite`, portada y tarjeta), respaldo completo de clips de audio de Unity (`Media/Audio/Unity/`) y **cierre técnico `TECH-01`** (perfil Release `Windows.asset`, `0` errores, `~0,94 GiB`, `p95` CPU `6,61 ms` y registro transparente de limitaciones conocidas para la entrega `v1.0`). | Mora Alejandro Angel Gabriel / Sierra Sosa David Alejandro / Nuñez Chan Luis Fernando |
+| **0.6.11** | 13/11/2026 | Incorporación del boceto conceptual a mano de **Gólgora** (`Media/ConceptArt/Golgora_guardian.jpeg`) y referencia de su modelo 3D (`MataColeccionista.fbx`), completando todos los bosquejos de personajes, enemigos, entidades y jefe. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 
 ## Convención sugerida
 

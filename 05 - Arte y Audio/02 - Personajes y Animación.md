@@ -198,7 +198,9 @@ Su boceto conceptual define un autómata pesado con bobinas eléctricas en los h
 
 ## Gólgora: MataColeccionista
 
-Jefe final de la expedición, representado mediante un modelo 3D animado con efectos de magma propios.
+Jefe final de la expedición. Su diseño parte de un boceto conceptual a lápiz con cráneo cornudo, corona en llamas, hombreras y antebrazos flameantes y cadenas alrededor del torso y el faldón, trasladado al juego mediante un modelo 3D animado (`MataColeccionista.fbx`, `Martillo.fbx`, texturas `0_base.png` y `0_emission.png`) con efectos de magma propios.
+
+![Boceto conceptual a mano de Gólgora / MataColeccionista|280](../Media/ConceptArt/Golgora_guardian.jpeg)
 
 ### Ataques dentro de la arena
 
