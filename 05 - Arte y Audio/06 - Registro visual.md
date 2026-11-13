@@ -56,7 +56,7 @@ La ráfaga muestra el haz, los cuatro pulsos y el empuje en el cuarto pulso sobr
 
 ### Rayo solar
 
-La mejora legendaria (`FLASH_05`) cambia la luz a dorado, amplía el alcance base a `14 m`, multiplica el daño por `2,5` y elimina el descanso entre ráfagas. En el código vigente (`UpgradeCombatRuntime.cs:169`), todos sus pulsos cuentan como cuarto pulso (`finalPulse = true`), por lo que cada pulso aplica empuje y activa `FLASH_03` (*Prisma voltaico*), `BIO_02` (*Sifón*) y `CRIT_04` (*Ráfaga crítica*). *(El GIF del 5 de noviembre se capturó antes de activar el empuje por pulso y muestra el tratamiento luminoso continuo).*
+La mejora legendaria (`FLASH_05`) cambia la luz a dorado, amplía el alcance base a `14 m`, multiplica el daño por `2,5` y elimina el descanso entre ráfagas. En el código vigente (`FlashlightWeapon.cs:402`), todos sus pulsos aplican empuje (`capturedSolarMode`), mientras que `FLASH_03` (*Prisma voltaico*), `BIO_02` (*Sifón*) y `CRIT_04` (*Ráfaga crítica*) siguen disparándose en el cuarto pulso (`PulseIndex == 4` en `UpgradeCombatRuntime.cs:232-236, 341`). *(El GIF del 5 de noviembre se capturó antes de activar el empuje por pulso y muestra el tratamiento luminoso continuo).*
 
 ![Rayo solar: captura de Unity del 5 de noviembre](../Media/Avance_2026-11-05/VFX/RayoSolar.gif)
 
@@ -114,7 +114,7 @@ Efecto compartido de recuperación efectiva de salud (*Más vida*, *Sifón*, *Bo
 
 ### Nanobots: protección de emergencia
 
-Cuando un golpe deja al jugador por debajo del `20%` de vida (o resulta letal sin Yanikua disponible), frena la caída en `20%` y activa el escudo temporal de `2 s` (`60 s` de enfriamiento).
+Cuando un golpe deja al jugador con vida (`RemainingHealth > 0`) por debajo del `20%` (`emergencyThreshold`), activa el escudo temporal de `2 s` (`60 s` de enfriamiento; no evita golpes letales ni cura hasta el `20%`).
 
 ![Nanobots: activación del escudo de emergencia](../Media/Avance_2026-11-05/VFX/Nanobots.gif)
 

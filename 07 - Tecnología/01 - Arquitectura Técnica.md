@@ -1,10 +1,10 @@
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`main` @ `b381ef4` / `develop` @ `977bac5`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`main` @ `734e2a5` / `develop` @ `6973556`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
-| Menú, ajustes unificados y señalización | `MainMenuEntry`, `MainMenuController`, `MenuSettingsView` (3 pestañas compartidas entre `MainMenu` y `PAUSA`), `GameMenuView` (`VaultDirections`, `VaultTips`, `VaultIndexHint`), `SceneTransitionState`, `LoadingScreen` |
+| Menú, ajustes unificados y señalización | `MainMenuEntry`, `MainMenuController`, `MenuSettingsView` (3 pestañas compartidas entre `MainMenu` y `PAUSA`), `GameMenuView` (`VaultDirections`, `VaultTips`), `VaultCollectionIndex` (`BotonIndiceBoveda`), `SceneTransitionState`, `LoadingScreen` |
 | Preparación y expedición | `GameFlowController`, `ExpeditionEntrySettings`, `ExpeditionIntro` |
 | Composición del mundo | `CombatGameBootstrap` |
 | Tiempo, pausas y resultado | `CombatSession`, `GameplayClock`, `CombatOutcomeResolver` |
@@ -14,9 +14,9 @@ El proyecto activo se encuentra en `EchoScrap/` (`main` @ `b381ef4` / `develop` 
 | Jefe | `CombatWaveDirector`, `BossEncounter`, `BossArena`, `GolgoraActor`, `GolgoraCombatSettings` |
 | Progresión y mejoras | `CombatProgression`, `UpgradeDraftController`, `UpgradeCatalog`, `UpgradeCombatRuntime`, `UpgradeTuning` |
 | Bóveda, colección, índice y fusión | `WarehouseTravel`, `WarehouseCameraDirector`, `WarehouseCameraFraming`, `FusionStation`, `FusionStationUI`, `FusionProgress` (`Capacity = 10`, `FusionSeconds = 30`), `VaultCollectionIndex` (`[I]`), `VaultReleaseInteraction`, `CollectibleDisplay` |
-| Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleShard`, `CollectiblePickupFeedback` |
-| Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool` |
-| Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `ArenaMusicController` |
+| Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleDisplay`, `CollectiblePickupFeedback` |
+| Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool`, `GolgoraMagmaRingPool` |
+| Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `MenuMusic` |
 | Ranking en vivo y visor web | `EventLeaderboardSync` (`rulesVersion = 2`, sincronización HTTPS con Firebase Realtime Database), `GamertagRegistry` (reserva única SHA-256) y visor web en vivo `Tools/WebRanking/index.html` ([`https://echoscrap.web.app`](https://echoscrap.web.app)) |
 | Iluminación | `ArenaLightingController`, `ArenaLightingProfile` y renderer de atmósfera |
 

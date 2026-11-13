@@ -10,7 +10,7 @@ Las entidades equipadas en los tres puestos del balcón aportan poderes propios,
 
 ## Ataques que se pueden leer
 
-La carga del Coloso, el ácido del Mortero, la espoleta por proximidad de la Polilla Reactor (`1,6 m`), los ataques élite y los patrones de Gólgora muestran señales claras antes de resolver el daño. El ajuste de efectos decorativos en pausa conserva siempre los avisos esenciales de peligro.
+La carga del Coloso, el ácido del Mortero, la espoleta por proximidad de la Polilla Reactor (`2 m`), los ataques élite y los patrones de Gólgora muestran señales claras antes de resolver el daño. El ajuste de efectos decorativos en pausa conserva siempre los avisos esenciales de peligro.
 
 ## Una bóveda que da continuidad a las expediciones
 

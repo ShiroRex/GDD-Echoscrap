@@ -136,7 +136,7 @@ Artillería de la horda. Su diseño conceptual parte de una campana flotante con
 
 ## Polilla: Reactor
 
-Enemigo explosivo de la horda que arma su espoleta a `1,6 m` del jugador. Su boceto conceptual combina un cuerpo esférico de horno o reactor con ranuras frontales, ojos compuestos y alas mecánicas. Su atlas tiene 62 fotogramas de `64 × 64`: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
+Enemigo explosivo de la horda que arma su espoleta a `2 m` del jugador. Su boceto conceptual combina un cuerpo esférico de horno o reactor con ranuras frontales, ojos compuestos y alas mecánicas. Su atlas tiene 62 fotogramas de `64 × 64`: vuelo de ocho y cebado de seis por dirección, más seis de estallido compartido.
 
 ![Boceto a mano de la Polilla Reactor|280](../Media/ConceptArt/Polilla.JPG)
 

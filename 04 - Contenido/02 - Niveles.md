@@ -32,7 +32,7 @@ El HUD de la bóveda acompaña el recorrido con dos tarjetas direccionales super
 ![Boceto conceptual a mano de la Bóveda|420](../Media/ConceptArt/Almacen_Arte.jpeg)
 
 ![Bóveda actual](../Media/Interfaz/Boveda_almacen.png)
-*Captura de la Bóveda en la versión final (`b381ef4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
+*Captura de la Bóveda en la versión final (`734e2a5`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RONDA`). Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
@@ -42,7 +42,7 @@ Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RO
 | --- | --- | --- |
 | `MainMenu` | Menú inicial independiente del mundo de combate. | No aplica |
 | `CombatArena` · Ronda demo | Mundo principal con escalada rápida seleccionada en la bóveda. | `3:00` (`180 s`); `3 600 HP` (asset demo) |
-| `CombatArena` · Ronda completa | Mismo mundo con escalada completa de ocho minutos. | `8:00` (`480 s`); `9 000 HP` (asset completa; `15 000 HP` base en `GolgoraCombatSettings.cs`) |
+| `CombatArena` · Ronda completa | Mismo mundo con escalada completa de ocho minutos (y exclusión de apariciones dentro de edificios cerrados mediante `OverlapsBlockedInterior`). | `8:00` (`480 s`); `9 000 HP` (`Golgora_Complete.asset`) |
 | `CombatArena_3Min` / `CombatArena_8Min` | Variantes guardadas para desarrollo; fuera de la lista principal de compilación. | Según su asset |
 | `EnemyLaboratory` | Generación e inspección manual de los ocho arquetipos. | Manual |
 | `LocomotionSandbox` / `CombatSandbox` | Comprobaciones aisladas de locomoción y combate. | Sin flujo completo |

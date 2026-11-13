@@ -4,16 +4,16 @@ El combate reúne cinco arquetipos de horda, dos élites y Gólgora. Las fichas 
 
 La [[02 - Personajes y Animación#Proporciones en reposo|comparación a escala]] muestra a los ocho enemigos junto al Coleccionista.
 
-| Enemigo | Vida | Velocidad base | Daño principal | Susceptibilidad al empuje | Frenado (`EnemyDefinition` / `.asset`) | XP |
+| Enemigo | Vida | Velocidad base | Daño principal | Susceptibilidad al empuje | Frenado (`EnemyArchetypeSettings` / `.asset`) | XP |
 | --- | ---: | ---: | --- | ---: | ---: | ---: |
 | Residual / Esqueleto | 15 HP | 3,5 m/s ±15% | Contacto: 10 (físico); recarga 0,5 s. | `1,0` | `28 m/s²` | 10 |
 | Interceptor | 9 HP | 6,2 m/s ±10% | Contacto: 8 (físico); recarga 0,5 s. | `1,0` | `18 m/s²` | 10 |
-| Coloso / Wendigo | 80 HP | 1,8 m/s | Contacto o carga: 25 (físico). | `0` (inmune) | — | 50 |
+| Coloso / Wendigo | 80 HP | 1,8 m/s | Contacto o carga: 25 (físico). | `0` (inmune) | `30 m/s²` (sin impulso) | 50 |
 | Mortero Campana | 25 HP | 2,2 m/s ±10% | Contacto: 5; ácido: 5 cada 0,5 s. | `0,7` | `24 m/s²` | 25 |
-| Polilla Reactor | 12 HP | 4,8 m/s ±10% | Explosión en 3 m: 35 al jugador / 85% (`29,75`) a enemigos normales. | `1,0` | `22 m/s²` | 15 |
+| Polilla Reactor | 12 HP | 4,8 m/s ±10% | Explosión en 3 m: 35 (físico) al jugador y objetivos enemigos. | `1,0` | `22 m/s²` | 15 |
 | Caballero Fantasma | 110 HP | 2,8 m/s | Barrido sobrenatural: 22. | `0,35` | `28 m/s²` | 65 |
-| Centinela de Cobre | 160 HP | 1,7 m/s | Abanico de tres proyectiles físicos: 16 por impacto. | `0` (inmune) | — | 80 |
-| Gólgora / MataColeccionista | 15 000 HP base (`3 600` demo; `9 000` completa) | 1,6 m/s en Fase 1 (`×1,3` en Fase 2) | Contacto: 30; seis patrones descritos más abajo. | `0` (inmune) | — | 500 |
+| Centinela de Cobre | 160 HP | 1,7 m/s | Abanico de tres proyectiles físicos: 16 por impacto. | `0` (inmune) | `24 m/s²` (sin impulso) | 80 |
+| Gólgora / MataColeccionista | `3 600` demo (`EnemyArchetypeSettings` base) / `9 000` completa | 1,6 m/s en Fase 1 (`×1,3` en Fase 2) | Contacto: 30; seis patrones descritos más abajo. | `0` (inmune) | `30 m/s²` (sin impulso) | 500 |
 
 ## Residual: Esqueleto
 
@@ -43,9 +43,9 @@ Mantiene una banda de distancia entre `5,5` y `6,5 m` y ataca hasta `12 m`. Tien
 
 ## Polilla: Reactor
 
-Se aproxima al Coleccionista y **arma su espoleta por proximidad al situarse a `1,6 m` del jugador** (`ExplosiveMoth.asset`, `EnemyActor.cs:433`). La cuenta atrás por proximidad dura **`0,9 s`**; si la Polilla muere por daño del jugador antes de detonar, entra en una espoleta de muerte de **`1,2 s`**.
+Se aproxima al Coleccionista y **arma su espoleta por proximidad al situarse a `2 m` del jugador** (`EnemyActor.MothArmDistance = 2f`, `EnemyActor.cs:25, 708`; el asset `ExplosiveMoth.asset` no serializa este radio). La cuenta atrás por proximidad dura **`0,9 s`**; si la Polilla muere por daño del jugador antes de detonar, entra en una espoleta de muerte de **`1,2 s`**.
 
-Al detonar en un radio de **`3 m`**, inflige **`35` de daño físico al jugador** y un **`85 %` de ese daño (`29,75`) a otros enemigos normales** dentro del radio (`EnemyActor.cs:470, 479`, sin afectar a Gólgora). Durante la mecha conserva su susceptibilidad al empuje (`1,0`, desaceleración `22 m/s²`), por lo que el cuarto pulso de la linterna o el *Rayo solar* pueden empujarla hacia el interior de la horda antes de que estalle.
+Al detonar en un radio de **`3 m`**, inflige **`35` de daño físico completo (`BlastDamage = 35f`) tanto al jugador como a todos los objetivos enemigos (`IsEnemyTarget`, incluido Gólgora**; durante `CercoActive`, Gólgora aplica su `35%` de reducción, `MothExplosionPool.cs:11-13, 111-131, 148-149`). Durante la mecha conserva su susceptibilidad al empuje (`1,0`, desaceleración `22 m/s²`), por lo que el cuarto pulso de la linterna o el *Rayo solar* pueden empujarla hacia el interior de la horda antes de que estalle.
 
 [Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
 
@@ -69,7 +69,7 @@ Los élites empiezan a aparecer desde los `90 s` y se alternan cada `25 s` cuand
 
 ## Gólgora: MataColeccionista
 
-En código (`GolgoraCombatSettings.cs`) y su perfil `CombatSettings.asset` ya unificado, la salud máxima por defecto de Gólgora es de **15 000 HP** (transición a Fase 2 al bajar al `50%` = `7 500 HP`), mientras que los perfiles de ronda asignan **3 600 HP** en la ronda demo (`3:00`) y **9 000 HP** en la ronda completa (`8:00`). Su entrada retira la horda ordinaria sin otorgar recompensas y traslada al jugador con protección a la caldera central de `22 m` de radio, cuyo perímetro queda cerrado.
+En los perfiles de arquetipo del jefe, **`Golgora_Demo.asset`** (y el valor por defecto en `EnemyArchetypeSettings.cs`) asigna **3 600 HP** para la ronda demo (`3:00`), mientras que **`Golgora_Complete.asset`** asigna **9 000 HP** para la ronda completa (`8:00`), ambos con transición a Fase 2 al bajar al `50%` (`1 800 HP` / `4 500 HP`) y parámetros de ataque unificados entre `GolgoraCombatSettings.cs` y `CombatSettings.asset`. Su entrada retira la horda ordinaria sin otorgar recompensas y traslada al jugador con protección a la caldera central de `22 m` de radio, cuyo perímetro queda cerrado.
 
 Gólgora usa un modelo 3D animado y efectos de magma propios. Sus seis patrones se detallan en la tabla siguiente con los parámetros unificados de `GolgoraCombatSettings.cs`, `CombatSettings.asset` y `GolgoraActor.cs`:
 

@@ -1,6 +1,6 @@
 # EchoScrap: avance jugable
 
-**GDD 0.6.11 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
+**GDD 0.6.12 · 13 de noviembre de 2026 (`main` @ `734e2a5` / `develop` @ `6973556`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -11,7 +11,7 @@ Menú inicial (con registro de nombre para el ranking de evento) → continuar o
 La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedestales superiores (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), dos indicadores direccionales en la parte superior de la pantalla (`VaultDirections`) que apuntan hacia la máquina de fusión y el balcón de equipo, y un panel inferior izquierdo de consejos (`VaultTips`) que rota cada `8 s`. En los puestos 1 a 3 del balcón, pulsar `E` o botón oeste (`E · EQUIPAR` / `E · EDITAR`) abre el selector de acompañantes (con botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`), mientras que `T` o botón norte retira directamente la entidad equipada al mundo; en los pedestales de exposición de la planta baja, pulsar `E` o botón oeste (`E · LIBERAR`) abre el diálogo de confirmación para liberar una copia de la colección.
 
 ![Bóveda y preparación](Media/Interfaz/Boveda_almacen.png)
-*Captura de la Bóveda en la versión final (`b381ef4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
+*Captura de la Bóveda en la versión final (`734e2a5`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 | Área | Contenido de esta versión |
 | --- | --- |
@@ -19,7 +19,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Control | Teclado/ratón y mando (`WASD`/flechas o stick/cruceta, dash `Espacio` / `A` / `Cruz` con `0,22 s` de invulnerabilidad, interacción `E` / botón oeste `X` / `Cuadrado`, desequipado rápido en balcón `T` / botón norte `Y` / `Triángulo`, Índice de Colección `I` / `Select` y consulta rápida de detalles del HUD manteniendo `Q` / `Select`). |
 | Combate | Linterna de cuatro pulsos con autoapuntado y 35 mejoras en cuatro rarezas. |
 | Enemigos | Cinco arquetipos de horda, dos élites y Gólgora. |
-| Rondas | Demo: jefe a los 3:00 y 3600 HP. Completa: jefe a los 8:00 y 9000 HP (15 000 HP base en código). La victoria exige derrotarlo. |
+| Rondas | Demo: jefe a los 3:00 y 3600 HP (`Golgora_Demo.asset`, mismo valor base en `EnemyArchetypeSettings`). Completa: jefe a los 8:00 y 9000 HP (`Golgora_Complete.asset`). La victoria exige derrotarlo. |
 | Mundo | Arena de 200 × 200 m, acceso norte, bóveda modular en dos niveles y caldera central del jefe. Las zonas de lava fija del mapa están desactivadas. |
 | Colección | Quince entidades en seis rarezas, capacidad máxima estricta de **10 unidades** en posesión (`FusionProgress.Capacity = 10`, con `DisplaySlots[10]`: 3 puestos de equipo en el balcón y 7 pedestales de exposición/reserva en planta baja; los poderes **se acumulan por copia equipada** hasta `×3`) e **Índice de Colección (`[I]`)** con pestañas `POR RAREZAS` (`TODAS` y 6 rarezas) y `EN TU BÓVEDA`. |
 | Fusión | Cuatro copias cualesquiera (de la misma rareza o de rarezas mixtas, incluidas copias equipadas en los puestos 1–3 y excluida Yanikua), duración fija de **30 segundos (`00:30`)** en todas las recetas y botón único `COLECCIONAR` al reclamar el resultado (requiere espacio libre en las 10 unidades). |

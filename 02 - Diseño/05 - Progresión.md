@@ -16,16 +16,16 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 | --- | --- | --- | ---: | --- | --- |
 | FLASH_01 | Más alcance | Común | 5 | +1 m de alcance y +10° de apertura por nivel. | Sobrenatural |
 | FLASH_02 | Pulso rápido | Común | 5 | +15% de cadencia de ataque por nivel (y +4% de velocidad de movimiento en `PlayerRuntimeStats`); reduce intervalo y descanso. | Sobrenatural |
-| FLASH_03 | Prisma voltaico | Rara | 3 | El cuarto pulso (y todos los pulsos con `FLASH_05`) enlaza 2/3/4 enemigos a 5 m, con 40/60/80% del daño del impacto inicial. | Sobrenatural |
+| FLASH_03 | Prisma voltaico | Rara | 3 | El cuarto pulso (`PulseIndex == 4`) enlaza 2/3/4 enemigos a 5 m, con 40/60/80% del daño del impacto inicial. | Sobrenatural |
 | FLASH_04 | Golpe potente | Épica | 3 | Daño ×1,5/1,8/2,2 y +8/14/20 m/s de empuje; reduce 20° la apertura al adquirirla. | Sobrenatural |
-| FLASH_05 | Rayo solar | Legendaria | 1 | Suprime el descanso (`0 s`), establece 14 m de alcance base, multiplica el daño de luz por 2,5 y convierte **todos los pulsos** en cuarto pulso (`finalPulse = true`), aplicando empuje y activando `FLASH_03`, `BIO_02` y `CRIT_04` en cada pulso. | Sobrenatural |
+| FLASH_05 | Rayo solar | Legendaria | 1 | Suprime el descanso (`0 s`), establece 14 m de alcance base, multiplica el daño de luz por 2,5 y aplica empuje en **todos los pulsos** (`capturedSolarMode` en `FlashlightWeapon.cs:402`); las mejoras de cuarto pulso (`FLASH_03`, `BIO_02` y `CRIT_04`) siguen evaluando únicamente `PulseIndex == 4`. | Sobrenatural |
 | DASH_01 | Dash ágil | Común | 5 | +8% de velocidad de dash y -10% de recarga por nivel (el bono de +8%/nivel de velocidad se conserva con `DASH_04`). | Sin daño directo |
 | DASH_02 | Onda sísmica | Rara | 3 | Al terminar el dash: 25/45/70 de daño en 3,5/4,5/5,5 m y aturdimiento de 0,6/0,9/1,2 s. | Físico |
 | DASH_03 | Holo-señuelo | Épica | 3 | Deja una copia que atrae enemigos en 12 m durante 2/2,5/3 s; su implosión en 4 m causa 50/85/120 de daño. | Sobrenatural |
 | DASH_04 | Cataclismo | Legendaria | 1 | Fija la recarga del dash en **0,5 s** (anulando la reducción de recarga de `DASH_01`, pero **manteniendo su +8%/nivel de velocidad de dash**), con explosión de salida de 120 (4 m) y cuchilla de llegada de 80. | Físico |
 | BIO_01 | Más vida | Común | 5 | +20 HP máximos y curación de 15 HP en cada adquisición. | Sin daño directo |
-| BIO_02 | Sifón | Rara | 3 | El cuarto pulso (y cada pulso con `FLASH_05`) tiene 12/20/30% de curar 2/3/4 HP por enemigo alcanzado. | Sin daño directo |
-| BIO_03 | Nanobots | Épica | 3 | Regenera 1/2/3 HP cada 2,5 s; al recibir un golpe que deje bajo 20% de vida o sea letal, frena la caída en 20% y protege 2 s (`60 s` de enfriamiento). | Sin daño directo |
+| BIO_02 | Sifón | Rara | 3 | El cuarto pulso (`PulseIndex == 4`) tiene 12/20/30% de curar 2/3/4 HP por enemigo alcanzado. | Sin daño directo |
+| BIO_03 | Nanobots | Épica | 3 | Regenera 1/2/3 HP cada 2,5 s; si el jugador sobrevive (`RemainingHealth > 0`) a un golpe quedando bajo el 20% de vida, otorga 2 s de protección temporal (`60 s` de enfriamiento; no evita golpes letales ni cura hasta el 20%). | Sin daño directo |
 | BIO_04 | Nova de plasma | Legendaria | 1 | Cada 15 HP de curación sobrante generan una nova de 80 de daño y 6 m de radio. | Sobrenatural |
 | GREED_01 | Imán | Común | 5 | +2 m al radio de recogida por nivel. | Sin daño directo |
 | GREED_02 | Chatarrero | Común | 5 | +15% de experiencia recibida por nivel. | Sin daño directo |
@@ -35,16 +35,16 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 | CRIT_01 | Óptica precisa | Común | 5 | +8 puntos porcentuales de probabilidad crítica por nivel. | Según ataque |
 | CRIT_02 | Calibración letal | Común | 5 | +0,2 al multiplicador crítico por nivel, desde ×1,75. | Según ataque |
 | CRIT_03 | Ejecución | Rara | 3 | Remata tras un golpe a enemigos bajo 6/8/10% de vida; excluye a los jefes. | Según ataque |
-| CRIT_04 | Ráfaga crítica | Épica | 3 | Un crítico en el cuarto pulso (o en cualquier pulso con `FLASH_05`) garantiza 2/3/4 críticos al inicio de la siguiente ráfaga. | Según ataque |
+| CRIT_04 | Ráfaga crítica | Épica | 3 | Un crítico en el cuarto pulso (`PulseIndex == 4`) garantiza 2/3/4 críticos al inicio de la siguiente ráfaga. | Según ataque |
 | CRIT_05 | Ojo del verdugo | Legendaria | 1 | +20 puntos porcentuales de crítico; bajo 35% de vida antes del golpe, triplica el daño crítico ya calculado y emite aturdimiento de 1 s en 3 m. | Según ataque |
 | DEMO_01 | Pólvora volátil | Común | 5 | +12% de daño y +15% de radio de explosión por nivel. | Según explosión |
 | DEMO_02 | Reacción en cadena | Rara | 3 | 25/40/55% de provocar una explosión de 35/60/90 (radio 3 m) al morir un enemigo. | Físico |
-| DEMO_03 | Minas de chatarra | Épica | 3 | Armado en `0,25 s`, radio de activación de `1,25 m`, empuje de `5 m` y límite de **5 minas activas simultáneas** (reemplaza la más antigua al colocar la sexta). En `UpgradeCombatRuntime` deja 1 mina al hacer dash (`45/70/100` en `3 m`); en catálogo/tuning periódico cada `4/3,2/2,5 s` (`70/110/160` en `4 m`). | Físico |
-| DEMO_04 | Termobárica | Legendaria | 1 | A los **0,4 s**, toda explosión repite el **75%** de su daño en el mismo radio y atrae a los enemigos hacia el centro una distancia base del **45% del radio de la explosión** (impulso `12 m/s`, modulado por susceptibilidad al empuje). | Sobrenatural |
-| SCRAP_01 | Blindaje | Común | 5 | +10 HP máximos y armadura por nivel (+4 puntos porcentuales en `UpgradeTuning` / +10% en `PlayerRuntimeStats`, tope total 60%). | Sin daño directo |
+| DEMO_03 | Minas de chatarra | Épica | 3 | Al iniciar dash deja 1 mina (`45/70/100` de daño físico en `3 m`), con armado en `0,25 s`, radio de activación de `1,25 m`, empuje de `5 m` y límite de **5 minas activas simultáneas** (reemplaza la más antigua al colocar la sexta). | Físico |
+| DEMO_04 | Termobárica | Legendaria | 1 | A los **0,4 s**, toda explosión repite el **75%** de su daño como sobrenatural en el mismo radio y atrae a los enemigos hacia el centro mediante desplazamiento directo (`PushDistance`) de hasta el **45% del radio de la explosión** (al entrar por `b.Echo`, `implosionPullSpeed = 12 m/s` en `else if (b.Implosion)` no se ejecuta). | Sobrenatural |
+| SCRAP_01 | Blindaje | Común | 5 | +10 HP máximos y **`+10%` de armadura por nivel** (`armorPerTier = 0.10f` unificado en `UpgradeTuning.cs`, `UpgradeTuning.asset` y `PlayerRuntimeStats`, hasta un tope total del `60%`). | Sin daño directo |
 | SCRAP_02 | Micro-ensamblador | Rara | 3 | Cada 15 gemas recogidas lanza un proyectil guiado de 40/70/105 a 24 m/s. | Físico |
-| SCRAP_03 | Sierras orbitales | Épica | 3 | `1/2/3` hojas en `UpgradeCombatRuntime` (`2/3/4` en catálogo) giran a **180°/s** a **2,5 m** de distancia (`0,65 m` de radio de hoja), infligiendo `18/28/40` de daño físico y `4 m/s` de empuje en cada paso de simulación en que la hoja solape al enemigo. | Físico |
-| SCRAP_04 | Torreta centinela | Legendaria | 1 | Hasta **2 torretas activas simultáneas** (`12 s` de duración al recoger chatarra en `UpgradeCombatRuntime`; `8 s` cada `10 s` en catálogo). Cada **0,6 s** disparan una ráfaga de **3 proyectiles** separados por **0,08 s** a **28 m/s** (`10/16/24` de daño y `12 m` de alcance en runtime; `35` a `8 m` y `24 m/s` en catálogo). | Físico |
+| SCRAP_03 | Sierras orbitales | Épica | 3 | `1/2/3` hojas (`sawCounts` en `UpgradeTuning.cs` / `.asset`) giran a **180°/s** a **2,5 m** de distancia (`0,65 m` de radio de hoja), infligiendo `18/28/40` de daño físico y `4 m/s` de empuje mediante `StepSaws()` en cada paso de simulación en que la hoja solape al enemigo. | Físico |
+| SCRAP_04 | Torreta centinela | Legendaria | 1 | Cada **`10 s`** despliega 1 torreta de **`12 s`** de duración (hasta **2 torretas activas simultáneas**). Cada **0,6 s** disparan una ráfaga de **3 proyectiles** separados por **0,08 s** a **28 m/s**, con **`10`** de daño y **`12 m`** de alcance (`UpgradeTuning.cs:47-48` y `UpgradeTuning.asset:66-73`). | Físico |
 | CRYO_01 | Freón residual | Común | 5 | La luz ralentiza 12/20/28/36/44% durante 1,5 s. | Sobrenatural |
 | CRYO_02 | Cero absoluto | Rara | 3 | Congela tras 4/3/3 pulsos sobre objetivos ralentizados durante 1,2/1,8/2,4 s; el enemigo congelado recibe ×1,30 de daño. | Sobrenatural |
 | CRYO_03 | Ventisca | Épica | 3 | Cada 6/5/4 s: onda de 30/50/75 en 5,5 m que congela 1,5 s. | Sobrenatural |
@@ -52,9 +52,9 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 
 ## Interacciones clave entre mejoras
 
-- **`FLASH_05` (*Rayo solar*) con mejoras de cuarto pulso (`UpgradeCombatRuntime.cs:169`):** la condición interna `bool finalPulse = hit.PulseNumber >= 4 || attackTiers[(int)UpgradeId.FLASH_05] > 0;` hace que cada pulso del rayo continuo se evalúe como cuarto pulso. Por ello, **todos los pulsos de `FLASH_05` aplican empuje y activan `FLASH_03` (*Prisma voltaico*), `BIO_02` (*Sifón*) y `CRIT_04` (*Ráfaga crítica*)**.
+- **`FLASH_05` (*Rayo solar*) y empuje vs. mejoras de cuarto pulso (`FlashlightWeapon.cs:402`, `UpgradeCombatRuntime.cs:232-236, 341`):** la condición `bool applyKnockback = capturedSolarMode || pulseNumber == PulsesPerBurst;` hace que cada pulso del rayo continuo aplique empuje. Sin embargo, **`FLASH_03` (*Prisma voltaico*), `BIO_02` (*Sifón*) y `CRIT_04` (*Ráfaga crítica*) mantienen su comprobación exclusiva `PulseIndex == 4`**, por lo que solo se disparan en el cuarto pulso de cada ciclo.
 - **`DASH_04` (*Cataclismo*) con `DASH_01` (*Dash ágil*) (`PlayerRuntimeStats.cs:75-77`):** `DASH_04` fija la recarga del dash en `0,5 s` e ignora la reducción porcentual de recarga de `DASH_01` (`-10%` por nivel), pero mantiene activo el multiplicador de velocidad de desplazamiento del dash de `DASH_01` (`+8%` por nivel).
-- **`SCRAP_03` (*Sierras orbitales*):** aunque `UpgradeTuning.cs` declara el campo serializado `bladeHitCooldown = 0.30f`, el método `TickBlades` aplica el daño (`18 / 28 / 40`) y el empuje (`4 m/s`) en cada paso de simulación en que el radio de la hoja (`0,65 m` a `2,5 m` del jugador, girando a `180°/s`) solape al enemigo.
+- **`SCRAP_03` (*Sierras orbitales*):** `UpgradeTuning.cs:44-46` no declara `bladeHitCooldown`; el método `StepSaws()` (`UpgradeCombatRuntime.cs:616`) aplica `18 / 28 / 40` de daño (`sawDamage`) y `4 m/s` de empuje (`sawPush`) en cada paso de simulación en que el radio de la hoja (`0,65 m` a `2,5 m` del jugador, girando a `180°/s`) solape al enemigo.
 
 ## Fórmula de Ojo del verdugo
 
@@ -91,7 +91,7 @@ Un crítico que cumple la condición emite un área de aturdimiento de `3 m` alr
 | Botiquín mejor (`GREED_03`) | Probabilidad base de aparición de `3%` y de `4 / 5 / 6%` con la carta. Para Coloso, Mortero y ambos élites, `8%` base y `10 / 12 / 15%` con la carta. |
 | Reacción en cadena (`DEMO_02`) | Radio base de `3 m`. |
 | Minas de chatarra (`DEMO_03`) | Al iniciar dash coloca 1 mina: retardo de armado de `0,25 s`, activación a `1,25 m`, radio de explosión de `3 m` (`45 / 70 / 100` de daño), empuje de `5 m` y máximo de **5 minas simultáneas**. |
-| Termobárica (`DEMO_04`) | Repite el `75%` del daño a los `0,4 s` en el mismo radio y atrae una distancia base del **45% del radio de explosión** (impulso `12 m/s`, modulado por susceptibilidad). |
+| Termobárica (`DEMO_04`) | Repite el `75%` del daño como sobrenatural a los `0,4 s` en el mismo radio y atrae mediante desplazamiento directo (`PushDistance`) hasta el **45% del radio de explosión**. |
 | Micro-ensamblador (`SCRAP_02`) | El proyectil guiado viaja a `24 m/s` y dura hasta `10 s`. Cada umbral de `15` gemas consume ese contador aunque falte un objetivo válido. |
 | Sierras orbitales (`SCRAP_03`) | `1 / 2 / 3` hojas giran a `180°/s` a `2,5 m` de radio (`0,65 m` de hoja), aplicando `18 / 28 / 40` de daño y `4 m/s` de empuje por paso de simulación en solape. |
 | Torreta centinela (`SCRAP_04`) | Despliega 1 torreta cada `10 s` con `12 s` de vida (máx. **2 torretas activas**). Con blanco en alcance (`12 m`), dispara cada `0,6 s` una ráfaga de **3 proyectiles** (`10` de daño) separados por `0,08 s` a `28 m/s`. |

@@ -1,6 +1,6 @@
 # Glosario
 
-| Término | Uso actual (`b381ef4` / `977bac5`) |
+| Término | Uso actual (`734e2a5` / `6973556`) |
 | --- | --- |
 | Coleccionista | Personaje controlado por el jugador, equipado con linterna automática y dash. |
 | Vertedero | Arena exterior de expedición de `200 × 200 m`. |
@@ -8,10 +8,10 @@
 | Entidad o coleccionable | Cada una de las **15 entradas** del catálogo (`ID 0..14`), distribuidas en seis rarezas (*Común, Raro/Poco común, Especial/Rara, Épico, Legendario, Mítico*). |
 | Copia o unidad | Instancia en posesión de una entidad (`owned[15]`). La colección admite un máximo estricto de **10 unidades totales** (`FusionProgress.Capacity = 10`). |
 | Entidad equipada | Unidad asignada a uno de los **3 puestos de equipo activo** del balcón (`EQUIPO 1..3`, `E` / botón oeste para editar o `T` / botón norte para desequipar). Activa un poder propio de `CompanionPowerRuntime` **acumulable por copia equipada** (`Copies(id)`, hasta `×3`) y puede seleccionarse como ingrediente de fusión (`EN EQUIPO 1/2/3`). |
-| Exposición | Los **7 pedestales de la planta inferior** (`slot 3..9`, más los puestos de equipo vacíos del balcón marcados como `RESERVA`) donde se exhiben las unidades en reserva ordenadas por rareza y desde donde pueden liberarse con `E · LIBERAR`. |
+| Exposición | Los **7 pedestales de la planta inferior** (`slot 3..9`) donde se exhiben las unidades en reserva ordenadas por rareza y desde donde pueden liberarse con `E · LIBERAR`; cuando se superan las 7 copias libres, cualquier puesto de equipo vacío del balcón (`slot 0..2`) exhibe visualmente la reserva marcada como `RESERVA`. |
 | Índice de Colección (`[I]`) | Panel de la bóveda (`VaultCollectionIndex`, tecla `I` / `Select`) con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` (`TODAS` y 6 rarezas, con siluetas negras `???` para las no descubiertas) y `EN TU BÓVEDA`, e inspector derecho de poder. |
 | `VaultDirections` y `VaultTips` | Tarjetas direccionales superiores con flechas en vivo hacia Fusión y Balcón de Equipo, y panel inferior izquierdo `CONSEJO` que rota cada `8 s` en la bóveda. |
-| Ronda demo / completa | Modalidades elegidas antes de salir: jefe a los `3:00` con `3 600 HP` o a los `8:00` con `9 000 HP` (`15 000 HP` base en `GolgoraCombatSettings`). |
+| Ronda demo / completa | Modalidades elegidas antes de salir: jefe a los `3:00` con `3 600 HP` (`Golgora_Demo.asset`) o a los `8:00` con `9 000 HP` (`Golgora_Complete.asset`). |
 | Eco o gema de XP | Experiencia del intento actual, atraída con el imán y fusionable en el suelo a menos de `0,75 m`. |
 | Draft | Elección pausada de hasta tres cartas válidas entre las 35 mejoras al subir de nivel. |
 | Linterna | Arma sobrenatural de cuatro pulsos con autoapuntado y empuje en el cuarto pulso (o en todos los pulsos con `FLASH_05` *Rayo solar*). |

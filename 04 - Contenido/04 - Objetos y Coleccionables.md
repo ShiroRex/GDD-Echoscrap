@@ -32,7 +32,7 @@ Cada `30 s` de combate activo se intenta generar entre `1` y `3` fragmentos en p
 
 La colección admite un máximo estricto de **10 unidades en total** (`FusionProgress.Capacity = 10`), que se corresponden uno a uno con los **10 pedestales físicos de la bóveda** (`DisplaySlots[10]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **7 puestos de exposición/reserva** en la planta inferior (`slot 3..9`). Cuando algún puesto del balcón está vacío, exhibe una copia en reserva etiquetada como `EQUIPO N · RESERVA`, permitiendo mostrar hasta las 10 unidades simultáneamente en la escena.
 
-- **Bloqueo de recogida en la arena (`CollectibleShard.cs`, `CollectiblePickupFeedback.cs`):** si el jugador ya posee `10/10` unidades (`!FusionProgress.HasCollectionSpace`), no puede recoger más fragmentos en combate y aparece el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
+- **Bloqueo de recogida en la arena (`CompanionSystem.cs`, `CollectibleDisplay.cs`, `CollectiblePickupFeedback.cs`):** si el jugador ya posee `10/10` unidades (`!FusionProgress.HasSpace`), no puede recoger más fragmentos en combate y aparece el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
 - **Bloqueo de reclamo en la máquina de fusión (`FusionStationUI.cs`):** si el jugador intenta reclamar el resultado de una fusión teniendo `10/10` unidades, la máquina muestra **`INVENTARIO LLENO · LIBERA ESPACIO`** (*"Tu colección tiene 10 unidades. Libera una en la bóveda y vuelve: el resultado de esta fusión seguirá aquí."*) y mantiene el resultado guardado en estado `AwaitingDecision` hasta que libere espacio en algún pedestal de la bóveda.
 
 ## Interacción con los puestos de la bóveda y señalización
@@ -41,29 +41,29 @@ La bóveda cuenta con señalización completa en el mundo y en el HUD (`GameMenu
 
 1. **Rótulos 3D sobre los pedestales del balcón:** **`EQUIPO 1`**, **`EQUIPO 2`** y **`EQUIPO 3`** (añadiendo `· RESERVA` cuando exhiben una unidad sin equipar).
 2. **Indicadores direccionales superiores (`VaultDirections`):** dos tarjetas dinámicas en la parte superior con flechas (`▲`, `▼`, `◄`, `►`, `●`) que apuntan en tiempo real hacia la **Máquina de Fusión** (*"MÁQUINA DE FUSIÓN · Combina 4 copias de varias rarezas"*, *"BAJA A FUSIÓN"* o *"E · MÁQUINA DE FUSIÓN"*) y hacia los **Puestos de Equipo** (*"SUBE AL BALCÓN · Puestos de equipo 1, 2 y 3"*, *"EQUIPAR ENTIDADES"* o *"PUESTO 1..3 · EQUIPAR/EDITAR"*).
-3. **Panel rotatorio de consejos (`VaultTips`):** tarjeta en la esquina inferior izquierda con la etiqueta **`CONSEJO`** que rota cada `8 s` entre *"Equipa coleccionables antes de ir a la arena."*, *"Abre el índice para consultar tus descubrimientos."* y *"Combina cuatro coleccionables en la máquina de fusión."*, o prioriza *"Pulsa E frente a un puesto para equipar tu primer coleccionable."* cuando `OwnedCount > 0 && !HasEquippedOnce`.
+3. **Panel rotatorio de consejos (`VaultTips`):** tarjeta en la esquina inferior izquierda con la etiqueta **`CONSEJO`** que rota cada `8 s` entre *"Equipa coleccionables antes de ir a la arena."*, *"Abre el índice para consultar tus descubrimientos."* y *"Combina cuatro coleccionables en la máquina de fusión."*, o prioriza *"Pulsa E frente a un puesto para equipar tu primer coleccionable."* cuando `OwnedCount > 0 && !hasEquippedCompanion`.
 
 Las interacciones de cada nivel de la bóveda son:
 
 - **Puestos 1 a 3 (balcón superior, equipo activo — `CompanionSystem.cs`, `CompanionView.cs`, `VaultReleaseInteraction.cs`):**
-  - El aviso contextual al acercarse es **`E · EQUIPAR`**, **`E · LIBERAR`** (si muestra una copia de reserva) o **`E · EDITAR`** (si tiene una entidad equipada).
+  - El aviso contextual al acercarse es **`E · EQUIPAR`** (si está vacío, incluso cuando exhibe visualmente una reserva) o **`E · EDITAR`** (si tiene una entidad equipada).
   - Pulsar **`E`** (o botón oeste en mando) abre el selector de acompañantes (`CompanionView`, encabezado `PUESTO DE EQUIPO 1/2/3`, subtítulo `ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO` y la nota *"Señala un compañero para ver su poder. Los poderes se acumulan por copia equipada."*). Su barra inferior ofrece tres botones: **`QUITAR DEL PUESTO`** (desequipa la unidad y la devuelve a reserva), **`LIBERAR COPIA`** (abre el modal de confirmación para eliminar la copia de la colección) y **`CERRAR · E / ESC`**.
-  - Además, al estar frente a un puesto de equipo ocupado en el mundo, pulsar **`T`** (o el botón norte `Y` / `Triángulo` en mando) retira directamente la unidad del puesto de equipo sin abrir el menú (`CompanionSystem.ClearSlot`).
+  - Además, al estar frente a un puesto de equipo ocupado en el mundo, pulsar **`T`** (o el botón norte `Y` / `Triángulo` en mando) retira directamente la unidad del puesto de equipo sin abrir el menú (`VaultReleaseInteraction.TryUnequip`).
 - **Puestos 4 a 10 (planta inferior, exposición/reserva — `VaultReleaseInteraction.cs`):**
-  - Al acercarse a un puesto ocupado, el aviso contextual es **`E · LIBERAR`**.
-  - Pulsar **`E`** (o botón oeste en mando) abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc` / botón este) y **`LIBERAR`** (`E`, `Enter` o `Espacio`).
-  - Al confirmar (`FusionProgress.ReleaseUnit`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
+  - Al acercarse a un puesto ocupado (`slot >= 3`), el aviso contextual es **`E · LIBERAR`** (`VaultReleaseInteraction.cs:67`).
+  - Pulsar **`E`** (o botón oeste en mando) abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc` / botón este) y **`LIBERAR`** (`E`, `Enter`, `Espacio` o `A`/`Cruz`).
+  - Al confirmar (`FusionStation.ReleaseCollectible`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
 
 ![Selector de entidades del puesto](../Media/Interfaz/Equipar_coleccionable.png)
-*Selector de entidades del puesto en la versión final de Unity (`b381ef4`), con la nota de acumulación por copia equipada y los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+*Selector de entidades del puesto en la versión final de Unity (`734e2a5`), con la nota de acumulación por copia equipada y los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 ## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
 El **Índice de Colección** funciona como el **bestiario y libro de registro** donde el jugador consulta qué criaturas ha descubierto, cuáles le faltan para completar las **15 entidades** del catálogo y qué unidades conserva actualmente en su bóveda.
 
-- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`**, el botón **`Select`** en mando o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Select`**, **`Esc`**, botón este (`B` / `Círculo`) o el botón **`CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratory`, no al bestiario)*.
+- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`**, el botón **`Select`** en mando o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`BotonIndiceBoveda` en `VaultCollectionIndex.cs`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Select`**, **`Esc`**, botón este (`B` / `Círculo`) o el botón **`X   CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratoryPanel`, no al bestiario)*.
 - **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
-- **Qué acción cuenta como descubrimiento (`FusionProgress.CollectFromArena` y `FusionProgress.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E` / botón oeste** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`ReleaseUnit`).
+- **Qué acción cuenta como descubrimiento (`FusionStation.CollectFromArena` y `FusionStation.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E` / botón oeste** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`FusionStation.ReleaseCollectible`).
 - **Pestaña 1 — `POR RAREZAS` (15 entidades en 6 categorías):** incluye el filtro **`TODAS`** además de las **6 categorías de rareza** (`COM`, `RAR`, `ESP`, `ÉPI`, `LEG`, `MÍT`):
   - **Común (`3`):** *Lobito, Basket y Reaper*.
   - **Raro / Poco común (`4`):** *Mago, Demonio, Chico Emo y Joel*.
@@ -98,12 +98,12 @@ La tabla muestra los puntos de referencia cuando los 4 ingredientes pertenecen a
 | **4 Raros / Poco comunes** (`media 1,0`) | `30 s` (`00:30`) | Chico Emo `60%` · Conde Alucard `40%` | **`60%` Chico Emo · `40%` Conde Alucard** |
 | **4 Especiales / Raros** (`media 2,0`) | `30 s` (`00:30`) | Conde Alucard `60%` · Murciélago Cristal `40%` | **`60%` Conde Alucard · `40%` Murciélago Cristal** |
 | **4 Épicos** (`media 3,0`) | `30 s` (`00:30`) | **Murciélago Cristal `59,4%` · Sirena `39,6%` · Yanikua `1%`** | **`60%` Murciélago Cristal · `40%` Sirena · `1%` Yanikua** |
-| **4 Legendarios** (`media 4,0`) | `30 s` (`00:30`) | Sirena `100%` *(ver nota superior Mítica)* | **`100%` Sirena** |
+| **4 Legendarios** (`media 4,0`) | `30 s` (`00:30`) | **Sirena `70%` · Yanikua `30%`** | **`70%` Sirena · `30%` Yanikua** |
 
-*(Nota sobre el techo de la tabla en `FusionProgress.cs:62-75`: en la versión final `table` termina en `{0,0,0,0,100}` para `Sirena`, mientras que la fila de `Yanikua` sigue la curva `{30,15,5,1,0}` sobre el índice `0..4`, por lo que `4 Épicas` conserva `59,4%` Murciélago Cristal / `39,6%` Sirena / `1%` Yanikua y la UI aplica el ajuste explícito `60% / 40% / 1%`).*
+*(Nota sobre `FusionProgress.cs:48-65`: la reserva mítica `mythic` asigna `30%` con `4` Legendarios, `15%` con `3`, `5%` con `2` y `1%` cuando la mejor rareza es `≥ Épica`, repartiendo el resto `100% - mythic%` mediante `table`; así, `4 Legendarios` arroja `70%` Sirena / `30%` Yanikua, mientras que `4 Épicas` arroja `59,4%` Murciélago Cristal / `39,6%` Sirena / `1%` Yanikua y `DisplayPercent` redondea `60% / 40% / 1%` en la UI).*
 
 ![Máquina de fusión con cuatro espacios de ingredientes y posibles resultados](../Media/Interfaz/Maquina_Fusion.png)
-*Ventana definitiva de la Máquina de Fusión (`b381ef4`) con las 4 ranuras horizontales, temporizador `TIEMPO DE FUSIÓN 00:30`, panel `POSIBLES RESULTADOS` y botones `VACIAR`, `CONFIRMAR` y `X`.*
+*Ventana definitiva de la Máquina de Fusión (`734e2a5`) con las 4 ranuras horizontales, temporizador `TIEMPO DE FUSIÓN 00:30`, panel `POSIBLES RESULTADOS` y botones `VACIAR`, `CONFIRMAR` y `X`.*
 
 ### Flujo de ventanas de la estación
 

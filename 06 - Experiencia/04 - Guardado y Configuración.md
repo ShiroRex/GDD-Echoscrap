@@ -2,7 +2,7 @@
 
 ## Colección persistente (`EchoScrap.Collection.Production.v1`)
 
-El sistema de colección y fusión (`FusionProgress.cs`, `FusionStation.cs`) serializa su estado en formato JSON (`SaveData`, `version = 4`) dentro de `PlayerPrefs` bajo la clave **`EchoScrap.Collection.Production.v1`** (migrando desde `EchoScrap.Collection.v1` cuando contiene `owned != null` y descartando guardados prototipo `version < 4`; la marca de inicio se guarda en **`EchoScrap.CollectionStarted.v1`**):
+El sistema de colección y fusión (`FusionProgress.cs`, `FusionStation.cs`) serializa su estado en formato JSON (`FusionProgress`, `version = 4`) dentro de `PlayerPrefs` bajo la clave **`EchoScrap.Collection.Production.v1`** (migrando desde `EchoScrap.Collection.v1` cuando contiene `owned != null` y descartando guardados prototipo `version < 4` sin `owned`; la marca de inicio se guarda en **`EchoScrap.CollectionStarted.v1`**):
 
 - **`version` (`int`):** versión del esquema (`4`).
 - **`hasEquippedCompanion` (`bool`):** registra si el jugador ya ha equipado al menos un acompañante alguna vez (utilizado por `VaultTips` para priorizar el consejo inicial cuando vale `false`).
@@ -21,7 +21,7 @@ Las claves adicionales persistidas en `PlayerPrefs` son:
 | Clave | Tipo / Valor por defecto | Función |
 | --- | --- | --- |
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`0%`–`100%` en `MenuSettingsView`). |
-| `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`0%`–`100%` en `MenuSettingsView`, aplicado por `ArenaMusicController` / `CombatMusicPlayer`). |
+| `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`0%`–`100%` en `MenuSettingsView`, aplicado por `CombatMusicPlayer` y `MenuMusic`). |
 | `EchoScrap.Rank.v2` *(o `.Test.v2` en batchMode)* | `string` (JSON `RankingLedger`) | Estado del ranking por colección: lista de nombres locales (`names`), resultados pendientes de envío (`pending`), nombre activo (`name`), intento interrumpido (`interrupted`) y bandera de elegibilidad (`eligible`). |
 | `EchoScrap.PendingGamertag.{sha256}` | `string` (`32 hex`) | Recibo local por alias para confirmar reservas cuyo primer `PUT` pudo haberse completado antes de perder conexión (`GamertagRegistry`). |
 | `EchoScrap.Event.PlayerName` | `string` (máx. `20` caract.) | Nombre introducido en `NOMBRE DEL JUGADOR (RANKING)...` al crear una nueva colección. |

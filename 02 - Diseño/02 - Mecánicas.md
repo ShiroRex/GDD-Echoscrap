@@ -4,7 +4,7 @@
 
 La velocidad de desplazamiento se calcula multiplicando la velocidad base de locomoción (`8 m/s` en `PlayerLocomotion.asset`, con aceleración de `80 m/s²` y frenado de `70 m/s²`) por el multiplicador de `PlayerRuntimeStats`:
 
-**Velocidad de movimiento = `8 m/s × (1 + 0,04 × FLASH_02) × (1 + 0,10 × [Lobito/Basket×N] + 0,15 × [Yanikua×N]) × (1 + [Chico Emo×N tras dash])`**
+**Velocidad de movimiento = `8 m/s × (1 + 0,04 × FLASH_02) × (1 + 0,10 × [Basket×N] + 0,15 × [Yanikua×N]) × (1 + [Chico Emo×N tras dash])`**
 
 *(Exactamente en `CompanionPowerRuntime.cs:91`: `(1 + 0,10 × Copies(Basket) + 0,15 × Copies(Yanikua)) × (1 + Copies(Chico Emo) si el impulso post-dash está activo)`.)* La diagonal mantiene la misma velocidad máxima. La dirección de entrada se interpreta respecto a la cámara y el personaje se apoya sobre el relieve y las escaleras del escenario.
 
@@ -28,7 +28,7 @@ El **multiplicador de cadencia de ataque** en `PlayerRuntimeStats` responde a la
 
 Este multiplicador divide tanto el intervalo entre pulsos (`0,20 s / mult`) como la pausa posterior al cuarto pulso (`0,40 s / mult`, o `0 s` con `FLASH_05`). La ráfaga base emite en `0,2`, `0,4`, `0,6` y `0,8 s` y vuelve a empezar tras el descanso. La linterna busca objetivos en `360°` dentro de su alcance y aplica los impactos a su cono frontal; sin objetivos, vuelve hacia la orientación de movimiento.
 
-Cuando el jugador adquiere **`FLASH_05` (*Rayo solar*)**, se elimina el descanso entre ráfagas (`0 s`), el alcance base pasa a `14 m`, el daño de luz se multiplica por `2,5` y en el código (`UpgradeCombatRuntime.cs:169`, `bool finalPulse = hit.PulseNumber >= 4 || attackTiers[(int)UpgradeId.FLASH_05] > 0;`) **todos los pulsos del rayo continuo cuentan como cuarto pulso (`finalPulse = true`)**. En consecuencia, cada pulso de *Rayo solar* aplica empuje y además activa todas las mejoras vinculadas al cuarto pulso: **`FLASH_03` (*Prisma voltaico*)**, **`BIO_02` (*Sifón*)** y **`CRIT_04` (*Ráfaga crítica*)**.
+Cuando el jugador adquiere **`FLASH_05` (*Rayo solar*)**, se elimina el descanso entre ráfagas (`0 s`), el alcance base pasa a `14 m`, el daño de luz se multiplica por `2,5` y en el código (`FlashlightWeapon.cs:402`, `bool applyKnockback = capturedSolarMode || pulseNumber == PulsesPerBurst;`) **todos los pulsos del rayo continuo aplican empuje**. En cambio, en `UpgradeCombatRuntime.cs` (`L232-236` y `L341`), las mejoras vinculadas al cuarto pulso —**`FLASH_03` (*Prisma voltaico*)**, **`BIO_02` (*Sifón*)** y **`CRIT_04` (*Ráfaga crítica*)**— **siguen evaluándose exclusivamente cuando `PulseIndex == 4`**, incluso con *Rayo solar* activo.
 
 El alcance y el ángulo se evalúan en el plano horizontal X/Z y tienen en cuenta el radio del objetivo. Tanto el autoapuntado como cada impacto trazan una línea 3D desde la luz hasta el centro del enemigo. Los obstáculos sólidos de la capa `Default` pueden bloquearla aunque el enemigo esté dentro del cono. El trazado ignora los triggers. Cada enemigo válido recibe como máximo un impacto por pulso.
 
@@ -50,7 +50,7 @@ Cada vez que el jugador recibe un impacto, `PlayerHealth.ReceiveDamage` evalúa 
 4. **Reducción del acompañante Soldier:** multiplica el daño entrante por `1 - 0,15 × Copies(13)` (`-15%` por copia equipada, acumulable).
 5. **Tirada de Bloqueo:** hasta un tope técnico del `50%` (`bonusBlockChance`, actualmente `0%` base). Si bloquea, reduce el daño a la mitad (`× 0,5`).
 6. **Armadura:** suma `10% × SCRAP_01 + 10% × Copies(13) [Soldier]` en `PlayerRuntimeStats`, hasta un tope máximo del **`60%`**, y multiplica el daño restante por `1 - armadura`.
-7. **Salvación ante daño letal o umbral crítico:** si el daño resultante sería letal (`HP <= 0`), primero intenta activar la salvación de **Yanikua** (`1` uso por copia equipada en cada expedición: restaura al `30%` de la salud máxima y otorga `3 s` de invulnerabilidad). Si el jugador sobrevive al golpe pero queda por debajo del `20%` de vida, el escuchador de **Nanobots** (`BIO_03`, `60 s` de enfriamiento) frena la caída curando hasta el `20%` de la salud máxima y concede `2 s` de escudo.
+7. **Salvación ante daño letal o umbral crítico:** si el daño resultante sería letal (`HP <= 0`), primero intenta activar la salvación de **Yanikua** (`1` uso por copia equipada en cada expedición: restaura al `30%` de la salud máxima y otorga `3 s` de invulnerabilidad). Si el jugador sobrevive al golpe (`RemainingHealth > 0`) pero queda por debajo del `20%` de vida, el escuchador de **Nanobots** (`BIO_03`, `60 s` de enfriamiento en `UpgradeCombatRuntime.cs:212-213`) activa **`2 s` de protección temporal** (`GrantUpgradeProtection(2f)`), sin evitar golpes letales ni curar automáticamente hasta el `20%`.
 
 | Estado del enemigo | Aplicación y expiración |
 | --- | --- |
@@ -61,16 +61,16 @@ Cada vez que el jugador recibe un impacto, `PlayerHealth.ReceiveDamage` evalúa 
 
 ### Respuesta al empuje (*knockback*) por arquetipo
 
-| Arquetipo | Susceptibilidad al empuje | Desaceleración de frenado (`EnemyDefinition` / `.asset`) |
+| Arquetipo | Susceptibilidad al empuje | Desaceleración de frenado (`EnemyArchetypeSettings` / `.asset`) |
 | --- | ---: | ---: |
 | Chatarra Residual | `1,0` | `28 m/s²` |
 | Interceptor | `1,0` | `18 m/s²` |
 | Mortero Campana | `0,7` | `24 m/s²` |
 | Polilla Reactor | `1,0` | `22 m/s²` |
 | Caballero Fantasma (élite) | `0,35` | `28 m/s²` |
-| Coloso | `0` (inmune) | — |
-| Centinela de Cobre (élite) | `0` (inmune) | — |
-| Gólgora (jefe) | `0` (inmune) | — |
+| Coloso | `0` (inmune) | `30 m/s²` (sin impulso) |
+| Centinela de Cobre (élite) | `0` (inmune) | `24 m/s²` (sin impulso) |
+| Gólgora (jefe) | `0` (inmune) | `30 m/s²` (sin impulso) |
 
 Los números flotantes muestran la salud realmente perdida. Los impactos normales de una ráfaga pueden agruparse, mientras que los críticos se distinguen con tamaño, color y un signo de exclamación. Los impactos mitigados por resistencia muestran «Resistido» bajo el valor y una ejecución causada por `CRIT_03` muestra «EJECUTADO».
 

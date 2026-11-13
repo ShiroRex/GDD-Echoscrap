@@ -36,7 +36,7 @@ Enemigo de artillería con forma de campana flotante. Mantiene distancia y lanza
 
 ## Polilla: Reactor
 
-Enemigo explosivo volador que se aproxima hasta situarse a `1,6 m` del jugador para armar su espoleta de `0,9 s` (o `1,2 s` si muere por daño del jugador antes de detonar). Su explosión en `3 m` inflige `35` de daño físico al Coleccionista y un `85%` de ese daño (`29,75`) a otros enemigos normales cercanos.
+Enemigo explosivo volador que se aproxima hasta situarse a `2 m` del jugador (`MothArmDistance`) para armar su espoleta de `0,9 s` (o `1,2 s` si muere por daño del jugador antes de detonar). Su explosión en `3 m` inflige `35` de daño físico al Coleccionista y a todos los objetivos enemigos cercanos (`IsEnemyTarget`, incluido Gólgora, que aplica su `35%` de reducción mientras está en `CercoActive`).
 
 [Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
 
