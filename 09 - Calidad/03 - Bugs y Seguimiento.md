@@ -9,9 +9,9 @@
 3. **Panel rotatorio de consejos (`VaultTips` en `GameMenuView.cs`):** tarjeta inferior izquierda con etiqueta `CONSEJO` que rota cada `8 s` entre tres indicaciones sobre equipo, fusión y liberación (y prioriza *"Pulsa E frente a un puesto para equipar tu primer coleccionable"* cuando `OwnedCount > 0 && !HasEquippedOnce`).
 4. **Índice de Colección (`VaultCollectionIndex.cs`, tecla `[I]`):** accesible desde el botón superior izquierdo `ÍNDICE · [I]`, con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` y `EN TU BÓVEDA`, e inspector detallado de poderes.
 
-## Soporte integral de mando (`INPUT-01` — Pospuesto a futuro / fuera de alcance v1.0)
+## Acceso con mando en interacciones de colección (`INPUT-01` — Resuelto en `b381ef4`)
 
-**Estado: experimental en código, no garantizado ni validado en v1.0 (`pensado a futuro`).** La versión actual (`1.0`) utiliza **teclado y ratón** como único esquema de control oficial y probado. Aunque `PlayerInputReader` y varios scripts de interacción (`CollectibleShard`, `FusionStation`, `CompanionSystem`, `VaultReleaseInteraction`, `VaultCollectionIndex` y `CombatHud`) incorporan enlaces preliminares de `Input System` (`buttonWest`, `buttonNorth`, `selectButton`, `A`/`Cruz`, `Start`), el soporte completo de controlador (incluida navegación integral de menús y certificación sobre hardware) no forma parte de los compromisos de esta entrega y queda planificado para una iteración posterior.
+**Estado: resuelto e integrado (`main` @ `b381ef4` / `develop` @ `977bac5`).** Además del combate (`A` / `Cruz` para dash), pausa (`Start`), consulta rápida (`Select`) y elección de cartas, la recogida manual de fragmentos en la arena (`CollectibleShard`), la estación de fusión (`FusionStation`), los selectores de puesto (`CompanionSystem`) y la liberación (`VaultReleaseInteraction`) responden al botón oeste del mando (`X` / `Cuadrado`, equivalente a `E`), el desequipado rápido responde al botón norte (`Y` / `Triángulo`, equivalente a `T`), el cierre/cancelación usa el botón este (`B` / `Círculo`) y el Índice de Colección (`VaultCollectionIndex`) se alterna con `Select`.
 
 ## Comportamiento de límites de población y curva de oleadas
 

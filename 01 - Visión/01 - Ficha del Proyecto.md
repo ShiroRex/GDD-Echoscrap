@@ -3,13 +3,13 @@
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.8 |
+| Versión del GDD | 0.6.9 |
 | Estado | Versión jugable final integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades con poderes acumulables por copia equipada, fusión de 30 s (misma rareza o rarezas mixtas), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app), ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional final (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`) aprobado en QA. |
 | Actualización | 13 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
-| Plataforma | PC, Windows, un jugador local con teclado y ratón como esquema oficial (soporte de mando planteado a futuro fuera del alcance de v1.0; sincronización de ranking en vivo en Firebase y visor web en [`https://echoscrap.web.app`](https://echoscrap.web.app)). |
+| Plataforma | PC, Windows, un jugador local con soporte completo de teclado/ratón y mando (con sincronización de ranking en vivo en Firebase y visor web en [`https://echoscrap.web.app`](https://echoscrap.web.app)). |
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |

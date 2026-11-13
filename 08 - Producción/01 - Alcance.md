@@ -8,7 +8,7 @@ La arena de `200 × 200 m` incorpora relieve, obstáculos y acceso norte. Las zo
 
 El catálogo comprende **15 entidades** en seis rarezas (nueve obtenibles en la arena y seis mediante fusión), con **poderes acumulables por copia equipada** (`Copies(id)`, hasta `×3`). El inventario (`owned[15]`, máx. `10`), el registro permanente de descubrimientos (`discovered[15]`), los pedestales (`displays[10]`) y el proceso de fusión (`FusionPhase` de 5 estados) tienen guardado local en `PlayerPrefs` (`SaveData` v4).
 
-La presentación incluye tipografía unificada **`Pixelify Sans`**, esquema de control oficial validado en **teclado y ratón** (mando contemplado a futuro fuera del alcance v1.0), menú de pausa en tres pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida de detalles del HUD en combate (`Q`), sprites animados de los cinco enemigos de horda y ambos élites, modelo 3D de Gólgora, efectos de enemigos y mejoras, minimapa con exploración, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
+La presentación incluye tipografía unificada **`Pixelify Sans`**, menú de pausa en tres pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida de detalles del HUD en combate (`Q` / `Select`), sprites animados de los cinco enemigos de horda y ambos élites, modelo 3D de Gólgora, efectos de enemigos y mejoras, minimapa con exploración, retratos, iluminación y audio contextual. El laboratorio y los sandboxes permanecen como herramientas de prueba.
 
 ## Criterio de cierre
 

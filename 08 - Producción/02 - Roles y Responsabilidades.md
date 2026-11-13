@@ -23,7 +23,7 @@ La cantidad de archivos no mide la carga por sí sola: una ficha de animaciones 
 - **Redactor:** escribe y deja el apartado completo, coherente y enlazado. Hay exactamente uno por archivo.
 - **Revisor:** lee el borrador, verifica su coherencia y devuelve observaciones; no edita en paralelo sin coordinarse.
 - **Apoyos:** aportan datos o recursos concretos cuando el apartado los necesita. No sustituyen al redactor.
-- **David valida reglas, valores y viabilidad técnica.** Los artistas deciden su presentación visual; el responsable de audio decide su presentación sonora.
+- **Se validan reglas, valores y viabilidad técnica.** Los artistas deciden su presentación visual; el responsable de audio decide su presentación sonora.
 - **El líder coordina decisiones globales de alcance y la entrega.** Los cambios que afecten a varias áreas se acuerdan con el equipo.
 - **El profesor aprueba el GDD.** La revisión interna del equipo no equivale a aprobación docente.
 
@@ -31,56 +31,56 @@ Un apartado está listo cuando contiene decisiones propias de *EchoScrap*, sus l
 
 ## Asignación por apartado
 
-| Apartado | Redactor | Revisor |
-|---|---|---|
-| 01 - Visión · 01 - Ficha del Proyecto | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 01 - Visión · 02 - Visión del Juego | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 01 - Visión · 03 - Público y Plataforma | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 01 - Visión · 04 - Pilares de Diseño | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 02 - Diseño · 01 - Jugabilidad | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 02 - Diseño · 02 - Mecánicas | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 02 - Diseño · 03 - Sistemas | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 02 - Diseño · 04 - Controles | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 02 - Diseño · 05 - Progresión | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 02 - Diseño · 06 - Economía y Recursos | Sierra Sosa David Alejandro | Mora Alejandro Angel Gabriel (Líder) |
-| 02 - Diseño · 07 - Reglas y Estados del Juego | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 03 - Historia y Mundo · 01 - Premisa y Trama | Mora Alejandro Angel Gabriel (Líder) | Nuñez Chan Luis Fernando |
-| 03 - Historia y Mundo · 02 - Mundo | Obispo Navarro Samuel Alejandro (Artista 2) | Mora Alejandro Angel Gabriel (Líder) |
-| 03 - Historia y Mundo · 03 - Personajes | Cupul Dzul Mirian Leticia (Artista 1) | Mora Alejandro Angel Gabriel (Líder) |
-| 03 - Historia y Mundo · 04 - Diálogos y Narrativa | Nuñez Chan Luis Fernando | Mora Alejandro Angel Gabriel (Líder) |
-| 04 - Contenido · 01 - Estructura del Contenido | Sierra Sosa David Alejandro | Mora Alejandro Angel Gabriel (Líder) |
-| 04 - Contenido · 02 - Niveles | Sierra Sosa David Alejandro | Obispo Navarro Samuel Alejandro (Artista 2) |
-| 04 - Contenido · 03 - Enemigos y NPC | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 04 - Contenido · 04 - Objetos y Coleccionables | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 04 - Contenido · 05 - Misiones y Desafíos | Sierra Sosa David Alejandro | Mora Alejandro Angel Gabriel (Líder) |
-| 05 - Arte y Audio · 01 - Dirección de Arte | Cupul Dzul Mirian Leticia (Artista 1) | Obispo Navarro Samuel Alejandro (Artista 2) |
-| 05 - Arte y Audio · 02 - Personajes y Animación | Cupul Dzul Mirian Leticia (Artista 1) | Obispo Navarro Samuel Alejandro (Artista 2) |
-| 05 - Arte y Audio · 03 - Entornos | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1) |
-| 05 - Arte y Audio · 04 - Interfaz Visual | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1) |
-| 05 - Arte y Audio · 05 - Audio y Música | Nuñez Chan Luis Fernando | Obispo Navarro Samuel Alejandro (Artista 2) |
-| 05 - Arte y Audio · 06 - Registro visual | Sierra Sosa David Alejandro | Sierra Sosa David Alejandro |
-| 06 - Experiencia · 01 - UX y Flujo del Jugador | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 06 - Experiencia · 02 - UI y Menús | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 06 - Experiencia · 03 - Accesibilidad | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 06 - Experiencia · 04 - Guardado y Configuración | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 07 - Tecnología · 01 - Arquitectura Técnica | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 07 - Tecnología · 02 - Motor y Herramientas | Sierra Sosa David Alejandro | Mora Alejandro Angel Gabriel (Líder) |
-| 07 - Tecnología · 03 - Requisitos Técnicos | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 07 - Tecnología · 04 - Datos y Persistencia | Sierra Sosa David Alejandro | Nuñez Chan Luis Fernando |
-| 07 - Tecnología · 05 - Seguridad y Riesgos Técnicos | Sierra Sosa David Alejandro | Mora Alejandro Angel Gabriel (Líder) |
-| 08 - Producción · 01 - Alcance | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 08 - Producción · 02 - Roles y Responsabilidades | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 08 - Producción · 03 - Roadmap | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 08 - Producción · 04 - Backlog del Proyecto | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 08 - Producción · 05 - Gestión de Cambios | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 09 - Calidad · 01 - Criterios de Calidad | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 09 - Calidad · 02 - Pruebas | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 09 - Calidad · 03 - Bugs y Seguimiento | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 09 - Calidad · 04 - Criterios de Aceptación | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 10 - Referencia · 01 - Glosario | Nuñez Chan Luis Fernando | Sierra Sosa David Alejandro |
-| 10 - Referencia · 02 - Referencias e Inspiración | Nuñez Chan Luis Fernando | Mora Alejandro Angel Gabriel (Líder) |
-| 10 - Referencia · 03 - Registro de Decisiones | Mora Alejandro Angel Gabriel (Líder) | Sierra Sosa David Alejandro |
-| 10 - Referencia · 04 - Historial de Versiones | Mora Alejandro Angel Gabriel (Líder) | Nuñez Chan Luis Fernando |
+| Apartado                                            | Redactor                                    | Revisor                                     |
+| --------------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| 01 - Visión · 01 - Ficha del Proyecto               | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 01 - Visión · 02 - Visión del Juego                 | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 01 - Visión · 03 - Público y Plataforma             | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 01 - Visión · 04 - Pilares de Diseño                | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 02 - Diseño · 01 - Jugabilidad                      | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 02 - Diseño · 02 - Mecánicas                        | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 02 - Diseño · 03 - Sistemas                         | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 02 - Diseño · 04 - Controles                        | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 02 - Diseño · 05 - Progresión                       | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 02 - Diseño · 06 - Economía y Recursos              | Sierra Sosa David Alejandro                 | Mora Alejandro Angel Gabriel (Líder)        |
+| 02 - Diseño · 07 - Reglas y Estados del Juego       | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 03 - Historia y Mundo · 01 - Premisa y Trama        | Mora Alejandro Angel Gabriel (Líder)        | Nuñez Chan Luis Fernando                    |
+| 03 - Historia y Mundo · 02 - Mundo                  | Obispo Navarro Samuel Alejandro (Artista 2) | Mora Alejandro Angel Gabriel (Líder)        |
+| 03 - Historia y Mundo · 03 - Personajes             | Cupul Dzul Mirian Leticia (Artista 1)       | Mora Alejandro Angel Gabriel (Líder)        |
+| 03 - Historia y Mundo · 04 - Diálogos y Narrativa   | Nuñez Chan Luis Fernando                    | Mora Alejandro Angel Gabriel (Líder)        |
+| 04 - Contenido · 01 - Estructura del Contenido      | Sierra Sosa David Alejandro                 | Mora Alejandro Angel Gabriel (Líder)        |
+| 04 - Contenido · 02 - Niveles                       | Sierra Sosa David Alejandro                 | Obispo Navarro Samuel Alejandro (Artista 2) |
+| 04 - Contenido · 03 - Enemigos y NPC                | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 04 - Contenido · 04 - Objetos y Coleccionables      | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 04 - Contenido · 05 - Misiones y Desafíos           | Sierra Sosa David Alejandro                 | Mora Alejandro Angel Gabriel (Líder)        |
+| 05 - Arte y Audio · 01 - Dirección de Arte          | Cupul Dzul Mirian Leticia (Artista 1)       | Obispo Navarro Samuel Alejandro (Artista 2) |
+| 05 - Arte y Audio · 02 - Personajes y Animación     | Cupul Dzul Mirian Leticia (Artista 1)       | Obispo Navarro Samuel Alejandro (Artista 2) |
+| 05 - Arte y Audio · 03 - Entornos                   | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1)       |
+| 05 - Arte y Audio · 04 - Interfaz Visual            | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1)       |
+| 05 - Arte y Audio · 05 - Audio y Música             | Nuñez Chan Luis Fernando                    | Obispo Navarro Samuel Alejandro (Artista 2) |
+| 05 - Arte y Audio · 06 - Registro visual            | Sierra Sosa David Alejandro                 | Sierra Sosa David Alejandro                 |
+| 06 - Experiencia · 01 - UX y Flujo del Jugador      | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 06 - Experiencia · 02 - UI y Menús                  | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 06 - Experiencia · 03 - Accesibilidad               | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 06 - Experiencia · 04 - Guardado y Configuración    | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 07 - Tecnología · 01 - Arquitectura Técnica         | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 07 - Tecnología · 02 - Motor y Herramientas         | Sierra Sosa David Alejandro                 | Mora Alejandro Angel Gabriel (Líder)        |
+| 07 - Tecnología · 03 - Requisitos Técnicos          | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 07 - Tecnología · 04 - Datos y Persistencia         | Sierra Sosa David Alejandro                 | Nuñez Chan Luis Fernando                    |
+| 07 - Tecnología · 05 - Seguridad y Riesgos Técnicos | Sierra Sosa David Alejandro                 | Mora Alejandro Angel Gabriel (Líder)        |
+| 08 - Producción · 01 - Alcance                      | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 08 - Producción · 02 - Roles y Responsabilidades    | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 08 - Producción · 03 - Roadmap                      | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 08 - Producción · 04 - Backlog del Proyecto         | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 08 - Producción · 05 - Gestión de Cambios           | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 09 - Calidad · 01 - Criterios de Calidad            | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 09 - Calidad · 02 - Pruebas                         | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 09 - Calidad · 03 - Bugs y Seguimiento              | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 09 - Calidad · 04 - Criterios de Aceptación         | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 10 - Referencia · 01 - Glosario                     | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
+| 10 - Referencia · 02 - Referencias e Inspiración    | Nuñez Chan Luis Fernando                    | Mora Alejandro Angel Gabriel (Líder)        |
+| 10 - Referencia · 03 - Registro de Decisiones       | Mora Alejandro Angel Gabriel (Líder)        | Sierra Sosa David Alejandro                 |
+| 10 - Referencia · 04 - Historial de Versiones       | Mora Alejandro Angel Gabriel (Líder)        | Nuñez Chan Luis Fernando                    |
 
 El reparto cubre los 48 apartados de contenido de las secciones 01 a 10. Por asignación expresa de David Alejandro Sierra Sosa, Registro visual queda a su cargo como redactor y revisor.
 
