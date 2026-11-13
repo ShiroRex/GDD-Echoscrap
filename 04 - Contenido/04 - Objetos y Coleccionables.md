@@ -26,7 +26,7 @@ La colección registra permanentemente hasta **15 entidades descubiertas** (`dis
 | 13 | Soldier | Especial (Rara) | Arena · 5% | `+15 HP` máximos, `-15%` de daño recibido y `+10%` de armadura por copia equipada (`Soldier × N` en `PlayerRuntimeStats` y `PlayerHealth`). |
 | 14 | Joel | Raro (Poco común) | Arena · 10% | `+15%` de cadencia de ataque por copia. |
 
-Cada `30 s` de combate activo se intenta generar entre `1` y `3` fragmentos en posiciones válidas del mapa, con un máximo de `12` activos simultáneamente y `10 s` de duración por aparición. El jugador debe acercarse a menos de `2,5 m` con línea de visión despejada y pulsar **`E`** (o el botón oeste en mando).
+Cada `30 s` de combate activo se intenta generar entre `1` y `3` fragmentos en posiciones válidas del mapa, con un máximo de `12` activos simultáneamente y `10 s` de duración por aparición. El jugador debe acercarse a menos de `2,5 m` con línea de visión despejada y pulsar **`E`**.
 
 ## Capacidad máxima de 10 unidades y bloqueo por inventario lleno
 
@@ -47,11 +47,11 @@ Las interacciones de cada nivel de la bóveda son:
 
 - **Puestos 1 a 3 (balcón superior, equipo activo — `CompanionSystem.cs`, `CompanionView.cs`, `VaultReleaseInteraction.cs`):**
   - El aviso contextual al acercarse es **`E · EQUIPAR`**, **`E · LIBERAR`** (si muestra una copia de reserva) o **`E · EDITAR`** (si tiene una entidad equipada).
-  - Pulsar **`E`** (o botón oeste en mando) abre el selector de acompañantes (`CompanionView`, encabezado `PUESTO DE EQUIPO 1/2/3`, subtítulo `ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO` y la nota *"Señala un compañero para ver su poder. Los poderes se acumulan por copia equipada."*). Su barra inferior ofrece tres botones: **`QUITAR DEL PUESTO`** (desequipa la unidad y la devuelve a reserva), **`LIBERAR COPIA`** (abre el modal de confirmación para eliminar la copia de la colección) y **`CERRAR · E / ESC`**.
-  - Además, al estar frente a un puesto de equipo ocupado en el mundo, pulsar **`T`** (o el botón norte `Y` / `Triángulo` en mando) retira directamente la unidad del puesto de equipo sin abrir el menú (`CompanionSystem.ClearSlot`).
+  - Pulsar **`E`** abre el selector de acompañantes (`CompanionView`, encabezado `PUESTO DE EQUIPO 1/2/3`, subtítulo `ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO` y la nota *"Señala un compañero para ver su poder. Los poderes se acumulan por copia equipada."*). Su barra inferior ofrece tres botones: **`QUITAR DEL PUESTO`** (desequipa la unidad y la devuelve a reserva), **`LIBERAR COPIA`** (abre el modal de confirmación para eliminar la copia de la colección) y **`CERRAR · E / ESC`**.
+  - Además, al estar frente a un puesto de equipo ocupado en el mundo, pulsar **`T`** retira directamente la unidad del puesto de equipo sin abrir el menú (`CompanionSystem.ClearSlot`).
 - **Puestos 4 a 10 (planta inferior, exposición/reserva — `VaultReleaseInteraction.cs`):**
   - Al acercarse a un puesto ocupado, el aviso contextual es **`E · LIBERAR`**.
-  - Pulsar **`E`** (o botón oeste en mando) abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc` / botón este) y **`LIBERAR`** (`E`, `Enter` o `Espacio`).
+  - Pulsar **`E`** abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc`) y **`LIBERAR`** (`E`, `Enter` o `Espacio`).
   - Al confirmar (`FusionProgress.ReleaseUnit`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
 
 ![Selector de entidades del puesto](../Media/Interfaz/Equipar_coleccionable.png)
@@ -61,9 +61,9 @@ Las interacciones de cada nivel de la bóveda son:
 
 El **Índice de Colección** funciona como el **bestiario y libro de registro** donde el jugador consulta qué criaturas ha descubierto, cuáles le faltan para completar las **15 entidades** del catálogo y qué unidades conserva actualmente en su bóveda.
 
-- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`**, el botón **`Select`** en mando o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Select`**, **`Esc`**, botón este (`B` / `Círculo`) o el botón **`CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratory`, no al bestiario)*.
+- **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`** o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`VaultIndexHint`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Esc`** o el botón **`CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratory`, no al bestiario)*.
 - **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
-- **Qué acción cuenta como descubrimiento (`FusionProgress.CollectFromArena` y `FusionProgress.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E` / botón oeste** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`ReleaseUnit`).
+- **Qué acción cuenta como descubrimiento (`FusionProgress.CollectFromArena` y `FusionProgress.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E`** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`ReleaseUnit`).
 - **Pestaña 1 — `POR RAREZAS` (15 entidades en 6 categorías):** incluye el filtro **`TODAS`** además de las **6 categorías de rareza** (`COM`, `RAR`, `ESP`, `ÉPI`, `LEG`, `MÍT`):
   - **Común (`3`):** *Lobito, Basket y Reaper*.
   - **Raro / Poco común (`4`):** *Mago, Demonio, Chico Emo y Joel*.
@@ -80,7 +80,7 @@ El **Índice de Colección** funciona como el **bestiario y libro de registro** 
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 
-La estación central de la bóveda se abre con **`E`** (o botón oeste en mando: **`E · FUSIONAR`** cuando está libre o en cuenta atrás, o **`E · VER FUSIÓN`** cuando un resultado aguarda en `AwaitingDecision`).
+La estación central de la bóveda se abre con **`E`** (**`E · FUSIONAR`** cuando está libre o en cuenta atrás, o **`E · VER FUSIÓN`** cuando un resultado aguarda en `AwaitingDecision`).
 
 ### Reglas de ingredientes y duración fija de 30 segundos
 

@@ -1,31 +1,38 @@
 # Controles
 
-| Acción | Teclado y ratón | Mando |
-| --- | --- | --- |
-| Moverse | `WASD` o flechas | Stick izquierdo o cruceta |
-| Dash | `Espacio` | Botón sur (`A` / `Cruz`) |
-| Pausar / abrir ajustes (`General`, `Interfaz`, `Sonido`) | `Esc` | `Start` |
-| Consultar estadísticas completas y poderes de acompañantes en HUD | Mantener `Q` | Mantener `Select` |
-| Elegir una carta | `1`, `2` o `3`; clic | Navegación y confirmación |
-| Cambiar carta enfocada | `A` / `D`, izquierda / derecha o puntero | Stick izquierdo o cruceta |
-| Confirmar carta | `Enter` o clic | Botón sur (`A` / `Cruz`) |
-| Reintentar oferta con *Sintonizador* | `R` o botón de interfaz | Botón norte (`Y` / `Triángulo`) |
-| Recoger una entidad cercana en la arena | `E` (si hay hueco en `10/10`) | Botón oeste (`X` / `Cuadrado`) |
-| Abrir / cerrar el Índice de Colección en la bóveda | `I` o clic en `ÍNDICE · [I]` (cierra también con `Esc`) | Botón `Select` (`VaultCollectionIndex`, cierra también con `B` / `Círculo`) |
-| Equipar o editar un puesto de equipo (puestos 1 a 3, balcón) | `E` (`E · EQUIPAR` / `E · EDITAR`) | Botón oeste (`X` / `Cuadrado`) |
-| Desequipar directamente un puesto de equipo ocupado en el mundo (puestos 1 a 3) | `T` | Botón norte (`Y` / `Triángulo`) |
-| Liberar una unidad expuesta (planta baja) | `E` (`E · LIBERAR`); confirmar en modal con `E`, `Enter` o `Espacio` (`Esc` cancela) | Botón oeste (`X` / `Cuadrado`); botón este (`B` / `Círculo`) cancela |
-| Abrir la máquina de fusión en la bóveda | `E` (`E · FUSIONAR` / `E · VER FUSIÓN`) | Botón oeste (`X` / `Cuadrado`) |
-| Cerrar selector de equipo (`CompanionView`) | `E`, `Esc` o botón `CERRAR · E / ESC` | Botón este (`B` / `Círculo`) |
-| Cerrar ventana de fusión (`FusionStation`) | `E`, `Esc` o botón `X` superior derecho | Botón este (`B` / `Círculo`) |
-| Navegar entre consejos de la bóveda (`VaultTips`) | Clic en `<` / `>` | — |
-| Cancelar selección de ronda o confirmación general | `Esc` o botón de interfaz | Botón este (`B` / `Círculo`) |
+> [!NOTE]
+> **Esquema oficial de la versión actual (`1.0`):** *EchoScrap* utiliza **teclado y ratón** como único esquema de control oficial, completo y validado para esta entrega en PC. Aunque el código base (`Input System 1.20.0`) incluye enlaces preliminares y experimentales para gamepad (`Gamepad.current`), **no se utiliza ni se garantiza soporte oficial de mando en esta versión** (no cubre la navegación completa de todos los menús ni ha sido certificado sobre hardware); su integración formal queda planteada como objetivo a futuro.
+
+| Acción | Teclado y ratón *(oficial)* |
+| --- | --- |
+| Moverse | `WASD` o flechas |
+| Dash | `Espacio` |
+| Pausar / abrir ajustes (`General`, `Interfaz`, `Sonido`) | `Esc` |
+| Consultar estadísticas completas y poderes de acompañantes en HUD | Mantener `Q` |
+| Elegir una carta | `1`, `2` o `3`; clic |
+| Cambiar carta enfocada | `A` / `D`, izquierda / derecha o puntero |
+| Confirmar carta | `Enter` o clic |
+| Reintentar oferta con *Sintonizador* | `R` o botón de interfaz |
+| Recoger una entidad cercana en la arena | `E` (si hay hueco en `10/10`) |
+| Abrir / cerrar el Índice de Colección en la bóveda | `I` o clic en `ÍNDICE · [I]` (cierra también con `Esc`) |
+| Equipar o editar un puesto de equipo (puestos 1 a 3, balcón) | `E` (`E · EQUIPAR` / `E · EDITAR`) |
+| Desequipar directamente un puesto de equipo ocupado en el mundo (puestos 1 a 3) | `T` |
+| Liberar una unidad expuesta (planta baja) | `E` (`E · LIBERAR`); confirmar en modal con `E`, `Enter` o `Espacio` (`Esc` cancela) |
+| Abrir la máquina de fusión en la bóveda | `E` (`E · FUSIONAR` / `E · VER FUSIÓN`) |
+| Cerrar selector de equipo (`CompanionView`) | `E`, `Esc` o botón `CERRAR · E / ESC` |
+| Cerrar ventana de fusión (`FusionStation`) | `E`, `Esc` o botón `X` superior derecho |
+| Navegar entre consejos de la bóveda (`VaultTips`) | Clic en `<` / `>` |
+| Cancelar selección de ronda o confirmación general | `Esc` o botón de interfaz |
+
+## Enlaces experimentales de mando (pensado a futuro, sin soporte en v1.0)
+
+El proyecto no contempla el uso de mando como requisito ni prestación garantizada en la entrega actual. En el código fuente (`PlayerInputReader`, `CombatHud`, `CompanionSystem`, `FusionStation`, `VaultReleaseInteraction`, `CollectibleShard` y `VaultCollectionIndex`) existen asignaciones experimentales de partida para lecturas puntuales (`Stick izquierdo`, `A`/`Cruz` para dash, `Q`/`Select` para detalles del HUD, `buttonWest` para `E`, `buttonNorth` para `T` y `selectButton` para `[I]`), pero quedan **fuera del alcance de soporte oficial, documentación de usuario y validación de QA** hasta una futura actualización de post-entrega que complete también la navegación de cursor/UI con controlador.
 
 La linterna ataca automáticamente al objetivo válido más cercano. Los portales se activan por contacto; el de la bóveda abre la selección de ronda (`ELIGE LA RONDA`) durante la preparación.
 
 `Espacio` se reserva al dash durante el combate y la selección de cartas para evitar confirmaciones accidentales; en el modal de confirmación de liberación de la bóveda (`LIBERAR UNIDAD`), tanto `E` como `Enter` o `Espacio` confirman la liberación y `Esc` la cancela.
 
-Mantener pulsada la tecla **`Q`** en teclado o el botón **`Select`** en mando durante el combate (`CombatHud.IsHudDetailHeld`) despliega temporalmente el panel de estadísticas en modo completo (`COMPLETAS`) y muestra las líneas descriptivas de los poderes de los tres acompañantes equipados aunque estén ocultos o reducidos en la pestaña `Interfaz` del menú de pausa.
+Mantener pulsada la tecla **`Q`** durante el combate (`CombatHud.IsHudDetailHeld`) despliega temporalmente el panel de estadísticas en modo completo (`COMPLETAS`) y muestra las líneas descriptivas de los poderes de los tres acompañantes equipados aunque estén ocultos o reducidos en la pestaña `Interfaz` del menú de pausa.
 
 El laboratorio de pruebas (`EnemySandboxController`) usa `Tab` para mostrar u ocultar el panel y `R` para reiniciar la escena de prueba.
 

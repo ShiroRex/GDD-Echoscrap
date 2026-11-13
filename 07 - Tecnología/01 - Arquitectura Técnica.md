@@ -16,7 +16,7 @@ El proyecto activo se encuentra en `EchoScrap/` (`main` @ `b381ef4` / `develop` 
 | Bóveda, colección, índice y fusión | `WarehouseTravel`, `WarehouseCameraDirector`, `WarehouseCameraFraming`, `FusionStation`, `FusionStationUI`, `FusionProgress` (`Capacity = 10`, `FusionSeconds = 30`), `VaultCollectionIndex` (`[I]`), `VaultReleaseInteraction`, `CollectibleDisplay` |
 | Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleShard`, `CollectiblePickupFeedback` |
 | Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool` |
-| Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `ArenaMusicController` |
+| Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `ArenaMusicController` |
 | Ranking en vivo y visor web | `EventLeaderboardSync` (`rulesVersion = 2`, sincronización HTTPS con Firebase Realtime Database), `GamertagRegistry` (reserva única SHA-256) y visor web en vivo `Tools/WebRanking/index.html` ([`https://echoscrap.web.app`](https://echoscrap.web.app)) |
 | Iluminación | `ArenaLightingController`, `ArenaLightingProfile` y renderer de atmósfera |
 

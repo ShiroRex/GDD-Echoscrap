@@ -4,7 +4,7 @@
 | --- | --- |
 | Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y ejecutable Windows x64. |
 | URP 17.6.0 | Iluminación, materiales, shaders y renderizado. |
-| Input System 1.20.0 | Lectura completa de teclado, ratón y mando (`PlayerInputReader`, `CombatHud`, `VaultCollectionIndex`, `CompanionSystem`, `FusionStation`, `VaultReleaseInteraction`). |
+| Input System 1.20.0 | Esquema oficial validado para **teclado y ratón** (`PlayerInputReader`, `CombatHud`, `VaultCollectionIndex`, `CompanionSystem`, `FusionStation`, `VaultReleaseInteraction`), con enlaces experimentales de mando planteados a futuro sin soporte oficial ni validación QA en v1.0. |
 | Cinemachine 6.6.0 | Seguimiento de cámara en arena, caldera del jefe y bóveda. |
 | UnityWebRequest / JSON | Reserva atómica de gamertag (`GamertagRegistry`) y sincronización HTTPS `PUT` / `DELETE` del ranking de evento con Firebase Realtime Database (`EventLeaderboardSync`) + serialización `JsonUtility` (`SaveData` v4). |
 | Unity Test Framework 1.8.0 | Pruebas automatizadas de reglas e integración. |

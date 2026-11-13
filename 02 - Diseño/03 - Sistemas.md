@@ -3,7 +3,7 @@
 | Sistema | Funcionamiento actual |
 | --- | --- |
 | Flujo general | Menú inicial con nombre de jugador para ranking, gestión de colección, preparación guiada en bóveda, selección de ronda, expedición y retorno desde resultados. |
-| Entradas y locomoción | Teclado, ratón y mando completos (`WASD` / stick, `Espacio` / `A` para dash, `E` / botón oeste para recoger/equipar/liberar/fusionar, `T` / botón norte para desequipar rápido en balcón, `I` / `Select` para Índice de Colección y `Q` / `Select` mantenido para detalles del HUD en combate). |
+| Entradas y locomoción | Esquema oficial en teclado y ratón (`WASD` / flechas, `Espacio` para dash, `E` para recoger/equipar/liberar/fusionar, `T` para desequipar rápido en balcón, `I` para Índice de Colección y `Q` mantenido para detalles del HUD en combate). Existen enlaces experimentales de mando en código, pero quedan planteados a futuro sin soporte oficial ni validación QA en v1.0. |
 | Sesión | Reloj, razones de pausa (`Manual`, `FocusLost`, `LevelUpChoice`, `FusionMenu`, `CompanionMenu`, `GameMenu`), entrada del jefe, resolución de resultados y limpieza entre expediciones. |
 | Salud y daño | Salud máxima escalable, orden de mitigación en `PlayerHealth`, armadura hasta `60%` (`SCRAP_01` + `Soldier`), evasión hasta `35%`, bloqueo hasta `50%`, críticos, protección temporal (`0,40 s`), curación y salvación (*Yanikua* y *Nanobots*). |
 | Linterna | Autoapuntado en 360°, ráfagas de cuatro pulsos con empuje final y modo continuo *Rayo solar* (`FLASH_05`, donde cada pulso cuenta como cuarto pulso). |
@@ -11,12 +11,12 @@
 | Oleadas | Grupos por fase, apariciones fuera de cámara, límites de población (150 normales, máx. 6 Morteros) y aparición alterna de élites desde los 90 s. |
 | Encuentro del jefe | Traslado seguro a la caldera de 22 m, cámara compartida, refuerzos anunciados (límite de 8 secuaces) y dos fases con ataques de Bombardeo, Cerco de magma y Fisura de magma. |
 | Progresión | XP, subidas de nivel y cola de elecciones entre 35 mejoras distribuidas en cuatro rarezas. |
-| Entidades y capacidad | Apariciones temporales en arena, recogida manual con `E` (o botón oeste), capacidad estricta de **10 unidades** (`DisplaySlots[10]`: 3 de equipo + 7 de exposición) y bloqueo al llenarse (`INVENTARIO LLENO / LIBERA ESPACIO`). Los poderes se acumulan por copia equipada hasta `×3`. |
-| Equipo y liberación | Tres puestos en el balcón superior (`EQUIPO 1..3`, `E` / botón oeste para editar y `T` / botón norte para desequipar) y siete puestos de exposición en planta baja (`E · LIBERAR` con confirmación modal). |
-| Índice de Colección | Panel consultable en la bóveda con `I` / `Select` (`VaultCollectionIndex`): contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` (`TODAS` + 6 rarezas con siluetas negras `???`) y `EN TU BÓVEDA`, e inspector lateral de poderes. |
+| Entidades y capacidad | Apariciones temporales en arena, recogida manual con `E`, capacidad estricta de **10 unidades** (`DisplaySlots[10]`: 3 de equipo + 7 de exposición) y bloqueo al llenarse (`INVENTARIO LLENO / LIBERA ESPACIO`). Los poderes se acumulan por copia equipada hasta `×3`. |
+| Equipo y liberación | Tres puestos en el balcón superior (`EQUIPO 1..3`, `E` para editar y `T` para desequipar) y siete puestos de exposición en planta baja (`E · LIBERAR` con confirmación modal). |
+| Índice de Colección | Panel consultable en la bóveda con `I` (`VaultCollectionIndex`): contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`, pestañas `POR RAREZAS` (`TODAS` + 6 rarezas con siluetas negras `???`) y `EN TU BÓVEDA`, e inspector lateral de poderes. |
 | Fusión | Estación central que combina 4 copias de la misma rareza o de rarezas mixtas (incluidas copias equipadas `EN EQUIPO 1/2/3`, excluida Yanikua), duración fija de **30 segundos (`00:30`)** y botón único `COLECCIONAR` al reclamar. |
 | Señalización de bóveda | Rótulos 3D `EQUIPO 1..3`, indicadores direccionales dinámicos en el borde superior (`VaultDirections`) y panel rotatorio de consejos cada `8 s` (`VaultTips`). |
-| Interfaz y ajustes | Tipografía unificada `Pixelify Sans`, panel compartido `MenuSettingsView` en 3 pestañas (`General`, `Interfaz` con `Atributos de coleccionables SÍ/NO`, `Sonido`) para Menú Inicial y Pausa, HUD con consulta rápida (`Q` / `Select`), minimapa con niebla de exploración y resultados. |
+| Interfaz y ajustes | Tipografía unificada `Pixelify Sans`, panel compartido `MenuSettingsView` en 3 pestañas (`General`, `Interfaz` con `Atributos de coleccionables SÍ/NO`, `Sonido`) para Menú Inicial y Pausa, HUD con consulta rápida (`Q`), minimapa con niebla de exploración y resultados. |
 | Ranking de evento | `GamertagRegistry` + `EventLeaderboardSync`: reserva atómica de alias por SHA-256 (mayúsculas conservando tildes), cola en `PlayerPrefs` (`EchoScrap.Rank.v2`) y sincronización HTTPS `PUT` / `DELETE` (`8 s`) con Firebase Realtime Database. |
 | Audio | Música adaptativa de arena, jefe y bóveda con control de volumen general y de música; sonidos de linterna, recogida, entrada, fusión y ataques del jefe. |
 
