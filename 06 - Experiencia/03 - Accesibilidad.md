@@ -18,8 +18,11 @@ La pausa y la pérdida de foco de ventana bloquean el control de combate y exige
 | Señales redundantes | El daño crítico combina tamaño, color y signo de exclamación (`!`). Las resistencias muestran `Resistido` y las ejecuciones `EJECUTADO`. En el Índice de Colección (`[I]`), las entidades no descubiertas combinan silueta negra, nombre `???` y etiqueta `NO ENCONTRADO` / `SILUETA BLOQUEADA`. |
 | Otros tamaños | `1280 × 720`, `2560 × 1440` y relaciones de aspecto distintas de `16:9` se mantienen como comprobaciones adicionales de escalado. |
 
-![Pantalla de configuración y pausa en tres pestañas](../Media/Interfaz/Menu_Pausa.png)
-*Menú de Pausa (`Esc` / `Start`) en la versión definitiva de Unity, organizado en las tres pestañas `General`, `Interfaz` y `Sonido` con sus deslizadores accesibles.*
+![Panel de Configuración](../Media/Interfaz/Configuracion.png)
+*Panel de Configuración (`CONFIGURACIÓN`) en el menú principal (`MenuSettingsView.cs`), con los deslizadores de volumen general y de música, la opción de efectos decorativos y la selección de estadísticas generales (`COMPLETA`, `REDUCIDA`, `SIN`).*
+
+![Menú de Pausa en combate y bóveda](../Media/Interfaz/Menu_Pausa.png)
+*Menú de Pausa durante la partida (`CombatHud.cs`, `Esc` / `Start`), organizado en las tres pestañas `General`, `Interfaz` y `Sonido`.*
 
 ## Aspectos pendientes de dispositivo de entrada
 
