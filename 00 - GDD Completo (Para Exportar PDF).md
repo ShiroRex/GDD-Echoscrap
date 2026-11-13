@@ -1,18 +1,18 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.4 · 10 de noviembre de 2026 (`develop` @ `a8a23c4`)**
+**GDD 0.6.5 · 13 de noviembre de 2026 (`develop` @ `a8a23c4`)**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición incorpora las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, los **22 bocetos de arte conceptual a mano** de entornos, personajes, enemigos y coleccionables, las cuatro pistas musicales y quince efectos de sonido con su tabla de autoría, la documentación detallada del **Índice de Colección / Bestiario (`[I]`)** con captura de su fase beta, y la mecánica de **puntuación (`rulesVersion = 2`) y Ranking en vivo conectado a [`https://echoscrap.web.app`](https://echoscrap.web.app)** (`develop` @ `a8a23c4`). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición incorpora el enlace oficial de la versión ejecutable en **itch.io** ([`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap)), las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, el inventario completo de **bocetos de arte conceptual a mano** de personajes y la **galería de bocetos de elementos** (`Media/ConceptArt/Elementos/`), las cuatro pistas musicales y quince efectos de sonido con su tabla de autoría, la renovación con capturas de la interfaz definitiva en Unity (`Media/Interfaz/`: Bóveda con HUD y señalización en vivo, Bestiario final, selector de acompañantes con barra inferior integrada, modal de liberación, máquina y resultado de fusión con botón `COLECCIONAR`, HUD de combate, consulta rápida con tecla `Q`, menú de pausa en 3 pestañas, victoria y derrota), y la mecánica de **puntuación (`rulesVersion = 2`) y Ranking en vivo conectado a [`https://echoscrap.web.app`](https://echoscrap.web.app)** (`develop` @ `a8a23c4`). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.4 · 10 de noviembre de 2026 (`develop` @ `a8a23c4`).**
+**GDD 0.6.5 · 13 de noviembre de 2026 (`develop` @ `a8a23c4`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -22,8 +22,8 @@ Menú inicial (con registro de nombre para el ranking de evento) → continuar o
 
 La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedestales superiores (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), dos indicadores direccionales en la parte superior de la pantalla (`VaultDirections`) que apuntan hacia la máquina de fusión y el balcón de equipo, y un panel inferior izquierdo de consejos (`VaultTips`) que rota cada `8 s`. En los puestos 1 a 3 del balcón, pulsar `E` (`E · EQUIPAR` / `E · EDITAR`) abre el selector de acompañantes (con botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`), mientras que `T` retira directamente la entidad equipada al mundo; en los puestos 4 a 10 de la planta baja, pulsar `E` (`E · LIBERAR`) abre el diálogo de confirmación para liberar una copia de la colección.
 
-![Bóveda y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la vista muestra la geometría general de la bóveda en una iteración previa a la incorporación de los indicadores direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel de consejos (`VaultTips`) presentes en `9eed59f`.*
+![Bóveda y preparación](Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 | Área | Contenido de esta versión |
 | --- | --- |
@@ -53,9 +53,9 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.4 |
-| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final y ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app). |
-| Actualización | 10 de noviembre de 2026 |
+| Versión del GDD | 0.6.5 |
+| Estado | Versión jugable integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades, fusión de 30 s, encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) y versión ejecutable oficial en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
+| Actualización | 13 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
 | Público objetivo | Jugadores de PC que disfrutan esquivar hordas, combinar mejoras y coleccionar poderes entre expediciones cortas. |
@@ -63,6 +63,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Motor | Unity 6000.6.3f1 y Universal Render Pipeline. |
 | Lenguaje | C# y shaders en HLSL. |
 | Perspectiva | Mundo 3D con personajes 2D; cámara exterior a 35,5° y encuadre propio para bóveda y jefe. |
+| Distribución ejecutable (itch.io) | https://naked-hiro.itch.io/echoscrap |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
 | Revisión consultada | Código y escena de `develop` en `a8a23c4` (integra `7ccc1e7`, `9eed59f`, `687e909` y `b4d5ada`). Se conservan los registros de pruebas y capturas históricas identificadas. |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
@@ -800,8 +801,8 @@ El HUD de la bóveda acompaña el recorrido con dos tarjetas direccionales super
 
 ![Boceto conceptual a mano de la Bóveda|420](Media/ConceptArt/Almacen_Arte.jpeg)
 
-![Bóveda actual](Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la imagen muestra la disposición arquitectónica de la bóveda antes de añadir las tarjetas direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel `CONSEJO` (`VaultTips`) activos en `9eed59f`.*
+![Bóveda actual](Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RONDA`). Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
@@ -989,8 +990,8 @@ Las interacciones de cada nivel de la bóveda son:
   - Pulsar **`E`** abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc`) y **`LIBERAR`** (`E`, `Enter` o `Espacio`).
   - Al confirmar (`FusionProgress.ReleaseUnit`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
 
-![Selector de entidades del puesto](Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: la imagen muestra la cuadrícula del selector de puesto antes de añadir la barra inferior unificada con los botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` en `9eed59f`.*
+![Selector de entidades del puesto](Media/Interfaz/Equipar_coleccionable.png)
+*Selector de entidades del puesto en la versión final de Unity (`a8a23c4`), con los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 ## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
@@ -1010,8 +1011,8 @@ El **Índice de Colección** funciona como el **bestiario y libro de registro** 
 - **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 10 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`** (puestos 4–10).
 - **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato a color ampliado, fuente de obtención (*Arena* o *Máquina de fusión*), copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
 
-![Índice de Colección (fase beta del bestiario)](Media/Interfaz/IndiceColeccion_Beta.jpg)
-*Nota: la captura corresponde a una **fase beta del bestiario (`Índice de Colección`)**, donde ya se aprecian el contador `3 / 15 DESCUBIERTOS · 4 / 10 UNIDADES`, los apartados por rareza (`Común 1/3`, `Raro 1/4`, `Especial 0/3`, `Épico 1/2`, `Legendario 0/2`, `Mítico 0/1`), las siluetas bloqueadas (`???`) frente al retrato a color desbloqueado (`Basket`) y el panel lateral de registro.*
+![Índice de Colección (Bestiario en versión final)](Media/Interfaz/Bestiario.png)
+*Captura de la versión final del bestiario (`Índice de Colección`), mostrando el contador en vivo, la navegación por rarezas con Pixelify Sans, las siluetas bloqueadas (`???`) y la inspección completa de poder y origen.*
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 
@@ -1146,6 +1147,8 @@ Su boceto conceptual a lápiz define la silueta de explorador con capucha y mant
 
 Es la masa básica de la horda. Su representación es un esqueleto animado en cuatro direcciones con atlas de 144 fotogramas de `96 × 96`: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
 
+![Boceto a mano del Residual / Esqueleto|220](Media/ConceptArt/Esqueleto-enemigo.JPG)
+
 ![Spritesheet activo del Residual / Esqueleto](Media/Avance_2026-11-04/Spritesheets/Esqueleto.png)
 
 [Fuente editable](Media/Avance_2026-11-04/Spritesheets/Esqueleto.aseprite).
@@ -1161,6 +1164,8 @@ Es la masa básica de la horda. Su representación es un esqueleto animado en cu
 ## Interceptor: galgo de chatarra
 
 Perseguidor rápido de la horda. Su silueta baja y la marcha veloz distinguen su persecución. El atlas tiene 152 fotogramas de `96 × 96`: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección.
+
+![Boceto a mano del Galgo / Interceptor|240](Media/ConceptArt/Galgo_enemigo.JPG)
 
 ![Spritesheet activo del Interceptor](Media/Avance_2026-11-04/Spritesheets/Interceptor.png)
 
@@ -1329,6 +1334,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | Conde Alucard | ![Boceto de Conde Alucard\|140](Media/ConceptArt/Conde_Alucard.jpeg) |
 | Mago | ![Boceto de Mago\|140](Media/ConceptArt/Mago.JPG) |
 | Demonio | ![Boceto de Demonio\|140](Media/ConceptArt/Demonio.JPG) |
+| Joel | ![Boceto de Joel\|140](Media/ConceptArt/Joel_jov4.JPG) |
 | Chico Emo | ![Boceto de Chico Emo\|140](Media/ConceptArt/Chico_Emo.JPG) |
 | Lobito | ![Boceto de Lobito\|140](Media/ConceptArt/Lobito.jpeg) |
 | Basket | ![Boceto de Basket\|140](Media/ConceptArt/Basket.JPG) |
@@ -1361,10 +1367,27 @@ La cámara interior emplea una inclinación de `32°` y campo de visión de `65�
 
 *Boceto conceptual del almacén: cápsulas cilíndricas de contención para las entidades, consola y cámara central de la máquina de fusión, escaleras de acceso y el portal circular en el suelo.*
 
-![Interior y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la toma muestra el interior de la bóveda antes de añadir las tarjetas direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel inferior `CONSEJO` (`VaultTips`) presentes en `9eed59f`.*
+![Interior y preparación](Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 La máquina de fusión combina cámara de resultado, persiana móvil, aura de partículas y efectos de humo al abrirse tras completar su cuenta atrás de `30 s` (`00:30`).
+
+## Galería de bocetos conceptuales de elementos del juego
+
+Diseños conceptuales dibujados a mano durante la preproducción de los elementos de entorno, mecánicas e interfaz de *EchoScrap*, resguardados en `Media/ConceptArt/Elementos/`.
+
+| Elemento | Boceto conceptual a mano |
+| --- | --- |
+| **El Vertedero (Arena exterior)** | ![Boceto conceptual del Vertedero\|280](Media/ConceptArt/Elementos/Mapa_Arte.JPG) |
+| **La Bóveda (Almacén)** | ![Boceto conceptual de la Bóveda\|280](Media/ConceptArt/Elementos/Almacen_Arte.jpeg) |
+| **Portal Dimensional** | ![Boceto conceptual del Portal\|260](Media/ConceptArt/Elementos/Portal_dibujo.JPG) |
+| **Máquina de Fusión** | ![Boceto conceptual de la Máquina de Fusión\|260](Media/ConceptArt/Elementos/maquina_fusion_dibujo.JPG) |
+| **Libro del Bestiario (Índice de Colección)** | ![Boceto conceptual del Bestiario\|260](Media/ConceptArt/Elementos/Bestiario_dibujo.JPG) |
+| **Menú de Pausa y Ajustes** | ![Boceto conceptual del Menú de Pausa\|260](Media/ConceptArt/Elementos/Pausa_dibujo.JPG) |
+| **Elementos del entorno e interfaz (Lámina 1)** | ![Bocetos de elementos 1\|260](Media/ConceptArt/Elementos/Elementos_dibujos.JPG) |
+| **Elementos del entorno e interfaz (Lámina 2)** | ![Bocetos de elementos 2\|260](Media/ConceptArt/Elementos/Elementos_dibujos2.JPG) |
+| **Elementos del entorno e interfaz (Lámina 3)** | ![Bocetos de elementos 3\|260](Media/ConceptArt/Elementos/Elementos_dibujos3.JPG) |
+| **Elementos del entorno e interfaz (Lámina 4)** | ![Bocetos de elementos 4\|260](Media/ConceptArt/Elementos/Elementos_dibujos4.JPG) |
 
 ---
 
@@ -1395,14 +1418,28 @@ Dentro de la bóveda, el HUD y el escenario proporcionan guía visual constante:
 - **Selector de acompañantes (`CompanionView`):** al pulsar `E` en los puestos 1 a 3 del balcón se abre `PUESTO DE EQUIPO 1/2/3 · ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO`, con retratos enmarcados por rareza y barra inferior con tres botones: **`QUITAR DEL PUESTO`**, **`LIBERAR COPIA`** y **`CERRAR · E / ESC`**.
 - **Estación de fusión (`FusionStationUI`):** ventana principal (`Marco_Fusion`) con 4 ranuras en cruz (`Cuadro_Fusion` + `Cruz`), botón superior derecho **`X`**, probabilidades redondeadas a enteros (`60%`, `40%`, `1%`), botones **`VACIAR`** y **`CONFIRMAR`**, selector de copias (`MiGaraje`, donde las copias equipadas muestran **`EN EQUIPO 1/2/3`** y botones **`QUITAR INGREDIENTE`** y **`VOLVER`**), cuenta atrás fija de **`00:30`** y pantalla de resultado con un único botón de acción **`COLECCIONAR`** (o aviso **`INVENTARIO LLENO · LIBERA ESPACIO`** si ya se tienen `10/10` unidades).
 
-![Preparación de entidades](Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: la imagen muestra el selector de puesto en la iteración del 5 de noviembre; en `9eed59f` la barra inferior integra los tres botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+![Preparación de entidades y selector de equipo](Media/Interfaz/Equipar_coleccionable.png)
+*Selector de acompañantes de la versión final en Unity, con la barra inferior integrada: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+
+![Modal de liberación de unidad](Media/Interfaz/Liberar_Coleccionable.png)
+*Modal `LIBERAR UNIDAD` en la Bóveda con opciones `CANCELAR` (`Esc`) y `LIBERAR` (`E` / `Enter` / `Espacio`).*
+
+![Estación de fusión](Media/Interfaz/Maquina_Fusion.png)
+*Ventana de la Máquina de Fusión con sus cuatro ranuras de ingredientes y desglose de probabilidades.*
+
+![Resultado de fusión](Media/Interfaz/Resultado_Fusion.png)
+*Pantalla de resultado tras la cuenta atrás de 30 segundos, mostrando la entidad obtenida y el botón único `COLECCIONAR`.*
 
 ## HUD de combate, consulta rápida (`Q` / `Select`) y cartas
 
 El HUD de combate muestra barra de salud, barra de XP y nivel, reloj de incursión, contador de bajas, estado del dash, iconos de mejoras adquiridas, los tres retratos de acompañantes equipados (con sus líneas descriptivas de poder activo si `Atributos de coleccionables` está en `SÍ`) y un minimapa circular con niebla de exploración. Gólgora dispone de su propia barra superior de salud e indicador direccional fuera de pantalla.
 
+![HUD activo durante el combate en la arena](Media/Interfaz/Arena_Hud.png)
+
 Mantener pulsada la tecla **`Q`** en teclado o el botón **`Select`** en mando (`CombatHud.IsHudDetailHeld`) despliega temporalmente las **estadísticas completas** (`COMPLETAS`) y las **descripciones de los poderes de los acompañantes equipados**, aunque estén reducidas u ocultas en la configuración.
+
+![Consulta rápida de detalles del HUD en combate manteniendo Q](Media/Interfaz/Q_estadisticas.png)
+*Despliegue dinámico al mantener `Q` / `Select` en combate: panel lateral de estadísticas completas y textos de poderes de los 3 acompañantes equipados bajo los retratos.*
 
 Las cartas de subida de nivel presentan marcos por rareza, icono, nombre, nivel actual/máximo, tipo de daño y progresión de valores, además del botón de reintento cuando se dispone de *Sintonizador*.
 
@@ -1418,7 +1455,14 @@ Al pulsar **`Esc`** (o `Start` en mando) durante la partida o en la bóveda se a
 
 Los botones inferiores permiten **`CONTINUAR`** y **`VOLVER AL MENÚ`** (desde la bóveda) o **`VOLVER A LA BÓVEDA`** (durante una incursión en la arena). *(En la escena independiente `MainMenu`, el panel `CONFIGURACIÓN` de `MenuSettingsView.cs` ofrece los deslizadores de volumen, la casilla de efectos reducidos y los botones `COMPLETA`, `REDUCIDA` y `SIN`.)*
 
+![Menú de Pausa en tres pestañas](Media/Interfaz/Menu_Pausa.png)
+*Menú de Pausa (`Esc` / `Start`) en la versión final: pestañas `General`, `Interfaz` y `Sonido` con deslizadores y botones de acción.*
+
 La pantalla de resultados muestra victoria o derrota, tiempo sobrevivido, nivel, bajas y XP, sincroniza la sesión con el ranking de Firebase (`EventLeaderboardSync`) y ofrece el botón **`VOLVER A LA BÓVEDA`**.
+
+![Pantalla de fin de partida: Victoria](Media/Interfaz/Victoria.png)
+
+![Pantalla de fin de partida: Derrota](Media/Interfaz/Derrota.png)
 
 ---
 
@@ -1779,8 +1823,8 @@ Además, pulsar **`I`** (o hacer clic en **`ÍNDICE · [I]`** arriba a la izquie
 
 En los **puestos 1 a 3 del balcón**, el aviso es **`E · EQUIPAR`** (vacío) o **`E · EDITAR`** (ocupado). Pulsar **`E`** abre el selector (`PUESTO DE EQUIPO 1/2/3`) con los botones inferiores **`QUITAR DEL PUESTO`**, **`LIBERAR COPIA`** y **`CERRAR · E / ESC`**; pulsar **`T`** en el mundo frente a un puesto ocupado desequipa directamente la unidad sin abrir el menú. En los **puestos 4 a 10 de la planta inferior**, acercarse a un puesto ocupado muestra **`E · LIBERAR`** y pulsar **`E`** abre la confirmación **`LIBERAR UNIDAD`** (`CANCELAR` / `LIBERAR`).
 
-![Selector de un puesto de equipo](Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: vista del selector tomada el 5 de noviembre, previa a la barra inferior con `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` de `9eed59f`.*
+![Selector de un puesto de equipo](Media/Interfaz/Equipar_coleccionable.png)
+*Selector de un puesto de equipo (`CompanionView`) en la versión definitiva de Unity con los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 El portal conduce a la selección de ronda (`ELIGE LA RONDA`). Tras confirmar Demo (`3:00`) o Completa (`8:00`) se presenta la entrada del Coleccionista en la arena.
 
@@ -1831,11 +1875,14 @@ En cualquier momento del combate, **mantener pulsada la tecla `Q` (teclado) o el
 
 ## Vistas del Índice de Colección (Bestiario) y Ranking Web
 
-![Índice de Colección (fase beta del bestiario)](Media/Interfaz/IndiceColeccion_Beta.jpg)
-*Captura de una **fase beta del bestiario (`Índice de Colección`, tecla `[I]`)** mostrando el filtro por rarezas, las siluetas bloqueadas (`???`) y el inspector de entidad.*
+![Índice de Colección (Bestiario en versión final)](Media/Interfaz/Bestiario.png)
+*Vista de la versión definitiva del bestiario (`Índice de Colección`, tecla `[I]`) con la tipografía unificada Pixelify Sans, contador en vivo, filtros por rareza, siluetas e inspector de compañero.*
 
 ![Página web del Ranking en vivo (`echoscrap.web.app`)](Media/Interfaz/RankingWeb_EchoScrap.png)
 *Visor web en vivo ([`https://echoscrap.web.app`](https://echoscrap.web.app)) conectado a Firebase Realtime Database con la clasificación general por puesto, jugador, bajas, tiempo y puntos.*
+
+![Modal de Nueva Colección con Gamertag](Media/Interfaz/Nueva_Coleccion.png)
+*Modal `¿NUEVA COLECCIÓN?` con el campo interactivo de gamertag para el ranking.*
 
 ---
 
@@ -1859,8 +1906,8 @@ La pausa y la pérdida de foco de ventana bloquean el control de combate y exige
 | Señales redundantes | El daño crítico combina tamaño, color y signo de exclamación (`!`). Las resistencias muestran `Resistido` y las ejecuciones `EJECUTADO`. En el Índice de Colección (`[I]`), las entidades no descubiertas combinan silueta negra, nombre `???` y etiqueta `NO ENCONTRADO` / `SILUETA BLOQUEADA`. |
 | Otros tamaños | `1280 × 720`, `2560 × 1440` y relaciones de aspecto distintas de `16:9` se mantienen como comprobaciones adicionales de escalado. |
 
-![Pantalla de configuración a 1920 × 1080 en la revisión del 6 de noviembre](Media/Avance_2026-11-06/Accesibilidad/Configuracion.png)
-*Nota sobre la captura histórica: la imagen muestra el panel `CONFIGURACIÓN` de la escena independiente `MainMenu` (`MenuSettingsView.cs`, con botones `COMPLETA`, `REDUCIDA`, `SIN`); dentro de `CombatArena` y la bóveda, el menú de pausa (`Esc`) organiza estos controles en las tres pestañas `General`, `Interfaz` y `Sonido`.*
+![Pantalla de configuración y pausa en tres pestañas](Media/Interfaz/Menu_Pausa.png)
+*Menú de Pausa (`Esc` / `Start`) en la versión definitiva de Unity, organizado en las tres pestañas `General`, `Interfaz` y `Sonido` con sus deslizadores accesibles.*
 
 ## Aspectos pendientes de dispositivo de entrada
 

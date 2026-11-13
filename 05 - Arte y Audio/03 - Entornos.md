@@ -23,9 +23,26 @@ La cámara interior emplea una inclinación de `32°` y campo de visión de `65�
 
 *Boceto conceptual del almacén: cápsulas cilíndricas de contención para las entidades, consola y cámara central de la máquina de fusión, escaleras de acceso y el portal circular en el suelo.*
 
-![Interior y preparación](../Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la toma muestra el interior de la bóveda antes de añadir las tarjetas direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel inferior `CONSEJO` (`VaultTips`) presentes en `9eed59f`.*
+![Interior y preparación](../Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 La máquina de fusión combina cámara de resultado, persiana móvil, aura de partículas y efectos de humo al abrirse tras completar su cuenta atrás de `30 s` (`00:30`).
+
+## Galería de bocetos conceptuales de elementos del juego
+
+Diseños conceptuales dibujados a mano durante la preproducción de los elementos de entorno, mecánicas e interfaz de *EchoScrap*, resguardados en `Media/ConceptArt/Elementos/`.
+
+| Elemento | Boceto conceptual a mano |
+| --- | --- |
+| **El Vertedero (Arena exterior)** | ![Boceto conceptual del Vertedero\|280](../Media/ConceptArt/Elementos/Mapa_Arte.JPG) |
+| **La Bóveda (Almacén)** | ![Boceto conceptual de la Bóveda\|280](../Media/ConceptArt/Elementos/Almacen_Arte.jpeg) |
+| **Portal Dimensional** | ![Boceto conceptual del Portal\|260](../Media/ConceptArt/Elementos/Portal_dibujo.JPG) |
+| **Máquina de Fusión** | ![Boceto conceptual de la Máquina de Fusión\|260](../Media/ConceptArt/Elementos/maquina_fusion_dibujo.JPG) |
+| **Libro del Bestiario (Índice de Colección)** | ![Boceto conceptual del Bestiario\|260](../Media/ConceptArt/Elementos/Bestiario_dibujo.JPG) |
+| **Menú de Pausa y Ajustes** | ![Boceto conceptual del Menú de Pausa\|260](../Media/ConceptArt/Elementos/Pausa_dibujo.JPG) |
+| **Elementos del entorno e interfaz (Lámina 1)** | ![Bocetos de elementos 1\|260](../Media/ConceptArt/Elementos/Elementos_dibujos.JPG) |
+| **Elementos del entorno e interfaz (Lámina 2)** | ![Bocetos de elementos 2\|260](../Media/ConceptArt/Elementos/Elementos_dibujos2.JPG) |
+| **Elementos del entorno e interfaz (Lámina 3)** | ![Bocetos de elementos 3\|260](../Media/ConceptArt/Elementos/Elementos_dibujos3.JPG) |
+| **Elementos del entorno e interfaz (Lámina 4)** | ![Bocetos de elementos 4\|260](../Media/ConceptArt/Elementos/Elementos_dibujos4.JPG) |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

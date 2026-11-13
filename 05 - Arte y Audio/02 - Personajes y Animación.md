@@ -64,6 +64,8 @@ Su boceto conceptual a lápiz define la silueta de explorador con capucha y mant
 
 Es la masa básica de la horda. Su representación es un esqueleto animado en cuatro direcciones con atlas de 144 fotogramas de `96 × 96`: reposo, marcha y ataque de ocho, impacto de cuatro y muerte de ocho por dirección.
 
+![Boceto a mano del Residual / Esqueleto|220](../Media/ConceptArt/Esqueleto-enemigo.JPG)
+
 ![Spritesheet activo del Residual / Esqueleto](../Media/Avance_2026-11-04/Spritesheets/Esqueleto.png)
 
 [Fuente editable](../Media/Avance_2026-11-04/Spritesheets/Esqueleto.aseprite).
@@ -79,6 +81,8 @@ Es la masa básica de la horda. Su representación es un esqueleto animado en cu
 ## Interceptor: galgo de chatarra
 
 Perseguidor rápido de la horda. Su silueta baja y la marcha veloz distinguen su persecución. El atlas tiene 152 fotogramas de `96 × 96`: reposo de seis, marcha de doce, ataque de seis, impacto de cuatro y muerte de diez por dirección.
+
+![Boceto a mano del Galgo / Interceptor|240](../Media/ConceptArt/Galgo_enemigo.JPG)
 
 ![Spritesheet activo del Interceptor](../Media/Avance_2026-11-04/Spritesheets/Interceptor.png)
 
@@ -247,6 +251,7 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | Conde Alucard | ![Boceto de Conde Alucard\|140](../Media/ConceptArt/Conde_Alucard.jpeg) |
 | Mago | ![Boceto de Mago\|140](../Media/ConceptArt/Mago.JPG) |
 | Demonio | ![Boceto de Demonio\|140](../Media/ConceptArt/Demonio.JPG) |
+| Joel | ![Boceto de Joel\|140](../Media/ConceptArt/Joel_jov4.JPG) |
 | Chico Emo | ![Boceto de Chico Emo\|140](../Media/ConceptArt/Chico_Emo.JPG) |
 | Lobito | ![Boceto de Lobito\|140](../Media/ConceptArt/Lobito.jpeg) |
 | Basket | ![Boceto de Basket\|140](../Media/ConceptArt/Basket.JPG) |

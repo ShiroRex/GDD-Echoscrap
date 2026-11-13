@@ -27,10 +27,13 @@ En cualquier momento del combate, **mantener pulsada la tecla `Q` (teclado) o el
 
 ## Vistas del Índice de Colección (Bestiario) y Ranking Web
 
-![Índice de Colección (fase beta del bestiario)](../Media/Interfaz/IndiceColeccion_Beta.jpg)
-*Captura de una **fase beta del bestiario (`Índice de Colección`, tecla `[I]`)** mostrando el filtro por rarezas, las siluetas bloqueadas (`???`) y el inspector de entidad.*
+![Índice de Colección (Bestiario en versión final)](../Media/Interfaz/Bestiario.png)
+*Vista de la versión definitiva del bestiario (`Índice de Colección`, tecla `[I]`) con la tipografía unificada Pixelify Sans, contador en vivo, filtros por rareza, siluetas e inspector de compañero.*
 
 ![Página web del Ranking en vivo (`echoscrap.web.app`)](../Media/Interfaz/RankingWeb_EchoScrap.png)
 *Visor web en vivo ([`https://echoscrap.web.app`](https://echoscrap.web.app)) conectado a Firebase Realtime Database con la clasificación general por puesto, jugador, bajas, tiempo y puntos.*
+
+![Modal de Nueva Colección con Gamertag](../Media/Interfaz/Nueva_Coleccion.png)
+*Modal `¿NUEVA COLECCIÓN?` con el campo interactivo de gamertag para el ranking.*
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

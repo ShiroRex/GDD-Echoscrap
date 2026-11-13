@@ -56,8 +56,8 @@ Las interacciones de cada nivel de la bóveda son:
   - Pulsar **`E`** abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc`) y **`LIBERAR`** (`E`, `Enter` o `Espacio`).
   - Al confirmar (`FusionProgress.ReleaseUnit`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
 
-![Selector de entidades del puesto](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: la imagen muestra la cuadrícula del selector de puesto antes de añadir la barra inferior unificada con los botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` en `9eed59f`.*
+![Selector de entidades del puesto](../Media/Interfaz/Equipar_coleccionable.png)
+*Selector de entidades del puesto en la versión final de Unity (`a8a23c4`), con los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 ## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
@@ -77,8 +77,8 @@ El **Índice de Colección** funciona como el **bestiario y libro de registro** 
 - **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 10 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`** (puestos 4–10).
 - **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato a color ampliado, fuente de obtención (*Arena* o *Máquina de fusión*), copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
 
-![Índice de Colección (fase beta del bestiario)](../Media/Interfaz/IndiceColeccion_Beta.jpg)
-*Nota: la captura corresponde a una **fase beta del bestiario (`Índice de Colección`)**, donde ya se aprecian el contador `3 / 15 DESCUBIERTOS · 4 / 10 UNIDADES`, los apartados por rareza (`Común 1/3`, `Raro 1/4`, `Especial 0/3`, `Épico 1/2`, `Legendario 0/2`, `Mítico 0/1`), las siluetas bloqueadas (`???`) frente al retrato a color desbloqueado (`Basket`) y el panel lateral de registro.*
+![Índice de Colección (Bestiario en versión final)](../Media/Interfaz/Bestiario.png)
+*Captura de la versión final del bestiario (`Índice de Colección`), mostrando el contador en vivo, la navegación por rarezas con Pixelify Sans, las siluetas bloqueadas (`???`) y la inspección completa de poder y origen.*
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 

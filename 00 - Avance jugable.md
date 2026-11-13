@@ -1,6 +1,6 @@
 # EchoScrap: avance jugable
 
-**GDD 0.6.4 · 10 de noviembre de 2026 (`develop` @ `a8a23c4`).**
+**GDD 0.6.5 · 13 de noviembre de 2026 (`develop` @ `a8a23c4`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -10,8 +10,8 @@ Menú inicial (con registro de nombre para el ranking de evento) → continuar o
 
 La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedestales superiores (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), dos indicadores direccionales en la parte superior de la pantalla (`VaultDirections`) que apuntan hacia la máquina de fusión y el balcón de equipo, y un panel inferior izquierdo de consejos (`VaultTips`) que rota cada `8 s`. En los puestos 1 a 3 del balcón, pulsar `E` (`E · EQUIPAR` / `E · EDITAR`) abre el selector de acompañantes (con botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`), mientras que `T` retira directamente la entidad equipada al mundo; en los puestos 4 a 10 de la planta baja, pulsar `E` (`E · LIBERAR`) abre el diálogo de confirmación para liberar una copia de la colección.
 
-![Bóveda y preparación](Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la vista muestra la geometría general de la bóveda en una iteración previa a la incorporación de los indicadores direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel de consejos (`VaultTips`) presentes en `9eed59f`.*
+![Bóveda y preparación](Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 | Área | Contenido de esta versión |
 | --- | --- |

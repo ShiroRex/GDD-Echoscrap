@@ -20,8 +20,8 @@ Además, pulsar **`I`** (o hacer clic en **`ÍNDICE · [I]`** arriba a la izquie
 
 En los **puestos 1 a 3 del balcón**, el aviso es **`E · EQUIPAR`** (vacío) o **`E · EDITAR`** (ocupado). Pulsar **`E`** abre el selector (`PUESTO DE EQUIPO 1/2/3`) con los botones inferiores **`QUITAR DEL PUESTO`**, **`LIBERAR COPIA`** y **`CERRAR · E / ESC`**; pulsar **`T`** en el mundo frente a un puesto ocupado desequipa directamente la unidad sin abrir el menú. En los **puestos 4 a 10 de la planta inferior**, acercarse a un puesto ocupado muestra **`E · LIBERAR`** y pulsar **`E`** abre la confirmación **`LIBERAR UNIDAD`** (`CANCELAR` / `LIBERAR`).
 
-![Selector de un puesto de equipo](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: vista del selector tomada el 5 de noviembre, previa a la barra inferior con `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC` de `9eed59f`.*
+![Selector de un puesto de equipo](../Media/Interfaz/Equipar_coleccionable.png)
+*Selector de un puesto de equipo (`CompanionView`) en la versión definitiva de Unity con los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 El portal conduce a la selección de ronda (`ELIGE LA RONDA`). Tras confirmar Demo (`3:00`) o Completa (`8:00`) se presenta la entrada del Coleccionista en la arena.
 

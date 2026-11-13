@@ -25,14 +25,28 @@ Dentro de la bóveda, el HUD y el escenario proporcionan guía visual constante:
 - **Selector de acompañantes (`CompanionView`):** al pulsar `E` en los puestos 1 a 3 del balcón se abre `PUESTO DE EQUIPO 1/2/3 · ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO`, con retratos enmarcados por rareza y barra inferior con tres botones: **`QUITAR DEL PUESTO`**, **`LIBERAR COPIA`** y **`CERRAR · E / ESC`**.
 - **Estación de fusión (`FusionStationUI`):** ventana principal (`Marco_Fusion`) con 4 ranuras en cruz (`Cuadro_Fusion` + `Cruz`), botón superior derecho **`X`**, probabilidades redondeadas a enteros (`60%`, `40%`, `1%`), botones **`VACIAR`** y **`CONFIRMAR`**, selector de copias (`MiGaraje`, donde las copias equipadas muestran **`EN EQUIPO 1/2/3`** y botones **`QUITAR INGREDIENTE`** y **`VOLVER`**), cuenta atrás fija de **`00:30`** y pantalla de resultado con un único botón de acción **`COLECCIONAR`** (o aviso **`INVENTARIO LLENO · LIBERA ESPACIO`** si ya se tienen `10/10` unidades).
 
-![Preparación de entidades](../Media/Avance_2026-11-05/Interfaz/SeleccionEntidades_Actual.png)
-*Nota sobre la captura histórica: la imagen muestra el selector de puesto en la iteración del 5 de noviembre; en `9eed59f` la barra inferior integra los tres botones `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+![Preparación de entidades y selector de equipo](../Media/Interfaz/Equipar_coleccionable.png)
+*Selector de acompañantes de la versión final en Unity, con la barra inferior integrada: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+
+![Modal de liberación de unidad](../Media/Interfaz/Liberar_Coleccionable.png)
+*Modal `LIBERAR UNIDAD` en la Bóveda con opciones `CANCELAR` (`Esc`) y `LIBERAR` (`E` / `Enter` / `Espacio`).*
+
+![Estación de fusión](../Media/Interfaz/Maquina_Fusion.png)
+*Ventana de la Máquina de Fusión con sus cuatro ranuras de ingredientes y desglose de probabilidades.*
+
+![Resultado de fusión](../Media/Interfaz/Resultado_Fusion.png)
+*Pantalla de resultado tras la cuenta atrás de 30 segundos, mostrando la entidad obtenida y el botón único `COLECCIONAR`.*
 
 ## HUD de combate, consulta rápida (`Q` / `Select`) y cartas
 
 El HUD de combate muestra barra de salud, barra de XP y nivel, reloj de incursión, contador de bajas, estado del dash, iconos de mejoras adquiridas, los tres retratos de acompañantes equipados (con sus líneas descriptivas de poder activo si `Atributos de coleccionables` está en `SÍ`) y un minimapa circular con niebla de exploración. Gólgora dispone de su propia barra superior de salud e indicador direccional fuera de pantalla.
 
+![HUD activo durante el combate en la arena](../Media/Interfaz/Arena_Hud.png)
+
 Mantener pulsada la tecla **`Q`** en teclado o el botón **`Select`** en mando (`CombatHud.IsHudDetailHeld`) despliega temporalmente las **estadísticas completas** (`COMPLETAS`) y las **descripciones de los poderes de los acompañantes equipados**, aunque estén reducidas u ocultas en la configuración.
+
+![Consulta rápida de detalles del HUD en combate manteniendo Q](../Media/Interfaz/Q_estadisticas.png)
+*Despliegue dinámico al mantener `Q` / `Select` en combate: panel lateral de estadísticas completas y textos de poderes de los 3 acompañantes equipados bajo los retratos.*
 
 Las cartas de subida de nivel presentan marcos por rareza, icono, nombre, nivel actual/máximo, tipo de daño y progresión de valores, además del botón de reintento cuando se dispone de *Sintonizador*.
 
@@ -48,6 +62,13 @@ Al pulsar **`Esc`** (o `Start` en mando) durante la partida o en la bóveda se a
 
 Los botones inferiores permiten **`CONTINUAR`** y **`VOLVER AL MENÚ`** (desde la bóveda) o **`VOLVER A LA BÓVEDA`** (durante una incursión en la arena). *(En la escena independiente `MainMenu`, el panel `CONFIGURACIÓN` de `MenuSettingsView.cs` ofrece los deslizadores de volumen, la casilla de efectos reducidos y los botones `COMPLETA`, `REDUCIDA` y `SIN`.)*
 
+![Menú de Pausa en tres pestañas](../Media/Interfaz/Menu_Pausa.png)
+*Menú de Pausa (`Esc` / `Start`) en la versión final: pestañas `General`, `Interfaz` y `Sonido` con deslizadores y botones de acción.*
+
 La pantalla de resultados muestra victoria o derrota, tiempo sobrevivido, nivel, bajas y XP, sincroniza la sesión con el ranking de Firebase (`EventLeaderboardSync`) y ofrece el botón **`VOLVER A LA BÓVEDA`**.
+
+![Pantalla de fin de partida: Victoria](../Media/Interfaz/Victoria.png)
+
+![Pantalla de fin de partida: Derrota](../Media/Interfaz/Derrota.png)
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

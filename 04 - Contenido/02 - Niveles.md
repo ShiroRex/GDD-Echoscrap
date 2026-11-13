@@ -31,8 +31,8 @@ El HUD de la bóveda acompaña el recorrido con dos tarjetas direccionales super
 
 ![Boceto conceptual a mano de la Bóveda|420](../Media/ConceptArt/Almacen_Arte.jpeg)
 
-![Bóveda actual](../Media/Avance_2026-11-04/Interfaz/Boveda.png)
-*Nota sobre la captura histórica: la imagen muestra la disposición arquitectónica de la bóveda antes de añadir las tarjetas direccionales superiores (`VaultDirections`), el botón `ÍNDICE · [I]` y el panel `CONSEJO` (`VaultTips`) activos en `9eed59f`.*
+![Bóveda actual](../Media/Interfaz/Boveda_almacen.png)
+*Captura de la Bóveda en la versión actual (`a8a23c4`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
 
 Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RONDA`). Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
