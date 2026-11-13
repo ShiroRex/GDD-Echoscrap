@@ -17,8 +17,10 @@ Esta revisión contrasta cada cifra, fórmula, tecla, flujo de guardado y etique
 - **Play Mode (`EnemySpriteIntegrationTests`, `EliteEnemyTests`, `FlashlightBurstFeedbackTests`, `CompanionPowerTests`, `CompanionIntegrationTests`, `CompleteUpgradeTests`, `CombatArenaRunFlowTests`):** 169 casos aprobados cubriendo integración de sprites de élites, fases de apertura y vulnerabilidad, empuje continuo de *Rayo solar*, poderes de acompañantes, fórmula de *Ojo del verdugo*, catálogo de 35 mejoras y flujo de rondas y reinicios en `CombatArena`.
 - **Condiciones de los medios documentales:** los GIFs de atlas se exportaron a escala `2×` desde los JSON de fotogramas, y las capturas en motor de Unity se registraron en sesiones aisladas con cámara de detalle, jugador protegido y oleadas detenidas, documentadas en [[06 - Registro visual]]. Las capturas de interfaz actualizadas en `Media/Interfaz/` pertenecen al juego compilado final (13 de noviembre).
 
-## Cobertura de entrada y control de calidad de medios (`b381ef4`)
+## Cobertura de entrada, validación técnica y control de calidad de medios (`b381ef4`)
 
 Con la incorporación de las asignaciones de mando para `E` (`buttonWest`), `T` (`buttonNorth`) e `I` (`selectButton`), todas las acciones principales de arena, bóveda, bestiario y menús cuentan con soporte completo en **teclado/ratón y mando**. Asimismo, el **tráiler promocional final (`MEDIA-TRAILER-01`)** quedó integrado en [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](../Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`) y **superó el control de calidad** comprobando gameplay desarrollado y mezcla de audio acorde con la versión definitiva.
+
+En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación Windows x64 Release (`Assets/Settings/Build Profiles/Windows.asset`, `0` errores y `1 010 519 179` bytes / `~0,94 GiB`), perfilado de `2 000` fotogramas con `p95` de CPU de `6,61 ms`, instrumentación `CombatBenchmarkRunner.cs` / `SpawnerRunValidation.cs` y las correcciones de `feature/perfil-memoria-baja` / `bugfix/tirones-horda-windows`, con el alcance acotado de gama mínima registrado en [[03 - Bugs y Seguimiento]].
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

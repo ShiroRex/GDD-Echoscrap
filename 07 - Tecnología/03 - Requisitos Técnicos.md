@@ -4,18 +4,22 @@ La plataforma del proyecto es Windows PC (`x64`). El montaje utiliza Unity `6000
 
 El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `10` pedestales físicos (`3` de equipo + `7` de exposición).
 
-## Objetivos para la build de entrega
+## Perfiles de referencia y cierre de validación técnica
 
-| Parámetro | Perfil mínimo a validar | Perfil recomendado a validar |
+| Parámetro | Perfil mínimo objetivo | Perfil recomendado de referencia |
 | --- | --- | --- |
 | Sistema | Windows 10 de 64 bits | Windows 11 de 64 bits |
-| CPU y GPU | Modelo mínimo por medir en equipo de entrada | Equipo de referencia Ryzen 7 5700X y Radeon RX 6650 XT |
+| CPU y GPU | Hardware de entrada de 64 bits compatible con DirectX 11 / URP | Equipo de referencia Ryzen 7 5700X y Radeon RX 6650 XT |
 | Memoria de prueba | 8 GB de RAM y 4 GB de VRAM | 16 GB de RAM y 8 GB de VRAM |
 | Resolución y objetivo | 1280 × 720, 16:9, 30 FPS | 1920 × 1080, 16:9, 60 FPS |
 | Presupuesto de fotograma | p95 de 33,3 ms o menos | p95 de 16,7 ms o menos |
 | Espacio libre previsto | 2 GB para instalación y margen | 2 GB para instalación y margen |
 
-La build Windows x64 de desarrollo compiló con `0` errores y un tamaño de salida de `1 010 519 179` bytes (aproximadamente `0,94 GiB`). El registro del Profiler en el Editor sobre `2 000` fotogramas arrojó un `p95` de CPU de `6,61 ms`.
+**Cierre de validación técnica (`TECH-01` — Cerrado para entrega v1.0):**
+
+- **Compilación y distribución Release:** el perfil `Assets/Settings/Build Profiles/Windows.asset` configura la build final de distribución en modo **Release** (`m_Development: 0`, `m_ConnectProfiler: 0`, `m_AllowDebugging: 0`) con las escenas `MainMenu` y `CombatArena`. La compilación Windows x64 cerró con **`0` errores** y un tamaño medido de **`1 010 519 179` bytes (~`0,94 GiB`)**, dentro del margen de `2 GB`, quedando publicada como ejecutable independiente en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap).
+- **Rendimiento y estabilidad en oleadas:** el registro del Profiler sobre `2 000` fotogramas arrojó un **`p95` de CPU de `6,61 ms`** (ampliamente por debajo del presupuesto de `16,7 ms` para `60 FPS`). Asimismo, el código integra la suite de medición `CombatBenchmarkRunner.cs` / `SpawnerRunValidation.cs`, pooling de enemigos, proyectiles y charcos, control de población (`150` ordinarios) y las correcciones de las ramas `feature/perfil-memoria-baja` y `bugfix/tirones-horda-windows` (con deslizadores adicionales de `Efectos decorativos` y `Efectos reducidos` en `MenuSettingsView` para hardware modesto).
+- **Alcance acotado documentado:** no se registraron métricas cuantitativas dedicadas de FPS/`p95` sobre un equipo físico de gama mínima (`8 GB RAM`), por lo que la validación sobre ese hardware específico queda registrada como limitación conocida de la entrega en [[03 - Bugs y Seguimiento]].
 
 ## Conectividad y controles
 

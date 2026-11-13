@@ -10,7 +10,7 @@
 | Gólgora | Caldera de `22 m`, seis patrones unificados en `GolgoraCombatSettings.cs` y `CombatSettings.asset`, dos fases y refuerzos anunciados. |
 | Interfaz, audio y distribución | Tipografía **`Pixelify Sans`**, panel unificado `MenuSettingsView` en 3 pestañas (`General`, `Interfaz`, `Sonido`) en menú principal y pausa, consulta rápida `Q` / `Select`, audio integrado y build publicada en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
 
-## Integraciones cerradas (`0.6.2` – `0.6.9`)
+## Integraciones cerradas (`0.6.2` – `0.6.10`)
 
 | ID | Tarea | Estado | Comprobación en código (`b381ef4`) |
 | --- | --- | --- | --- |
@@ -23,11 +23,10 @@
 | ART-ELITE-01 / 02 | Conectar sprites y ciclos de combate de Caballero Fantasma y Centinela de Cobre. | Integrado | Atlas de 224 y 288 fotogramas integrados con mapas de normales y emisión. |
 | COMBAT-SOLAR-01 | Aplicar empuje y efectos de cuarto pulso en cada pulso de *Rayo solar*. | Integrado | `UpgradeCombatRuntime.cs:169` (`finalPulse = true` con `FLASH_05`, activando `FLASH_03`, `BIO_02` y `CRIT_04`). |
 | MEDIA-TRAILER-01 | Grabar, montar y validar el tráiler promocional final de *EchoScrap*. | Integrado y aprobado en QA | [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](../Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`), con gameplay desarrollado y audio propio. |
+| TECH-01 | Cerrar validación técnica de compilación y rendimiento Windows x64 (`v1.0`). | Cerrado para entrega v1.0 | `Assets/Settings/Build Profiles/Windows.asset` (Release), build `0` errores (`1 010 519 179` bytes / `~0,94 GiB`), `p95` de CPU `6,61 ms` en `2 000` fotogramas, `feature/perfil-memoria-baja` + `bugfix/tirones-horda-windows`, `CombatBenchmarkRunner.cs` y publicación en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). Alcance acotado en gama mínima registrado en [[03 - Bugs y Seguimiento]]. |
 
-## Pendientes identificados para entrega final
+## Estado de cierre del backlog
 
-| ID | Tarea | Prioridad propuesta | Responsable según el reparto | Dependencia | Criterio de aceptación |
-| --- | --- | --- | --- | --- | --- |
-| TECH-01 | Validar perfiles de rendimiento en build Windows x64 final. | Media | David Alejandro Sierra Sosa, con revisión de Luis Fernando Nuñez Chan | Equipos de prueba de perfil mínimo y recomendado | Resolución, FPS, `p95` de fotograma, memoria y tamaño instalado registrados por perfil. |
+No quedan tareas pendientes de programación, arte o diseño para la versión de entrega (`v1.0`). Únicamente se mantiene fuera del alcance de desarrollo la toma de telemetría instrumentada en un equipo físico de perfil mínimo, documentada como limitación conocida en [[03 - Requisitos Técnicos]] y [[03 - Bugs y Seguimiento]].
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

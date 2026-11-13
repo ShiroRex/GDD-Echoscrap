@@ -19,4 +19,17 @@ Apollo permanece como referencia de paleta. Los sprites activos del Coleccionist
 
 El deslizador de **Efectos decorativos** (`0%` a `100%` en la pestaña `General` de pausa) reduce decoración y movimiento accesorio por debajo del `99,9%`, conservando intactos todos los avisos de peligro necesarios para jugar.
 
+## Identidad visual, logotipos y portadas
+
+Los recursos de identidad gráfica de *EchoScrap* y sus archivos fuente editables se reúnen en `Media/Identidad/` (además de los editables de HUD, botones y marcos de cartas en `ArtSource/UI/` dentro del proyecto de Unity):
+
+| Recurso | Archivo | Uso / Descripción |
+| --- | --- | --- |
+| **Isotipo (Logo)** | [EchoScrap-logo.svg](../Media/Identidad/EchoScrap-logo.svg) | Emblema vectorial del Coleccionista para icono y material gráfico del proyecto. |
+| **Logotipo (Título)** | [EchoScrap-titulo.svg](../Media/Identidad/EchoScrap-titulo.svg) · [Editable `.aseprite`](../Media/Identidad/EchoScrap-titulo.aseprite) | Tipografía gráfica oficial *ECHOSCRAP* en formato vectorial y fuente editable pixel art. |
+| **Portada horizontal** | [Portada_EchoScrap.png](../Media/Identidad/Portada_EchoScrap.png) | Ilustración principal de portada con el Coleccionista frente al umbral rúnico de la bóveda. |
+| **Tarjeta vertical y arte fuente** | [Tarjeta_EchoScrap.png](../Media/Identidad/Tarjeta_EchoScrap.png) · [Vectorial `.svg`](../Media/Identidad/EchoScrap-arte.svg) | Tarjeta de presentación (`810 × 1080`) para difusión del proyecto y página de distribución. |
+
+![Isotipo de EchoScrap|140](../Media/Identidad/EchoScrap-logo.svg) ![Logotipo de EchoScrap|220](../Media/Identidad/EchoScrap-titulo.svg) ![Portada oficial de EchoScrap|360](../Media/Identidad/Portada_EchoScrap.png)
+
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

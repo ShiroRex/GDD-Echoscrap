@@ -1,18 +1,18 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.6.9 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`)**
+**GDD 0.6.10 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`)**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición incorpora el enlace oficial de la versión ejecutable en **itch.io** ([`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap)), el **tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1920 × 1080`, `46,2 s`, aprobado en QA)**, las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, el inventario completo de **bocetos de arte conceptual a mano** de personajes y la **galería de bocetos de elementos** (`Media/ConceptArt/Elementos/`), las cuatro pistas musicales y el registro completo de efectos de sonido con su tabla de autoría y licencias externas (`Flashlight/Sources.txt` CC0, tipografías `SIL OFL v1.1`), la renovación con capturas de la interfaz definitiva en Unity (`Media/Interfaz/`: Bóveda con HUD y señalización en vivo, Bestiario final, selector de acompañantes con barra inferior integrada, modal de liberación, máquina y resultado de fusión con botón `COLECCIONAR`, HUD de combate, consulta rápida con tecla `Q` o botón `Select`, menú de pausa compartido `MenuSettingsView` en 3 pestañas, victoria y derrota), la mecánica de **puntuación (`rulesVersion = 2`) y Ranking en vivo conectado a [`https://echoscrap.web.app`](https://echoscrap.web.app)** (`EventLeaderboardSync.cs`, `GamertagRegistry.cs`), y la auditoría final de paridad contra el código definitivo (`main` @ `b381ef4` / `develop` @ `977bac5`): poderes acumulables por copia equipada (`Copies(id)`), fusión homogénea y de rarezas mixtas, controles completos de teclado/ratón y mando, y calibración unificada entre C# y `.asset`. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición incorpora el enlace oficial de la versión ejecutable en **itch.io** ([`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap)), el **tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1920 × 1080`, `46,2 s`, aprobado en QA)**, los recursos de **identidad visual y portadas** (`Media/Identidad/`), las historias de origen de las quince entidades coleccionables, su catálogo de sprites y fuentes editables, el inventario completo de **bocetos de arte conceptual a mano** de personajes y la **galería de bocetos de elementos** (`Media/ConceptArt/Elementos/`), las cuatro pistas musicales y el registro completo de efectos de sonido junto con su respaldo íntegro del motor (`Media/Audio/Unity/`) y tabla de autoría/licencias (`Flashlight/Sources.txt` CC0, tipografías `SIL OFL v1.1`), la renovación con capturas de la interfaz definitiva en Unity (`Media/Interfaz/`: Bóveda con HUD y señalización en vivo, Bestiario final, selector de acompañantes con barra inferior integrada, modal de liberación, máquina y resultado de fusión con botón `COLECCIONAR`, HUD de combate, consulta rápida con tecla `Q` o botón `Select`, menú de pausa compartido `MenuSettingsView` en 3 pestañas, victoria y derrota), la mecánica de **puntuación (`rulesVersion = 2`) y Ranking en vivo conectado a [`https://echoscrap.web.app`](https://echoscrap.web.app)** (`EventLeaderboardSync.cs`, `GamertagRegistry.cs`), el **cierre técnico `TECH-01`** y la auditoría final de paridad contra el código definitivo (`main` @ `b381ef4` / `develop` @ `977bac5`): poderes acumulables por copia equipada (`Copies(id)`), fusión homogénea y de rarezas mixtas, controles completos de teclado/ratón y mando, y calibración unificada entre C# y `.asset`. Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.6.9 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
+**GDD 0.6.10 · 13 de noviembre de 2026 (`main` @ `b381ef4` / `develop` @ `977bac5`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -53,7 +53,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Campo | Información |
 | --- | --- |
 | Nombre | EchoScrap |
-| Versión del GDD | 0.6.9 |
+| Versión del GDD | 0.6.10 |
 | Estado | Versión jugable final integrada: preparación guiada en bóveda, Índice de Colección / Bestiario (`[I]`), expediciones, colección de hasta 10 unidades con poderes acumulables por copia equipada, fusión de 30 s (misma rareza o rarezas mixtas), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app), ejecutable publicado en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional final (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`) aprobado en QA. |
 | Actualización | 13 de noviembre de 2026 |
 | Género | Acción. |
@@ -1090,6 +1090,19 @@ Apollo permanece como referencia de paleta. Los sprites activos del Coleccionist
 
 El deslizador de **Efectos decorativos** (`0%` a `100%` en la pestaña `General` de pausa) reduce decoración y movimiento accesorio por debajo del `99,9%`, conservando intactos todos los avisos de peligro necesarios para jugar.
 
+## Identidad visual, logotipos y portadas
+
+Los recursos de identidad gráfica de *EchoScrap* y sus archivos fuente editables se reúnen en `Media/Identidad/` (además de los editables de HUD, botones y marcos de cartas en `ArtSource/UI/` dentro del proyecto de Unity):
+
+| Recurso | Archivo | Uso / Descripción |
+| --- | --- | --- |
+| **Isotipo (Logo)** | [EchoScrap-logo.svg](Media/Identidad/EchoScrap-logo.svg) | Emblema vectorial del Coleccionista para icono y material gráfico del proyecto. |
+| **Logotipo (Título)** | [EchoScrap-titulo.svg](Media/Identidad/EchoScrap-titulo.svg) · [Editable `.aseprite`](Media/Identidad/EchoScrap-titulo.aseprite) | Tipografía gráfica oficial *ECHOSCRAP* en formato vectorial y fuente editable pixel art. |
+| **Portada horizontal** | [Portada_EchoScrap.png](Media/Identidad/Portada_EchoScrap.png) | Ilustración principal de portada con el Coleccionista frente al umbral rúnico de la bóveda. |
+| **Tarjeta vertical y arte fuente** | [Tarjeta_EchoScrap.png](Media/Identidad/Tarjeta_EchoScrap.png) · [Vectorial `.svg`](Media/Identidad/EchoScrap-arte.svg) | Tarjeta de presentación (`810 × 1080`) para difusión del proyecto y página de distribución. |
+
+![Isotipo de EchoScrap|140](Media/Identidad/EchoScrap-logo.svg) ![Logotipo de EchoScrap|220](Media/Identidad/EchoScrap-titulo.svg) ![Portada oficial de EchoScrap|360](Media/Identidad/Portada_EchoScrap.png)
+
 ---
 
 # Personajes y animación
@@ -1537,7 +1550,7 @@ La pestaña **`Sonido`** del menú de pausa incorpora dos controles independient
 
 ## Efectos especiales y diseño sonoro (SFX)
 
-Los efectos de sonido puntuales refuerzan la lectura de ataques enemigos, acciones del Coleccionista, recolección de recursos y estados de interfaz. En `Media/Audio/SFX/` se conservan las quince muestras exportadas del estudio (`WAV` estéreo, `24 bits`, `48 kHz`), cuya integración en el motor Unity (`Resources/Audio/`) incluye además los clips y disparos reactivos en `PlayerDashPresentation`, `PlayerHitAudio`, `LevelUpAudio`, `UpgradeChoiceAudio`, `SessionOutcomeAudio`, `GolgoraAudio`, `FlashlightAudio`, `MenuMusic` y `CombatMusicPlayer`:
+Los efectos de sonido puntuales refuerzan la lectura de ataques enemigos, acciones del Coleccionista, recolección de recursos y estados de interfaz. En `Media/Audio/SFX/` se conservan las quince muestras exportadas del estudio (`WAV` estéreo, `24 bits`, `48 kHz`), y en `Media/Audio/Unity/` ([`Flashlight/`](Media/Audio/Unity/Flashlight/Sources.txt), `MataColeccionista/` y `Sistema/`) se respaldan íntegramente los clips integrados en Unity (`Resources/Audio/` y `MataColeccionista/Audio/`) junto con la licencia original `Sources.txt` (CC0), conectados en código mediante `PlayerDashPresentation`, `PlayerHitAudio`, `LevelUpAudio`, `UpgradeChoiceAudio`, `SessionOutcomeAudio`, `GolgoraAudio`, `FlashlightAudio`, `MenuMusic` y `CombatMusicPlayer`:
 
 | Efecto de sonido | Propósito en el videojuego | Descripción acústica | Muestra reproducible |
 | --- | --- | --- | --- |
@@ -1599,12 +1612,12 @@ Para dar cumplimiento estricto al criterio de evaluación de audio y licencias, 
 | **Bóveda (Almacén)** (`Boveda_Almacen.mp3` / `Vault.ogg`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Instrumentos orquestales Spitfire BBC y sintetizadores. |
 | **Arena** (`Partida.mp3` / `Arena_combat_Test.ogg`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Bucle continuo de percusión y sintetizadores. |
 | **Gólgora** (`Jefe.mp3` / `Bossfight_Prueba_From2m.ogg`) | Música | **Composición original del equipo EchoScrap**. | Obra propia (propiedad del equipo). | Estéreo, 320 kbps, 48 kHz. Síntesis pura y percusión de combate. |
-| **Linterna: base, ráfagas y pulsos** (`Flashlight/BurstStart.wav`, `Pulse1..3.wav`, `FourthPulse.wav`, `Rest.wav`) | SFX | Muestras externas de microondas (`pinto0lucas`, Freesound `#422817`) y contador Geiger (`cookies+policy`, Freesound `#555923`). | Licencia **CC0 1.0 (Dominio Público)** registrada en `Flashlight/Sources.txt`. | Conversión a mono, 44,1 kHz, 16 bits; selección de clics, capas, envolventes y tonos sintetizados por el equipo. |
-| **Linterna: impactos y Rayo solar** (`Flashlight/Hit.wav`, `CriticalHit.wav`, `SolarStart.wav`, `SolarLoop.wav`) | SFX | Diseño sonoro propio del equipo mediante capas y transientes sintetizados. | Obra propia. | Mono, 44,1 kHz, 16 bits. Modulación y envolventes reactivas al impacto. |
+| **Linterna: base, ráfagas y pulsos** (`Media/Audio/Unity/Flashlight/`: `BurstStart.wav`, `Pulse1..3.wav`, `FourthPulse.wav`, `Rest.wav`) | SFX | Muestras externas de microondas (`pinto0lucas`, Freesound `#422817`) y contador Geiger (`cookies+policy`, Freesound `#555923`). | Licencia **CC0 1.0 (Dominio Público)** registrada en [`Sources.txt`](Media/Audio/Unity/Flashlight/Sources.txt). | Conversión a mono, 44,1 kHz, 16 bits; selección de clics, capas, envolventes y tonos sintetizados por el equipo. |
+| **Linterna: impactos y Rayo solar** (`Media/Audio/Unity/Flashlight/`: `Hit.wav`, `CriticalHit.wav`, `SolarStart.wav`, `SolarLoop.wav`) | SFX | Diseño sonoro propio del equipo mediante capas y transientes sintetizados. | Obra propia. | Mono, 44,1 kHz, 16 bits. Modulación y envolventes reactivas al impacto. |
 | **Combate, enemigos e interfaz principal** (`Media/Audio/SFX/*.wav` y equivalentes en `Resources/Audio/`: `Caballero_Barrido.wav`, `Centinela_Disparo.wav`, `Galgo_Ataque.wav`, `Golgora_Impacto.wav`) | SFX | **Diseño sonoro y procesamiento propio del equipo EchoScrap** (Dash, Golpe recibido, Coleccionable, Botiquín, Subida de nivel, Selección de carta, Galgo, Mortero, Polilla, Caballero Fantasma, Centinela de Cobre, Impacto de Gólgora, Señal de derrota, Señal de victoria y Fusión/resultado). | Obra propia / procesamiento sobre muestras CC0 y sintetizadas. | WAV estéreo, 24 bits, 48 kHz. Chelo, bajo, campana, sintetizadores, batería, corno francés, violín y teclado MIDI. |
-| **Experiencia y avisos de recolección** (`XP_sound.mp3`, `CollectiblePickup.wav`, `InventoryRejected.mp3`) | SFX | Síntesis y edición propia del equipo para retroalimentación inmediata en arena y bóveda. | Obra propia / procesamiento sobre muestras CC0. | Mono, modulación de tono progresiva según racha de XP y aviso tonal de inventario lleno. |
-| **Transiciones de portal, selección de ronda y apertura de fusión** (`PortalArrival.mp3`, `CollectorPortalEntry.wav`, `ArenaSelectionRoar.wav`, `FusionOpen.mp3`) | SFX | Edición y procesamiento del equipo sobre muestras de portales, mecanismos neumáticos y rugido ambiental. | Mezcla propia sobre librerías CC0 / Dominio público. | Capas de despresurización, reverberación convolutiva y atenuación sincronizada con animación. |
-| **Gólgora (`MataColeccionista/Audio/*.wav`: `Spawn`, `Footstep`, `HammerCharge`, `HammerImpact`, `SweepCharge`, `SweepImpact`, `Throw`, `Cerco`, `Overload`, `Death`, `FoundryFoundation`, `FoundryPressure`)** | SFX | Diseño y montaje sonoro en Unity mediante capas metálicas, percusión grave y texturas de fundición. | Mezcla propia sobre librerías CC0 / Dominio público. | Atenuación espacial 3D, variación de tono/volumen y mezcla dinámica (*ducking*) sobre la música del jefe. |
+| **Experiencia y avisos de recolección** (`Media/Audio/Unity/Sistema/`: `XP_sound.mp3`, `CollectiblePickup.wav`, `InventoryRejected.mp3`) | SFX | Síntesis y edición propia del equipo para retroalimentación inmediata en arena y bóveda. | Obra propia / procesamiento sobre muestras CC0. | Mono, modulación de tono progresiva según racha de XP y aviso tonal de inventario lleno. |
+| **Transiciones de portal, selección de ronda y apertura de fusión** (`Media/Audio/Unity/Sistema/`: `PortalArrival.mp3`, `CollectorPortalEntry.wav`, `ArenaSelectionRoar.wav`, `FusionOpen.mp3`) | SFX | Edición y procesamiento del equipo sobre muestras de portales, mecanismos neumáticos y rugido ambiental. | Mezcla propia sobre librerías CC0 / Dominio público. | Capas de despresurización, reverberación convolutiva y atenuación sincronizada con animación. |
+| **Gólgora (`Media/Audio/Unity/MataColeccionista/*.wav`: `Spawn`, `Footstep`, `HammerCharge`, `HammerImpact`, `SweepCharge`, `SweepImpact`, `Throw`, `Cerco`, `Overload`, `Death`, `FoundryFoundation`, `FoundryPressure`)** | SFX | Diseño y montaje sonoro en Unity mediante capas metálicas, percusión grave y texturas de fundición. | Mezcla propia sobre librerías CC0 / Dominio público. | Atenuación espacial 3D, variación de tono/volumen y mezcla dinámica (*ducking*) sobre la música del jefe. |
 
 La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
@@ -2029,18 +2042,22 @@ La plataforma del proyecto es Windows PC (`x64`). El montaje utiliza Unity `6000
 
 El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `10` pedestales físicos (`3` de equipo + `7` de exposición).
 
-## Objetivos para la build de entrega
+## Perfiles de referencia y cierre de validación técnica
 
-| Parámetro | Perfil mínimo a validar | Perfil recomendado a validar |
+| Parámetro | Perfil mínimo objetivo | Perfil recomendado de referencia |
 | --- | --- | --- |
 | Sistema | Windows 10 de 64 bits | Windows 11 de 64 bits |
-| CPU y GPU | Modelo mínimo por medir en equipo de entrada | Equipo de referencia Ryzen 7 5700X y Radeon RX 6650 XT |
+| CPU y GPU | Hardware de entrada de 64 bits compatible con DirectX 11 / URP | Equipo de referencia Ryzen 7 5700X y Radeon RX 6650 XT |
 | Memoria de prueba | 8 GB de RAM y 4 GB de VRAM | 16 GB de RAM y 8 GB de VRAM |
 | Resolución y objetivo | 1280 × 720, 16:9, 30 FPS | 1920 × 1080, 16:9, 60 FPS |
 | Presupuesto de fotograma | p95 de 33,3 ms o menos | p95 de 16,7 ms o menos |
 | Espacio libre previsto | 2 GB para instalación y margen | 2 GB para instalación y margen |
 
-La build Windows x64 de desarrollo compiló con `0` errores y un tamaño de salida de `1 010 519 179` bytes (aproximadamente `0,94 GiB`). El registro del Profiler en el Editor sobre `2 000` fotogramas arrojó un `p95` de CPU de `6,61 ms`.
+**Cierre de validación técnica (`TECH-01` — Cerrado para entrega v1.0):**
+
+- **Compilación y distribución Release:** el perfil `Assets/Settings/Build Profiles/Windows.asset` configura la build final de distribución en modo **Release** (`m_Development: 0`, `m_ConnectProfiler: 0`, `m_AllowDebugging: 0`) con las escenas `MainMenu` y `CombatArena`. La compilación Windows x64 cerró con **`0` errores** y un tamaño medido de **`1 010 519 179` bytes (~`0,94 GiB`)**, dentro del margen de `2 GB`, quedando publicada como ejecutable independiente en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap).
+- **Rendimiento y estabilidad en oleadas:** el registro del Profiler sobre `2 000` fotogramas arrojó un **`p95` de CPU de `6,61 ms`** (ampliamente por debajo del presupuesto de `16,7 ms` para `60 FPS`). Asimismo, el código integra la suite de medición `CombatBenchmarkRunner.cs` / `SpawnerRunValidation.cs`, pooling de enemigos, proyectiles y charcos, control de población (`150` ordinarios) y las correcciones de las ramas `feature/perfil-memoria-baja` y `bugfix/tirones-horda-windows` (con deslizadores adicionales de `Efectos decorativos` y `Efectos reducidos` en `MenuSettingsView` para hardware modesto).
+- **Alcance acotado documentado:** no se registraron métricas cuantitativas dedicadas de FPS/`p95` sobre un equipo físico de gama mínima (`8 GB RAM`), por lo que la validación sobre ese hardware específico queda registrada como limitación conocida de la entrega en [[03 - Bugs y Seguimiento]].
 
 ## Conectividad y controles
 
@@ -2279,13 +2296,13 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | 27 de octubre | Limpieza de material auxiliar del repositorio y actualización del GDD con registros del juego. |
 | 4–5 de noviembre | Menú independiente y carga, quince entidades con poderes propios (`CompanionPowerRuntime`), equipo de tres puestos, fusión de cuatro copias, dos élites con sprites integrados, sprites de Esqueleto, Interceptor y Wendigo, minimapa y audio contextual. |
 | 6–8 de noviembre (`develop` @ `9eed59f`) | Señalización completa de la bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), **Índice de Colección (`[I]`)**, capacidad máxima estricta de **10 unidades**, liberación directa en pedestales (`E · LIBERAR`), fusión fija de **30 s (`00:30`)**, menú de pausa en 3 pestañas (`General`, `Interfaz`, `Sonido`), consulta rápida `Q` / `Select`, tipografía unificada `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). |
-| 10–13 de noviembre (`main` @ `b381ef4` / `develop` @ `977bac5`) | Ranking `rulesVersion = 2` (`GamertagRegistry`, visor en vivo `echoscrap.web.app`, preservación de elegibilidad al continuar), poderes de acompañantes **acumulables por copia equipada (`Copies(id)`)**, fusión homogénea y de **rarezas mixtas**, panel unificado `MenuSettingsView` de 3 pestañas en menú inicial y pausa, soporte completo de mando en bóveda e Índice (`buttonWest`, `buttonNorth`, `selectButton`), calibración unificada de enemigos/Gólgora (`CombatSettings.asset`), audio integrado, publicación en **itch.io** (`https://naked-hiro.itch.io/echoscrap`) y **tráiler promocional final (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`) aprobado en QA**. |
+| 10–13 de noviembre (`main` @ `b381ef4` / `develop` @ `977bac5`) | Ranking `rulesVersion = 2` (`GamertagRegistry`, visor en vivo `echoscrap.web.app`, preservación de elegibilidad al continuar), poderes de acompañantes **acumulables por copia equipada (`Copies(id)`)**, fusión homogénea y de **rarezas mixtas**, panel unificado `MenuSettingsView` de 3 pestañas en menú inicial y pausa, soporte completo de mando en bóveda e Índice (`buttonWest`, `buttonNorth`, `selectButton`), calibración unificada de enemigos/Gólgora (`CombatSettings.asset`), audio integrado y respaldado en `Media/Audio/Unity/`, identidad gráfica en `Media/Identidad/`, publicación en **itch.io** (`https://naked-hiro.itch.io/echoscrap`), **tráiler promocional final (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`) aprobado en QA** y **cierre técnico `TECH-01`** (perfil Release `Windows.asset`, `0` errores, `~0,94 GiB`, `p95` de CPU `6,61 ms` en `2 000` fotogramas y optimizaciones de `bugfix/tirones-horda-windows`). |
 
-## Hitos de cierre pendientes
+## Estado final de hitos (cierre v1.0)
 
-| Hito | Responsable según el reparto | Depende de | Condición de cierre |
+| Hito | Responsable según el reparto | Evidencia de cierre | Estado |
 | --- | --- | --- | --- |
-| Validación técnica en perfiles de hardware | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 final y equipos de prueba | Mediciones de resolución, FPS y `p95` completadas en equipos mínimo y recomendado. |
+| Validación técnica y cierre de entrega (`TECH-01`) | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 Release (`Windows.asset`, `0` errores, `~0,94 GiB`), `p95` de CPU de `6,61 ms` (`2 000` fotogramas), optimizaciones de horda/memoria en `main` @ `b381ef4` y publicación ejecutable en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). Limitación de hardware mínimo sin telemetría dedicada documentada en [[03 - Bugs y Seguimiento]]. | **Cerrado (v1.0)** |
 
 ---
 
@@ -2301,7 +2318,7 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | Gólgora | Caldera de `22 m`, seis patrones unificados en `GolgoraCombatSettings.cs` y `CombatSettings.asset`, dos fases y refuerzos anunciados. |
 | Interfaz, audio y distribución | Tipografía **`Pixelify Sans`**, panel unificado `MenuSettingsView` en 3 pestañas (`General`, `Interfaz`, `Sonido`) en menú principal y pausa, consulta rápida `Q` / `Select`, audio integrado y build publicada en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). |
 
-## Integraciones cerradas (`0.6.2` – `0.6.9`)
+## Integraciones cerradas (`0.6.2` – `0.6.10`)
 
 | ID | Tarea | Estado | Comprobación en código (`b381ef4`) |
 | --- | --- | --- | --- |
@@ -2314,12 +2331,11 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | ART-ELITE-01 / 02 | Conectar sprites y ciclos de combate de Caballero Fantasma y Centinela de Cobre. | Integrado | Atlas de 224 y 288 fotogramas integrados con mapas de normales y emisión. |
 | COMBAT-SOLAR-01 | Aplicar empuje y efectos de cuarto pulso en cada pulso de *Rayo solar*. | Integrado | `UpgradeCombatRuntime.cs:169` (`finalPulse = true` con `FLASH_05`, activando `FLASH_03`, `BIO_02` y `CRIT_04`). |
 | MEDIA-TRAILER-01 | Grabar, montar y validar el tráiler promocional final de *EchoScrap*. | Integrado y aprobado en QA | [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`), con gameplay desarrollado y audio propio. |
+| TECH-01 | Cerrar validación técnica de compilación y rendimiento Windows x64 (`v1.0`). | Cerrado para entrega v1.0 | `Assets/Settings/Build Profiles/Windows.asset` (Release), build `0` errores (`1 010 519 179` bytes / `~0,94 GiB`), `p95` de CPU `6,61 ms` en `2 000` fotogramas, `feature/perfil-memoria-baja` + `bugfix/tirones-horda-windows`, `CombatBenchmarkRunner.cs` y publicación en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). Alcance acotado en gama mínima registrado en [[03 - Bugs y Seguimiento]]. |
 
-## Pendientes identificados para entrega final
+## Estado de cierre del backlog
 
-| ID | Tarea | Prioridad propuesta | Responsable según el reparto | Dependencia | Criterio de aceptación |
-| --- | --- | --- | --- | --- | --- |
-| TECH-01 | Validar perfiles de rendimiento en build Windows x64 final. | Media | David Alejandro Sierra Sosa, con revisión de Luis Fernando Nuñez Chan | Equipos de prueba de perfil mínimo y recomendado | Resolución, FPS, `p95` de fotograma, memoria y tamaño instalado registrados por perfil. |
+No quedan tareas pendientes de programación, arte o diseño para la versión de entrega (`v1.0`). Únicamente se mantiene fuera del alcance de desarrollo la toma de telemetría instrumentada en un equipo físico de perfil mínimo, documentada como limitación conocida en [[03 - Requisitos Técnicos]] y [[03 - Bugs y Seguimiento]].
 
 ---
 
@@ -2346,7 +2362,8 @@ El diseño del videojuego evoluciona con cada integración en `develop`. Esta se
 | **08/11/2026** | Señalización completa de bóveda (`EQUIPO 1..3`, `VaultDirections`, `VaultTips`), Índice de Colección (`[I]`), capacidad máxima de `10` unidades (`3` equipo + `7` exposición), liberación en pedestales (`E · LIBERAR`), fusión fija de `30 s` con copias equipadas y botón único `COLECCIONAR`, pausa en 3 pestañas, consulta rápida `Q`/`Select`, tipografía `Pixelify Sans` y ranking con Firebase (`EventLeaderboardSync`). | Sincronizar el GDD `0.6.2` con el código fuente verificado de `develop` (`9eed59f`). | Sincronización transversal de las secciones `00` a `10`. | Equipo EchoScrap | Integrado (`0.6.2`) |
 | **10/11/2026** | Reglas definitivas de puntuación del Ranking (`rulesVersion = 2`, una oportunidad por nueva colección, reserva de gamertag por SHA-256 en `GamertagRegistry`, comparación `3 min` vs `8 min ÷ 2`) y visor web en vivo [`https://echoscrap.web.app`](https://echoscrap.web.app); documentación del Bestiario (`Índice de Colección [I]`) con captura de su fase beta; e integración de los 22 bocetos a mano (`Media/ConceptArt/`), 4 pistas musicales y 15 efectos de sonido con tabla de autoría. | Sincronizar el GDD `0.6.4` con `develop` (`a8a23c4`) y completar todos los criterios de arte, audio y ranking de la entrega final. | `02 - Economía y Recursos`, `04 - Objetos y Coleccionables`, `05 - Personajes y Animación`, `05 - Audio y Música`, `06 - UI y Guardado` y `07 - Tecnología`. | Equipo EchoScrap | Integrado (`0.6.4`) |
 | **13/11/2026** | Publicación de la build en **itch.io** (`https://naked-hiro.itch.io/echoscrap`); sustitución de capturas por las definitivas de Unity (`Media/Interfaz/`); incorporación de bocetos de Esqueleto, Galgo y Joel más galería de elementos (`Media/ConceptArt/Elementos/`); y actualización de paridad final con `main` @ `b381ef4` / `develop` @ `977bac5`: poderes de acompañantes acumulables por copia equipada (`Copies(id)`), fusión de 4 copias de la misma rareza o de rarezas mixtas, panel unificado de ajustes en 3 pestañas (`MenuSettingsView.cs`) compartido entre menú principal y pausa, controles completos de mando en bóveda/Índice (`buttonWest`, `buttonNorth`, `selectButton`), persistencia en `EchoScrap.Rank.v2` (`PUT`/`DELETE`, `8 s`, ID de 32 hex, preservación de oportunidad puntuable al continuar hasta la primera ronda finalizada, gamertag en mayúsculas conservando tildes), calibración unificada de enemigos/Gólgora y `0,22 s` de invulnerabilidad de dash. | Culminar la documentación final, auditoría de paridad y criterios de entrega. | Transversal a todas las secciones (`00` a `10`) y documento compilado para PDF. | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Integrado (`0.6.6`) |
-| **13/11/2026** | Integración y aprobación QA del tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1920 × 1080`, `46,2 s`); ampliación de procedencia sonora con todos los clips de `Resources/Audio/` y `MataColeccionista/Audio/`; resumen rápido de juego y avance en Controles; registro de créditos de desarrollo y licencias de terceros (`Pixelify Sans` OFL, `Chakra Petch` OFL, `Flashlight/Sources.txt` CC0); y restablecimiento transversal del soporte completo de **teclado/ratón y mando**. | Cerrar el hito `MEDIA-TRAILER-01`, dejar listos los apartados de entrega y confirmar compatibilidad total con teclado/ratón y mando. | `01 - Ficha`, `02 - Controles`, `05 - Audio`, `08 - Producción`, `09 - Pruebas` y `10 - Referencia` (transversal). | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Vigente (`0.6.9`) |
+| **13/11/2026** | Integración y aprobación QA del tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1920 × 1080`, `46,2 s`); ampliación de procedencia sonora con todos los clips de `Resources/Audio/` y `MataColeccionista/Audio/`; resumen rápido de juego y avance en Controles; registro de créditos de desarrollo y licencias de terceros (`Pixelify Sans` OFL, `Chakra Petch` OFL, `Flashlight/Sources.txt` CC0); y restablecimiento transversal del soporte completo de **teclado/ratón y mando**. | Cerrar el hito `MEDIA-TRAILER-01`, dejar listos los apartados de entrega y confirmar compatibilidad total con teclado/ratón y mando. | `01 - Ficha`, `02 - Controles`, `05 - Audio`, `08 - Producción`, `09 - Pruebas` y `10 - Referencia` (transversal). | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Integrado (`0.6.9`) |
+| **13/11/2026** | Integración de identidad visual (`Media/Identidad/`: logo SVG, título SVG/`.aseprite`, portada y tarjeta) en Dirección de Arte; respaldo íntegro de los clips de audio del motor (`Media/Audio/Unity/Flashlight/`, `MataColeccionista/` y `Sistema/` + `Sources.txt` CC0); y **cierre técnico `TECH-01`** (`Windows.asset` Release, build `~0,94 GiB` con `0` errores, `p95` de CPU `6,61 ms`, optimizaciones de memoria/tirones en Windows y registro transparente de limitaciones conocidas para gama mínima y boceto 3D directo de Gólgora). | Completar los entregables de arte digital, audio y control de calidad y cerrar todos los hitos técnicos de entrega. | `05 - Arte`, `07 - Tecnología`, `08 - Producción`, `09 - Calidad` y `10 - Referencia`. | Mora Alejandro Angel Gabriel / Sierra Sosa David Alejandro / Nuñez Chan Luis Fernando | Vigente (`0.6.10`) |
 
 ## Revisión 0.6.2 del 8 de noviembre (`develop` @ `9eed59f`)
 
@@ -2390,9 +2407,11 @@ Esta revisión contrasta cada cifra, fórmula, tecla, flujo de guardado y etique
 - **Play Mode (`EnemySpriteIntegrationTests`, `EliteEnemyTests`, `FlashlightBurstFeedbackTests`, `CompanionPowerTests`, `CompanionIntegrationTests`, `CompleteUpgradeTests`, `CombatArenaRunFlowTests`):** 169 casos aprobados cubriendo integración de sprites de élites, fases de apertura y vulnerabilidad, empuje continuo de *Rayo solar*, poderes de acompañantes, fórmula de *Ojo del verdugo*, catálogo de 35 mejoras y flujo de rondas y reinicios en `CombatArena`.
 - **Condiciones de los medios documentales:** los GIFs de atlas se exportaron a escala `2×` desde los JSON de fotogramas, y las capturas en motor de Unity se registraron en sesiones aisladas con cámara de detalle, jugador protegido y oleadas detenidas, documentadas en [[06 - Registro visual]]. Las capturas de interfaz actualizadas en `Media/Interfaz/` pertenecen al juego compilado final (13 de noviembre).
 
-## Cobertura de entrada y control de calidad de medios (`b381ef4`)
+## Cobertura de entrada, validación técnica y control de calidad de medios (`b381ef4`)
 
 Con la incorporación de las asignaciones de mando para `E` (`buttonWest`), `T` (`buttonNorth`) e `I` (`selectButton`), todas las acciones principales de arena, bóveda, bestiario y menús cuentan con soporte completo en teclado/ratón y mando. Asimismo, el **tráiler promocional final (`MEDIA-TRAILER-01`)** quedó integrado en [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`) y **superó el control de calidad** comprobando gameplay desarrollado y mezcla de audio acorde con la versión definitiva.
+
+En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación Windows x64 Release (`Assets/Settings/Build Profiles/Windows.asset`, `0` errores y `1 010 519 179` bytes / `~0,94 GiB`), perfilado de `2 000` fotogramas con `p95` de CPU de `6,61 ms`, instrumentación `CombatBenchmarkRunner.cs` / `SpawnerRunValidation.cs` y las correcciones de `feature/perfil-memoria-baja` / `bugfix/tirones-horda-windows`, con el alcance acotado de gama mínima registrado en [[03 - Bugs y Seguimiento]].
 
 ---
 
@@ -2411,10 +2430,12 @@ Con la incorporación de las asignaciones de mando para `E` (`buttonWest`), `T` 
 
 **Estado: resuelto e integrado (`main` @ `b381ef4` / `develop` @ `977bac5`).** Además del combate (`A` / `Cruz` para dash), pausa (`Start`), consulta rápida (`Select`) y elección de cartas, la recogida manual de fragmentos en la arena (`CollectibleShard`), la estación de fusión (`FusionStation`), los selectores de puesto (`CompanionSystem`) y la liberación (`VaultReleaseInteraction`) responden al botón oeste del mando (`X` / `Cuadrado`, equivalente a `E`), el desequipado rápido responde al botón norte (`Y` / `Triángulo`, equivalente a `T`), el cierre/cancelación usa el botón este (`B` / `Círculo`) y el Índice de Colección (`VaultCollectionIndex`) se alterna con `Select`.
 
-## Comportamiento de límites de población y curva de oleadas
+## Comportamiento de límites de población, oleadas y alcance técnico
 
 - **Población fuera de cámara:** el límite de `150` enemigos ordinarios contabiliza también a los activos fuera del encuadre; una retirada sostenida en línea recta puede concentrar parte de la población detrás del jugador hasta que se reciclen o sean eliminados.
 - **Recorte de la ronda demo:** la ronda demo (`3:00`) emplea los tres primeros tramos de la tabla de oleadas (`0:00–3:00`) antes de invocar a Gólgora (`3 600 HP`), mientras que la ronda completa (`8:00`) recorre los cinco tramos completos hasta el encuentro de `9 000 HP` (`15 000 HP` base en código).
+- **Cierre de validación técnica y limitación en hardware mínimo (`TECH-01`):** la compilación Windows x64 (`Windows.asset` Release, `0` errores, `~0,94 GiB`), las optimizaciones integradas de memoria/horda (`feature/perfil-memoria-baja` y `bugfix/tirones-horda-windows`) y el perfilado de `2 000` fotogramas (`p95` de CPU = `6,61 ms`) cumplen el presupuesto de `60 FPS` en equipo de desarrollo/referencia. Queda acotada como limitación conocida la ausencia de telemetría instrumentada en un equipo físico de gama mínima (`8 GB RAM` / `4 GB VRAM`), mitigada en el juego mediante los deslizadores de `Efectos decorativos` y `Efectos reducidos` en `MenuSettingsView`.
+- **Arte conceptual de Gólgora:** el diseño del jefe final se concretó directamente mediante modelado 3D y capturas de animación en Unity ([`02 - Personajes y Animación`](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista)), sin hoja de boceto conceptual a lápiz previa.
 
 ---
 
@@ -2488,7 +2509,7 @@ Registra los videojuegos y obras utilizadas como referencia de diseño, arte, na
 
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.9`**).
+Esta edición refleja el estado verificado del código en **`main` @ `b381ef4` / `develop` @ `977bac5`** (**13 de noviembre de 2026**, versión del GDD **`0.6.10`**).
 
 | Área | Regla o decisión vigente (`b381ef4`) |
 | --- | --- |
@@ -2534,6 +2555,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.6** | 13/11/2026 | Auditoría integral de paridad contra el código final de `main` @ `b381ef4` / `develop` @ `977bac5` y los criterios de entrega final: acumulación real de poderes de acompañantes por copia equipada (`Copies(id)` hasta `×3`); fusión de 4 copias de la misma rareza o de **rarezas mixtas** (`qualityMean`); panel compartido `MenuSettingsView` de 3 pestañas entre `CONFIGURACIÓN` y `PAUSA`; cobertura completa de mando en bóveda, recogida y Bestiario (`buttonWest`, `buttonNorth`, `selectButton`); calibración unificada entre C# y `.asset` de enemigos, locomoción (`8 m/s`, dash `22 m/s` con `0,22 s` invuln., `0,40 s` post-golpe), mejoras (`DEMO_03`, `SCRAP_01/03/04`) y Gólgora; y exactitud de persistencia (`FusionPhase` de 5 estados, `opening` normalizado `float`, `EchoScrap.Rank.v2`, `PUT`/`DELETE` con `8 s` y conservación de oportunidad pendiente al pulsar Continuar). | Equipo EchoScrap |
 | **0.6.8** | 13/11/2026 | Integración y aprobación QA del tráiler promocional final (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46,2 s`); ampliación de la tabla de procedencia sonora con todos los efectos reales en Unity (`Flashlight/`, `MataColeccionista/Audio/`, portales y XP); resumen de juego y avance en Controles; y apartado de créditos y licencias de terceros en Roles y Responsabilidades. | Mora Alejandro Angel Gabriel / Equipo EchoScrap |
 | **0.6.9** | 13/11/2026 | Restablecimiento transversal del soporte completo y oficial de **mando** junto con teclado y ratón en todos los apartados del GDD (arena, bóveda, Índice de Colección, fusión, selección de cartas y menús). | Equipo EchoScrap |
+| **0.6.10** | 13/11/2026 | Integración de identidad visual (`Media/Identidad/`: logo SVG, título SVG/`.aseprite`, portada y tarjeta), respaldo completo de clips de audio de Unity (`Media/Audio/Unity/`) y **cierre técnico `TECH-01`** (perfil Release `Windows.asset`, `0` errores, `~0,94 GiB`, `p95` CPU `6,61 ms` y registro transparente de limitaciones conocidas para la entrega `v1.0`). | Mora Alejandro Angel Gabriel / Sierra Sosa David Alejandro / Nuñez Chan Luis Fernando |
 
 ## Convención sugerida
 

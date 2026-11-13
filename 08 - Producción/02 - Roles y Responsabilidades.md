@@ -56,7 +56,7 @@ Un apartado está listo cuando contiene decisiones propias de *EchoScrap*, sus l
 | 05 - Arte y Audio · 01 - Dirección de Arte          | Cupul Dzul Mirian Leticia (Artista 1)       | Obispo Navarro Samuel Alejandro (Artista 2) |
 | 05 - Arte y Audio · 02 - Personajes y Animación     | Cupul Dzul Mirian Leticia (Artista 1)       | Obispo Navarro Samuel Alejandro (Artista 2) |
 | 05 - Arte y Audio · 03 - Entornos                   | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1)       |
-| 05 - Arte y Audio · 04 - Interfaz Visual            | Obispo Navarro Samuel Alejandro (Artista 2) | Cupul Dzul Mirian Leticia (Artista 1)       |
+| 05 - Arte y Audio · 04 - Interfaz Visual            | Obispo Navarro Samuel Alejandro (Artista 2) | Mora Alejandro Angel Gabriel (Líder)        |
 | 05 - Arte y Audio · 05 - Audio y Música             | Nuñez Chan Luis Fernando                    | Obispo Navarro Samuel Alejandro (Artista 2) |
 | 05 - Arte y Audio · 06 - Registro visual            | Sierra Sosa David Alejandro                 | Sierra Sosa David Alejandro                 |
 | 06 - Experiencia · 01 - UX y Flujo del Jugador      | Nuñez Chan Luis Fernando                    | Sierra Sosa David Alejandro                 |
@@ -86,19 +86,6 @@ El reparto cubre los 48 apartados de contenido de las secciones 01 a 10. Por asi
 
 Los apoyos y el entregable específico de cada archivo se detallan en la matriz de reparto. Cada área proporciona sus referencias al responsable que las consolida en `10 - Referencia/02 - Referencias e Inspiración.md`.
 
-## Qué corresponde específicamente a David
-
-1. **02 — Diseño: los siete apartados.** Jugabilidad, Mecánicas, Sistemas, Controles, Progresión, Economía y Recursos, Reglas y Estados del Juego.
-2. **04 — Contenido: los cinco apartados.** Estructura del Contenido, Niveles, Enemigos y NPC, Objetos y Coleccionables, Misiones y Desafíos.
-3. **06 — Experiencia: Guardado y Configuración.**
-4. **07 — Tecnología: los cinco apartados.** Arquitectura, Motor y Herramientas, Requisitos, Datos y Persistencia, Seguridad y Riesgos Técnicos.
-
-En Niveles, David define dimensiones, límites, *spawn* y función jugable; Samuel (Artista 2) prepara el esquema y la ambientación. En Enemigos, David define comportamiento, estadísticas y ataques; Mirian (Artista 1) prepara aspecto y animaciones en sus apartados. En Objetos, David define efectos y condiciones; los artistas especifican iconos y representación visual.
-
-5. **05 — Arte y Audio: Registro visual.** Redacción, revisión y mantenimiento de capturas, atlas y condiciones de procedencia.
-
-Además revisa Visión y Producción, el flujo funcional de UX/UI, accesibilidad, glosario y criterios de prueba. Revisar estos archivos no lo convierte en su redactor.
-
 ## Dependencias para avanzar
 
 1. El líder cierra con el equipo qué incluye la entrega, el MVP y el juego final.
@@ -121,7 +108,7 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 - **Sierra Sosa David Alejandro:** programación principal en Unity (C# / URP), arquitectura técnica, diseño de sistemas, mecánicas, balance, guardado, ranking y registro visual.
 - **Cupul Dzul Mirian Leticia:** dirección de arte, diseño conceptual, sprites y animaciones de personajes, enemigos y coleccionables.
 - **Obispo Navarro Samuel Alejandro:** diseño de entornos 3D, arte de escenarios, interfaz visual y apoyo en producción sonora.
-- **Nuñez Chan Luis Fernando:** composición musical y diseño de audio, narrativa integrada, experiencia de usuario (UX/UI) y aseguramiento de calidad (QA).
+- **Nuñez Chan Luis Fernando:** composición musical y diseño de audio, narrativa integrada, experiencia de usuario (UX/UI) y verificación de calidad (QA).
 
 ### Motor, servicios y recursos con licencia externa
 
