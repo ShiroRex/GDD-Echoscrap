@@ -26,6 +26,7 @@ Las claves adicionales persistidas en `PlayerPrefs` son:
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`0%`–`100%` en `MenuSettingsView`). |
 | `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`0%`–`100%` en `MenuSettingsView`, aplicado por `CombatMusicPlayer` y `MenuMusic`). |
 | `EchoScrap.Graphics.FrameRateLimit` | `int` (`60`) | Tope de fotogramas seleccionado en pausa (`30`, `60` o `120` FPS; desactiva VSync mediante `QualitySettings.vSyncCount = 0`). |
+| `EchoScrap.Graphics.FullScreen` | `int` (`1`) | Modo de pantalla elegido en la pestaña `General` (`1 = COMPLETA` sin bordes a resolución nativa; `0 = VENTANA`), aplicado automáticamente al iniciar el juego en Standalone. |
 | `EchoScrap.PendingGamertag.{sha256}` | `string` (`32 hex`) | Recibo local por alias para confirmar reservas cuyo primer `PUT` pudo haberse completado antes de perder conexión (`GamertagRegistry`). |
 | `EchoScrap.Rank.v2` / `EchoScrap.Collection.*` | Legado migrado | Claves heredadas importadas automáticamente al directorio `Saves/` durante `SaveSlotService.EnsureMigrated()` (y usadas solo como respaldo sin perfil cargado). |
 

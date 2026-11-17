@@ -8,7 +8,7 @@ Las cartas introducen pausas de decisión. Antes de salir, la bóveda guía al j
 
 La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos tiempos corresponden al reloj de combate, que se detiene con las pausas y elecciones. La duración total incluye la preparación, los menús y el enfrentamiento final.
 
-Los ataques se comunican con avisos de suelo, animaciones y texto. El menú de pausa (`Esc` / `Start`), organizado en las pestañas `General`, `Interfaz` y `Sonido`, permite ajustar el movimiento de cámara, los efectos decorativos, el **límite de FPS (`30 / 60 / 120`)**, el nivel de detalle de estadísticas, la visibilidad de los atributos de coleccionables y los volúmenes general y de música.
+Los ataques se comunican con avisos de suelo, animaciones y texto. El menú de configuración y pausa (`Esc` / `Start`), organizado en las pestañas `General`, `Interfaz` y `Sonido`, permite ajustar el movimiento de cámara, los efectos decorativos, el **límite de FPS (`30 / 60 / 120`)**, el **modo de pantalla (`COMPLETA` / `VENTANA`)**, el nivel de detalle de estadísticas, la visibilidad de los atributos de coleccionables y los volúmenes general y de música.
 
 La plataforma, perspectiva y modo se centralizan en [[01 - Ficha del Proyecto]]. Las comprobaciones de lectura y formato de pantalla se registran en [[03 - Accesibilidad]].
 

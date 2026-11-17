@@ -56,7 +56,7 @@ Las cartas de subida de nivel presentan cinco marcos lit 9-sliced según rareza 
 
 Tanto **`CONFIGURACIÓN`** en el menú inicial como **`PAUSA`** (`Esc` / `Start` durante la partida o en la bóveda) comparten el panel unificado **`MenuSettingsView.cs`**, estructurado en **3 pestañas** más los botones inferiores de acción:
 
-1. **`General`:** deslizadores **`Movimiento de cámara`** (`0%` a `100%`, `ShakeIntensity`) y **`Efectos decorativos`** (`0%` a `100%`, `DecorativeIntensity`), más la casilla **`Efectos reducidos`** (`ReducedEffectsMode`) en el menú principal o el selector **`Límite de FPS`** (**`30`**, **`60`**, **`120`**, persistido en `EchoScrap.Graphics.FrameRateLimit`) en el menú de pausa.
+1. **`General`:** deslizadores **`Movimiento de cámara`** (`0%` a `100%`, `ShakeIntensity`) y **`Efectos decorativos`** (`0%` a `100%`, `DecorativeIntensity`), la casilla **`Efectos reducidos`** (`ReducedEffectsMode`) en el menú principal o el selector **`Límite de FPS`** (**`30`**, **`60`**, **`120`**, persistido en `EchoScrap.Graphics.FrameRateLimit`) en el menú de pausa, y el selector **`Pantalla`** (**`COMPLETA`** / **`VENTANA`**, persistido en `EchoScrap.Graphics.FullScreen`, iniciando en pantalla completa sin bordes por defecto).
 2. **`Interfaz`:** selector **`Estadísticas generales`** (**`COMPLETAS`**, **`REDUCIDAS`**, **`OCULTAS`**) y selector **`Atributos de coleccionables`** (**`SÍ`** / **`NO`**, `ShowCompanionPowers`).
 3. **`Sonido`:** deslizadores **`Volumen general`** (`0%` a `100%`, guardado en `EchoScrap.Audio.MasterVolume`) y **`Música`** (`0%` a `100%`, guardado en `EchoScrap.Audio.MusicVolume`).
 

@@ -1,6 +1,6 @@
 # Motor y herramientas
 
-| Tecnología | Uso en el proyecto actual (`8047d90` / `ebf90f9`) |
+| Tecnología | Uso en el proyecto actual (`8047d90` / `b543684`) |
 | --- | --- |
 | Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y compilación Standalone (**Windows x64** y **macOS Universal**). |
 | URP 17.6.0 | Iluminación, materiales, shaders, instanciación GPU e iluminación interior acotada (`WarehouseLightScope`). |

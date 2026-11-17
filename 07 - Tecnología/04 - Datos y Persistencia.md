@@ -39,6 +39,7 @@ La capacidad máxima de la colección es de **18 unidades en total** (`FusionPro
 | --- | --- | --- |
 | `Saves/index.json`, `slot_0..2.json`, `expedition_0..2.json`, `ranking_outbox.json` | Archivos JSON atómicos en `Application.persistentDataPath` | Estado completo de las 3 ranuras, perfil (`bestLocalScore`, `completedRankedRuns`), colección (`FusionProgress` v5), snapshot de expedición y cola de envíos al ranking (`Saves_BatchTest/` en ejecución por lotes). |
 | `EchoScrap.Graphics.FrameRateLimit` | `int` (`60`) | Tope de FPS elegido en la pestaña `General` de pausa (`30`, `60` o `120`; fuerza `QualitySettings.vSyncCount = 0`). |
+| `EchoScrap.Graphics.FullScreen` | `int` (`1`) | Modo de pantalla elegido en la pestaña `General` de `MenuSettingsView` (`1 = COMPLETA` `FullScreenWindow` a resolución nativa del monitor; `0 = VENTANA` `Windowed`), reaplicado automáticamente tras el arranque en Standalone. |
 | `EchoScrap.Audio.MasterVolume` | `float` (`0.85`) | Volumen general (`AudioListener.volume`, deslizador en pestaña `Sonido` de `MenuSettingsView`). |
 | `EchoScrap.Audio.MusicVolume` | `float` (`0.85`) | Volumen de música (`CombatMusicPlayer.SetMusicVolume` y `MenuMusic.RefreshVolume`, deslizador en pestaña `Sonido` de `MenuSettingsView`). |
 | `EchoScrap.PendingGamertag.{sha256}` | `string` (`32 hex`) | Recibo local temporal de reserva de nombre en curso (`GamertagRegistry`). |

@@ -1,6 +1,6 @@
 # EchoScrap — Documento de diseño del juego
 
-**GDD 0.7.0 · 16 de noviembre de 2026 (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `ebf90f9`).**
+**GDD 0.7.1 · 16 de noviembre de 2026 (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`).**
 
 El Coleccionista gestiona hasta **3 ranuras de guardado**, prepara hasta tres entidades en el balcón de la bóveda (dentro de una colección máxima de **18 unidades simultáneas**) y sale al Vertedero para reunir copias, escoger mejoras y enfrentarse a Gólgora. El juego reúne cinco enemigos de horda, dos élites, un jefe, **62 mejoras en cinco rarezas** (incluyendo la carta Mítica *All In*) y quince entidades.
 

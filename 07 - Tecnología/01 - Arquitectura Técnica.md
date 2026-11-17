@@ -1,6 +1,6 @@
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `ebf90f9`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir ranura en **`CONTINUAR`** o **`NUEVA PARTIDA`**, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir ranura en **`CONTINUAR`** o **`NUEVA PARTIDA`**, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
@@ -10,9 +10,9 @@ El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `featur
 | Tiempo, pausas y resultado | `CombatSession`, `GameplayClock`, `CombatOutcomeResolver` |
 | Movimiento, salud y estadísticas | `PlayerInputReader`, `PlayerMotor`, `TerrainPlayerCollision`, `PlayerHealth` (mitigación en `ReceiveDamage`), `PlayerRuntimeStats` |
 | Linterna | `FlashlightWeapon`, `FlashlightPresentation`, `FlashlightAudio` |
-| Horda y élites | `EnemyActor`, `EnemyPool`, `EnemyObstacleNavigator`, `EliteEnemyController`, `EliteProjectilePool`, `MothExplosionPool` |
+| Horda y élites | `EnemyActor`, `EnemyPool`, `EnemySpriteView`, `MothSpriteView`, `MortarSpriteView`, `EnemyObstacleNavigator`, `EliteEnemyController`, `EliteProjectilePool`, `MothExplosionPool` |
 | Jefe | `CombatWaveDirector`, `BossEncounter`, `BossArena`, `GolgoraActor`, `GolgoraCombatSettings` |
-| Progresión y mejoras | `CombatProgression`, `UpgradeDraftController`, `UpgradeCatalog`, `UpgradeCombatRuntime`, `UpgradeTuning` |
+| Progresión y mejoras | `CombatProgression`, `UpgradeDraftController`, `UpgradeCatalog`, `UpgradeCombatRuntime`, `UpgradeEffectPool`, `UpgradeTuning` |
 | Bóveda, colección, índice y fusión | `WarehouseTravel`, `WarehouseCameraDirector`, `WarehouseCameraFraming`, `FusionStation`, `FusionStationUI`, `FusionProgress` (`Capacity = 10`, `FusionSeconds = 30`), `VaultCollectionIndex` (`[I]`), `VaultReleaseInteraction`, `CollectibleDisplay` |
 | Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleDisplay`, `CollectiblePickupFeedback` |
 | Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool`, `GolgoraMagmaRingPool` |

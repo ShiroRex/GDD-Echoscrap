@@ -1,6 +1,6 @@
 # Glosario
 
-| Término | Uso actual (`8047d90` / `ebf90f9`) |
+| Término | Uso actual (`8047d90` / `b543684`) |
 | --- | --- |
 | Coleccionista | Personaje controlado por el jugador, equipado con linterna automática y dash. |
 | Vertedero | Arena exterior de expedición de `200 × 200 m`. |
