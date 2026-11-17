@@ -12,10 +12,10 @@ La iluminación exterior utiliza un perfil compartido de luz, atmósfera y enfoq
 
 ## La Bóveda (Almacén del Coleccionista)
 
-La bóveda modular ocupa una sala separada dentro de la misma escena, articulada en dos niveles mediante rampas laterales para alojar sus **10 pedestales físicos** (equivalentes al límite de **10 unidades** de la colección):
+La bóveda modular ocupa una sala separada dentro de la misma escena, articulada en dos niveles mediante rampas laterales para alojar sus **18 pedestales físicos** (equivalentes al límite de **18 unidades** de la colección):
 
 - **Balcón superior (puestos 1 a 3):** contiene los tres pedestales de equipo activo con rótulos 3D flotantes **`EQUIPO 1`**, **`EQUIPO 2`** y **`EQUIPO 3`**.
-- **Planta inferior (puestos 4 a 10 y máquina central):** contiene los siete pedestales de exposición/reserva, la máquina de fusión en el centro y el portal de salida hacia la arena.
+- **Planta inferior (puestos 4 a 18 y pared trasera):** contiene los **15 pedestales de exposición/reserva** (`slot 3..17`), la **máquina de fusión** desplazada a la pared trasera (`(189, 0, 28,88)`) y el portal de salida hacia la arena, junto a paredes de basalto pixel art, fracturas de roca con relieve e iluminación acotada mediante `WarehouseLightScope`.
 
 La cámara interior emplea una inclinación de `32°` y campo de visión de `65°`, con límites de seguimiento ajustados al recinto, mientras el HUD superpone las tarjetas direccionales (`VaultDirections`), el acceso al Índice de Colección (`ÍNDICE · [I]`) y el panel de consejos (`VaultTips`).
 
@@ -24,7 +24,7 @@ La cámara interior emplea una inclinación de `32°` y campo de visión de `65�
 *Boceto conceptual del almacén: cápsulas cilíndricas de contención para las entidades, consola y cámara central de la máquina de fusión, escaleras de acceso y el portal circular en el suelo.*
 
 ![Interior y preparación](../Media/Interfaz/Boveda_almacen.png)
-*Captura de la Bóveda en la versión final (`734e2a5`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
+*Captura de referencia de la Bóveda (`734e2a5`) mostrando `VaultDirections`, `ÍNDICE · [I]`, `EQUIPO 1..3` y `VaultTips`; en `0.7.0`, integra `18` cápsulas, máquina en pared trasera `(189, 0, 28,88)` y acabado de basalto pixel art y relieve de roca.*
 
 La máquina de fusión combina cámara de resultado, persiana móvil, aura de partículas y efectos de humo al abrirse tras completar su cuenta atrás de `30 s` (`00:30`).
 

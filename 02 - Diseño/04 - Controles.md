@@ -2,7 +2,7 @@
 
 ## Cómo se juega y cómo avanzar
 
-1. **Inicio y bóveda (preparación):** en el menú inicial elige **Continuar** o **Nueva colección** (opcionalmente registra tu alias para el ranking en línea). Ya dentro de la bóveda, usa los rótulos `EQUIPO 1..3`, el **Índice de Colección (`I` / `Select`)** y la **Máquina de Fusión (`E` / botón oeste)** para equipar hasta **3 coleccionables** cuyos poderes pasivos se suman y acumulan por copia equipada, o combinar **4 copias** durante `30 s` para obtener entidades de mayor rareza (límite máximo de `10` unidades).
+1. **Inicio y bóveda (preparación):** en el menú inicial elige **Continuar** o **Nueva partida** sobre cualquiera de las **3 ranuras de guardado** (con opción de reanudar una expedición activa desde su último snapshot y de registrar alias para el ranking en línea). Ya dentro de la bóveda, usa los rótulos `EQUIPO 1..3`, el **Índice de Colección (`I` / `Select`)** y la **Máquina de Fusión (`E` / botón oeste)** en la pared trasera para equipar hasta **3 coleccionables** cuyos poderes pasivos se suman y acumulan por copia equipada, o combinar **4 copias** durante `30 s` para obtener entidades de mayor rareza (límite máximo de `18` unidades).
 2. **Entrada a la arena:** acércate al **portal norte** en la bóveda para abrir `ELIGE LA RONDA` y seleccionar **Ronda Demo** (`3:00` hasta el jefe) o **Ronda Completa** (`8:00` hasta el jefe).
 3. **Combate y progresión:** muévete (`WASD`/flechas o stick/cruceta) y esquiva con **Dash (`Espacio` / `A` / `Cruz`)** mientras tu linterna ataca automáticamente al enemigo más cercano. Recoge **gemas de XP** para subir de nivel y elegir mejoras (`1/2/3`, clic o mando), recoge **botiquines** para curarte y pulsa **`E`** (o botón oeste **`X` / `Cuadrado`**) cerca de los fragmentos caídos para capturar nuevas entidades coleccionables.
 4. **Objetivo y victoria:** sobrevive hasta el final del reloj para invocar al jefe final **Gólgora (MataColeccionista)** en la caldera central (`22 m`) y derrótalo para ganar la incursión, registrar tu puntaje y regresar a la bóveda con tus capturas.
@@ -17,7 +17,7 @@
 | Cambiar carta enfocada | `A` / `D`, izquierda / derecha o puntero | Stick izquierdo o cruceta |
 | Confirmar carta | `Enter` o clic | Botón sur (`A` / `Cruz`) |
 | Reintentar oferta con *Sintonizador* | `R` o botón de interfaz | Botón norte (`Y` / `Triángulo`) |
-| Recoger una entidad cercana en la arena | `E` (si hay hueco en `10/10`) | Botón oeste (`X` / `Cuadrado`) |
+| Recoger una entidad cercana en la arena | `E` (si hay hueco en `18/18`) | Botón oeste (`X` / `Cuadrado`) |
 | Abrir / cerrar el Índice de Colección en la bóveda | `I` o clic en `ÍNDICE · [I]` (cierra también con `Esc`) | Botón `Select` (`VaultCollectionIndex`, cierra también con `B` / `Círculo`) |
 | Equipar o editar un puesto de equipo (puestos 1 a 3, balcón) | `E` (`E · EQUIPAR` / `E · EDITAR`) | Botón oeste (`X` / `Cuadrado`) |
 | Desequipar directamente un puesto de equipo ocupado en el mundo (puestos 1 a 3) | `T` | Botón norte (`Y` / `Triángulo`) |

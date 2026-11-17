@@ -22,17 +22,17 @@ La horda busca una posición dinámica fuera de cámara alrededor del jugador y 
 
 El acceso al almacén está al norte de la arena, alrededor de `x = 0` y `z = 78`. La escalera baja hasta el portal. La bóveda ocupa otra zona de la misma escena; el portal traslada al mismo jugador sin descargar el mundo.
 
-La sala modular se organiza en dos niveles conectados por rampas y contiene exactamente **diez pedestales físicos** (`displays[10]`, equivalentes al límite máximo de **10 unidades** de la colección):
+La sala modular se organiza en dos niveles conectados por rampas y contiene exactamente **dieciocho pedestales físicos** (`displays[18]`, equivalentes al límite máximo de **18 unidades** de la colección):
 
 - **Balcón superior (puestos 1 a 3):** alberga los **3 puestos de equipo activo**, señalizados en el mundo con los rótulos 3D **`EQUIPO 1`**, **`EQUIPO 2`** y **`EQUIPO 3`** (`E · EQUIPAR` / `E · EDITAR` y `T` para desequipar rápido).
-- **Planta inferior (puestos 4 a 10 y máquina central):** alberga los **7 puestos de exposición y reserva** (`E · LIBERAR` para liberar copias con confirmación) y la **máquina de fusión** central (`E · FUSIONAR` / `E · VER FUSIÓN`, `30 s` fijos de duración).
+- **Planta inferior (puestos 4 a 18 y pared trasera):** alberga los **15 puestos de exposición y reserva** (`E · LIBERAR` para liberar copias con confirmación) y la **máquina de fusión** ubicada en la pared trasera (`(189, 0, 28,88)`, `E · FUSIONAR` / `E · VER FUSIÓN`, `30 s` fijos de duración), junto con texturizado de basalto pixel art, fracturas de roca con relieve, bloqueo bajo escalera/balcón e iluminación interior acotada (`WarehouseLightScope`).
 
 El HUD de la bóveda acompaña el recorrido con dos tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo **`ÍNDICE · [I]`** para abrir el Índice de Colección y el panel inferior izquierdo de consejos rotatorios (`VaultTips`). Su cámara utiliza una inclinación de `32°` y campo de visión de `65°`, con límites de seguimiento para mantener la sala encuadrada.
 
 ![Boceto conceptual a mano de la Bóveda|420](../Media/ConceptArt/Almacen_Arte.jpeg)
 
 ![Bóveda actual](../Media/Interfaz/Boveda_almacen.png)
-*Captura de la Bóveda en la versión final (`734e2a5`), mostrando las tarjetas direccionales superiores (`VaultDirections`), el botón superior izquierdo `ÍNDICE · [I]`, los rótulos 3D de pedestales `EQUIPO 1..3` y el panel de consejos rotatorio `CONSEJO` (`VaultTips`).*
+*Captura de referencia de la Bóveda (`734e2a5`) mostrando `VaultDirections`, `ÍNDICE · [I]`, `EQUIPO 1..3` y `VaultTips`; en la versión `0.7.0`, la bóveda aloja `18` pedestales físicos (`DisplaySlots[18]`) y la máquina de fusión se sitúa en la pared trasera.*
 
 Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RONDA`). Durante una visita desde el combate se conserva la sesión y se suspenden sus enemigos y peligros hasta volver.
 
