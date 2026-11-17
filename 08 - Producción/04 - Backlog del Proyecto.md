@@ -1,6 +1,6 @@
 # Entregas y trabajo pendiente
 
-| Área | Estado actual (`develop` @ `b543684`) |
+| Área | Estado actual (`develop` @ `b543684` / `2f919f5`) |
 | --- | --- |
 | Flujo, guardado y ranking | Menú con selector de **3 ranuras de guardado** (`CONTINUAR` / `NUEVA PARTIDA` en `SaveSlotService`), migración automática desde `PlayerPrefs`, snapshots cada `3 s` (`ExpeditionSnapshotService`), campo `NOMBRE DEL JUGADOR (RANKING)...` en `NUEVA PARTIDA · ARCHIVO N` (`GamertagRegistry`), preparación en bóveda, elección de ronda (`ELIGE LA RONDA`), expedición y ranking `rulesVersion = 2` publicando **todos los intentos válidos** conservando la mejor puntuación por gamertag en `https://echoscrap.web.app`. |
 | Señalización de bóveda e Índice | Rótulos 3D `EQUIPO 1..3`, flechas direccionales superiores (`VaultDirections`), panel de consejos (`VaultTips`), paredes con basalto pixel art, fracturas de roca con relieve, bloqueo bajo escalera, iluminación `WarehouseLightScope` e **Índice de Colección (`[I]` / `Select`)** con pestañas `POR RAREZAS` (`TODAS` + 6 categorías) y `EN TU BÓVEDA`. |
@@ -10,9 +10,9 @@
 | Gólgora | Caldera de `22 m`, seis patrones unificados en `GolgoraCombatSettings.cs` y `CombatSettings.asset`, dos fases y refuerzos anunciados. |
 | Interfaz, audio y distribución | Tipografía **`Pixelify Sans`**, panel unificado `MenuSettingsView` en 3 pestañas (`General` con `Límite de FPS` `30 / 60 / 120` en pausa y **`Pantalla` `COMPLETA` / `VENTANA`** en ambos menús, `Interfaz` y `Sonido`), cuadrícula HUD `9 × 34 px` + `22` estadísticas, consulta rápida `Q` / `Select`, audio integrado, icono de escritorio `EchoScrap-AppIcon.png`, limpieza segura en `GolgoraMagmaRingPool`, build publicada en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y compilaciones verificadas **Windows x64** y **macOS Universal (`x86_64` + `arm64`)**. |
 
-## Integraciones cerradas (`0.6.2` – `0.7.1`)
+## Integraciones cerradas (`0.6.2` – `0.7.2`)
 
-| ID | Tarea | Estado | Comprobación en código (`8047d90` / `b543684`) |
+| ID | Tarea | Estado | Comprobación en código (`8047d90` / `b543684` / `2f919f5`) |
 | --- | --- | --- | --- |
 | UX-01 | Guiar la preparación de entidades y navegación en la bóveda. | Integrado | Rótulos 3D `EQUIPO 1..3` (`CollectibleDisplay`), indicadores direccionales `VaultDirections` y consejos `VaultTips` cada `8 s` (`GameMenuView`). |
 | VAULT-INDEX-01 | Implementar Índice de Colección (`[I]`) y ampliar bóveda a 18 unidades en pared trasera. | Integrado | `VaultCollectionIndex.cs` (`TODAS` + 6 rarezas y `EN TU BÓVEDA`), `FusionProgress.Capacity = 18`, `FusionStation` en `(189, 0, 28,88)` y `VaultReleaseInteraction.cs`. |
@@ -26,7 +26,7 @@
 | ART-ELITE-01 / 02 | Conectar sprites y ciclos de combate de Caballero Fantasma y Centinela de Cobre. | Integrado | Atlas de 224 y 288 fotogramas integrados con mapas de normales y emisión. |
 | COMBAT-SOLAR-01 | Aplicar empuje en cada pulso de *Rayo solar* (`FLASH_05`) manteniendo `FLASH_03`, `BIO_02` y `CRIT_04` en el cuarto pulso. | Integrado | `FlashlightWeapon.cs:402` (`capturedSolarMode`) y `UpgradeCombatRuntime.cs:232-236, 341` (`PulseIndex == 4`). |
 | MEDIA-TRAILER-01 | Grabar, montar y validar el tráiler promocional final de *EchoScrap*. | Integrado y aprobado en QA | [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](../Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`), con gameplay desarrollado y audio propio. |
-| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Compilación verificada y ejecución manual en macOS confirmada por el equipo | Paquetes Release verificados `EchoScrap-Windows-x64-62mejoras.zip` (`0x8664`, `0` errores en humo, arranque fullscreen `1920 × 1080`) y `EchoScrap-macOS-Universal-62mejoras.zip` (`x86_64` + `arm64`, `-rwxr-xr-x`). |
+| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Compilación `0.7.2` verificada y ejecución manual previa en macOS confirmada por el equipo | Paquetes Release `0.7.2` verificados `EchoScrap-Windows-x64-0.7.2.zip` (`0x8664`, `0` errores en humo, `0.7.2` en `globalgamemanagers`) y `EchoScrap-macOS-Universal-0.7.2.zip` (`x86_64` + `arm64`, `Info.plist` `0.7.2`, `-rwxr-xr-x`); además, arranque fullscreen `1920 × 1080` comprobado sobre `b543684`. |
 | SETTINGS-DISPLAY-01 | Añadir selector **`Pantalla` (`COMPLETA` / `VENTANA`)**, limpiar `_EmissionColor` en enemigos y proyectar anillos de área sobre terreno. | Integrado | `MenuSettingsView.cs` (`EchoScrap.Graphics.FullScreen`), `MothSpriteView.cs`, `MortarSpriteView.cs`, `EnemySpriteView.cs`, `EnemyActor.cs` y `UpgradeEffectPool.ProjectGroundRing` (`0` GC bytes). |
 
 ## Estado de cierre del backlog

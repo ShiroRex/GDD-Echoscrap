@@ -1,6 +1,6 @@
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`develop` @ `b543684`** (**16 de noviembre de 2026**, versión del GDD **`0.7.1`**).
+Esta edición refleja el estado verificado del código en **`develop` @ `b543684`** y **`chore/version-gdd-0.7.2` @ `2f919f5`** (**16 de noviembre de 2026**, versión del GDD y del juego **`0.7.2`**).
 
 | Área | Regla o decisión vigente (`8047d90` / `b543684`) |
 | --- | --- |

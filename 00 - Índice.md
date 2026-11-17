@@ -1,6 +1,6 @@
 # EchoScrap — Documento de diseño del juego
 
-**GDD 0.7.2 · 16 de noviembre de 2026 (`develop` @ `b543684`).**
+**GDD 0.7.2 · 16 de noviembre de 2026 (`develop` @ `b543684` + `chore/version-gdd-0.7.2` @ `2f919f5`).**
 
 El Coleccionista gestiona hasta **3 ranuras de guardado**, prepara hasta tres entidades en el balcón de la bóveda (dentro de una colección máxima de **18 unidades simultáneas**) y sale al Vertedero para reunir copias, escoger mejoras y enfrentarse a Gólgora. El juego reúne cinco enemigos de horda, dos élites, un jefe, **62 mejoras en cinco rarezas** (incluyendo la carta Mítica *All In*) y quince entidades.
 
