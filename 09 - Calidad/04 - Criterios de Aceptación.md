@@ -1,6 +1,6 @@
 # Criterios de aceptación
 
-| Parte | Comportamiento esperado (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`) |
+| Parte | Comportamiento esperado (`develop` @ `b543684`) |
 | --- | --- |
 | Inicio y ranking | Menú con selector de **3 ranuras (`CONTINUAR` / `NUEVA PARTIDA`)**, `CONFIGURACIÓN` compartida en 3 pestañas (`MenuSettingsView`), campo `NOMBRE DEL JUGADOR (RANKING)...` (máx. 20 caracteres, validado por `GamertagRegistry`), reanudación directa si existe snapshot válido (`expedition_{N}.json`), y confirmación segura al sobrescribir una ranura ocupada. |
 | Preparación y guía en bóveda | Rótulos 3D `EQUIPO 1..3` en el balcón, indicadores direccionales superiores (`VaultDirections`), panel inferior de consejos rotatorios cada `8 s` (`VaultTips`), máquina de fusión en pared trasera (`189, 0, 28,88`) e **Índice de Colección (`[I]`)** (`I` / `Select`) con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 18 UNIDADES` y pestañas `POR RAREZAS` (`TODAS` + 6 rarezas, siluetas `???`) y `EN TU BÓVEDA`. |

@@ -1,18 +1,20 @@
 # EchoScrap — Documento de diseño de videojuego
 
-**GDD 0.7.1 · 16 de noviembre de 2026 (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`)**
+**GDD 0.7.2 · 16 de noviembre de 2026 (`develop` @ `b543684`)**
 
 Equipo EchoScrap: Mora Alejandro Angel Gabriel, Sierra Sosa David Alejandro, Cupul Dzul Mirian Leticia, Obispo Navarro Samuel Alejandro y Nuñez Chan Luis Fernando.
 
 Plantilla original: Ing. Luis Fernando Villafaña Rejón.
 
-Esta edición sincroniza al 100 % el documento con el código y las escenas actuales (`develop` @ `8047d90` + `feature/mejoras-y-allin-mitica` @ `b543684`): menú inicial con selector de **3 ranuras de guardado** (`SaveSlotService`, migración automática desde `PlayerPrefs`) y **snapshots de expedición cada `3 s`** (`ExpeditionSnapshotService`), bóveda ampliada a **18 unidades** (`DisplaySlots[18]`: `3` de equipo + `15` de exposición) con máquina de fusión de `30 s` en la pared trasera `(189, 0, 28,88)`, paredes de basalto pixel art y relieve de roca, **Índice de Colección (`[I]`)**, poderes acumulables por copia equipada (`Copies(id)` y `DescribeHudPower`), catálogo ampliado a **62 mejoras en cinco rarezas** (`8` cartas contextuales `1239072`, `19` cartas nuevas sin GC, aura y zonas en suelo proyectadas sobre el relieve en `UpgradeEffectPool.ProjectGroundRing`, limpieza de `_EmissionColor` en enemigos y la carta **Mítica *All In*** `MYTH_01` con marco lit `Frame_Mythic`, además de la reelaboración de `DASH_05` *Paso de ariete* a distancia de dash), HUD con cuadrícula `9 × 34 px` y `22` estadísticas, selectores **`Límite de FPS` (`30 / 60 / 120`)** y **`Pantalla` (`COMPLETA` / `VENTANA`)** con arranque automático en pantalla completa sin bordes (`EchoScrap.Graphics.FullScreen`), ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) publicando todos los intentos válidos y conservando la mejor puntuación por gamertag, optimizaciones de navegación, GPU instancing e iluminación interior (`WarehouseLightScope`), pruebas automatizadas verificadas (`EditMode 63/63` con gráficos habilitados; `PlayMode 172/172` focalizado con `0` fallos en las suites de ajustes, sprites, mejoras, bóveda, guardado y jefe), y paquetes Standalone verificados para **Windows x64** (`1920 × 1080` en prueba de humo, `0` errores) y **macOS Universal (`x86_64` + `arm64`)**, junto con los recursos de identidad, arte conceptual, audio y tráiler (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+Esta edición documenta el código y las escenas actuales (`develop` @ `b543684`): menú inicial con selector de **3 ranuras de guardado** (`SaveSlotService`, migración automática desde `PlayerPrefs`) y **snapshots de expedición cada `3 s`** (`ExpeditionSnapshotService`), bóveda ampliada a **18 unidades** (`DisplaySlots[18]`: `3` de equipo + `15` de exposición) con máquina de fusión de `30 s` en la pared trasera `(189, 0, 28,88)`, paredes de basalto pixel art y relieve de roca, **Índice de Colección (`[I]`)**, poderes acumulables por copia equipada (`Copies(id)` y `DescribeHudPower`), catálogo ampliado a **62 mejoras en cinco rarezas** (`8` cartas contextuales `1239072`, `19` cartas nuevas sin GC, aura y zonas en suelo proyectadas sobre el relieve en `UpgradeEffectPool.ProjectGroundRing`, limpieza de `_EmissionColor` en enemigos y la carta **Mítica *All In*** `MYTH_01` con marco lit `Frame_Mythic`, además de la reelaboración de `DASH_05` *Paso de ariete* a distancia de dash), HUD con cuadrícula `9 × 34 px` y `22` estadísticas, selectores **`Límite de FPS` (`30 / 60 / 120`)** y **`Pantalla` (`COMPLETA` / `VENTANA`)** con arranque automático en pantalla completa sin bordes (`EchoScrap.Graphics.FullScreen`), ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) publicando todos los intentos válidos y conservando la mejor puntuación por gamertag, optimizaciones de navegación, GPU instancing e iluminación interior (`WarehouseLightScope`), pruebas automatizadas verificadas (`EditMode 63/63` con gráficos habilitados; `PlayMode 172/172` focalizado con `0` fallos en las suites de ajustes, sprites, mejoras, bóveda, guardado y jefe), y paquetes Standalone verificados para **Windows x64** (`1920 × 1080` en prueba de humo, `0` errores) y **macOS Universal (`x86_64` + `arm64`)**, junto con los recursos de identidad, arte conceptual, audio y tráiler (`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`). Los GIFs se reproducen en lectores compatibles; una exportación a PDF conserva imágenes estáticas.
+
+La sección Pruebas distingue las comprobaciones aprobadas de los fallos pendientes de la suite completa. La biblioteca general de clasificación (sección 11) permanece como referencia separada de esta compilación del diseño de EchoScrap.
 
 ---
 
 # EchoScrap: avance jugable
 
-**GDD 0.7.1 · 16 de noviembre de 2026 (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`).**
+**GDD 0.7.2 · 16 de noviembre de 2026 (`develop` @ `b543684`).**
 
 El Coleccionista prepara su equipo en la bóveda y sale al Vertedero para reunir experiencia y entidades. Durante la expedición combate con una linterna automática, escoge mejoras y se enfrenta a Gólgora. Al terminar vuelve a la bóveda con su colección, donde puede consultar el Índice de Colección (`[I]`), editar el equipo activo, liberar copias para hacer hueco o usar la máquina de fusión.
 
@@ -46,6 +48,8 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 - [[02 - Personajes y Animación]] reúne las fichas visuales, fuentes editables, spritesheets y GIFs de personajes y enemigos.
 - [[06 - Registro visual]] reúne los GIFs de VFX y las condiciones de las capturas.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Ficha del proyecto
@@ -54,7 +58,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | --- | --- |
 | Nombre | EchoScrap |
 | Versión del GDD | 0.7.1 |
-| Estado | Versión jugable sincronizada en `develop` + `feature/mejoras-y-allin-mitica`: menú inicial con **3 ranuras de guardado** y reanudación por snapshot, configuración compartida con selector de **pantalla completa/ventana (`COMPLETA` / `VENTANA`)** y FPS, preparación guiada en bóveda de **18 unidades**, Índice de Colección / Bestiario (`[I]`), expediciones, fusión de 30 s (misma rareza o rarezas mixtas), **62 mejoras en cinco rarezas** (incluyendo *All In* Mítica y proyección de auras/zonas sobre relieve), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) con todos los intentos válidos, compilaciones **Windows x64** y **macOS Universal**, publicación web previa en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`). |
+| Estado | Versión jugable sincronizada en `develop`: menú inicial con **3 ranuras de guardado** y reanudación por snapshot, configuración compartida con selector de **pantalla completa/ventana (`COMPLETA` / `VENTANA`)** y FPS, preparación guiada en bóveda de **18 unidades**, Índice de Colección / Bestiario (`[I]`), expediciones, fusión de 30 s (misma rareza o rarezas mixtas), **62 mejoras en cinco rarezas** (incluyendo *All In* Mítica y proyección de auras/zonas sobre relieve), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) con todos los intentos válidos, compilaciones **Windows x64** y **macOS Universal**, publicación web previa en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`). |
 | Actualización | 16 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
@@ -66,7 +70,7 @@ La preparación en la bóveda está guiada mediante rótulos 3D sobre los pedest
 | Distribución ejecutable (itch.io) | https://naked-hiro.itch.io/echoscrap |
 | Tráiler promocional final | [EchoScrap-Trailer-Final-1080p.mp4](Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, gameplay desarrollado y audio propio; aprobado en QA) |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | Código y escena de `develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684` (integra `734e2a5`/`6973556`, las 8 mejoras contextuales `1239072`, selector de FPS `993d459`, 3 ranuras `1c97922`, snapshots `24db181`, ranking por mejor marca `15d273f`, bóveda de 18 cápsulas `8c0dfae`, mejoras de rendimiento/arte `578ba07..aefed1a`, expansión a 62 mejoras + rareza Mítica `ebf90f9`, y correcciones `7a237e5..b543684`: selector `Pantalla` `COMPLETA`/`VENTANA` con pantalla completa al iniciar, limpieza de `_EmissionColor` en enemigos y proyección sobre relieve de auras/zonas). |
+| Revisión consultada | Código y escena de `develop` @ `b543684` (integra `734e2a5`/`6973556`, las 8 mejoras contextuales `1239072`, selector de FPS `993d459`, 3 ranuras `1c97922`, snapshots `24db181`, ranking por mejor marca `15d273f`, bóveda de 18 cápsulas `8c0dfae`, mejoras de rendimiento/arte `578ba07..aefed1a`, expansión a 62 mejoras + rareza Mítica `ebf90f9`, y correcciones `7a237e5..b543684`: selector `Pantalla` `COMPLETA`/`VENTANA` con pantalla completa al iniciar, limpieza de `_EmissionColor` en enemigos y proyección sobre relieve de auras/zonas). |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo
@@ -83,17 +87,21 @@ El Coleccionista reúne entidades en un vertedero dimensional, prepara sus poder
 
 El contenido actual incluye una arena de 200 × 200 m, cinco enemigos de horda, dos élites, un jefe (Gólgora), **62 mejoras en cinco rarezas** (Común, Rara, Épica, Legendaria y Mítica) y una colección de quince entidades con capacidad máxima de **18 unidades simultáneas** en la bóveda (`3` puestos de equipo en el balcón superior con rótulos `EQUIPO 1..3` y `15` puestos de exposición en la planta baja, con la máquina de fusión en la pared trasera en `x = 189, z = 28,88`), acompañada de indicadores direccionales (`VaultDirections`), consejos rotatorios (`VaultTips`) e Índice de Colección (`[I]`).
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Visión del juego
 
-EchoScrap combina supervivencia frente a hordas con la preparación de una colección de hasta diez unidades simultáneas. En el balcón superior de la bóveda, el jugador puede elegir hasta tres entidades para los puestos de equipo (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`). Cada identidad equipada activa un poder propio de combate, independiente de las cartas y **acumulable por copia equipada** hasta `×3` (`Copies(id)`). Después decide entre la ronda demo y la completa.
+EchoScrap combina supervivencia frente a hordas con la preparación de una colección de hasta dieciocho unidades simultáneas. En el balcón superior de la bóveda, el jugador puede elegir hasta tres entidades para los puestos de equipo (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`). Cada identidad equipada activa un poder propio de combate, independiente de las cartas y **acumulable por copia equipada** hasta `×3` (`Copies(id)`). Después decide entre la ronda demo y la completa.
 
 En la arena controla el movimiento y el dash del Coleccionista. La linterna apunta automáticamente al enemigo más cercano dentro de su alcance, lo que permite atender a las rutas de escape, los ataques anunciados y la recogida. La XP abre elecciones entre hasta tres cartas; las **62 mejoras en cinco rarezas** (incluyendo armas orbitales, auras de estática, proyectiles rebote/búmeran, zonas químicas/criogénicas y la carta Mítica *All In*) permiten construir una configuración distinta durante cada intento, y mantener pulsado `Q` (o `Select` en mando) despliega al instante las estadísticas completas (`22` filas) y las descripciones de los poderes de acompañantes.
 
 También aparecen fragmentos de entidades que se recogen manualmente con `E` (o botón oeste en mando) mientras haya hueco entre las **18 unidades** de la colección (si está llena, aparece el aviso `INVENTARIO LLENO / LIBERA ESPACIO`). Esas copias pasan a la ranura guardada y sirven para equipar poderes en el balcón, exhibirse en los **18 pedestales físicos de la bóveda** (`3` puestos de equipo en el balcón y `15` pedestales de exposición/reserva en planta baja) o alimentar la máquina de fusión ubicada en la pared trasera (`(189, 0, 28,88)`) con cuatro ingredientes de la misma rareza o de rarezas mixtas (`30 s` de duración fija). La bóveda conecta esa actividad entre expediciones mediante indicadores direccionales (`VaultDirections`), consejos contextuales (`VaultTips`) y el **Índice de Colección (`[I]`)**.
 
 Gólgora cierra la expedición en una caldera central. Sus ataques cubren distancias y formas diferentes, y su segunda fase acelera el encuentro. La muerte del jugador produce derrota; la del jefe con el jugador vivo produce victoria. El resultado sincroniza la puntuación con el ranking del evento (`EventLeaderboardSync`) y devuelve al jugador a la bóveda para preparar el siguiente intento.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -110,6 +118,8 @@ La ronda demo lleva al jefe a los tres minutos y la completa a los ocho. Estos t
 Los ataques se comunican con avisos de suelo, animaciones y texto. El menú de configuración y pausa (`Esc` / `Start`), organizado en las pestañas `General`, `Interfaz` y `Sonido`, permite ajustar el movimiento de cámara, los efectos decorativos, el **límite de FPS (`30 / 60 / 120`)**, el **modo de pantalla (`COMPLETA` / `VENTANA`)**, el nivel de detalle de estadísticas, la visibilidad de los atributos de coleccionables y los volúmenes general y de música.
 
 La plataforma, perspectiva y modo se centralizan en [[01 - Ficha del Proyecto]]. Las comprobaciones de lectura y formato de pantalla se registran en [[03 - Accesibilidad]].
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -130,6 +140,8 @@ La carga del Coloso, el ácido del Mortero, la espoleta por proximidad de la Pol
 ## Una bóveda que da continuidad a las expediciones
 
 Las entidades recogidas pasan al inventario de la ranura activa hasta un máximo de **18 unidades simultáneas** (`DisplaySlots[18]`: `3` puestos de equipo en el balcón + `15` pedestales de exposición/reserva en planta baja), mientras que su registro permanente queda guardado en el **Índice de Colección (`[I]`)** de 15 entidades. En la bóveda, señalizada mediante rótulos `EQUIPO 1..3`, indicadores direccionales (`VaultDirections`) y consejos (`VaultTips`), el jugador equipa hasta tres acompañantes (cuyos poderes se acumulan por copia equipada), libera copias para gestionar el espacio o consume cuatro ingredientes (de la misma rareza o de rarezas mixtas) en una fusión de `30 s` ubicada en la pared trasera.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -162,7 +174,7 @@ El portal o el botón **`INICIAR EXPEDICIÓN`** abre la elección de ronda (`ELI
 7. Combatir contra Gólgora en la caldera central.
 8. Consultar el resultado y volver a la bóveda para revisar equipo, liberar espacio o fusionar copias.
 
-Las elecciones de cartas pausan la simulación del combate mediante la máscara `PauseReason.LevelUpChoice`. Si una recogida acumula varias subidas de nivel consecutivas, las elecciones se encadenan una tras otra sin reanudar la arena entre selecciones.
+Las elecciones de cartas pausan la simulación del combate mediante la máscara `PauseReason.TacticalDraft`. Si una recogida acumula varias subidas de nivel consecutivas, las elecciones se encadenan una tras otra sin reanudar la arena entre selecciones.
 
 ## Cierre y continuidad
 
@@ -177,6 +189,8 @@ La máquina de fusión situada en la pared trasera de la bóveda (`189, 0, 28,88
 Todas las fusiones tienen una **duración fija de 30 segundos (`00:30`)** en tiempo real (`Time.unscaledDeltaTime`), que continúa avanzando entre escenas. Al completarse la cuenta atrás, la pantalla de resultado revela la entidad obtenida y ofrece un único botón de acción: **`COLECCIONAR`** (además del botón `X` para cerrar la ventana sin reclamar aún). Si la colección está en `18/18` unidades al intentar reclamar, la interfaz muestra **`INVENTARIO LLENO · LIBERA ESPACIO`** y conserva el resultado en espera (`AwaitingDecision`) hasta que el jugador libere una unidad en los pedestales de la bóveda.
 
 Durante una expedición sigue siendo posible visitar la bóveda por el acceso norte. Esa visita conserva la sesión en memoria y suspende su combate; al regresar se retoma. Volver desde un resultado inicia la preparación de una nueva expedición.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -269,6 +283,8 @@ Hasta tres copias equipadas en los puestos del balcón (`EQUIPO 1`, `EQUIPO 2`, 
 
 Los coleccionables que aparecen en la arena requieren pulsar **`E`** (o el botón oeste en mando) dentro de unos `2,5 m` con línea de interacción despejada, y no se recogen con el imán de gemas y botiquines. Si el jugador ya ha alcanzado el límite máximo de **18 unidades** en su colección (`18/18`), el fragmento no puede recogerse y muestra en pantalla el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Sistemas
@@ -277,7 +293,7 @@ Los coleccionables que aparecen en la arena requieren pulsar **`E`** (o el botó
 | --- | --- |
 | Flujo general | Menú inicial con `CONTINUAR` / `NUEVA PARTIDA` en **3 ranuras de guardado** (`SaveSlotService`), alias único para ranking, gestión de colección, bóveda de **18 cápsulas**, selección de ronda, expedición (con reanudación automática por snapshot), y retorno desde resultados. |
 | Entradas y locomoción | Teclado, ratón y mando completos (`WASD` / stick, `Espacio` / `A` para dash con deslizamiento lateral en rocas bajas, `E` / botón oeste para recoger/equipar/liberar/fusionar, `T` / botón norte para desequipar rápido en balcón, `I` / `Select` para Índice de Colección y `Q` / `Select` mantenido para detalles del HUD en combate). |
-| Sesión | Reloj, razones de pausa (`Manual`, `FocusLost`, `LevelUpChoice`, `FusionMenu`, `CompanionMenu`, `GameMenu`), captura periódica y por eventos de snapshots (`ExpeditionSnapshotService`), entrada del jefe, resolución de resultados y limpieza entre expediciones. |
+| Sesión | Reloj, razones de pausa (`Manual`, `FocusLost`, `TacticalDraft`, `FusionMenu`, `CompanionMenu`, `FrontEnd`, `SessionEnded`), captura periódica y por eventos de snapshots (`ExpeditionSnapshotService`), entrada del jefe, resolución de resultados y limpieza entre expediciones. |
 | Salud y daño | Salud máxima escalable, orden de mitigación en `PlayerHealth`, armadura hasta `60%` (`SCRAP_01` + `Soldier`), evasión hasta `35%` (`DASH_09`), bloqueo hasta `50%` (`SCRAP_08` con onda deflectora), vulnerabilidad (`FLASH_14`), críticos, protección temporal (`0,40 s`), curación y salvación/protección (*Yanikua* ante daño letal y *Nanobots* al sobrevivir bajo `20%` de vida). |
 | Linterna | Autoapuntado en 360°, ráfagas de cuatro pulsos con empuje final y modo continuo *Rayo solar* (`FLASH_05`), además de sobrecarga tras dash (`FLASH_13`), reducción de descanso por baja (`FLASH_12`) y faro de vacío (`FLASH_14`). |
 | Enemigos | Cinco arquetipos de horda, dos élites y Gólgora con navegación presupuesta por frame (`EnemyObstacleNavigator`), ataques, estados alterados y tabla unificada de susceptibilidad y frenado al empuje. |
@@ -296,6 +312,8 @@ Los coleccionables que aparecen en la arena requieren pulsar **`E`** (o el botó
 El reloj distingue pausa manual, pérdida de foco, cartas, fusión/índice (`PauseReason.FusionMenu`), selector de equipo y menús generales. Resolver una de esas razones no reanuda una sesión que sigue detenida por otra. La interfaz se anima con `Time.unscaledDeltaTime` mientras el combate está pausado.
 
 La simulación resuelve daño y resultados. La presentación representa esos eventos con animación, sonido y VFX. Las reservas de actores y efectos se reutilizan entre expediciones. `CompanionPowerRuntime` mantiene los bonos, ataques, curaciones, protección y salvación de las entidades equipadas; sus recargas no se reinician al cambiar equipo durante una expedición.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -336,6 +354,8 @@ La linterna ataca automáticamente al objetivo válido más cercano. Los portale
 Mantener pulsada la tecla **`Q`** en teclado o el botón **`Select`** en mando durante el combate (`CombatHud.IsHudDetailHeld`) despliega temporalmente el panel de estadísticas en modo completo (`COMPLETAS`) y muestra las líneas descriptivas de los poderes de los tres acompañantes equipados aunque estén ocultos o reducidos en la pestaña `Interfaz` del menú de pausa.
 
 El laboratorio de pruebas (`EnemyLaboratoryPanel`) usa `Tab` para mostrar u ocultar el panel y `R` para reiniciar la escena de prueba.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -423,7 +443,7 @@ Las series separadas por barras corresponden a sus niveles. Los valores describe
 - **`FLASH_05` (*Rayo solar*) y empuje vs. mejoras de cuarto pulso (`FlashlightWeapon.cs`, `UpgradeCombatRuntime.cs`):** la condición `finisher || (capturedSolarMode && !rear)` hace que cada pulso frontal del rayo continuo aplique empuje. Sin embargo, **`FLASH_03` (*Prisma voltaico*), `BIO_02` (*Sifón*) y `CRIT_04` (*Ráfaga crítica*) mantienen su comprobación exclusiva `PulseIndex == 4`**, por lo que solo se disparan en el cuarto pulso de cada ciclo.
 - **`DASH_04` (*Cataclismo*) con `DASH_01` (*Dash ágil*) (`PlayerRuntimeStats.cs`):** `DASH_04` fija la recarga del dash en `0,5 s` e ignora la reducción porcentual de recarga de `DASH_01` (`-10%` por nivel), pero mantiene activo el multiplicador de velocidad de desplazamiento del dash de `DASH_01` (`+8%` por nivel) y el multiplicador de duración/distancia de `DASH_05` (*Paso de ariete*).
 - **`FLASH_11` (*Amplificador de área*) y `SCRAP_07` (*Duplicador de matriz*):** `AreaMultiplier` (`1 + 0,12 × FLASH_11`) escala áreas y ondas (`UpgradeCombatRuntime.QueueBlast`, auras, charcos, estelas, barridos, sierras orbitales y radio criogénico) y compone multiplicativamente `ExplosionRadiusMultiplier` con `DEMO_01`; `ExtraProjectileCount` (`1` con `SCRAP_07`) suma `+1` a `FLASH_03` (hasta `6` enlaces), `SCRAP_02`, `SCRAP_03` (hasta `4` sierras), `SCRAP_06`, `GREED_07`, `FLASH_09` y `DEMO_06`.
-- **`MYTH_01` (*All In*):** al elegirse en `UpgradeDraftController.TryChoose`, sustituye cada carta poseída distinta de `MYTH_01` por otra mejora no repetida de `UpgradeCatalog` priorizando cartas ajenas a la build previa y con `MaxTier >= nivelAnterior + 1`, sube `+1` nivel cada una (limitado a `MaxTier`) y respeta los topes de salud en `PlayerHealth`.
+- **`MYTH_01` (*All In*):** al elegirse en `UpgradeDraftController.TryChoose`, sustituye cada carta poseída distinta de `MYTH_01` por otra mejora no repetida de `UpgradeCatalog` priorizando cartas ajenas a la build previa y con `MaxTier >= nivelAnterior + 1`, sube `+1` nivel cada una (limitado a `MaxTier`) y respeta los topes de salud en `PlayerHealth`. Si se agotan las cartas ajenas a la selección previa, permite reutilizar identidades anteriores; evita repetir resultados y prioriza cambiar la identidad de cada carta, pero no garantiza una identidad nueva cuando el catálogo disponible se agota.
 - **`SCRAP_03` (*Sierras orbitales*):** `UpgradeTuning.cs:44-46` no declara `bladeHitCooldown`; el método `StepSaws()` (`UpgradeCombatRuntime.cs`) aplica `18 / 28 / 40` de daño (`sawDamage`) y `4 m/s` de empuje (`sawPush`) en cada paso de simulación en que el radio de la hoja (`0,65 m` a `2,5 m` del jugador, ambos escalados por `AreaMultiplier`, girando a `180°/s`) solape al enemigo.
 
 ## Fórmula de Ojo del verdugo y Vulnerabilidad
@@ -512,6 +532,8 @@ El director recorta el tamaño a las plazas disponibles de su límite normal de 
 
 Antes de elegir ronda, el jugador puede ocupar hasta tres puestos de equipo en el balcón superior de la bóveda (`EQUIPO 1`, `EQUIPO 2`, `EQUIPO 3`), guiado por las flechas direccionales superiores (`VaultDirections`), el panel de consejos (`VaultTips`) y el Índice de Colección (`[I]`). Las entidades activan poderes propios y no conceden niveles de las cartas. **Sus efectos se acumulan por copia equipada (`Copies(id)`, hasta `×3`)**, de modo que equipar duplicados suma bonos o cargas independientes. Las 62 cartas se ofrecen y progresan con sus propios niveles y requisitos, independientemente de ese equipo.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Economía y recursos
@@ -584,6 +606,8 @@ Para que ambos modos compitan en la misma tabla de clasificación (`CalculateSco
 
 Si el jugador entra a la bóveda durante su expedición puntuable y reclama el resultado de una fusión con **`COLECCIONAR`** (`FusionStation.Resolve(true)` → `EventLeaderboardSync.NotifyCollectibleObtained`), ese resultado cuenta como **una unidad obtenida (`+300` puntos base)**, añade **`+150` puntos base** si es la primera vez que se descubre esa entidad en la colección y puede elevar la **bonificación única de rareza máxima** de la expedición. En cambio, las `4` copias consumidas como ingredientes, el hecho de iniciar la máquina o liberar unidades en los pedestales aportan **`0` puntos**, y las fusiones realizadas antes de iniciar o después de cerrar la expedición puntuable tampoco modifican el marcador.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Reglas y estados del juego
@@ -618,6 +642,8 @@ La muerte del jugador tiene prioridad si coincide con la del jefe en el mismo pa
 
 Volver a la bóveda limpia actores, peligros y efectos, restablece la configuración de combate y vuelve a aplicar los poderes del equipo guardado. La colección (`hasta 18 unidades` en posesión y `15` descubiertas en el índice) y la fusión en curso o lista para reclamar siguen conservadas en la ranura activa.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Premisa y trama
@@ -629,6 +655,8 @@ Al cruzar pierde sus recuerdos, pero conserva el impulso de recolectar. Entre me
 Gólgora, el MataColeccionista, representa al guardián de ese lugar. El enfrentamiento con él da forma al cierre de cada expedición. La derrota detiene el intento; la victoria resuelve el combate, pero el mundo continúa como escenario de nuevas incursiones.
 
 El pacto, la pérdida de recuerdos y la entidad que lo engaña son el trasfondo de diseño. La premisa se transmite en partida mediante el personaje, el entorno, la colección de quince entidades y el ciclo de supervivencia. El recorrido jugable de la versión actual está descrito en [[01 - Jugabilidad]], y los mensajes visibles durante el juego se recogen en [[04 - Diálogos y Narrativa]].
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -648,73 +676,75 @@ Las gemas de XP impulsan el crecimiento durante una incursión. Las entidades pa
 
 Las tres zonas de lava fija del mapa están desactivadas en el montaje actual; el magma se reserva para Gólgora y sus patrones de ataque. La narrativa de origen se conserva en [[01 - Premisa y Trama]].
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Personajes
 
 El reparto incluye al Coleccionista, cinco enemigos de horda, dos élites, Gólgora y las quince entidades de la colección. Cada enemigo tiene aquí su ficha de identidad y función; sus recursos visuales se reúnen en [[02 - Personajes y Animación]] y sus reglas de combate en [[03 - Enemigos y NPC]].
 
-[Ver la lámina de proporciones del reparto](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#proporciones-en-reposo).
+[Ver la lámina de proporciones del reparto](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#proporciones-en-reposo).
 
 ## El Coleccionista
 
 Es el personaje controlado por el jugador. Lleva capucha clara, máscara con pico, ropa oscura y farol. Su luz apunta de forma independiente del movimiento. Cuenta con sprites de reposo, marcha, dash y muerte en cuatro direcciones.
 
-[Ver atlas, fuente editable y animaciones del Coleccionista](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#el-coleccionista).
+[Ver atlas, fuente editable y animaciones del Coleccionista](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#el-coleccionista).
 
 ## Residual: Esqueleto
 
 Enemigo básico de la horda. Su apariencia es un esqueleto animado en cuatro direcciones que persigue al Coleccionista y ejerce presión por acumulación y contacto.
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#residual-esqueleto).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#residual-esqueleto).
 
 ## Interceptor: galgo de chatarra
 
 Perseguidor rápido representado por un galgo de chatarra. Anticipa el movimiento del Coleccionista y obliga a variar las rutas de escape.
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#interceptor-galgo-de-chatarra).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#interceptor-galgo-de-chatarra).
 
 ## Coloso: Wendigo
 
 Enemigo pesado representado por un Wendigo. Es inmune al empuje, compromete una dirección de embestida tras un aviso en el suelo, atraviesa el espacio libre y requiere un intervalo de recuperación.
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#coloso-wendigo).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#coloso-wendigo).
 
 ## Mortero: Campana
 
 Enemigo de artillería con forma de campana flotante. Mantiene distancia y lanza proyectiles de ácido que dejan charcos persistentes en el suelo.
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#mortero-campana).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#mortero-campana).
 
 ## Polilla: Reactor
 
 Enemigo explosivo volador que se aproxima hasta situarse a `2 m` del jugador (`MothArmDistance`) para armar su espoleta de `0,9 s` (o `1,2 s` si muere por daño del jugador antes de detonar). Su explosión en `3 m` inflige `35` de daño físico al Coleccionista y a todos los objetivos enemigos cercanos (`IsEnemyTarget`, incluido Gólgora, que aplica su `35%` de reducción mientras está en `CercoActive`).
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
 
 ## Caballero Fantasma
 
 Élite de ataque sobrenatural y resistencia al daño físico (`75%` de mitigación). Amenaza al Coleccionista con un barrido frontal anunciado de `120°` y presenta resistencia parcial al empuje (`susceptibilidad = 0,35`).
 
-[Ver estado de integración visual](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#caballero-fantasma).
+[Ver estado de integración visual](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#caballero-fantasma).
 
 ## Centinela de Cobre: gólem
 
 Élite pesado de proyectiles físicos y resistencia al daño sobrenatural (`75%` de mitigación fuera de su ventana de vulnerabilidad). Abre sus compuertas para disparar un abanico de tres misiles y queda expuesto con el aviso «Vulnerable» durante su recuperación de `2 s`.
 
-[Ver estado de integración visual](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#centinela-de-cobre-g%C3%B3lem).
+[Ver estado de integración visual](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#centinela-de-cobre-g%C3%B3lem).
 
 ## Gólgora: el MataColeccionista
 
 Jefe final de la expedición. Su modelo 3D animado combina cuerpo pesado, arma contundente y magma. Combate dentro de la caldera central de `22 m` de radio, alterna seis patrones de ataque y acelera sus tiempos y velocidad al entrar en su segunda fase al `50%` de vida.
 
-[Ver ficha visual y animaciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
+[Ver ficha visual y animaciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
 
 ## Entidades de la colección
 
 El catálogo reúne quince entidades provenientes de distintos mundos y realidades que colapsaron hacia el Vertedero de Ecos: Lobito, Mago, Demonio, Shireen, Yanikua, Basket, Hada, Lisa, Reaper, Chico Emo, Conde Alucard, Murciélago Cristal, Sirena, Soldier y Joel (Demonio y Demonio2 son vistas de una misma entrada). Nueve de ellas se encuentran directamente en la arena y seis se obtienen en la máquina de fusión.
 
-Cada entidad activa un poder propio de acompañante al ocupar uno de los tres puestos de equipo del balcón superior (`EQUIPO 1..3`) y queda registrada al descubrirse en el **Índice de Colección (`[I]`)**. Sus rarezas, poderes y recetas de fusión se detallan en [[04 - Objetos y Coleccionables]], y sus vistas y archivos editables en [Personajes y animación](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#entidades-de-la-colecci%C3%B3n).
+Cada entidad activa un poder propio de acompañante al ocupar uno de los tres puestos de equipo del balcón superior (`EQUIPO 1..3`) y queda registrada al descubrirse en el **Índice de Colección (`[I]`)**. Sus rarezas, poderes y recetas de fusión se detallan en [[04 - Objetos y Coleccionables]], y sus vistas y archivos editables en [Personajes y animación](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#entidades-de-la-colecci%C3%B3n).
 
 ### Yanikua
 
@@ -776,6 +806,8 @@ Jugador de baloncesto callejero que porta el uniforme azul número 77, su balón
 
 Pequeño espectro encapuchado de cráneo pálido, ojos rojos encendidos y costillas expuestas que carga una guadaña casi tan grande como él. Era un guía menor de almas en un plano espiritual extinguido; al quedar sin difuntos que escoltar, acompaña al Coleccionista desde la Bóveda afilando la contundencia de cada ataque.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Diálogos y narrativa
@@ -807,6 +839,8 @@ La entrada a la arena presenta al Coleccionista y el objetivo de la incursión. 
 
 Gólgora se anuncia con título y rugido al abrirse la caldera. Su barra de salud, los avisos de suelo y los textos de estado (*«Resistido»*, *«Vulnerable»*, *«EJECUTADO»*) acompañan los cambios del combate. **«VICTORIA»** o **«DERROTA»** cierran la incursión y **«VOLVER A LA BÓVEDA»** conduce a la siguiente preparación.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Estructura del contenido
@@ -829,6 +863,8 @@ Gólgora se anuncia con título y rugido al abrirse la caldera. Su barra de salu
 | Pruebas | Laboratorio de ocho arquetipos (`EnemyLaboratory`) y sandboxes de locomoción y combate. |
 
 La compilación principal habilita `MainMenu` y `CombatArena`. Las escenas `CombatArena_3Min` y `CombatArena_8Min` permanecen en el proyecto como variantes de desarrollo y están deshabilitadas en la lista principal de compilación. La selección de ronda del jugador utiliza los assets de oleadas dentro de `CombatArena`.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -883,6 +919,8 @@ Al preparar una expedición, el portal abre la selección de ronda (`ELIGE LA RO
 
 El tiempo indica cuándo empieza la entrada del jefe. Las cartas, pausas y visitas a la bóveda detienen el reloj de combate.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Enemigos y NPC
@@ -906,13 +944,13 @@ La [[02 - Personajes y Animación#Proporciones en reposo|comparación a escala]]
 
 Forma la masa básica de la horda. Persigue al jugador, se separa de otros cuerpos y busca paso entre obstáculos. Los cuatro pulsos base de la linterna suman sus `15 HP` cuando todos aciertan. Recibe el empuje completo (`susceptibilidad = 1,0`, desaceleración `28 m/s²`) y su ataque de contacto reproduce la animación de golpe.
 
-[Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#residual-esqueleto).
+[Ver spritesheet, fuente editable y GIFs de todas sus acciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#residual-esqueleto).
 
 ## Interceptor: galgo de chatarra
 
 Anticipa hasta `0,4 s` del movimiento del jugador, con una velocidad de referencia limitada a `8 m/s`. A corta distancia pasa a perseguir la posición actual. Con susceptibilidad `1,0` y menor desaceleración de frenado (`18 m/s²`), tras recibir empuje se desliza más lejos que el Residual.
 
-[Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#interceptor-galgo-de-chatarra).
+[Ver spritesheet, fuente editable y GIFs de todas sus acciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#interceptor-galgo-de-chatarra).
 
 ## Coloso: Wendigo
 
@@ -920,13 +958,13 @@ Es pesado, sólido e inmune al empuje (`susceptibilidad = 0`). Cuando dispone de
 
 Preparación y recuperación no infligen daño de contacto. El dash del jugador permite atravesar su cuerpo durante la ventana de invulnerabilidad.
 
-[Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#coloso-wendigo).
+[Ver spritesheet, fuente editable y GIFs de todas sus acciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#coloso-wendigo).
 
 ## Mortero: Campana
 
 Mantiene una banda de distancia entre `5,5` y `6,5 m` y ataca hasta `12 m`. Tiene un intervalo de `5 s`, aviso de `0,45 s` y vuelo de `0,85 s`. El proyectil deja un charco ácido de radio `1,2 m` durante `3 s`, con `5` de daño cada `0,5 s`. Su susceptibilidad al empuje es reducida (`0,7`, desaceleración `24 m/s²`). El director de oleadas limita los Morteros simultáneos a seis.
 
-[Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#mortero-campana).
+[Ver spritesheet, fuente editable y GIFs de todas sus acciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#mortero-campana).
 
 ## Polilla: Reactor
 
@@ -934,7 +972,7 @@ Se aproxima al Coleccionista y **arma su espoleta por proximidad al situarse a `
 
 Al detonar en un radio de **`3 m`**, inflige **`35` de daño físico completo (`BlastDamage = 35f`) tanto al jugador como a todos los objetivos enemigos (`IsEnemyTarget`, incluido Gólgora**; durante `CercoActive`, Gólgora aplica su `35%` de reducción, `MothExplosionPool.cs:11-13, 111-131, 148-149`). Durante la mecha conserva su susceptibilidad al empuje (`1,0`, desaceleración `22 m/s²`), por lo que el cuarto pulso de la linterna o el *Rayo solar* pueden empujarla hacia el interior de la horda antes de que estalle.
 
-[Ver spritesheet, fuente editable y GIFs de todas sus acciones](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
+[Ver spritesheet, fuente editable y GIFs de todas sus acciones](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#polilla-reactor).
 
 ## Caballero Fantasma
 
@@ -980,7 +1018,7 @@ A `6,5 m` o menos se alterna la preferencia entre *Martillazo* y *Barrido* segú
 | **Físico** | Contacto (`30`), *Martillazo* (`40`), *Barrido* (`30`) e **impacto de aterrizaje de *Cerco de magma* (`40` en `3 m`)**. |
 | **Sobrenatural** | Anillos expansivos del *Cerco de magma* (`30`), impactos de *Bombardeo* (`25`), *Fisura de magma* (`35`), *Lluvia de escoria* (`26`) y todos los charcos de magma (`4` cada `0,5 s` = `8` daño/s). |
 
-[Ver los seis patrones de Gólgora en GIFs capturados en Unity](../05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
+[Ver los seis patrones de Gólgora en GIFs capturados en Unity](05%20-%20Arte%20y%20Audio/02%20-%20Personajes%20y%20Animaci%C3%B3n.md#g%C3%B3lgora-matacoleccionista).
 
 ### Segunda fase y resistencia al control
 
@@ -993,6 +1031,8 @@ Gólgora es inmune al empuje (`susceptibilidad = 0`). La ralentización tiene un
 El director solicita grupos de hasta cuatro secuaces cada `4 s` (con límite de `8` secuaces activos o anunciados en la caldera y aviso previo de `0,9 s`), rotando el orden Residual, Residual, Mortero y Polilla. El *Cerco de magma* y la transición de fase suspenden los refuerzos y retiran los presentes.
 
 La muerte de Gólgora con el jugador vivo otorga la victoria, reproduce la absorción de su gema, suma `500 XP` al resumen y sincroniza la partida con el ranking del evento (`EventLeaderboardSync`).
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1109,6 +1149,8 @@ La tabla muestra los puntos de referencia cuando los 4 ingredientes pertenecen a
 - **Selector de ranura:** muestra en cuadrícula las unidades disponibles (incluidas `EN EQUIPO 1/2/3`) junto a los botones **`QUITAR INGREDIENTE`** y **`VOLVER`**.
 - **Pantalla de resultado (`AwaitingDecision`):** al completarse los `30 s` y abrir la estación con `E · VER FUSIÓN`, se reproduce la animación de apertura y se muestra la unidad obtenida con el botón único **`COLECCIONAR`** (más la `X` de cierre). **No existe botón "Liberar" en la pantalla de resultado de la máquina**; la liberación se realiza en los pedestales de la bóveda (`Media/Interfaz/Resultado_Fusion.png`).
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Misiones y desafíos
@@ -1122,6 +1164,8 @@ Los desafíos del combate surgen de mantener rutas de escape entre enemigos y ob
 El cierre traslada la acción a la caldera de `22 m`. Gólgora alterna *Martillazo*, *Barrido*, *Bombardeo*, *Cerco de magma* (`40` de daño físico al aterrizar y ondas con brecha de `60°`, enfriamiento fijo de `18 s`) y *Fisura de magma* (`1,1 s` fijos de preparación), sumando *Lluvia de escoria* y mayor velocidad al bajar al `50%` de vida.
 
 Al concluir el intento, el resumen presenta el tiempo sobrevivido, el nivel alcanzado, las bajas y la XP obtenida, y **`EventLeaderboardSync`** sincroniza la puntuación de la sesión con el ranking en vivo de Firebase antes de devolver al jugador a la bóveda.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1158,6 +1202,8 @@ Los recursos de identidad gráfica de *EchoScrap* y sus archivos fuente editable
 | **Tarjeta vertical y arte fuente** | [Tarjeta_EchoScrap.png](Media/Identidad/Tarjeta_EchoScrap.png) · [Vectorial `.svg`](Media/Identidad/EchoScrap-arte.svg) | Tarjeta de presentación (`810 × 1080`) para difusión del proyecto y página de distribución. |
 
 ![Isotipo de EchoScrap|140](Media/Identidad/EchoScrap-logo.svg) ![Logotipo de EchoScrap|220](Media/Identidad/EchoScrap-titulo.svg) ![Portada oficial de EchoScrap|360](Media/Identidad/Portada_EchoScrap.png)
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1384,21 +1430,21 @@ Las quince entidades coleccionables se presentan en el mundo y en las vitrinas d
 
 | Entidad            | Rareza     | Previsualización del sprite                                                                                                                          | Fuente editable                                                                                     |
 | ------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Yanikua            | Mítico     | ![Sprite de Yanikua\|140](Media/Coleccionables/Yanikua.png)                                                                                       | [Yanikua.aseprite](../Sprites/Yanikua.aseprite)                                                     |
-| Lisa               | Legendario | ![Sprite de Lisa\|150](Media/Coleccionables/Lisa.png)                                                                                             | [Lisa.aseprite](../Sprites/Lisa.aseprite)                                                           |
-| Sirena             | Legendario | ![Sprite de Sirena](Media/Coleccionables/Sirena_adelante_atras.png)                                                                               | [Sirena_adelante_atras.aseprite](../Sprites/Sirena_adelante_atras.aseprite)                         |
-| Hada               | Épico      | ![Sprite de Hada](Media/Coleccionables/Hada_atras_adelante.png)                                                                                   | [Hada_atras_adelante.aseprite](../Sprites/Hada_atras_adelante.aseprite)                             |
-| Murciélago Cristal | Épico      | ![Sprite de Murciélago Cristal](Media/Coleccionables/Murcielagocristal_atras_adelante.png)                                                        | [Murcielagocristal_atras_adelante.aseprite](../Sprites/Murcielagocristal_atras_adelante.aseprite)   |
-| Shireen            | Especial   | ![Sprite de Shireen\|220](Media/Coleccionables/Shireen.png)                                                                                       | [Shireen.aseprite](../Sprites/Shireen.aseprite)                                                     |
-| Soldier            | Especial   | ![Sprite de Soldier](Media/Coleccionables/Soldier_zombie-Sheet.png)                                                                               | [Soldier_zombie-Sheet.aseprite](../Sprites/Soldier_zombie-Sheet.aseprite)                           |
-| Conde Alucard      | Especial   | ![Sprite de Conde Alucard](Media/Coleccionables/Conde_Alucard.png)                                                                                | [Conde_Alucard.aseprite](../Sprites/Conde_Alucard.aseprite)                                         |
-| Mago               | Raro       | ![Sprite de Mago](Media/Coleccionables/Mago.png)                                                                                                  | [Mago.aseprite](../Sprites/Mago.aseprite)                                                           |
-| Demonio            | Raro       | ![Sprite de Demonio (frente)\|240](Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)\|240](Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](../Sprites/Demonio.aseprite) · [Demonio2.aseprite](../Sprites/Demonio2.aseprite) |
-| Joel               | Raro       | ![Sprite de Joel](Media/Coleccionables/Jov4.png)                                                                                                  | [Jov4.aseprite](../Sprites/Jov4.aseprite)                                                           |
-| Chico Emo          | Raro       | ![Sprite de Chico Emo\|130](Media/Coleccionables/Chico_Emo.png)                                                                                   | [Chico_Emo.aseprite](../Sprites/Chico_Emo.aseprite)                                                 |
-| Lobito             | Común      | ![Sprite de Lobito\|220](Media/Coleccionables/Lobito.png)                                                                                         | [Lobito.aseprite](../Sprites/Lobito.aseprite)                                                       |
-| Basket             | Común      | ![Sprite de Basket](Media/Coleccionables/basket.png)                                                                                              | [basket.aseprite](../Sprites/basket.aseprite)                                                       |
-| Reaper             | Común      | ![Sprite de Reaper](Media/Coleccionables/Reaper.png)                                                                                              | [Reaper.aseprite](../Sprites/Reaper.aseprite)                                                       |
+| Yanikua            | Mítico     | ![Sprite de Yanikua\|140](Media/Coleccionables/Yanikua.png)                                                                                       | [Yanikua.aseprite](Sprites/Yanikua.aseprite)                                                     |
+| Lisa               | Legendario | ![Sprite de Lisa\|150](Media/Coleccionables/Lisa.png)                                                                                             | [Lisa.aseprite](Sprites/Lisa.aseprite)                                                           |
+| Sirena             | Legendario | ![Sprite de Sirena](Media/Coleccionables/Sirena_adelante_atras.png)                                                                               | [Sirena_adelante_atras.aseprite](Sprites/Sirena_adelante_atras.aseprite)                         |
+| Hada               | Épico      | ![Sprite de Hada](Media/Coleccionables/Hada_atras_adelante.png)                                                                                   | [Hada_atras_adelante.aseprite](Sprites/Hada_atras_adelante.aseprite)                             |
+| Murciélago Cristal | Épico      | ![Sprite de Murciélago Cristal](Media/Coleccionables/Murcielagocristal_atras_adelante.png)                                                        | [Murcielagocristal_atras_adelante.aseprite](Sprites/Murcielagocristal_atras_adelante.aseprite)   |
+| Shireen            | Especial   | ![Sprite de Shireen\|220](Media/Coleccionables/Shireen.png)                                                                                       | [Shireen.aseprite](Sprites/Shireen.aseprite)                                                     |
+| Soldier            | Especial   | ![Sprite de Soldier](Media/Coleccionables/Soldier_zombie-Sheet.png)                                                                               | [Soldier_zombie-Sheet.aseprite](Sprites/Soldier_zombie-Sheet.aseprite)                           |
+| Conde Alucard      | Especial   | ![Sprite de Conde Alucard](Media/Coleccionables/Conde_Alucard.png)                                                                                | [Conde_Alucard.aseprite](Sprites/Conde_Alucard.aseprite)                                         |
+| Mago               | Raro       | ![Sprite de Mago](Media/Coleccionables/Mago.png)                                                                                                  | [Mago.aseprite](Sprites/Mago.aseprite)                                                           |
+| Demonio            | Raro       | ![Sprite de Demonio (frente)\|240](Media/Coleccionables/Demonio.png)<br>![Sprite de Demonio (espalda)\|240](Media/Coleccionables/Demonio2.png) | [Demonio.aseprite](Sprites/Demonio.aseprite) · [Demonio2.aseprite](Sprites/Demonio2.aseprite) |
+| Joel               | Raro       | ![Sprite de Joel](Media/Coleccionables/Jov4.png)                                                                                                  | [Jov4.aseprite](Sprites/Jov4.aseprite)                                                           |
+| Chico Emo          | Raro       | ![Sprite de Chico Emo\|130](Media/Coleccionables/Chico_Emo.png)                                                                                   | [Chico_Emo.aseprite](Sprites/Chico_Emo.aseprite)                                                 |
+| Lobito             | Común      | ![Sprite de Lobito\|220](Media/Coleccionables/Lobito.png)                                                                                         | [Lobito.aseprite](Sprites/Lobito.aseprite)                                                       |
+| Basket             | Común      | ![Sprite de Basket](Media/Coleccionables/basket.png)                                                                                              | [basket.aseprite](Sprites/basket.aseprite)                                                       |
+| Reaper             | Común      | ![Sprite de Reaper](Media/Coleccionables/Reaper.png)                                                                                              | [Reaper.aseprite](Sprites/Reaper.aseprite)                                                       |
 
 ### Bocetos conceptuales a mano
 
@@ -1421,6 +1467,8 @@ Dibujos a lápiz realizados durante el diseño visual de las entidades antes de 
 | Lobito | ![Boceto de Lobito\|140](Media/ConceptArt/Lobito.jpeg) |
 | Basket | ![Boceto de Basket\|140](Media/ConceptArt/Basket.JPG) |
 | Reaper | ![Boceto de Reaper\|140](Media/ConceptArt/Reaper.JPG) |
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1470,6 +1518,8 @@ Diseños conceptuales dibujados a mano durante la preproducción de los elemento
 | **Elementos del entorno e interfaz (Lámina 2)** | ![Bocetos de elementos 2\|260](Media/ConceptArt/Elementos/Elementos_dibujos2.JPG) |
 | **Elementos del entorno e interfaz (Lámina 3)** | ![Bocetos de elementos 3\|260](Media/ConceptArt/Elementos/Elementos_dibujos3.JPG) |
 | **Elementos del entorno e interfaz (Lámina 4)** | ![Bocetos de elementos 4\|260](Media/ConceptArt/Elementos/Elementos_dibujos4.JPG) |
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1545,6 +1595,8 @@ La pantalla de resultados muestra victoria o derrota, tiempo sobrevivido, nivel,
 ![Pantalla de fin de partida: Victoria](Media/Interfaz/Victoria.png)
 
 ![Pantalla de fin de partida: Derrota](Media/Interfaz/Derrota.png)
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1680,6 +1732,8 @@ Para dar cumplimiento estricto al criterio de evaluación de audio y licencias, 
 La integración de una pista no implica que sea una composición final. Los nombres de prueba de arena y jefe se mantienen identificados como tales. La autoría y los recursos de cada incorporación deben conservarse en su registro de fuentes.
 
 Los GIFs de este GDD no contienen audio y sirven para revisar animación y VFX. Como excepción documental, esta sección incluye las cuatro pistas musicales del juego (`Menu.mp3`, `Boveda_Almacen.mp3`, `Partida.mp3` y `Jefe.mp3`) y las quince muestras de efectos de sonido y avisos (`Media/Audio/SFX/*.wav`); su mezcla dinámica y espacialización se comprueban directamente en el juego.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -1883,6 +1937,8 @@ El vórtice animado y las entidades en órbita forman el fondo del menú inicial
 | Nuevos sistemas de combate (`UpgradeCombatRuntime.cs`) | Disponen de piscinas preasignadas sin GC en runtime para zonas persistentes (`GroundZone[64]`: *Charco cáustico*, *Escarcha ártica*), ataque radial (*Aura estática*), descargas (*Tormenta orbital*, *Sobrecarga*), barridos (*Barrido voltaico*), discos/búmeran (*Sierra rebotante*, *Búmeran reflector*) y reflejo (*Escudo reflector*), escalados con `AreaMultiplier` (`FLASH_13`). |
 | Blindaje | Se lee en las placas y valores del HUD. |
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # UX y flujo del jugador
@@ -1928,6 +1984,8 @@ Victoria y derrota muestran el resumen de la incursión, sincronizan las estadí
 
 En la máquina de fusión situada en la pared trasera (`E · FUSIONAR` / `E · VER FUSIÓN`, `E` o botón oeste), el jugador combina **4 copias de la misma rareza o de rarezas mixtas** (excluida Yanikua; incluidas copias equipadas en el balcón etiquetadas como **`EN EQUIPO 1/2/3`**, que se desequipan automáticamente al confirmar). El proceso dura **30 segundos (`00:30`)** fijos para cualquier combinación y al terminar ofrece el botón único **`COLECCIONAR`** (si la colección está en `18/18`, advierte **`INVENTARIO LLENO · LIBERA ESPACIO`** y conserva el resultado hasta que el jugador libere una unidad en la bóveda).
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # UI y menús
@@ -1968,6 +2026,8 @@ En cualquier momento del combate, **mantener pulsada la tecla `Q` (teclado) o el
 ![Modal de Nueva Colección con Gamertag](Media/Interfaz/Nueva_Coleccion.png)
 *Captura de referencia de la confirmación con gamertag (`734e2a5`); en `0.7.0`, este campo se integra tras elegir ranura en `NUEVA PARTIDA · ARCHIVO N`.*
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Accesibilidad
@@ -1999,6 +2059,8 @@ La pausa y la pérdida de foco de ventana bloquean el control de combate y exige
 ## Cobertura de dispositivos de entrada (`8047d90` / `b543684`)
 
 El sistema de entrada (`Input System 1.20.0`) cubre teclado/ratón y mando en combate (movimiento, dash `A` / `Cruz`), pausa (`Start`), cartas (`1..3` / navegación + `A` / `Y` para Sintonizador), consulta rápida del HUD (`Q` / `Select`), recogida manual de fragmentos (`E` / botón oeste `X` / `Cuadrado`), interacciones de bóveda en pedestales y máquina de fusión (`E` / botón oeste y `T` / botón norte para desequipar rápido en balcón) e Índice de Colección (`I` / `Select`).
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2046,11 +2108,13 @@ Los ajustes de la sesión en curso (`Movimiento de cámara`, `Efectos decorativo
 
 La salud, XP, nivel y cartas pertenecen al intento activo. Volver desde resultados o desde el menú de pausa limpia el combate y devuelve a la preparación en la bóveda, reaplicando los poderes de los tres puestos de equipo.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir ranura en **`CONTINUAR`** o **`NUEVA PARTIDA`**, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `b543684`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir ranura en **`CONTINUAR`** o **`NUEVA PARTIDA`**, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
@@ -2063,7 +2127,7 @@ El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `featur
 | Horda y élites | `EnemyActor`, `EnemyPool`, `EnemySpriteView`, `MothSpriteView`, `MortarSpriteView`, `EnemyObstacleNavigator`, `EliteEnemyController`, `EliteProjectilePool`, `MothExplosionPool` |
 | Jefe | `CombatWaveDirector`, `BossEncounter`, `BossArena`, `GolgoraActor`, `GolgoraCombatSettings` |
 | Progresión y mejoras | `CombatProgression`, `UpgradeDraftController`, `UpgradeCatalog`, `UpgradeCombatRuntime`, `UpgradeEffectPool`, `UpgradeTuning` |
-| Bóveda, colección, índice y fusión | `WarehouseTravel`, `WarehouseCameraDirector`, `WarehouseCameraFraming`, `FusionStation`, `FusionStationUI`, `FusionProgress` (`Capacity = 10`, `FusionSeconds = 30`), `VaultCollectionIndex` (`[I]`), `VaultReleaseInteraction`, `CollectibleDisplay` |
+| Bóveda, colección, índice y fusión | `WarehouseTravel`, `WarehouseCameraDirector`, `WarehouseCameraFraming`, `FusionStation`, `FusionStationUI`, `FusionProgress` (`Capacity = 18`, `FusionSeconds = 30`), `VaultCollectionIndex` (`[I]`), `VaultReleaseInteraction`, `CollectibleDisplay` |
 | Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleDisplay`, `CollectiblePickupFeedback` |
 | Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool`, `GolgoraMagmaRingPool` |
 | Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `MenuMusic` |
@@ -2072,6 +2136,8 @@ El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `featur
 | Iluminación | `ArenaLightingController`, `ArenaLightingProfile` y renderer de atmósfera |
 
 La simulación comunica daño, muerte, recogida y resultados mediante eventos C#. Las reservas (`Object Pool`) reutilizan enemigos, proyectiles, números flotantes y efectos visuales entre expediciones, manteniendo separadas las reglas de simulación y su presentación.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2099,13 +2165,15 @@ El juego organiza el código en `Assets/_Project/Scripts`, las escenas en `Scene
 
 Los medios documentales enlazados en este GDD se ubican en las carpetas `Media/Planos`, `Media/Avance_2026-10-27`, `Media/Avance_2026-11-04`, `Media/Avance_2026-11-05`, `Media/Avance_2026-11-06` y `Media/Avance_2026-11-07`.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Requisitos técnicos
 
-Las plataformas del proyecto son **PC Windows (`x64`)** y **macOS Universal (`x86_64` + `arm64`)**. El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre `develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684` (16 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`. El icono de aplicación de escritorio (`EchoScrap-AppIcon.png`) está enlazado en `ProjectSettings/ProjectSettings.asset`.
+Las plataformas del proyecto son **PC Windows (`x64`)** y **macOS Universal (`x86_64` + `arm64`)**. El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre `develop` @ `b543684` (16 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`. El icono de aplicación de escritorio (`EchoScrap-AppIcon.png`) está enlazado en `ProjectSettings/ProjectSettings.asset`.
 
-El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `10` pedestales físicos (`3` de equipo + `7` de exposición).
+El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `18` pedestales físicos (`3` de equipo + `15` de exposición).
 
 ## Perfiles de referencia y cierre de validación técnica
 
@@ -2129,6 +2197,8 @@ El director de oleadas limita la población ordinaria a `150` enemigos simultán
 - **Sincronización de ranking (`EventLeaderboardSync`):** utiliza peticiones HTTPS asíncronas (`UnityWebRequest` `PUT` y `DELETE`) hacia Firebase Realtime Database (`https://echoscrap-default-rtdb.firebaseio.com`) con tiempo de espera acotado (`8 s` para envío de ranking y `5 s` para autenticación) y cola local persistente en `Saves/ranking_outbox.json` (y respaldo heredado `EchoScrap.Rank.v2`). Si el equipo no dispone de conexión a internet, la partida y el guardado local continúan sin interrupciones y el envío pendiente se reintenta al reconectar.
 - **Dispositivos de entrada:** soporte completo para teclado/ratón y mando en combate (movimiento y dash `Espacio` / `A` / `Cruz`), recogida de fragmentos e interacciones de bóveda (`E` / botón oeste `X` / `Cuadrado`), desequipar rápido en balcón (`T` / botón norte `Y` / `Triángulo`), Índice de Colección (`I` / `Select`), consulta rápida de detalles del HUD (`Q` / `Select`) y menús (`Esc` / `Start` / botón este `B` / `Círculo`).
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Datos y persistencia
@@ -2145,14 +2215,14 @@ El reloj de incursión, la salud actual, la XP, el nivel, las cartas adquiridas,
 
 `SaveSlotService` gestiona hasta **`3` ranuras independientes (`SlotCount = 3`)** en disco mediante escritura atómica y respaldo bajo `Application.persistentDataPath/Saves/` (o `Saves_BatchTest/` en batch mode): `index.json`, `slot_0..2.json` (`SlotProfileData`, que incluye `FusionProgress` versión **`5`**, `totalPlaySeconds`, `hasActiveExpedition`, `activeAttemptId`, `bestLocalScore` y `completedRankedRuns`), `expedition_0..2.json` (`ExpeditionSnapshotData`) y `ranking_outbox.json` (`RankingOutboxData`). En la primera carga, `SaveSlotService.EnsureMigrated()` importa automáticamente cualquier progreso previo de `PlayerPrefs` (`EchoScrap.Collection.Production.v1`, `EchoScrap.Collection.v1`, `EchoScrap.Rank.v2` y `EchoScrap.Event.PlayerName`).
 
-La capacidad máxima de la colección es de **18 unidades en total** (`FusionProgress.Capacity = 18`, `OwnedCount <= 18`), que se corresponden exactamente con los **18 pedestales físicos de la bóveda** (`DisplaySlots[18]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **15 puestos de exposición/reserva** en la planta inferior (`slot 3..17`).
+La capacidad máxima de la colección es de **18 unidades en total** (`FusionProgress.Capacity = 18`; las nuevas recogidas y reclamaciones requieren `OwnedCount < 18`), que se corresponden exactamente con los **18 pedestales físicos de la bóveda** (`DisplaySlots[18]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **15 puestos de exposición/reserva** en la planta inferior (`slot 3..17`).
 
 | Campo del JSON (`FusionProgress`) | Tipo | Contenido y reglas de validación (`FusionProgress.cs`) |
 | --- | --- | --- |
 | `version` | `int` | Versión del esquema de guardado. El valor vigente es **`5`**. |
 | `hasEquippedCompanion` | `bool` | Registra si el jugador ya ha equipado al menos un acompañante alguna vez (`VaultTips` y `FusionStation.cs`). |
 | `equipped` | `int[3]` | IDs de las entidades asignadas a los **3 puestos de equipo activo** del balcón (puestos 1 a 3) o `-1` si el puesto está vacío. |
-| `owned` | `int[15]` | Copias en posesión de cada una de las 15 entidades (`ID 0..14`). Los valores negativos se ajustan a `0` y la **suma total está limitada a un máximo de `18` unidades** (`Capacity = 18`). |
+| `owned` | `int[15]` | Copias en posesión de cada una de las 15 entidades (`ID 0..14`). Los valores negativos se ajustan a `0`. Las nuevas recogidas y reclamaciones se bloquean al alcanzar `18` unidades (`Capacity = 18`); la carga conserva un posible exceso heredado, sin eliminar copias. |
 | `discovered` | `bool[15]` | Registro permanente de descubrimiento de las 15 entidades para el **Índice de Colección (`[I]`, `VaultCollectionIndex`)** y los selectores de puesto. Toda entidad con `owned[i] > 0` marca `discovered[i] = true`, y liberar una copia conserva `discovered[i] = true`. |
 | `displays` | `int[18]` | Array de longitud **`18`** (`Capacity = 18`) que representa el total de los **18 puestos físicos de la bóveda** (`displays[0..2]` para el balcón y `displays[3..17]` para la planta baja). `-1` indica pedestal vacío. |
 | `phase` | `int` (`FusionPhase`) | Estado de la máquina de fusión en **5 estados**: `0 = Idle`, `1 = Fusing`, `2 = Opening`, `3 = AwaitingDecision`, `4 = Ready`. |
@@ -2181,6 +2251,8 @@ La capacidad máxima de la colección es de **18 unidades en total** (`FusionPro
 
 En Windows, `PlayerPrefs` almacena estas claves de configuración en el registro del usuario bajo `HKEY_CURRENT_USER\Software\DefaultCompany\EchoScrap` y los archivos de guardado en `%USERPROFILE%\AppData\LocalLow\DefaultCompany\EchoScrap\Saves\`. En macOS, se ubican bajo `~/Library/Application Support/DefaultCompany/EchoScrap/Saves/`.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Seguridad y riesgos técnicos
@@ -2197,6 +2269,8 @@ El inventario de entidades (`hasta 18 unidades` en posesión y `15` descubiertas
 - **Aleatorización segura de *All In* (`MYTH_01` / `UpgradeDraftController`):** al aplicar la carta Mítica *All In*, cada mejora poseída se sustituye aleatoriamente por otra distinta elegible y sube `+1` nivel respetando su `MaxTier` y sin permitir autorreferencias ni reinicializar *All In* recursivamente.
 - **Razones independientes de pausa (`CombatSession`):** la pausa manual (`Esc`), la pérdida de foco, la elección de cartas, la máquina de fusión / Índice de Colección (`PauseReason.FusionMenu`), el selector de acompañantes (`PauseReason.CompanionMenu`) y el menú general usan máscaras independientes para que cerrar una ventana no reanude por error una sesión detenida por otra causa.
 - **Sincronización de ranking no bloqueante (`EventLeaderboardSync` / `GamertagRegistry`):** las peticiones HTTPS (`PUT` y `DELETE`) a Firebase Realtime Database se ejecutan en corrutinas con `timeout = 8 s` (`5 s` para autenticación y `GET` de comprobación) y cola persistente en `Saves/ranking_outbox.json` (y recibos en `EchoScrap.PendingGamertag.{sha256}`), conservando partidas activas suspendidas sin enviar `CANCELADA` al cerrar la aplicación.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2215,6 +2289,8 @@ La presentación incluye tipografía unificada **`Pixelify Sans`**, menú de pau
 ## Criterio de cierre
 
 La entrega comprende el flujo completo multiplataforma (**Windows x64** y **macOS Universal**), desde las 3 ranuras de guardado y preparación guiada en bóveda hasta la fusión de `30 s`, el Índice de Colección (`[I]`), las expediciones demo y completa con snapshots cada `3 s`, el selector de FPS (`30 / 60 / 120`), las 62 mejoras en cinco rarezas, la sincronización del ranking y el retorno a la bóveda con persistencia completa. El contenido jugable se contrasta con [[04 - Criterios de Aceptación]].
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2334,7 +2410,9 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 
 - **Motor y paquetes:** Unity `6000.6.3f1`, Universal Render Pipeline (`URP 17.6.0`), `Input System 1.20.0`, `Cinemachine 6.6.0` y Firebase Realtime Database (ranking en vivo en `https://echoscrap.web.app`).
 - **Tipografías:** *Pixelify Sans* (Copyright 2021 The Pixelify Sans Project Authors) y *Chakra Petch*, bajo licencia abierta **SIL Open Font License v1.1** (`Assets/StreamingAssets/Licenses/`).
-- **Muestras de audio base (`CC0 1.0 Universal`):** grabaciones de microondas (`pinto0lucas`, Freesound `#422817`) y contador Geiger (`cookies+policy`, Freesound `#555923`) documentadas en `Assets/_Project/Resources/Audio/Flashlight/Sources.txt`, además de capas libres procesadas por el equipo según la tabla de [Audio y música](../05%20-%20Arte%20y%20Audio/05%20-%20Audio%20y%20M%C3%BAsica.md).
+- **Muestras de audio base (`CC0 1.0 Universal`):** grabaciones de microondas (`pinto0lucas`, Freesound `#422817`) y contador Geiger (`cookies+policy`, Freesound `#555923`) documentadas en `Assets/_Project/Resources/Audio/Flashlight/Sources.txt`, además de capas libres procesadas por el equipo según la tabla de [Audio y música](05%20-%20Arte%20y%20Audio/05%20-%20Audio%20y%20M%C3%BAsica.md).
+
+> **Navegación:** [[00 - Índice]] · ← [[01 - Alcance]] · [[03 - Roadmap]] →
 
 ---
 
@@ -2360,11 +2438,13 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | --- | --- | --- | --- |
 | Validación técnica y cierre de entrega (`TECH-01`) | David Alejandro Sierra Sosa y Luis Fernando Nuñez Chan | Build Windows x64 Release (`Windows.asset`, `0` errores, `~0,94 GiB`), `p95` de CPU de `6,61 ms` (`2 000` fotogramas), optimizaciones de horda/memoria en `main` @ `734e2a5` y publicación ejecutable en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap). Limitación de hardware mínimo sin telemetría dedicada documentada en [[03 - Bugs y Seguimiento]]. | **Cerrado (v1.0)** |
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Entregas y trabajo pendiente
 
-| Área | Estado actual (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`) |
+| Área | Estado actual (`develop` @ `b543684`) |
 | --- | --- |
 | Flujo, guardado y ranking | Menú con selector de **3 ranuras de guardado** (`CONTINUAR` / `NUEVA PARTIDA` en `SaveSlotService`), migración automática desde `PlayerPrefs`, snapshots cada `3 s` (`ExpeditionSnapshotService`), campo `NOMBRE DEL JUGADOR (RANKING)...` en `NUEVA PARTIDA · ARCHIVO N` (`GamertagRegistry`), preparación en bóveda, elección de ronda (`ELIGE LA RONDA`), expedición y ranking `rulesVersion = 2` publicando **todos los intentos válidos** conservando la mejor puntuación por gamertag en `https://echoscrap.web.app`. |
 | Señalización de bóveda e Índice | Rótulos 3D `EQUIPO 1..3`, flechas direccionales superiores (`VaultDirections`), panel de consejos (`VaultTips`), paredes con basalto pixel art, fracturas de roca con relieve, bloqueo bajo escalera, iluminación `WarehouseLightScope` e **Índice de Colección (`[I]` / `Select`)** con pestañas `POR RAREZAS` (`TODAS` + 6 categorías) y `EN TU BÓVEDA`. |
@@ -2390,12 +2470,14 @@ El líder mantiene `00 - Índice.md`, la navegación y la autoría de la guía. 
 | ART-ELITE-01 / 02 | Conectar sprites y ciclos de combate de Caballero Fantasma y Centinela de Cobre. | Integrado | Atlas de 224 y 288 fotogramas integrados con mapas de normales y emisión. |
 | COMBAT-SOLAR-01 | Aplicar empuje en cada pulso de *Rayo solar* (`FLASH_05`) manteniendo `FLASH_03`, `BIO_02` y `CRIT_04` en el cuarto pulso. | Integrado | `FlashlightWeapon.cs:402` (`capturedSolarMode`) y `UpgradeCombatRuntime.cs:232-236, 341` (`PulseIndex == 4`). |
 | MEDIA-TRAILER-01 | Grabar, montar y validar el tráiler promocional final de *EchoScrap*. | Integrado y aprobado en QA | [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`), con gameplay desarrollado y audio propio. |
-| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Cerrado para `v0.7.1` | Paquetes Release verificados `EchoScrap-Windows-x64-62mejoras.zip` (`0x8664`, `0` errores en humo, arranque fullscreen `1920 × 1080`) y `EchoScrap-macOS-Universal-62mejoras.zip` (`x86_64` + `arm64`, `-rwxr-xr-x`). |
+| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Compilación verificada y ejecución manual en macOS confirmada por el equipo | Paquetes Release verificados `EchoScrap-Windows-x64-62mejoras.zip` (`0x8664`, `0` errores en humo, arranque fullscreen `1920 × 1080`) y `EchoScrap-macOS-Universal-62mejoras.zip` (`x86_64` + `arm64`, `-rwxr-xr-x`). |
 | SETTINGS-DISPLAY-01 | Añadir selector **`Pantalla` (`COMPLETA` / `VENTANA`)**, limpiar `_EmissionColor` en enemigos y proyectar anillos de área sobre terreno. | Integrado | `MenuSettingsView.cs` (`EchoScrap.Graphics.FullScreen`), `MothSpriteView.cs`, `MortarSpriteView.cs`, `EnemySpriteView.cs`, `EnemyActor.cs` y `UpgradeEffectPool.ProjectGroundRing` (`0` GC bytes). |
 
 ## Estado de cierre del backlog
 
-No quedan tareas pendientes de programación, arte o diseño para la versión sincronizada actual (`0.7.1`). Únicamente se mantiene fuera del alcance de desarrollo la toma de telemetría instrumentada en un equipo físico de perfil mínimo, documentada como limitación conocida en [[03 - Requisitos Técnicos]] y [[03 - Bugs y Seguimiento]].
+El contenido previsto está integrado, pero el cierre de calidad sigue pendiente: la suite completa conserva fallos que requieren revisión de fixtures, expectativas y comportamiento de terreno/colisiones. Los resultados y el alcance de las pruebas figuran en [[02 - Pruebas]] y [[03 - Bugs y Seguimiento]]. También falta telemetría en un equipo físico de perfil mínimo. La ejecución nativa en macOS sí fue realizada por un integrante del equipo, según confirmación del equipo del 16 de noviembre; se registra como validación manual, complementaria a la verificación del paquete Universal.
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2427,11 +2509,13 @@ El diseño del videojuego evoluciona con cada integración en `develop`. Esta se
 | **13/11/2026** | Integración del boceto conceptual a mano del jefe final **Gólgora** ([`Media/ConceptArt/Golgora_guardian.jpeg`](Media/ConceptArt/Golgora_guardian.jpeg)) en `05 - Arte y Audio/02 - Personajes y Animación.md` junto con la referencia de sus archivos 3D (`MataColeccionista.fbx`, `Martillo.fbx`, texturas), completando el 100% de bocetos de personajes, enemigos y jefe. | Cubrir por completo el criterio de bosquejos y diseño conceptual de la entrega final. | `05 - Arte y Audio` y `09 - Bugs y Seguimiento`. | Mora Alejandro Angel Gabriel / Equipo EchoScrap | Integrado (`0.6.11`) |
 | **13/11/2026** | Auditoría total de paridad contra `EchoScrap` (`main` @ `734e2a5` / `develop` @ `6973556`, commits `84a72c0`..`6973556`). | Garantizar cero contradicciones entre el GDD `0.6.12` y el código fuente antes de cerrar en `main`. | Transversal a la raíz, secciones `01` a `10` y `00 - GDD Completo`. | Equipo EchoScrap | Histórico (`0.6.12`) |
 | **16/11/2026** | Sincronización total contra `develop` @ `8047d90` + `feature/mejoras-y-allin-mitica` @ `ebf90f9`: **3 ranuras de guardado** (`SaveSlotService`), **snapshots de expedición cada `3 s`** (`ExpeditionSnapshotService`), ranking de **todos los intentos válidos** por mejor puntuación, **18 cápsulas** en bóveda (`3` + `15`) con máquina de fusión en pared trasera (`189, 0, 28,88`) y mejoras visuales/colisiones, selector **`Límite de FPS` (`30 / 60 / 120`)**, deslizamiento en rocas bajas, optimizaciones de navegación/GPU/texturas/bóveda, **62 mejoras en 5 rarezas** (`8` cartas contextuales + `19` nuevas + **rareza Mítica `MYTH_01` *All In*** con `Frame_Mythic` + reelaboración de `DASH_05`), panel de `22` estadísticas, cuadrícula HUD `9 × 34 px` y builds **Windows x64** y **macOS Universal**. | Mantener juego y GDD 100 % sincronizados tras la integración de `develop` y las nuevas mejoras. | Transversal a la raíz (`README`, `00 - Índice`, `00 - Avance jugable`), secciones `01` a `10` y `00 - GDD Completo (Para Exportar PDF).md`. | Equipo EchoScrap | Histórico (`0.7.0`) |
-| **16/11/2026** | Parche de paridad `0.7.1` (`feature/mejoras-y-allin-mitica` @ `b543684`): selector **`Pantalla` (`COMPLETA` / `VENTANA`)** en `MenuSettingsView` (`EchoScrap.Graphics.FullScreen`) con reaplicación tras carga de escena en Standalone (`1920 × 1080` sin bordes por defecto), limpieza de `_EmissionColor` en `MothSpriteView` / `MortarSpriteView` / `EnemySpriteView` y exclusión de destello blanco en ticks continuos (`StaticAura`, `PlasmaPuddle`, `FlameTrail`), proyección sobre relieve (`12 × 12` sin GC en `UpgradeEffectPool.ProjectGroundRing`) para *Aura estática* y zonas en suelo, y reconstrucción de los builds **Windows x64** y **macOS Universal**. | Resolver ventana forzada por registro heredado, tinte blanquecino persistente de enemigos y recorte de anillos de área en laderas. | `01 - Visión`, `02 - Diseño`, `05 - Interfaz Visual`, `06 - Experiencia`, `07 - Tecnología`, `08 - Producción`, `09 - Calidad`, `10 - Referencia` y compilado PDF. | Equipo EchoScrap | Vigente (`0.7.1`) |
+| **16/11/2026** | Parche de paridad `0.7.1` (`feature/mejoras-y-allin-mitica` @ `b543684`): selector **`Pantalla` (`COMPLETA` / `VENTANA`)** en `MenuSettingsView` (`EchoScrap.Graphics.FullScreen`) con reaplicación tras carga de escena en Standalone (`1920 × 1080` sin bordes por defecto), limpieza de `_EmissionColor` en `MothSpriteView` / `MortarSpriteView` / `EnemySpriteView` y exclusión de destello blanco en ticks continuos (`StaticAura`, `PlasmaPuddle`, `FlameTrail`), proyección sobre relieve (`12 × 12` sin GC en `UpgradeEffectPool.ProjectGroundRing`) para *Aura estática* y zonas en suelo, y reconstrucción de los builds **Windows x64** y **macOS Universal**. | Resolver ventana forzada por registro heredado, tinte blanquecino persistente de enemigos y recorte de anillos de área en laderas. | `01 - Visión`, `02 - Diseño`, `05 - Interfaz Visual`, `06 - Experiencia`, `07 - Tecnología`, `08 - Producción`, `09 - Calidad`, `10 - Referencia` y compilado PDF. | Equipo EchoScrap | Histórico (`0.7.1`) |
 
 ## Revisión 0.6.2 del 8 de noviembre (`develop` @ `9eed59f`)
 
 La versión `0.6.2` cierra la brecha de señalización en la bóveda (`UX-01`) documentando los sistemas ya implementados en código: rótulos 3D `EQUIPO 1..3`, tarjetas direccionales superiores (`VaultDirections`), consejos rotatorios cada `8 s` (`VaultTips`) e **Índice de Colección (`[I]`)**. Asimismo, actualiza las reglas exactas de capacidad (`10` unidades totales correspondientes a `displays[10]`), la duración fija de `30 s` en todas las recetas de la máquina de fusión, el uso de copias equipadas como ingredientes (`EN EQUIPO 1/2/3`), el menú de pausa en tres pestañas (`General`, `Interfaz`, `Sonido`), la consulta rápida del HUD con `Q`, la tipografía unificada `Pixelify Sans`, la sincronización del ranking con Firebase (`EventLeaderboardSync`) y las interacciones de combate (`FLASH_05`, `DASH_04`, `DEMO_03/04`, `SCRAP_03/04`, orden de mitigación en `PlayerHealth`, Polilla Reactor y Gólgora).
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2450,13 +2534,15 @@ El diseño se revisa junto con el control, la interfaz y la persistencia. Las op
 | Sesión y ranking | Pausa por máscaras independientes, selector **`Límite de FPS` (`30 / 60 / 120`)**, selector **`Pantalla` (`COMPLETA` / `VENTANA`)** con arranque automático en pantalla completa sin bordes, visitas a bóveda, reanudación automática por snapshot cada `3 s`, traslado a caldera y cierre de partida coherentes; reserva de gamertag (`GamertagRegistry`) y sincronización no bloqueante (`PUT`/`DELETE`, `8 s`, `Saves/ranking_outbox.json`) con Firebase (`EventLeaderboardSync`) para todos los intentos válidos. |
 | Persistencia | **3 ranuras atómicas** (`SaveSlotService`, `Saves/slot_0..2.json`, `FusionProgress` v5 con migración desde `v4`/`PlayerPrefs`), `FusionPhase` de 5 estados, `expedition_0..2.json` con recuperación segura, volúmenes, tope de FPS y modo de pantalla en `PlayerPrefs` (`MenuSettingsView`) y cola/nombre de ranking persistidos. |
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Pruebas
 
 El proyecto dispone de pruebas automatizadas de locomoción, dash, daño, navegación, oleadas, élites, jefe, cartas, recogida, pausas, menús, bóveda, colección y fusión, además del laboratorio interactivo (`EnemyLaboratory`) para generar e inspeccionar los ocho arquetipos.
 
-## Verificación actual de paridad, pruebas automatizadas y builds (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`, 16 de noviembre de 2026)
+## Verificación actual de paridad, pruebas automatizadas y builds (`develop` @ `b543684`, 16 de noviembre de 2026)
 
 Esta revisión valida el código fuente, las escenas (`CombatArena.unity`, `MainMenu.unity`), los assets regenerados (`UpgradeCardSkin.asset`, `Frame_Mythic.png`, `Frame_Mythic.mat`), las pruebas automatizadas sobre el commit final `b543684` y las compilaciones Standalone finales en **Windows x64** y **macOS Universal**:
 
@@ -2466,7 +2552,7 @@ Esta revisión valida el código fuente, las escenas (`CombatArena.unity`, `Main
   - En la ejecución previa de la suite completa aislada sobre `ebf90f9` (`712` totales · `667` aprobadas · `45` fallidas · `0` omitidas, frente a `684` / `633` / `51` en `develop`), los `45` fallos correspondieron íntegramente a pruebas preexistentes de sandbox/terreno/autoría ajenas a estas entregas: `CombatHealthSessionTests` (`8`), `CombatSandboxSetupTests` (`1`), `EnemyLaboratoryTests` (`9`), `EnemyMortarTests` (`1`), `EnemyResidualTests` (`1`), `FusionIntegrationTests.VaultMachineInCentralAisleAndIndexByRarity` (`1`, esperaba la coordenada anterior `188.3466f` frente a `189f` introducida por `8c0dfae`), `LocomotionTests` (`16`), `PlayerReliefScaleTests` (`3`), `PlayerTreeTraversalTests` (`1`), `WarehousePresentationTests` (`1`) y `WorldArtIntegrationTests` (`3`).
 - **Compilaciones Release y pruebas de humo sobre `b543684`:**
   - **Windows x64 (`EchoScrap-Windows-x64-62mejoras.zip`, `145 267 061` bytes):** cabecera PE x64 (`0x8664`), ejecución real verificada en modo **`FullScreenWindow` (`1920 × 1080`, `Screenmanager Fullscreen mode = 1`)** sobrescribiendo valores heredados en ventana del registro y cerrando con `0` errores en `SmokeTest_v3.log`.
-  - **macOS Universal (`EchoScrap-macOS-Universal-62mejoras.zip`, `153 000 566` bytes):** binario Mach-O Universal (`0xCAFEBABE`, `x86_64` + `arm64`) en `Contents/MacOS/EchoScrap` y `Contents/Frameworks/UnityPlayer.dylib`, con permisos POSIX `-rwxr-xr-x` verificados mediante `Set-ZipMacModes.cjs`.
+  - **macOS Universal (`EchoScrap-macOS-Universal-62mejoras.zip`, `153 000 566` bytes):** binario Mach-O Universal (`0xCAFEBABE`, `x86_64` + `arm64`) en `Contents/MacOS/EchoScrap` y `Contents/Frameworks/UnityPlayer.dylib`, con permisos POSIX `-rwxr-xr-x` verificados mediante `Set-ZipMacModes.cjs`. Además, el equipo confirmó el 16 de noviembre de 2026 que un integrante ejecutó el juego en su Mac. Se registra como validación manual reportada por el equipo, complementaria a la comprobación técnica del paquete.
 
 ## Auditoría previa de paridad (`main` @ `734e2a5` / `develop` @ `6973556`, 13 de noviembre de 2026)
 
@@ -2489,9 +2575,17 @@ Con la incorporación de las asignaciones de mando para `E` (`buttonWest`), `T` 
 
 En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación Windows x64 Release (`Assets/Settings/Build Profiles/Windows.asset`, `0` errores y `1 010 519 179` bytes / `~0,94 GiB`), perfilado de `2 000` fotogramas con `p95` de CPU de `6,61 ms`, instrumentación `CombatBenchmarkRunner.cs` / `SpawnerRunValidation.cs` y las correcciones de `feature/perfil-memoria-baja` / `bugfix/tirones-horda-windows`, con el alcance acotado de gama mínima registrado en [[03 - Bugs y Seguimiento]].
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Bugs y seguimiento
+
+## Suite completa pendiente de cierre (`QA-FULL-01`)
+
+La ejecución completa anterior registró 45 fallos; las 172 pruebas focalizadas aprobadas sobre `b543684` no sustituyen esa validación. Los grupos afectados incluyen carga de escenas sandbox/laboratorio que están deshabilitadas en el perfil de entrega, expectativas antiguas de balance y posición de la máquina de fusión, capturas con `WaitForEndOfFrame` incompatibles con batch mode y comprobaciones de terreno, árboles y paredes. Estos últimos fallos deben investigarse antes de concluir que son únicamente pruebas obsoletas. Los resultados actuales se registran en [[02 - Pruebas]].
+
+La integración en `develop` y la apertura de PR a `main` acreditan la sincronización del repositorio, no la ausencia de defectos ni la aprobación de toda la suite.
 
 ## Señalización y guía de la bóveda (`UX-01` — Resuelto en `9eed59f`)
 
@@ -2518,11 +2612,13 @@ En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación
 - **Recorte de la ronda demo:** la ronda demo (`3:00`) emplea los tres primeros tramos de la tabla de oleadas (`0:00–3:00`) antes de invocar a Gólgora (`Golgora_Demo.asset`, `3 600 HP`, mismo valor base en `EnemyArchetypeSettings`), mientras que la ronda completa (`8:00`) recorre los cinco tramos completos hasta el encuentro de `9 000 HP` (`Golgora_Complete.asset`).
 - **Validación técnica multiplataforma y limitación en hardware mínimo (`TECH-01` / `0.7.1`):** sobre las compilaciones Release vigentes (**Windows x64** y **macOS Universal**), las optimizaciones de GPU instancing, presupuesto de navegación en `EnemyObstacleNavigator`, `WarehouseLightScope`, LODs/texturas, deslizamiento en rocas bajas, pooling sin GC de habilidades y los selectores **`Límite de FPS` (`30 / 60 / 120`)** y **`Pantalla` (`COMPLETA` / `VENTANA`)** en `MenuSettingsView` amplían la estabilidad y compatibilidad de pantalla. Sigue acotada como limitación conocida la ausencia de telemetría instrumentada en un equipo físico de gama mínima (`8 GB RAM` / `4 GB VRAM`), mitigada mediante `Efectos decorativos`, `Efectos reducidos` y el tope de FPS.
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Criterios de aceptación
 
-| Parte | Comportamiento esperado (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`) |
+| Parte | Comportamiento esperado (`develop` @ `b543684`) |
 | --- | --- |
 | Inicio y ranking | Menú con selector de **3 ranuras (`CONTINUAR` / `NUEVA PARTIDA`)**, `CONFIGURACIÓN` compartida en 3 pestañas (`MenuSettingsView`), campo `NOMBRE DEL JUGADOR (RANKING)...` (máx. 20 caracteres, validado por `GamertagRegistry`), reanudación directa si existe snapshot válido (`expedition_{N}.json`), y confirmación segura al sobrescribir una ranura ocupada. |
 | Preparación y guía en bóveda | Rótulos 3D `EQUIPO 1..3` en el balcón, indicadores direccionales superiores (`VaultDirections`), panel inferior de consejos rotatorios cada `8 s` (`VaultTips`), máquina de fusión en pared trasera (`189, 0, 28,88`) e **Índice de Colección (`[I]`)** (`I` / `Select`) con contador `{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 18 UNIDADES` y pestañas `POR RAREZAS` (`TODAS` + 6 rarezas, siluetas `???`) y `EN TU BÓVEDA`. |
@@ -2537,6 +2633,8 @@ En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación
 | Fusión (`30 s`) | Acepta **4 copias de la misma rareza o de rarezas mixtas** (excluida Yanikua; permite copias equipadas `EN EQUIPO 1/2/3`, desequipándolas automáticamente al confirmar), dura **30 segundos (`00:30`)** fijos, muestra probabilidades en UI (`60%`, `40%`, `1%` en 4 Épicas) y ofrece un único botón `COLECCIONAR` al reclamar. |
 | Interfaz y ajustes | Tipografía unificada **`Pixelify Sans`**, panel unificado `MenuSettingsView` en 3 pestañas (`General` con **`Límite de FPS` `30 / 60 / 120`** en pausa, `Efectos reducidos` en título y **`Pantalla`** `COMPLETA` / `VENTANA` en ambos menús, `Interfaz` con `Atributos de coleccionables SÍ/NO`, `Sonido` con `Volumen general` y `Música`) en Menú Inicial y Pausa, cuadrícula de mejoras `9 × 34 px`, `22` estadísticas y consulta rápida manteniendo `Q` o `Select` en combate. |
 | Resultado, retorno y persistencia | Prioridad de derrota en empate simultáneo, sincronización `PUT` / `DELETE` (`timeout = 8 s`) con Firebase (`EventLeaderboardSync` + `Saves/ranking_outbox.json`) publicando todos los intentos válidos y conservando la mejor puntuación por gamertag, retorno limpio a la bóveda, limpieza segura de efectos en `GolgoraMagmaRingPool` y guardado atómico por ranura (`SaveSlotService`, `FusionProgress` v5 con `displays[18]`, `discovered[15]`, `hasEquippedCompanion`, `FusionPhase` de 5 estados y `expedition_0..2.json`). |
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2565,6 +2663,8 @@ En el apartado técnico (`TECH-01`), el proyecto mantiene perfil de compilación
 | Ranking de evento (`EventLeaderboardSync`) | Sistema que reserva el gamertag mediante hash SHA-256 (`GamertagRegistry`), encola intentos en `Saves/ranking_outbox.json` (con respaldo legado `EchoScrap.Rank.v2`) y sincroniza cada partida válida mediante HTTPS `PUT` / `DELETE` con Firebase Realtime Database, conservando la mejor puntuación por gamertag en [`https://echoscrap.web.app`](https://echoscrap.web.app). |
 | Pool | Reserva de instancias reutilizables en memoria (`Object Pool`). |
 
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
+
 ---
 
 # Referencias e Inspiración
@@ -2586,11 +2686,13 @@ Registra los videojuegos y obras utilizadas como referencia de diseño, arte, na
 > [!warning] Propiedad intelectual
 > Todas las referencias sirven únicamente como guía de análisis mecánico, visual y de ritmo; la procedencia de cada recurso de EchoScrap se conserva en su registro correspondiente.
 
+> **Navegación:** [[00 - Índice]] · ← [[01 - Glosario]] · [[03 - Registro de Decisiones]] →
+
 ---
 
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`** (**16 de noviembre de 2026**, versión del GDD **`0.7.1`**).
+Esta edición refleja el estado verificado del código en **`develop` @ `b543684`** (**16 de noviembre de 2026**, versión del GDD **`0.7.1`**).
 
 | Área | Regla o decisión vigente (`8047d90` / `b543684`) |
 | --- | --- |
@@ -2607,6 +2709,8 @@ Esta edición refleja el estado verificado del código en **`develop` @ `8047d90
 | Ojo del verdugo (`CRIT_05`) | Daño crítico ya calculado `×3` si el objetivo estaba estrictamente bajo el `35%` de vida antes del golpe, más aturdimiento de `1 s` en `3 m`. |
 | Polilla Reactor y Gólgora | Polilla: espoleta por proximidad a `2 m` (`0,9 s` / `1,2 s` al morir), `35` de daño físico completo al jugador y a los objetivos enemigos (`IsEnemyTarget`, incluido Gólgora). Gólgora: `3 600 HP` en `Golgora_Demo.asset` (mismo valor base en `EnemyArchetypeSettings`) y `9 000 HP` en `Golgora_Complete.asset`; transición invulnerable de `1,5 s`, *Bombardeo* con `0,6 s` de recuperación, *Cerco de magma* con `40` de daño físico de aterrizaje y `18 s` fijos de enfriamiento en ambas fases, y *Fisura de magma* con `1,1 s` fijos de preparación (`GolgoraCombatSettings` = `CombatSettings.asset`). |
 | Guardado, snapshots y ranking | `SaveSlotService` en `Saves/` (`3` ranuras JSON atómicas, `FusionProgress` v5 y migración automática desde `PlayerPrefs` legado), `ExpeditionSnapshotService` cada `3 s`, tope de FPS en `EchoScrap.Graphics.FrameRateLimit`, modo de pantalla en `EchoScrap.Graphics.FullScreen` (por defecto `1`, reaplicado tras carga de escena en Standalone), volúmenes en `EchoScrap.Audio.*`, reserva atómica de gamertag en `/gamertags/{sha256}` y cola `Saves/ranking_outbox.json` enviando **todos los intentos válidos** conservando la mejor puntuación por gamertag (`PUT`/`DELETE`, `timeout = 8 s`). |
+
+> **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
 
 ---
 
@@ -2643,6 +2747,7 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 | **0.6.12** | 13/11/2026 | Auditoría integral de paridad contra **`origin/main` @ `734e2a5` / `develop` @ `6973556`** y los commits `84a72c0`..`6973556`: integración de retirada de cápsula residual (`84a72c0`), bloqueo de apariciones en interiores via `OverlapsBlockedInterior` (`3e59a4b`), totales dinámicos en HUD via `DescribeHudPower` (`f2e5470`), icono de escritorio `EchoScrap-AppIcon.png` (`d4e81df`), optimización física de `EnemyObstacleNavigator` (`cd6e4f2`) y limpieza segura de `GolgoraMagmaRingPool` (`acc5bf2`); corrección de fusión **4 Legendarios (`70%` Sirena · `30%` Yanikua)**, **Polilla Reactor (`2 m`, `35` de daño físico a enemigos incluido Gólgora)**, **`FLASH_05`** (empuje en cada pulso manteniendo `FLASH_03`/`BIO_02`/`CRIT_04` en `PulseIndex == 4`), **`BIO_03`** (`2 s` de protección al sobrevivir bajo `20%`), **Gólgora `3 600` / `9 000 HP` y `1,5 s`**, **`DEMO_03/04`**, **`SCRAP_01/03/04`**, frenado élite (`30` / `24 m/s²`), `E · LIBERAR` exclusivo de `slot >= 3`, retratos `Retrato_0..2` sin insignia numérica superpuesta, validación de `FusionProgress`, sustitución de símbolos C# inexistentes y rutas reales de audio en runtime. | Equipo EchoScrap |
 | **0.7.0** | 16/11/2026 | Sincronización total contra **`develop` @ `8047d90` + `feature/mejoras-y-allin-mitica` @ `ebf90f9`**: integración de **3 ranuras de guardado atómicas** (`SaveSlotService` con migración desde `PlayerPrefs`), **snapshots de expedición cada `3 s`** (`ExpeditionSnapshotService`) con reanudación automática, ranking publicando **todos los intentos válidos** conservando mejor puntuación por gamertag, ampliación de bóveda a **18 unidades** (`DisplaySlots[18]`: `3` equipo + `15` exposición) con máquina en pared trasera (`189, 0, 28,88`), paredes de basalto pixel art y relieve de roca, selector **`Límite de FPS` (`30 / 60 / 120`)** en pausa, deslizamiento junto a rocas bajas, optimizaciones de navegación/GPU/texturas/bóveda, expansión a **62 mejoras en cinco rarezas** (`8` cartas contextuales `1239072` + `19` cartas nuevas con pooling sin GC + **rareza `Mítica` con `MYTH_01` *All In*** y `Frame_Mythic` lit + reelaboración de **`DASH_05` *Paso de ariete*** a distancia de dash), HUD de `22` estadísticas y cuadrícula `9 × 34 px`, y compilaciones verificadas **Windows x64** y **macOS Universal (`x86_64` + `arm64`)**. | Equipo EchoScrap |
 | **0.7.1** | 16/11/2026 | Paridad final contra **`feature/mejoras-y-allin-mitica` @ `b543684`**: añadido selector **`Pantalla` (`COMPLETA` / `VENTANA`)** en la pestaña `General` de `MenuSettingsView` (`EchoScrap.Graphics.FullScreen`, arrancando automáticamente en pantalla completa sin bordes tras cargar escena en Standalone aunque el registro previo estuviera en ventana), limpieza explícita de `_EmissionColor` en `MothSpriteView`, `MortarSpriteView` y `EnemySpriteView` junto con exclusión de flash blanco completo en ticks continuos (`StaticAura`, `PlasmaPuddle`, `FlameTrail`), proyección sobre relieve mediante malla `12 × 12` sin asignaciones GC para *Aura estática* y zonas en suelo (`UpgradeEffectPool.ProjectGroundRing`), y actualización de los paquetes Release **Windows x64** y **macOS Universal**. | Equipo EchoScrap |
+| **0.7.2** | 16/11/2026 | Sincronización del juego y del GDD en `develop` con PR a `main`; corrección de capacidad a 18 unidades en visión y arquitectura, precisión sobre guardados heredados, reparación de enlaces del documento completo y separación explícita entre pruebas focalizadas y suite completa. | Equipo EchoScrap |
 
 ## Convención sugerida
 
@@ -2652,3 +2757,5 @@ Registra los cambios importantes realizados al GDD. Esto permite conocer cómo e
 
 > [!example] Ejemplo
 > `1.2.3` → versión mayor 1, versión menor 2, corrección 3.
+
+> **Navegación:** [[00 - Índice]] · ← [[03 - Registro de Decisiones]] · [[00 - Índice]] →

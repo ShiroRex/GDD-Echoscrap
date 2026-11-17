@@ -1,6 +1,6 @@
 # Entregas y trabajo pendiente
 
-| Área | Estado actual (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`) |
+| Área | Estado actual (`develop` @ `b543684`) |
 | --- | --- |
 | Flujo, guardado y ranking | Menú con selector de **3 ranuras de guardado** (`CONTINUAR` / `NUEVA PARTIDA` en `SaveSlotService`), migración automática desde `PlayerPrefs`, snapshots cada `3 s` (`ExpeditionSnapshotService`), campo `NOMBRE DEL JUGADOR (RANKING)...` en `NUEVA PARTIDA · ARCHIVO N` (`GamertagRegistry`), preparación en bóveda, elección de ronda (`ELIGE LA RONDA`), expedición y ranking `rulesVersion = 2` publicando **todos los intentos válidos** conservando la mejor puntuación por gamertag en `https://echoscrap.web.app`. |
 | Señalización de bóveda e Índice | Rótulos 3D `EQUIPO 1..3`, flechas direccionales superiores (`VaultDirections`), panel de consejos (`VaultTips`), paredes con basalto pixel art, fracturas de roca con relieve, bloqueo bajo escalera, iluminación `WarehouseLightScope` e **Índice de Colección (`[I]` / `Select`)** con pestañas `POR RAREZAS` (`TODAS` + 6 categorías) y `EN TU BÓVEDA`. |
@@ -26,11 +26,11 @@
 | ART-ELITE-01 / 02 | Conectar sprites y ciclos de combate de Caballero Fantasma y Centinela de Cobre. | Integrado | Atlas de 224 y 288 fotogramas integrados con mapas de normales y emisión. |
 | COMBAT-SOLAR-01 | Aplicar empuje en cada pulso de *Rayo solar* (`FLASH_05`) manteniendo `FLASH_03`, `BIO_02` y `CRIT_04` en el cuarto pulso. | Integrado | `FlashlightWeapon.cs:402` (`capturedSolarMode`) y `UpgradeCombatRuntime.cs:232-236, 341` (`PulseIndex == 4`). |
 | MEDIA-TRAILER-01 | Grabar, montar y validar el tráiler promocional final de *EchoScrap*. | Integrado y aprobado en QA | [`Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4`](../Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, `70,9 MB`), con gameplay desarrollado y audio propio. |
-| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Cerrado para `v0.7.1` | Paquetes Release verificados `EchoScrap-Windows-x64-62mejoras.zip` (`0x8664`, `0` errores en humo, arranque fullscreen `1920 × 1080`) y `EchoScrap-macOS-Universal-62mejoras.zip` (`x86_64` + `arm64`, `-rwxr-xr-x`). |
+| TECH-01 / PLAT-MAC-01 | Cerrar validación técnica de compilación y rendimiento **Windows x64** y **macOS Universal**. | Compilación verificada y ejecución manual en macOS confirmada por el equipo | Paquetes Release verificados `EchoScrap-Windows-x64-62mejoras.zip` (`0x8664`, `0` errores en humo, arranque fullscreen `1920 × 1080`) y `EchoScrap-macOS-Universal-62mejoras.zip` (`x86_64` + `arm64`, `-rwxr-xr-x`). |
 | SETTINGS-DISPLAY-01 | Añadir selector **`Pantalla` (`COMPLETA` / `VENTANA`)**, limpiar `_EmissionColor` en enemigos y proyectar anillos de área sobre terreno. | Integrado | `MenuSettingsView.cs` (`EchoScrap.Graphics.FullScreen`), `MothSpriteView.cs`, `MortarSpriteView.cs`, `EnemySpriteView.cs`, `EnemyActor.cs` y `UpgradeEffectPool.ProjectGroundRing` (`0` GC bytes). |
 
 ## Estado de cierre del backlog
 
-No quedan tareas pendientes de programación, arte o diseño para la versión sincronizada actual (`0.7.1`). Únicamente se mantiene fuera del alcance de desarrollo la toma de telemetría instrumentada en un equipo físico de perfil mínimo, documentada como limitación conocida en [[03 - Requisitos Técnicos]] y [[03 - Bugs y Seguimiento]].
+El contenido previsto está integrado, pero el cierre de calidad sigue pendiente: la suite completa conserva fallos que requieren revisión de fixtures, expectativas y comportamiento de terreno/colisiones. Los resultados y el alcance de las pruebas figuran en [[02 - Pruebas]] y [[03 - Bugs y Seguimiento]]. También falta telemetría en un equipo físico de perfil mínimo. La ejecución nativa en macOS sí fue realizada por un integrante del equipo, según confirmación del equipo del 16 de noviembre; se registra como validación manual, complementaria a la verificación del paquete Universal.
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]

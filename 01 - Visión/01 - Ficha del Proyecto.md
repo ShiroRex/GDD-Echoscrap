@@ -4,7 +4,7 @@
 | --- | --- |
 | Nombre | EchoScrap |
 | Versión del GDD | 0.7.1 |
-| Estado | Versión jugable sincronizada en `develop` + `feature/mejoras-y-allin-mitica`: menú inicial con **3 ranuras de guardado** y reanudación por snapshot, configuración compartida con selector de **pantalla completa/ventana (`COMPLETA` / `VENTANA`)** y FPS, preparación guiada en bóveda de **18 unidades**, Índice de Colección / Bestiario (`[I]`), expediciones, fusión de 30 s (misma rareza o rarezas mixtas), **62 mejoras en cinco rarezas** (incluyendo *All In* Mítica y proyección de auras/zonas sobre relieve), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) con todos los intentos válidos, compilaciones **Windows x64** y **macOS Universal**, publicación web previa en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`). |
+| Estado | Versión jugable sincronizada en `develop`: menú inicial con **3 ranuras de guardado** y reanudación por snapshot, configuración compartida con selector de **pantalla completa/ventana (`COMPLETA` / `VENTANA`)** y FPS, preparación guiada en bóveda de **18 unidades**, Índice de Colección / Bestiario (`[I]`), expediciones, fusión de 30 s (misma rareza o rarezas mixtas), **62 mejoras en cinco rarezas** (incluyendo *All In* Mítica y proyección de auras/zonas sobre relieve), encuentro final, ranking en vivo en [`https://echoscrap.web.app`](https://echoscrap.web.app) con todos los intentos válidos, compilaciones **Windows x64** y **macOS Universal**, publicación web previa en [`https://naked-hiro.itch.io/echoscrap`](https://naked-hiro.itch.io/echoscrap) y tráiler promocional (`EchoScrap-Trailer-Final-1080p.mp4`, `1080p`, `46 s`). |
 | Actualización | 16 de noviembre de 2026 |
 | Género | Acción. |
 | Subgénero | Supervivencia de hordas con progresión roguelite. |
@@ -16,7 +16,7 @@
 | Distribución ejecutable (itch.io) | https://naked-hiro.itch.io/echoscrap |
 | Tráiler promocional final | [EchoScrap-Trailer-Final-1080p.mp4](../Media/Trailer/EchoScrap-Trailer-Final-1080p.mp4) (`1920 × 1080`, `46,2 s`, gameplay desarrollado y audio propio; aprobado en QA) |
 | Repositorio del juego | https://github.com/ShiroRex/EchoScrap |
-| Revisión consultada | Código y escena de `develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684` (integra `734e2a5`/`6973556`, las 8 mejoras contextuales `1239072`, selector de FPS `993d459`, 3 ranuras `1c97922`, snapshots `24db181`, ranking por mejor marca `15d273f`, bóveda de 18 cápsulas `8c0dfae`, mejoras de rendimiento/arte `578ba07..aefed1a`, expansión a 62 mejoras + rareza Mítica `ebf90f9`, y correcciones `7a237e5..b543684`: selector `Pantalla` `COMPLETA`/`VENTANA` con pantalla completa al iniciar, limpieza de `_EmissionColor` en enemigos y proyección sobre relieve de auras/zonas). |
+| Revisión consultada | Código y escena de `develop` @ `b543684` (integra `734e2a5`/`6973556`, las 8 mejoras contextuales `1239072`, selector de FPS `993d459`, 3 ranuras `1c97922`, snapshots `24db181`, ranking por mejor marca `15d273f`, bóveda de 18 cápsulas `8c0dfae`, mejoras de rendimiento/arte `578ba07..aefed1a`, expansión a 62 mejoras + rareza Mítica `ebf90f9`, y correcciones `7a237e5..b543684`: selector `Pantalla` `COMPLETA`/`VENTANA` con pantalla completa al iniciar, limpieza de `_EmissionColor` en enemigos y proyección sobre relieve de auras/zonas). |
 | Repositorio del GDD | https://github.com/ShiroRex/GDD-Echoscrap |
 
 ## Equipo

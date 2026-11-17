@@ -2,7 +2,7 @@
 
 El proyecto dispone de pruebas automatizadas de locomoción, dash, daño, navegación, oleadas, élites, jefe, cartas, recogida, pausas, menús, bóveda, colección y fusión, además del laboratorio interactivo (`EnemyLaboratory`) para generar e inspeccionar los ocho arquetipos.
 
-## Verificación actual de paridad, pruebas automatizadas y builds (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`, 16 de noviembre de 2026)
+## Verificación actual de paridad, pruebas automatizadas y builds (`develop` @ `b543684`, 16 de noviembre de 2026)
 
 Esta revisión valida el código fuente, las escenas (`CombatArena.unity`, `MainMenu.unity`), los assets regenerados (`UpgradeCardSkin.asset`, `Frame_Mythic.png`, `Frame_Mythic.mat`), las pruebas automatizadas sobre el commit final `b543684` y las compilaciones Standalone finales en **Windows x64** y **macOS Universal**:
 
@@ -12,7 +12,7 @@ Esta revisión valida el código fuente, las escenas (`CombatArena.unity`, `Main
   - En la ejecución previa de la suite completa aislada sobre `ebf90f9` (`712` totales · `667` aprobadas · `45` fallidas · `0` omitidas, frente a `684` / `633` / `51` en `develop`), los `45` fallos correspondieron íntegramente a pruebas preexistentes de sandbox/terreno/autoría ajenas a estas entregas: `CombatHealthSessionTests` (`8`), `CombatSandboxSetupTests` (`1`), `EnemyLaboratoryTests` (`9`), `EnemyMortarTests` (`1`), `EnemyResidualTests` (`1`), `FusionIntegrationTests.VaultMachineInCentralAisleAndIndexByRarity` (`1`, esperaba la coordenada anterior `188.3466f` frente a `189f` introducida por `8c0dfae`), `LocomotionTests` (`16`), `PlayerReliefScaleTests` (`3`), `PlayerTreeTraversalTests` (`1`), `WarehousePresentationTests` (`1`) y `WorldArtIntegrationTests` (`3`).
 - **Compilaciones Release y pruebas de humo sobre `b543684`:**
   - **Windows x64 (`EchoScrap-Windows-x64-62mejoras.zip`, `145 267 061` bytes):** cabecera PE x64 (`0x8664`), ejecución real verificada en modo **`FullScreenWindow` (`1920 × 1080`, `Screenmanager Fullscreen mode = 1`)** sobrescribiendo valores heredados en ventana del registro y cerrando con `0` errores en `SmokeTest_v3.log`.
-  - **macOS Universal (`EchoScrap-macOS-Universal-62mejoras.zip`, `153 000 566` bytes):** binario Mach-O Universal (`0xCAFEBABE`, `x86_64` + `arm64`) en `Contents/MacOS/EchoScrap` y `Contents/Frameworks/UnityPlayer.dylib`, con permisos POSIX `-rwxr-xr-x` verificados mediante `Set-ZipMacModes.cjs`.
+  - **macOS Universal (`EchoScrap-macOS-Universal-62mejoras.zip`, `153 000 566` bytes):** binario Mach-O Universal (`0xCAFEBABE`, `x86_64` + `arm64`) en `Contents/MacOS/EchoScrap` y `Contents/Frameworks/UnityPlayer.dylib`, con permisos POSIX `-rwxr-xr-x` verificados mediante `Set-ZipMacModes.cjs`. Además, el equipo confirmó el 16 de noviembre de 2026 que un integrante ejecutó el juego en su Mac. Se registra como validación manual reportada por el equipo, complementaria a la comprobación técnica del paquete.
 
 ## Auditoría previa de paridad (`main` @ `734e2a5` / `develop` @ `6973556`, 13 de noviembre de 2026)
 

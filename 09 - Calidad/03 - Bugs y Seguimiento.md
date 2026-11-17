@@ -1,5 +1,11 @@
 # Bugs y seguimiento
 
+## Suite completa pendiente de cierre (`QA-FULL-01`)
+
+La ejecución completa anterior registró 45 fallos; las 172 pruebas focalizadas aprobadas sobre `b543684` no sustituyen esa validación. Los grupos afectados incluyen carga de escenas sandbox/laboratorio que están deshabilitadas en el perfil de entrega, expectativas antiguas de balance y posición de la máquina de fusión, capturas con `WaitForEndOfFrame` incompatibles con batch mode y comprobaciones de terreno, árboles y paredes. Estos últimos fallos deben investigarse antes de concluir que son únicamente pruebas obsoletas. Los resultados actuales se registran en [[02 - Pruebas]].
+
+La integración en `develop` y la apertura de PR a `main` acreditan la sincronización del repositorio, no la ausencia de defectos ni la aprobación de toda la suite.
+
 ## Señalización y guía de la bóveda (`UX-01` — Resuelto en `9eed59f`)
 
 **Estado: resuelto e integrado (`develop` @ `9eed59f`).** En revisiones anteriores, los tres puestos de equipo y la gestión de la colección carecían de indicadores globales dentro de la bóveda. En el código actual se ha resuelto mediante cuatro elementos integrados:

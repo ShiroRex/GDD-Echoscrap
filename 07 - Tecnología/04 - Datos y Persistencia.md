@@ -12,14 +12,14 @@ El reloj de incursión, la salud actual, la XP, el nivel, las cartas adquiridas,
 
 `SaveSlotService` gestiona hasta **`3` ranuras independientes (`SlotCount = 3`)** en disco mediante escritura atómica y respaldo bajo `Application.persistentDataPath/Saves/` (o `Saves_BatchTest/` en batch mode): `index.json`, `slot_0..2.json` (`SlotProfileData`, que incluye `FusionProgress` versión **`5`**, `totalPlaySeconds`, `hasActiveExpedition`, `activeAttemptId`, `bestLocalScore` y `completedRankedRuns`), `expedition_0..2.json` (`ExpeditionSnapshotData`) y `ranking_outbox.json` (`RankingOutboxData`). En la primera carga, `SaveSlotService.EnsureMigrated()` importa automáticamente cualquier progreso previo de `PlayerPrefs` (`EchoScrap.Collection.Production.v1`, `EchoScrap.Collection.v1`, `EchoScrap.Rank.v2` y `EchoScrap.Event.PlayerName`).
 
-La capacidad máxima de la colección es de **18 unidades en total** (`FusionProgress.Capacity = 18`, `OwnedCount <= 18`), que se corresponden exactamente con los **18 pedestales físicos de la bóveda** (`DisplaySlots[18]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **15 puestos de exposición/reserva** en la planta inferior (`slot 3..17`).
+La capacidad máxima de la colección es de **18 unidades en total** (`FusionProgress.Capacity = 18`; las nuevas recogidas y reclamaciones requieren `OwnedCount < 18`), que se corresponden exactamente con los **18 pedestales físicos de la bóveda** (`DisplaySlots[18]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **15 puestos de exposición/reserva** en la planta inferior (`slot 3..17`).
 
 | Campo del JSON (`FusionProgress`) | Tipo | Contenido y reglas de validación (`FusionProgress.cs`) |
 | --- | --- | --- |
 | `version` | `int` | Versión del esquema de guardado. El valor vigente es **`5`**. |
 | `hasEquippedCompanion` | `bool` | Registra si el jugador ya ha equipado al menos un acompañante alguna vez (`VaultTips` y `FusionStation.cs`). |
 | `equipped` | `int[3]` | IDs de las entidades asignadas a los **3 puestos de equipo activo** del balcón (puestos 1 a 3) o `-1` si el puesto está vacío. |
-| `owned` | `int[15]` | Copias en posesión de cada una de las 15 entidades (`ID 0..14`). Los valores negativos se ajustan a `0` y la **suma total está limitada a un máximo de `18` unidades** (`Capacity = 18`). |
+| `owned` | `int[15]` | Copias en posesión de cada una de las 15 entidades (`ID 0..14`). Los valores negativos se ajustan a `0`. Las nuevas recogidas y reclamaciones se bloquean al alcanzar `18` unidades (`Capacity = 18`); la carga conserva un posible exceso heredado, sin eliminar copias. |
 | `discovered` | `bool[15]` | Registro permanente de descubrimiento de las 15 entidades para el **Índice de Colección (`[I]`, `VaultCollectionIndex`)** y los selectores de puesto. Toda entidad con `owned[i] > 0` marca `discovered[i] = true`, y liberar una copia conserva `discovered[i] = true`. |
 | `displays` | `int[18]` | Array de longitud **`18`** (`Capacity = 18`) que representa el total de los **18 puestos físicos de la bóveda** (`displays[0..2]` para el balcón y `displays[3..17]` para la planta baja). `-1` indica pedestal vacío. |
 | `phase` | `int` (`FusionPhase`) | Estado de la máquina de fusión en **5 estados**: `0 = Idle`, `1 = Fusing`, `2 = Opening`, `3 = AwaitingDecision`, `4 = Ready`. |

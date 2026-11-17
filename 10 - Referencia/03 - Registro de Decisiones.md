@@ -1,6 +1,6 @@
 # Registro de decisiones vigentes
 
-Esta edición refleja el estado verificado del código en **`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684`** (**16 de noviembre de 2026**, versión del GDD **`0.7.1`**).
+Esta edición refleja el estado verificado del código en **`develop` @ `b543684`** (**16 de noviembre de 2026**, versión del GDD **`0.7.1`**).
 
 | Área | Regla o decisión vigente (`8047d90` / `b543684`) |
 | --- | --- |

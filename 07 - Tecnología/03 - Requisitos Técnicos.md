@@ -1,8 +1,8 @@
 # Requisitos técnicos
 
-Las plataformas del proyecto son **PC Windows (`x64`)** y **macOS Universal (`x86_64` + `arm64`)**. El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre `develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `b543684` (16 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`. El icono de aplicación de escritorio (`EchoScrap-AppIcon.png`) está enlazado en `ProjectSettings/ProjectSettings.asset`.
+Las plataformas del proyecto son **PC Windows (`x64`)** y **macOS Universal (`x86_64` + `arm64`)**. El montaje utiliza Unity `6000.6.3f1`, URP `17.6.0`, Input System `1.20.0` y Cinemachine `6.6.0` sobre `develop` @ `b543684` (16 de noviembre de 2026). La compilación principal habilita las escenas `MainMenu` y `CombatArena`. El icono de aplicación de escritorio (`EchoScrap-AppIcon.png`) está enlazado en `ProjectSettings/ProjectSettings.asset`.
 
-El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `10` pedestales físicos (`3` de equipo + `7` de exposición).
+El director de oleadas limita la población ordinaria a `150` enemigos simultáneos (`250` en modo de estrés), con un tope de `6` Morteros activos, `2` élites simultáneos y `8` secuaces efectivos dentro de la caldera de Gólgora. La colección en la bóveda gestiona un máximo de `18` pedestales físicos (`3` de equipo + `15` de exposición).
 
 ## Perfiles de referencia y cierre de validación técnica
 

@@ -27,7 +27,7 @@ El portal o el botón **`INICIAR EXPEDICIÓN`** abre la elección de ronda (`ELI
 7. Combatir contra Gólgora en la caldera central.
 8. Consultar el resultado y volver a la bóveda para revisar equipo, liberar espacio o fusionar copias.
 
-Las elecciones de cartas pausan la simulación del combate mediante la máscara `PauseReason.LevelUpChoice`. Si una recogida acumula varias subidas de nivel consecutivas, las elecciones se encadenan una tras otra sin reanudar la arena entre selecciones.
+Las elecciones de cartas pausan la simulación del combate mediante la máscara `PauseReason.TacticalDraft`. Si una recogida acumula varias subidas de nivel consecutivas, las elecciones se encadenan una tras otra sin reanudar la arena entre selecciones.
 
 ## Cierre y continuidad
 
