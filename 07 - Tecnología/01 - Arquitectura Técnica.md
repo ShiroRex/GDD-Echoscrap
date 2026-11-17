@@ -1,6 +1,6 @@
 # Arquitectura técnica
 
-El proyecto activo se encuentra en `EchoScrap/` (`main` @ `734e2a5` / `develop` @ `6973556`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir colección, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
+El proyecto activo se encuentra en `EchoScrap/` (`develop` @ `8047d90` / `feature/mejoras-y-allin-mitica` @ `ebf90f9`). La compilación principal empieza en `MainMenu` y carga `CombatArena` después de elegir ranura en **`CONTINUAR`** o **`NUEVA PARTIDA`**, conservando en escena tanto la arena exterior como la bóveda modular para alternar preparación y expediciones sin recargar actores.
 
 | Responsabilidad | Componentes actuales (`Assets/_Project/Scripts`) |
 | --- | --- |
@@ -17,7 +17,8 @@ El proyecto activo se encuentra en `EchoScrap/` (`main` @ `734e2a5` / `develop` 
 | Equipo y obtención | `CompanionSystem`, `CompanionPowerRuntime`, `CompanionPixelEffects`, `CompanionView`, `CollectibleUnitGrid`, `CollectibleDisplay`, `CollectiblePickupFeedback` |
 | Arte y efectos | `EnemySpriteView`, `MortarSpriteView`, `MothSpriteView`, `EnemyEffectPool`, `UpgradeEffectPool`, `GolgoraMagmaRingPool` |
 | Interfaz, pausa y audio | `CombatHud` (menú de pausa en 3 pestañas y consulta rápida `Q` / `Select`), `CombatMinimap`, `PlayerStatsReadout`, `DamageNumberPresenter`, `CombatMusicPlayer`, `MenuMusic` |
-| Ranking en vivo y visor web | `EventLeaderboardSync` (`rulesVersion = 2`, sincronización HTTPS con Firebase Realtime Database), `GamertagRegistry` (reserva única SHA-256) y visor web en vivo `Tools/WebRanking/index.html` ([`https://echoscrap.web.app`](https://echoscrap.web.app)) |
+| Guardado y snapshots | `SaveSlotService` (3 ranuras JSON atómicas, migración de `PlayerPrefs` legado y cola de ranking), `ExpeditionSnapshotService` (captura/restauración cada `3 s`) y `FusionProgress` v5 |
+| Ranking en vivo y visor web | `EventLeaderboardSync` (`rulesVersion = 2`, sincronización HTTPS de todos los intentos válidos conservando mejor marca por gamertag en Firebase Realtime Database), `GamertagRegistry` (reserva SHA-256) y visor web en vivo `Tools/WebRanking/index.html` ([`https://echoscrap.web.app`](https://echoscrap.web.app)) |
 | Iluminación | `ArenaLightingController`, `ArenaLightingProfile` y renderer de atmósfera |
 
 La simulación comunica daño, muerte, recogida y resultados mediante eventos C#. Las reservas (`Object Pool`) reutilizan enemigos, proyectiles, números flotantes y efectos visuales entre expediciones, manteniendo separadas las reglas de simulación y su presentación.

@@ -6,7 +6,7 @@ Las gemas conceden la XP del enemigo derrotado y permanecen en el escenario hast
 
 ## Catálogo de 15 entidades de la colección
 
-La colección registra permanentemente hasta **15 entidades descubiertas** (`discovered[15]`) y almacena un **máximo estricto de 10 unidades en posesión** (`FusionProgress.Capacity = 10`, `owned[15]` cuya suma nunca supera `10`). Nueve entidades aparecen como fragmentos en la arena y seis se obtienen mediante la máquina de fusión.
+La colección registra permanentemente hasta **15 entidades descubiertas** (`discovered[15]`) y almacena un **máximo estricto de 18 unidades en posesión** (`FusionProgress.Capacity = 18`, `owned[15]` cuya suma nunca supera `18`). Nueve entidades aparecen como fragmentos en la arena y seis se obtienen mediante la máquina de fusión.
 
 | ID | Entidad | Rareza en catálogo | Fuente | Poder de acompañante (`CompanionPowerRuntime`, **acumulable por copia equipada**) |
 | ---: | --- | --- | --- | --- |
@@ -28,12 +28,12 @@ La colección registra permanentemente hasta **15 entidades descubiertas** (`dis
 
 Cada `30 s` de combate activo se intenta generar entre `1` y `3` fragmentos en posiciones válidas del mapa, con un máximo de `12` activos simultáneamente y `10 s` de duración por aparición. El jugador debe acercarse a menos de `2,5 m` con línea de visión despejada y pulsar **`E`** (o el botón oeste en mando).
 
-## Capacidad máxima de 10 unidades y bloqueo por inventario lleno
+## Capacidad máxima de 18 unidades y bloqueo por inventario lleno
 
-La colección admite un máximo estricto de **10 unidades en total** (`FusionProgress.Capacity = 10`), que se corresponden uno a uno con los **10 pedestales físicos de la bóveda** (`DisplaySlots[10]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **7 puestos de exposición/reserva** en la planta inferior (`slot 3..9`). Cuando algún puesto del balcón está vacío, exhibe una copia en reserva etiquetada como `EQUIPO N · RESERVA`, permitiendo mostrar hasta las 10 unidades simultáneamente en la escena.
+La colección admite un máximo estricto de **18 unidades en total** (`FusionProgress.Capacity = 18`), que se corresponden uno a uno con los **18 pedestales físicos de la bóveda** (`DisplaySlots[18]`): **3 puestos de equipo activo** en el balcón superior (`slot 0..2`) y **15 puestos de exposición/reserva** en la planta inferior (`slot 3..17`). Cuando algún puesto del balcón está vacío, exhibe una copia en reserva etiquetada como `EQUIPO N · RESERVA`, permitiendo mostrar hasta las 18 unidades simultáneamente en la escena.
 
-- **Bloqueo de recogida en la arena (`CompanionSystem.cs`, `CollectibleDisplay.cs`, `CollectiblePickupFeedback.cs`):** si el jugador ya posee `10/10` unidades (`!FusionProgress.HasSpace`), no puede recoger más fragmentos en combate y aparece el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
-- **Bloqueo de reclamo en la máquina de fusión (`FusionStationUI.cs`):** si el jugador intenta reclamar el resultado de una fusión teniendo `10/10` unidades, la máquina muestra **`INVENTARIO LLENO · LIBERA ESPACIO`** (*"Tu colección tiene 10 unidades. Libera una en la bóveda y vuelve: el resultado de esta fusión seguirá aquí."*) y mantiene el resultado guardado en estado `AwaitingDecision` hasta que libere espacio en algún pedestal de la bóveda.
+- **Bloqueo de recogida en la arena (`CompanionSystem.cs`, `CollectibleDisplay.cs`, `CollectiblePickupFeedback.cs`):** si el jugador ya posee `18/18` unidades (`!FusionProgress.HasSpace`), no puede recoger más fragmentos en combate y aparece el aviso flotante **`INVENTARIO LLENO / LIBERA ESPACIO`**.
+- **Bloqueo de reclamo en la máquina de fusión (`FusionStationUI.cs`):** si el jugador intenta reclamar el resultado de una fusión teniendo `18/18` unidades, la máquina muestra **`INVENTARIO LLENO · LIBERA ESPACIO`** (*"Tu colección tiene 18 unidades. Libera una en la bóveda y vuelve: el resultado de esta fusión seguirá aquí."*) y mantiene el resultado guardado en estado `AwaitingDecision` hasta que libere espacio en algún pedestal de la bóveda.
 
 ## Interacción con los puestos de la bóveda y señalización
 
@@ -49,20 +49,20 @@ Las interacciones de cada nivel de la bóveda son:
   - El aviso contextual al acercarse es **`E · EQUIPAR`** (si está vacío, incluso cuando exhibe visualmente una reserva) o **`E · EDITAR`** (si tiene una entidad equipada).
   - Pulsar **`E`** (o botón oeste en mando) abre el selector de acompañantes (`CompanionView`, encabezado `PUESTO DE EQUIPO 1/2/3`, subtítulo `ELIGE UNA ENTIDAD DESCUBIERTA PARA ESTE PUESTO` y la nota *"Señala un compañero para ver su poder. Los poderes se acumulan por copia equipada."*). Su barra inferior ofrece tres botones: **`QUITAR DEL PUESTO`** (desequipa la unidad y la devuelve a reserva), **`LIBERAR COPIA`** (abre el modal de confirmación para eliminar la copia de la colección) y **`CERRAR · E / ESC`**.
   - Además, al estar frente a un puesto de equipo ocupado en el mundo, pulsar **`T`** (o el botón norte `Y` / `Triángulo` en mando) retira directamente la unidad del puesto de equipo sin abrir el menú (`VaultReleaseInteraction.TryUnequip`).
-- **Puestos 4 a 10 (planta inferior, exposición/reserva — `VaultReleaseInteraction.cs`):**
+- **Puestos 4 a 18 (planta inferior, exposición/reserva — `VaultReleaseInteraction.cs`):**
   - Al acercarse a un puesto ocupado (`slot >= 3`), el aviso contextual es **`E · LIBERAR`** (`VaultReleaseInteraction.cs:67`).
   - Pulsar **`E`** (o botón oeste en mando) abre el cuadro de confirmación **`LIBERAR UNIDAD`**: *"¿Seguro que quieres liberar a `<Nombre>`? Esta unidad desaparecerá de tu colección."* con los botones **`CANCELAR`** (`Esc` / botón este) y **`LIBERAR`** (`E`, `Enter`, `Espacio` o `A`/`Cruz`).
-  - Al confirmar (`FusionStation.ReleaseCollectible`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en `PlayerPrefs`.
+  - Al confirmar (`FusionStation.ReleaseCollectible`), se descuenta `1` de `owned[id]`, se conserva permanentemente `discovered[id]` en el Índice de Colección, se reordenan los puestos de exposición por rareza y se guarda en la ranura activa (`SaveSlotService`, con respaldo en `Saves/slot_{N}.json`).
 
 ![Selector de entidades del puesto](../Media/Interfaz/Equipar_coleccionable.png)
-*Selector de entidades del puesto en la versión final de Unity (`734e2a5`), con la nota de acumulación por copia equipada y los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
+*Selector de entidades del puesto (captura de referencia `734e2a5`), con la nota de acumulación por copia equipada y los tres botones inferiores integrados: `QUITAR DEL PUESTO`, `LIBERAR COPIA` y `CERRAR · E / ESC`.*
 
 ## Índice de Colección (Bestiario de entidades — `VaultCollectionIndex.cs`, tecla `[I]`)
 
 El **Índice de Colección** funciona como el **bestiario y libro de registro** donde el jugador consulta qué criaturas ha descubierto, cuáles le faltan para completar las **15 entidades** del catálogo y qué unidades conserva actualmente en su bóveda.
 
 - **Control de apertura y cierre (`[I]`):** dentro de la bóveda se abre pulsando la tecla **`I`**, el botón **`Select`** en mando o haciendo clic en el botón superior izquierdo **`ÍNDICE · [I]`** (`BotonIndiceBoveda` en `VaultCollectionIndex.cs`), lo que pausa la simulación (`PauseReason.FusionMenu`). Se cierra con **`I`**, **`Select`**, **`Esc`**, botón este (`B` / `Círculo`) o el botón **`X   CERRAR · [I]`** *(nota: la tecla `Tab` está reservada exclusivamente al laboratorio de pruebas `EnemyLaboratoryPanel`, no al bestiario)*.
-- **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 10 UNIDADES`**.
+- **Encabezado y contadores:** muestra el título **`ÍNDICE DE COLECCIÓN`** y el contador en vivo **`{descubiertos} / 15 DESCUBIERTOS · {en posesión} / 18 UNIDADES`**.
 - **Qué acción cuenta como descubrimiento (`FusionStation.CollectFromArena` y `FusionStation.Resolve`):** en la versión jugable, la ficha de una criatura (`discovered[id] = true`) se desbloquea **en el instante en que el jugador la obtiene por primera vez**, ya sea **recogiendo su fragmento en la arena con `E` / botón oeste** o **reclamándola en la máquina de fusión con el botón `COLECCIONAR`** (ver aparecer un fragmento en el suelo sin recogerlo no cuenta como descubrimiento). Al descubrirla por primera vez, su silueta negra cambia de forma permanente a su retrato a color, se incrementa el contador `{descubiertos} / 15` (y suma `+150` puntos base si ocurre durante la expedición puntuable) y el desbloqueo se mantiene para siempre aunque después se liberen sus copias en la bóveda (`FusionStation.ReleaseCollectible`).
 - **Pestaña 1 — `POR RAREZAS` (15 entidades en 6 categorías):** incluye el filtro **`TODAS`** además de las **6 categorías de rareza** (`COM`, `RAR`, `ESP`, `ÉPI`, `LEG`, `MÍT`):
   - **Común (`3`):** *Lobito, Basket y Reaper*.
@@ -72,7 +72,7 @@ El **Índice de Colección** funciona como el **bestiario y libro de registro** 
   - **Legendario (`2`):** *Lisa y Sirena*.
   - **Mítico (`1`):** *Yanikua*.
   Las criaturas que aún faltan por descubrir aparecen como **siluetas negras** (`Color(0.03, 0.03, 0.04, 0.96)`) con un signo de interrogación (**`???`**) y el aviso **`NO ENCONTRADO`** / **`SILUETA BLOQUEADA`** (*"Aún no has registrado esta entidad. Encuéntrala en la arena o mediante la máquina de fusión para revelar su retrato y su efecto de compañero."*).
-- **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 10 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`**.
+- **Pestaña 2 — `EN TU BÓVEDA`:** lista únicamente las unidades actualmente en posesión (`hasta 18 unidades`), indicando en cada tarjeta si se encuentra **`EN EQUIPO ACTIVO`** (puestos 1–3) o **`EN BÓVEDA`**.
 - **Panel derecho de inspección (`PanelDetalleIndice`):** al seleccionar cualquier entidad descubierta, muestra su insignia de rareza, retrato a color ampliado, fuente de obtención (*Arena* o *Máquina de fusión*), copias actuales en posesión (`xN`) y la descripción completa de su **poder de compañero**.
 
 ![Índice de Colección (Bestiario en versión final)](../Media/Interfaz/Bestiario.png)
@@ -80,7 +80,7 @@ El **Índice de Colección** funciona como el **bestiario y libro de registro** 
 
 ## Máquina de fusión (`FusionProgress.cs`, `FusionStation.cs`, `FusionStationUI.cs`, `CollectibleUnitGrid.cs`)
 
-La estación central de la bóveda se abre con **`E`** (o botón oeste en mando: **`E · FUSIONAR`** cuando está libre o en cuenta atrás, o **`E · VER FUSIÓN`** cuando un resultado aguarda en `AwaitingDecision`).
+La estación ubicada en la pared trasera de la bóveda (`x = 189, z = 28,88`) se abre con **`E`** (o botón oeste en mando: **`E · FUSIONAR`** cuando está libre o en cuenta atrás, o **`E · VER FUSIÓN`** cuando un resultado aguarda en `AwaitingDecision`).
 
 ### Reglas de ingredientes y duración fija de 30 segundos
 
@@ -103,7 +103,7 @@ La tabla muestra los puntos de referencia cuando los 4 ingredientes pertenecen a
 *(Nota sobre `FusionProgress.cs:48-65`: la reserva mítica `mythic` asigna `30%` con `4` Legendarios, `15%` con `3`, `5%` con `2` y `1%` cuando la mejor rareza es `≥ Épica`, repartiendo el resto `100% - mythic%` mediante `table`; así, `4 Legendarios` arroja `70%` Sirena / `30%` Yanikua, mientras que `4 Épicas` arroja `59,4%` Murciélago Cristal / `39,6%` Sirena / `1%` Yanikua y `DisplayPercent` redondea `60% / 40% / 1%` en la UI).*
 
 ![Máquina de fusión con cuatro espacios de ingredientes y posibles resultados](../Media/Interfaz/Maquina_Fusion.png)
-*Ventana definitiva de la Máquina de Fusión (`734e2a5`) con las 4 ranuras horizontales, temporizador `TIEMPO DE FUSIÓN 00:30`, panel `POSIBLES RESULTADOS` y botones `VACIAR`, `CONFIRMAR` y `X`.*
+*Ventana de la Máquina de Fusión (captura de referencia `734e2a5`) con las 4 ranuras horizontales, temporizador `TIEMPO DE FUSIÓN 00:30`, panel `POSIBLES RESULTADOS` y botones `VACIAR`, `CONFIRMAR` y `X`; en `0.7.0`, la estación se sitúa en la pared trasera `(189, 0, 28,88)`.*
 
 ### Flujo de ventanas de la estación
 

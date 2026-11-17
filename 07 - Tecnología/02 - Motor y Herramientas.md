@@ -1,12 +1,12 @@
 # Motor y herramientas
 
-| Tecnología | Uso en el proyecto actual (`734e2a5`) |
+| Tecnología | Uso en el proyecto actual (`8047d90` / `ebf90f9`) |
 | --- | --- |
-| Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y ejecutable Windows x64. |
-| URP 17.6.0 | Iluminación, materiales, shaders y renderizado. |
+| Unity 6000.6.3f1 | Escenas, física, integración, Play Mode y compilación Standalone (**Windows x64** y **macOS Universal**). |
+| URP 17.6.0 | Iluminación, materiales, shaders, instanciación GPU e iluminación interior acotada (`WarehouseLightScope`). |
 | Input System 1.20.0 | Lectura completa de teclado, ratón y mando (`PlayerInputReader`, `CombatHud`, `VaultCollectionIndex`, `CompanionSystem`, `FusionStation`, `VaultReleaseInteraction`). |
 | Cinemachine 6.6.0 | Seguimiento de cámara en arena, caldera del jefe y bóveda. |
-| UnityWebRequest / JSON | Reserva atómica de gamertag (`GamertagRegistry`) y sincronización HTTPS `PUT` / `DELETE` del ranking de evento con Firebase Realtime Database (`EventLeaderboardSync`) + serialización `JsonUtility` (`FusionProgress` v4). |
+| UnityWebRequest / JSON | Reserva atómica de gamertag (`GamertagRegistry`), sincronización HTTPS `PUT` / `DELETE` del ranking con Firebase (`EventLeaderboardSync`) y almacenamiento atómico en JSON (`SaveSlotService`, `ExpeditionSnapshotData`, `FusionProgress` v5). |
 | Unity Test Framework 1.8.0 | Pruebas automatizadas de reglas e integración. |
 | C# | Sistemas de simulación, interfaz dinámica y herramientas del Editor. |
 | HLSL | Shaders de luz, magma, portal, materiales de interfaz y efectos. |

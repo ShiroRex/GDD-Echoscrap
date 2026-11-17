@@ -182,10 +182,11 @@ El vórtice animado y las entidades en órbita forman el fondo del menú inicial
 
 ## Efectos compartidos y mejoras de estadísticas
 
-| Mejora o grupo | Presentación |
+| Rareza / grupo | Presentación y shaders / efectos |
 | --- | --- |
+| Cinco marcos iluminados de carta (`UpgradeCardAuthoring.cs`, `UpgradeCardSkin.asset`) | Marcos 9-sliced con mapas normales y material lit (`UpgradeCardFrameLit.shader` + `UpgradeCardSheen.shader`): `Frame_Common`, `Frame_Rare`, `Frame_Epic`, `Frame_Legendary` y **`Frame_Mythic`** (`Frame_Mythic.png`, `Frame_Mythic_Normal.png`, `Frame_Mythic.mat`) reservado para la carta Mítica *All In* (`MYTH_01`), compartiendo la familia de `10` iconos en escala de grises y la tipografía `Pixelify Sans`. |
 | Más alcance, Pulso rápido y Golpe potente | Reutilizan el haz, los impactos y la presentación de la linterna; cambian su apertura, alcance, cadencia, color o intensidad. |
-| Dash ágil | Reutiliza la animación y las imágenes residuales del dash; modifica velocidad y recarga. |
+| Dash ágil y Paso de ariete (`DASH_01`, `DASH_05`) | Reutilizan la animación y las imágenes residuales del dash; `DASH_01` modifica velocidad y recarga, mientras `DASH_05` (*Paso de ariete*, reelaborado) extiende duración y distancia (`+25% / +45% / +70%`, hasta `5,61 m`) sin daño de contacto. |
 | Más vida, Sifón y Botiquín mejor | Reutilizan el efecto compartido de curación y reparación; el HUD expresa los cambios de vida. |
 | Imán | Reutiliza el vuelo de recogida de gemas y botiquines. |
 | Chatarrero | Cambia la XP recibida y su lectura en el HUD. |
@@ -193,7 +194,8 @@ El vórtice animado y las entidades en órbita forman el fondo del menú inicial
 | Óptica precisa y Calibración letal | Reutilizan los destellos y números críticos; cambian sus probabilidades o valores. |
 | Ejecución | Muestra el rótulo `EJECUTADO` en los números de daño y resuelve la muerte del enemigo. |
 | Ráfaga crítica y Ojo del verdugo | Reutilizan los avisos de onda, aturdimiento y daño crítico. |
-| Pólvora volátil y Reacción en cadena | Reutilizan explosiones; cambian su radio, daño o condición de aparición. |
+| Pólvora volátil, Reacción en cadena y Granadas | Reutilizan explosiones, zonas y proyectiles parabólicos; cambian radio, daño o condición de aparición. |
+| Nuevos sistemas de combate (`UpgradeCombatRuntime.cs`) | Disponen de piscinas preasignadas sin GC en runtime para zonas persistentes (`GroundZone[64]`: *Charco cáustico*, *Escarcha ártica*), ataque radial (*Aura estática*), descargas (*Tormenta orbital*, *Sobrecarga*), barridos (*Barrido voltaico*), discos/búmeran (*Sierra rebotante*, *Búmeran reflector*) y reflejo (*Escudo reflector*), escalados con `AreaMultiplier` (`FLASH_13`). |
 | Blindaje | Se lee en las placas y valores del HUD. |
 
 > **Navegación:** [[00 - Índice]] · [[00 - Avance jugable]]
